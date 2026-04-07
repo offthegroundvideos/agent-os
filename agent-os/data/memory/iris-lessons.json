@@ -1,0 +1,67 @@
+{
+  "agentId": "iris",
+  "lessons": [
+    {
+      "task": "Give visual direction for a premium dog training landing page.",
+      "workflowType": "chat",
+      "score": 7,
+      "what_worked": "Provided a detailed and creative visual direction for the dog training landing page.",
+      "what_failed": "The response did not include specific design elements or visual assets, which are crucial for a comprehensive brief.",
+      "improvement": "Include sketches or mockups to visually represent the proposed design directions.",
+      "root_cause": "Focused too much on descriptive text and overlooked the importance of visual aids in creative tasks.",
+      "severity": "moderate",
+      "timestamp": "2026-04-01T12:02:10.324Z",
+      "id": "1775044930324",
+      "scoreCategory": "good"
+    }
+  ],
+  "wins": [],
+  "failures": [],
+  "taskCount": 1,
+  "avgScore": 7,
+  "lastReflection": "2026-04-01T12:02:10.324Z",
+  "workflowStats": {
+    "chat": {
+      "taskCount": 1,
+      "avgScore": 7,
+      "winCount": 0,
+      "failureCount": 0,
+      "lastUsedAt": "2026-04-01T12:02:10.324Z",
+      "scoreTrend": [
+        7
+      ]
+    },
+    "pipeline": {
+      "taskCount": 0,
+      "avgScore": 0,
+      "winCount": 0,
+      "failureCount": 0,
+      "lastUsedAt": null,
+      "scoreTrend": []
+    },
+    "autojob": {
+      "taskCount": 0,
+      "avgScore": 0,
+      "winCount": 0,
+      "failureCount": 0,
+      "lastUsedAt": null,
+      "scoreTrend": []
+    },
+    "n8n": {
+      "taskCount": 0,
+      "avgScore": 0,
+      "winCount": 0,
+      "failureCount": 0,
+      "lastUsedAt": null,
+      "scoreTrend": []
+    },
+    "manual": {
+      "taskCount": 0,
+      "avgScore": 0,
+      "winCount": 0,
+      "failureCount": 0,
+      "lastUsedAt": null,
+      "scoreTrend": []
+    }
+  }
+}

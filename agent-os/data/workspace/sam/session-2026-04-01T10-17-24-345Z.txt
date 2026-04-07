@@ -1,0 +1,3 @@
+USER: Summarize OTG Agent OS in one sentence.
+
+SAM: The OTG Agent OS is a multi-agent system designed to analyze viral content patterns, create high-quality short-form videos, and publish them across social platforms to drive engagement, leads, and sales for the OTG Icon agency pipeline.

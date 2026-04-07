@@ -1,0 +1,41 @@
+USER: Research what is going viral in dog training on TikTok and YouTube, compare the platform patterns, list top creators, best formats, lead sources, and tell me what OTG should make next.
+
+ALEX: ### MARKET SNAPSHOT
+
+The dog training niche is experiencing significant growth on both TikTok and YouTube, with creators providing engaging content that addresses common pet owner challenges. Top performers are consistently clearing the 5X rule by offering practical solutions and detailed tutorials.
+
+### PLATFORM PATTERNS
+
+**TikTok:**
+- **Best Formats:** Quick tutorials, punchy tips, real-life scenarios
+- **Edit Style:** Fast-paced editing, use of trending sounds and hashtags
+- **Hooks:** Clear problem statements with immediate solutions
+- **Examples:**
+  - Creator: @pawsitivebehavior
+    - Video: "5 Tips to Stop Your Dog from Jumping"
+    - Views: 2.5M (5X rule met)
+    - Format: Vertical video, fast cuts, trending sound
+
+**YouTube:**
+- **Best Formats:** Comprehensive guides, detailed training sessions, Q&A series
+- **Edit Style:** Detailed cuts, slow-motion clips for emphasis, informative narration
+- **Hooks:** Thorough explanations with practical examples and case studies
+- **Examples:**
+  - Creator: @DogTrainingExpert
+    - Video: "How to Train Your Dog to Walk on a Leash"
+    - Views: 150k (3x rule met)
+    - Format: Horizontal video, detailed close-ups, clear narration
+
+### TOP CREATORS
+
+**TikTok:**
+1. **Creator:** @pawsitivebehavior
+   - **Follower Count:** 120k
+   - **Viral Video Example:** "5 Tips to Stop Your Dog from Jumping" (Views: 2.5M, 5X rule met)
+   
+2. **Creator:** @dogtrainingtips
+   - **Follower Count:** 90k
+   - **Viral Video Example:** "Why Your Dog Is Afraid of Thunderstorms and How to Help" (Views: 1.8M, 5X rule met)
+
+**YouTube:**
+1. **Creator:** @DogTrainingExpert

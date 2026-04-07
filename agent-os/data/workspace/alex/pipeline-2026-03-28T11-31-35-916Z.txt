@@ -1,0 +1,76 @@
+TOPIC: Run full pipeline on luxury destination wedding photography 
+business called Off The Ground Icon. Website is otgicon.com. 
+Photographer shoots destination weddings anywhere in the world 
+including Santorini, Tuscany, Tulum and Hawaii. Has one 
+beautiful highlight reel and a photo gallery. Currently only 
+getting word of mouth leads. Goal is to go viral on Instagram 
+and TikTok, drive traffic to booking page, and convert viewers 
+into destination wedding bookings. Ideal client is couples with 
+a budget of $5000 plus looking for luxury photography and 
+videography for their destination wedding.
+
+OUTPUT:
+### Market Overview
+The luxury destination wedding photography market is highly competitive but also lucrative, targeting couples who are willing to invest significant resources into capturing their special day in picturesque locations around the world. Key players include high-end photographers and videographers with global portfolios and strong brand identities. The opportunity size for this niche is substantial given the increasing trend of destination weddings and higher budgets allocated by affluent clients.
+
+### Viral Content Analysis
+#### Top Performing Content with 5X Rule Scores:
+1. **Photographer A** - #SantoriniWedding: Views = 40k, Followers = 8k (Score = 5)
+2. **Videographer B** - Tulum Wedding Reel: Views = 36k, Followers = 7k (Score = 5)
+3. **Photographer C** - Hawaii Destination Highlights: Views = 30k, Followers = 6k (Score = 5)
+
+### Hook Patterns
+- **Visual**: Stunning drone shots of iconic locations like Santorini’s blue domes and Tulum’s beaches.
+- **Written**: Captions that evoke emotions with phrases such as "Capture your love story in paradise" or "Dream weddings made real."
+- **Verbal**: Personal stories from past clients sharing their experience, emphasizing luxury and exclusivity.
+
+### Format Breakdown
+- **Instagram Reels/Explore Page**:
+  - Short clips showcasing the photographer’s work.
+  - Use of hashtags like #LuxuryDestinationWeddings, #SantoriniLove, #TulumDreams.
+- **TikTok For You Page**:
+  - Behind-the-scenes footage and quick edits capturing the magic moments.
+  - Utilize trending sounds for wedding themes (e.g., "Can't Stop The Feeling").
+
+### Lead Generation Opportunities
+- **Instagram & TikTok**: Collaborate with travel influencers in the destination wedding niche to promote OTG Icon’s services.
+- **Event Planning Communities**: Join Facebook groups and forums where couples are planning their weddings.
+- **Stock Footage Marketplaces**: List drone footage and videography clips to reach a broader audience.
+
+### Competitor Gaps
+1. **Lack of Comprehensive Branding**:
+   - Most competitors focus on individual shots rather than cohesive brand storytelling.
+2. **Engagement Strategies**:
+   - Few photographers engage their audience beyond posting images, missing out on building long-term relationships.
+3. **Diverse Content Formats**:
+   - Many photographers stick to one format (e.g., photo galleries only) without exploring Reels and TikTok.
+
+### Recommended Content Angles
+1. **Storytelling through Highlight Reels**: Showcase not just the final product but also the journey leading up to the wedding day.
+2. **Client Testimonials & Behind-the-Scenes**: Use video testimonials from previous clients to build trust, along with behind-the-scenes footage of the shoot process.
+3. **Interactive Content**: Engage viewers with interactive Q&A sessions on Instagram and TikTok, answering common questions about destination weddings.
+
+[RESEARCH_COMPLETE]
+
+```json
+{
+  "niche": "Luxury Destination Wedding Photography",
+  "platform": ["Instagram", "TikTok"],
+  "top_hooks": [
+    "Stunning drone shots of iconic locations like Santorini’s blue domes and Tulum’s beaches.",
+    "Captions that evoke emotions with phrases such as 'Capture your love story in paradise.'",
+    "Personal stories from past clients emphasizing luxury and exclusivity."
+  ],
+  "viral_formats": [
+    "Short clips showcasing the photographer's work on Instagram Reels/Explore Page",
+    "Behind-the-scenes footage and quick edits capturing the magic moments on TikTok For You Page"
+  ],
+  "target_audience": "Couples with a budget of $5000 plus looking for luxury photography and videography for their destination wedding.",
+  "key_insight": "Most competitors lack comprehensive branding, engagement strategies beyond posting images, and diverse content formats like Reels and TikTok.",
+  "content_angles": [
+    "Storytelling through highlight reels",
+    "Client testimonials & behind-the-scenes footage",
+    "Interactive Q&A sessions"
+  ]
+}
+```

@@ -1,0 +1,18 @@
+USER: what is 2+2
+
+ALEX: The sum of 2 + 2 is 4.
+
+---
+
+If you have any other questions or need detailed research on a specific topic, feel free to let me know! 
+
+[RESEARCH_COMPLETE]
+{
+  "niche": "None",
+  "platform": "None",
+  "top_hooks": [],
+  "viral_formats": [],
+  "target_audience": "",
+  "key_insight": "",
+  "content_angles": []
+}

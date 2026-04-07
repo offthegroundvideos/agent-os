@@ -1,0 +1,200 @@
+{
+  "agentId": "sam",
+  "lessons": [
+    {
+      "task": "run a full pipeline on construction",
+      "score": 8,
+      "what_worked": "The pipeline was successfully completed from start to finish without any major disruptions.",
+      "what_failed": "There were delays in the initial stages due to unforeseen issues with material delivery.",
+      "improvement": "Next time, I will ensure that all materials are procured and stored ahead of schedule to avoid such delays.",
+      "timestamp": "2026-03-28T08:19:52.417Z",
+      "id": "1774685992417",
+      "workflowType": "manual"
+    },
+    {
+      "task": "Run full pipeline on luxury destination wedding photography \r\nbusiness called Off The Ground Icon. Website is otgicon.com. \r\nPhotographer shoots destination weddings anywhere in the world \r\nincluding ",
+      "score": 8,
+      "what_worked": "The task was completed thoroughly, covering all aspects of the wedding photography business pipeline.",
+      "what_failed": "There might have been an oversight in identifying potential cost-saving measures for the client.",
+      "improvement": "Next time, include a detailed analysis of cost optimization strategies to enhance profitability.",
+      "timestamp": "2026-03-28T09:35:35.661Z",
+      "id": "1774690535661",
+      "workflowType": "manual"
+    },
+    {
+      "task": "Run full pipeline on luxury destination wedding photography \r\nbusiness called Off The Ground Icon. Website is otgicon.com. \r\nPhotographer shoots destination weddings anywhere in the world \r\nincluding ",
+      "score": 7,
+      "what_worked": "The content covers a broad range of topics relevant to the luxury destination wedding photography business.",
+      "what_failed": "Some sections lack depth and detailed information that would be beneficial for potential clients.",
+      "improvement": "Include more specific examples and case studies from past weddings to provide concrete value to website visitors.",
+      "timestamp": "2026-03-28T09:35:37.173Z",
+      "id": "1774690537173",
+      "workflowType": "manual"
+    },
+    {
+      "task": "a music video shoot for an  indie hip hop artist in New Orleans, performance  and narrative style, outdoor and indoor locations",
+      "score": 8,
+      "what_worked": "The performance and narrative style effectively captured the essence of the indie hip hop artist in New Orleans.",
+      "what_failed": "There were some technical issues with lighting during certain scenes that affected the overall quality of those shots.",
+      "improvement": "Next time, conduct a thorough equipment check before starting the shoot to ensure all technical aspects are functioning properly.",
+      "timestamp": "2026-03-28T13:17:03.606Z",
+      "id": "1774703823606",
+      "scoreCategory": "good",
+      "workflowType": "manual"
+    },
+    {
+      "task": "Running a \"Wedding videography business in Marin County",
+      "score": 8,
+      "what_worked": "Provided a comprehensive overview of the wedding videography business in Marin County, including services offered and market analysis.",
+      "what_failed": "The response was too lengthy and could have been more concise without losing important details.",
+      "improvement": "Next time, focus on summarizing key points more effectively to keep the response within a reasonable length while still covering all necessary information.",
+      "timestamp": "2026-03-29T22:58:34.049Z",
+      "id": "1774825114049",
+      "scoreCategory": "good",
+      "workflowType": "manual"
+    },
+    {
+      "task": "Running a \"Wedding videography business in Marin County - Social step",
+      "score": 6,
+      "what_worked": "I provided a detailed plan for social media engagement.",
+      "what_failed": "The response was too lengthy and not specifically tailored to the needs of a wedding videography business in Marin County.",
+      "improvement": "Focus on concise, actionable steps that directly benefit the specific niche and location.",
+      "root_cause": "I did not sufficiently narrow down the scope and focus on the unique aspects of the wedding videography market in Marin County.",
+      "severity": "moderate",
+      "timestamp": "2026-03-29T22:59:33.986Z",
+      "id": "1774825173986",
+      "scoreCategory": "poor",
+      "workflowType": "manual"
+    },
+    {
+      "task": "Summarize OTG Agent OS in one sentence.",
+      "workflowType": "chat",
+      "score": 5,
+      "what_worked": "Provided a concise summary of OTG Agent OS.",
+      "what_failed": "The response was too long at 36 words, exceeding the requirement for a single sentence.",
+      "improvement": "Ensure responses are strictly within the requested format and length constraints.",
+      "root_cause": "Lack of clear understanding or adherence to the specific task requirements.",
+      "severity": "minor",
+      "timestamp": "2026-04-01T10:20:00.917Z",
+      "id": "1775038800917",
+      "scoreCategory": "poor"
+    }
+  ],
+  "wins": [
+    {
+      "description": "The pipeline was successfully completed from start to finish without any major disruptions.",
+      "timestamp": "2026-03-28T08:19:52.418Z",
+      "workflowType": "manual"
+    },
+    {
+      "description": "The task was completed thoroughly, covering all aspects of the wedding photography business pipeline.",
+      "timestamp": "2026-03-28T09:35:35.662Z",
+      "workflowType": "manual"
+    },
+    {
+      "description": "The performance and narrative style effectively captured the essence of the indie hip hop artist in New Orleans.",
+      "task": "a music video shoot for an  indie hip hop artist in New Orleans, performance  and narrative style, o",
+      "score": 8,
+      "timestamp": "2026-03-28T13:17:03.606Z",
+      "workflowType": "manual"
+    },
+    {
+      "description": "The performance and narrative style effectively captured the essence of the indie hip hop artist in New Orleans.",
+      "timestamp": "2026-03-28T13:17:03.607Z",
+      "workflowType": "manual"
+    },
+    {
+      "description": "Provided a comprehensive overview of the wedding videography business in Marin County, including services offered and market analysis.",
+      "task": "Running a \"Wedding videography business in Marin County",
+      "score": 8,
+      "timestamp": "2026-03-29T22:58:34.049Z",
+      "workflowType": "manual"
+    },
+    {
+      "description": "Provided a comprehensive overview of the wedding videography business in Marin County, including services offered and market analysis.",
+      "timestamp": "2026-03-29T22:58:34.049Z",
+      "workflowType": "manual"
+    }
+  ],
+  "failures": [
+    {
+      "description": "The response was too lengthy and not specifically tailored to the needs of a wedding videography business in Marin County.",
+      "task": "Running a \"Wedding videography business in Marin County - Social step",
+      "fix": "Focus on concise, actionable steps that directly benefit the specific niche and location.",
+      "score": 6,
+      "severity": "moderate",
+      "timestamp": "2026-03-29T22:59:33.986Z",
+      "workflowType": "manual"
+    },
+    {
+      "description": "The response was too long at 36 words, exceeding the requirement for a single sentence.",
+      "task": "Summarize OTG Agent OS in one sentence.",
+      "fix": "Ensure responses are strictly within the requested format and length constraints.",
+      "score": 5,
+      "severity": "moderate",
+      "workflowType": "chat",
+      "timestamp": "2026-04-01T10:20:00.917Z"
+    }
+  ],
+  "taskCount": 7,
+  "avgScore": 7.1,
+  "lastReflection": "2026-04-01T10:20:00.917Z",
+  "workflowStats": {
+    "chat": {
+      "taskCount": 1,
+      "avgScore": 5,
+      "winCount": 0,
+      "failureCount": 1,
+      "lastUsedAt": "2026-04-01T10:20:00.917Z",
+      "scoreTrend": [
+        5
+      ]
+    },
+    "pipeline": {
+      "taskCount": 0,
+      "avgScore": 0,
+      "winCount": 0,
+      "failureCount": 0,
+      "lastUsedAt": null,
+      "scoreTrend": []
+    },
+    "autojob": {
+      "taskCount": 0,
+      "avgScore": 0,
+      "winCount": 0,
+      "failureCount": 0,
+      "lastUsedAt": null,
+      "scoreTrend": []
+    },
+    "n8n": {
+      "taskCount": 0,
+      "avgScore": 0,
+      "winCount": 0,
+      "failureCount": 0,
+      "lastUsedAt": null,
+      "scoreTrend": []
+    },
+    "manual": {
+      "taskCount": 6,
+      "avgScore": 7.5,
+      "winCount": 4,
+      "failureCount": 1,
+      "lastUsedAt": "2026-03-29T22:59:33.986Z",
+      "scoreTrend": [
+        8,
+        8,
+        7,
+        8,
+        8,
+        6
+      ]
+    }
+  },
+  "improvements": [],
+  "refinements": [
+    "Always conduct a thorough equipment check before starting any shoot to prevent technical issues.",
+    "Include specific examples and case studies in all future tasks to provide concrete value.",
+    "Focus on concise, actionable steps tailored specifically to the needs of the task at hand."
+  ],
+  "refinedAt": "2026-03-30T03:49:10.708Z"
+}

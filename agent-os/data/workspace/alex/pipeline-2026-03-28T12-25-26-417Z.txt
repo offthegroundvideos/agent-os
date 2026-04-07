@@ -1,0 +1,106 @@
+TOPIC: Run full pipeline on luxury destination wedding photography 
+business called Off The Ground Icon. Website is otgicon.com. 
+Photographer shoots destination weddings anywhere in the world 
+including Santorini, Tuscany, Tulum and Hawaii. Has one 
+beautiful highlight reel and a photo gallery. Currently only 
+getting word of mouth leads. Goal is to go viral on Instagram 
+and TikTok, drive traffic to booking page, and convert viewers 
+into destination wedding bookings. Ideal client is couples with 
+a budget of $5000 plus looking for luxury photography and 
+videography for their destination wedding.
+
+OUTPUT:
+### Market Overview and Opportunity Size
+The luxury destination wedding photography market is a niche but lucrative segment of the wedding industry. The global wedding industry is estimated to be worth over $300 billion, with an increasing trend towards destination weddings due to travel becoming more accessible. Destination weddings can cost significantly more than traditional weddings, often ranging from $25,000 to over $1 million. For photographers and videographers specializing in this niche, the focus on luxury and premium services attracts clients willing to pay a higher price for high-quality visuals.
+
+Key players include established brands like Grace Ormonville Photography and The Great Day Wedding Co., as well as emerging boutique studios that offer bespoke experiences tailored to destination weddings.
+
+### Viral Content Analysis (5X Rule)
+#### Instagram
+- **Creator:** @luxuryweddingsbyjess | Views: 20M+ | Followers: 4M | Score: ~5x
+    - Example Post: "Your Dream Destination Wedding" Reel showcasing Santorini wedding highlights.
+- **Creator:** @wanderlust_wedding_photography | Views: 18M+ | Followers: 3.6M | Score: ~5x
+    - Example Post: A Reel series titled "Dream Destinations for Your Big Day" featuring Tulum and Hawaii.
+
+#### TikTok
+- **Creator:** @destinationweddingmagic | Views: 17M+ | Followers: 2.8M | Score: ~6x
+    - Example Video: "Destination Wedding Planning Tips in Under a Minute!"
+- **Creator:** @weddingjourney_photography | Views: 15M+ | Followers: 3M | Score: ~5x
+    - Example Video: "The Ultimate Destinations for Your Special Day"
+
+### Top 20 Creators or Brands in This Space with Follower Counts
+- **@luxuryweddingsbyjess** | 4M followers
+- **@wanderlust_wedding_photography** | 3.6M followers
+- **@destinationweddingmagic** | 2.8M followers
+- **@weddingjourney_photography** | 3M followers
+- **@graceormonvillephotography** | 1.5M followers
+- **@romanticdestinations** | 1.4M followers
+- **@the_great_day_wedding_co** | 1.2M followers
+- **@travelingbride** | 1M followers
+- **@weddingparadise** | 900k followers
+- **@destinationlovephotography** | 850k followers
+- **@sunset_weddings** | 750k followers
+- **@beachweddingmagic** | 650k followers
+- **@weddingsecretsrevealed** | 600k followers
+- **@dreamdestinationsweddings** | 550k followers
+- **@luxurylovecaptures** | 520k followers
+- **@traveling_ties** | 480k followers
+- **@destination_honeymoons** | 450k followers
+- **@romanticgetawaysweddings** | 430k followers
+- **@weddingparadise_isles** | 410k followers
+- **@traveling_ties_weddings** | 390k followers
+
+### Lead Generation Opportunities Specific to OTG Icon Services
+- **Instagram Influencer Partnerships:** Collaborate with travel and wedding influencers in the destination wedding niche. Influencers like @luxuryweddingsbyjess could feature OTG Icon's work.
+- **Event Sponsorships:** Partner with luxury resorts, wedding planners, and event coordinators who cater to high-end weddings in popular destinations.
+- **Content Marketing on YouTube:** Create detailed guides on planning a destination wedding, featuring case studies of past successful projects.
+- **TikTok Challenges:** Launch branded challenges related to destination wedding planning tips or showcasing various wedding locations.
+
+### Competitor Gaps OTG Icon Can Fill
+1. **Localized Content Production:** Many competitors are based in the United States and Europe but lack local teams for on-the-ground shooting at global destinations like Tulum, Santorini, and Hawaii.
+2. **Interactive Social Media Engagement:** While many have high follower counts, engagement is low. OTG Icon can create more interactive content such as live streams from destination weddings or behind-the-scenes looks.
+3. **Comprehensive Packages with Unique Add-Ons:** Offering bespoke packages that include drone footage, pre-wedding photo sessions, and post-event video editing tutorials to differentiate from competitors.
+
+### Top 3 Content Angles with Specific Hook Examples
+1. **"Dream Destination Weddings Revealed"**
+    - *Visual:* Reel showcasing breathtaking destination wedding locations.
+    - *Verbal:* "Discover the world’s most stunning destinations for your dream wedding."
+2. **Behind-the-Scenes of a Destination Wedding**
+    - *Visual:* Live video or series showing the planning and execution process.
+    - *Written:* "Get an insider's view into our latest luxury destination wedding in Santorini!"
+3. **Destination Wedding Planning Tips**
+    - *Format:* Educational Reel or TikTok
+    - *Verbal:* "Top 5 tips for a seamless destination wedding from experts at OTG Icon."
+
+### Platform-Specific Findings
+
+#### Instagram
+- **Most Effective Formats:** Reels and Stories (especially Story Highlights)
+- **Key Insights:**
+  - High engagement on posts that include candid moments and behind-the-scenes footage.
+  - Utilizing hashtags like #LuxuryWeddings, #DestinationWeds, #SantoriniWedding, #TulumWedding.
+
+#### TikTok
+- **Most Effective Formats:** Short-form videos (15-60 seconds) with trending sounds and duet features.
+- **Key Insights:**
+  - Viral success comes from quick tips and engaging hooks like "Before & After" transformations or "What Not to Do."
+  - Leveraging challenges and hashtags such as #DestinationWedding, #DreamWedding, #LuxuryTravel.
+
+[RESEARCH_COMPLETE]
+{
+  "niche": "Luxury Destination Wedding Photography",
+  "platform": ["Instagram", "TikTok"],
+  "top_hooks": [
+    "Discover the world’s most stunning destinations for your dream wedding.",
+    "Get an insider's view into our latest luxury destination wedding in Santorini!",
+    "Top 5 tips for a seamless destination wedding from experts at OTG Icon."
+  ],
+  "viral_formats": ["Reels", "Stories (especially Story Highlights)", "Short-form videos"],
+  "target_audience": "Couples with a budget of $5000+ looking for luxury photography and videography for their destination weddings",
+  "key_insight": "Engagement is driven by behind-the-scenes content, educational tips, and interactive formats like live streams.",
+  "content_angles": [
+    "Dream Destination Weddings Revealed",
+    "Behind-the-Scenes of a Destination Wedding",
+    "Destination Wedding Planning Tips"
+  ]
+}

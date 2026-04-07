@@ -1,0 +1,144 @@
+TOPIC: Running a "Wedding videography business in Marin County
+
+OUTPUT:
+### Growth Strategy for Wedding Videography Business in Marin County
+
+#### Answering the 5 Key Questions:
+
+1. **WHO is the exact target customer and where do they spend time online?**
+   - Exact Target Customer: Newly engaged couples planning weddings in Marin County.
+   - Online Platforms:
+     - Instagram: For visually engaging content such as behind-the-scenes, testimonials, and venue comparisons.
+     - TikTok: To reach younger audiences with short-form videos like Q&A sessions and highlight reels.
+     - LinkedIn: For more professional content targeting planners and decision-makers.
+
+2. **WHAT is the one offer that converts them fastest?**
+   - The one offer that converts couples fastest is a discounted "Early Bird" package for booking their wedding video well in advance, which includes exclusive access to preferred venues and special discounts on additional services like drone footage or event highlights.
+
+3. **HOW do we get in front of them at the lowest cost?**
+   - Utilize organic social media marketing through Instagram Reels, TikTok videos, and LinkedIn posts.
+   - Leverage user-generated content and customer testimonials for authenticity.
+   - Engage with local wedding communities and events via partnerships and sponsorships.
+
+4. **WHY will they choose OTG over competitors?**
+   - **Quality of Work:** Showcasing stunning drone footage, unique behind-the-scenes moments, and personalized touches in videos.
+   - **Local Expertise:** Understanding of the best venues and hidden gems in Marin County.
+   - **Customer Reviews:** Highlighting positive testimonials from previous clients to build trust.
+
+5. **WHEN is the right moment to ask for the sale?**
+   - After a potential client has engaged with several posts, seen both behind-the-scenes content and customer testimonials, and indicated interest through comments or ManyChat triggers.
+   - Offer the Early Bird package after they have had a chance to view multiple pieces of high-quality content showcasing OTG Icon’s work.
+
+### 30/60/90 Day Growth Plan
+
+#### 30-Day Goal:
+- Build initial visibility on Instagram, TikTok, and LinkedIn with consistent posting.
+- Increase engagement rates by at least 25% through user-generated content and community interaction.
+- Set up ManyChat triggers to capture leads from interested customers.
+
+**Milestones:**
+1. Launch social media calendar (Day 1).
+2. Collect feedback on initial posts for optimization (Week 3).
+
+#### 60-Day Goal:
+- Expand reach by engaging with wedding communities, local businesses, and influencers.
+- Increase engagement rates by another 50% through targeted campaigns and collaborations.
+- Start nurturing leads via email and SMS sequences.
+
+**Milestones:**
+1. Partner with two local wedding planners (Week 4).
+2. Conduct a Q&A session on TikTok to address common questions about wedding videography (Month 2).
+
+#### 90-Day Goal:
+- Convert initial leads into paying customers through personalized follow-ups.
+- Launch Early Bird package offer and measure conversion rates.
+- Optimize funnel based on early results.
+
+**Milestones:**
+1. Send out first batch of proposals for booked clients (Week 8).
+2. Review and optimize the funnel architecture (Month 3).
+
+### Complete Funnel Architecture
+
+1. **Social Content to Comment or DM Trigger**
+   - Consistent posting across Instagram, TikTok, and LinkedIn.
+   
+2. **ManyChat Automation Triggers**
+   - Engagement triggers set up for comments, direct messages, and specific hashtags.
+
+3. **Landing Page with Lead Magnet Delivered**
+   - Offer a free guide on "Top 10 Venues in Marin County" upon sign-up.
+
+4. **VSL or Demo to Booking Call**
+   - Personalized video showing OTG Icon’s best work.
+   
+5. **Proposal and Contract**
+   - Detailed proposal for Early Bird package.
+   
+6. **Delivery and Review Request**
+   - Client review post-delivery, asking for testimonials and referrals.
+
+7. **Referral Request and Repeat**
+   - Encourage clients to refer friends by offering discounts on future services.
+
+### ManyChat Setup with Trigger Words
+
+- **Script 1: Behind-the-scenes of a wedding day**
+  - Instagram Reels: `[BOOK]`
+  - TikTok: `[SCHEDULE]`
+  - LinkedIn: `[CONTACT]`
+
+- **Script 2: Best wedding spots in Marin County**
+  - Instagram Reels: `[PORTFOLIO]`
+  - TikTok: `[VENUE]`
+  - LinkedIn: `[DECISION]`
+
+- **Script 3: Customer testimonials**
+  - Instagram Reels: `[STORIES]`
+  - TikTok: `[TRUST]`
+  - LinkedIn: `[TESTIMONIALS]`
+
+### Monetization Strategies
+
+1. **Early Bird Package Offer:** Discounted pricing for booking well in advance.
+2. **Referral Program:** Discounts on future services for referrals.
+3. **Stock Footage Sales:** Selling wedding footage clips to other videographers.
+
+### KPIs to Track Weekly
+- Engagement rate per platform (likes, comments, shares).
+- New leads captured via ManyChat triggers.
+- Conversion rates from lead magnets to proposals.
+- Client satisfaction scores post-delivery.
+
+### What NOT To Do
+
+1. **Avoid Paid Ads Too Early:** Focus on organic growth first before investing in paid campaigns.
+2. **Ignore Feedback:** Regularly review and adjust content based on audience engagement metrics.
+3. **Over-Promote the Same Offer:** Diversify offers to capture different segments of potential clients.
+
+---
+
+[STRATEGY_COMPLETE]
+{
+  "primary_channel": "Instagram, TikTok, LinkedIn",
+  "funnel_steps": [
+    {"step": "Social Content", "description": "Consistent posting on Instagram, TikTok, and LinkedIn"},
+    {"step": "ManyChat Trigger", "description": "Engagement triggers for comments and DMs"},
+    {"step": "Landing Page with Lead Magnet", "description": "Offering a free guide 'Top 10 Venues in Marin County'"},
+    {"step": "VSL or Demo to Booking Call", "description": "Personalized video showing OTG Icon’s best work"},
+    {"step": "Proposal and Contract", "description": "Detailed proposal for Early Bird package"},
+    {"step": "Delivery and Review Request", "description": "Client review post-delivery, asking for testimonials and referrals"},
+    {"step": "Referral Request and Repeat", "description": "Encourage clients to refer friends by offering discounts on future services"}
+  ],
+  "lead_magnet": "Free guide 'Top 10 Venues in Marin County'",
+  "manychat_trigger": "[BOOK], [SCHEDULE], [CONTACT]",
+  "30_day_goal": "Build initial visibility and increase engagement rates by 25%",
+  "60_day_goal": "Expand reach, engage with wedding communities, and start nurturing leads",
+  "90_day_goal": "Convert leads into paying customers through personalized follow-ups",
+  "kpis": ["Engagement rate per platform", "New leads captured via ManyChat triggers", "Conversion rates from lead magnets to proposals"],
+  "monetization_ideas": [
+    {"idea": "Early Bird Package Offer", "description": "Discounted pricing for booking well in advance"},
+    {"idea": "Referral Program", "description": "Discounts on future services for referrals"},
+    {"idea": "Stock Footage Sales", "description": "Selling wedding footage clips to other videographers"}
+  ]
+}

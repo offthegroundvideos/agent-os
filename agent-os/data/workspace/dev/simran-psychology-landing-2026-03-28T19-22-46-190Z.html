@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simran Psychology — Psychology</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --accent: #ec4899;
+  --accent-dim: #ec489922;
+  --accent-mid: #ec489955;
+  --bg: #ffffff;
+  --text: #111111;
+  --card: #f9f9f9;
+  --muted: #666666;
+  --border: rgba(0,0,0,0.08);
+}
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; overflow-x: hidden; }
+h1, h2, h3, h4 { font-family: 'Syne', sans-serif; line-height: 1.2; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.8); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+.nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 18px; color: var(--accent); text-decoration: none; }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+.nav-links a:hover { color: var(--accent); }
+.nav-cta { background: var(--accent); color: #000; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 14px; transition: opacity 0.2s; }
+.nav-cta:hover { opacity: 0.85; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+.hamburger span { width: 24px; height: 2px; background: var(--text); display: block; }
+
+/* HERO */
+.hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 120px 24px 80px; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, #ec489918, transparent); pointer-events: none; }
+.hero-content { max-width: 800px; position: relative; }
+.hero-badge { display: inline-block; background: var(--accent-dim); border: 1px solid var(--accent-mid); color: var(--accent); padding: 6px 16px; border-radius: 100px; font-size: 13px; font-weight: 600; margin-bottom: 24px; letter-spacing: 0.05em; }
+.hero h1 { font-size: clamp(36px, 6vw, 72px); font-weight: 800; margin-bottom: 20px; letter-spacing: -0.02em; }
+.hero h1 span { color: var(--accent); }
+.hero-sub { font-size: clamp(16px, 2vw, 20px); color: var(--muted); margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; }
+.hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px; }
+.trust-badges { display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; }
+.trust-badge { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--muted); }
+.trust-badge strong { color: var(--text); }
+
+/* BUTTONS */
+.btn { display: inline-block; padding: 14px 32px; border-radius: 8px; font-weight: 600; font-size: 15px; text-decoration: none; cursor: pointer; border: none; font-family: 'Inter', sans-serif; transition: all 0.2s; }
+.btn-primary { background: var(--accent); color: #000; }
+.btn-primary:hover { opacity: 0.88; transform: translateY(-1px); box-shadow: 0 8px 24px #ec489944; }
+.btn-outline { background: transparent; color: var(--accent); border: 2px solid var(--accent); }
+.btn-outline:hover { background: var(--accent-dim); }
+.btn-large { padding: 18px 48px; font-size: 17px; border-radius: 10px; }
+
+/* SECTIONS */
+section { padding: 80px 24px; }
+.container { max-width: 1100px; margin: 0 auto; }
+.section-badge { display: inline-block; background: var(--accent-dim); border: 1px solid var(--accent-mid); color: var(--accent); padding: 4px 14px; border-radius: 100px; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; }
+.section-title { font-size: clamp(28px, 4vw, 44px); font-weight: 800; margin-bottom: 16px; letter-spacing: -0.02em; }
+.section-sub { font-size: 17px; color: var(--muted); max-width: 600px; margin-bottom: 48px; }
+
+/* CARDS */
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 28px; transition: all 0.3s; }
+.card:hover { border-color: var(--accent-mid); box-shadow: 0 8px 32px #ec489918; transform: translateY(-2px); }
+
+/* BENEFITS */
+.benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.benefit-icon { font-size: 32px; margin-bottom: 14px; }
+.benefit-title { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.benefit-desc { color: var(--muted); font-size: 14px; line-height: 1.6; }
+
+/* STEPS */
+.steps-list { display: flex; flex-direction: column; gap: 24px; max-width: 700px; margin: 0 auto; }
+.step-card { display: flex; gap: 24px; align-items: flex-start; padding: 24px; background: var(--card); border: 1px solid var(--border); border-radius: 12px; }
+.step-number { font-family: 'Syne', sans-serif; font-size: 48px; font-weight: 800; color: var(--accent); opacity: 0.3; line-height: 1; min-width: 60px; }
+.step-title { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+.step-desc { color: var(--muted); font-size: 14px; }
+
+/* TESTIMONIALS */
+.testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.stars { color: var(--accent); font-size: 18px; margin-bottom: 14px; letter-spacing: 2px; }
+.testimonial-quote { font-size: 15px; line-height: 1.7; margin-bottom: 20px; color: var(--text); font-style: italic; }
+.testimonial-author { display: flex; align-items: center; gap: 12px; }
+.author-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px; color: #000; flex-shrink: 0; }
+.author-name { font-weight: 600; font-size: 14px; }
+.author-role { font-size: 12px; color: var(--muted); }
+
+/* PRICING */
+.pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; align-items: start; }
+.pricing-card { position: relative; text-align: center; }
+.pricing-popular { border-color: var(--accent) !important; box-shadow: 0 0 40px #ec489922; }
+.popular-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #000; padding: 4px 16px; border-radius: 100px; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; white-space: nowrap; }
+.pricing-name { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+.pricing-price { font-family: 'Syne', sans-serif; font-size: 48px; font-weight: 800; color: var(--accent); margin-bottom: 4px; }
+.pricing-period { font-size: 16px; color: var(--muted); font-weight: 400; }
+.pricing-features { list-style: none; margin: 20px 0 24px; text-align: left; display: flex; flex-direction: column; gap: 10px; }
+.pricing-features li { font-size: 14px; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+
+/* FAQ */
+.faq-list { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+.faq-item { background: var(--card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+.faq-question { width: 100%; padding: 18px 24px; display: flex; justify-content: space-between; align-items: center; background: none; border: none; color: var(--text); font-size: 15px; font-weight: 600; cursor: pointer; font-family: 'Inter', sans-serif; text-align: left; gap: 16px; }
+.faq-icon { font-size: 20px; color: var(--accent); flex-shrink: 0; transition: transform 0.3s; }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+.faq-answer p { padding: 0 24px 18px; color: var(--muted); font-size: 14px; line-height: 1.7; }
+.faq-item.open .faq-answer { max-height: 200px; }
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+
+/* CTA SECTION */
+.cta-section { text-align: center; background: radial-gradient(ellipse 80% 100% at 50% 0%, #ec489915, transparent); border-top: 1px solid var(--border); }
+.cta-section h2 { font-size: clamp(28px, 4vw, 48px); font-weight: 800; margin-bottom: 16px; }
+.cta-section p { font-size: 18px; color: var(--muted); margin-bottom: 40px; }
+
+/* FORM */
+.contact-form { max-width: 480px; margin: 0 auto 32px; display: flex; flex-direction: column; gap: 12px; }
+.form-input { width: 100%; padding: 14px 18px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 15px; font-family: 'Inter', sans-serif; outline: none; transition: border-color 0.2s; }
+.form-input:focus { border-color: var(--accent); }
+.form-input::placeholder { color: var(--muted); }
+
+/* FOOTER */
+footer { padding: 40px 24px; border-top: 1px solid var(--border); }
+.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+.footer-brand { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 18px; color: var(--accent); }
+.footer-copy { font-size: 13px; color: var(--muted); }
+.footer-social { display: flex; gap: 16px; }
+.footer-social a { color: var(--muted); font-size: 20px; text-decoration: none; transition: color 0.2s; }
+.footer-social a:hover { color: var(--accent); }
+
+/* ANIMATIONS */
+.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* STATS BAR */
+.stats-bar { background: var(--card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 32px 24px; }
+.stats-inner { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 24px; }
+.stat-item { text-align: center; }
+.stat-number { font-family: 'Syne', sans-serif; font-size: 36px; font-weight: 800; color: var(--accent); display: block; }
+.stat-label { font-size: 13px; color: var(--muted); }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .nav-links.open { display: flex; flex-direction: column; position: fixed; top: 60px; left: 0; right: 0; background: var(--bg); padding: 24px; border-bottom: 1px solid var(--border); gap: 20px; }
+  .hero-buttons { flex-direction: column; align-items: center; }
+  .trust-badges { gap: 16px; }
+  .step-card { flex-direction: column; }
+  .step-number { font-size: 32px; }
+  .footer-inner { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Simran Psychology</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#benefits">Benefits</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a href="#book" class="nav-cta">Book Your Free Consultation today!</a>
+  <div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<section class="hero" style="background-image: linear-gradient(to bottom, #ec489922, var(--bg)), url('https://source.unsplash.com/1600x900/?Psychology%20professional'); background-size: cover; background-position: center;">
+  <div class="hero-content">
+    <div class="hero-badge">✦ Psychology Growth Agency</div>
+    <h1><span>Get</span> better results from your therapy!</h1>
+    <p class="hero-sub">We make you less crazy!!</p>
+    <div class="hero-buttons">
+      <a href="#book" class="btn btn-primary btn-large">Book Your Free Consultation today!</a>
+      <a href="#process" class="btn btn-outline btn-large">See How It Works</a>
+    </div>
+    <div class="trust-badges">
+      <div class="trust-badge">★★★★★ <strong>5.0</strong> Rating</div>
+      <div class="trust-badge">👥 <strong>100+</strong> Clients</div>
+      <div class="trust-badge">🎬 <strong>500+</strong> Videos Created</div>
+      <div class="trust-badge">📈 <strong>98%</strong> Satisfaction</div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item"><span class="stat-number">100+</span><span class="stat-label">Happy Clients</span></div>
+    <div class="stat-item"><span class="stat-number">500+</span><span class="stat-label">Videos Created</span></div>
+    <div class="stat-item"><span class="stat-number">10M+</span><span class="stat-label">Views Generated</span></div>
+    <div class="stat-item"><span class="stat-number">98%</span><span class="stat-label">Client Retention</span></div>
+  </div>
+</div>
+
+<section id="benefits" class="fade-in">
+  <div class="container">
+    <div class="section-badge">Why Choose Us</div>
+    <h2 class="section-title">Everything You Need to Grow</h2>
+    <p class="section-sub">We handle the entire content process so you can focus on running your business.</p>
+    <div class="benefits-grid">
+        <div class="card benefit-card">
+          <div class="benefit-icon">🎯</div>
+          <h3 class="benefit-title">More leads</h3>
+          <p class="benefit-desc">Transform your business with our proven system</p>
+        </div>
+        <div class="card benefit-card">
+          <div class="benefit-icon">📈</div>
+          <h3 class="benefit-title">Better content</h3>
+          <p class="benefit-desc">Transform your business with our proven system</p>
+        </div>
+        <div class="card benefit-card">
+          <div class="benefit-icon">⚡</div>
+          <h3 class="benefit-title">Faster growth</h3>
+          <p class="benefit-desc">Transform your business with our proven system</p>
+        </div></div>
+  </div>
+</section>
+<section id="portfolio" class="fade-in">
+  <div class="container">
+    <div class="section-badge">Our Work</div>
+    <h2 class="section-title">Recent Results</h2>
+    <p class="section-sub">Real work we have done for clients in the Psychology space.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:32px">
+      
+        <div style="border-radius:12px;overflow:hidden;aspect-ratio:4/3;position:relative;cursor:pointer;group">
+          <img src="https://source.unsplash.com/600x400/?Psychology&sig=1" alt="Psychology work 1" 
+            style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease;display:block"
+            onmouseover="this.style.transform='scale(1.05)'"
+            onmouseout="this.style.transform='scale(1)'"
+            loading="lazy"
+          />
+        </div>
+        <div style="border-radius:12px;overflow:hidden;aspect-ratio:4/3;position:relative;cursor:pointer;group">
+          <img src="https://source.unsplash.com/600x400/?Psychology&sig=2" alt="Psychology work 2" 
+            style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease;display:block"
+            onmouseover="this.style.transform='scale(1.05)'"
+            onmouseout="this.style.transform='scale(1)'"
+            loading="lazy"
+          />
+        </div>
+        <div style="border-radius:12px;overflow:hidden;aspect-ratio:4/3;position:relative;cursor:pointer;group">
+          <img src="https://source.unsplash.com/600x400/?Psychology&sig=3" alt="Psychology work 3" 
+            style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease;display:block"
+            onmouseover="this.style.transform='scale(1.05)'"
+            onmouseout="this.style.transform='scale(1)'"
+            loading="lazy"
+          />
+        </div>
+        <div style="border-radius:12px;overflow:hidden;aspect-ratio:4/3;position:relative;cursor:pointer;group">
+          <img src="https://source.unsplash.com/600x400/?Psychology&sig=4" alt="Psychology work 4" 
+            style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease;display:block"
+            onmouseover="this.style.transform='scale(1.05)'"
+            onmouseout="this.style.transform='scale(1)'"
+            loading="lazy"
+          />
+        </div>
+        <div style="border-radius:12px;overflow:hidden;aspect-ratio:4/3;position:relative;cursor:pointer;group">
+          <img src="https://source.unsplash.com/600x400/?Psychology&sig=5" alt="Psychology work 5" 
+            style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease;display:block"
+            onmouseover="this.style.transform='scale(1.05)'"
+            onmouseout="this.style.transform='scale(1)'"
+            loading="lazy"
+          />
+        </div>
+        <div style="border-radius:12px;overflow:hidden;aspect-ratio:4/3;position:relative;cursor:pointer;group">
+          <img src="https://source.unsplash.com/600x400/?Psychology&sig=6" alt="Psychology work 6" 
+            style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease;display:block"
+            onmouseover="this.style.transform='scale(1.05)'"
+            onmouseout="this.style.transform='scale(1)'"
+            loading="lazy"
+          />
+        </div>
+    </div>
+  </div>
+</section>
+
+<section id="process" class="fade-in">
+  <div class="container" style="text-align:center">
+    <div class="section-badge">How It Works</div>
+    <h2 class="section-title">3 Simple Steps to Growth</h2>
+    <p class="section-sub">Our proven process gets you results fast.</p>
+    <div class="steps-list">
+        <div class="step-card">
+          <div class="step-number">01</div>
+          <div class="step-content">
+            <h3 class="step-title">Research your niche</h3>
+            <p class="step-desc">Our proven process delivers results</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-number">02</div>
+          <div class="step-content">
+            <h3 class="step-title">Create viral content</h3>
+            <p class="step-desc">Our proven process delivers results</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-number">03</div>
+          <div class="step-content">
+            <h3 class="step-title">Generate leads</h3>
+            <p class="step-desc">Our proven process delivers results</p>
+          </div>
+        </div></div>
+  </div>
+</section>
+
+<section class="fade-in">
+  <div class="container" style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center">
+    <div style="border-radius:16px;overflow:hidden;aspect-ratio:4/3">
+      <img src="https://source.unsplash.com/800x600/?Psychology%20lifestyle" alt="Simran Psychology" style="width:100%;height:100%;object-fit:cover" loading="lazy" />
+    </div>
+    <div>
+      <div class="section-badge">About Us</div>
+      <h2 class="section-title">We Grow Psychology Businesses</h2>
+      <p style="color:var(--muted);font-size:16px;line-height:1.8;margin-bottom:24px">
+        We are a team of content strategists and social media experts who specialize in helping Psychology businesses grow through viral video content and automated lead generation.
+      </p>
+      <p style="color:var(--muted);font-size:16px;line-height:1.8;margin-bottom:32px">
+        Our proven system combines research-backed content strategy with ManyChat automation to turn your social media into a 24/7 lead generation machine.
+      </p>
+      <a href="#book" class="btn btn-primary">Book Your Free Consultation today!</a>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials" class="fade-in">
+  <div class="container">
+    <div class="section-badge">Results</div>
+    <h2 class="section-title">What Our Clients Say</h2>
+    <p class="section-sub">Real results from real businesses just like yours.</p>
+    <div class="testimonials-grid">
+        <div class="card testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-quote">"Our bookings doubled in 60 days"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">S</div>
+            <div>
+              <div class="author-name">Sarah M</div>
+              <div class="author-role">Wedding Photographer</div>
+            </div>
+          </div>
+        </div>
+        <div class="card testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-quote">"We went from 0 to 50 leads per month"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">J</div>
+            <div>
+              <div class="author-name">James K</div>
+              <div class="author-role">Portrait Studio</div>
+            </div>
+          </div>
+        </div>
+        <div class="card testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-quote">"Best investment for our studio"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">L</div>
+            <div>
+              <div class="author-name">Lisa R</div>
+              <div class="author-role">Photography Business</div>
+            </div>
+          </div>
+        </div></div>
+  </div>
+</section>
+
+<section id="pricing" class="fade-in">
+  <div class="container" style="text-align:center">
+    <div class="section-badge">Pricing</div>
+    <h2 class="section-title">Simple, Transparent Pricing</h2>
+    <p class="section-sub">No hidden fees. Cancel anytime. Start growing today.</p>
+    <div class="pricing-grid">
+        <div class="card pricing-card ">
+          
+          <div class="pricing-name">Starter</div>
+          <div class="pricing-price">$997/mo<span class="pricing-period">/mo</span></div>
+          <ul class="pricing-features"><li>✓ 15 scripts</li><li>✓ basic editing</li><li>✓ 1 platform</li></ul>
+          <a href="#book" class="btn btn-outline">Book Your Free Consultation today!</a>
+        </div>
+        <div class="card pricing-card pricing-popular">
+          <div class="popular-badge">MOST POPULAR</div>
+          <div class="pricing-name">Growth</div>
+          <div class="pricing-price">$1997/mo<span class="pricing-period">/mo</span></div>
+          <ul class="pricing-features"><li>✓ 30 scripts</li><li>✓ full editing</li><li>✓ ManyChat funnel</li><li>✓ 3 platforms</li></ul>
+          <a href="#book" class="btn btn-primary">Book Your Free Consultation today!</a>
+        </div>
+        <div class="card pricing-card ">
+          
+          <div class="pricing-name">Agency</div>
+          <div class="pricing-price">$2997/mo<span class="pricing-period">/mo</span></div>
+          <ul class="pricing-features"><li>✓ Unlimited scripts</li><li>✓ full funnel</li><li>✓ GHL setup</li><li>✓ all platforms</li></ul>
+          <a href="#book" class="btn btn-outline">Book Your Free Consultation today!</a>
+        </div></div>
+  </div>
+</section>
+
+<section id="faq" class="fade-in">
+  <div class="container" style="text-align:center">
+    <div class="section-badge">FAQ</div>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <p class="section-sub">Everything you need to know before getting started.</p>
+    <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            <span>How long until I see results?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer"><p>Most clients see growth within 30 days of consistent posting.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            <span>Do I need to film the videos?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer"><p>Yes, we provide detailed scripts and shoot schedules so filming is simple.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            <span>What platforms do you work with?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer"><p>Instagram, TikTok, LinkedIn and Facebook.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            <span>How many videos per month?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer"><p>Depends on your package, starting at 15 videos per month.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            <span>Do you write all the scripts?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer"><p>Yes, our AI agent team researches your niche and writes every script.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            <span>Can I cancel anytime?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer"><p>Yes, we offer month to month agreements with no lock in contracts.</p></div>
+        </div></div>
+  </div>
+</section>
+
+<section class="cta-section fade-in">
+  <div class="container">
+    <div class="section-badge">Get Started</div>
+    <h2>Ready to Grow Your Psychology Business?</h2>
+    <p>Limited spots available. Book your free strategy call today.</p>
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <input class="form-input" type="text" placeholder="Your Name" required />
+      <input class="form-input" type="email" placeholder="Your Email" required />
+      <input class="form-input" type="tel" placeholder="Your Phone" />
+      <button type="submit" class="btn btn-primary btn-large" style="width:100%">Book Your Free Consultation today!</button>
+    </form>
+    <p style="font-size:13px;color:var(--muted)">No commitment required. Free 30-minute strategy call.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">Simran Psychology</div>
+    <div class="footer-copy">© 2026 Simran Psychology. All rights reserved.</div>
+    <div class="footer-social">
+      <a href="#" title="Instagram">📸</a>
+      <a href="#" title="TikTok">🎵</a>
+      <a href="#" title="LinkedIn">💼</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(el => { if (el.isIntersecting) el.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Form submit
+function handleSubmit(e) {
+  e.preventDefault();
+  e.target.innerHTML = '<div style="padding:20px;color:var(--accent);font-size:18px;font-weight:700">✓ Thanks! We will be in touch within 24 hours.</div>';
+}
+</script>
+</body>
+</html>

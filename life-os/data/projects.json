@@ -1,0 +1,30 @@
+{
+  "projects": [
+    {
+      "id": "proj_001",
+      "name": "Example Project",
+      "status": "active",
+      "priority": "high",
+      "description": "Replace this with your actual project",
+      "objectives": [
+        {
+          "id": "obj_001",
+          "title": "Define project scope",
+          "status": "in_progress",
+          "due_date": "2026-04-07",
+          "key_results": [
+            {
+              "description": "Complete requirements document",
+              "target": 100,
+              "current": 30,
+              "unit": "percent"
+            }
+          ]
+        }
+      ],
+      "tags": ["example"],
+      "created_at": "2026-03-30",
+      "updated_at": "2026-03-30"
+    }
+  ]
+}

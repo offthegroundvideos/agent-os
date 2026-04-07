@@ -1,0 +1,18 @@
+{
+  "agentId": "luna",
+  "conversations": [
+    {
+      "role": "user",
+      "content": "run a full pipeline Give me a strategy for Michelle l Elmore to sell her photography coffee table books that include Mardi Gras Indians, and various other street photography, captured over the course of 20 years. They are called \"Ya Heard me\" \"lets go get'em\" and \"Come see about me",
+      "timestamp": "2026-03-31T05:13:48.209Z"
+    },
+    {
+      "role": "user",
+      "content": "Qualify this lead: couple wants 6 private sessions for a reactive dog in Los Angeles within 30 days and can invest around 2k.",
+      "timestamp": "2026-04-01T11:40:51.833Z"
+    }
+  ],
+  "notes": [],
+  "lastActive": "2026-04-01T11:40:51.833Z",
+  "sessionCount": 2
+}

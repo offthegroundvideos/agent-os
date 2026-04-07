@@ -1,0 +1,110 @@
+TOPIC: Run a pipeline on animal photography
+
+OUTPUT:
+### Social Media Posts
+
+#### 1. Instagram Reels Post:
+**Visual Hook:** Stunning close-up of an animal's eye.
+
+**Verbal Hook:**
+"Get ready to capture stunning animal photos! 📸✨"
+
+**Caption:**
+"Learn how top creators in the #animalphotography niche run a viral pipeline. From engaging hooks to behind-the-scenes content, find out what works best and take your videos to the next level! 💡
+
+#ManyChatCommentTrigger = Questions or tips? Comment below! 🚀"
+
+**Hashtags:**
+#AnimalPhotography #ViralVideoTips #PhotographyTutorials #WildlifePhotos #CaptureTheMoment
+
+**Time:** 15 seconds
+**Schedule:** Every Tuesday at 9 AM
+
+#### 2. TikTok Post:
+**Visual Hook:** Flashing text overlay "Get Noticed!"
+
+**Verbal Hook:**
+"Attention all animal photographers! 📸✨"
+
+**Script:**
+"Learn the secrets of viral #animalphotography videos from top creators! Start with engaging hooks, use popular formats like talking head or whiteboard reveals, and share behind-the-scenes content. 💡
+
+#ManyChatCommentTrigger = Share your tips below! 🚀"
+
+**Hashtags:**
+#AnimalPhotography #ViralVideoTips #TikTokPhotography #WildlifePhotos #CaptureTheMoment
+
+**Time:** 15 seconds
+**Schedule:** Every Thursday at 3 PM
+
+#### 3. LinkedIn Post:
+**Visual Hook:** Professional-looking infographic with key points.
+
+**Verbal Hook:**
+"Up your game in animal photography! 📸✨"
+
+**Caption:**
+"Discover how to run a successful pipeline on #animalphotography videos that go viral. Follow proven strategies and learn from top creators who have mastered the art of engaging hooks, popular formats, and educational content. 💡
+
+#ManyChatCommentTrigger = Share your insights in ManyChat! 🚀"
+
+**Hashtags:**
+#AnimalPhotography #ViralVideoTips #LinkedInTutorials #WildlifePhotos #CaptureTheMoment
+
+**Time:** 1-2 minutes
+**Schedule:** Every Monday at 7 AM
+
+#### 4. Facebook Post:
+**Visual Hook:** Beautiful wildlife photo with engaging caption.
+
+**Verbal Hook:**
+"Join the top creators in animal photography! 📸✨"
+
+**Caption:**
+"How do you create viral videos in the #animalphotography niche? Follow these tips from proven experts who know how to captivate and engage their audiences. Share your own successes or questions in ManyChat below! 💡
+
+#ManyChatCommentTrigger = Comment with your story or query! 🚀"
+
+**Hashtags:**
+#AnimalPhotography #ViralVideoTips #FacebookTutorials #WildlifePhotos #CaptureTheMoment
+
+**Time:** 1-2 minutes
+**Schedule:** Every Wednesday at 5 PM
+
+### Shoot Schedule Format:
+#### For Instagram Reels & TikTok Videos:
+
+**Shoot 15 videos in one session. Group by format type to minimize setup changes. Order scripts from easiest to hardest. Rank editors by skill level (basic edits for basic editors, advanced edits for advanced editors).**
+
+**Script Breakdown:**
+- **Visual Hook Setup:** Stunning close-up of an animal’s eye.
+- **Hook Delivery:**
+  - "Get ready to capture stunning animal photos! 📸✨" (verbal hook)
+  - "Learn how top creators in the #animalphotography niche run a viral pipeline. From engaging hooks to behind-the-scenes content, find out what works best and take your videos to the next level!" (caption overlay)
+- **Editorial Notes:** Prioritize the visual hook first, then script second.
+  
+**Caption Template:**
+"Learn how top creators in the #animalphotography niche run a viral pipeline. From engaging hooks to behind-the-scenes content, find out what works best and take your videos to the next level! 💡
+#ManyChatCommentTrigger = Questions or tips? Comment below! 🚀"
+
+### Batch Production:
+Film 15-30 videos in one shoot session. Group by format type (talking head, whiteboard/paper reveal) to minimize setup changes.
+
+**Order Scripts:**
+1. Talking Head with close-ups
+2. Whiteboard/Paper Reveal with animated elements
+
+**Rank Editors:**
+Basic editors handle simpler edits like talking head, advanced editors tackle more complex formats like whiteboard reveals.
+
+### Viral Doubling Rule:
+When any video goes viral, immediately create reformatted versions in every other format type (talking head to whiteboard/paper reveal) and schedule them for the next 7 days.
+
+---
+
+[SHOOT_SCHEDULE_COMPLETE]
+
+**Summary for Marketing Strategist:**
+This social media package includes detailed posts tailored for Instagram Reels, TikTok, LinkedIn, and Facebook. Each post is designed with engaging hooks, popular formats like talking head or whiteboard reveals, and niche-specific hashtags to boost visibility. The shoot schedule ensures efficient production of 15-30 videos in one session while maintaining quality through skill-based editor assignments. The viral doubling rule guarantees sustained engagement by creating reformatted versions of successful content.
+
+[SUMMARY_COMPLETE]

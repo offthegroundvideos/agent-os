@@ -1,0 +1,48 @@
+﻿# Environment & secrets
+.env
+.env.local
+*.key
+*.pem
+
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS junk
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# Logs
+*.log
+logs/
+
+# Model files (too large for GitHub)
+*.gguf
+*.bin
+*.safetensors
+
+
+# Build output
+.next/
+
+# Cache and model data (too large / not source code)
+outputs/cache/
+ollama-data/
+n8n-data/
+
+# Deer-flow has its own git repo
+deer-flow/

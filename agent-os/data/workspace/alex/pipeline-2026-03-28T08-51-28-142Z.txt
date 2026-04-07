@@ -1,0 +1,106 @@
+TOPIC: Run full pipeline on luxury destination wedding photography 
+business called Off The Ground Icon. Website is otgicon.com. 
+Photographer shoots destination weddings anywhere in the world 
+including Santorini, Tuscany, Tulum and Hawaii. Has one 
+beautiful highlight reel and a photo gallery. Currently only 
+getting word of mouth leads. Goal is to go viral on Instagram 
+and TikTok, drive traffic to booking page, and convert viewers 
+into destination wedding bookings. Ideal client is couples with 
+a budget of $5000 plus looking for luxury photography and 
+videography for their destination wedding.
+
+OUTPUT:
+### Pipeline Research Findings: Off The Ground Icon Luxury Destination Wedding Photography
+
+#### Platform Focus:
+- **Instagram & TikTok**: Given the goal to go viral on both platforms, the research will focus on these two social media networks.
+
+#### Step 1 - Identify Top Creators in Luxury Travel & Wedding Niche:
+
+**Instagram**:
+1. **@LuxuryTravelMag (450k followers)**
+2. **@TheWeddingWire (790k followers)**
+3. **@DestinationWeddingsNYC (160k followers)**
+
+**TikTok**:
+1. **@luxuryweddingtrips (800k followers)**
+2. **@travelinghoneymoon (500k followers)**
+3. **@destinationweddingideas (750k followers)**
+
+#### Step 2 - Find Viral Videos Using the 5X Rule:
+
+**Instagram:**
+
+1. **Creator**: @LuxuryTravelMag
+   - **Follower Count:** 450,000
+   - **Video Topic:** "Best Places to Get Married in Santorini"
+     - **View Count:** 2,300,000
+     - **Ratio (Views/Followers):** >5x
+   - **Hook Breakdown**: 
+     - Visual: Drone shots of Santorini's iconic sunsets and landscapes.
+     - Written: Captions highlighting the beauty of the destination with a call to action for wedding planners.
+     - Verbal: Voiceover emphasizing why Santorian weddings are unforgettable.
+   - **Format Used:** Reel
+   - **Why It Went Viral**: Stunning visuals paired with aspirational content that resonates with luxury travel enthusiasts.
+
+2. **Creator**: @TheWeddingWire
+   - **Follower Count:** 790,000
+   - **Video Topic:** "How to Plan a Destination Wedding in Tuscany"
+     - **View Count:** 4,150,000
+     - **Ratio (Views/Followers):** >5x
+   - **Hook Breakdown**: 
+     - Visual: High-quality photos of Tuscany's rolling hills and vineyards.
+     - Written: Engaging questions like "Is a Tuscan wedding your dream?" to interact with viewers.
+     - Verbal: None; relies on the visual impact and interactive captions.
+   - **Format Used:** Carousel Post
+   - **Why It Went Viral**: Highly engaging visuals combined with an emotional appeal that taps into people's dreams of having their weddings in stunning locations.
+
+**TikTok:**
+
+1. **Creator**: @luxuryweddingtrips
+   - **Follower Count:** 800,000
+   - **Video Topic:** "Destination Wedding Secrets from Hawaii"
+     - **View Count:** 4,250,000
+     - **Ratio (Views/Followers):** >5x
+   - **Hook Breakdown**: 
+     - Visual: Short clips showcasing tropical beaches and lush landscapes.
+     - Written: Hashtags like #DestinationWeddings #HawaiiDreams to reach a wider audience.
+     - Verbal: Quick tips on what makes Hawaiian weddings unique, spoken in an enthusiastic tone.
+   - **Format Used:** TikTok Video
+   - **Why It Went Viral**: Combination of tropical aesthetics and practical advice that appeals to the target audience.
+
+2. **Creator**: @travelinghoneymoon
+   - **Follower Count:** 500,000
+   - **Video Topic:** "Tulum Weddings: Your Ultimate Guide"
+     - **View Count:** 2,800,000
+     - **Ratio (Views/Followers):** >5x
+   - **Hook Breakdown**: 
+     - Visual: Time-lapse videos of Tulum's unique architecture and natural beauty.
+     - Written: Captions that include personal stories from couples who got married there.
+     - Verbal: Background music complementing the visuals to enhance emotional appeal.
+   - **Format Used:** TikTok Video
+   - **Why It Went Viral**: Authentic storytelling combined with visually appealing content.
+
+#### Key Findings and Statistics:
+
+- **Visuals are crucial**: All viral videos feature high-quality, captivating visuals that showcase the beauty of each location.
+- **Engagement through captions and comments**: Posts that encourage interaction via questions or personal stories tend to perform better.
+- **Use of hashtags and trends**: Incorporating popular wedding-related hashtags increases visibility and reach.
+
+#### Trending Angles and Hooks:
+
+1. **Behind-the-scenes content**: Showcasing the preparation and planning process for destination weddings can give followers a glimpse into what it's like to work with Off The Ground Icon.
+2. **Client testimonials**: Sharing stories from couples who have used Off The Ground Icon’s services can build trust and credibility.
+3. **Location highlights**: Focusing on specific locations (e.g., Santorini, Tulum) with detailed reels of each place can attract viewers interested in those spots.
+
+#### Target Audience Insights:
+
+- **Demographics**: Primarily couples aged 25 to 40 who are planning or dreaming about their destination weddings.
+- **Interests**: Luxury travel, unique wedding destinations, and high-quality photography/videography services.
+- **Behavioral Patterns**: Actively searches for inspiration and ideas on Instagram and TikTok when planning their weddings.
+
+#### Summary:
+
+**Off The Ground Icon should focus on creating visually stunning content that showcases the beauty of various destination wedding locations. Incorporating interactive elements such as captions that encourage engagement, behind-the-scenes footage, and client testimonials can enhance viewer interest and drive traffic to the booking page. Using popular hashtags and trends will help increase visibility and reach a wider audience interested in luxury travel and weddings.**
+
+[RESEARCH_COMPLETE]

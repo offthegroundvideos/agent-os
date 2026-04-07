@@ -1,0 +1,141 @@
+TOPIC: Run full pipeline on luxury destination wedding photography 
+business called Off The Ground Icon. Website is otgicon.com. 
+Photographer shoots destination weddings anywhere in the world 
+including Santorini, Tuscany, Tulum and Hawaii. Has one 
+beautiful highlight reel and a photo gallery. Currently only 
+getting word of mouth leads. Goal is to go viral on Instagram 
+and TikTok, drive traffic to booking page, and convert viewers 
+into destination wedding bookings. Ideal client is couples with 
+a budget of $5000 plus looking for luxury photography and 
+videography for their destination wedding.
+
+OUTPUT:
+### Social Media Package for Luxury Destination Wedding Photography at OTG Icon
+
+#### 30-Day Posting Calendar with Specific Dates, Times, and Platforms
+
+| Date       | Time (EST) | Platform     | Post Type                       |
+|------------|------------|--------------|---------------------------------|
+| Day 1      | 9:00 AM    | Instagram    | "Dream Destination Weddings Revealed" Reel          |
+| Day 2      | 6:30 PM    | TikTok       | "Top 5 Tips for a Seaside Wedding" Short-form Video |
+| Day 4      | 10:00 AM   | Instagram    | Behind-the-Scenes Story Highlight                  |
+| Day 5      | 7:00 AM    | LinkedIn     | Educational Post on Destination Weddings           |
+| Day 6      | 9:00 PM    | TikTok       | "What Not to Do" Short-form Video                   |
+| Day 8      | 12:00 PM   | Instagram    | Behind-the-Scenes Reel                               |
+| Day 9      | 6:30 AM    | LinkedIn     | Live Stream of a Destination Wedding Planning Session|
+| Day 11     | 7:00 PM    | TikTok       | "Destination Wedding Planning Tips" Short-form Video|
+| Day 12     | 9:00 AM    | Instagram    | Behind-the-Scenes Reel                               |
+| Day 14     | 6:30 PM    | TikTok       | "Dream Destination Weddings Revealed" Duet Challenge|
+| Day 15     | 7:00 AM    | LinkedIn     | Educational Post on Luxury Photography Services     |
+| Day 16     | 9:00 PM    | Instagram    | Behind-the-Scenes Reel                               |
+| Day 18     | 12:00 PM   | TikTok       | "Destination Wedding Tips" Short-form Video         |
+| Day 19     | 7:00 AM    | LinkedIn     | Live Stream of a Destination Wedding Planning Session|
+| Day 21     | 7:00 PM    | Instagram    | Behind-the-Scenes Reel                               |
+| Day 23     | 6:30 AM    | TikTok       | "Dream Destination Weddings Revealed" Short-form Video|
+| Day 24     | 9:00 AM    | LinkedIn     | Educational Post on Drone Footage Services          |
+| Day 25     | 12:00 PM   | Instagram    | Behind-the-Scenes Reel                               |
+| Day 27     | 6:30 PM    | TikTok       | "Destination Wedding Tips" Short-form Video         |
+| Day 28     | 7:00 AM    | LinkedIn     | Live Stream of a Destination Wedding Planning Session|
+| Day 30     | 7:00 PM    | Instagram    | Behind-the-Scenes Reel                               |
+
+#### Platform-Specific Versions of the Top 5 Scripts
+
+**Script 1: "Dream Destination Weddings Revealed"**
+- **Instagram:** Hook - Discover the world’s most stunning destinations for your dream wedding. (Reel)
+- **TikTok:** Hook - Before & After transformation showcasing a destination wedding in Santorini. (Short-form Video)
+
+**Script 2: Behind-the-Scenes of a Destination Wedding**
+- **Instagram:** Hook - Get an insider's view into our latest luxury destination wedding in Santorini! (Reel)
+- **TikTok:** Hook - Live Stream from the planning and execution process at Tulum. (Short-form Video)
+
+**Script 3: "Destination Wedding Planning Tips"**
+- **Instagram:** Hook - Top 5 tips for a seamless destination wedding from experts at OTG Icon. (Reel)
+- **TikTok:** Hook - Quick tips on choosing the best location, photographer, and vendors. (Short-form Video)
+
+**Script 4: Educational Post on Destination Weddings**
+- **LinkedIn:** Hook - Comprehensive guide to planning your dream destination wedding. (Educational Post)
+- **Instagram & TikTok:** Hook - Educational Reels on various aspects of destination weddings.
+
+**Script 5: Live Stream of a Destination Wedding Planning Session**
+- **LinkedIn:** Hook - Real-time insights into the planning process, hosted by OTG Icon experts. (Live Stream)
+- **TikTok:** Hook - Snippets from live stream in story format showcasing real-life wedding planning moments. (Short-form Video)
+
+#### Hashtag Strategy Per Platform
+
+**Instagram:**
+- #LuxuryWeddings
+- #DestinationWeds
+- #SantoriniWedding
+- #TulumWedding
+- #HawaiiWedding
+- #DreamDestinationWeddings
+- #TravelBride
+- #RomanticGetaway
+- #WeddingParadise
+- #BeachWeddingMagic
+
+**TikTok:**
+- #DestinationWedding
+- #LuxuryTravel
+- #DreamWedding
+- #WeddingTips
+- #SantoriniWeds
+
+**LinkedIn:**
+- #DestinationWeddings
+- #LuxuryPhotography
+- #WeddingPlanning
+
+#### ManyChat Trigger Word Suggestions for Each Post
+
+| Script          | Hashtag Strategy             | Trigger Words       |
+|-----------------|------------------------------|---------------------|
+| "Dream Destinations" | #LuxuryWeddings, #SantoriniWeds   | "Discover Dreams", "Destination Dreams" |
+| Behind-the-Scenes     | #TulumWedding, #HawaiiWedding    | "Insider View", "Behind the Scenes"      |
+| Planning Tips         | #DreamDestinationWeddings       | "Planning Tips", "Seamless Wedding"      |
+| Educational Post      | #LuxuryPhotography              | "Expert Insights", "Planning Guide"      |
+| Live Stream           | #DestinationWeds                | "Real-Time Advice", "Live Discussion"    |
+
+#### Shoot Schedule for Batch Filming
+
+**Order from easiest hook to hardest:**
+1. **Behind-the-Scenes of a Destination Wedding (Reel)**
+   - Visual Hook Setup Notes: Show candid moments, planning process, and execution.
+   - Suggested Music/Audio: Upbeat background music.
+   - Editing Complexity: Basic
+2. **"Dream Destination Weddings Revealed" Reel**
+   - Visual Hook Setup Notes: Breathtaking scenery shots with quick transitions.
+   - Suggested Music/Audio: Inspirational music.
+   - Editing Complexity: Medium
+3. **Educational Post on Destination Weddings (LinkedIn)**
+   - Visual Hook Setup Notes: Infographics, checklists, and step-by-step guides.
+   - Suggested Music/Audio: None (Professional tone)
+   - Editing Complexity: Basic
+4. **Live Stream of a Destination Wedding Planning Session (LinkedIn)**
+   - Visual Hook Setup Notes: Real-time footage, interviews with experts.
+   - Suggested Music/Audio: Background ambiance music.
+   - Editing Complexity: Advanced
+
+#### Editor Assignments
+
+- **Basic Edits:** Any team member can handle the basic edits for the Behind-the-Scenes Reel and Educational Post on LinkedIn.
+- **Advanced Edits:** Swope or Teja should handle the "Dream Destination Weddings Revealed" Reel and Live Stream content.
+
+---
+
+[SOCCIAL_COMPLETE]
+{
+  "total_posts": 21,
+  "platforms": ["Instagram", "TikTok", "LinkedIn"],
+  "posting_frequency": "3 posts per week",
+  "top_content_type": "Reels, Short-form Videos, Stories (Highlights), Live Streams",
+  "manychat_triggers": [
+    "Discover Dreams",
+    "Insider View",
+    "Planning Tips",
+    "Expert Insights",
+    "Real-Time Advice"
+  ],
+  "shoot_days_needed": 5,
+  "editors_needed": ["Any team member", "Swope or Teja"]
+}

@@ -1,0 +1,31 @@
+{
+  "tasks": [
+    {
+      "id": "task_001",
+      "title": "Example task - replace with real tasks",
+      "project_id": "proj_001",
+      "status": "pending",
+      "priority": "high",
+      "due_date": "2026-04-01",
+      "estimated_minutes": 60,
+      "tags": ["example"],
+      "recurrence": null,
+      "calendar_event_id": null,
+      "created_at": "2026-03-30",
+      "completed_at": null
+    }
+  ],
+  "recurring_tasks": [
+    {
+      "id": "rec_001",
+      "title": "Weekly project review",
+      "frequency": "weekly",
+      "day": "sunday",
+      "time": "18:00",
+      "project_id": null,
+      "priority": "medium",
+      "estimated_minutes": 30,
+      "auto_calendar": true
+    }
+  ]
+}

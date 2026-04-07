@@ -1,0 +1,152 @@
+TOPIC: a music video shoot for an  indie hip hop artist in New Orleans, performance  and narrative style, outdoor and indoor locations
+
+OUTPUT:
+### Social Media Package for Music Video Shoot in New Orleans
+
+#### 1. 30-Day Posting Calendar with Specific Dates, Times, and Platforms
+
+| Date       | Time   | Platform | Post Type          |
+|------------|--------|----------|--------------------|
+| Day 1      | 9:00 AM | Instagram | Behind-the-scenes teaser [Talking Head] |
+| Day 2      | 6:00 PM | TikTok   | Hook & Immediate Engagement [B-Roll]    |
+| Day 3      | 8:00 AM | LinkedIn | Professional Tone Post                  |
+| Day 4      | 9:30 AM | Instagram | Story format teaser                      |
+| Day 5      | 12:00 PM | TikTok   | Interactive Fan Engagement [Talking Head]|
+| Day 6      | 9:00 AM | LinkedIn | Document Post                             |
+| Day 7      | 6:30 PM | Instagram | B-Roll Highlight                          |
+| Day 8      | 12:00 PM | TikTok   | Short Format Adaptation [B-Roll]         |
+| Day 9      | 8:00 AM | LinkedIn | Carousel Post                             |
+| Day 10     | 6:30 PM | Instagram | Behind-the-scenes teaser                 |
+| Day 11     | 7:00 AM | TikTok   | Hook & Engagement [Talking Head]          |
+| Day 12     | 8:00 AM | LinkedIn | Professional Tone Post                    |
+| Day 13     | 9:30 AM | Instagram | Story format teaser                      |
+| Day 14     | 6:00 PM | TikTok   | Interactive Fan Engagement [B-Roll]       |
+| Day 15     | 8:00 AM | LinkedIn | Document Post                             |
+| Day 16     | 9:30 AM | Instagram | B-Roll Highlight                          |
+| Day 17     | 12:00 PM | TikTok   | Short Format Adaptation [Talking Head]    |
+| Day 18     | 8:00 AM | LinkedIn | Carousel Post                             |
+| Day 19     | 6:30 PM | Instagram | Behind-the-scenes teaser                 |
+| Day 20     | 7:00 AM | TikTok   | Hook & Engagement [B-Roll]                |
+| Day 21     | 8:00 AM | LinkedIn | Professional Tone Post                    |
+| Day 22     | 9:30 AM | Instagram | Story format teaser                      |
+| Day 23     | 6:00 PM | TikTok   | Interactive Fan Engagement [Talking Head] |
+| Day 24     | 8:00 AM | LinkedIn | Document Post                             |
+| Day 25     | 9:30 AM | Instagram | B-Roll Highlight                          |
+| Day 26     | 12:00 PM | TikTok   | Short Format Adaptation [B-Roll]         |
+| Day 27     | 8:00 AM | LinkedIn | Carousel Post                             |
+| Day 28     | 6:30 PM | Instagram | Behind-the-scenes teaser                 |
+| Day 29     | 7:00 AM | TikTok   | Hook & Engagement [Talking Head]          |
+| Day 30     | 8:00 AM | LinkedIn | Professional Tone Post                    |
+
+#### 2. Platform-Specific Versions of the Top 5 Scripts
+
+**Top Script Index:** 0 (Close-up of a rapper rapping passionately)
+
+##### Instagram Reels
+- **Visual Hook:** Close-up of a rapper rapping passionately.
+- **Hook Line:** "This is the sound of New Orleans."
+- **Caption:**
+  - "Feeling the energy? 🎶✨ Our music video shoots capture the essence of the city and your story. Tap to learn more! #NewOrleansHipHop"
+- **Editing Complexity:** Basic
+- **Hashtags:** #NewOrleansHipHop, #NOLA, #MusicVideoShots, #OTGIcon, #RapInNOLA
+
+##### TikTok Shorts
+- **Visual Hook:** Close-up of a rapper rapping passionately.
+- **Hook Line:** "This is the sound of New Orleans."
+- **Caption:**
+  - "Feel the vibe and get hooked! 🎶✨ Tap to learn more about our music video services. [LEARN_MORE]"
+- **Editing Complexity:** Basic
+- **Hashtags:** #NewOrleansHipHop, #NOLA, #MusicVideoShoots
+
+##### LinkedIn Post
+- **Visual Hook:** Close-up of a rapper rapping passionately.
+- **Hook Line:** "This is the sound of New Orleans."
+- **Caption:**
+  - "Discover how we blend cultural storytelling with high-quality production to create standout music videos in New Orleans. Contact us today! [LEARN_MORE]"
+- **Editing Complexity:** Basic
+- **Hashtags:** #NewOrleansHipHop, #MusicVideoProduction
+
+**Additional Top Scripts**
+
+1. **Visual Hook:** Aerial shots of New Orleans streets at night.
+   - **Caption Templates and Editing Complexity:**
+     - Instagram: "Feel the vibe 🌃✨ High-quality drone cinematography captures every moment in NOLA. [LEARN_MORE]"
+       - Hashtags: #NewOrleansNight, #DroneCinematography
+     - TikTok: "Experience the nightlife of New Orleans 🌃✨ Tap to learn more! [LEARN_MORE]"
+       - Hashtags: #NOLANightlife
+     - LinkedIn: "Professional drone shots capturing the energy of New Orleans. Contact us for your next music video project."
+       - Hashtags: #DroneCinematography, #MusicVideoProduction
+
+2. **Visual Hook:** Artist and collaborator laughing while recording in a studio.
+   - **Caption Templates and Editing Complexity:**
+     - Instagram: "Music is our bond 🎶✨ Behind-the-scenes moments that make the magic happen. Tap to learn more! [CAPTURE_JOURNEY]"
+       - Hashtags: #MusicCollaboration, #BehindTheScenes
+     - TikTok: "Every laugh tells a story 💃🎶 See how OTG Icon captures it all! [LEARN_MORE]"
+       - Hashtags: #StudioTime
+     - LinkedIn: "Real behind-the-scenes moments. Let our team capture your journey with narrative-driven storytelling."
+       - Hashtags: #MusicCollaboration, #BehindTheScenes
+
+3. **Visual Hook:** Artist looking out over the city skyline from a rooftop.
+   - **Caption Templates and Editing Complexity:**
+     - Instagram: "This is where it all begins 🌆✨ Professional-grade production values for your music video. [GET_STARTED]"
+       - Hashtags: #RooftopViews, #MusicVideoProduction
+     - TikTok: "Every skyline tells a story 💃✨ Tap to get started! [LEARN_MORE]"
+       - Hashtags: #NOLASkyline
+     - LinkedIn: "Rich storytelling tied to local culture. Contact us for your next music video project."
+       - Hashtags: #RooftopViews, #MusicVideoProduction
+
+4. **Visual Hook:** Artist walking through a historic New Orleans neighborhood.
+   - **Caption Templates and Editing Complexity:**
+     - Instagram: "Every step tells a story 📍✨ Professional drone footage captures the heart of NOLA. [BRING_VISION]"
+       - Hashtags: #NOLANeighborhoods, #DroneFootage
+     - TikTok: "Experience the heartbeat of New Orleans 📍✨ Tap to learn more! [LEARN_MORE]"
+       - Hashtags: #HISTORICNewOrleans
+     - LinkedIn: "Narrative-driven content with cultural elements. Contact us for your next music video project."
+       - Hashtags: #NOLANeighborhoods, #MusicVideoProduction
+
+#### 3. Hashtag Strategy Per Platform
+
+- **Instagram:** #NewOrleansHipHop, #NOLA, #MusicVideoShots, #OTGIcon, #RapInNOLA
+- **TikTok:** #NewOrleansHipHop, #NOLANeighborhoods, #HISTORICNewOrleans
+- **LinkedIn:** #NewOrleansHipHop, #MusicVideoProduction
+
+#### 4. ManyChat Trigger Word Suggestions for Each Post
+
+1. [LEARN_MORE]
+2. [CAPTURE_JOURNEY]
+3. [GET_STARTED]
+4. [BRING_VISION]
+
+#### 5. Shoot Schedule for Batch Filming — Group by Format Order Easiest to Hardest
+
+- **Easiest: Talking Head**
+  - Scripts 1, 6, 7, 8, 9, 10, 12, 14
+- **Medium: B-Roll**
+  - Scripts 2, 5, 11, 13, 15
+
+**Shoot Schedule Example:**
+
+| Day | Format       | Script Index |
+|-----|--------------|--------------|
+| D1  | Talking Head | 1            |
+| D2  | Talking Head | 6            |
+| D3  | B-Roll       | 2            |
+| D4  | Talking Head | 7            |
+| D5  | Talking Head | 8            |
+| D6  | B-Roll       | 5            |
+| D7  | Talking Head | 9            |
+| D8  | Talking Head | 10           |
+| D9  | Talking Head | 12           |
+| D10 | B-Roll       | 13           |
+| D11 | Talking Head | 14           |
+| D12 | B-Roll       | 15           |
+
+#### 6. Editor Assignments
+
+- **Basic Edits (Any Team Member):** Scripts 1, 6, 7, 8, 9, 10, 12, 14
+- **Advanced Edits (Swope or Teja):** Scripts 2, 5, 11, 13, 15
+
+---
+
+[SOCIAL_COMPLETE]
+{"total_posts":30,"platforms":["Instagram","TikTok","LinkedIn"],"posting_frequency":"Daily","top_content_type":"Talking Head and B-Roll Formats","manychat_triggers":["LEARN_MORE","CAPTURE_JOURNEY","GET_STARTED","BRING_VISION"],"shoot_days_needed":12,"editors_needed":["Any Team Member for Basic Edits","Swope or Teja for Advanced Edits"]}

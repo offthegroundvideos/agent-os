@@ -1,0 +1,121 @@
+{
+  "chapters": [
+    {
+      "id": "chapter-1774694361129",
+      "number": 1,
+      "sessionId": "session-1774692631219",
+      "memberId": "jack",
+      "memberName": "Jack Riggs",
+      "startedAt": "2026-03-28T10:10:31.219Z",
+      "endedAt": "2026-03-28T10:39:21.128Z",
+      "duration": "29 minutes",
+      "goals": "",
+      "accomplishments": [],
+      "agentsUsed": [],
+      "pipelinesRun": [],
+      "notes": "",
+      "nextSteps": ""
+    },
+    {
+      "id": "chapter-1774725422193",
+      "number": 2,
+      "sessionId": "session-1774698175104",
+      "memberId": "jack",
+      "memberName": "Jack Riggs",
+      "startedAt": "2026-03-28T11:42:55.104Z",
+      "endedAt": "2026-03-28T19:17:02.192Z",
+      "duration": "454 minutes",
+      "goals": "",
+      "accomplishments": [],
+      "agentsUsed": [],
+      "pipelinesRun": [
+        {
+          "topic": "Run full pipeline on luxury destination wedding photography \r\nbusiness called Off The Ground Icon. Website is otgicon.com. \r\nPhotographer shoots destination weddings anywhere in the world \r\nincluding Santorini, Tuscany, Tulum and Hawaii. Has one \r\nbeautiful highlight reel and a photo gallery. Currently only \r\ngetting word of mouth leads. Goal is to go viral on Instagram \r\nand TikTok, drive traffic to booking page, and convert viewers \r\ninto destination wedding bookings. Ideal client is couples with \r\na budget of $5000 plus looking for luxury photography and \r\nvideography for their destination wedding.",
+          "sessionId": "pipeline-1774699650275",
+          "timestamp": "2026-03-28T13:12:39.151Z"
+        },
+        {
+          "topic": "Run full pipeline on luxury destination wedding photography \r\nbusiness called Off The Ground Icon. Website is otgicon.com. \r\nPhotographer shoots destination weddings anywhere in the world \r\nincluding Santorini, Tuscany, Tulum and Hawaii. Has one \r\nbeautiful highlight reel and a photo gallery. Currently only \r\ngetting word of mouth leads. Goal is to go viral on Instagram \r\nand TikTok, drive traffic to booking page, and convert viewers \r\ninto destination wedding bookings. Ideal client is couples with \r\na budget of $5000 plus looking for luxury photography and \r\nvideography for their destination wedding.",
+          "sessionId": "pipeline-1774699650275",
+          "timestamp": "2026-03-28T13:12:39.151Z"
+        },
+        {
+          "topic": "a music video shoot for an  indie hip hop artist in New Orleans, performance  and narrative style, outdoor and indoor locations",
+          "sessionId": "pipeline-1774699190803",
+          "timestamp": "2026-03-28T13:30:46.986Z"
+        },
+        {
+          "topic": "a music video shoot for an  indie hip hop artist in New Orleans, performance  and narrative style, outdoor and indoor locations",
+          "sessionId": "pipeline-1774699190803",
+          "timestamp": "2026-03-28T13:30:46.987Z"
+        }
+      ],
+      "notes": "",
+      "nextSteps": ""
+    },
+    {
+      "id": "chapter-1774817052423",
+      "number": 3,
+      "sessionId": "session-1774817047573",
+      "memberId": "swope",
+      "memberName": "swope",
+      "startedAt": "2026-03-29T20:44:07.573Z",
+      "endedAt": "2026-03-29T20:44:12.422Z",
+      "duration": "0 minutes",
+      "goals": "",
+      "accomplishments": [],
+      "agentsUsed": [],
+      "pipelinesRun": [],
+      "notes": "Session ended by team switcher",
+      "nextSteps": ""
+    },
+    {
+      "id": "chapter-1774819387020",
+      "number": 4,
+      "sessionId": "session-1774819320669",
+      "memberId": "jack",
+      "memberName": "Jack Riggs",
+      "startedAt": "2026-03-29T21:22:00.669Z",
+      "endedAt": "2026-03-29T21:23:07.020Z",
+      "duration": "1 minutes",
+      "goals": "",
+      "accomplishments": [],
+      "agentsUsed": [],
+      "pipelinesRun": [],
+      "notes": "Ran a pipeline",
+      "nextSteps": "Update proccesses"
+    },
+    {
+      "id": "chapter-1774866276438",
+      "number": 5,
+      "sessionId": "session-1774866193143",
+      "memberId": "jack",
+      "memberName": "Jack Riggs",
+      "startedAt": "2026-03-30T10:23:13.143Z",
+      "endedAt": "2026-03-30T10:24:36.437Z",
+      "duration": "1 minutes",
+      "goals": "",
+      "accomplishments": [],
+      "agentsUsed": [],
+      "pipelinesRun": [],
+      "notes": "added deerflow and started calender integration",
+      "nextSteps": "Fixing pipeline to make sure agents finish full workflow from alex to jordan. Currently alex starts and finishes but the chain ends there."
+    },
+    {
+      "id": "chapter-1774866382739",
+      "number": 6,
+      "sessionId": "session-1774866338024",
+      "memberId": "jack",
+      "memberName": "Jack Riggs",
+      "startedAt": "2026-03-30T10:25:38.024Z",
+      "endedAt": "2026-03-30T10:26:22.739Z",
+      "duration": "1 minutes",
+      "goals": "",
+      "accomplishments": [],
+      "agentsUsed": [],
+      "pipelinesRun": [],
+      "notes": "the pipeline just restarts and alex is stuck in a loop rather then moving on to sam. Im trying to use claude whenever my tokens are back",
+      "nextSteps": "use claude code tokens."
+    }
+  ]
+}

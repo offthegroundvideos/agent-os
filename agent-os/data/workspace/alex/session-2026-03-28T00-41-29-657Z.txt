@@ -1,0 +1,35 @@
+USER: run a full pipeline on high school lacrosse videos
+
+ALEX: To effectively run a full pipeline analysis on high school lacrosse videos, follow this organized approach:
+
+### Step-by-Step Pipeline Analysis for High School Lacrosse Videos
+
+1. **Identify Top Creators:**
+   - Locate influencers and content creators focusing on high school lacrosse through platforms like YouTube, TikTok, Instagram, and Twitter.
+   - Use hashtags such as #HighSchoolLacrosse, #LacrosseHighlights, and #HSVBL to discover top creators.
+
+2. **Identify Viral Videos:**
+   - For each creator, identify 10-20 viral videos based on the 5X Rule. A video is considered viral if its view count is five times the account's follower count (e.g., 50k views for a 10k follower account).
+
+3. **Extract Video Details:**
+   - For each identified viral video, gather:
+     - **Hook Used:** Visual, written, or verbal.
+     - **Format Type:** Talking head, whiteboard/paper reveal, two-person podcast/conversation, audio B-roll.
+     - **Video Topic:** Specific subject matter of the video.
+     - **View Count and Follower Count:** To calculate the view/follower ratio.
+     - **Editing Style:** Techniques used in editing the video.
+
+4. **Analyze Patterns:**
+   - Look for recurring patterns in hooks, topics, and formats across viral videos.
+   - Determine if specific combinations, such as behind-the-scenes interviews with emotional storytelling, are more effective.
+
+5. **Explore Trending Videos:**
+   - Use niche keywords related to high school lacrosse in TikTok or Instagram Reels to find trending videos with over 100M views.
+   - Analyze these videos for insights into current audience preferences and virality factors.
+
+6. **Provide Insights:**
+   - Summarize findings on effective hooks, formats, and topics that contribute to viral content.
+   - Highlight trends and patterns observed during the analysis.
+
+### Conclusion
+By following this structured approach, you can provide valuable insights into what makes high school lacrosse videos go viral, focusing solely on research as per your role. This analysis will help in understanding the dynamics of viral content within the niche.

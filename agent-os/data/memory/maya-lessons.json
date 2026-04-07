@@ -1,0 +1,231 @@
+{
+  "agentId": "maya",
+  "lessons": [
+    {
+      "task": "run a full pipeline on construction",
+      "score": 8,
+      "what_worked": "The pipeline execution was completed successfully without any major errors.",
+      "what_failed": "There were delays in the initial stages due to configuration issues.",
+      "improvement": "Next time, allocate more time for thorough testing and validation of configurations before starting the full pipeline run.",
+      "timestamp": "2026-03-28T08:09:14.112Z",
+      "id": "1774685354112",
+      "workflowType": "manual"
+    },
+    {
+      "task": "Run full pipeline on luxury destination wedding photography \r\nbusiness called Off The Ground Icon. Website is otgicon.com. \r\nPhotographer shoots destination weddings anywhere in the world \r\nincluding ",
+      "score": 7,
+      "what_worked": "The task completion covered all necessary aspects of the wedding photography business pipeline.",
+      "what_failed": "The output was longer than expected, which may have included unnecessary details or repetition.",
+      "improvement": "Next time, aim for a more concise and targeted approach to ensure the content is precise and relevant without exceeding the required length.",
+      "timestamp": "2026-03-28T09:11:00.298Z",
+      "id": "1774689060298",
+      "workflowType": "manual"
+    },
+    {
+      "task": "run a full pipeline on Marin County seafood restaurants",
+      "score": 8,
+      "what_worked": "The comprehensive analysis covered all aspects of Marin County seafood restaurants effectively.",
+      "what_failed": "Some sections could have been more concise, leading to a longer than necessary report.",
+      "improvement": "Next time, focus on refining the conciseness and clarity of each section to maintain brevity while retaining depth.",
+      "timestamp": "2026-03-28T19:50:26.688Z",
+      "id": "1774727426688",
+      "scoreCategory": "good",
+      "workflowType": "manual"
+    },
+    {
+      "task": "Highschool Lacrosse",
+      "score": 8,
+      "what_worked": "Provided a comprehensive overview of high school lacrosse.",
+      "what_failed": "Failed to include personal anecdotes or experiences which could have made the content more engaging.",
+      "improvement": "Next time, incorporate real-life examples or interviews with players and coaches to enhance relatability and engagement.",
+      "timestamp": "2026-03-29T21:14:37.844Z",
+      "id": "1774818877844",
+      "scoreCategory": "good",
+      "workflowType": "manual"
+    },
+    {
+      "task": "Running a \"Wedding videography business in Marin County",
+      "score": 8,
+      "what_worked": "Provided a comprehensive overview of the wedding videography business in Marin County.",
+      "what_failed": "Failed to include specific client testimonials or case studies which could have added more credibility and depth.",
+      "improvement": "Next time, incorporate real-life examples or testimonials from past clients to enhance the authenticity and appeal of the content.",
+      "timestamp": "2026-03-29T22:40:53.371Z",
+      "id": "1774824053371",
+      "scoreCategory": "good",
+      "workflowType": "manual"
+    },
+    {
+      "task": "When you receive research from Alex, what percentage of that research do you typically use in your content creation? And can you tell me what your current instructions say about how much of Alex's res",
+      "score": 2,
+      "what_worked": "I acknowledged the task and attempted a response.",
+      "what_failed": "The response was not provided as requested, instead mentioning an incorrect character limit violation which did not occur.",
+      "improvement": "Ensure to provide a detailed, specific answer to the question asked without introducing unrelated information or errors.",
+      "root_cause": "Misinterpretation of the task and failure to generate a relevant response based on the given instructions.",
+      "severity": "moderate",
+      "timestamp": "2026-03-29T23:33:43.937Z",
+      "id": "1774827223937",
+      "scoreCategory": "critical",
+      "workflowType": "manual"
+    },
+    {
+      "task": "When you receive research from Alex, what percentage of that research do you typically use in your content creation? And can you tell me what your current instructions say about how much of Alex's res",
+      "score": 2,
+      "what_worked": "I acknowledged the task and attempted a response.",
+      "what_failed": "The response was not provided as requested, instead mentioning an incorrect context about my identity and creator.",
+      "improvement": "Ensure to read and understand the specific instructions given in each prompt carefully before responding.",
+      "root_cause": "Misinterpretation of the task due to a mix-up with previous contexts or roles.",
+      "severity": "moderate",
+      "timestamp": "2026-03-29T23:33:46.173Z",
+      "id": "1774827226173",
+      "scoreCategory": "critical",
+      "workflowType": "manual"
+    },
+    {
+      "task": "Write 2 hooks for a dog trainer.",
+      "workflowType": "chat",
+      "score": 6,
+      "what_worked": "The hooks were creative and engaging, capturing the essence of dog training.",
+      "what_failed": "The response did not adhere to the specific format or length requirement provided in the task instructions.",
+      "improvement": "Carefully review and strictly follow all given parameters such as word count and output format.",
+      "root_cause": "Lack of attention to detail regarding the exact requirements of the task.",
+      "severity": "minor",
+      "timestamp": "2026-04-01T12:02:12.353Z",
+      "id": "1775044932353",
+      "scoreCategory": "poor"
+    }
+  ],
+  "wins": [
+    {
+      "description": "The pipeline execution was completed successfully without any major errors.",
+      "timestamp": "2026-03-28T08:09:14.113Z",
+      "workflowType": "manual"
+    },
+    {
+      "description": "The comprehensive analysis covered all aspects of Marin County seafood restaurants effectively.",
+      "task": "run a full pipeline on Marin County seafood restaurants",
+      "score": 8,
+      "timestamp": "2026-03-28T19:50:26.688Z",
+      "workflowType": "manual"
+    },
+    {
+      "description": "The comprehensive analysis covered all aspects of Marin County seafood restaurants effectively.",
+      "timestamp": "2026-03-28T19:50:26.689Z",
+      "workflowType": "manual"
+    },
+    {
+      "description": "Provided a comprehensive overview of high school lacrosse.",
+      "task": "Highschool Lacrosse",
+      "score": 8,
+      "timestamp": "2026-03-29T21:14:37.844Z",
+      "workflowType": "manual"
+    },
+    {
+      "description": "Provided a comprehensive overview of high school lacrosse.",
+      "timestamp": "2026-03-29T21:14:37.844Z",
+      "workflowType": "manual"
+    },
+    {
+      "description": "Provided a comprehensive overview of the wedding videography business in Marin County.",
+      "task": "Running a \"Wedding videography business in Marin County",
+      "score": 8,
+      "timestamp": "2026-03-29T22:40:53.371Z",
+      "workflowType": "manual"
+    },
+    {
+      "description": "Provided a comprehensive overview of the wedding videography business in Marin County.",
+      "timestamp": "2026-03-29T22:40:53.372Z",
+      "workflowType": "manual"
+    }
+  ],
+  "failures": [
+    {
+      "description": "The response was not provided as requested, instead mentioning an incorrect character limit violation which did not occur.",
+      "task": "When you receive research from Alex, what percentage of that research do you typically use in your c",
+      "fix": "Ensure to provide a detailed, specific answer to the question asked without introducing unrelated information or errors.",
+      "score": 2,
+      "severity": "critical",
+      "timestamp": "2026-03-29T23:33:43.937Z",
+      "workflowType": "manual"
+    },
+    {
+      "description": "The response was not provided as requested, instead mentioning an incorrect context about my identity and creator.",
+      "task": "When you receive research from Alex, what percentage of that research do you typically use in your c",
+      "fix": "Ensure to read and understand the specific instructions given in each prompt carefully before responding.",
+      "score": 2,
+      "severity": "critical",
+      "timestamp": "2026-03-29T23:33:46.173Z",
+      "workflowType": "manual"
+    },
+    {
+      "description": "The response did not adhere to the specific format or length requirement provided in the task instructions.",
+      "task": "Write 2 hooks for a dog trainer.",
+      "fix": "Carefully review and strictly follow all given parameters such as word count and output format.",
+      "score": 6,
+      "severity": "moderate",
+      "workflowType": "chat",
+      "timestamp": "2026-04-01T12:02:12.353Z"
+    }
+  ],
+  "taskCount": 8,
+  "avgScore": 6.1,
+  "lastReflection": "2026-04-01T12:02:12.353Z",
+  "workflowStats": {
+    "chat": {
+      "taskCount": 1,
+      "avgScore": 6,
+      "winCount": 0,
+      "failureCount": 1,
+      "lastUsedAt": "2026-04-01T12:02:12.353Z",
+      "scoreTrend": [
+        6
+      ]
+    },
+    "pipeline": {
+      "taskCount": 0,
+      "avgScore": 0,
+      "winCount": 0,
+      "failureCount": 0,
+      "lastUsedAt": null,
+      "scoreTrend": []
+    },
+    "autojob": {
+      "taskCount": 0,
+      "avgScore": 0,
+      "winCount": 0,
+      "failureCount": 0,
+      "lastUsedAt": null,
+      "scoreTrend": []
+    },
+    "n8n": {
+      "taskCount": 0,
+      "avgScore": 0,
+      "winCount": 0,
+      "failureCount": 0,
+      "lastUsedAt": null,
+      "scoreTrend": []
+    },
+    "manual": {
+      "taskCount": 7,
+      "avgScore": 6.1,
+      "winCount": 4,
+      "failureCount": 2,
+      "lastUsedAt": "2026-03-29T23:33:46.173Z",
+      "scoreTrend": [
+        8,
+        7,
+        8,
+        8,
+        8,
+        2,
+        2
+      ]
+    }
+  },
+  "improvements": [],
+  "refinements": [
+    "Prioritize thorough testing and validation of configurations before initiating full pipeline runs.",
+    "Focus on conciseness and clarity to ensure reports are precise and relevant without unnecessary details.",
+    "Always provide a direct, specific answer to the question asked without introducing unrelated information or errors."
+  ],
+  "refinedAt": "2026-03-30T03:45:57.355Z"
+}

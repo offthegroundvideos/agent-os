@@ -1,0 +1,78 @@
+{
+  "agentId": "dev",
+  "lessons": [
+    {
+      "task": "Outline the smallest technical approach for a webhook-backed intake form.",
+      "workflowType": "chat",
+      "score": 6,
+      "what_worked": "Provided a detailed outline of the smallest technical approach for a webhook-backed intake form.",
+      "what_failed": "The response was longer than necessary, indicating potential redundancy or lack of focus on brevity and specificity.",
+      "improvement": "Next time, aim to provide concise yet comprehensive responses that directly address the task without unnecessary elaboration.",
+      "root_cause": "There was a misunderstanding about the level of detail required for 'smallest technical approach', leading to an overly detailed response.",
+      "severity": "minor",
+      "timestamp": "2026-04-02T10:10:34.295Z",
+      "id": "1775124634295",
+      "scoreCategory": "poor"
+    }
+  ],
+  "wins": [],
+  "failures": [
+    {
+      "description": "The response was longer than necessary, indicating potential redundancy or lack of focus on brevity and specificity.",
+      "task": "Outline the smallest technical approach for a webhook-backed intake form.",
+      "fix": "Next time, aim to provide concise yet comprehensive responses that directly address the task without unnecessary elaboration.",
+      "score": 6,
+      "severity": "moderate",
+      "workflowType": "chat",
+      "timestamp": "2026-04-02T10:10:34.295Z"
+    }
+  ],
+  "taskCount": 1,
+  "avgScore": 6,
+  "lastReflection": "2026-04-02T10:10:34.295Z",
+  "workflowStats": {
+    "chat": {
+      "taskCount": 1,
+      "avgScore": 6,
+      "winCount": 0,
+      "failureCount": 1,
+      "lastUsedAt": "2026-04-02T10:10:34.295Z",
+      "scoreTrend": [
+        6
+      ]
+    },
+    "pipeline": {
+      "taskCount": 0,
+      "avgScore": 0,
+      "winCount": 0,
+      "failureCount": 0,
+      "lastUsedAt": null,
+      "scoreTrend": []
+    },
+    "autojob": {
+      "taskCount": 0,
+      "avgScore": 0,
+      "winCount": 0,
+      "failureCount": 0,
+      "lastUsedAt": null,
+      "scoreTrend": []
+    },
+    "n8n": {
+      "taskCount": 0,
+      "avgScore": 0,
+      "winCount": 0,
+      "failureCount": 0,
+      "lastUsedAt": null,
+      "scoreTrend": []
+    },
+    "manual": {
+      "taskCount": 0,
+      "avgScore": 0,
+      "winCount": 0,
+      "failureCount": 0,
+      "lastUsedAt": null,
+      "scoreTrend": []
+    }
+  },
+  "improvements": []
+}

@@ -1,0 +1,30 @@
+{
+  "agentId": "ceo",
+  "lessons": [
+    {
+      "task": "[AUTO] Executive Business Review",
+      "score": 7,
+      "what_worked": "The team demonstrated strong collaboration and adherence to the project timeline, ensuring all deliverables were met on time.",
+      "what_failed": "There was a significant delay in decision-making due to lack of clear communication between departments, impacting overall productivity.",
+      "improvement": "Implementing regular inter-departmental meetings to enhance communication and streamline decision-making processes.",
+      "timestamp": "2026-03-31T05:41:25.210Z",
+      "id": "1774935685210",
+      "scoreCategory": "good"
+    },
+    {
+      "task": "[AUTO] Executive Business Review",
+      "score": 7,
+      "what_worked": "The strategic planning sessions were highly effective in aligning the team towards our business objectives.",
+      "what_failed": "Our marketing campaign failed to meet its engagement targets due to a lack of personalized content.",
+      "improvement": "Implementing more frequent and detailed performance reviews for all departments to ensure continuous improvement.",
+      "timestamp": "2026-03-31T17:08:15.683Z",
+      "id": "1774976895683",
+      "scoreCategory": "good"
+    }
+  ],
+  "wins": [],
+  "failures": [],
+  "taskCount": 2,
+  "avgScore": 7,
+  "lastReflection": "2026-03-31T17:08:15.683Z"
+}

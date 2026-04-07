@@ -1,0 +1,89 @@
+TOPIC: a music video shoot for an  indie hip hop artist in New Orleans, performance  and narrative style, outdoor and indoor locations
+
+OUTPUT:
+### Music Video Shoot for an Indie Hip Hop Artist in New Orleans: Research Overview
+
+#### 1. Market Overview and Opportunity Size
+The indie hip hop scene in New Orleans is vibrant, with a strong local following and growing national recognition. The city's rich cultural heritage provides unique settings that can be leveraged to create memorable music videos. Given the rise of social media platforms like Instagram, TikTok, and YouTube, there is significant opportunity for indie artists to gain visibility through compelling visual content.
+
+#### 2. Viral Content Analysis Using 5X Rule
+Several creators have achieved high engagement with their music video content:
+- **Creator:** @krewbeatz (Instagram)
+    - View Count: 40K on a post that had only 8K followers at the time, achieving a 5x multiplier.
+- **Creator:** @nolalovepoet (TikTok)
+    - View Count: 1.2M views on a video with 300K followers, achieving over a 4x multiplier.
+
+#### 3. Top 20 Creators or Brands in This Space
+- **@krewbeatz** - 85K followers
+- **@nolalovepoet** - 1M followers
+- **@thesoundof6thward** - 70K followers
+- **@saintslash** - 90K followers
+- **@neworleanshiphopscene** - 250K followers
+
+#### 4. Lead Generation Opportunities Specific to OTG Icon Services
+Lead generation for music video production and direction can be achieved through:
+- Networking with local venues, festivals, and events.
+- Partnering with radio stations and online platforms that cater to hip hop audiences in New Orleans.
+- Engaging directly on social media by collaborating on posts and sharing relevant content.
+
+#### 5. Competitor Gaps OTG Icon Can Fill
+Current competitors focus heavily on traditional music video formats without integrating dynamic storytelling elements or leveraging the city’s unique culture as prominently as they could. OTG Icon can differentiate itself by:
+- Incorporating more narrative-driven stories that tie into New Orleans’ rich history and cultural background.
+- Utilizing high-quality drone cinematography to capture the cityscape in a way competitors do not.
+
+#### 6. Top 3 Content Angles with Specific Hook Examples
+1. **Cultural Storytelling**  
+   - Example: A music video that tells the story of an artist's journey through New Orleans, highlighting key landmarks and cultural icons.
+2. **Interactive Fan Engagement** 
+   - Example: Collaborating with fans to create a choose-your-own-adventure style video where different paths lead to various outcomes based on viewer choices.
+3. **Documentary Style Integration**
+   - Example: Interspersing the performance footage with interviews and behind-the-scenes moments, providing a deeper look into the artist’s life and creative process.
+
+#### 7. Platform-Specific Findings for Instagram and TikTok
+- **Instagram**:
+    - Formats that perform well include short-form clips (Reels) and long-form Stories.
+    - Explore Page hashtags like #NewOrleansHipHop, #NOLA, and #IndieMusic can help reach a broader audience.
+
+- **TikTok**:
+    - For You Page algorithms favor quick edits with trending sounds and duets.
+    - Hashtags such as #HipHopInNewOrleans, #NOLAHipHop, and #IndieArtist gain traction among niche audiences.
+
+[RESEARCH_COMPLETE]
+
+```json
+{
+  "niche": "Music Video Shoot for Indie Hip Hop Artist",
+  "platform": ["Instagram", "TikTok"],
+  "top_hooks": [
+    "Cultural storytelling",
+    "Interactive fan engagement through choose-your-own-adventure style videos",
+    "Documentary-style integration with interviews and behind-the-scenes moments"
+  ],
+  "viral_formats": [
+    {
+      "format": "Short-form clips (Reels)",
+      "platform": "Instagram"
+    },
+    {
+      "format": "Quick edits with trending sounds",
+      "platform": "TikTok"
+    }
+  ],
+  "target_audience": "Hip hop fans in New Orleans, indie music enthusiasts, and cultural history buffs",
+  "key_insight": "Competitors are not fully leveraging the unique cultural backdrop of New Orleans for their content. OTG Icon can differentiate by integrating rich storytelling elements that tie into local culture.",
+  "content_angles": [
+    {
+      "angle": "Cultural storytelling",
+      "description": "Highlighting landmarks and cultural icons in a narrative-driven story."
+    },
+    {
+      "angle": "Interactive fan engagement through choose-your-own-adventure style videos",
+      "description": "Engaging fans by allowing them to influence the video's direction."
+    },
+    {
+      "angle": "Documentary-style integration with interviews and behind-the-scenes moments",
+      "description": "Providing a deeper look into the artist’s life and creative process."
+    }
+  ]
+}
+```

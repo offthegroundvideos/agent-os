@@ -1,0 +1,268 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]: ⚡
+        - generic [ref=e6]:
+          - generic [ref=e7]: SUPERWIZARD5000
+          - generic [ref=e8]: MISSION CONTROL OS
+      - generic [ref=e9]:
+        - combobox [ref=e10] [cursor=pointer]:
+          - option "qwen2.5-ctx32k" [selected]
+          - option "deepseek-r1-ctx32k"
+          - option "qwen2.5:14b"
+        - generic [ref=e15]: 12 AGENTS
+        - button "👤 WHO IS WORKING? ▾" [ref=e17] [cursor=pointer]:
+          - generic [ref=e18]: 👤
+          - generic [ref=e19]: WHO IS WORKING?
+          - generic [ref=e20]: ▾
+        - button "🧠 LEARN" [ref=e21] [cursor=pointer]
+        - button "📡 COMMS" [ref=e22] [cursor=pointer]
+        - button "⏹ STOP ALL" [ref=e23] [cursor=pointer]
+        - button "⚙ PROCESSES" [ref=e24] [cursor=pointer]
+        - button "○ AUTO MANUAL" [ref=e25] [cursor=pointer]
+        - button "🛠 TOOLS ▾" [ref=e27] [cursor=pointer]
+    - generic [ref=e28]:
+      - generic [ref=e29]:
+        - generic [ref=e30]:
+          - generic [ref=e31]: AGENT ROSTER
+          - generic [ref=e32] [cursor=pointer]:
+            - generic [ref=e34]:
+              - generic [ref=e35]: 🔍
+              - generic [ref=e36]:
+                - generic [ref=e37]: Alex
+                - generic [ref=e38]: Market Intelligence
+            - generic [ref=e41]:
+              - generic [ref=e42]:
+                - generic [ref=e43]: MSGS
+                - generic [ref=e44]: "50"
+              - generic [ref=e45]:
+                - generic [ref=e46]: LAST ACTIVE
+                - generic [ref=e47]: 3:13:32 AM
+            - generic [ref=e48]: ▶ ACTIVE
+          - generic [ref=e49] [cursor=pointer]:
+            - generic [ref=e51]:
+              - generic [ref=e52]: ✍️
+              - generic [ref=e53]:
+                - generic [ref=e54]: Maya
+                - generic [ref=e55]: Creative Director
+            - generic [ref=e58]:
+              - generic [ref=e59]:
+                - generic [ref=e60]: MSGS
+                - generic [ref=e61]: "50"
+              - generic [ref=e62]:
+                - generic [ref=e63]: LAST ACTIVE
+                - generic [ref=e64]: 2:13:24 AM
+          - generic [ref=e65] [cursor=pointer]:
+            - generic [ref=e67]:
+              - generic [ref=e68]: 📈
+              - generic [ref=e69]:
+                - generic [ref=e70]: Jordan
+                - generic [ref=e71]: Growth Strategist
+            - generic [ref=e74]:
+              - generic [ref=e75]:
+                - generic [ref=e76]: MSGS
+                - generic [ref=e77]: "40"
+              - generic [ref=e78]:
+                - generic [ref=e79]: LAST ACTIVE
+                - generic [ref=e80]: 2:17:26 AM
+          - generic [ref=e81] [cursor=pointer]:
+            - generic [ref=e83]:
+              - generic [ref=e84]: 💻
+              - generic [ref=e85]:
+                - generic [ref=e86]: Dev
+                - generic [ref=e87]: Tech Lead
+            - generic [ref=e90]:
+              - generic [ref=e91]:
+                - generic [ref=e92]: MSGS
+                - generic [ref=e93]: "3"
+              - generic [ref=e94]:
+                - generic [ref=e95]: LAST ACTIVE
+                - generic [ref=e96]: 4:36:06 AM
+          - generic [ref=e97] [cursor=pointer]:
+            - generic [ref=e99]:
+              - generic [ref=e100]: 📱
+              - generic [ref=e101]:
+                - generic [ref=e102]: Sam
+                - generic [ref=e103]: Social Media Director
+            - generic [ref=e106]:
+              - generic [ref=e107]:
+                - generic [ref=e108]: MSGS
+                - generic [ref=e109]: "42"
+              - generic [ref=e110]:
+                - generic [ref=e111]: LAST ACTIVE
+                - generic [ref=e112]: 3:17:24 AM
+          - generic [ref=e113] [cursor=pointer]:
+            - generic [ref=e115]:
+              - generic [ref=e116]: 🎯
+              - generic [ref=e117]:
+                - generic [ref=e118]: Luna
+                - generic [ref=e119]: Lead Qualifier
+            - generic [ref=e122]:
+              - generic [ref=e123]:
+                - generic [ref=e124]: MSGS
+                - generic [ref=e125]: "1"
+              - generic [ref=e126]:
+                - generic [ref=e127]: LAST ACTIVE
+                - generic [ref=e128]: 10:13:48 PM
+          - generic [ref=e129] [cursor=pointer]:
+            - generic [ref=e131]:
+              - generic [ref=e132]: 📸
+              - generic [ref=e133]:
+                - generic [ref=e134]: Iris
+                - generic [ref=e135]: Visual Strategist
+            - generic [ref=e138]:
+              - generic [ref=e139]:
+                - generic [ref=e140]: MSGS
+                - generic [ref=e141]: "24"
+              - generic [ref=e142]:
+                - generic [ref=e143]: LAST ACTIVE
+                - generic [ref=e144]: 2:09:07 AM
+          - generic [ref=e145] [cursor=pointer]:
+            - generic [ref=e147]:
+              - generic [ref=e148]: 💼
+              - generic [ref=e149]:
+                - generic [ref=e150]: Rex
+                - generic [ref=e151]: Sales Agent
+            - generic [ref=e154]:
+              - generic [ref=e155]:
+                - generic [ref=e156]: MSGS
+                - generic [ref=e157]: "16"
+              - generic [ref=e158]:
+                - generic [ref=e159]: LAST ACTIVE
+                - generic [ref=e160]: 2:19:03 AM
+          - generic [ref=e161] [cursor=pointer]:
+            - generic [ref=e163]:
+              - generic [ref=e164]: 🌟
+              - generic [ref=e165]:
+                - generic [ref=e166]: Nova
+                - generic [ref=e167]: Client Success
+            - generic [ref=e170]:
+              - generic [ref=e171]:
+                - generic [ref=e172]: MSGS
+                - generic [ref=e173]: "0"
+              - generic [ref=e174]:
+                - generic [ref=e175]: LAST ACTIVE
+                - generic [ref=e176]: Never
+          - generic [ref=e177] [cursor=pointer]:
+            - generic [ref=e179]:
+              - generic [ref=e180]: 🎨
+              - generic [ref=e181]:
+                - generic [ref=e182]: Pixel
+                - generic [ref=e183]: Brand and Product
+            - generic [ref=e186]:
+              - generic [ref=e187]:
+                - generic [ref=e188]: MSGS
+                - generic [ref=e189]: "2"
+              - generic [ref=e190]:
+                - generic [ref=e191]: LAST ACTIVE
+                - generic [ref=e192]: 10:32:43 PM
+          - generic [ref=e193] [cursor=pointer]:
+            - generic [ref=e195]:
+              - generic [ref=e196]: 👔
+              - generic [ref=e197]:
+                - generic [ref=e198]: Chief
+                - generic [ref=e199]: CEO — Executive Command
+            - generic [ref=e202]:
+              - generic [ref=e203]:
+                - generic [ref=e204]: MSGS
+                - generic [ref=e205]: "4"
+              - generic [ref=e206]:
+                - generic [ref=e207]: LAST ACTIVE
+                - generic [ref=e208]: 10:03:43 AM
+          - generic [ref=e209] [cursor=pointer]:
+            - generic [ref=e211]:
+              - generic [ref=e212]: 🏗️
+              - generic [ref=e213]:
+                - generic [ref=e214]: Arch
+                - generic [ref=e215]: CTO — Technical Command
+            - generic [ref=e218]:
+              - generic [ref=e219]:
+                - generic [ref=e220]: MSGS
+                - generic [ref=e221]: "2"
+              - generic [ref=e222]:
+                - generic [ref=e223]: LAST ACTIVE
+                - generic [ref=e224]: 10:35:25 PM
+        - generic [ref=e225]:
+          - generic [ref=e226]: PIPELINE
+          - button "▶ FULL PIPELINE" [ref=e227] [cursor=pointer]
+          - generic [ref=e228]: MEMORY
+          - button "Clear Alex Memory" [ref=e229] [cursor=pointer]
+      - generic [ref=e230]:
+        - generic [ref=e231]:
+          - generic [ref=e232]:
+            - generic [ref=e233]: 🔍
+            - generic [ref=e234]:
+              - text: AlexMarket Intelligence
+              - generic [ref=e235]: Use the center canvas to direct specialist work, route a pipeline, or turn strategy into pages, publish jobs, and tracked leads.
+          - button "SHOW SHORTCUTS" [ref=e237] [cursor=pointer]
+        - generic [ref=e239]:
+          - generic [ref=e240]: SUPERWIZARD5000
+          - generic [ref=e241]: "Run the agency from one surface: research what is winning, build the content system, generate the page, and route the lead into a tracked funnel."
+          - generic [ref=e242]: Start with a specialist or launch a full pipeline
+          - generic [ref=e243]:
+            - button "Research the top productivity tools for remote teams" [ref=e244] [cursor=pointer]
+            - button "/maya Write a blog about morning routines for entrepreneurs" [ref=e245] [cursor=pointer]
+            - button "/dev Build a simple React todo component" [ref=e246] [cursor=pointer]
+            - button "Run full pipeline on the top 5 productivity mistakes remote teams make" [ref=e247] [cursor=pointer]
+        - generic [ref=e248]:
+          - generic [ref=e249]:
+            - generic [ref=e250]:
+              - generic [ref=e251] [cursor=pointer]:
+                - text: ✍️ Content
+                - generic [ref=e252]: 4 agents
+              - generic [ref=e253] [cursor=pointer]: 🎬 Production
+              - generic [ref=e254] [cursor=pointer]: 💼 Sales
+              - generic [ref=e255] [cursor=pointer]: ⚡ Full Agency
+              - generic [ref=e256]: Research → Scripts → Social → Strategy
+            - generic [ref=e257]:
+              - 'textbox "Type a task, /alex, /maya, /dev... or: Run full pipeline on [topic]" [ref=e258]'
+              - button "SEND →" [disabled] [ref=e259] [cursor=pointer]
+          - generic [ref=e260]:
+            - generic [ref=e261]: "Auto-routes specialist work by default. Use `/shortcuts` or slash commands to direct it manually."
+            - generic [ref=e262]: Enter to send • Shift+Enter reserved for future multi-line input
+      - generic [ref=e263]:
+        - generic [ref=e264]:
+          - generic [ref=e265]: AGENT STATS
+          - generic [ref=e267]:
+            - generic [ref=e268]: Alex
+            - generic [ref=e269]: 50 msgs
+          - generic [ref=e272]:
+            - generic [ref=e273]: Maya
+            - generic [ref=e274]: 50 msgs
+          - generic [ref=e277]:
+            - generic [ref=e278]: Jordan
+            - generic [ref=e279]: 40 msgs
+          - generic [ref=e282]:
+            - generic [ref=e283]: Dev
+            - generic [ref=e284]: 3 msgs
+          - generic [ref=e287]:
+            - generic [ref=e288]: Sam
+            - generic [ref=e289]: 42 msgs
+          - generic [ref=e292]:
+            - generic [ref=e293]: Luna
+            - generic [ref=e294]: 1 msgs
+          - generic [ref=e297]:
+            - generic [ref=e298]: Iris
+            - generic [ref=e299]: 24 msgs
+          - generic [ref=e302]:
+            - generic [ref=e303]: Rex
+            - generic [ref=e304]: 16 msgs
+          - generic [ref=e307]:
+            - generic [ref=e308]: Nova
+            - generic [ref=e309]: 0 msgs
+          - generic [ref=e312]:
+            - generic [ref=e313]: Pixel
+            - generic [ref=e314]: 2 msgs
+          - generic [ref=e317]:
+            - generic [ref=e318]: Chief
+            - generic [ref=e319]: 4 msgs
+          - generic [ref=e322]:
+            - generic [ref=e323]: Arch
+            - generic [ref=e324]: 2 msgs
+        - generic [ref=e327]:
+          - generic [ref=e328]: SYSTEM
+          - generic [ref=e329]: "Model: qwen2.5-ctx32k"
+          - generic [ref=e330]: ● GPU Active
+          - generic [ref=e331]: "Port: 4000"
+  - alert [ref=e332]

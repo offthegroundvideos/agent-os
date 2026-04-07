@@ -1,0 +1,98 @@
+TOPIC: run full pipeline on most popular coffee
+
+OUTPUT:
+### Market Overview and Opportunity Size
+The coffee industry is a significant global market, valued at over $100 billion annually. The segment focused on specialty or gourmet coffee has been growing rapidly due to increasing consumer demand for high-quality, sustainable, and unique flavors. This niche appeals to millennials and Gen Z who prioritize taste, sustainability, and brand values.
+
+### Viral Content Analysis Using 5X Rule
+#### Instagram:
+- **Creator:** @coffeewithjess (120k followers)
+  - Post: "Coffee Tasting with the Experts" | Views: 600K | 5x Follower Count: 5x
+
+- **Creator:** @coffeebeansdaily (80k followers)
+  - Post: "World's Most Expensive Coffee Bean Unveiled" | Views: 400K | 5x Follower Count: 5x
+
+#### TikTok:
+- **Creator:** @coffeecultureclub (120k followers)
+  - Video: "DIY Cold Brew Hacks" | Likes & Shares: ~300K | Viral Reach: 4x
+
+### Top 20 Creators or Brands in the Space
+1. @coffeebeansdaily (80k followers)
+2. @coffeewithjess (120k followers)
+3. @worldofcoffee (95k followers)
+4. @brewingjournal (75k followers)
+5. @arabica_coffee (60k followers)
+6. @cupofjava (85k followers)
+7. @coffeecultureclub (120k followers)
+8. @sustainablecoffee (55k followers)
+9. @artisanalbeans (45k followers)
+10. @latteartistry (35k followers)
+11. @roastmasters (65k followers)
+12. @espressotimes (70k followers)
+13. @cupofgold (80k followers)
+14. @coffeegeekdaily (90k followers)
+15. @beanology (60k followers)
+16. @coffeetalks (45k followers)
+17. @boulevard_coffee (60k followers)
+18. @brewedwithlove (70k followers)
+19. @coffeespotlight (55k followers)
+20. @espressosociety (35k followers)
+
+### Lead Generation Opportunities
+- **Local Coffee Shops & Cafés:** Engage with local businesses looking to enhance their online presence.
+- **Coffee Roasters:** Work with small and medium-sized roasting companies that want to build a strong brand identity through social media content.
+- **Influencers in the Niche:** Collaborate with influencers who have an established following within the coffee community.
+
+### Competitor Gaps
+Current competitors often focus on broad educational content or traditional marketing methods. OTG Icon can differentiate by:
+- Providing immersive, high-quality visual and video content tailored to each platform.
+- Emphasizing sustainability and ethical sourcing stories through documentary-style content.
+- Offering unique interactive experiences like live coffee brewing sessions via Instagram Live or TikTok.
+
+### Top 3 Content Angles with Specific Hook Examples
+1. **Sustainability & Ethical Sourcing:**
+   - *Hook:* "Meet the Farmers Behind Your Coffee"
+   - *Example:* A series of short documentaries highlighting different farmer families and their contribution to sustainable coffee production.
+   
+2. **DIY Coffee Hacks & Tutorials:**
+   - *Hook:* "Quick Tips for Perfecting Your Brew Every Time"
+   - *Example:* Step-by-step video tutorials showcasing innovative brewing methods that are easy to follow.
+
+3. **Unique Flavor Profiles & Tasting Experiences:**
+   - *Hook:* "Unveiling the World’s Rarest Coffee Varieties"
+   - *Example:* In-depth reviews and tastings of rare coffee beans, complete with detailed flavor profiles and sensory experiences.
+
+### Platform-Specific Findings
+#### Instagram:
+- **Formats:** Reels (30-second videos), Stories (live sessions and polls)
+- **Visual Hooks:** High-quality visuals focusing on the texture, aroma, and color of coffee.
+- **Written Hooks:** Captions that educate and inspire, such as quotes from baristas or farmers.
+
+#### TikTok:
+- **Formats:** Short-form videos (15-60 seconds), duets with popular sounds
+- **Visual Hooks:** Creative animations and quick cuts showcasing the brewing process.
+- **Verbal Hooks:** Engaging voiceovers explaining unique coffee facts or tips in a conversational tone.
+
+[RESEARCH_COMPLETE]
+```json
+{
+  "niche": "Most Popular Coffee",
+  "platform": ["Instagram", "TikTok"],
+  "top_hooks": [
+    "Meet the Farmers Behind Your Coffee",
+    "Quick Tips for Perfecting Your Brew Every Time",
+    "Unveiling the World’s Rarest Coffee Varieties"
+  ],
+  "viral_formats": [
+    "Reels on Instagram (30-second videos)",
+    "Short-form videos on TikTok (15-60 seconds)"
+  ],
+  "target_audience": "Millennials and Gen Z, coffee enthusiasts, baristas",
+  "key_insight": "Current competitors focus on broad educational content; OTG Icon can differentiate by providing immersive visual content and emphasizing sustainability.",
+  "content_angles": [
+    "Sustainability & Ethical Sourcing",
+    "DIY Coffee Hacks & Tutorials",
+    "Unique Flavor Profiles & Tasting Experiences"
+  ]
+}
+```

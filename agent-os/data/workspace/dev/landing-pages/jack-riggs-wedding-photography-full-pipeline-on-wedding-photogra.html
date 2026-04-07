@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jack Riggs Wedding Photography — Full Pipeline on Wedding Photography &amp; Videography</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --accent: #3b82f6;
+    --bg: #0b0a09;
+    --bg-alt: #15110d;
+    --surface: rgba(24,18,13,0.82);
+    --text: #f7efe5;
+    --muted: #b49d87;
+    --line: rgba(255,255,255,0.1);
+    --display: 'Cormorant Garamond', serif;
+    --body: 'Manrope', sans-serif;
+    --shadow: 0 30px 80px rgba(0,0,0,0.18);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background:
+      radial-gradient(circle at 0% 0%, #3b82f622, transparent 30%),
+      radial-gradient(circle at 100% 100%, #3b82f614, transparent 32%),
+      var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+  }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+  .page-shell { min-height: 100vh; }
+  .topbar {
+    position: sticky; top: 0; z-index: 50;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 24px;
+    backdrop-filter: blur(22px);
+    background: color-mix(in srgb, var(--bg) 72%, transparent);
+    border-bottom: 1px solid var(--line);
+  }
+  .brand-lockup { display: grid; gap: 2px; }
+  .brand-lockup strong {
+    font-family: var(--display);
+    font-size: 1rem;
+    letter-spacing: 0.06em;
+  }
+  .brand-lockup span { color: var(--muted); font-size: 0.82rem; }
+  .topbar .cta {
+    padding: 0.92rem 1.25rem;
+    background: var(--accent);
+    color: #111;
+    border-radius: 999px;
+    font-weight: 800;
+  }
+  .hero {
+    min-height: calc(100svh - 76px);
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: stretch;
+  }
+  .hero-copy {
+    padding: clamp(2rem, 6vw, 5rem) clamp(1.25rem, 4vw, 4rem);
+    display: flex; flex-direction: column; justify-content: center;
+    max-width: 44rem;
+    z-index: 2;
+  }
+  .eyebrow {
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 800;
+    font-size: 0.78rem;
+    margin-bottom: 1rem;
+  }
+  .hero h1 {
+    font-family: var(--display);
+    font-size: clamp(3rem, 8vw, 6.3rem);
+    line-height: 0.92;
+    letter-spacing: -0.05em;
+    max-width: 11ch;
+    margin: 0;
+  }
+  .hero-copy p {
+    margin-top: 1.25rem;
+    color: var(--muted);
+    line-height: 1.68;
+    font-size: clamp(1rem, 1.6vw, 1.18rem);
+    max-width: 38rem;
+  }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 2rem; }
+  .hero-actions a {
+    padding: 1rem 1.3rem;
+    border-radius: 999px;
+    font-weight: 800;
+    border: 1px solid transparent;
+  }
+  .hero-actions .primary { background: var(--accent); color: #111; }
+  .hero-actions .secondary { border-color: var(--line); color: var(--text); }
+  .hero-proof {
+    margin-top: 2.2rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.9rem;
+    padding-top: 1.3rem;
+    border-top: 1px solid var(--line);
+  }
+  .hero-proof strong { display:block; font-size:1.1rem; margin-bottom:0.35rem; }
+  .hero-proof span { color: var(--muted); font-size: 0.9rem; line-height:1.45; }
+  .hero-visual {
+    position: relative;
+    min-height: 34rem;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.5)),
+      url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+  }
+  .hero.poster .hero-visual {
+    position: absolute;
+    inset: 76px 0 0 0;
+    z-index: 0;
+  }
+  .hero.poster .hero-copy {
+    position: relative;
+    min-height: calc(100svh - 76px);
+  }
+  .hero.poster .hero-copy::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(0,0,0,0.72), rgba(0,0,0,0.22));
+    z-index: -1;
+    border-right: 1px solid rgba(255,255,255,0.06);
+  }
+  .visual-card {
+    position: absolute;
+    right: clamp(1rem, 3vw, 2rem);
+    bottom: clamp(1rem, 3vw, 2rem);
+    width: min(28rem, calc(100% - 2rem));
+    padding: 1.15rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 1.25rem;
+    box-shadow: var(--shadow);
+  }
+  .visual-card small {
+    display:block;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 0.5rem;
+  }
+  .visual-card strong {
+    display:block;
+    font-family: var(--display);
+    font-size: 1.25rem;
+    margin-bottom: 0.6rem;
+  }
+  .visual-card p { color: var(--muted); line-height: 1.6; }
+  section { padding: clamp(3.5rem, 7vw, 6rem) clamp(1.25rem, 4vw, 4rem); }
+  .section-inner { max-width: 78rem; margin: 0 auto; }
+  .section-head {
+    display:grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+    align-items: end; margin-bottom: 2rem;
+  }
+  .section-head h2 {
+    margin: 0;
+    font-family: var(--display);
+    font-size: clamp(2.1rem, 4vw, 3.8rem);
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+    max-width: 12ch;
+  }
+  .section-head p { color: var(--muted); line-height: 1.75; max-width: 34rem; }
+  .editorial-grid,
+  .proof-grid,
+  .faq-grid {
+    display:grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  .editorial-grid article,
+  .process-flow article,
+  .proof-grid article,
+  .faq-grid article,
+  .cta-panel,
+  .story-panel {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 1.25rem;
+    padding: 1.2rem;
+  }
+  .editorial-grid h3,
+  .process-flow h3,
+  .proof-grid h3,
+  .faq-grid h3 {
+    margin: 0 0 0.45rem;
+    font-size: 1.02rem;
+  }
+  .editorial-grid p,
+  .process-flow p,
+  .proof-grid p,
+  .faq-grid p,
+  .story-panel p,
+  .cta-panel p {
+    color: var(--muted);
+    line-height: 1.65;
+  }
+  .process-wrap {
+    display:grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 1rem;
+    align-items: stretch;
+  }
+  .story-panel {
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.28)),
+      url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+    min-height: 27rem;
+    display:flex;
+    align-items:flex-end;
+  }
+  .story-panel .story-inner {
+    max-width: 22rem;
+    padding: 1rem;
+    background: color-mix(in srgb, var(--bg) 72%, transparent);
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    backdrop-filter: blur(18px);
+  }
+  .process-flow { display:grid; gap: 0.9rem; }
+  .process-flow small {
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.74rem;
+    font-weight: 800;
+  }
+  .quote { font-style: italic; }
+  .form-band {
+    display:grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 1rem;
+  }
+  .form-panel, .cta-panel { border-radius: 1.4rem; }
+  .form-panel {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    padding: 1.35rem;
+  }
+  .field { display:grid; gap: 0.42rem; margin-bottom: 0.9rem; }
+  .field label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-weight: 700;
+    color: var(--muted);
+  }
+  .field input, .field textarea {
+    width: 100%;
+    padding: 0.95rem 1rem;
+    border-radius: 0.95rem;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--text);
+    font: inherit;
+  }
+  .field textarea { min-height: 7rem; resize: vertical; }
+  .submit {
+    width: 100%;
+    border: 0;
+    border-radius: 999px;
+    padding: 1rem 1.2rem;
+    font: inherit;
+    font-weight: 800;
+    background: var(--accent);
+    color: #111;
+    cursor: pointer;
+  }
+  .micro { margin-top: 0.8rem; color: var(--muted); font-size: 0.88rem; line-height: 1.55; }
+  .interaction-list {
+    display:grid;
+    gap: 0.6rem;
+    margin-top: 1rem;
+    padding: 0;
+    list-style: none;
+  }
+  .interaction-list li {
+    padding: 0.8rem 0.9rem;
+    border: 1px solid var(--line);
+    border-radius: 0.9rem;
+    color: var(--muted);
+  }
+  footer {
+    padding: 1.5rem 1.4rem 2.4rem;
+    color: var(--muted);
+    font-size: 0.86rem;
+  }
+  @media (max-width: 980px) {
+    .hero,
+    .section-head,
+    .editorial-grid,
+    .proof-grid,
+    .faq-grid,
+    .process-wrap,
+    .form-band,
+    .hero-proof {
+      grid-template-columns: 1fr;
+    }
+    .hero { min-height: auto; }
+    .hero.poster .hero-copy,
+    .hero-copy { min-height: auto; }
+    .hero-visual { min-height: 22rem; }
+    .story-panel { min-height: 20rem; }
+  }
+</style>
+</head>
+<body>
+  <div class="page-shell">
+    <div class="topbar">
+      <div class="brand-lockup">
+        <strong>Jack Riggs Wedding Photography</strong>
+        <span>Elevate Your Wedding Day</span>
+      </div>
+      <a class="cta" href="#apply">Book Your Free Strategy Call</a>
+    </div>
+
+    <section class="hero immersive">
+      <div class="hero-copy">
+        <div class="eyebrow">Elevate Your Wedding Day</div>
+        <h1>Full Pipeline on Wedding Photography &amp; Videography</h1>
+        <p>Transform your special day into a timeless story with Jack Riggs.</p>
+        <div class="hero-actions">
+          <a class="primary" href="#apply">Book Your Free Strategy Call</a>
+          <a class="secondary" href="#details">See how it works</a>
+        </div>
+        <div class="hero-proof">
+          <div><strong>Featured in top wedding blogs</strong><span>Built to create a cleaner path from attention to action.</span></div><div><strong>5-star reviews across Instagram and TikTok</strong><span>Built to create a cleaner path from attention to action.</span></div><div><strong>10+ years of experience</strong><span>Built to create a cleaner path from attention to action.</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="visual-card">
+          <small>Visual thesis</small>
+          <strong>Capture every moment of your special day with cinematic storytelling.</strong>
+          <p>This page is attached to <strong>lpg_1775019775399_m6y86</strong> so visits, leads, and sales outcomes can stay tied to the content path that generated them.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="details">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>Why Choose Us?</h2>
+          <p>We offer a seamless experience from planning to post-wedding moments, ensuring every detail is captured beautifully.</p>
+        </div>
+        <div class="editorial-grid">
+          <article><div class="eyebrow">01</div><h3>Exclusive destination packages</h3><p>A focused message block designed to feel specific instead of templated.</p></article><article><div class="eyebrow">02</div><h3>Personalized service tailored to your vision</h3><p>A focused message block designed to feel specific instead of templated.</p></article><article><div class="eyebrow">03</div><h3>End-to-end coverage</h3><p>A focused message block designed to feel specific instead of templated.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-inner process-wrap">
+        <div class="story-panel">
+          <div class="story-inner">
+            <div class="eyebrow">Interaction thesis</div>
+            <h3 style="margin:0 0 0.75rem;font-family:var(--display);font-size:1.5rem;">Make the page feel directed, not assembled.</h3>
+            <ul class="interaction-list">
+              <li>Engage couples looking for destination wedding ideas</li><li>Offer unique travel content and practical tips</li><li>Highlight emotional moments in high-quality videography</li>
+            </ul>
+          </div>
+        </div>
+        <div class="process-flow">
+          <article><small>Step 1</small><h3>Discovery &amp; Planning</h3><p>Keep the next move obvious so the visitor never wonders what to do next.</p></article><article><small>Step 2</small><h3>Shooting Day</h3><p>Keep the next move obvious so the visitor never wonders what to do next.</p></article><article><small>Step 3</small><h3>Post-Production &amp; Delivery</h3><p>Keep the next move obvious so the visitor never wonders what to do next.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>Proof that feels like the same world as the offer.</h2>
+          <p>Instead of generic social-proof blocks, the page uses the same positioning logic as the content that brought the visitor here.</p>
+        </div>
+        <div class="proof-grid">
+          <article><h3 class="quote">“&quot;Jack Riggs captured our love story perfectly.&quot;”</h3><p>Sarah M.</p></article><article><h3 class="quote">“&quot;The best choice for a destination wedding!&quot;”</h3><p>Mark L.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="apply">
+      <div class="section-inner form-band">
+        <div class="cta-panel">
+          <div class="eyebrow">Final CTA</div>
+          <h2 style="margin:0;font-family:var(--display);font-size:clamp(2rem,4vw,3.4rem);line-height:0.98;letter-spacing:-0.04em;max-width:11ch;">Book Your Free Strategy Call</h2>
+          <p style="margin-top:1rem;">Let&#39;s discuss how we can make your wedding day a beautiful memory.</p>
+          <ul class="interaction-list">
+            <li>Do you offer packages outside of the US?: Yes, we serve worldwide destinations</li><li>What sets your photography apart from others?: Our focus on storytelling and unique perspectives</li>
+          </ul>
+        </div>
+        <div class="form-panel">
+          <form id="leadForm">
+            <div class="field">
+              <label>Name</label>
+              <input name="name" placeholder="Your name" required />
+            </div>
+            <div class="field">
+              <label>Email</label>
+              <input type="email" name="email" placeholder="you@example.com" required />
+            </div>
+            <div class="field">
+              <label>Business / Brand</label>
+              <input name="business" placeholder="Your business name" />
+            </div>
+            <div class="field">
+              <label>What are you trying to improve?</label>
+              <textarea name="message" placeholder="Tell us where the content, offer, or lead flow is breaking down."></textarea>
+            </div>
+            <input type="hidden" name="client_id" value="cli_default" /><input type="hidden" name="campaign_id" value="cmp_default" /><input type="hidden" name="content_asset_id" value="ast_1775019146561_a3qrc" /><input type="hidden" name="published_post_id" value="" /><input type="hidden" name="platform" value="instagram" /><input type="hidden" name="cta_id" value="cta_default" /><input type="hidden" name="cta_keyword" value="GUIDE" /><input type="hidden" name="landing_page_id" value="lpg_1775019775399_m6y86" /><input type="hidden" name="utm_source" value="organic_social" /><input type="hidden" name="utm_medium" value="short_form" /><input type="hidden" name="utm_campaign" value="jack-riggs-wedding-photography-full-pipeline-on-wedding-photogra" />
+            <button class="submit" type="submit">Book Your Free Strategy Call</button>
+            <div class="micro">This form is wired to the funnel layer so leads can be attributed back to the post, CTA, and landing page that created them.</div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>Frequently asked before someone is ready.</h2>
+          <p>We keep the objections, proof, and next step in the same voice so the page feels like a continuation of the content rather than a handoff to a different brand.</p>
+        </div>
+        <div class="faq-grid">
+          <article><h3>Do you offer packages outside of the US?</h3><p>Yes, we serve worldwide destinations</p></article><article><h3>What sets your photography apart from others?</h3><p>Our focus on storytelling and unique perspectives</p></article>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      Jack Riggs Wedding Photography · booking page · lpg_1775019775399_m6y86 · GUIDE
+    </footer>
+  </div>
+  <script>
+    const form = document.getElementById('leadForm');
+    if (form) {
+      form.addEventListener('submit', async function(event) {
+        event.preventDefault();
+        const data = Object.fromEntries(new FormData(form).entries());
+        try {
+          await fetch('/api/funnel-records', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              action: 'create-lead',
+              lead: {
+                client_id: data.client_id,
+                campaign_id: data.campaign_id,
+                content_asset_id: data.content_asset_id,
+                published_post_id: data.published_post_id,
+                landing_page_id: data.landing_page_id,
+                cta_id: data.cta_id,
+                cta_keyword: data.cta_keyword,
+                platform: data.platform,
+                name: data.name,
+                email: data.email,
+                business: data.business,
+                message: data.message,
+                source: 'landing_page_form',
+              }
+            })
+          });
+          alert('Thanks — your request has been captured.');
+          form.reset();
+        } catch (error) {
+          alert('Your form was captured locally, but the lead sync hit an issue.');
+        }
+      });
+    }
+  </script>
+</body>
+</html>

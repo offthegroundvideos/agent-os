@@ -1,0 +1,38 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find c:/AI-Agents/agent-os -name *.js -newer c:/AI-Agents/agent-os/package.json -not -path */.next/* -not -path */node_modules/*)",
+      "Bash(find /c/AI-Agents/agent-os -type f \\\\\\(-name *.js -o -name *.jsx \\\\\\) -not -path ./.next/* -not -path ./node_modules/*)",
+      "Bash(find /c/AI-Agents/agent-os/app/api -type f -name *.js)",
+      "WebSearch",
+      "Bash(pnpm --version)",
+      "Bash(uv --version)",
+      "Bash(git --version)",
+      "Bash(nginx -v)",
+      "Bash(npm install:*)",
+      "Bash(pip install:*)",
+      "Bash(git clone:*)",
+      "Bash(python ./scripts/configure.py)",
+      "Bash(PYTHONIOENCODING=utf-8 python ./scripts/configure.py)",
+      "Bash(docker info:*)",
+      "Bash(MSYS_NO_PATHCONV=1 bash ./scripts/deploy.sh)",
+      "WebFetch(domain:github.com)",
+      "Read(//c/Users/AIOTG/.claude/**)",
+      "Read(//c/Users/AIOTG/.config/superpowers/**)",
+      "Bash(find C:UsersAIOTG.claude -name *.json -type f)",
+      "Bash(find C:UsersAIOTG.claude -name hooks.json -o -name hook* -type f)",
+      "Bash(curl -s http://localhost:11434/api/tags)",
+      "Bash(python -m json.tool)",
+      "Bash(ollama pull:*)",
+      "Bash(find c:AI-Agents -maxdepth 2 -type f -name README*)",
+      "Skill(schedule)",
+      "Skill(schedule:*)",
+      "Bash(docker exec:*)",
+      "Bash(docker ps:*)",
+      "Bash(grep -E \"\\\\.\\(json|toml|yaml\\)$\")",
+      "Bash(ls -lah /c/AI-Agents/mcp-server/README*)",
+      "Bash(find c:/AI-Agents/deer-flow -maxdepth 2 -type d -not -path */.*)",
+      "Bash(npx next:*)"
+    ]
+  }
+}

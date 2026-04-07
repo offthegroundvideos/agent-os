@@ -1,0 +1,2799 @@
+{
+  "shootSchedules": [
+    {
+      "id": "sht_1775125859730_2o5dv",
+      "calendar_entry_id": "pkg_1775125859724_n8d1k",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "owner": "Production lead",
+      "shoot_date": "2026-04-02",
+      "due_date": "2026-04-02",
+      "location": "Main camera setup",
+      "format": "talking_head",
+      "status": "ready_to_shoot",
+      "talent": [
+        "Founder"
+      ],
+      "shot_requirements": [
+        "First frame must support the hook: Client: Jack Riggs\nNiche: photography and marketing business\nPrimary offer: Book a photoshoot\nTarget audience: Models\nService area or geography: Marin County, Ca / San Rafael\nPrimary business goal: Book a shoot\nPriority platforms: instagram, tiktok\nSpecific research and execution notes: photography and marketing business",
+        "Keep format locked to talking head.",
+        "Deliver one clear idea for problem-aware viewers."
+      ],
+      "first_frame_instruction": "Client: Jack Riggs\nNiche: photography and marketing business\nPrimary offer: Book a photoshoot\nTarget audience: Models\nService area or geography: Marin County, Ca / San Rafael\nPrimary business goal: Book a shoot\nPriority platforms: instagram, tiktok\nSpecific research and execution notes: photography and marketing business",
+      "notes": "Shoot for instagram, tiktok with default. Capacity mode: high.",
+      "version": 1,
+      "created_at": "2026-04-02T10:30:59.730Z",
+      "updated_at": "2026-04-02T10:30:59.730Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-02T10:30:59.724Z",
+      "updatedAt": "2026-04-02T10:30:59.730Z"
+    },
+    {
+      "id": "sht_1775125179480_xylp0",
+      "calendar_entry_id": "pkg_1775125179474_luote",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "owner": "Production lead",
+      "shoot_date": "2026-04-02",
+      "due_date": "2026-04-02",
+      "location": "Main camera setup",
+      "format": "talking_head",
+      "status": "ready_to_shoot",
+      "talent": [
+        "Founder"
+      ],
+      "shot_requirements": [
+        "First frame must support the hook: Client: Cloudflare Demo Prospect\nNiche: wedding photography\nService area or geography: San Diego, CA\nSpecific research and execution notes: Imported for promotion flow test",
+        "Keep format locked to talking head.",
+        "Deliver one clear idea for problem-aware viewers."
+      ],
+      "first_frame_instruction": "Client: Cloudflare Demo Prospect\nNiche: wedding photography\nService area or geography: San Diego, CA\nSpecific research and execution notes: Imported for promotion flow test",
+      "notes": "Shoot for instagram, tiktok with default. Capacity mode: high.",
+      "version": 1,
+      "created_at": "2026-04-02T10:19:39.480Z",
+      "updated_at": "2026-04-02T10:19:39.480Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-02T10:19:39.474Z",
+      "updatedAt": "2026-04-02T10:19:39.480Z"
+    },
+    {
+      "id": "sht_1775121497292_hpkpf",
+      "calendar_entry_id": "pkg_1775121497286_275xf",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "owner": "Production lead",
+      "shoot_date": "2026-04-02",
+      "due_date": "2026-04-02",
+      "location": "Main camera setup",
+      "format": "talking_head",
+      "status": "ready_to_shoot",
+      "talent": [
+        "Founder"
+      ],
+      "shot_requirements": [
+        "First frame must support the hook: Client: Jack Riggs\nNiche: Selling Toyota Cars in Marin County.\nPrimary offer: Come buy a car\nTarget audience: Commuters and families\nService area or geography: Marin County, San Rafael, Bay Area\nPrimary business goal: Schedule a time to come in\nPriority platforms: Instagram and TikTok\nSpecific research and execution notes: How to Sell Toyota Cars in Marin County.",
+        "Keep format locked to talking head.",
+        "Deliver one clear idea for problem-aware viewers."
+      ],
+      "first_frame_instruction": "Client: Jack Riggs\nNiche: Selling Toyota Cars in Marin County.\nPrimary offer: Come buy a car\nTarget audience: Commuters and families\nService area or geography: Marin County, San Rafael, Bay Area\nPrimary business goal: Schedule a time to come in\nPriority platforms: Instagram and TikTok\nSpecific research and execution notes: How to Sell Toyota Cars in Marin County.",
+      "notes": "Shoot for instagram, tiktok with default. Capacity mode: high.",
+      "version": 1,
+      "created_at": "2026-04-02T09:18:17.292Z",
+      "updated_at": "2026-04-02T10:11:27.956Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-02T09:18:17.286Z",
+      "updatedAt": "2026-04-02T10:11:27.956Z"
+    },
+    {
+      "id": "sht_1775035144054_0dfev",
+      "calendar_entry_id": "pkg_1775035144050_tie3w",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "owner": "Production lead",
+      "shoot_date": "2026-04-15",
+      "due_date": "2026-04-15",
+      "location": "Main camera setup",
+      "format": "Talking Head",
+      "status": "ready_to_shoot",
+      "talent": [
+        "Founder"
+      ],
+      "shot_requirements": [
+        "First frame must support the hook: Dog training and gaining new clients for it",
+        "Keep format locked to Talking Head.",
+        "Deliver one clear idea for problem-aware viewers."
+      ],
+      "first_frame_instruction": "Dog training and gaining new clients for it",
+      "notes": "Shoot for instagram, tiktok with default. Capacity mode: high.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:04.054Z",
+      "updated_at": "2026-04-01T10:12:07.148Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:04.050Z",
+      "updatedAt": "2026-04-01T10:12:07.148Z"
+    },
+    {
+      "id": "sht_1775035144033_ui5l9",
+      "calendar_entry_id": "pkg_1775035144027_7wxme",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "owner": "Production lead",
+      "shoot_date": "2026-04-14",
+      "due_date": "2026-04-14",
+      "location": "Main camera setup",
+      "format": "Talking Head",
+      "status": "ready_to_shoot",
+      "talent": [
+        "Founder"
+      ],
+      "shot_requirements": [
+        "First frame must support the hook: Dog training and gaining new clients for it",
+        "Keep format locked to Talking Head.",
+        "Deliver one clear idea for problem-aware viewers."
+      ],
+      "first_frame_instruction": "Dog training and gaining new clients for it",
+      "notes": "Shoot for instagram, tiktok with default. Capacity mode: high.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:04.033Z",
+      "updated_at": "2026-04-01T09:19:04.033Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:04.027Z",
+      "updatedAt": "2026-04-01T09:19:04.033Z"
+    },
+    {
+      "id": "sht_1775035144012_a4b2m",
+      "calendar_entry_id": "pkg_1775035144007_0lrx7",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "owner": "Production lead",
+      "shoot_date": "2026-04-13",
+      "due_date": "2026-04-13",
+      "location": "Main camera setup",
+      "format": "Talking Head",
+      "status": "ready_to_shoot",
+      "talent": [
+        "Founder"
+      ],
+      "shot_requirements": [
+        "First frame must support the hook: Dog training and gaining new clients for it",
+        "Keep format locked to Talking Head.",
+        "Deliver one clear idea for problem-aware viewers."
+      ],
+      "first_frame_instruction": "Dog training and gaining new clients for it",
+      "notes": "Shoot for instagram, tiktok with default. Capacity mode: high.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:04.012Z",
+      "updated_at": "2026-04-01T09:19:04.012Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:04.007Z",
+      "updatedAt": "2026-04-01T09:19:04.012Z"
+    },
+    {
+      "id": "sht_1775035143990_ok45g",
+      "calendar_entry_id": "pkg_1775035143986_rml5b",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "owner": "Production lead",
+      "shoot_date": "2026-04-12",
+      "due_date": "2026-04-12",
+      "location": "Main camera setup",
+      "format": "Talking Head",
+      "status": "ready_to_shoot",
+      "talent": [
+        "Founder"
+      ],
+      "shot_requirements": [
+        "First frame must support the hook: Dog training and gaining new clients for it",
+        "Keep format locked to Talking Head.",
+        "Deliver one clear idea for problem-aware viewers."
+      ],
+      "first_frame_instruction": "Dog training and gaining new clients for it",
+      "notes": "Shoot for instagram, tiktok with default. Capacity mode: high.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:03.990Z",
+      "updated_at": "2026-04-01T09:19:03.990Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:03.986Z",
+      "updatedAt": "2026-04-01T09:19:03.990Z"
+    },
+    {
+      "id": "sht_1775035143969_4zv0z",
+      "calendar_entry_id": "pkg_1775035143965_7km32",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "owner": "Production lead",
+      "shoot_date": "2026-04-11",
+      "due_date": "2026-04-11",
+      "location": "Main camera setup",
+      "format": "Talking Head",
+      "status": "ready_to_shoot",
+      "talent": [
+        "Founder"
+      ],
+      "shot_requirements": [
+        "First frame must support the hook: Dog training and gaining new clients for it",
+        "Keep format locked to Talking Head.",
+        "Deliver one clear idea for problem-aware viewers."
+      ],
+      "first_frame_instruction": "Dog training and gaining new clients for it",
+      "notes": "Shoot for instagram, tiktok with default. Capacity mode: high.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:03.969Z",
+      "updated_at": "2026-04-01T09:19:03.969Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:03.965Z",
+      "updatedAt": "2026-04-01T09:19:03.970Z"
+    },
+    {
+      "id": "sht_1775035143945_lq0g8",
+      "calendar_entry_id": "pkg_1775035143941_jzpyh",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "owner": "Production lead",
+      "shoot_date": "2026-04-10",
+      "due_date": "2026-04-10",
+      "location": "Main camera setup",
+      "format": "Talking Head",
+      "status": "ready_to_shoot",
+      "talent": [
+        "Founder"
+      ],
+      "shot_requirements": [
+        "First frame must support the hook: Dog training and gaining new clients for it",
+        "Keep format locked to Talking Head.",
+        "Deliver one clear idea for problem-aware viewers."
+      ],
+      "first_frame_instruction": "Dog training and gaining new clients for it",
+      "notes": "Shoot for instagram, tiktok with default. Capacity mode: high.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:03.945Z",
+      "updated_at": "2026-04-01T09:19:03.945Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:03.941Z",
+      "updatedAt": "2026-04-01T09:19:03.945Z"
+    },
+    {
+      "id": "sht_1775035143925_vw8gl",
+      "calendar_entry_id": "pkg_1775035143922_halxx",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "owner": "Production lead",
+      "shoot_date": "2026-04-09",
+      "due_date": "2026-04-09",
+      "location": "Main camera setup",
+      "format": "Talking Head",
+      "status": "ready_to_shoot",
+      "talent": [
+        "Founder"
+      ],
+      "shot_requirements": [
+        "First frame must support the hook: Dog training and gaining new clients for it",
+        "Keep format locked to Talking Head.",
+        "Deliver one clear idea for problem-aware viewers."
+      ],
+      "first_frame_instruction": "Dog training and gaining new clients for it",
+      "notes": "Shoot for instagram, tiktok with default. Capacity mode: high.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:03.925Z",
+      "updated_at": "2026-04-01T09:19:03.925Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:03.922Z",
+      "updatedAt": "2026-04-01T09:19:03.925Z"
+    },
+    {
+      "id": "sht_1775035143903_i1xdm",
+      "calendar_entry_id": "pkg_1775035143899_ar1f2",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "owner": "Production lead",
+      "shoot_date": "2026-04-08",
+      "due_date": "2026-04-08",
+      "location": "Main camera setup",
+      "format": "Talking Head",
+      "status": "ready_to_shoot",
+      "talent": [
+        "Founder"
+      ],
+      "shot_requirements": [
+        "First frame must support the hook: Dog training and gaining new clients for it",
+        "Keep format locked to Talking Head.",
+        "Deliver one clear idea for problem-aware viewers."
+      ],
+      "first_frame_instruction": "Dog training and gaining new clients for it",
+      "notes": "Shoot for instagram, tiktok with default. Capacity mode: high.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:03.903Z",
+      "updated_at": "2026-04-01T09:19:03.903Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:03.899Z",
+      "updatedAt": "2026-04-01T09:19:03.903Z"
+    },
+    {
+      "id": "sht_1775035143883_xxh2m",
+      "calendar_entry_id": "pkg_1775035143880_56z3l",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "owner": "Production lead",
+      "shoot_date": "2026-04-07",
+      "due_date": "2026-04-07",
+      "location": "Main camera setup",
+      "format": "Talking Head",
+      "status": "ready_to_shoot",
+      "talent": [
+        "Founder"
+      ],
+      "shot_requirements": [
+        "First frame must support the hook: Dog training and gaining new clients for it",
+        "Keep format locked to Talking Head.",
+        "Deliver one clear idea for problem-aware viewers."
+      ],
+      "first_frame_instruction": "Dog training and gaining new clients for it",
+      "notes": "Shoot for instagram, tiktok with default. Capacity mode: high.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:03.883Z",
+      "updated_at": "2026-04-01T09:19:03.883Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:03.880Z",
+      "updatedAt": "2026-04-01T09:19:03.883Z"
+    },
+    {
+      "id": "sht_1775035143868_4546i",
+      "calendar_entry_id": "pkg_1775035143866_2c7f2",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "owner": "Production lead",
+      "shoot_date": "2026-04-06",
+      "due_date": "2026-04-06",
+      "location": "Main camera setup",
+      "format": "Talking Head",
+      "status": "ready_to_shoot",
+      "talent": [
+        "Founder"
+      ],
+      "shot_requirements": [
+        "First frame must support the hook: Dog training and gaining new clients for it",
+        "Keep format locked to Talking Head.",
+        "Deliver one clear idea for problem-aware viewers."
+      ],
+      "first_frame_instruction": "Dog training and gaining new clients for it",
+      "notes": "Shoot for instagram, tiktok with default. Capacity mode: high.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:03.868Z",
+      "updated_at": "2026-04-01T09:19:03.868Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:03.866Z",
+      "updatedAt": "2026-04-01T09:19:03.868Z"
+    },
+    {
+      "id": "sht_1775035143853_33e74",
+      "calendar_entry_id": "pkg_1775035143850_6imzt",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "owner": "Production lead",
+      "shoot_date": "2026-04-05",
+      "due_date": "2026-04-05",
+      "location": "Main camera setup",
+      "format": "Talking Head",
+      "status": "ready_to_shoot",
+      "talent": [
+        "Founder"
+      ],
+      "shot_requirements": [
+        "First frame must support the hook: Dog training and gaining new clients for it",
+        "Keep format locked to Talking Head.",
+        "Deliver one clear idea for problem-aware viewers."
+      ],
+      "first_frame_instruction": "Dog training and gaining new clients for it",
+      "notes": "Shoot for instagram, tiktok with default. Capacity mode: high.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:03.853Z",
+      "updated_at": "2026-04-01T09:19:03.853Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:03.850Z",
+      "updatedAt": "2026-04-01T09:19:03.853Z"
+    },
+    {
+      "id": "sht_1775035143838_dp675",
+      "calendar_entry_id": "pkg_1775035143836_b0rk4",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "owner": "Production lead",
+      "shoot_date": "2026-04-04",
+      "due_date": "2026-04-04",
+      "location": "Main camera setup",
+      "format": "Talking Head",
+      "status": "ready_to_shoot",
+      "talent": [
+        "Founder"
+      ],
+      "shot_requirements": [
+        "First frame must support the hook: Dog training and gaining new clients for it",
+        "Keep format locked to Talking Head.",
+        "Deliver one clear idea for problem-aware viewers."
+      ],
+      "first_frame_instruction": "Dog training and gaining new clients for it",
+      "notes": "Shoot for instagram, tiktok with default. Capacity mode: high.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:03.838Z",
+      "updated_at": "2026-04-01T09:19:03.838Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:03.836Z",
+      "updatedAt": "2026-04-01T09:19:03.838Z"
+    },
+    {
+      "id": "sht_1775035143824_miisr",
+      "calendar_entry_id": "pkg_1775035143822_207o5",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "owner": "Production lead",
+      "shoot_date": "2026-04-03",
+      "due_date": "2026-04-03",
+      "location": "Main camera setup",
+      "format": "Talking Head",
+      "status": "ready_to_shoot",
+      "talent": [
+        "Founder"
+      ],
+      "shot_requirements": [
+        "First frame must support the hook: Dog training and gaining new clients for it",
+        "Keep format locked to Talking Head.",
+        "Deliver one clear idea for problem-aware viewers."
+      ],
+      "first_frame_instruction": "Dog training and gaining new clients for it",
+      "notes": "Shoot for instagram, tiktok with default. Capacity mode: high.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:03.824Z",
+      "updated_at": "2026-04-01T09:19:03.824Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:03.822Z",
+      "updatedAt": "2026-04-01T09:19:03.824Z"
+    },
+    {
+      "id": "sht_1775035143811_w7iyv",
+      "calendar_entry_id": "pkg_1775035143808_8ak6q",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "owner": "Production lead",
+      "shoot_date": "2026-04-02",
+      "due_date": "2026-04-02",
+      "location": "Main camera setup",
+      "format": "Talking Head",
+      "status": "ready_to_shoot",
+      "talent": [
+        "Founder"
+      ],
+      "shot_requirements": [
+        "First frame must support the hook: Dog training and gaining new clients for it",
+        "Keep format locked to Talking Head.",
+        "Deliver one clear idea for problem-aware viewers."
+      ],
+      "first_frame_instruction": "Dog training and gaining new clients for it",
+      "notes": "Shoot for instagram, tiktok with default. Capacity mode: high.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:03.811Z",
+      "updated_at": "2026-04-01T09:19:03.811Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:03.808Z",
+      "updatedAt": "2026-04-01T09:19:03.811Z"
+    },
+    {
+      "id": "sht_1775035143796_jb528",
+      "calendar_entry_id": "pkg_1775035143793_1y48e",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "owner": "Production lead",
+      "shoot_date": "2026-04-01",
+      "due_date": "2026-04-01",
+      "location": "Main camera setup",
+      "format": "Talking Head",
+      "status": "ready_to_shoot",
+      "talent": [
+        "Founder"
+      ],
+      "shot_requirements": [
+        "First frame must support the hook: Dog training and gaining new clients for it",
+        "Keep format locked to Talking Head.",
+        "Deliver one clear idea for problem-aware viewers."
+      ],
+      "first_frame_instruction": "Dog training and gaining new clients for it",
+      "notes": "Shoot for instagram, tiktok with default. Capacity mode: high.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:03.796Z",
+      "updated_at": "2026-04-01T09:19:03.796Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:03.793Z",
+      "updatedAt": "2026-04-01T09:19:03.796Z"
+    },
+    {
+      "id": "sht_1775034893025_spa5k",
+      "calendar_entry_id": "pkg_1775034893022_cehr4",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "owner": "Production lead",
+      "shoot_date": "2026-04-01",
+      "due_date": "2026-04-01",
+      "location": "Main camera setup",
+      "format": "talking_head",
+      "status": "ready_to_shoot",
+      "talent": [
+        "Founder"
+      ],
+      "shot_requirements": [
+        "First frame must support the hook: Dog training and getting new clients",
+        "Keep format locked to talking head.",
+        "Deliver one clear idea for problem-aware viewers."
+      ],
+      "first_frame_instruction": "Dog training and getting new clients",
+      "notes": "Shoot for instagram, tiktok with default. Capacity mode: high.",
+      "version": 1,
+      "created_at": "2026-04-01T09:14:53.025Z",
+      "updated_at": "2026-04-01T09:14:53.025Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:14:53.022Z",
+      "updatedAt": "2026-04-01T09:14:53.025Z"
+    },
+    {
+      "id": "sht_1775032319752_bmefg",
+      "calendar_entry_id": "pkg_1775032319749_78gpr",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "owner": "Production lead",
+      "shoot_date": "2026-04-01",
+      "due_date": "2026-04-01",
+      "location": "Main camera setup",
+      "format": "talking_head",
+      "status": "ready_to_shoot",
+      "talent": [
+        "Founder"
+      ],
+      "shot_requirements": [
+        "First frame must support the hook: Dog Training",
+        "Keep format locked to talking head.",
+        "Deliver one clear idea for problem-aware viewers."
+      ],
+      "first_frame_instruction": "Dog Training",
+      "notes": "Shoot for instagram, tiktok with default. Capacity mode: high.",
+      "version": 1,
+      "created_at": "2026-04-01T08:31:59.752Z",
+      "updated_at": "2026-04-01T08:31:59.752Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T08:31:59.749Z",
+      "updatedAt": "2026-04-01T08:31:59.752Z"
+    },
+    {
+      "id": "sht_1775031502433_kmypl",
+      "calendar_entry_id": "pkg_1775031502431_bi1vc",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "owner": "Production lead",
+      "shoot_date": "2026-04-01",
+      "due_date": "2026-04-01",
+      "location": "Main camera setup",
+      "format": "talking_head",
+      "status": "ready_to_shoot",
+      "talent": [
+        "Founder"
+      ],
+      "shot_requirements": [
+        "First frame must support the hook: Created a content package including viral video scripts, Instagram caption templates, LinkedIn post drafts, an email subject line, and ad copy variations for the wedding videography/photography niche.",
+        "Keep format locked to talking head.",
+        "Deliver one clear idea for problem-aware viewers."
+      ],
+      "first_frame_instruction": "Created a content package including viral video scripts, Instagram caption templates, LinkedIn post drafts, an email subject line, and ad copy variations for the wedding videography/photography niche.",
+      "notes": "Shoot for instagram, tiktok with default. Capacity mode: high.",
+      "version": 1,
+      "created_at": "2026-04-01T08:18:22.433Z",
+      "updated_at": "2026-04-01T08:18:22.433Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T08:18:22.431Z",
+      "updatedAt": "2026-04-01T08:18:22.433Z"
+    },
+    {
+      "id": "sht_1775031473824_pcad8",
+      "calendar_entry_id": "pkg_1775031473820_ha57d",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "owner": "Production lead",
+      "shoot_date": "2026-04-01",
+      "due_date": "2026-04-01",
+      "location": "Main camera setup",
+      "format": "talking_head",
+      "status": "ready_to_shoot",
+      "talent": [
+        "Founder"
+      ],
+      "shot_requirements": [
+        "First frame must support the hook: firework buisness",
+        "Keep format locked to talking head.",
+        "Deliver one clear idea for problem-aware viewers."
+      ],
+      "first_frame_instruction": "firework buisness",
+      "notes": "Shoot for instagram, tiktok with default. Capacity mode: high.",
+      "version": 1,
+      "created_at": "2026-04-01T08:17:53.824Z",
+      "updated_at": "2026-04-01T08:17:53.824Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T08:17:53.820Z",
+      "updatedAt": "2026-04-01T08:17:53.824Z"
+    },
+    {
+      "id": "sht_1775022218650_zjcix",
+      "calendar_entry_id": "pkg_1775022218648_mou7f",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "owner": "Production lead",
+      "shoot_date": "2026-04-05",
+      "due_date": "2026-04-05",
+      "location": "Main camera setup",
+      "format": "talking_head",
+      "status": "ready_to_shoot",
+      "talent": [
+        "Founder"
+      ],
+      "shot_requirements": [
+        "First frame must support the hook: Graphic designer",
+        "Keep format locked to talking head.",
+        "Deliver one clear idea for problem-aware viewers."
+      ],
+      "first_frame_instruction": "Graphic designer",
+      "notes": "Shoot for instagram, tiktok with default. Capacity mode: high.",
+      "version": 1,
+      "created_at": "2026-04-01T05:43:38.650Z",
+      "updated_at": "2026-04-01T05:43:38.650Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T05:43:38.648Z",
+      "updatedAt": "2026-04-01T05:43:38.650Z"
+    },
+    {
+      "id": "sht_1775022218633_pw27l",
+      "calendar_entry_id": "pkg_1775022218631_ikwkw",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "owner": "Production lead",
+      "shoot_date": "2026-04-04",
+      "due_date": "2026-04-04",
+      "location": "Main camera setup",
+      "format": "talking_head",
+      "status": "ready_to_shoot",
+      "talent": [
+        "Founder"
+      ],
+      "shot_requirements": [
+        "First frame must support the hook: Graphic designer",
+        "Keep format locked to talking head.",
+        "Deliver one clear idea for problem-aware viewers."
+      ],
+      "first_frame_instruction": "Graphic designer",
+      "notes": "Shoot for instagram, tiktok with default. Capacity mode: high.",
+      "version": 1,
+      "created_at": "2026-04-01T05:43:38.633Z",
+      "updated_at": "2026-04-01T05:43:38.633Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T05:43:38.631Z",
+      "updatedAt": "2026-04-01T05:43:38.633Z"
+    },
+    {
+      "id": "sht_1775022218616_b67t7",
+      "calendar_entry_id": "pkg_1775022218613_t9ddu",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "owner": "Production lead",
+      "shoot_date": "2026-04-03",
+      "due_date": "2026-04-03",
+      "location": "Main camera setup",
+      "format": "talking_head",
+      "status": "ready_to_shoot",
+      "talent": [
+        "Founder"
+      ],
+      "shot_requirements": [
+        "First frame must support the hook: Graphic designer",
+        "Keep format locked to talking head.",
+        "Deliver one clear idea for problem-aware viewers."
+      ],
+      "first_frame_instruction": "Graphic designer",
+      "notes": "Shoot for instagram, tiktok with default. Capacity mode: high.",
+      "version": 1,
+      "created_at": "2026-04-01T05:43:38.616Z",
+      "updated_at": "2026-04-01T05:43:38.616Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T05:43:38.614Z",
+      "updatedAt": "2026-04-01T05:43:38.616Z"
+    },
+    {
+      "id": "sht_1775022218595_i58j8",
+      "calendar_entry_id": "pkg_1775022218594_i57fe",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "owner": "Production lead",
+      "shoot_date": "2026-04-02",
+      "due_date": "2026-04-02",
+      "location": "Main camera setup",
+      "format": "talking_head",
+      "status": "ready_to_shoot",
+      "talent": [
+        "Founder"
+      ],
+      "shot_requirements": [
+        "First frame must support the hook: Graphic designer",
+        "Keep format locked to talking head.",
+        "Deliver one clear idea for problem-aware viewers."
+      ],
+      "first_frame_instruction": "Graphic designer",
+      "notes": "Shoot for instagram, tiktok with default. Capacity mode: high.",
+      "version": 1,
+      "created_at": "2026-04-01T05:43:38.595Z",
+      "updated_at": "2026-04-01T05:43:38.595Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T05:43:38.594Z",
+      "updatedAt": "2026-04-01T05:43:38.595Z"
+    },
+    {
+      "id": "sht_1775022218577_o3x60",
+      "calendar_entry_id": "pkg_1775022218575_b13uu",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "owner": "Production lead",
+      "shoot_date": "2026-04-01",
+      "due_date": "2026-04-01",
+      "location": "Main camera setup",
+      "format": "talking_head",
+      "status": "ready_to_shoot",
+      "talent": [
+        "Founder"
+      ],
+      "shot_requirements": [
+        "First frame must support the hook: Graphic designer",
+        "Keep format locked to talking head.",
+        "Deliver one clear idea for problem-aware viewers."
+      ],
+      "first_frame_instruction": "Graphic designer",
+      "notes": "Shoot for instagram, tiktok with default. Capacity mode: high.",
+      "version": 1,
+      "created_at": "2026-04-01T05:43:38.577Z",
+      "updated_at": "2026-04-01T05:43:38.577Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T05:43:38.575Z",
+      "updatedAt": "2026-04-01T05:43:38.578Z"
+    },
+    {
+      "id": "sht_1775019638800_b68k4",
+      "calendar_entry_id": "pkg_1775019638798_0bvg3",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "owner": "Production lead",
+      "shoot_date": "2026-04-02",
+      "due_date": "2026-04-02",
+      "location": "Main camera setup",
+      "format": "Talking head with practical tips and checklist overlays",
+      "status": "ready_to_shoot",
+      "talent": [
+        "Founder"
+      ],
+      "shot_requirements": [
+        "First frame must support the hook: Full pipeline on wedding photography and videography",
+        "Keep format locked to Talking head with practical tips and checklist overlays.",
+        "Deliver one clear idea for problem-aware viewers."
+      ],
+      "first_frame_instruction": "Full pipeline on wedding photography and videography",
+      "notes": "Shoot for instagram, tiktok with default. Capacity mode: high.",
+      "version": 1,
+      "created_at": "2026-04-01T05:00:38.800Z",
+      "updated_at": "2026-04-01T05:00:38.800Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T05:00:38.798Z",
+      "updatedAt": "2026-04-01T05:00:38.800Z"
+    },
+    {
+      "id": "sht_1775019638784_qva8a",
+      "calendar_entry_id": "pkg_1775019638782_0kimz",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "owner": "Production lead",
+      "shoot_date": "2026-04-01",
+      "due_date": "2026-04-01",
+      "location": "Main camera setup",
+      "format": "B-Roll of emotional moments and highlights",
+      "status": "ready_to_shoot",
+      "talent": [
+        "Voiceover talent"
+      ],
+      "shot_requirements": [
+        "First frame must support the hook: Full pipeline on wedding photography and videography",
+        "Keep format locked to B-Roll of emotional moments and highlights.",
+        "Deliver one clear idea for problem-aware viewers."
+      ],
+      "first_frame_instruction": "Full pipeline on wedding photography and videography",
+      "notes": "Shoot for instagram, tiktok with default. Capacity mode: high.",
+      "version": 1,
+      "created_at": "2026-04-01T05:00:38.784Z",
+      "updated_at": "2026-04-01T05:00:38.784Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T05:00:38.782Z",
+      "updatedAt": "2026-04-01T05:00:38.784Z"
+    },
+    {
+      "id": "sht_1775013141836_09kh9",
+      "calendar_entry_id": "pkg_1775013141834_rr4ax",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "owner": "Production lead",
+      "shoot_date": "2026-04-01",
+      "due_date": "2026-04-01",
+      "location": "Main camera setup",
+      "format": "talking_head",
+      "status": "ready_to_shoot",
+      "talent": [
+        "Founder"
+      ],
+      "shot_requirements": [
+        "First frame must support the hook: Wrote 15 viral video scripts focusing on behind-the-scenes, quick tips, and highlight reels. Created Instagram caption templates, LinkedIn post drafts, email subject line, and ad copy variations.",
+        "Keep format locked to talking head.",
+        "Deliver one clear idea for problem-aware viewers."
+      ],
+      "first_frame_instruction": "Wrote 15 viral video scripts focusing on behind-the-scenes, quick tips, and highlight reels. Created Instagram caption templates, LinkedIn post drafts, email subject line, and ad copy variations.",
+      "notes": "Shoot for instagram, tiktok with default. Capacity mode: high.",
+      "version": 1,
+      "created_at": "2026-04-01T03:12:21.836Z",
+      "updated_at": "2026-04-01T03:12:21.836Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T03:12:21.834Z",
+      "updatedAt": "2026-04-01T03:12:21.836Z"
+    },
+    {
+      "id": "sht_1775003515199_yu73c",
+      "calendar_entry_id": "pkg_1775002525679_ancpz",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "owner": "Production lead",
+      "shoot_date": "2026-04-01",
+      "due_date": "2026-04-01",
+      "location": "Main camera setup",
+      "format": "talking_head",
+      "status": "handoff_to_edit",
+      "talent": [
+        "Founder"
+      ],
+      "shot_requirements": [
+        "First frame must support the hook: Wedding videography",
+        "Keep format locked to talking head.",
+        "Deliver one clear idea for problem-aware viewers."
+      ],
+      "first_frame_instruction": "Wedding videography",
+      "notes": "Shoot for instagram, tiktok with default. Capacity mode: high.",
+      "version": 1,
+      "created_at": "2026-04-01T00:15:25.679Z",
+      "updated_at": "2026-04-01T01:30:09.375Z",
+      "created_by": "pipeline",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T00:15:25.679Z",
+      "updatedAt": "2026-04-01T01:30:09.375Z"
+    }
+  ],
+  "editJobs": [
+    {
+      "id": "edt_1775125859730_i4ggc",
+      "calendar_entry_id": "pkg_1775125859724_n8d1k",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "content_asset_id": "ast_1775124780290_bxf55",
+      "edit_lane": "resolve",
+      "editor": "Unassigned editor",
+      "edit_tier": "basic",
+      "caption_style": "clean readable captions",
+      "status": "queued",
+      "due_date": "2026-04-03",
+      "revision_ceiling": 2,
+      "source_media_ids": [],
+      "footage_ids": [],
+      "notes": "Edit for reach lane. Keep problem-aware messaging intact.",
+      "version": 1,
+      "created_at": "2026-04-02T10:30:59.730Z",
+      "updated_at": "2026-04-02T10:30:59.730Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-02T10:30:59.724Z",
+      "updatedAt": "2026-04-02T10:30:59.730Z"
+    },
+    {
+      "id": "edt_1775125179480_0p6vb",
+      "calendar_entry_id": "pkg_1775125179474_luote",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "content_asset_id": "ast_1775124570797_9ynhx",
+      "edit_lane": "resolve",
+      "editor": "Unassigned editor",
+      "edit_tier": "basic",
+      "caption_style": "clean readable captions",
+      "status": "queued",
+      "due_date": "2026-04-03",
+      "revision_ceiling": 2,
+      "source_media_ids": [],
+      "footage_ids": [],
+      "notes": "Edit for reach lane. Keep problem-aware messaging intact.",
+      "version": 1,
+      "created_at": "2026-04-02T10:19:39.480Z",
+      "updated_at": "2026-04-02T10:19:39.480Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-02T10:19:39.474Z",
+      "updatedAt": "2026-04-02T10:19:39.480Z"
+    },
+    {
+      "id": "edt_1775121497292_ofrtr",
+      "calendar_entry_id": "pkg_1775121497286_275xf",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "content_asset_id": "ast_1775120795412_zjryi",
+      "edit_lane": "resolve",
+      "editor": "Unassigned editor",
+      "edit_tier": "basic",
+      "caption_style": "clean readable captions",
+      "status": "queued",
+      "due_date": "2026-04-03",
+      "revision_ceiling": 2,
+      "source_media_ids": [],
+      "footage_ids": [],
+      "notes": "Edit for reach lane. Keep problem-aware messaging intact.",
+      "version": 1,
+      "created_at": "2026-04-02T09:18:17.292Z",
+      "updated_at": "2026-04-02T10:11:27.956Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-02T09:18:17.286Z",
+      "updatedAt": "2026-04-02T10:11:27.956Z"
+    },
+    {
+      "id": "edt_1775035144054_5cdre",
+      "calendar_entry_id": "pkg_1775035144050_tie3w",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "content_asset_id": "ast_1775034355456_cualw",
+      "edit_lane": "resolve",
+      "editor": "Unassigned editor",
+      "edit_tier": "basic",
+      "caption_style": "clean readable captions",
+      "status": "queued",
+      "due_date": "2026-04-16",
+      "revision_ceiling": 2,
+      "source_media_ids": [],
+      "footage_ids": [],
+      "notes": "Edit for reach lane. Keep problem-aware messaging intact.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:04.054Z",
+      "updated_at": "2026-04-01T10:12:07.148Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:04.050Z",
+      "updatedAt": "2026-04-01T10:12:07.148Z"
+    },
+    {
+      "id": "edt_1775035144033_6dhxf",
+      "calendar_entry_id": "pkg_1775035144027_7wxme",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "content_asset_id": "ast_1775034355456_cualw",
+      "edit_lane": "resolve",
+      "editor": "Unassigned editor",
+      "edit_tier": "basic",
+      "caption_style": "clean readable captions",
+      "status": "queued",
+      "due_date": "2026-04-15",
+      "revision_ceiling": 2,
+      "source_media_ids": [],
+      "footage_ids": [],
+      "notes": "Edit for reach lane. Keep problem-aware messaging intact.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:04.033Z",
+      "updated_at": "2026-04-01T09:19:04.033Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:04.027Z",
+      "updatedAt": "2026-04-01T09:19:04.033Z"
+    },
+    {
+      "id": "edt_1775035144012_18d16",
+      "calendar_entry_id": "pkg_1775035144007_0lrx7",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "content_asset_id": "ast_1775034355456_cualw",
+      "edit_lane": "resolve",
+      "editor": "Unassigned editor",
+      "edit_tier": "basic",
+      "caption_style": "clean readable captions",
+      "status": "queued",
+      "due_date": "2026-04-14",
+      "revision_ceiling": 2,
+      "source_media_ids": [],
+      "footage_ids": [],
+      "notes": "Edit for reach lane. Keep problem-aware messaging intact.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:04.012Z",
+      "updated_at": "2026-04-01T09:19:04.012Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:04.007Z",
+      "updatedAt": "2026-04-01T09:19:04.012Z"
+    },
+    {
+      "id": "edt_1775035143990_skgp9",
+      "calendar_entry_id": "pkg_1775035143986_rml5b",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "content_asset_id": "ast_1775034355456_cualw",
+      "edit_lane": "resolve",
+      "editor": "Unassigned editor",
+      "edit_tier": "basic",
+      "caption_style": "clean readable captions",
+      "status": "queued",
+      "due_date": "2026-04-13",
+      "revision_ceiling": 2,
+      "source_media_ids": [],
+      "footage_ids": [],
+      "notes": "Edit for reach lane. Keep problem-aware messaging intact.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:03.990Z",
+      "updated_at": "2026-04-01T09:19:03.990Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:03.986Z",
+      "updatedAt": "2026-04-01T09:19:03.990Z"
+    },
+    {
+      "id": "edt_1775035143970_zbo5f",
+      "calendar_entry_id": "pkg_1775035143965_7km32",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "content_asset_id": "ast_1775034355456_cualw",
+      "edit_lane": "resolve",
+      "editor": "Unassigned editor",
+      "edit_tier": "basic",
+      "caption_style": "clean readable captions",
+      "status": "queued",
+      "due_date": "2026-04-12",
+      "revision_ceiling": 2,
+      "source_media_ids": [],
+      "footage_ids": [],
+      "notes": "Edit for reach lane. Keep problem-aware messaging intact.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:03.970Z",
+      "updated_at": "2026-04-01T09:19:03.970Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:03.965Z",
+      "updatedAt": "2026-04-01T09:19:03.970Z"
+    },
+    {
+      "id": "edt_1775035143945_uva1c",
+      "calendar_entry_id": "pkg_1775035143941_jzpyh",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "content_asset_id": "ast_1775034355456_cualw",
+      "edit_lane": "resolve",
+      "editor": "Unassigned editor",
+      "edit_tier": "basic",
+      "caption_style": "clean readable captions",
+      "status": "queued",
+      "due_date": "2026-04-11",
+      "revision_ceiling": 2,
+      "source_media_ids": [],
+      "footage_ids": [],
+      "notes": "Edit for reach lane. Keep problem-aware messaging intact.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:03.945Z",
+      "updated_at": "2026-04-01T09:19:03.945Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:03.941Z",
+      "updatedAt": "2026-04-01T09:19:03.945Z"
+    },
+    {
+      "id": "edt_1775035143925_n0qff",
+      "calendar_entry_id": "pkg_1775035143922_halxx",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "content_asset_id": "ast_1775034355456_cualw",
+      "edit_lane": "resolve",
+      "editor": "Unassigned editor",
+      "edit_tier": "basic",
+      "caption_style": "clean readable captions",
+      "status": "queued",
+      "due_date": "2026-04-10",
+      "revision_ceiling": 2,
+      "source_media_ids": [],
+      "footage_ids": [],
+      "notes": "Edit for reach lane. Keep problem-aware messaging intact.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:03.925Z",
+      "updated_at": "2026-04-01T09:19:03.925Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:03.922Z",
+      "updatedAt": "2026-04-01T09:19:03.925Z"
+    },
+    {
+      "id": "edt_1775035143903_8oj3t",
+      "calendar_entry_id": "pkg_1775035143899_ar1f2",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "content_asset_id": "ast_1775034355456_cualw",
+      "edit_lane": "resolve",
+      "editor": "Unassigned editor",
+      "edit_tier": "basic",
+      "caption_style": "clean readable captions",
+      "status": "queued",
+      "due_date": "2026-04-09",
+      "revision_ceiling": 2,
+      "source_media_ids": [],
+      "footage_ids": [],
+      "notes": "Edit for reach lane. Keep problem-aware messaging intact.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:03.903Z",
+      "updated_at": "2026-04-01T09:19:03.903Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:03.899Z",
+      "updatedAt": "2026-04-01T09:19:03.903Z"
+    },
+    {
+      "id": "edt_1775035143883_dovks",
+      "calendar_entry_id": "pkg_1775035143880_56z3l",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "content_asset_id": "ast_1775034355456_cualw",
+      "edit_lane": "resolve",
+      "editor": "Unassigned editor",
+      "edit_tier": "basic",
+      "caption_style": "clean readable captions",
+      "status": "queued",
+      "due_date": "2026-04-08",
+      "revision_ceiling": 2,
+      "source_media_ids": [],
+      "footage_ids": [],
+      "notes": "Edit for reach lane. Keep problem-aware messaging intact.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:03.883Z",
+      "updated_at": "2026-04-01T09:19:03.883Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:03.880Z",
+      "updatedAt": "2026-04-01T09:19:03.883Z"
+    },
+    {
+      "id": "edt_1775035143868_9w7nj",
+      "calendar_entry_id": "pkg_1775035143866_2c7f2",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "content_asset_id": "ast_1775034355456_cualw",
+      "edit_lane": "resolve",
+      "editor": "Unassigned editor",
+      "edit_tier": "basic",
+      "caption_style": "clean readable captions",
+      "status": "queued",
+      "due_date": "2026-04-07",
+      "revision_ceiling": 2,
+      "source_media_ids": [],
+      "footage_ids": [],
+      "notes": "Edit for reach lane. Keep problem-aware messaging intact.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:03.868Z",
+      "updated_at": "2026-04-01T09:19:03.868Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:03.866Z",
+      "updatedAt": "2026-04-01T09:19:03.868Z"
+    },
+    {
+      "id": "edt_1775035143853_qb5qe",
+      "calendar_entry_id": "pkg_1775035143850_6imzt",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "content_asset_id": "ast_1775034355456_cualw",
+      "edit_lane": "resolve",
+      "editor": "Unassigned editor",
+      "edit_tier": "basic",
+      "caption_style": "clean readable captions",
+      "status": "queued",
+      "due_date": "2026-04-06",
+      "revision_ceiling": 2,
+      "source_media_ids": [],
+      "footage_ids": [],
+      "notes": "Edit for reach lane. Keep problem-aware messaging intact.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:03.853Z",
+      "updated_at": "2026-04-01T09:19:03.853Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:03.850Z",
+      "updatedAt": "2026-04-01T09:19:03.853Z"
+    },
+    {
+      "id": "edt_1775035143838_hzmzt",
+      "calendar_entry_id": "pkg_1775035143836_b0rk4",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "content_asset_id": "ast_1775034355456_cualw",
+      "edit_lane": "resolve",
+      "editor": "Unassigned editor",
+      "edit_tier": "basic",
+      "caption_style": "clean readable captions",
+      "status": "queued",
+      "due_date": "2026-04-05",
+      "revision_ceiling": 2,
+      "source_media_ids": [],
+      "footage_ids": [],
+      "notes": "Edit for reach lane. Keep problem-aware messaging intact.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:03.838Z",
+      "updated_at": "2026-04-01T09:19:03.838Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:03.836Z",
+      "updatedAt": "2026-04-01T09:19:03.838Z"
+    },
+    {
+      "id": "edt_1775035143824_p4v5w",
+      "calendar_entry_id": "pkg_1775035143822_207o5",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "content_asset_id": "ast_1775034355456_cualw",
+      "edit_lane": "resolve",
+      "editor": "Unassigned editor",
+      "edit_tier": "basic",
+      "caption_style": "clean readable captions",
+      "status": "queued",
+      "due_date": "2026-04-04",
+      "revision_ceiling": 2,
+      "source_media_ids": [],
+      "footage_ids": [],
+      "notes": "Edit for reach lane. Keep problem-aware messaging intact.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:03.824Z",
+      "updated_at": "2026-04-01T09:19:03.824Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:03.822Z",
+      "updatedAt": "2026-04-01T09:19:03.824Z"
+    },
+    {
+      "id": "edt_1775035143811_qct4z",
+      "calendar_entry_id": "pkg_1775035143808_8ak6q",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "content_asset_id": "ast_1775034355456_cualw",
+      "edit_lane": "resolve",
+      "editor": "Unassigned editor",
+      "edit_tier": "basic",
+      "caption_style": "clean readable captions",
+      "status": "queued",
+      "due_date": "2026-04-03",
+      "revision_ceiling": 2,
+      "source_media_ids": [],
+      "footage_ids": [],
+      "notes": "Edit for reach lane. Keep problem-aware messaging intact.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:03.811Z",
+      "updated_at": "2026-04-01T09:19:03.811Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:03.808Z",
+      "updatedAt": "2026-04-01T09:19:03.811Z"
+    },
+    {
+      "id": "edt_1775035143796_znw5s",
+      "calendar_entry_id": "pkg_1775035143793_1y48e",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "content_asset_id": "ast_1775034355456_cualw",
+      "edit_lane": "resolve",
+      "editor": "Unassigned editor",
+      "edit_tier": "basic",
+      "caption_style": "clean readable captions",
+      "status": "queued",
+      "due_date": "2026-04-02",
+      "revision_ceiling": 2,
+      "source_media_ids": [],
+      "footage_ids": [],
+      "notes": "Edit for reach lane. Keep problem-aware messaging intact.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:03.796Z",
+      "updated_at": "2026-04-01T09:19:03.796Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:03.793Z",
+      "updatedAt": "2026-04-01T09:19:03.796Z"
+    },
+    {
+      "id": "edt_1775034893025_0n2xg",
+      "calendar_entry_id": "pkg_1775034893022_cehr4",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "content_asset_id": "ast_1775034325276_h7i59",
+      "edit_lane": "resolve",
+      "editor": "Unassigned editor",
+      "edit_tier": "basic",
+      "caption_style": "clean readable captions",
+      "status": "queued",
+      "due_date": "2026-04-02",
+      "revision_ceiling": 2,
+      "source_media_ids": [],
+      "footage_ids": [],
+      "notes": "Edit for reach lane. Keep problem-aware messaging intact.",
+      "version": 1,
+      "created_at": "2026-04-01T09:14:53.025Z",
+      "updated_at": "2026-04-01T09:14:53.025Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:14:53.022Z",
+      "updatedAt": "2026-04-01T09:14:53.025Z"
+    },
+    {
+      "id": "edt_1775032319752_alnxx",
+      "calendar_entry_id": "pkg_1775032319749_78gpr",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "content_asset_id": "ast_1775031825422_g0c7r",
+      "edit_lane": "resolve",
+      "editor": "Unassigned editor",
+      "edit_tier": "basic",
+      "caption_style": "clean readable captions",
+      "status": "queued",
+      "due_date": "2026-04-02",
+      "revision_ceiling": 2,
+      "source_media_ids": [],
+      "footage_ids": [],
+      "notes": "Edit for reach lane. Keep problem-aware messaging intact.",
+      "version": 1,
+      "created_at": "2026-04-01T08:31:59.752Z",
+      "updated_at": "2026-04-01T08:31:59.752Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T08:31:59.749Z",
+      "updatedAt": "2026-04-01T08:31:59.752Z"
+    },
+    {
+      "id": "edt_1775031502433_q078r",
+      "calendar_entry_id": "pkg_1775031502431_bi1vc",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "content_asset_id": "ast_1775030962664_6eymg",
+      "edit_lane": "resolve",
+      "editor": "Unassigned editor",
+      "edit_tier": "basic",
+      "caption_style": "clean readable captions",
+      "status": "queued",
+      "due_date": "2026-04-02",
+      "revision_ceiling": 2,
+      "source_media_ids": [],
+      "footage_ids": [],
+      "notes": "Edit for reach lane. Keep problem-aware messaging intact.",
+      "version": 1,
+      "created_at": "2026-04-01T08:18:22.433Z",
+      "updated_at": "2026-04-01T08:18:22.433Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T08:18:22.431Z",
+      "updatedAt": "2026-04-01T08:18:22.433Z"
+    },
+    {
+      "id": "edt_1775031473824_qw3ks",
+      "calendar_entry_id": "pkg_1775031473820_ha57d",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "content_asset_id": "ast_1775030899638_nmyqr",
+      "edit_lane": "resolve",
+      "editor": "Unassigned editor",
+      "edit_tier": "basic",
+      "caption_style": "clean readable captions",
+      "status": "queued",
+      "due_date": "2026-04-02",
+      "revision_ceiling": 2,
+      "source_media_ids": [],
+      "footage_ids": [],
+      "notes": "Edit for reach lane. Keep problem-aware messaging intact.",
+      "version": 1,
+      "created_at": "2026-04-01T08:17:53.824Z",
+      "updated_at": "2026-04-01T08:17:53.824Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T08:17:53.820Z",
+      "updatedAt": "2026-04-01T08:17:53.824Z"
+    },
+    {
+      "id": "edt_1775022218650_p55zo",
+      "calendar_entry_id": "pkg_1775022218648_mou7f",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "content_asset_id": "ast_1775021653509_u0shb",
+      "edit_lane": "resolve",
+      "editor": "Unassigned editor",
+      "edit_tier": "basic",
+      "caption_style": "clean readable captions",
+      "status": "queued",
+      "due_date": "2026-04-06",
+      "revision_ceiling": 2,
+      "source_media_ids": [],
+      "footage_ids": [],
+      "notes": "Edit for reach lane. Keep problem-aware messaging intact.",
+      "version": 1,
+      "created_at": "2026-04-01T05:43:38.650Z",
+      "updated_at": "2026-04-01T05:43:38.650Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T05:43:38.648Z",
+      "updatedAt": "2026-04-01T05:43:38.650Z"
+    },
+    {
+      "id": "edt_1775022218633_5p9n2",
+      "calendar_entry_id": "pkg_1775022218631_ikwkw",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "content_asset_id": "ast_1775021653509_u0shb",
+      "edit_lane": "resolve",
+      "editor": "Unassigned editor",
+      "edit_tier": "basic",
+      "caption_style": "clean readable captions",
+      "status": "queued",
+      "due_date": "2026-04-05",
+      "revision_ceiling": 2,
+      "source_media_ids": [],
+      "footage_ids": [],
+      "notes": "Edit for reach lane. Keep problem-aware messaging intact.",
+      "version": 1,
+      "created_at": "2026-04-01T05:43:38.633Z",
+      "updated_at": "2026-04-01T05:43:38.633Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T05:43:38.631Z",
+      "updatedAt": "2026-04-01T05:43:38.633Z"
+    },
+    {
+      "id": "edt_1775022218616_nkade",
+      "calendar_entry_id": "pkg_1775022218613_t9ddu",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "content_asset_id": "ast_1775021653509_u0shb",
+      "edit_lane": "resolve",
+      "editor": "Unassigned editor",
+      "edit_tier": "basic",
+      "caption_style": "clean readable captions",
+      "status": "queued",
+      "due_date": "2026-04-04",
+      "revision_ceiling": 2,
+      "source_media_ids": [],
+      "footage_ids": [],
+      "notes": "Edit for reach lane. Keep problem-aware messaging intact.",
+      "version": 1,
+      "created_at": "2026-04-01T05:43:38.616Z",
+      "updated_at": "2026-04-01T05:43:38.616Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T05:43:38.614Z",
+      "updatedAt": "2026-04-01T05:43:38.616Z"
+    },
+    {
+      "id": "edt_1775022218595_bg5ki",
+      "calendar_entry_id": "pkg_1775022218594_i57fe",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "content_asset_id": "ast_1775021653509_u0shb",
+      "edit_lane": "resolve",
+      "editor": "Unassigned editor",
+      "edit_tier": "basic",
+      "caption_style": "clean readable captions",
+      "status": "queued",
+      "due_date": "2026-04-03",
+      "revision_ceiling": 2,
+      "source_media_ids": [],
+      "footage_ids": [],
+      "notes": "Edit for reach lane. Keep problem-aware messaging intact.",
+      "version": 1,
+      "created_at": "2026-04-01T05:43:38.595Z",
+      "updated_at": "2026-04-01T05:43:38.595Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T05:43:38.594Z",
+      "updatedAt": "2026-04-01T05:43:38.595Z"
+    },
+    {
+      "id": "edt_1775022218578_l1roc",
+      "calendar_entry_id": "pkg_1775022218575_b13uu",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "content_asset_id": "ast_1775021653509_u0shb",
+      "edit_lane": "resolve",
+      "editor": "Unassigned editor",
+      "edit_tier": "basic",
+      "caption_style": "clean readable captions",
+      "status": "queued",
+      "due_date": "2026-04-02",
+      "revision_ceiling": 2,
+      "source_media_ids": [],
+      "footage_ids": [],
+      "notes": "Edit for reach lane. Keep problem-aware messaging intact.",
+      "version": 1,
+      "created_at": "2026-04-01T05:43:38.578Z",
+      "updated_at": "2026-04-01T05:43:38.578Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T05:43:38.575Z",
+      "updatedAt": "2026-04-01T05:43:38.578Z"
+    },
+    {
+      "id": "edt_1775019638800_yaeca",
+      "calendar_entry_id": "pkg_1775019638798_0bvg3",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "content_asset_id": "ast_1775019146561_a3qrc",
+      "edit_lane": "resolve",
+      "editor": "Unassigned editor",
+      "edit_tier": "basic",
+      "caption_style": "clean readable captions",
+      "status": "queued",
+      "due_date": "2026-04-03",
+      "revision_ceiling": 2,
+      "source_media_ids": [],
+      "footage_ids": [],
+      "notes": "Edit for reach lane. Keep problem-aware messaging intact.",
+      "version": 1,
+      "created_at": "2026-04-01T05:00:38.800Z",
+      "updated_at": "2026-04-01T05:00:38.800Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T05:00:38.798Z",
+      "updatedAt": "2026-04-01T05:00:38.800Z"
+    },
+    {
+      "id": "edt_1775019638785_cr47o",
+      "calendar_entry_id": "pkg_1775019638782_0kimz",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "content_asset_id": "ast_1775019146561_a3qrc",
+      "edit_lane": "remotion",
+      "editor": "Unassigned editor",
+      "edit_tier": "basic",
+      "caption_style": "clean readable captions",
+      "status": "queued",
+      "due_date": "2026-04-02",
+      "revision_ceiling": 2,
+      "source_media_ids": [],
+      "footage_ids": [],
+      "notes": "Edit for reach lane. Keep problem-aware messaging intact.",
+      "version": 1,
+      "created_at": "2026-04-01T05:00:38.785Z",
+      "updated_at": "2026-04-01T05:00:38.785Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T05:00:38.782Z",
+      "updatedAt": "2026-04-01T05:00:38.785Z"
+    },
+    {
+      "id": "edt_1775013141836_7p5ub",
+      "calendar_entry_id": "pkg_1775013141834_rr4ax",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "content_asset_id": "ast_1775012546303_4z890",
+      "edit_lane": "resolve",
+      "editor": "Unassigned editor",
+      "edit_tier": "basic",
+      "caption_style": "clean readable captions",
+      "status": "queued",
+      "due_date": "2026-04-02",
+      "revision_ceiling": 2,
+      "source_media_ids": [],
+      "footage_ids": [],
+      "notes": "Edit for reach lane. Keep problem-aware messaging intact.",
+      "version": 1,
+      "created_at": "2026-04-01T03:12:21.836Z",
+      "updated_at": "2026-04-01T03:12:21.836Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T03:12:21.834Z",
+      "updatedAt": "2026-04-01T03:12:21.836Z"
+    },
+    {
+      "id": "edt_1775003515199_zctzk",
+      "calendar_entry_id": "pkg_1775002525679_ancpz",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "content_asset_id": "ast_1775002239788_jc17h",
+      "edit_lane": "resolve",
+      "editor": "Unassigned editor",
+      "edit_tier": "basic",
+      "caption_style": "clean readable captions",
+      "status": "processing",
+      "due_date": "2026-04-02",
+      "revision_ceiling": 2,
+      "source_media_ids": [],
+      "footage_ids": [],
+      "notes": "Edit for reach lane. Keep problem-aware messaging intact.",
+      "version": 1,
+      "created_at": "2026-04-01T00:15:25.679Z",
+      "updated_at": "2026-04-01T01:30:09.375Z",
+      "created_by": "pipeline",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T00:15:25.679Z",
+      "updatedAt": "2026-04-01T01:30:09.375Z"
+    }
+  ],
+  "renderJobs": [
+    {
+      "id": "rnd_1775125859730_x9lv9",
+      "edit_job_id": "edt_1775125859730_i4ggc",
+      "calendar_entry_id": "pkg_1775125859724_n8d1k",
+      "client_id": "cli_default",
+      "content_asset_id": "ast_1775124780290_bxf55",
+      "output_targets": [
+        "instagram_vertical",
+        "tiktok_vertical"
+      ],
+      "public_media_url": "https://public.example.com/render-media/rnd_1775125859730_x9lv9/instagram.mp4",
+      "media_url": "https://public.example.com/render-media/rnd_1775125859730_x9lv9/instagram.mp4",
+      "output_urls": {
+        "instagram": "https://public.example.com/render-media/rnd_1775125859730_x9lv9/instagram.mp4",
+        "tiktok": "https://public.example.com/render-media/rnd_1775125859730_x9lv9/tiktok.mp4"
+      },
+      "local_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775125859730_x9lv9\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775125859730_x9lv9\\tiktok.mp4"
+      },
+      "public_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775125859730_x9lv9\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775125859730_x9lv9\\tiktok.mp4"
+      },
+      "render_host_mode": "public_static_file",
+      "render_seed_source": "C:\\AI-Agents\\deer-flow\\frontend\\public\\demo\\threads\\4f3e55ee-f853-43db-bfb3-7d1a411f03cb\\user-data\\outputs\\darcy-proposal-video.mp4",
+      "status": "queued",
+      "due_date": "2026-04-03",
+      "notes": "Render publish-ready vertical variants for instagram, tiktok.",
+      "version": 1,
+      "created_at": "2026-04-02T10:30:59.730Z",
+      "updated_at": "2026-04-02T10:30:59.730Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-02T10:30:59.724Z",
+      "updatedAt": "2026-04-02T10:30:59.738Z"
+    },
+    {
+      "id": "rnd_1775125179480_2v4dp",
+      "edit_job_id": "edt_1775125179480_0p6vb",
+      "calendar_entry_id": "pkg_1775125179474_luote",
+      "client_id": "cli_default",
+      "content_asset_id": "ast_1775124570797_9ynhx",
+      "output_targets": [
+        "instagram_vertical",
+        "tiktok_vertical"
+      ],
+      "public_media_url": "https://public.example.com/render-media/rnd_1775125179480_2v4dp/instagram.mp4",
+      "media_url": "https://public.example.com/render-media/rnd_1775125179480_2v4dp/instagram.mp4",
+      "output_urls": {
+        "instagram": "https://public.example.com/render-media/rnd_1775125179480_2v4dp/instagram.mp4",
+        "tiktok": "https://public.example.com/render-media/rnd_1775125179480_2v4dp/tiktok.mp4"
+      },
+      "local_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775125179480_2v4dp\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775125179480_2v4dp\\tiktok.mp4"
+      },
+      "public_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775125179480_2v4dp\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775125179480_2v4dp\\tiktok.mp4"
+      },
+      "render_host_mode": "public_static_file",
+      "render_seed_source": "C:\\AI-Agents\\deer-flow\\frontend\\public\\demo\\threads\\4f3e55ee-f853-43db-bfb3-7d1a411f03cb\\user-data\\outputs\\darcy-proposal-video.mp4",
+      "status": "queued",
+      "due_date": "2026-04-03",
+      "notes": "Render publish-ready vertical variants for instagram, tiktok.",
+      "version": 1,
+      "created_at": "2026-04-02T10:19:39.480Z",
+      "updated_at": "2026-04-02T10:19:39.480Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-02T10:19:39.474Z",
+      "updatedAt": "2026-04-02T10:19:39.489Z"
+    },
+    {
+      "id": "rnd_1775121497293_dqg5a",
+      "edit_job_id": "edt_1775121497292_ofrtr",
+      "calendar_entry_id": "pkg_1775121497286_275xf",
+      "client_id": "cli_default",
+      "content_asset_id": "ast_1775120795412_zjryi",
+      "output_targets": [
+        "instagram_vertical",
+        "tiktok_vertical"
+      ],
+      "public_media_url": "https://public.example.com/render-media/rnd_1775121497293_dqg5a/instagram.mp4",
+      "media_url": "https://public.example.com/render-media/rnd_1775121497293_dqg5a/instagram.mp4",
+      "output_urls": {
+        "instagram": "https://public.example.com/render-media/rnd_1775121497293_dqg5a/instagram.mp4",
+        "tiktok": "https://public.example.com/render-media/rnd_1775121497293_dqg5a/tiktok.mp4"
+      },
+      "local_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775121497293_dqg5a\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775121497293_dqg5a\\tiktok.mp4"
+      },
+      "public_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775121497293_dqg5a\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775121497293_dqg5a\\tiktok.mp4"
+      },
+      "render_host_mode": "public_static_file",
+      "render_seed_source": "C:\\AI-Agents\\deer-flow\\frontend\\public\\demo\\threads\\4f3e55ee-f853-43db-bfb3-7d1a411f03cb\\user-data\\outputs\\darcy-proposal-video.mp4",
+      "status": "queued",
+      "due_date": "2026-04-03",
+      "notes": "Render publish-ready vertical variants for instagram, tiktok.",
+      "version": 1,
+      "created_at": "2026-04-02T09:18:17.293Z",
+      "updated_at": "2026-04-02T10:11:27.956Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-02T09:18:17.286Z",
+      "updatedAt": "2026-04-02T10:11:27.964Z"
+    },
+    {
+      "id": "rnd_1775035144054_6ab07",
+      "edit_job_id": "edt_1775035144054_5cdre",
+      "calendar_entry_id": "pkg_1775035144050_tie3w",
+      "client_id": "cli_default",
+      "content_asset_id": "ast_1775034355456_cualw",
+      "output_targets": [
+        "instagram_vertical",
+        "tiktok_vertical"
+      ],
+      "public_media_url": "https://public.example.com/render-media/rnd_1775035144054_6ab07/instagram.mp4",
+      "media_url": "https://public.example.com/render-media/rnd_1775035144054_6ab07/instagram.mp4",
+      "output_urls": {
+        "instagram": "https://public.example.com/render-media/rnd_1775035144054_6ab07/instagram.mp4",
+        "tiktok": "https://public.example.com/render-media/rnd_1775035144054_6ab07/tiktok.mp4"
+      },
+      "local_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775035144054_6ab07\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775035144054_6ab07\\tiktok.mp4"
+      },
+      "public_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775035144054_6ab07\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775035144054_6ab07\\tiktok.mp4"
+      },
+      "render_host_mode": "public_static_file",
+      "render_seed_source": "C:\\AI-Agents\\deer-flow\\frontend\\public\\demo\\threads\\4f3e55ee-f853-43db-bfb3-7d1a411f03cb\\user-data\\outputs\\darcy-proposal-video.mp4",
+      "status": "queued",
+      "due_date": "2026-04-16",
+      "notes": "Render publish-ready vertical variants for instagram, tiktok.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:04.054Z",
+      "updated_at": "2026-04-01T10:12:07.148Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:04.050Z",
+      "updatedAt": "2026-04-01T10:12:07.155Z"
+    },
+    {
+      "id": "rnd_1775035144033_1jh1h",
+      "edit_job_id": "edt_1775035144033_6dhxf",
+      "calendar_entry_id": "pkg_1775035144027_7wxme",
+      "client_id": "cli_default",
+      "content_asset_id": "ast_1775034355456_cualw",
+      "output_targets": [
+        "instagram_vertical",
+        "tiktok_vertical"
+      ],
+      "public_media_url": "https://public.example.com/render-media/rnd_1775035144033_1jh1h/instagram.mp4",
+      "media_url": "https://public.example.com/render-media/rnd_1775035144033_1jh1h/instagram.mp4",
+      "output_urls": {
+        "instagram": "https://public.example.com/render-media/rnd_1775035144033_1jh1h/instagram.mp4",
+        "tiktok": "https://public.example.com/render-media/rnd_1775035144033_1jh1h/tiktok.mp4"
+      },
+      "local_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775035144033_1jh1h\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775035144033_1jh1h\\tiktok.mp4"
+      },
+      "public_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775035144033_1jh1h\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775035144033_1jh1h\\tiktok.mp4"
+      },
+      "render_host_mode": "public_static_file",
+      "render_seed_source": "C:\\AI-Agents\\deer-flow\\frontend\\public\\demo\\threads\\4f3e55ee-f853-43db-bfb3-7d1a411f03cb\\user-data\\outputs\\darcy-proposal-video.mp4",
+      "status": "queued",
+      "due_date": "2026-04-15",
+      "notes": "Render publish-ready vertical variants for instagram, tiktok.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:04.033Z",
+      "updated_at": "2026-04-01T09:19:04.033Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:04.027Z",
+      "updatedAt": "2026-04-01T09:19:04.042Z"
+    },
+    {
+      "id": "rnd_1775035144012_0b4d7",
+      "edit_job_id": "edt_1775035144012_18d16",
+      "calendar_entry_id": "pkg_1775035144007_0lrx7",
+      "client_id": "cli_default",
+      "content_asset_id": "ast_1775034355456_cualw",
+      "output_targets": [
+        "instagram_vertical",
+        "tiktok_vertical"
+      ],
+      "public_media_url": "https://public.example.com/render-media/rnd_1775035144012_0b4d7/instagram.mp4",
+      "media_url": "https://public.example.com/render-media/rnd_1775035144012_0b4d7/instagram.mp4",
+      "output_urls": {
+        "instagram": "https://public.example.com/render-media/rnd_1775035144012_0b4d7/instagram.mp4",
+        "tiktok": "https://public.example.com/render-media/rnd_1775035144012_0b4d7/tiktok.mp4"
+      },
+      "local_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775035144012_0b4d7\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775035144012_0b4d7\\tiktok.mp4"
+      },
+      "public_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775035144012_0b4d7\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775035144012_0b4d7\\tiktok.mp4"
+      },
+      "render_host_mode": "public_static_file",
+      "render_seed_source": "C:\\AI-Agents\\deer-flow\\frontend\\public\\demo\\threads\\4f3e55ee-f853-43db-bfb3-7d1a411f03cb\\user-data\\outputs\\darcy-proposal-video.mp4",
+      "status": "queued",
+      "due_date": "2026-04-14",
+      "notes": "Render publish-ready vertical variants for instagram, tiktok.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:04.012Z",
+      "updated_at": "2026-04-01T09:19:04.012Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:04.007Z",
+      "updatedAt": "2026-04-01T09:19:04.021Z"
+    },
+    {
+      "id": "rnd_1775035143990_nix3b",
+      "edit_job_id": "edt_1775035143990_skgp9",
+      "calendar_entry_id": "pkg_1775035143986_rml5b",
+      "client_id": "cli_default",
+      "content_asset_id": "ast_1775034355456_cualw",
+      "output_targets": [
+        "instagram_vertical",
+        "tiktok_vertical"
+      ],
+      "public_media_url": "https://public.example.com/render-media/rnd_1775035143990_nix3b/instagram.mp4",
+      "media_url": "https://public.example.com/render-media/rnd_1775035143990_nix3b/instagram.mp4",
+      "output_urls": {
+        "instagram": "https://public.example.com/render-media/rnd_1775035143990_nix3b/instagram.mp4",
+        "tiktok": "https://public.example.com/render-media/rnd_1775035143990_nix3b/tiktok.mp4"
+      },
+      "local_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775035143990_nix3b\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775035143990_nix3b\\tiktok.mp4"
+      },
+      "public_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775035143990_nix3b\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775035143990_nix3b\\tiktok.mp4"
+      },
+      "render_host_mode": "public_static_file",
+      "render_seed_source": "C:\\AI-Agents\\deer-flow\\frontend\\public\\demo\\threads\\4f3e55ee-f853-43db-bfb3-7d1a411f03cb\\user-data\\outputs\\darcy-proposal-video.mp4",
+      "status": "queued",
+      "due_date": "2026-04-13",
+      "notes": "Render publish-ready vertical variants for instagram, tiktok.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:03.990Z",
+      "updated_at": "2026-04-01T09:19:03.990Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:03.986Z",
+      "updatedAt": "2026-04-01T09:19:04.001Z"
+    },
+    {
+      "id": "rnd_1775035143970_50a7x",
+      "edit_job_id": "edt_1775035143970_zbo5f",
+      "calendar_entry_id": "pkg_1775035143965_7km32",
+      "client_id": "cli_default",
+      "content_asset_id": "ast_1775034355456_cualw",
+      "output_targets": [
+        "instagram_vertical",
+        "tiktok_vertical"
+      ],
+      "public_media_url": "https://public.example.com/render-media/rnd_1775035143970_50a7x/instagram.mp4",
+      "media_url": "https://public.example.com/render-media/rnd_1775035143970_50a7x/instagram.mp4",
+      "output_urls": {
+        "instagram": "https://public.example.com/render-media/rnd_1775035143970_50a7x/instagram.mp4",
+        "tiktok": "https://public.example.com/render-media/rnd_1775035143970_50a7x/tiktok.mp4"
+      },
+      "local_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775035143970_50a7x\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775035143970_50a7x\\tiktok.mp4"
+      },
+      "public_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775035143970_50a7x\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775035143970_50a7x\\tiktok.mp4"
+      },
+      "render_host_mode": "public_static_file",
+      "render_seed_source": "C:\\AI-Agents\\deer-flow\\frontend\\public\\demo\\threads\\4f3e55ee-f853-43db-bfb3-7d1a411f03cb\\user-data\\outputs\\darcy-proposal-video.mp4",
+      "status": "queued",
+      "due_date": "2026-04-12",
+      "notes": "Render publish-ready vertical variants for instagram, tiktok.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:03.970Z",
+      "updated_at": "2026-04-01T09:19:03.970Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:03.965Z",
+      "updatedAt": "2026-04-01T09:19:03.980Z"
+    },
+    {
+      "id": "rnd_1775035143945_u2tga",
+      "edit_job_id": "edt_1775035143945_uva1c",
+      "calendar_entry_id": "pkg_1775035143941_jzpyh",
+      "client_id": "cli_default",
+      "content_asset_id": "ast_1775034355456_cualw",
+      "output_targets": [
+        "instagram_vertical",
+        "tiktok_vertical"
+      ],
+      "public_media_url": "https://public.example.com/render-media/rnd_1775035143945_u2tga/instagram.mp4",
+      "media_url": "https://public.example.com/render-media/rnd_1775035143945_u2tga/instagram.mp4",
+      "output_urls": {
+        "instagram": "https://public.example.com/render-media/rnd_1775035143945_u2tga/instagram.mp4",
+        "tiktok": "https://public.example.com/render-media/rnd_1775035143945_u2tga/tiktok.mp4"
+      },
+      "local_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775035143945_u2tga\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775035143945_u2tga\\tiktok.mp4"
+      },
+      "public_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775035143945_u2tga\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775035143945_u2tga\\tiktok.mp4"
+      },
+      "render_host_mode": "public_static_file",
+      "render_seed_source": "C:\\AI-Agents\\deer-flow\\frontend\\public\\demo\\threads\\4f3e55ee-f853-43db-bfb3-7d1a411f03cb\\user-data\\outputs\\darcy-proposal-video.mp4",
+      "status": "queued",
+      "due_date": "2026-04-11",
+      "notes": "Render publish-ready vertical variants for instagram, tiktok.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:03.945Z",
+      "updated_at": "2026-04-01T09:19:03.945Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:03.941Z",
+      "updatedAt": "2026-04-01T09:19:03.957Z"
+    },
+    {
+      "id": "rnd_1775035143925_qig6y",
+      "edit_job_id": "edt_1775035143925_n0qff",
+      "calendar_entry_id": "pkg_1775035143922_halxx",
+      "client_id": "cli_default",
+      "content_asset_id": "ast_1775034355456_cualw",
+      "output_targets": [
+        "instagram_vertical",
+        "tiktok_vertical"
+      ],
+      "public_media_url": "https://public.example.com/render-media/rnd_1775035143925_qig6y/instagram.mp4",
+      "media_url": "https://public.example.com/render-media/rnd_1775035143925_qig6y/instagram.mp4",
+      "output_urls": {
+        "instagram": "https://public.example.com/render-media/rnd_1775035143925_qig6y/instagram.mp4",
+        "tiktok": "https://public.example.com/render-media/rnd_1775035143925_qig6y/tiktok.mp4"
+      },
+      "local_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775035143925_qig6y\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775035143925_qig6y\\tiktok.mp4"
+      },
+      "public_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775035143925_qig6y\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775035143925_qig6y\\tiktok.mp4"
+      },
+      "render_host_mode": "public_static_file",
+      "render_seed_source": "C:\\AI-Agents\\deer-flow\\frontend\\public\\demo\\threads\\4f3e55ee-f853-43db-bfb3-7d1a411f03cb\\user-data\\outputs\\darcy-proposal-video.mp4",
+      "status": "queued",
+      "due_date": "2026-04-10",
+      "notes": "Render publish-ready vertical variants for instagram, tiktok.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:03.925Z",
+      "updated_at": "2026-04-01T09:19:03.925Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:03.922Z",
+      "updatedAt": "2026-04-01T09:19:03.934Z"
+    },
+    {
+      "id": "rnd_1775035143903_58brs",
+      "edit_job_id": "edt_1775035143903_8oj3t",
+      "calendar_entry_id": "pkg_1775035143899_ar1f2",
+      "client_id": "cli_default",
+      "content_asset_id": "ast_1775034355456_cualw",
+      "output_targets": [
+        "instagram_vertical",
+        "tiktok_vertical"
+      ],
+      "public_media_url": "https://public.example.com/render-media/rnd_1775035143903_58brs/instagram.mp4",
+      "media_url": "https://public.example.com/render-media/rnd_1775035143903_58brs/instagram.mp4",
+      "output_urls": {
+        "instagram": "https://public.example.com/render-media/rnd_1775035143903_58brs/instagram.mp4",
+        "tiktok": "https://public.example.com/render-media/rnd_1775035143903_58brs/tiktok.mp4"
+      },
+      "local_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775035143903_58brs\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775035143903_58brs\\tiktok.mp4"
+      },
+      "public_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775035143903_58brs\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775035143903_58brs\\tiktok.mp4"
+      },
+      "render_host_mode": "public_static_file",
+      "render_seed_source": "C:\\AI-Agents\\deer-flow\\frontend\\public\\demo\\threads\\4f3e55ee-f853-43db-bfb3-7d1a411f03cb\\user-data\\outputs\\darcy-proposal-video.mp4",
+      "status": "queued",
+      "due_date": "2026-04-09",
+      "notes": "Render publish-ready vertical variants for instagram, tiktok.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:03.903Z",
+      "updated_at": "2026-04-01T09:19:03.903Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:03.899Z",
+      "updatedAt": "2026-04-01T09:19:03.914Z"
+    },
+    {
+      "id": "rnd_1775035143883_5qnnm",
+      "edit_job_id": "edt_1775035143883_dovks",
+      "calendar_entry_id": "pkg_1775035143880_56z3l",
+      "client_id": "cli_default",
+      "content_asset_id": "ast_1775034355456_cualw",
+      "output_targets": [
+        "instagram_vertical",
+        "tiktok_vertical"
+      ],
+      "public_media_url": "https://public.example.com/render-media/rnd_1775035143883_5qnnm/instagram.mp4",
+      "media_url": "https://public.example.com/render-media/rnd_1775035143883_5qnnm/instagram.mp4",
+      "output_urls": {
+        "instagram": "https://public.example.com/render-media/rnd_1775035143883_5qnnm/instagram.mp4",
+        "tiktok": "https://public.example.com/render-media/rnd_1775035143883_5qnnm/tiktok.mp4"
+      },
+      "local_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775035143883_5qnnm\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775035143883_5qnnm\\tiktok.mp4"
+      },
+      "public_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775035143883_5qnnm\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775035143883_5qnnm\\tiktok.mp4"
+      },
+      "render_host_mode": "public_static_file",
+      "render_seed_source": "C:\\AI-Agents\\deer-flow\\frontend\\public\\demo\\threads\\4f3e55ee-f853-43db-bfb3-7d1a411f03cb\\user-data\\outputs\\darcy-proposal-video.mp4",
+      "status": "queued",
+      "due_date": "2026-04-08",
+      "notes": "Render publish-ready vertical variants for instagram, tiktok.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:03.883Z",
+      "updated_at": "2026-04-01T09:19:03.883Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:03.880Z",
+      "updatedAt": "2026-04-01T09:19:03.893Z"
+    },
+    {
+      "id": "rnd_1775035143868_huqbq",
+      "edit_job_id": "edt_1775035143868_9w7nj",
+      "calendar_entry_id": "pkg_1775035143866_2c7f2",
+      "client_id": "cli_default",
+      "content_asset_id": "ast_1775034355456_cualw",
+      "output_targets": [
+        "instagram_vertical",
+        "tiktok_vertical"
+      ],
+      "public_media_url": "https://public.example.com/render-media/rnd_1775035143868_huqbq/instagram.mp4",
+      "media_url": "https://public.example.com/render-media/rnd_1775035143868_huqbq/instagram.mp4",
+      "output_urls": {
+        "instagram": "https://public.example.com/render-media/rnd_1775035143868_huqbq/instagram.mp4",
+        "tiktok": "https://public.example.com/render-media/rnd_1775035143868_huqbq/tiktok.mp4"
+      },
+      "local_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775035143868_huqbq\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775035143868_huqbq\\tiktok.mp4"
+      },
+      "public_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775035143868_huqbq\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775035143868_huqbq\\tiktok.mp4"
+      },
+      "render_host_mode": "public_static_file",
+      "render_seed_source": "C:\\AI-Agents\\deer-flow\\frontend\\public\\demo\\threads\\4f3e55ee-f853-43db-bfb3-7d1a411f03cb\\user-data\\outputs\\darcy-proposal-video.mp4",
+      "status": "queued",
+      "due_date": "2026-04-07",
+      "notes": "Render publish-ready vertical variants for instagram, tiktok.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:03.868Z",
+      "updated_at": "2026-04-01T09:19:03.868Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:03.866Z",
+      "updatedAt": "2026-04-01T09:19:03.876Z"
+    },
+    {
+      "id": "rnd_1775035143853_p8v9q",
+      "edit_job_id": "edt_1775035143853_qb5qe",
+      "calendar_entry_id": "pkg_1775035143850_6imzt",
+      "client_id": "cli_default",
+      "content_asset_id": "ast_1775034355456_cualw",
+      "output_targets": [
+        "instagram_vertical",
+        "tiktok_vertical"
+      ],
+      "public_media_url": "https://public.example.com/render-media/rnd_1775035143853_p8v9q/instagram.mp4",
+      "media_url": "https://public.example.com/render-media/rnd_1775035143853_p8v9q/instagram.mp4",
+      "output_urls": {
+        "instagram": "https://public.example.com/render-media/rnd_1775035143853_p8v9q/instagram.mp4",
+        "tiktok": "https://public.example.com/render-media/rnd_1775035143853_p8v9q/tiktok.mp4"
+      },
+      "local_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775035143853_p8v9q\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775035143853_p8v9q\\tiktok.mp4"
+      },
+      "public_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775035143853_p8v9q\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775035143853_p8v9q\\tiktok.mp4"
+      },
+      "render_host_mode": "public_static_file",
+      "render_seed_source": "C:\\AI-Agents\\deer-flow\\frontend\\public\\demo\\threads\\4f3e55ee-f853-43db-bfb3-7d1a411f03cb\\user-data\\outputs\\darcy-proposal-video.mp4",
+      "status": "queued",
+      "due_date": "2026-04-06",
+      "notes": "Render publish-ready vertical variants for instagram, tiktok.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:03.853Z",
+      "updated_at": "2026-04-01T09:19:03.853Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:03.850Z",
+      "updatedAt": "2026-04-01T09:19:03.861Z"
+    },
+    {
+      "id": "rnd_1775035143838_e6py1",
+      "edit_job_id": "edt_1775035143838_hzmzt",
+      "calendar_entry_id": "pkg_1775035143836_b0rk4",
+      "client_id": "cli_default",
+      "content_asset_id": "ast_1775034355456_cualw",
+      "output_targets": [
+        "instagram_vertical",
+        "tiktok_vertical"
+      ],
+      "public_media_url": "https://public.example.com/render-media/rnd_1775035143838_e6py1/instagram.mp4",
+      "media_url": "https://public.example.com/render-media/rnd_1775035143838_e6py1/instagram.mp4",
+      "output_urls": {
+        "instagram": "https://public.example.com/render-media/rnd_1775035143838_e6py1/instagram.mp4",
+        "tiktok": "https://public.example.com/render-media/rnd_1775035143838_e6py1/tiktok.mp4"
+      },
+      "local_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775035143838_e6py1\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775035143838_e6py1\\tiktok.mp4"
+      },
+      "public_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775035143838_e6py1\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775035143838_e6py1\\tiktok.mp4"
+      },
+      "render_host_mode": "public_static_file",
+      "render_seed_source": "C:\\AI-Agents\\deer-flow\\frontend\\public\\demo\\threads\\4f3e55ee-f853-43db-bfb3-7d1a411f03cb\\user-data\\outputs\\darcy-proposal-video.mp4",
+      "status": "queued",
+      "due_date": "2026-04-05",
+      "notes": "Render publish-ready vertical variants for instagram, tiktok.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:03.838Z",
+      "updated_at": "2026-04-01T09:19:03.838Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:03.836Z",
+      "updatedAt": "2026-04-01T09:19:03.846Z"
+    },
+    {
+      "id": "rnd_1775035143824_7ufrh",
+      "edit_job_id": "edt_1775035143824_p4v5w",
+      "calendar_entry_id": "pkg_1775035143822_207o5",
+      "client_id": "cli_default",
+      "content_asset_id": "ast_1775034355456_cualw",
+      "output_targets": [
+        "instagram_vertical",
+        "tiktok_vertical"
+      ],
+      "public_media_url": "https://public.example.com/render-media/rnd_1775035143824_7ufrh/instagram.mp4",
+      "media_url": "https://public.example.com/render-media/rnd_1775035143824_7ufrh/instagram.mp4",
+      "output_urls": {
+        "instagram": "https://public.example.com/render-media/rnd_1775035143824_7ufrh/instagram.mp4",
+        "tiktok": "https://public.example.com/render-media/rnd_1775035143824_7ufrh/tiktok.mp4"
+      },
+      "local_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775035143824_7ufrh\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775035143824_7ufrh\\tiktok.mp4"
+      },
+      "public_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775035143824_7ufrh\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775035143824_7ufrh\\tiktok.mp4"
+      },
+      "render_host_mode": "public_static_file",
+      "render_seed_source": "C:\\AI-Agents\\deer-flow\\frontend\\public\\demo\\threads\\4f3e55ee-f853-43db-bfb3-7d1a411f03cb\\user-data\\outputs\\darcy-proposal-video.mp4",
+      "status": "queued",
+      "due_date": "2026-04-04",
+      "notes": "Render publish-ready vertical variants for instagram, tiktok.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:03.824Z",
+      "updated_at": "2026-04-01T09:19:03.824Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:03.822Z",
+      "updatedAt": "2026-04-01T09:19:03.832Z"
+    },
+    {
+      "id": "rnd_1775035143811_xl6a0",
+      "edit_job_id": "edt_1775035143811_qct4z",
+      "calendar_entry_id": "pkg_1775035143808_8ak6q",
+      "client_id": "cli_default",
+      "content_asset_id": "ast_1775034355456_cualw",
+      "output_targets": [
+        "instagram_vertical",
+        "tiktok_vertical"
+      ],
+      "public_media_url": "https://public.example.com/render-media/rnd_1775035143811_xl6a0/instagram.mp4",
+      "media_url": "https://public.example.com/render-media/rnd_1775035143811_xl6a0/instagram.mp4",
+      "output_urls": {
+        "instagram": "https://public.example.com/render-media/rnd_1775035143811_xl6a0/instagram.mp4",
+        "tiktok": "https://public.example.com/render-media/rnd_1775035143811_xl6a0/tiktok.mp4"
+      },
+      "local_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775035143811_xl6a0\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775035143811_xl6a0\\tiktok.mp4"
+      },
+      "public_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775035143811_xl6a0\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775035143811_xl6a0\\tiktok.mp4"
+      },
+      "render_host_mode": "public_static_file",
+      "render_seed_source": "C:\\AI-Agents\\deer-flow\\frontend\\public\\demo\\threads\\4f3e55ee-f853-43db-bfb3-7d1a411f03cb\\user-data\\outputs\\darcy-proposal-video.mp4",
+      "status": "queued",
+      "due_date": "2026-04-03",
+      "notes": "Render publish-ready vertical variants for instagram, tiktok.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:03.811Z",
+      "updated_at": "2026-04-01T09:19:03.811Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:03.808Z",
+      "updatedAt": "2026-04-01T09:19:03.818Z"
+    },
+    {
+      "id": "rnd_1775035143796_tr6o4",
+      "edit_job_id": "edt_1775035143796_znw5s",
+      "calendar_entry_id": "pkg_1775035143793_1y48e",
+      "client_id": "cli_default",
+      "content_asset_id": "ast_1775034355456_cualw",
+      "output_targets": [
+        "instagram_vertical",
+        "tiktok_vertical"
+      ],
+      "public_media_url": "https://public.example.com/render-media/rnd_1775035143796_tr6o4/instagram.mp4",
+      "media_url": "https://public.example.com/render-media/rnd_1775035143796_tr6o4/instagram.mp4",
+      "output_urls": {
+        "instagram": "https://public.example.com/render-media/rnd_1775035143796_tr6o4/instagram.mp4",
+        "tiktok": "https://public.example.com/render-media/rnd_1775035143796_tr6o4/tiktok.mp4"
+      },
+      "local_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775035143796_tr6o4\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775035143796_tr6o4\\tiktok.mp4"
+      },
+      "public_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775035143796_tr6o4\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775035143796_tr6o4\\tiktok.mp4"
+      },
+      "render_host_mode": "public_static_file",
+      "render_seed_source": "C:\\AI-Agents\\deer-flow\\frontend\\public\\demo\\threads\\4f3e55ee-f853-43db-bfb3-7d1a411f03cb\\user-data\\outputs\\darcy-proposal-video.mp4",
+      "status": "queued",
+      "due_date": "2026-04-02",
+      "notes": "Render publish-ready vertical variants for instagram, tiktok.",
+      "version": 1,
+      "created_at": "2026-04-01T09:19:03.796Z",
+      "updated_at": "2026-04-01T09:19:03.796Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:19:03.793Z",
+      "updatedAt": "2026-04-01T09:19:03.803Z"
+    },
+    {
+      "id": "rnd_1775034893025_8cd6n",
+      "edit_job_id": "edt_1775034893025_0n2xg",
+      "calendar_entry_id": "pkg_1775034893022_cehr4",
+      "client_id": "cli_default",
+      "content_asset_id": "ast_1775034325276_h7i59",
+      "output_targets": [
+        "instagram_vertical",
+        "tiktok_vertical"
+      ],
+      "public_media_url": "https://public.example.com/render-media/rnd_1775034893025_8cd6n/instagram.mp4",
+      "media_url": "https://public.example.com/render-media/rnd_1775034893025_8cd6n/instagram.mp4",
+      "output_urls": {
+        "instagram": "https://public.example.com/render-media/rnd_1775034893025_8cd6n/instagram.mp4",
+        "tiktok": "https://public.example.com/render-media/rnd_1775034893025_8cd6n/tiktok.mp4"
+      },
+      "local_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775034893025_8cd6n\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775034893025_8cd6n\\tiktok.mp4"
+      },
+      "public_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775034893025_8cd6n\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775034893025_8cd6n\\tiktok.mp4"
+      },
+      "render_host_mode": "public_static_file",
+      "render_seed_source": "C:\\AI-Agents\\deer-flow\\frontend\\public\\demo\\threads\\4f3e55ee-f853-43db-bfb3-7d1a411f03cb\\user-data\\outputs\\darcy-proposal-video.mp4",
+      "status": "queued",
+      "due_date": "2026-04-02",
+      "notes": "Render publish-ready vertical variants for instagram, tiktok.",
+      "version": 1,
+      "created_at": "2026-04-01T09:14:53.025Z",
+      "updated_at": "2026-04-01T09:14:53.025Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T09:14:53.022Z",
+      "updatedAt": "2026-04-01T09:14:53.036Z"
+    },
+    {
+      "id": "rnd_1775032319752_ags1t",
+      "edit_job_id": "edt_1775032319752_alnxx",
+      "calendar_entry_id": "pkg_1775032319749_78gpr",
+      "client_id": "cli_default",
+      "content_asset_id": "ast_1775031825422_g0c7r",
+      "output_targets": [
+        "instagram_vertical",
+        "tiktok_vertical"
+      ],
+      "public_media_url": "https://public.example.com/render-media/rnd_1775032319752_ags1t/instagram.mp4",
+      "media_url": "https://public.example.com/render-media/rnd_1775032319752_ags1t/instagram.mp4",
+      "output_urls": {
+        "instagram": "https://public.example.com/render-media/rnd_1775032319752_ags1t/instagram.mp4",
+        "tiktok": "https://public.example.com/render-media/rnd_1775032319752_ags1t/tiktok.mp4"
+      },
+      "local_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775032319752_ags1t\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775032319752_ags1t\\tiktok.mp4"
+      },
+      "public_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775032319752_ags1t\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775032319752_ags1t\\tiktok.mp4"
+      },
+      "render_host_mode": "public_static_file",
+      "render_seed_source": "C:\\AI-Agents\\deer-flow\\frontend\\public\\demo\\threads\\4f3e55ee-f853-43db-bfb3-7d1a411f03cb\\user-data\\outputs\\darcy-proposal-video.mp4",
+      "status": "queued",
+      "due_date": "2026-04-02",
+      "notes": "Render publish-ready vertical variants for instagram, tiktok.",
+      "version": 1,
+      "created_at": "2026-04-01T08:31:59.752Z",
+      "updated_at": "2026-04-01T08:31:59.752Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T08:31:59.749Z",
+      "updatedAt": "2026-04-01T08:31:59.759Z"
+    },
+    {
+      "id": "rnd_1775031502433_94dm2",
+      "edit_job_id": "edt_1775031502433_q078r",
+      "calendar_entry_id": "pkg_1775031502431_bi1vc",
+      "client_id": "cli_default",
+      "content_asset_id": "ast_1775030962664_6eymg",
+      "output_targets": [
+        "instagram_vertical",
+        "tiktok_vertical"
+      ],
+      "public_media_url": "https://public.example.com/render-media/rnd_1775031502433_94dm2/instagram.mp4",
+      "media_url": "https://public.example.com/render-media/rnd_1775031502433_94dm2/instagram.mp4",
+      "output_urls": {
+        "instagram": "https://public.example.com/render-media/rnd_1775031502433_94dm2/instagram.mp4",
+        "tiktok": "https://public.example.com/render-media/rnd_1775031502433_94dm2/tiktok.mp4"
+      },
+      "local_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775031502433_94dm2\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775031502433_94dm2\\tiktok.mp4"
+      },
+      "public_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775031502433_94dm2\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775031502433_94dm2\\tiktok.mp4"
+      },
+      "render_host_mode": "public_static_file",
+      "render_seed_source": "C:\\AI-Agents\\deer-flow\\frontend\\public\\demo\\threads\\4f3e55ee-f853-43db-bfb3-7d1a411f03cb\\user-data\\outputs\\darcy-proposal-video.mp4",
+      "status": "queued",
+      "due_date": "2026-04-02",
+      "notes": "Render publish-ready vertical variants for instagram, tiktok.",
+      "version": 1,
+      "created_at": "2026-04-01T08:18:22.433Z",
+      "updated_at": "2026-04-01T08:18:22.433Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T08:18:22.431Z",
+      "updatedAt": "2026-04-01T08:18:22.442Z"
+    },
+    {
+      "id": "rnd_1775031473824_st4s5",
+      "edit_job_id": "edt_1775031473824_qw3ks",
+      "calendar_entry_id": "pkg_1775031473820_ha57d",
+      "client_id": "cli_default",
+      "content_asset_id": "ast_1775030899638_nmyqr",
+      "output_targets": [
+        "instagram_vertical",
+        "tiktok_vertical"
+      ],
+      "public_media_url": "https://public.example.com/render-media/rnd_1775031473824_st4s5/instagram.mp4",
+      "media_url": "https://public.example.com/render-media/rnd_1775031473824_st4s5/instagram.mp4",
+      "output_urls": {
+        "instagram": "https://public.example.com/render-media/rnd_1775031473824_st4s5/instagram.mp4",
+        "tiktok": "https://public.example.com/render-media/rnd_1775031473824_st4s5/tiktok.mp4"
+      },
+      "local_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775031473824_st4s5\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775031473824_st4s5\\tiktok.mp4"
+      },
+      "public_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775031473824_st4s5\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775031473824_st4s5\\tiktok.mp4"
+      },
+      "render_host_mode": "public_static_file",
+      "render_seed_source": "C:\\AI-Agents\\deer-flow\\frontend\\public\\demo\\threads\\4f3e55ee-f853-43db-bfb3-7d1a411f03cb\\user-data\\outputs\\darcy-proposal-video.mp4",
+      "status": "queued",
+      "due_date": "2026-04-02",
+      "notes": "Render publish-ready vertical variants for instagram, tiktok.",
+      "version": 1,
+      "created_at": "2026-04-01T08:17:53.824Z",
+      "updated_at": "2026-04-01T08:17:53.824Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T08:17:53.820Z",
+      "updatedAt": "2026-04-01T08:17:53.837Z"
+    },
+    {
+      "id": "rnd_1775022218650_u5kwj",
+      "edit_job_id": "edt_1775022218650_p55zo",
+      "calendar_entry_id": "pkg_1775022218648_mou7f",
+      "client_id": "cli_default",
+      "content_asset_id": "ast_1775021653509_u0shb",
+      "output_targets": [
+        "instagram_vertical",
+        "tiktok_vertical"
+      ],
+      "public_media_url": "https://public.example.com/render-media/rnd_1775022218650_u5kwj/instagram.mp4",
+      "media_url": "https://public.example.com/render-media/rnd_1775022218650_u5kwj/instagram.mp4",
+      "output_urls": {
+        "instagram": "https://public.example.com/render-media/rnd_1775022218650_u5kwj/instagram.mp4",
+        "tiktok": "https://public.example.com/render-media/rnd_1775022218650_u5kwj/tiktok.mp4"
+      },
+      "local_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775022218650_u5kwj\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775022218650_u5kwj\\tiktok.mp4"
+      },
+      "public_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775022218650_u5kwj\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775022218650_u5kwj\\tiktok.mp4"
+      },
+      "render_host_mode": "public_static_file",
+      "render_seed_source": "C:\\AI-Agents\\deer-flow\\frontend\\public\\demo\\threads\\4f3e55ee-f853-43db-bfb3-7d1a411f03cb\\user-data\\outputs\\darcy-proposal-video.mp4",
+      "status": "queued",
+      "due_date": "2026-04-06",
+      "notes": "Render publish-ready vertical variants for instagram, tiktok.",
+      "version": 1,
+      "created_at": "2026-04-01T05:43:38.650Z",
+      "updated_at": "2026-04-01T05:43:38.650Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T05:43:38.648Z",
+      "updatedAt": "2026-04-01T05:43:38.659Z"
+    },
+    {
+      "id": "rnd_1775022218633_x2q9t",
+      "edit_job_id": "edt_1775022218633_5p9n2",
+      "calendar_entry_id": "pkg_1775022218631_ikwkw",
+      "client_id": "cli_default",
+      "content_asset_id": "ast_1775021653509_u0shb",
+      "output_targets": [
+        "instagram_vertical",
+        "tiktok_vertical"
+      ],
+      "public_media_url": "https://public.example.com/render-media/rnd_1775022218633_x2q9t/instagram.mp4",
+      "media_url": "https://public.example.com/render-media/rnd_1775022218633_x2q9t/instagram.mp4",
+      "output_urls": {
+        "instagram": "https://public.example.com/render-media/rnd_1775022218633_x2q9t/instagram.mp4",
+        "tiktok": "https://public.example.com/render-media/rnd_1775022218633_x2q9t/tiktok.mp4"
+      },
+      "local_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775022218633_x2q9t\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775022218633_x2q9t\\tiktok.mp4"
+      },
+      "public_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775022218633_x2q9t\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775022218633_x2q9t\\tiktok.mp4"
+      },
+      "render_host_mode": "public_static_file",
+      "render_seed_source": "C:\\AI-Agents\\deer-flow\\frontend\\public\\demo\\threads\\4f3e55ee-f853-43db-bfb3-7d1a411f03cb\\user-data\\outputs\\darcy-proposal-video.mp4",
+      "status": "queued",
+      "due_date": "2026-04-05",
+      "notes": "Render publish-ready vertical variants for instagram, tiktok.",
+      "version": 1,
+      "created_at": "2026-04-01T05:43:38.633Z",
+      "updated_at": "2026-04-01T05:43:38.633Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T05:43:38.631Z",
+      "updatedAt": "2026-04-01T05:43:38.645Z"
+    },
+    {
+      "id": "rnd_1775022218616_i1adr",
+      "edit_job_id": "edt_1775022218616_nkade",
+      "calendar_entry_id": "pkg_1775022218613_t9ddu",
+      "client_id": "cli_default",
+      "content_asset_id": "ast_1775021653509_u0shb",
+      "output_targets": [
+        "instagram_vertical",
+        "tiktok_vertical"
+      ],
+      "public_media_url": "https://public.example.com/render-media/rnd_1775022218616_i1adr/instagram.mp4",
+      "media_url": "https://public.example.com/render-media/rnd_1775022218616_i1adr/instagram.mp4",
+      "output_urls": {
+        "instagram": "https://public.example.com/render-media/rnd_1775022218616_i1adr/instagram.mp4",
+        "tiktok": "https://public.example.com/render-media/rnd_1775022218616_i1adr/tiktok.mp4"
+      },
+      "local_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775022218616_i1adr\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775022218616_i1adr\\tiktok.mp4"
+      },
+      "public_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775022218616_i1adr\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775022218616_i1adr\\tiktok.mp4"
+      },
+      "render_host_mode": "public_static_file",
+      "render_seed_source": "C:\\AI-Agents\\deer-flow\\frontend\\public\\demo\\threads\\4f3e55ee-f853-43db-bfb3-7d1a411f03cb\\user-data\\outputs\\darcy-proposal-video.mp4",
+      "status": "queued",
+      "due_date": "2026-04-04",
+      "notes": "Render publish-ready vertical variants for instagram, tiktok.",
+      "version": 1,
+      "created_at": "2026-04-01T05:43:38.616Z",
+      "updated_at": "2026-04-01T05:43:38.616Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T05:43:38.614Z",
+      "updatedAt": "2026-04-01T05:43:38.626Z"
+    },
+    {
+      "id": "rnd_1775022218595_2g8wq",
+      "edit_job_id": "edt_1775022218595_bg5ki",
+      "calendar_entry_id": "pkg_1775022218594_i57fe",
+      "client_id": "cli_default",
+      "content_asset_id": "ast_1775021653509_u0shb",
+      "output_targets": [
+        "instagram_vertical",
+        "tiktok_vertical"
+      ],
+      "public_media_url": "https://public.example.com/render-media/rnd_1775022218595_2g8wq/instagram.mp4",
+      "media_url": "https://public.example.com/render-media/rnd_1775022218595_2g8wq/instagram.mp4",
+      "output_urls": {
+        "instagram": "https://public.example.com/render-media/rnd_1775022218595_2g8wq/instagram.mp4",
+        "tiktok": "https://public.example.com/render-media/rnd_1775022218595_2g8wq/tiktok.mp4"
+      },
+      "local_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775022218595_2g8wq\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775022218595_2g8wq\\tiktok.mp4"
+      },
+      "public_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775022218595_2g8wq\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775022218595_2g8wq\\tiktok.mp4"
+      },
+      "render_host_mode": "public_static_file",
+      "render_seed_source": "C:\\AI-Agents\\deer-flow\\frontend\\public\\demo\\threads\\4f3e55ee-f853-43db-bfb3-7d1a411f03cb\\user-data\\outputs\\darcy-proposal-video.mp4",
+      "status": "queued",
+      "due_date": "2026-04-03",
+      "notes": "Render publish-ready vertical variants for instagram, tiktok.",
+      "version": 1,
+      "created_at": "2026-04-01T05:43:38.595Z",
+      "updated_at": "2026-04-01T05:43:38.595Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T05:43:38.594Z",
+      "updatedAt": "2026-04-01T05:43:38.606Z"
+    },
+    {
+      "id": "rnd_1775022218578_3ip7t",
+      "edit_job_id": "edt_1775022218578_l1roc",
+      "calendar_entry_id": "pkg_1775022218575_b13uu",
+      "client_id": "cli_default",
+      "content_asset_id": "ast_1775021653509_u0shb",
+      "output_targets": [
+        "instagram_vertical",
+        "tiktok_vertical"
+      ],
+      "public_media_url": "https://public.example.com/render-media/rnd_1775022218578_3ip7t/instagram.mp4",
+      "media_url": "https://public.example.com/render-media/rnd_1775022218578_3ip7t/instagram.mp4",
+      "output_urls": {
+        "instagram": "https://public.example.com/render-media/rnd_1775022218578_3ip7t/instagram.mp4",
+        "tiktok": "https://public.example.com/render-media/rnd_1775022218578_3ip7t/tiktok.mp4"
+      },
+      "local_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775022218578_3ip7t\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775022218578_3ip7t\\tiktok.mp4"
+      },
+      "public_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775022218578_3ip7t\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775022218578_3ip7t\\tiktok.mp4"
+      },
+      "render_host_mode": "public_static_file",
+      "render_seed_source": "C:\\AI-Agents\\deer-flow\\frontend\\public\\demo\\threads\\4f3e55ee-f853-43db-bfb3-7d1a411f03cb\\user-data\\outputs\\darcy-proposal-video.mp4",
+      "status": "queued",
+      "due_date": "2026-04-02",
+      "notes": "Render publish-ready vertical variants for instagram, tiktok.",
+      "version": 1,
+      "created_at": "2026-04-01T05:43:38.578Z",
+      "updated_at": "2026-04-01T05:43:38.578Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T05:43:38.575Z",
+      "updatedAt": "2026-04-01T05:43:38.590Z"
+    },
+    {
+      "id": "rnd_1775019638800_phyhe",
+      "edit_job_id": "edt_1775019638800_yaeca",
+      "calendar_entry_id": "pkg_1775019638798_0bvg3",
+      "client_id": "cli_default",
+      "content_asset_id": "ast_1775019146561_a3qrc",
+      "output_targets": [
+        "instagram_vertical",
+        "tiktok_vertical"
+      ],
+      "public_media_url": "https://public.example.com/render-media/rnd_1775019638800_phyhe/instagram.mp4",
+      "media_url": "https://public.example.com/render-media/rnd_1775019638800_phyhe/instagram.mp4",
+      "output_urls": {
+        "instagram": "https://public.example.com/render-media/rnd_1775019638800_phyhe/instagram.mp4",
+        "tiktok": "https://public.example.com/render-media/rnd_1775019638800_phyhe/tiktok.mp4"
+      },
+      "local_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775019638800_phyhe\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775019638800_phyhe\\tiktok.mp4"
+      },
+      "public_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775019638800_phyhe\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775019638800_phyhe\\tiktok.mp4"
+      },
+      "render_host_mode": "public_static_file",
+      "render_seed_source": "C:\\AI-Agents\\deer-flow\\frontend\\public\\demo\\threads\\4f3e55ee-f853-43db-bfb3-7d1a411f03cb\\user-data\\outputs\\darcy-proposal-video.mp4",
+      "status": "queued",
+      "due_date": "2026-04-03",
+      "notes": "Render publish-ready vertical variants for instagram, tiktok.",
+      "version": 1,
+      "created_at": "2026-04-01T05:00:38.800Z",
+      "updated_at": "2026-04-01T05:00:38.800Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T05:00:38.798Z",
+      "updatedAt": "2026-04-01T05:00:38.807Z"
+    },
+    {
+      "id": "rnd_1775019638785_iaudj",
+      "edit_job_id": "edt_1775019638785_cr47o",
+      "calendar_entry_id": "pkg_1775019638782_0kimz",
+      "client_id": "cli_default",
+      "content_asset_id": "ast_1775019146561_a3qrc",
+      "output_targets": [
+        "instagram_vertical",
+        "tiktok_vertical"
+      ],
+      "public_media_url": "https://public.example.com/render-media/rnd_1775019638785_iaudj/instagram.mp4",
+      "media_url": "https://public.example.com/render-media/rnd_1775019638785_iaudj/instagram.mp4",
+      "output_urls": {
+        "instagram": "https://public.example.com/render-media/rnd_1775019638785_iaudj/instagram.mp4",
+        "tiktok": "https://public.example.com/render-media/rnd_1775019638785_iaudj/tiktok.mp4"
+      },
+      "local_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775019638785_iaudj\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775019638785_iaudj\\tiktok.mp4"
+      },
+      "public_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775019638785_iaudj\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775019638785_iaudj\\tiktok.mp4"
+      },
+      "render_host_mode": "public_static_file",
+      "render_seed_source": "C:\\AI-Agents\\deer-flow\\frontend\\public\\demo\\threads\\4f3e55ee-f853-43db-bfb3-7d1a411f03cb\\user-data\\outputs\\darcy-proposal-video.mp4",
+      "status": "queued",
+      "due_date": "2026-04-02",
+      "notes": "Render publish-ready vertical variants for instagram, tiktok.",
+      "version": 1,
+      "created_at": "2026-04-01T05:00:38.785Z",
+      "updated_at": "2026-04-01T05:00:38.785Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T05:00:38.782Z",
+      "updatedAt": "2026-04-01T05:00:38.795Z"
+    },
+    {
+      "id": "rnd_1775013141836_g5p7q",
+      "edit_job_id": "edt_1775013141836_7p5ub",
+      "calendar_entry_id": "pkg_1775013141834_rr4ax",
+      "client_id": "cli_default",
+      "content_asset_id": "ast_1775012546303_4z890",
+      "output_targets": [
+        "instagram_vertical",
+        "tiktok_vertical"
+      ],
+      "public_media_url": "https://public.example.com/render-media/rnd_1775013141836_g5p7q/instagram.mp4",
+      "media_url": "https://public.example.com/render-media/rnd_1775013141836_g5p7q/instagram.mp4",
+      "output_urls": {
+        "instagram": "https://public.example.com/render-media/rnd_1775013141836_g5p7q/instagram.mp4",
+        "tiktok": "https://public.example.com/render-media/rnd_1775013141836_g5p7q/tiktok.mp4"
+      },
+      "local_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775013141836_g5p7q\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775013141836_g5p7q\\tiktok.mp4"
+      },
+      "public_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775013141836_g5p7q\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775013141836_g5p7q\\tiktok.mp4"
+      },
+      "render_host_mode": "public_static_file",
+      "render_seed_source": "C:\\AI-Agents\\deer-flow\\frontend\\public\\demo\\threads\\4f3e55ee-f853-43db-bfb3-7d1a411f03cb\\user-data\\outputs\\darcy-proposal-video.mp4",
+      "status": "queued",
+      "due_date": "2026-04-02",
+      "notes": "Render publish-ready vertical variants for instagram, tiktok.",
+      "version": 1,
+      "created_at": "2026-04-01T03:12:21.836Z",
+      "updated_at": "2026-04-01T03:12:21.836Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T03:12:21.834Z",
+      "updatedAt": "2026-04-01T03:12:21.845Z"
+    },
+    {
+      "id": "rnd_1775003515199_ygojq",
+      "edit_job_id": "edt_1775003515199_zctzk",
+      "calendar_entry_id": "pkg_1775002525679_ancpz",
+      "client_id": "cli_default",
+      "content_asset_id": "ast_1775002239788_jc17h",
+      "output_targets": [
+        "instagram_vertical",
+        "tiktok_vertical"
+      ],
+      "public_media_url": "http://localhost:4000/render-media/rnd_1775003515199_ygojq/instagram.mp4",
+      "media_url": "http://localhost:4000/render-media/rnd_1775003515199_ygojq/instagram.mp4",
+      "output_urls": {
+        "instagram": "https://public.example.com/render-media/rnd_1775003515199_ygojq/instagram.mp4",
+        "tiktok": "https://public.example.com/render-media/rnd_1775003515199_ygojq/tiktok.mp4"
+      },
+      "local_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775003515199_ygojq\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1775003515199_ygojq\\tiktok.mp4"
+      },
+      "public_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775003515199_ygojq\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1775003515199_ygojq\\tiktok.mp4"
+      },
+      "render_host_mode": "public_static_file",
+      "render_seed_source": "C:\\AI-Agents\\deer-flow\\frontend\\public\\demo\\threads\\4f3e55ee-f853-43db-bfb3-7d1a411f03cb\\user-data\\outputs\\darcy-proposal-video.mp4",
+      "status": "published_ready",
+      "due_date": "2026-04-02",
+      "notes": "Render publish-ready vertical variants for instagram, tiktok.",
+      "version": 1,
+      "created_at": "2026-04-01T00:15:25.679Z",
+      "updated_at": "2026-04-01T01:35:15.894Z",
+      "created_by": "pipeline",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-01T00:15:25.679Z",
+      "updatedAt": "2026-04-01T01:35:15.898Z"
+    }
+  ],
+  "lastUpdated": "2026-04-02T10:30:59.740Z"
+}

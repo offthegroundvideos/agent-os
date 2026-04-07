@@ -1,0 +1,95 @@
+{
+  "definitions": {
+    "content": [
+      {
+        "id": "posts_published_per_week",
+        "label": "Posts Published Per Week",
+        "description": "Total number of short-form posts published in a 7-day window.",
+        "formula": "count(published_posts within 7 days)",
+        "targetDirection": "higher"
+      },
+      {
+        "id": "average_watch_time",
+        "label": "Average Watch Time",
+        "description": "Average number of seconds watched per video.",
+        "formula": "sum(total_watch_time_seconds) / total_video_views",
+        "targetDirection": "higher"
+      },
+      {
+        "id": "save_rate",
+        "label": "Save Rate",
+        "description": "Percentage of viewers who saved the content.",
+        "formula": "saves / views",
+        "targetDirection": "higher"
+      },
+      {
+        "id": "share_rate",
+        "label": "Share Rate",
+        "description": "Percentage of viewers who shared the content.",
+        "formula": "shares / views",
+        "targetDirection": "higher"
+      },
+      {
+        "id": "comment_to_dm_conversion",
+        "label": "Comment-to-DM Conversion",
+        "description": "Percentage of commenters who entered the DM automation flow.",
+        "formula": "DM_starts / qualifying_comments",
+        "targetDirection": "higher"
+      },
+      {
+        "id": "dm_to_landing_page_conversion",
+        "label": "DM-to-Landing-Page Conversion",
+        "description": "Percentage of DM conversations that produced a landing page click.",
+        "formula": "landing_page_clicks / DM_starts",
+        "targetDirection": "higher"
+      }
+    ],
+    "system": [
+      {
+        "id": "time_from_idea_to_publish",
+        "label": "Time From Idea To Publish",
+        "description": "Elapsed time from approved idea to published asset.",
+        "formula": "publish_time - idea_created_time",
+        "targetDirection": "lower"
+      },
+      {
+        "id": "scripts_approved_first_pass_rate",
+        "label": "Scripts Approved On First Pass",
+        "description": "Percentage of drafted scripts that are approved without revisions.",
+        "formula": "first_pass_approvals / total_scripts_reviewed",
+        "targetDirection": "higher"
+      },
+      {
+        "id": "agent_error_rate",
+        "label": "Agent Error Rate",
+        "description": "Percentage of agent runs that fail, timeout, or produce unusable output.",
+        "formula": "failed_agent_runs / total_agent_runs",
+        "targetDirection": "lower"
+      },
+      {
+        "id": "duplicate_work_rate",
+        "label": "Duplicate Work Rate",
+        "description": "Percentage of finished assets or tasks that duplicated already-completed work.",
+        "formula": "duplicate_tasks / total_tasks_completed",
+        "targetDirection": "lower"
+      },
+      {
+        "id": "cost_per_finished_asset",
+        "label": "Cost Per Finished Asset",
+        "description": "Average production cost for each published asset.",
+        "formula": "total_content_system_cost / finished_assets",
+        "targetDirection": "lower"
+      },
+      {
+        "id": "turnaround_time_per_stage",
+        "label": "Turnaround Time Per Stage",
+        "description": "Average elapsed time spent in each stage of the workflow.",
+        "formula": "stage_completed_time - stage_started_time",
+        "targetDirection": "lower"
+      }
+    ]
+  },
+  "entries": [],
+  "stageTimings": [],
+  "lastUpdated": null
+}

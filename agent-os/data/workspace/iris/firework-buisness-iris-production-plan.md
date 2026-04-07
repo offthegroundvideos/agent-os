@@ -1,0 +1,10 @@
+# Iris — Production Plan
+Topic: firework buisness
+Date: 2026-04-01T08:10:35.644Z
+Session: pipeline-1775030899630
+
+---
+
+{"task_name":"production_brief","asset_id":"production-iris-001","source_inputs":["research-alex-001"],"summary":"","outputs":{"shot_list":[{"shot_number":"1","type":"DIY Firework Setup","lens":"24mm","lighting_setup":"Natural Light"},{"shot_number":"2","type":"Safety Gear Demonstration","lens":"50mm","lighting_setup":"Softbox"},{"shot_number":"3","type":"Firework Display Showcase","lens":"70-200mm","lighting_setup":"LED Ring Light"},{"shot_number":"4","type":"DIY Firework Tutorial Close-Up","lens":"85mm","lighting_setup":"Continuous LED Strip"},{"shot_number":"5","type":"Safety Tips Infographic","lens":"35mm","lighting_setup":"Natural Light"},{"shot_number":"6","type":"Firework Display Nighttime Drone Footage","lens":"24mm","lighting_setup":"Night Sky"}],"production_schedule":[{"arrival_time":"10:00 AM","client_meeting":"10:30 AM","setup_start":"11:00 AM","shoot_start":"12:00 PM","wrap_time":"6:00 PM"},{"date":"July 4, 2023","location":"Local Firework Retailer Storefront"}],"equipment":{"cameras":["Canon EOS R5"],"lenses":["EF 24mm f/1.4L II USM","EF 50mm f/1.8 STM","EF 70-200mm f/2.8L IS III USM","EF 85mm f/1.2L II USM","EF 35mm f/1.4L II USM"],"lights":["Softbox with LED Ring Light","Continuous LED Strip"],"drone":"DJI Mavic Air 2","audio":["Rode NTG-2 Microphone"]},"client_prep":{"instructions":"Please ensure the location is clear of any flammable materials and that safety gear (gloves, goggles) is available for demonstration. Prepare a sample firework setup for DIY tutorial.","timeline":"10:30 AM - Client meeting to discuss shoot details"},{"post_notes":{"color_grade":"Warm and moody","edit_style":"Fast-paced with text overlays","music_suggestions":["Epic Fireworks Soundtrack by Kevin MacLeod"]},"team_assignments":{"camera_and_drone":"Jack Riggs","editing":"Teja"}}},"open_issues":[],"confidence":0.85,"recommended_next_step":""}
+
+[PRODUCTION_COMPLETE]

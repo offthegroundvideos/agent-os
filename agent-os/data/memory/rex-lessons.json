@@ -1,0 +1,120 @@
+{
+  "agentId": "rex",
+  "lessons": [
+    {
+      "task": "Wedding photography and videography — Proposal",
+      "score": 6,
+      "what_worked": "I provided a detailed outline for the proposal, covering key aspects of wedding photography and videography services.",
+      "what_failed": "The response was too lengthy and could have been more concise with specific examples or client testimonials.",
+      "improvement": "Next time, include specific case studies or client feedback to make the proposal more compelling and actionable.",
+      "root_cause": "I may have overestimated the depth required for a proposal outline without clear instructions on length or content specificity.",
+      "severity": "minor",
+      "timestamp": "2026-04-01T03:14:03.144Z",
+      "id": "1775013243144",
+      "scoreCategory": "poor",
+      "workflowType": "manual"
+    },
+    {
+      "task": "Graphic designer",
+      "workflowType": "pipeline",
+      "score": 3,
+      "what_worked": "The initial draft provided a comprehensive overview of the graphic designer's role and responsibilities.",
+      "what_failed": "The proposal lacked specificity regarding deliverables, timelines, and budget estimates for potential projects.",
+      "improvement": "Incorporate detailed project examples with clear milestones, deadlines, and cost breakdowns to provide a more concrete proposal.",
+      "timestamp": "2026-04-01T05:46:00.032Z",
+      "id": "1775022360032",
+      "scoreCategory": "critical"
+    },
+    {
+      "task": "Dog training and gaining new clients for it",
+      "workflowType": "pipeline",
+      "score": 5,
+      "what_worked": "The proposal effectively communicated the benefits of dog training services to potential clients.",
+      "what_failed": "The proposal lacked a clear call-to-action, making it less effective in prompting immediate responses from prospects.",
+      "improvement": "Incorporate a strong, direct call-to-action encouraging recipients to contact for further details or scheduling an initial consultation.",
+      "timestamp": "2026-04-01T09:21:23.402Z",
+      "id": "1775035283402",
+      "scoreCategory": "poor"
+    }
+  ],
+  "wins": [],
+  "failures": [
+    {
+      "description": "The response was too lengthy and could have been more concise with specific examples or client testimonials.",
+      "task": "Wedding photography and videography — Proposal",
+      "fix": "Next time, include specific case studies or client feedback to make the proposal more compelling and actionable.",
+      "score": 6,
+      "severity": "moderate",
+      "timestamp": "2026-04-01T03:14:03.144Z",
+      "workflowType": "manual"
+    },
+    {
+      "description": "The proposal lacked specificity regarding deliverables, timelines, and budget estimates for potential projects.",
+      "task": "Graphic designer",
+      "fix": "Incorporate detailed project examples with clear milestones, deadlines, and cost breakdowns to provide a more concrete proposal.",
+      "score": 3,
+      "severity": "critical",
+      "workflowType": "pipeline",
+      "timestamp": "2026-04-01T05:46:00.032Z"
+    },
+    {
+      "description": "The proposal lacked a clear call-to-action, making it less effective in prompting immediate responses from prospects.",
+      "task": "Dog training and gaining new clients for it",
+      "fix": "Incorporate a strong, direct call-to-action encouraging recipients to contact for further details or scheduling an initial consultation.",
+      "score": 5,
+      "severity": "moderate",
+      "workflowType": "pipeline",
+      "timestamp": "2026-04-01T09:21:23.402Z"
+    }
+  ],
+  "taskCount": 3,
+  "avgScore": 4.7,
+  "lastReflection": "2026-04-01T09:21:23.402Z",
+  "workflowStats": {
+    "chat": {
+      "taskCount": 0,
+      "avgScore": 0,
+      "winCount": 0,
+      "failureCount": 0,
+      "lastUsedAt": null,
+      "scoreTrend": []
+    },
+    "pipeline": {
+      "taskCount": 2,
+      "avgScore": 4,
+      "winCount": 0,
+      "failureCount": 2,
+      "lastUsedAt": "2026-04-01T09:21:23.402Z",
+      "scoreTrend": [
+        3,
+        5
+      ]
+    },
+    "autojob": {
+      "taskCount": 0,
+      "avgScore": 0,
+      "winCount": 0,
+      "failureCount": 0,
+      "lastUsedAt": null,
+      "scoreTrend": []
+    },
+    "n8n": {
+      "taskCount": 0,
+      "avgScore": 0,
+      "winCount": 0,
+      "failureCount": 0,
+      "lastUsedAt": null,
+      "scoreTrend": []
+    },
+    "manual": {
+      "taskCount": 1,
+      "avgScore": 6,
+      "winCount": 0,
+      "failureCount": 1,
+      "lastUsedAt": "2026-04-01T03:14:03.144Z",
+      "scoreTrend": [
+        6
+      ]
+    }
+  }
+}

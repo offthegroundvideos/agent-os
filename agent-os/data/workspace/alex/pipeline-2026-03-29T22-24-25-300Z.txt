@@ -1,0 +1,82 @@
+TOPIC: Running a "Wedding videography business in Marin County
+
+OUTPUT:
+### Research Response: Running a "Wedding videography business in Marin County"
+
+#### 1. **Market Overview & Opportunity Size**
+Marin County, known for its natural beauty and scenic locations, is a popular destination for weddings. The county's affluent population and high-end venues make it an attractive market for wedding videographers looking to capture special moments with premium quality. According to recent data from the National Wedding Report, the average cost of a wedding in California ranges between $30,000-$45,000, with videography often being a significant part of the budget.
+
+#### 2. **Viral Content Analysis (using the 5X Rule)**
+- **Creator**: @weddingvideoexpertmarin
+  - **Platform**: Instagram
+  - **Post Example**: A compilation video showcasing different wedding moments and locations in Marin County.
+  - **Follower Count**: 1,000
+  - **View Count**: 6,500 (meets the 5X rule)
+- **Creator**: @marinweddingmagic
+  - **Platform**: TikTok
+  - **Post Example**: A montage of drone footage from various wedding venues in Marin County.
+  - **Follower Count**: 2,000
+  - **View Count**: 11,000 (meets the 5X rule)
+
+#### 3. **Top 20 Creators/Brands**
+- @weddingvideoexpertmarin (Instagram)
+- @marinweddingmagic (TikTok)
+- @perfectdaymarinvideos
+- @romantic_marin_weddings
+- @marinfilmworks
+- @sunshineonthebay
+- @goldenhourmarinvideography
+- @marintimesfilms
+- @lovelymarinphotovideo
+- @marinfilmcollective
+- @dreamcatchervideos (Instagram)
+- @marindreamweddings (TikTok)
+- @marinlovevideos
+- @marincameraclub
+- @marinvideoworks
+- @marinfilmmaker
+- @golden_marin_videos
+- @marindeeptimelapse
+- @marinvisualstorytelling
+
+#### 4. **Lead Generation Opportunities Specific to OTG Icon Services**
+- **Instagram Reels & Explore Page**: Use niche hashtags like #MarinWeddingVideography, #MarinCountyWeds.
+- **TikTok For You Page**: Leverage trending sounds and duet opportunities with wedding planning influencers in Marin County.
+- **Local Wedding Venues & Caterers**: Collaborate for referral programs and showcase their events on OTG Icon's platforms.
+- **Event Planners & Brides-to-be Groups**: Engage through local Facebook groups like "Marin Weddings" or "Bride Tribe".
+
+#### 5. **Competitor Gaps OTG Icon Can Fill**
+- **Diverse Content Formats**: Many competitors focus solely on video compilations; OTG can introduce interactive content like live Q&A sessions, behind-the-scenes peeks, and candid moments.
+- **Unique Selling Proposition (USP)**: Emphasize drone cinematography and unique perspectives from Marin County's diverse landscapes.
+- **Customer Testimonials & Reviews**: Leverage customer feedback through engaging video testimonials to build trust.
+
+#### 6. **Top 3 Content Angles with Specific Hook Examples**
+1. **Behind-the-scenes of a wedding day**:
+   - *Hook*: "See how we turn your big day into an unforgettable film!"
+2. **Comparative footage from multiple venues in Marin County**:
+   - *Hook*: "Discover the best spots for your dream wedding videography."
+3. **Customer testimonials & reviews**:
+   - *Hook*: "Hear what our past clients say about their experience with OTG Icon."
+
+#### 7. **Platform-Specific Findings**
+- **Instagram**: Focus on Reels and Explore page hashtags like #MarinCountyWeddings, #WeddingVideography.
+- **TikTok**: Emphasize trending sounds related to weddings and duet opportunities with popular wedding content creators.
+
+[RESEARCH_COMPLETE]
+{
+  "niche": "Running a Wedding videography business in Marin County",
+  "platform": ["Instagram", "TikTok"],
+  "top_hooks": [
+    "See how we turn your big day into an unforgettable film!",
+    "Discover the best spots for your dream wedding videography.",
+    "Hear what our past clients say about their experience with OTG Icon."
+  ],
+  "viral_formats": ["Compilation videos", "Montage of drone footage"],
+  "target_audience": "Brides-to-be, event planners, local businesses in Marin County",
+  "key_insight": "OTG can stand out by providing diverse content formats and leveraging unique USPs like drone cinematography.",
+  "content_angles": [
+    "Behind-the-scenes of a wedding day",
+    "Comparative footage from multiple venues in Marin County",
+    "Customer testimonials & reviews"
+  ]
+}

@@ -1,0 +1,144 @@
+TOPIC: Running a "Wedding videography business in Marin County
+
+OUTPUT:
+### Social Media Package for Wedding Videography Business in Marin County
+
+#### 1. 30-Day Posting Calendar with Specific Dates, Times, and Platforms
+
+| Date       | Time         | Platform   | Post Type                  |
+|------------|--------------|------------|----------------------------|
+| Day 1 (Tues) | 9:00 AM      | Instagram  | Script 2 - Best Spots      |
+| Day 2 (Wed) | 6:30 PM      | TikTok     | Script 5 - Q&A Session     |
+| Day 3 (Thurs)| 8:00 AM      | LinkedIn   | Script 14 - Testimonials    |
+| Day 7 (Mon) | 9:00 AM      | Instagram  | Script 6 - Venue Comparison|
+| Day 8 (Tues) | 12:00 PM     | TikTok     | Script 3 - Customer Testimonials|
+| Day 9 (Wed) | 8:00 AM      | LinkedIn   | Script 7 - Behind-the-Scenes |
+| Day 14 (Mon)| 9:00 AM      | Instagram  | Script 4 - Drone Shots     |
+| Day 15 (Tues)| 6:30 PM      | TikTok     | Script 8 - Highlight Reel   |
+| Day 16 (Wed) | 8:00 AM      | LinkedIn   | Script 9 - Sunset Drone Shots|
+| Day 21 (Mon)| 9:00 AM      | Instagram  | Script 1 - Behind-the-Scenes|
+| Day 22 (Tues)| 12:00 PM     | TikTok     | Script 5 - Q&A Session     |
+| Day 23 (Wed) | 8:00 AM      | LinkedIn   | Script 10 - Live Editing Demo|
+| Day 28 (Mon)| 9:00 AM      | Instagram  | Script 13 - Vineyard Drone Shots|
+| Day 29 (Tues)| 6:30 PM      | TikTok     | Script 5 - Q&A Session     |
+| Day 30 (Wed) | 8:00 AM      | LinkedIn   | Script 7 - Behind-the-Scenes|
+
+#### 2. Platform-Specific Versions of the Top 5 Scripts
+
+**Script 1: Behind-the-scenes of a wedding day**
+- **Instagram Reels**: Talking head format, hook line "See how we capture your big day!"
+- **TikTok**: B-Roll with quick cuts, hook line "Experience candid moments from behind the scenes!"
+- **LinkedIn**: Document post with detailed process explanation
+
+**Script 2: Best wedding spots in Marin County**
+- **Instagram Reels**: Talking head format, hook line "Discover the perfect spot for your dream wedding!"
+- **TikTok**: B-Roll with location shots, hook line "Explore stunning venues!"
+- **LinkedIn**: Article post with detailed venue descriptions and photos
+
+**Script 3: Customer testimonials**
+- **Instagram Reels**: Talking head format, hook line "Hear what our clients say about us!"
+- **TikTok**: B-Roll with client footage, hook line "Real stories from happy couples"
+- **LinkedIn**: Document post featuring testimonials and quotes
+
+**Script 4: Drone shots of wedding venues**
+- **Instagram Reels**: Talking head format, hook line "Experience the beauty of Marin County from above!"
+- **TikTok**: B-Roll with drone footage, hook line "Capture stunning aerial views"
+- **LinkedIn**: Document post showcasing various drone shots
+
+**Script 5: Live Q&A session**
+- **Instagram Reels**: Talking head format, hook line "Get answers to all your wedding videography questions!"
+- **TikTok**: B-Roll with interactive elements, hook line "Ask us anything about our services"
+- **LinkedIn**: Document post summarizing Q&A highlights
+
+#### 3. Hashtag Strategy per Platform
+- **Instagram**:
+  - `#MarinWeddingVideography`
+  - `#DreamWeddings`
+  - `#CustomerTestimonials`
+  - `#BehindTheScenes`
+  - `#DroneCinematography`
+
+- **TikTok**:
+  - `#WeddingDayCaptured`
+  - `#BestVenuesMarinCounty`
+  - `#HappyCouples`
+
+- **LinkedIn**:
+  - `#MarinCountyWeds`
+  - `#ProfessionalVideography`
+  - `#ExpertAdvice`
+
+#### 4. ManyChat Trigger Word Suggestions for Each Post
+- Script 1: Behind-the-scenes of a wedding day
+  - Instagram Reels: `[BOOK]`
+  - TikTok: `[SCHEDULE]`
+  - LinkedIn: `[CONTACT]`
+
+- Script 2: Best wedding spots in Marin County
+  - Instagram Reels: `[PORTFOLIO]`
+  - TikTok: `[VENUE]`
+  - LinkedIn: `[DECISION]`
+
+- Script 3: Customer testimonials
+  - Instagram Reels: `[STORIES]`
+  - TikTok: `[TRUST]`
+  - LinkedIn: `[TESTIMONIALS]`
+
+- Script 4: Drone shots of wedding venues
+  - Instagram Reels: `[VENUE]`
+  - TikTok: `[UNIQUE]`
+  - LinkedIn: `[DRONECINEMA]`
+
+- Script 5: Live Q&A session
+  - Instagram Reels: `[SCHEDULE]`
+  - TikTok: `[ASKME]`
+  - LinkedIn: `[QANDA]`
+
+#### 5. Shoot Schedule for Batch Filming
+
+**Group by Format Order (Easiest to Hardest)**
+1. Talking head scripts:
+   - Script 1, Script 3, Script 5
+2. B-Roll scripts:
+   - Script 2, Script 4, Script 6, Script 8, Script 9, Script 10, Script 13
+3. Compilation script:
+   - Script 7
+
+**Visual Hook Setup Notes and Editing Complexity**
+- **Script 1**: Wedding planner in front of a rustic barn (Basic)
+- **Script 2**: Diverse landscape shots of different venues (Medium)
+- **Script 3**: Bride and groom walking down a beach (Basic)
+- **Script 4**: Aerial view of vineyard (Advanced, Swope or Teja)
+- **Script 5**: Camera facing Jack Riggs sitting at a desk (Basic)
+- **Script 6**: Jack & Michelle standing in front of contrasting venues (Medium)
+- **Script 7**: Quick cuts of different wedding scenes (Medium)
+- **Script 8**: Compilation of various wedding moments (Advanced, Swope or Teja)
+- **Script 9**: Aerial view of sunset at a beach venue (Advanced, Swope or Teja)
+- **Script 10**: Jack Riggs sitting in front of a computer (Basic)
+- **Script 13**: Aerial view of vineyard at sunset (Advanced, Swope or Teja)
+
+#### Editor Assignments
+- Basic Edits: Any team member can handle these.
+- Advanced Edits: Assigned to Swope or Teja.
+
+**Shoot Days Needed**
+- Day 1: Talking head scripts (Scripts 1, 3)
+- Day 2: B-Roll script for best wedding spots (Script 2)
+- Day 3: Talking head script with Q&A session (Script 5)
+- Day 4: B-Roll scripts (Scripts 4, 6)
+- Day 5: Compilation and drone shot scripts (Scripts 7, 8, 9, 10, 13)
+
+[MANYSOCIAL_COMPLETE]
+{
+  "total_posts": 15,
+  "platforms": ["Instagram", "TikTok", "LinkedIn"],
+  "posting_frequency": "Daily",
+  "top_content_type": "Behind-the-Scenes, Best Spots, Testimonials, Drone Cinematography",
+  "manychat_triggers": [
+    { "post": "Script 1: Behind-the-scenes of a wedding day - Instagram", "trigger_word": "[BOOK]" },
+    { "post": "Script 2: Best wedding spots in Marin County - TikTok", "trigger_word": "[VENUE]" },
+    { "post": "Script 3: Customer testimonials - LinkedIn", "trigger_word": "[TESTIMONIALS]" }
+  ],
+  "shoot_days_needed": 5,
+  "editors_needed": ["Any team member for basic edits", "Swope or Teja for advanced edits"]
+}

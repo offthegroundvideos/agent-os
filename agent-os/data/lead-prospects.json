@@ -1,0 +1,27 @@
+{
+  "prospects": [
+    {
+      "id": "prospect-1775092758046-1bs5i",
+      "businessName": "Cloudflare Demo Prospect",
+      "website": "https://demo-prospect.example.com",
+      "publicEmail": "owner@demo-prospect.example.com",
+      "publicPhone": "+1-555-900-1234",
+      "niche": "wedding photography",
+      "geography": "San Diego, CA",
+      "socialProfiles": [],
+      "notes": "Imported for promotion flow test",
+      "rawArtifactPath": "",
+      "source": "cloudflare-worker",
+      "sourceUrl": "",
+      "crawlJobId": "job_demo_001",
+      "discoveredFrom": "directory_crawl",
+      "crawlTimestamp": "2026-04-01T18:00:00Z",
+      "createdAt": "2026-04-02T01:19:18.046Z",
+      "updatedAt": "2026-04-02T01:19:57.789Z",
+      "promotedToClientId": "cli_1775092797787_3sxpw",
+      "promotedAt": "2026-04-02T01:19:57.788Z",
+      "status": "promoted"
+    }
+  ],
+  "lastUpdated": "2026-04-02T01:19:57.789Z"
+}

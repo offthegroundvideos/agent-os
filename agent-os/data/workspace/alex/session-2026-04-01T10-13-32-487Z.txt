@@ -1,0 +1,3 @@
+USER: Give a one-sentence summary of what OTG Agent OS does.
+
+ALEX: OTG Agent OS is a multi-agent system designed to identify, analyze, and leverage proven short-form content patterns to grow online presence, convert attention into leads, and improve repeatable growth, authority, and sales for the OTG Icon agency pipeline.

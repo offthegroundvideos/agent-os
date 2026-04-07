@@ -1,0 +1,561 @@
+{
+  "sessions": [
+    {
+      "id": "session-1774692631219",
+      "memberId": "jack",
+      "memberName": "Jack Riggs",
+      "startedAt": "2026-03-28T10:10:31.219Z",
+      "endedAt": "2026-03-28T10:39:21.128Z",
+      "goals": "",
+      "accomplishments": [],
+      "agentsUsed": [],
+      "pipelinesRun": [],
+      "notes": "",
+      "status": "complete",
+      "nextSteps": "",
+      "duration": "29 minutes"
+    },
+    {
+      "id": "session-1774697027810",
+      "memberId": "jack",
+      "memberName": "Jack Riggs",
+      "startedAt": "2026-03-28T11:23:47.810Z",
+      "endedAt": null,
+      "goals": "",
+      "accomplishments": [],
+      "agentsUsed": [],
+      "pipelinesRun": [],
+      "notes": "",
+      "status": "active"
+    },
+    {
+      "id": "session-1774698175104",
+      "memberId": "jack",
+      "memberName": "Jack Riggs",
+      "startedAt": "2026-03-28T11:42:55.104Z",
+      "endedAt": "2026-03-28T19:17:02.192Z",
+      "goals": "",
+      "accomplishments": [],
+      "agentsUsed": [],
+      "pipelinesRun": [
+        {
+          "topic": "Run full pipeline on luxury destination wedding photography \r\nbusiness called Off The Ground Icon. Website is otgicon.com. \r\nPhotographer shoots destination weddings anywhere in the world \r\nincluding Santorini, Tuscany, Tulum and Hawaii. Has one \r\nbeautiful highlight reel and a photo gallery. Currently only \r\ngetting word of mouth leads. Goal is to go viral on Instagram \r\nand TikTok, drive traffic to booking page, and convert viewers \r\ninto destination wedding bookings. Ideal client is couples with \r\na budget of $5000 plus looking for luxury photography and \r\nvideography for their destination wedding.",
+          "sessionId": "pipeline-1774699650275",
+          "timestamp": "2026-03-28T13:12:39.151Z"
+        },
+        {
+          "topic": "Run full pipeline on luxury destination wedding photography \r\nbusiness called Off The Ground Icon. Website is otgicon.com. \r\nPhotographer shoots destination weddings anywhere in the world \r\nincluding Santorini, Tuscany, Tulum and Hawaii. Has one \r\nbeautiful highlight reel and a photo gallery. Currently only \r\ngetting word of mouth leads. Goal is to go viral on Instagram \r\nand TikTok, drive traffic to booking page, and convert viewers \r\ninto destination wedding bookings. Ideal client is couples with \r\na budget of $5000 plus looking for luxury photography and \r\nvideography for their destination wedding.",
+          "sessionId": "pipeline-1774699650275",
+          "timestamp": "2026-03-28T13:12:39.151Z"
+        },
+        {
+          "topic": "a music video shoot for an  indie hip hop artist in New Orleans, performance  and narrative style, outdoor and indoor locations",
+          "sessionId": "pipeline-1774699190803",
+          "timestamp": "2026-03-28T13:30:46.986Z"
+        },
+        {
+          "topic": "a music video shoot for an  indie hip hop artist in New Orleans, performance  and narrative style, outdoor and indoor locations",
+          "sessionId": "pipeline-1774699190803",
+          "timestamp": "2026-03-28T13:30:46.987Z"
+        }
+      ],
+      "notes": "",
+      "status": "complete",
+      "nextSteps": "",
+      "duration": "454 minutes"
+    },
+    {
+      "id": "session-1774731525382",
+      "memberId": "jake",
+      "memberName": "Jake Evans",
+      "startedAt": "2026-03-28T20:58:45.382Z",
+      "endedAt": null,
+      "goals": "",
+      "accomplishments": [],
+      "agentsUsed": [],
+      "pipelinesRun": [],
+      "notes": "",
+      "status": "active"
+    },
+    {
+      "id": "session-1774732361503",
+      "memberId": "jack",
+      "memberName": "Jack Riggs",
+      "startedAt": "2026-03-28T21:12:41.503Z",
+      "endedAt": null,
+      "goals": "",
+      "accomplishments": [],
+      "agentsUsed": [],
+      "pipelinesRun": [],
+      "notes": "",
+      "status": "active"
+    },
+    {
+      "id": "session-1774732363259",
+      "memberId": "jake",
+      "memberName": "Jake Evans",
+      "startedAt": "2026-03-28T21:12:43.259Z",
+      "endedAt": null,
+      "goals": "",
+      "accomplishments": [
+        {
+          "description": "Used Alex for: what is 2+2",
+          "agentId": "alex",
+          "timestamp": "2026-03-28T23:13:19.322Z"
+        },
+        {
+          "description": "Used Alex for: what is 2+2",
+          "agentId": "alex",
+          "timestamp": "2026-03-28T23:58:09.980Z"
+        },
+        {
+          "description": "Used Alex for: what is 2+2",
+          "agentId": "alex",
+          "timestamp": "2026-03-29T00:02:31.540Z"
+        },
+        {
+          "description": "Used Alex for: what is 3+2",
+          "agentId": "alex",
+          "timestamp": "2026-03-29T00:03:13.452Z"
+        },
+        {
+          "description": "Used Alex for: what is 2+2",
+          "agentId": "alex",
+          "timestamp": "2026-03-29T00:04:24.577Z"
+        },
+        {
+          "description": "Used Alex for: what is 2+2",
+          "agentId": "alex",
+          "timestamp": "2026-03-29T00:04:52.001Z"
+        },
+        {
+          "description": "Used Alex for: what is 2+2",
+          "agentId": "alex",
+          "timestamp": "2026-03-29T00:05:26.838Z"
+        },
+        {
+          "description": "Used Alex for: What is 5x5",
+          "agentId": "alex",
+          "timestamp": "2026-03-29T00:16:07.493Z"
+        },
+        {
+          "description": "Used Alex for: whats 5 + 5",
+          "agentId": "alex",
+          "timestamp": "2026-03-29T00:51:17.840Z"
+        },
+        {
+          "description": "Used Alex for: whats 5 + 5",
+          "agentId": "alex",
+          "timestamp": "2026-03-29T00:51:56.262Z"
+        },
+        {
+          "description": "Used Alex for: what is 2+2",
+          "agentId": "alex",
+          "timestamp": "2026-03-29T01:30:22.742Z"
+        },
+        {
+          "description": "Used Alex for: what is 2+2",
+          "agentId": "alex",
+          "timestamp": "2026-03-29T01:40:40.146Z"
+        },
+        {
+          "description": "Used Alex for: write me essay about cats",
+          "agentId": "alex",
+          "timestamp": "2026-03-29T02:00:16.802Z"
+        }
+      ],
+      "agentsUsed": [
+        "alex"
+      ],
+      "pipelinesRun": [],
+      "notes": "",
+      "status": "active"
+    },
+    {
+      "id": "session-1774750648316",
+      "memberId": "jake",
+      "memberName": "Jake Evans",
+      "startedAt": "2026-03-29T02:17:28.316Z",
+      "endedAt": null,
+      "goals": "",
+      "accomplishments": [],
+      "agentsUsed": [],
+      "pipelinesRun": [],
+      "notes": "",
+      "status": "active"
+    },
+    {
+      "id": "session-1774754271951",
+      "memberId": "jake",
+      "memberName": "Jake Evans",
+      "startedAt": "2026-03-29T03:17:51.951Z",
+      "endedAt": null,
+      "goals": "",
+      "accomplishments": [
+        {
+          "description": "Used Alex for: 2 + 2",
+          "agentId": "alex",
+          "timestamp": "2026-03-29T03:27:15.012Z"
+        }
+      ],
+      "agentsUsed": [
+        "alex"
+      ],
+      "pipelinesRun": [],
+      "notes": "",
+      "status": "active"
+    },
+    {
+      "id": "session-1774817047573",
+      "memberId": "swope",
+      "memberName": "swope",
+      "startedAt": "2026-03-29T20:44:07.573Z",
+      "endedAt": "2026-03-29T20:44:12.422Z",
+      "goals": "",
+      "accomplishments": [],
+      "agentsUsed": [],
+      "pipelinesRun": [],
+      "notes": "Session ended by team switcher",
+      "status": "complete",
+      "nextSteps": "",
+      "duration": "0 minutes"
+    },
+    {
+      "id": "session-1774817055176",
+      "memberId": "jack",
+      "memberName": "Jack Riggs",
+      "startedAt": "2026-03-29T20:44:15.176Z",
+      "endedAt": null,
+      "goals": "",
+      "accomplishments": [],
+      "agentsUsed": [],
+      "pipelinesRun": [
+        {
+          "topic": "highscool lacrosse",
+          "sessionId": "pipeline-1774817100024",
+          "timestamp": "2026-03-29T20:45:24.102Z"
+        },
+        {
+          "topic": "highscool lacrosse",
+          "sessionId": "pipeline-1774817100024",
+          "timestamp": "2026-03-29T20:45:24.102Z"
+        }
+      ],
+      "notes": "",
+      "status": "active"
+    },
+    {
+      "id": "session-1774819320669",
+      "memberId": "jack",
+      "memberName": "Jack Riggs",
+      "startedAt": "2026-03-29T21:22:00.669Z",
+      "endedAt": "2026-03-29T21:23:07.020Z",
+      "goals": "",
+      "accomplishments": [],
+      "agentsUsed": [],
+      "pipelinesRun": [],
+      "notes": "Ran a pipeline",
+      "status": "complete",
+      "nextSteps": "Update proccesses",
+      "duration": "1 minutes"
+    },
+    {
+      "id": "session-1774825193934",
+      "memberId": "jack",
+      "memberName": "Jack Riggs",
+      "startedAt": "2026-03-29T22:59:53.934Z",
+      "endedAt": null,
+      "goals": "",
+      "accomplishments": [
+        {
+          "description": "Used Alex for: What are your current instructions? Tell me: 1) Do you know what OTG Icon is? 2)...",
+          "agentId": "alex",
+          "timestamp": "2026-03-29T23:20:42.345Z"
+        },
+        {
+          "description": "Used Maya for: When you receive research from Alex, what percentage of that research do you typ...",
+          "agentId": "maya",
+          "timestamp": "2026-03-29T23:32:55.952Z"
+        }
+      ],
+      "agentsUsed": [
+        "alex",
+        "maya"
+      ],
+      "pipelinesRun": [
+        {
+          "topic": "Running a \"Wedding videography business in Marin County",
+          "sessionId": "pipeline-1774822521983",
+          "timestamp": "2026-03-29T23:16:01.638Z"
+        },
+        {
+          "topic": "Running a \"Wedding videography business in Marin County",
+          "sessionId": "pipeline-1774822521983",
+          "timestamp": "2026-03-29T23:16:01.639Z"
+        }
+      ],
+      "notes": "",
+      "status": "active"
+    },
+    {
+      "id": "session-1774842715062",
+      "memberId": "jack",
+      "memberName": "Jack Riggs",
+      "startedAt": "2026-03-30T03:51:55.062Z",
+      "endedAt": null,
+      "goals": "",
+      "accomplishments": [],
+      "agentsUsed": [],
+      "pipelinesRun": [],
+      "notes": "",
+      "status": "active"
+    },
+    {
+      "id": "session-1774848048103",
+      "memberId": "jack",
+      "memberName": "Jack Riggs",
+      "startedAt": "2026-03-30T05:20:48.103Z",
+      "endedAt": null,
+      "goals": "",
+      "accomplishments": [],
+      "agentsUsed": [],
+      "pipelinesRun": [],
+      "notes": "",
+      "status": "active"
+    },
+    {
+      "id": "session-1774863568717",
+      "memberId": "jack",
+      "memberName": "Jack Riggs",
+      "startedAt": "2026-03-30T09:39:28.717Z",
+      "endedAt": null,
+      "goals": "",
+      "accomplishments": [],
+      "agentsUsed": [],
+      "pipelinesRun": [],
+      "notes": "",
+      "status": "active"
+    },
+    {
+      "id": "session-1774866193143",
+      "memberId": "jack",
+      "memberName": "Jack Riggs",
+      "startedAt": "2026-03-30T10:23:13.143Z",
+      "endedAt": "2026-03-30T10:24:36.437Z",
+      "goals": "",
+      "accomplishments": [],
+      "agentsUsed": [],
+      "pipelinesRun": [],
+      "notes": "added deerflow and started calender integration",
+      "status": "complete",
+      "nextSteps": "Fixing pipeline to make sure agents finish full workflow from alex to jordan. Currently alex starts and finishes but the chain ends there.",
+      "duration": "1 minutes"
+    },
+    {
+      "id": "session-1774866338024",
+      "memberId": "jack",
+      "memberName": "Jack Riggs",
+      "startedAt": "2026-03-30T10:25:38.024Z",
+      "endedAt": "2026-03-30T10:26:22.739Z",
+      "goals": "",
+      "accomplishments": [],
+      "agentsUsed": [],
+      "pipelinesRun": [],
+      "notes": "the pipeline just restarts and alex is stuck in a loop rather then moving on to sam. Im trying to use claude whenever my tokens are back",
+      "status": "complete",
+      "nextSteps": "use claude code tokens.",
+      "duration": "1 minutes"
+    },
+    {
+      "id": "session-1774976933610",
+      "memberId": "jack",
+      "memberName": "Jack Riggs",
+      "startedAt": "2026-03-31T17:08:53.610Z",
+      "endedAt": null,
+      "goals": "",
+      "accomplishments": [],
+      "agentsUsed": [],
+      "pipelinesRun": [],
+      "notes": "",
+      "status": "active"
+    },
+    {
+      "id": "session-1774981378627",
+      "memberId": "jack",
+      "memberName": "Jack Riggs",
+      "startedAt": "2026-03-31T18:22:58.627Z",
+      "endedAt": null,
+      "goals": "",
+      "accomplishments": [],
+      "agentsUsed": [],
+      "pipelinesRun": [],
+      "notes": "",
+      "status": "active"
+    },
+    {
+      "id": "session-1774991095378",
+      "memberId": "jack",
+      "memberName": "Jack Riggs",
+      "startedAt": "2026-03-31T21:04:55.378Z",
+      "endedAt": null,
+      "goals": "",
+      "accomplishments": [
+        {
+          "description": "Used Alex for: Give a one-sentence summary of what OTG Agent OS does.",
+          "agentId": "alex",
+          "timestamp": "2026-04-01T10:13:32.487Z"
+        },
+        {
+          "description": "Used Sam for: Summarize OTG Agent OS in one sentence.",
+          "agentId": "sam",
+          "timestamp": "2026-04-01T10:17:24.345Z"
+        },
+        {
+          "description": "Used Alex for: Give me 3 hook ideas for dog training content.",
+          "agentId": "alex",
+          "timestamp": "2026-04-01T11:55:35.400Z"
+        },
+        {
+          "description": "Used Dev for: Outline the smallest technical approach for a webhook-backed intake form.",
+          "agentId": "dev",
+          "timestamp": "2026-04-01T11:57:41.951Z"
+        },
+        {
+          "description": "Used Iris for: Give visual direction for a premium dog training landing page.",
+          "agentId": "iris",
+          "timestamp": "2026-04-01T12:02:04.552Z"
+        },
+        {
+          "description": "Used Maya for: Write 2 hooks for a dog trainer.",
+          "agentId": "maya",
+          "timestamp": "2026-04-01T12:02:08.232Z"
+        },
+        {
+          "description": "Used Alex for: Research what is going viral in dog training on TikTok and YouTube, compare the ...",
+          "agentId": "alex",
+          "timestamp": "2026-04-01T12:03:16.500Z"
+        },
+        {
+          "description": "Used Alex for: Give me a quick answer: what makes a strong offer?",
+          "agentId": "alex",
+          "timestamp": "2026-04-01T12:11:18.612Z"
+        },
+        {
+          "description": "Used Alex for: Research what makes a strong offer for dog training and explain the likely objec...",
+          "agentId": "alex",
+          "timestamp": "2026-04-01T12:12:24.991Z"
+        },
+        {
+          "description": "Used Alex for: Give me a quick answer on strong offers.",
+          "agentId": "alex",
+          "timestamp": "2026-04-01T18:35:36.365Z"
+        }
+      ],
+      "agentsUsed": [
+        "alex",
+        "sam",
+        "dev",
+        "iris",
+        "maya"
+      ],
+      "pipelinesRun": [
+        {
+          "topic": "wedding videography",
+          "sessionId": "pipeline-1774998954037",
+          "timestamp": "2026-03-31T23:24:35.126Z"
+        },
+        {
+          "topic": "Wedding videography",
+          "sessionId": "pipeline-1775002239785",
+          "timestamp": "2026-04-01T00:15:25.676Z"
+        },
+        {
+          "topic": "Wedding photography and videography",
+          "sessionId": "pipeline-1775012546298",
+          "timestamp": "2026-04-01T03:12:21.830Z"
+        },
+        {
+          "topic": "Full pipeline on wedding photography and videography",
+          "sessionId": "pipeline-1775019146556",
+          "timestamp": "2026-04-01T05:00:38.778Z"
+        },
+        {
+          "topic": "Graphic designer",
+          "sessionId": "pipeline-1775021653502",
+          "timestamp": "2026-04-01T05:43:38.571Z"
+        },
+        {
+          "topic": "firework buisness",
+          "sessionId": "pipeline-1775030899630",
+          "timestamp": "2026-04-01T08:17:53.815Z"
+        },
+        {
+          "topic": "Wedding videography/photography",
+          "sessionId": "pipeline-1775030962606",
+          "timestamp": "2026-04-01T08:18:22.429Z"
+        },
+        {
+          "topic": "Dog Training",
+          "sessionId": "pipeline-1775031825415",
+          "timestamp": "2026-04-01T08:31:59.745Z"
+        },
+        {
+          "topic": "Dog training and getting new clients",
+          "sessionId": "pipeline-1775034325269",
+          "timestamp": "2026-04-01T09:14:53.018Z"
+        },
+        {
+          "topic": "Dog training and gaining new clients for it",
+          "sessionId": "pipeline-1775034355450",
+          "timestamp": "2026-04-01T09:19:03.789Z"
+        },
+        {
+          "topic": "Client: Jack Riggs\nNiche: Selling Toyota Cars in Marin County.\nPrimary offer: Come buy a car\nTarget audience: Commuters and families\nService area or geography: Marin County, San Rafael, Bay Area\nPrimary business goal: Schedule a time to come in\nPriority platforms: Instagram and TikTok\nSpecific research and execution notes: How to Sell Toyota Cars in Marin County.",
+          "sessionId": "pipeline-1775120795403",
+          "timestamp": "2026-04-02T09:18:17.280Z"
+        }
+      ],
+      "notes": "",
+      "status": "active"
+    },
+    {
+      "id": "session-1775124703687",
+      "memberId": "jack",
+      "memberName": "Jack Riggs",
+      "startedAt": "2026-04-02T10:11:43.687Z",
+      "endedAt": null,
+      "goals": "",
+      "accomplishments": [],
+      "agentsUsed": [],
+      "pipelinesRun": [
+        {
+          "topic": "Client: Cloudflare Demo Prospect\nNiche: wedding photography\nService area or geography: San Diego, CA\nSpecific research and execution notes: Imported for promotion flow test",
+          "sessionId": "pipeline-1775124570786",
+          "timestamp": "2026-04-02T10:19:39.468Z"
+        }
+      ],
+      "notes": "",
+      "status": "active"
+    },
+    {
+      "id": "session-1775125609427",
+      "memberId": "jack",
+      "memberName": "Jack Riggs",
+      "startedAt": "2026-04-02T10:26:49.427Z",
+      "endedAt": null,
+      "goals": "",
+      "accomplishments": [],
+      "agentsUsed": [],
+      "pipelinesRun": [
+        {
+          "topic": "Client: Jack Riggs\nNiche: photography and marketing business\nPrimary offer: Book a photoshoot\nTarget audience: Models\nService area or geography: Marin County, Ca / San Rafael\nPrimary business goal: Book a shoot\nPriority platforms: instagram, tiktok\nSpecific research and execution notes: photography and marketing business",
+          "sessionId": "pipeline-1775124780281",
+          "timestamp": "2026-04-02T10:30:59.720Z"
+        }
+      ],
+      "notes": "",
+      "status": "active"
+    }
+  ],
+  "activeSession": "session-1775125609427"
+}

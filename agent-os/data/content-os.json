@@ -1,0 +1,131 @@
+{
+  "strategy": {
+    "brandName": "OTG Icon",
+    "contentThesis": "OTG helps business owners use short-form video to get more leads through better hooks, clearer offers, and practical content systems.",
+    "knownFor": "Actionable short-form growth systems that turn attention into qualified leads.",
+    "beliefs": [
+      "Hook first, script second, format third, editing fourth.",
+      "Actionable value beats inspiration and fluff.",
+      "Proof and real experience make content heavier.",
+      "Broad hooks should lead into narrow value and niche CTA."
+    ],
+    "audiencePain": [
+      "Business owners post content but do not generate consistent leads.",
+      "Most short-form videos are vague, over-edited, or disconnected from the offer."
+    ],
+    "outcomes": [
+      "More qualified leads from short-form content.",
+      "Clearer offers and stronger positioning.",
+      "Repeatable content production that compounds."
+    ],
+    "trendSplit": {
+      "evergreen": 70,
+      "trendReactive": 30
+    },
+    "portfolioTargets": {
+      "reach": 30,
+      "trust": 25,
+      "conversion": 20,
+      "retention": 10,
+      "proof": 15
+    },
+    "brandVoice": {
+      "saysOften": [
+        "hook",
+        "offer",
+        "qualified leads",
+        "specific value",
+        "no fluff"
+      ],
+      "neverSays": [
+        "just stay consistent",
+        "post and pray",
+        "secret hack",
+        "guaranteed clients"
+      ],
+      "bluntness": "high",
+      "humor": "low",
+      "authority": "high",
+      "conversation": "medium",
+      "premiumSignals": [
+        "specific proof",
+        "clean language",
+        "calm confidence",
+        "practical examples"
+      ],
+      "rhythm": "short, direct, punchy sentences"
+    },
+    "platformRules": {
+      "tiktok": "Aggressive first-line pattern interrupt, direct camera energy, fast pacing.",
+      "instagram": "Strong first frame, readable captions, slightly cleaner polish, CTA in caption and on-screen.",
+      "youtubeShorts": "Clear framing, hook by second one, payoff slightly slower than TikTok, strong title packaging.",
+      "linkedin": "Turn the same idea into a sharper business lesson with more context and lighter CTA.",
+      "x": "Expand winning ideas into threads with a stronger argument spine and one takeaway per post."
+    },
+    "creativeConstraints": [
+      "Max one idea per video.",
+      "Max one CTA per video.",
+      "No jargon in the first sentence.",
+      "Start value immediately after the hook.",
+      "Use at least one concrete example.",
+      "First frame cannot be a boring wide shot.",
+      "Captions should stay tight and readable."
+    ],
+    "budgets": {
+      "researchBatchHours": 2,
+      "firstScriptDraftMinutes": 20,
+      "maxScriptRevisionRounds": 2,
+      "basicEditMinutes": 30,
+      "publishDelayHours": 24
+    },
+    "moat": [
+      "Original field experience with local businesses and creative services.",
+      "Own footage library and production capability.",
+      "Real offer strategy and sales workflow knowledge.",
+      "First-party lessons from wins, losses, and client objections."
+    ],
+    "qualifiedLeadDefinition": "A qualified lead matches the target niche, wants a relevant OTG service, has believable budget/timeline, and is willing to move into the funnel.",
+    "approvedHumanReviewPoints": [
+      "Brand profile changes",
+      "Research approval",
+      "Final script approval",
+      "Final QA before publish",
+      "Funnel copy or automation changes"
+    ],
+    "continuityRules": [
+      "Content problems should match the problems solved in the offer.",
+      "Video language should match the landing page and CTA copy.",
+      "The CTA should match the real next step in the funnel.",
+      "Proof used in content should directly support the sales promise."
+    ],
+    "capacityMode": {
+      "current": "high",
+      "highCapacityPlan": [
+        "Batch 15 talking-head videos.",
+        "Film custom B-roll and stronger first-frame hooks.",
+        "Record deeper case studies and proof content."
+      ],
+      "lowCapacityPlan": [
+        "Use whiteboard or paper reveal formats.",
+        "Use commentary over existing footage.",
+        "Repurpose proven winners into lower-lift variations.",
+        "Prioritize proof and objection content that is fast to produce."
+      ],
+      "currentConstraints": [
+        "Default to the simplest format that still preserves performance."
+      ]
+    }
+  },
+  "offers": [],
+  "proofLibrary": [],
+  "claimRegistry": [],
+  "negativePatterns": [],
+  "experiments": [],
+  "topics": [],
+  "leadFeedback": [],
+  "objections": [],
+  "productionReality": [],
+  "antiFluff": [],
+  "postmortems": [],
+  "lastUpdated": null
+}

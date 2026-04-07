@@ -1,0 +1,5 @@
+USER: whats 5 + 5
+
+ALEX: The sum of 5 + 5 is 10.
+
+If you have any other questions or need further research, feel free to let me know!

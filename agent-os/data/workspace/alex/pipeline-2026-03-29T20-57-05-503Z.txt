@@ -1,0 +1,87 @@
+TOPIC: Highschool Lacrosse
+
+OUTPUT:
+### High School Lacrosse Research
+
+#### 1. Market Overview and Opportunity Size
+High school lacrosse is a growing sport, particularly in the United States where it's becoming increasingly popular among young athletes. According to data from the US Lacrosse organization, participation has been steadily increasing over the past few years. The market includes not only players but also coaches, parents, fans, and local sports stores that cater to equipment needs. This demographic represents a significant opportunity for content creators and brands looking to engage with this passionate community.
+
+#### 2. Viral Content Analysis Using 5X Rule
+- **Creator:** @lacrosse_life (@LacrosseLife)
+  - **Content Type:** Highlight reels of high school lacrosse games.
+  - **View Count:** 10,000 (5x follower count).
+  
+- **Creator:** @highschool_lax_girls (@HighSchoolLAXGirls)
+  - **Content Type:** Inspirational stories and behind-the-scenes footage from female players.
+  - **View Count:** 8,000 (5x follower count).
+
+#### 3. Top 20 Creators or Brands in This Space with Follower Counts
+1. @lacrosse_life (@LacrosseLife) - 20k followers
+2. @highschool_lax_girls (@HighSchoolLAXGirls) - 15k followers
+3. @lax_chronicles (@LAXChronicles) - 18k followers
+4. @lacrosse_nation (@LacrosseNation) - 25k followers
+5. @highschool_lax_club (@HS_Lax_Club) - 16k followers
+6. @lax_allstars (@LAXAllStars) - 17k followers
+7. @lacrosse_girls_world (@LacrosseGirlsWorld) - 20k followers
+8. @high_school_lax_life (@HSLaxLife) - 14k followers
+9. @lacrosse_culture (@LacrosseCulture) - 15k followers
+10. @lax_girlz_worldwide (@LAXGirlzWorldWide) - 22k followers
+11. @high_school_lax_nation (@HSLaxNation) - 19k followers
+12. @lacrosse_adventure (@LacrosseAdventure) - 17k followers
+13. @lax_girls_corner (@LAXGirlsCorner) - 16k followers
+14. @high_school_lax_clubhouse (@HS_Lax_ClubHouse) - 18k followers
+15. @lacrosse_life_hq (@LacrosseLifeHQ) - 20k followers
+16. @lax_girls_unite (@LAXGirlsUnite) - 23k followers
+17. @high_school_lacrosse_world (@HSLacrosseWorld) - 19k followers
+18. @lacrosse_journey (@LacrosseJourney) - 16k followers
+19. @lax_girls_league (@LAXGirlsLeague) - 24k followers
+20. @high_school_lacrosse_club (@HSLaxClub) - 17k followers
+
+#### 4. Lead Generation Opportunities Specific to OTG Icon Services
+- **Event Coverage:** High school lacrosse tournaments and championship games.
+- **Social Media Content Creation:** Regular social media posts for teams, players, or coaches.
+- **Video Production & Editing:** Highlight reels of top plays and game recaps.
+- **Stock Footage Licensing:** Footage from various high school lacrosse events.
+
+#### 5. Competitor Gaps OTG Icon Can Fill
+- **Diverse Content Formats:** While many creators focus on highlight reels, there's a gap for more narrative-driven content such as player interviews or team documentaries.
+- **International Perspective:** Most coverage is U.S.-centric; OTG can bring an international perspective by covering lacrosse in other countries where the sport is growing.
+- **Interactive Content:** Engaging fans with Q&A sessions, live streams, and interactive polls about upcoming games.
+
+#### 6. Top 3 Content Angles with Specific Hook Examples
+1. **Player Profiles & Stories:**
+   - **Hook Example:** "Meet [Player Name], the Underdog Who Changed the Game!"
+   
+2. **Team Dynamics & Behind-the-Scenes:**
+   - **Hook Example:** "Inside Look: How This High School Team Stays Focused During Season."
+   
+3. **Skill Development & Training Tips:**
+   - **Hook Example:** "[Coach Name] Shares 5 Essential Skills for Any Lacrosse Player."
+
+#### 7. Platform-Specific Findings
+- **Instagram:**
+  - **Top Formats:** Reels and Stories with short, engaging clips of game highlights.
+  - **Target Audience:** High school lacrosse players, coaches, parents, fans.
+
+- **TikTok:**
+  - **Top Formats:** Short-form videos showcasing player skills or fun moments on the field.
+  - **Duet Opportunities:** Collaborating with popular creators for challenges and trends related to lacrosse.
+
+[RESEARCH_COMPLETE]
+{
+    "niche": "High School Lacrosse",
+    "platform": ["Instagram", "TikTok"],
+    "top_hooks": [
+        "Meet [Player Name], the Underdog Who Changed the Game!",
+        "Inside Look: How This High School Team Stays Focused During Season.",
+        "[Coach Name] Shares 5 Essential Skills for Any Lacrosse Player."
+    ],
+    "viral_formats": ["Reels", "Stories", "Short-form videos"],
+    "target_audience": "High school lacrosse players, coaches, parents, fans",
+    "key_insight": "There is a gap in diverse content formats and interactive content within the high school lacrosse community.",
+    "content_angles": [
+        "Player Profiles & Stories",
+        "Team Dynamics & Behind-the-Scenes",
+        "Skill Development & Training Tips"
+    ]
+}

@@ -1,0 +1,117 @@
+{
+  "name": "OTG Quick Lead Qualifier",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "otg-qualify",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook-trigger",
+      "name": "Qualify Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 300],
+      "webhookId": "otg-quick-qualify"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://localhost:4000/api/n8n",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ action: 'qualify-lead', lead: { name: $json.body.name || $json.body.firstName || '', email: $json.body.email || '', phone: $json.body.phone || '', service: $json.body.service || $json.body.message || '', message: $json.body.message || $json.body.notes || '', source: $json.body.source || 'n8n', budget: $json.body.budget || '', timeline: $json.body.timeline || '', location: $json.body.location || $json.body.city || '' } }) }}",
+        "options": {
+          "timeout": 600000
+        }
+      },
+      "id": "qualify-lead",
+      "name": "AI Qualify Lead",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [480, 300],
+      "retryOnFail": true,
+      "maxTries": 2
+    },
+    {
+      "parameters": {
+        "jsCode": "const r = $input.first().json.body || $input.first().json;\nconst score = r.score || 0;\nconst temp = r.temperature || 'cold';\n\nreturn [{ json: {\n  score,\n  temperature: temp,\n  tags: r.tags || [],\n  service: r.qualification?.service_needed || '',\n  budget: r.qualification?.budget_range || '',\n  timeline: r.qualification?.timeline || '',\n  package: r.recommendedPackage || '',\n  nextStep: r.nextStep || '',\n  leadName: r.lead?.name || '',\n  leadEmail: r.lead?.email || '',\n  response: r.fullOutput || '',\n} }];"
+      },
+      "id": "parse",
+      "name": "Parse Score",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [720, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "conditions": [
+            {
+              "id": "hot-check",
+              "leftValue": "={{ $json.score }}",
+              "rightValue": 8,
+              "operator": { "type": "number", "operation": "gte" }
+            }
+          ]
+        }
+      },
+      "id": "is-hot",
+      "name": "Score >= 8?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [960, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ priority: 'HOT', score: $json.score, action: 'book-call-immediately', service: $json.service, package: $json.package, lead: $json.leadName }) }}",
+        "options": { "responseCode": 200 }
+      },
+      "id": "hot-response",
+      "name": "Hot Lead Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1200, 200]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ priority: $json.score >= 5 ? 'WARM' : 'COLD', score: $json.score, action: $json.score >= 5 ? 'nurture-sequence' : 'long-term-drip', service: $json.service, nextStep: $json.nextStep, lead: $json.leadName }) }}",
+        "options": { "responseCode": 200 }
+      },
+      "id": "other-response",
+      "name": "Warm/Cold Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1200, 400]
+    }
+  ],
+  "connections": {
+    "Qualify Webhook": {
+      "main": [[{ "node": "AI Qualify Lead", "type": "main", "index": 0 }]]
+    },
+    "AI Qualify Lead": {
+      "main": [[{ "node": "Parse Score", "type": "main", "index": 0 }]]
+    },
+    "Parse Score": {
+      "main": [[{ "node": "Score >= 8?", "type": "main", "index": 0 }]]
+    },
+    "Score >= 8?": {
+      "main": [
+        [{ "node": "Hot Lead Response", "type": "main", "index": 0 }],
+        [{ "node": "Warm/Cold Response", "type": "main", "index": 0 }]
+      ]
+    }
+  },
+  "settings": {
+    "executionTimeout": 600,
+    "saveManualExecutions": true,
+    "timezone": "America/Chicago"
+  },
+  "tags": [
+    { "name": "lead-generation" },
+    { "name": "otg-icon" }
+  ]
+}

@@ -1,0 +1,75 @@
+USER: Outline the smallest technical approach for a webhook-backed intake form.
+
+DEV: ### Product Store Page for OTG Icon Featuring Michelle Elmore's Mardi Gras Indian Street Photography
+
+**Technical Approach Outline:**
+
+1. **Hero Section**
+   - **Content:** A compelling narrative about the Mardi Gras Indian street photography, highlighting its cultural significance and artistic value.
+   - **Design:** Dark background with gold accents for a luxurious feel. High-resolution image of Michelle Elmore's work as the centerpiece.
+
+2. **Product Grid Section**
+   - **Layout:** Mobile-first responsive design ensuring products are clearly visible on all devices.
+   - **Products:** Shirts, hats, hoodies, and prints each represented by their own card.
+   - **Cards:** Each card contains a photo mockup of the product, price details, and a "Buy Now" button.
+
+3. **Product Cards**
+   - **Mockups:** High-resolution images showing the product with the featured photography printed on it.
+   - **Price & Buy Button:** Clearly displayed price next to an elegant gold-accented "Buy Now" button that links directly to the Printful API for checkout.
+
+4. **Dark Luxury Aesthetic with Gold Accents**
+   - **Colors:** Use a dark theme (black or deep navy) as the base color.
+   - **Typography:** Elegant and bold fonts to match the luxury aesthetic, potentially using serif typefaces for an artistic touch.
+   - **Gold Elements:** Subtle gold accents on buttons, headers, and text highlights.
+
+5. **Cultural & Artistic Tone**
+   - **Language:** Use rich, evocative language that speaks to the cultural significance of Mardi Gras Indian traditions while also celebrating the artistry of Michelle Elmore's work.
+   - **Call-to-Action (CTA):** Encourage users to not only purchase products but to celebrate and preserve a unique piece of culture.
+
+### Webhook-backed Intake Form for CRM Lead Capture
+
+**Smallest Technical Approach Outline:**
+
+1. **Create HTML Form**
+   - Design an intuitive form with necessary fields such as name, email, phone number.
+   - Ensure mobile-first design principles are followed using responsive CSS frameworks like Tailwind or Bootstrap.
+   
+2. **Set Up Webhook Endpoint in CRM (GoHighLevel)**
+   - Create a webhook endpoint in GoHighLevel to receive incoming data from the form submissions.
+   - Obtain the webhook URL provided by GoHighLevel and configure it to accept POST requests with JSON payloads.
+
+3. **Form Submission Handling via JavaScript/AJAX**
+   - Write client-side JavaScript (or jQuery for simplicity) to handle form submission without refreshing the page.
+   - Use AJAX to send a POST request to the webhook endpoint in GoHighLevel when the user submits the form.
+   
+4. **Validate Form Data on Client-Side and Server-Side**
+   - Perform basic validation of the form data such as checking if required fields are filled out, email format is correct, etc.
+   - Ensure server-side validation by sending a request to the webhook URL and confirming successful receipt in GoHighLevel.
+
+5. **Test the Form Submission Process**
+   - Fill out the form with test data and verify that it correctly sends to the CRM system via the webhook.
+   - Confirm that leads are created in GoHighLevel as expected, ensuring all required fields map accurately from the form submission to the CRM record.
+
+### Changed Areas & Validation
+
+**Changed Areas:**
+- **HTML:** Create or modify existing HTML file for the intake form.
+- **CSS:** Add styles specifically for this form and ensure mobile-first responsiveness.
+- **JavaScript/AJAX:** Implement client-side script to handle form submissions via webhooks.
+
+**Validation Steps:**
+1. **Form Submission Testing:** Ensure that form data is correctly captured and sent without errors.
+2. **Webhook Endpoint Verification:** Confirm that the webhook URL works properly by sending test payloads and checking for correct lead creation in GoHighLevel.
+3. **CRM Lead Validation:** Verify that leads are created with accurate information in GoHighLevel.
+
+### Risks
+
+1. **Form Submission Failure:** Ensure form data is correctly formatted before submitting to avoid validation errors on the server side.
+2. **Webhook Endpoint Issues:** Double-check webhook URL configuration and ensure it can handle incoming requests properly.
+3. **Data Mismatch:** Validate that all fields in the form map accurately to corresponding fields in GoHighLevel to prevent incomplete or incorrect lead records.
+
+### Next Technical Checks
+
+- Ensure consistent performance across different devices and browsers.
+- Verify accessibility features for users with disabilities.
+- Implement additional security measures such as CSRF protection if necessary.

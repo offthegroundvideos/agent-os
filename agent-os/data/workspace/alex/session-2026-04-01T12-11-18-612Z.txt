@@ -1,0 +1,12 @@
+USER: Give me a quick answer: what makes a strong offer?
+
+ALEX: A strong offer in the context of viral content and lead generation has several key components:
+
+1. **Clear Value Proposition**: Clearly articulate the specific benefit or solution your content provides.
+2. **Immediate Relevance**: Address an immediate problem or need that your target audience is facing.
+3. **Practical Examples**: Use concrete examples to demonstrate how your offer works in real-life scenarios.
+4. **Strong CTA**: Include a direct and compelling call-to-action (CTA) that guides viewers to the next step, such as signing up for a service or contacting you directly.
+5. **Authenticity**: Be genuine and transparent about what your audience can expect from your services or products.
+6. **Proof and Social Proof**: Provide evidence of past successes through testimonials, case studies, or before-and-after transformations.
+
+For OTG Icon, this translates to creating content that solves specific dog training problems with

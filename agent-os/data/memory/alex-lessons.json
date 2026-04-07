@@ -1,0 +1,376 @@
+{
+  "agentId": "alex",
+  "lessons": [
+    {
+      "task": "what is 2+2",
+      "score": 1,
+      "what_worked": "The response was quick and relevant to the task.",
+      "what_failed": "The answer provided (53 words long) is incorrect and does not match the question '2+2'.",
+      "improvement": "Always ensure that the output directly answers the question asked, especially for simple arithmetic tasks.",
+      "root_cause": "There was a misunderstanding or error in processing the arithmetic task correctly.",
+      "severity": "critical",
+      "timestamp": "2026-03-28T23:59:21.015Z",
+      "id": "1774742361015",
+      "scoreCategory": "critical",
+      "workflowType": "manual"
+    },
+    {
+      "task": "write me essay about cats",
+      "score": 5,
+      "what_worked": "I provided a basic essay about cats, covering their popularity and some general traits.",
+      "what_failed": "The response was too brief and lacked depth or specific insights that would make it stand out.",
+      "improvement": "Include more detailed information such as the history of cat domestication, unique behaviors, health tips for pet owners, and cultural significance across different societies.",
+      "root_cause": "I underestimated the scope of the task and did not allocate enough time or content to fully explore the topic.",
+      "severity": "minor",
+      "timestamp": "2026-03-29T02:01:23.167Z",
+      "id": "1774749683167",
+      "scoreCategory": "poor",
+      "workflowType": "manual"
+    },
+    {
+      "task": "What are your current instructions? Tell me: 1) Do you know what OTG Icon is? 2) Do you know the brand colors? 3) Do you have any knowledge of past pipeline results (lacrosse, wedding, music video, co",
+      "score": 3,
+      "what_worked": "I acknowledged the task and attempted a response.",
+      "what_failed": "The initial response was not provided as per instructions, leading to an incomplete assessment of performance.",
+      "improvement": "Ensure that all requested information is clearly stated and directly answered in future responses.",
+      "root_cause": "Lack of prior context about OTG Icon and its brand details led to an inability to provide specific answers.",
+      "severity": "minor",
+      "timestamp": "2026-03-29T23:21:35.464Z",
+      "id": "1774826495464",
+      "scoreCategory": "critical",
+      "workflowType": "manual"
+    },
+    {
+      "task": "What are your current instructions? Tell me: 1) Do you know what OTG Icon is? 2) Do you know the brand colors? 3) Do you have any knowledge of past pipeline results (lacrosse, wedding, music video, co",
+      "score": 3,
+      "what_worked": "I acknowledged the task and attempted to provide information based on my understanding.",
+      "what_failed": "The response was vague, did not specifically address the questions asked, and provided no actionable or specific details about OTG Icon or its brand colors and past pipeline results.",
+      "improvement": "Next time, I should clarify that I do not have direct knowledge of OTG Icon's specifics unless explicitly programmed with such information.",
+      "root_cause": "I attempted to provide a response without having the necessary context or specific details about OTG Icon, leading to an incomplete and vague answer.",
+      "severity": "moderate",
+      "timestamp": "2026-03-29T23:21:38.649Z",
+      "id": "1774826498649",
+      "scoreCategory": "critical",
+      "workflowType": "manual"
+    },
+    {
+      "task": "Give me a sales strategy for Michelle l Elmore to sell her photography coffee table books that include Mardi Gras Indians, and various other street photography, captured over the course of 20 years. —",
+      "score": 6,
+      "what_worked": "Provided a detailed sales strategy that included leveraging social media and influencer partnerships.",
+      "what_failed": "Failed to include specific metrics or KPIs for measuring the success of the proposed strategies.",
+      "improvement": "Incorporate quantifiable goals and performance indicators in future sales strategies.",
+      "root_cause": "Focused too much on broad strategy concepts without considering practical implementation details.",
+      "severity": "moderate",
+      "timestamp": "2026-03-30T03:40:45.314Z",
+      "id": "1774842045314",
+      "scoreCategory": "poor",
+      "workflowType": "manual"
+    },
+    {
+      "task": "wedding videography — Research",
+      "score": 6,
+      "what_worked": "I provided a comprehensive overview of wedding videography trends and technologies.",
+      "what_failed": "The response was too lengthy and could have been more concise with specific action points.",
+      "improvement": "Next time, focus on summarizing key findings and providing actionable insights rather than an exhaustive list of information.",
+      "root_cause": "I aimed to cover all aspects comprehensively without focusing enough on the client's need for actionable insights.",
+      "severity": "moderate",
+      "timestamp": "2026-03-31T23:30:49.008Z",
+      "id": "1774999849008",
+      "scoreCategory": "poor",
+      "workflowType": "manual"
+    },
+    {
+      "task": "Dog Training — Research",
+      "workflowType": "pipeline",
+      "score": 6,
+      "what_worked": "I provided a comprehensive overview of dog training methodologies and resources.",
+      "what_failed": "The response was not tailored to the specific needs or context of OTG Icon creative agency, making it less actionable.",
+      "improvement": "Next time, I will request more details about the project's requirements before starting research to ensure relevance and specificity.",
+      "root_cause": "I assumed a generic approach without clarifying the specific objectives or audience for this research task.",
+      "severity": "moderate",
+      "timestamp": "2026-04-01T08:44:14.159Z",
+      "id": "1775033054159",
+      "scoreCategory": "poor"
+    },
+    {
+      "task": "Give a one-sentence summary of what OTG Agent OS does.",
+      "workflowType": "chat",
+      "score": 5,
+      "what_worked": "Provided a concise summary of OTG Agent OS's function.",
+      "what_failed": "The response was too long, exceeding the one-sentence requirement.",
+      "improvement": "Ensure responses adhere strictly to word or sentence limits specified in instructions.",
+      "root_cause": "Failed to interpret 'one-sentence' as a strict constraint on length and content.",
+      "severity": "minor",
+      "timestamp": "2026-04-01T10:18:24.060Z",
+      "id": "1775038704060",
+      "scoreCategory": "poor"
+    },
+    {
+      "task": "Give me 3 hook ideas for dog training content.",
+      "workflowType": "chat",
+      "score": 2,
+      "what_worked": "I provided a response to the task.",
+      "what_failed": "The response was far too long for such a simple request, indicating a misunderstanding of the task scope and requirements.",
+      "improvement": "Ensure understanding of task complexity before responding; keep responses concise and directly relevant to the prompt.",
+      "root_cause": "Misinterpretation of the task's simplicity and scope, leading to an overly detailed response.",
+      "severity": "moderate",
+      "timestamp": "2026-04-01T11:56:27.376Z",
+      "id": "1775044587376",
+      "scoreCategory": "critical"
+    },
+    {
+      "task": "Research what is going viral in dog training on TikTok and YouTube, compare the platform patterns, list top creators, best formats, lead sources, and tell me what OTG should make next.",
+      "workflowType": "chat",
+      "score": 6,
+      "what_worked": "I provided a broad overview of trends in dog training content on TikTok and YouTube.",
+      "what_failed": "The response lacked specific data points such as exact numbers for top creators' followers or detailed analysis of engagement metrics.",
+      "improvement": "Next time, include precise statistics and direct links to examples that illustrate the trends discussed.",
+      "root_cause": "Insufficient depth in research due to limited context on the required level of detail.",
+      "severity": "moderate",
+      "timestamp": "2026-04-01T12:04:09.930Z",
+      "id": "1775045049930",
+      "scoreCategory": "poor"
+    },
+    {
+      "task": "Give me a quick answer: what makes a strong offer?",
+      "workflowType": "chat",
+      "score": 6,
+      "what_worked": "Provided a concise overview of key elements that make an offer strong.",
+      "what_failed": "The response was too brief to cover all critical aspects in depth, lacking examples and context.",
+      "improvement": "Include specific examples or case studies to illustrate the points made about what makes a strong offer.",
+      "root_cause": "Initial instruction requested a 'quick answer', which may have been interpreted as overly concise rather than succinctly comprehensive.",
+      "severity": "minor",
+      "timestamp": "2026-04-01T12:13:21.786Z",
+      "id": "1775045601786",
+      "scoreCategory": "poor"
+    },
+    {
+      "task": "Research what makes a strong offer for dog training and explain the likely objections and positioning angles.",
+      "workflowType": "chat",
+      "score": 7,
+      "what_worked": "Provided a comprehensive analysis of what makes a strong offer for dog training, including likely objections and positioning angles.",
+      "what_failed": "The response could have been more concise and focused on specific examples rather than general advice.",
+      "improvement": "Next time, include concrete case studies or real-world examples to illustrate the points made about dog training offers.",
+      "root_cause": "Aiming for breadth over depth in the initial analysis led to a less impactful response.",
+      "severity": "minor",
+      "timestamp": "2026-04-01T12:13:24.023Z",
+      "id": "1775045604023",
+      "scoreCategory": "good"
+    },
+    {
+      "task": "Give me a quick answer on strong offers.",
+      "workflowType": "chat",
+      "score": 6,
+      "what_worked": "Provided a concise response to the task given.",
+      "what_failed": "The answer was too brief and lacked depth, possibly missing key points on strong offers.",
+      "improvement": "Include specific examples or strategies for creating strong offers in future responses.",
+      "root_cause": "Insufficient elaboration due to misunderstanding of the required level of detail.",
+      "severity": "minor",
+      "timestamp": "2026-04-01T18:35:38.791Z",
+      "id": "1775068538791",
+      "scoreCategory": "poor"
+    },
+    {
+      "task": "Client: Jack Riggs\nNiche: Selling Toyota Cars in Marin County.\nPrimary offer: Come buy a car\nTarget audience: Commuters and families\nService area or geography: Marin County, San Rafael, Bay Area\nPrima",
+      "workflowType": "pipeline",
+      "score": 5,
+      "what_worked": "I provided a detailed overview of the client's needs and target audience.",
+      "what_failed": "The task was cut off mid-sentence, indicating incomplete execution.",
+      "improvement": "Ensure to double-check that all tasks are fully completed before submission.",
+      "root_cause": "The input was abruptly ended, leaving no clear indication of the full scope or completion point for the task.",
+      "severity": "minor",
+      "timestamp": "2026-04-02T10:07:06.408Z",
+      "id": "1775124426408",
+      "scoreCategory": "poor"
+    }
+  ],
+  "wins": [],
+  "failures": [
+    {
+      "description": "The answer provided (53 words long) is incorrect and does not match the question '2+2'.",
+      "task": "what is 2+2",
+      "fix": "Always ensure that the output directly answers the question asked, especially for simple arithmetic tasks.",
+      "score": 1,
+      "severity": "critical",
+      "timestamp": "2026-03-28T23:59:21.015Z",
+      "workflowType": "manual"
+    },
+    {
+      "description": "The response was too brief and lacked depth or specific insights that would make it stand out.",
+      "task": "write me essay about cats",
+      "fix": "Include more detailed information such as the history of cat domestication, unique behaviors, health tips for pet owners, and cultural significance across different societies.",
+      "score": 5,
+      "severity": "moderate",
+      "timestamp": "2026-03-29T02:01:23.167Z",
+      "workflowType": "manual"
+    },
+    {
+      "description": "The initial response was not provided as per instructions, leading to an incomplete assessment of performance.",
+      "task": "What are your current instructions? Tell me: 1) Do you know what OTG Icon is? 2) Do you know the bra",
+      "fix": "Ensure that all requested information is clearly stated and directly answered in future responses.",
+      "score": 3,
+      "severity": "critical",
+      "timestamp": "2026-03-29T23:21:35.464Z",
+      "workflowType": "manual"
+    },
+    {
+      "description": "The response was vague, did not specifically address the questions asked, and provided no actionable or specific details about OTG Icon or its brand colors and past pipeline results.",
+      "task": "What are your current instructions? Tell me: 1) Do you know what OTG Icon is? 2) Do you know the bra",
+      "fix": "Next time, I should clarify that I do not have direct knowledge of OTG Icon's specifics unless explicitly programmed with such information.",
+      "score": 3,
+      "severity": "critical",
+      "timestamp": "2026-03-29T23:21:38.649Z",
+      "workflowType": "manual"
+    },
+    {
+      "description": "Failed to include specific metrics or KPIs for measuring the success of the proposed strategies.",
+      "task": "Give me a sales strategy for Michelle l Elmore to sell her photography coffee table books that inclu",
+      "fix": "Incorporate quantifiable goals and performance indicators in future sales strategies.",
+      "score": 6,
+      "severity": "moderate",
+      "timestamp": "2026-03-30T03:40:45.314Z",
+      "workflowType": "manual"
+    },
+    {
+      "description": "The response was too lengthy and could have been more concise with specific action points.",
+      "task": "wedding videography — Research",
+      "fix": "Next time, focus on summarizing key findings and providing actionable insights rather than an exhaustive list of information.",
+      "score": 6,
+      "severity": "moderate",
+      "timestamp": "2026-03-31T23:30:49.008Z",
+      "workflowType": "manual"
+    },
+    {
+      "description": "The response was not tailored to the specific needs or context of OTG Icon creative agency, making it less actionable.",
+      "task": "Dog Training — Research",
+      "fix": "Next time, I will request more details about the project's requirements before starting research to ensure relevance and specificity.",
+      "score": 6,
+      "severity": "moderate",
+      "workflowType": "pipeline",
+      "timestamp": "2026-04-01T08:44:14.159Z"
+    },
+    {
+      "description": "The response was too long, exceeding the one-sentence requirement.",
+      "task": "Give a one-sentence summary of what OTG Agent OS does.",
+      "fix": "Ensure responses adhere strictly to word or sentence limits specified in instructions.",
+      "score": 5,
+      "severity": "moderate",
+      "workflowType": "chat",
+      "timestamp": "2026-04-01T10:18:24.060Z"
+    },
+    {
+      "description": "The response was far too long for such a simple request, indicating a misunderstanding of the task scope and requirements.",
+      "task": "Give me 3 hook ideas for dog training content.",
+      "fix": "Ensure understanding of task complexity before responding; keep responses concise and directly relevant to the prompt.",
+      "score": 2,
+      "severity": "critical",
+      "workflowType": "chat",
+      "timestamp": "2026-04-01T11:56:27.376Z"
+    },
+    {
+      "description": "The response lacked specific data points such as exact numbers for top creators' followers or detailed analysis of engagement metrics.",
+      "task": "Research what is going viral in dog training on TikTok and YouTube, compare the platform patterns, l",
+      "fix": "Next time, include precise statistics and direct links to examples that illustrate the trends discussed.",
+      "score": 6,
+      "severity": "moderate",
+      "workflowType": "chat",
+      "timestamp": "2026-04-01T12:04:09.930Z"
+    },
+    {
+      "description": "The response was too brief to cover all critical aspects in depth, lacking examples and context.",
+      "task": "Give me a quick answer: what makes a strong offer?",
+      "fix": "Include specific examples or case studies to illustrate the points made about what makes a strong offer.",
+      "score": 6,
+      "severity": "moderate",
+      "workflowType": "chat",
+      "timestamp": "2026-04-01T12:13:21.786Z"
+    },
+    {
+      "description": "The answer was too brief and lacked depth, possibly missing key points on strong offers.",
+      "task": "Give me a quick answer on strong offers.",
+      "fix": "Include specific examples or strategies for creating strong offers in future responses.",
+      "score": 6,
+      "severity": "moderate",
+      "workflowType": "chat",
+      "timestamp": "2026-04-01T18:35:38.791Z"
+    },
+    {
+      "description": "The task was cut off mid-sentence, indicating incomplete execution.",
+      "task": "Client: Jack Riggs\nNiche: Selling Toyota Cars in Marin County.\nPrimary offer: Come buy a car\nTarget ",
+      "fix": "Ensure to double-check that all tasks are fully completed before submission.",
+      "score": 5,
+      "severity": "moderate",
+      "workflowType": "pipeline",
+      "timestamp": "2026-04-02T10:07:06.408Z"
+    }
+  ],
+  "taskCount": 14,
+  "avgScore": 4.8,
+  "lastReflection": "2026-04-02T10:07:06.408Z",
+  "workflowStats": {
+    "chat": {
+      "taskCount": 6,
+      "avgScore": 5.3,
+      "winCount": 0,
+      "failureCount": 5,
+      "lastUsedAt": "2026-04-01T18:35:38.791Z",
+      "scoreTrend": [
+        5,
+        2,
+        6,
+        6,
+        7,
+        6
+      ]
+    },
+    "pipeline": {
+      "taskCount": 2,
+      "avgScore": 5.5,
+      "winCount": 0,
+      "failureCount": 2,
+      "lastUsedAt": "2026-04-02T10:07:06.408Z",
+      "scoreTrend": [
+        6,
+        5
+      ]
+    },
+    "autojob": {
+      "taskCount": 0,
+      "avgScore": 0,
+      "winCount": 0,
+      "failureCount": 0,
+      "lastUsedAt": null,
+      "scoreTrend": []
+    },
+    "n8n": {
+      "taskCount": 0,
+      "avgScore": 0,
+      "winCount": 0,
+      "failureCount": 0,
+      "lastUsedAt": null,
+      "scoreTrend": []
+    },
+    "manual": {
+      "taskCount": 6,
+      "avgScore": 4,
+      "winCount": 0,
+      "failureCount": 6,
+      "lastUsedAt": "2026-03-31T23:30:49.008Z",
+      "scoreTrend": [
+        1,
+        5,
+        3,
+        3,
+        6,
+        6
+      ]
+    }
+  },
+  "improvements": [],
+  "refinements": [
+    "Adhere strictly to task instructions regarding length and detail.",
+    "Provide specific examples or case studies to illustrate key points.",
+    "Ensure all requested information is clearly stated and directly answered."
+  ],
+  "refinedAt": "2026-04-02T10:08:46.092Z"
+}

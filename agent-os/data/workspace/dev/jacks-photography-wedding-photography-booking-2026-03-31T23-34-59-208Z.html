@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jacks photography — Turn short-form content into booked sales calls.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --accent: #8b5cf6;
+    --bg: #0b0c0f;
+    --panel: rgba(15,18,24,0.78);
+    --surface: #10131a;
+    --text: #f4efe7;
+    --muted: #a79f93;
+    --line: rgba(255,255,255,0.1);
+    --shadow: 0 30px 80px rgba(0,0,0,0.35);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: 'Manrope', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+  }
+  h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; margin: 0; }
+  p { margin: 0; }
+  a { color: inherit; }
+  .page-shell {
+    min-height: 100vh;
+    background:
+      radial-gradient(circle at top left, #8b5cf622, transparent 32%),
+      radial-gradient(circle at bottom right, #8b5cf618, transparent 28%),
+      var(--bg);
+  }
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 28px;
+    backdrop-filter: blur(18px);
+    background: rgba(11,12,15,0.55);
+    border-bottom: 1px solid var(--line);
+  }
+  .brand-mark {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .brand-mark strong {
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .brand-mark span {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+  .topbar a {
+    text-decoration: none;
+    background: var(--accent);
+    color: #111;
+    padding: 0.85rem 1.2rem;
+    border-radius: 999px;
+    font-weight: 800;
+  }
+  .hero {
+    min-height: calc(100svh - 76px);
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 0;
+    align-items: stretch;
+  }
+  .hero-copy {
+    padding: 5rem clamp(1.4rem, 4vw, 4rem) 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 44rem;
+  }
+  .eyebrow {
+    margin-bottom: 1rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.78rem;
+    font-weight: 800;
+  }
+  .hero h1 {
+    font-size: clamp(2.9rem, 6vw, 5.6rem);
+    line-height: 0.94;
+    letter-spacing: -0.05em;
+    max-width: 10ch;
+  }
+  .hero p {
+    margin-top: 1.35rem;
+    font-size: clamp(1rem, 1.55vw, 1.22rem);
+    line-height: 1.65;
+    color: var(--muted);
+    max-width: 36rem;
+  }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    margin-top: 2rem;
+  }
+  .hero-actions a,
+  .hero-actions button {
+    font: inherit;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 1rem 1.35rem;
+    border-radius: 999px;
+    font-weight: 800;
+  }
+  .hero-actions .primary {
+    background: var(--accent);
+    color: #111;
+  }
+  .hero-actions .secondary {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--line);
+  }
+  .hero-proof {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 2.25rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--line);
+  }
+  .hero-proof strong {
+    display: block;
+    font-size: 1.35rem;
+  }
+  .hero-proof span {
+    color: var(--muted);
+    font-size: 0.88rem;
+  }
+  .hero-visual {
+    position: relative;
+    min-height: 34rem;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.35)),
+      url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+  }
+  .visual-card {
+    position: absolute;
+    right: clamp(1.2rem, 3vw, 2.5rem);
+    bottom: clamp(1.2rem, 3vw, 2.5rem);
+    width: min(26rem, calc(100% - 2rem));
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 1.4rem;
+    padding: 1.2rem;
+    box-shadow: var(--shadow);
+  }
+  .visual-card small {
+    display: block;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 0.55rem;
+  }
+  .visual-card strong {
+    display: block;
+    font-size: 1.15rem;
+    margin-bottom: 0.65rem;
+  }
+  .visual-card p {
+    color: var(--muted);
+    line-height: 1.55;
+    font-size: 0.96rem;
+  }
+  .section {
+    padding: clamp(3.4rem, 7vw, 6rem) clamp(1.4rem, 4vw, 4rem);
+  }
+  .section-inner {
+    max-width: 76rem;
+    margin: 0 auto;
+  }
+  .section-head {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: end;
+    margin-bottom: 2rem;
+  }
+  .section-head h2 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    letter-spacing: -0.04em;
+    max-width: 12ch;
+  }
+  .section-head p {
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 34rem;
+  }
+  .strip {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  .strip article,
+  .flow article,
+  .faq article,
+  .quote {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 1.2rem;
+    padding: 1.25rem;
+  }
+  .strip h3,
+  .flow h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.02rem;
+  }
+  .strip p,
+  .flow p,
+  .faq p,
+  .quote p {
+    color: var(--muted);
+    line-height: 1.65;
+  }
+  .detail-grid {
+    display: grid;
+    grid-template-columns: 0.92fr 1.08fr;
+    gap: 1.25rem;
+    align-items: stretch;
+  }
+  .detail-visual {
+    min-height: 26rem;
+    border-radius: 1.5rem;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.3)),
+      url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+  }
+  .flow {
+    display: grid;
+    gap: 0.9rem;
+  }
+  .flow small {
+    display: block;
+    margin-bottom: 0.45rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.74rem;
+    font-weight: 800;
+  }
+  .quote-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  .quote strong {
+    display: block;
+    margin-top: 1rem;
+    font-size: 0.92rem;
+  }
+  .form-band {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 1rem;
+    align-items: stretch;
+  }
+  .form-panel, .info-panel {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+  }
+  .info-panel ul {
+    padding-left: 1.1rem;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+  .field {
+    display: grid;
+    gap: 0.45rem;
+    margin-bottom: 0.95rem;
+  }
+  .field label {
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    font-weight: 700;
+  }
+  .field input, .field textarea {
+    width: 100%;
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--line);
+    border-radius: 0.9rem;
+    padding: 0.95rem 1rem;
+    font: inherit;
+  }
+  .field textarea {
+    min-height: 7rem;
+    resize: vertical;
+  }
+  .submit {
+    width: 100%;
+    margin-top: 0.4rem;
+    border: none;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #111;
+    padding: 1rem 1.25rem;
+    font: inherit;
+    font-weight: 800;
+    cursor: pointer;
+  }
+  .micro {
+    margin-top: 0.85rem;
+    color: var(--muted);
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+  .faq {
+    display: grid;
+    gap: 0.9rem;
+  }
+  footer {
+    padding: 1.5rem 1.4rem 2.4rem;
+    color: var(--muted);
+    font-size: 0.86rem;
+  }
+  @media (max-width: 980px) {
+    .hero,
+    .detail-grid,
+    .section-head,
+    .form-band,
+    .quote-grid,
+    .strip {
+      grid-template-columns: 1fr;
+    }
+    .hero {
+      min-height: auto;
+    }
+    .hero-copy {
+      padding-top: 3rem;
+    }
+    .hero-visual {
+      min-height: 26rem;
+    }
+    .hero-proof {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="page-shell">
+    <div class="topbar">
+      <div class="brand-mark">
+        <strong>Jacks photography</strong>
+        <span>Wedding Photography growth system</span>
+      </div>
+      <a href="#apply">Book Your Free Strategy Call</a>
+    </div>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">Content to offer continuity</div>
+        <h1>Turn short-form content into booked sales calls.</h1>
+        <p>We find the angles that pull attention, rebuild them around your expertise, and route that attention into qualified leads.</p>
+        <div class="hero-actions">
+          <a class="primary" href="#apply">Book Your Free Strategy Call</a>
+          <a class="secondary" href="#proof">See the system</a>
+        </div>
+        <div class="hero-proof">
+          <div><strong>5x rule</strong><span>We model winners, not random posts.</span></div>
+          <div><strong>Lead path</strong><span>Every post maps to a CTA and page.</span></div>
+          <div><strong>Offer fit</strong><span>Content language matches the sale.</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="visual-card">
+          <small>Positioning</small>
+          <strong>Built for Wedding Photography operators who want content tied to revenue, not vanity metrics.</strong>
+          <p>This page is attached to <strong>lpg_1775000099207_rs422</strong> so clicks, leads, and pipeline outcomes can be tied back to the content that brought them in.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="proof">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>Make content that prepares people to buy.</h2>
+          <p>Your videos should not live in a different universe from your offer. The problem, proof, CTA, and next step all need to line up cleanly.</p>
+        </div>
+        <div class="strip">
+          <article><small class="eyebrow">01</small><h3>Clear hook strategy</h3><p>Built to turn attention into qualified demand without fluff or disconnected messaging.</p></article><article><small class="eyebrow">02</small><h3>Offer-aligned scripts</h3><p>Built to turn attention into qualified demand without fluff or disconnected messaging.</p></article><article><small class="eyebrow">03</small><h3>Lead-ready CTAs</h3><p>Built to turn attention into qualified demand without fluff or disconnected messaging.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-inner detail-grid">
+        <div class="detail-visual"></div>
+        <div class="flow">
+          <article><small>Step 1</small><h3>Research proven winners</h3><p>The system keeps the next action clear so content, CTA, and funnel all stay connected.</p></article><article><small>Step 2</small><h3>Build scripts around your offer</h3><p>The system keeps the next action clear so content, CTA, and funnel all stay connected.</p></article><article><small>Step 3</small><h3>Publish and route leads</h3><p>The system keeps the next action clear so content, CTA, and funnel all stay connected.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>Proof beats vague inspiration.</h2>
+          <p>Authority content gets heavier when it brings receipts: real wins, clear before-and-after shifts, and specific lessons from the field.</p>
+        </div>
+        <div class="quote-grid">
+          <article class="quote"><p>“We stopped posting random tips and started getting real sales calls.”</p><strong>Agency Owner</strong></article><article class="quote"><p>“The hooks got stronger and the leads got better.”</p><strong>Service Founder</strong></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="apply">
+      <div class="section-inner form-band">
+        <div class="info-panel">
+          <div class="eyebrow">Next step</div>
+          <h2 style="font-size:clamp(2rem,4vw,3.2rem);letter-spacing:-0.04em;max-width:11ch;">Book the call or request the playbook.</h2>
+          <p style="margin-top:1rem;color:var(--muted);line-height:1.7;">This page is designed to capture intent cleanly, attach attribution, and move the right prospects into your funnel without losing context.</p>
+          <ul style="margin-top:1.2rem;">
+            <li>One clear CTA tied to one offer.</li>
+            <li>Hidden attribution fields for post, campaign, and CTA source.</li>
+            <li>Lead records that can be matched to calls and sales later.</li>
+          </ul>
+        </div>
+        <div class="form-panel">
+          <form id="leadForm">
+            <div class="field">
+              <label>Name</label>
+              <input name="name" placeholder="Your name" required />
+            </div>
+            <div class="field">
+              <label>Email</label>
+              <input name="email" type="email" placeholder="you@company.com" required />
+            </div>
+            <div class="field">
+              <label>Phone</label>
+              <input name="phone" placeholder="Optional" />
+            </div>
+            <div class="field">
+              <label>What are you trying to fix?</label>
+              <textarea name="qualification_notes" placeholder="Tell us what is broken: weak hooks, poor lead quality, no content system, no funnel follow-through..."></textarea>
+            </div>
+            <input type="hidden" name="client_id" value="cli_default" /><input type="hidden" name="campaign_id" value="cmp_default" /><input type="hidden" name="content_asset_id" value="" /><input type="hidden" name="published_post_id" value="" /><input type="hidden" name="platform" value="instagram" /><input type="hidden" name="cta_id" value="cta_default" /><input type="hidden" name="cta_keyword" value="GUIDE" /><input type="hidden" name="landing_page_id" value="lpg_1775000099207_rs422" /><input type="hidden" name="utm_source" value="organic_social" /><input type="hidden" name="utm_medium" value="short_form" /><input type="hidden" name="utm_campaign" value="jacks-photography-wedding-photography-booking" />
+            <button class="submit" type="submit">Book Your Free Strategy Call</button>
+            <p class="micro">Keyword: <strong>GUIDE</strong> · Landing page ID: <strong>lpg_1775000099207_rs422</strong></p>
+          </form>
+          <div id="formStatus" class="micro"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>FAQ</h2>
+          <p>Short answers that reduce friction before the next step.</p>
+        </div>
+        <div class="faq">
+          <article><h3>Who is this for?</h3><p style="margin-top:0.55rem;">Founders and service businesses that want lead-driven short-form content.</p></article><article><h3>Do I need footage?</h3><p style="margin-top:0.55rem;">No. We can build from footage, proof, or template-led creative.</p></article><article><h3>What happens after someone comments?</h3><p style="margin-top:0.55rem;">We route them through CTA automation to a tracked landing page and next step.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      Jacks photography · lpg_1775000099207_rs422 · booked sales calls
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      const form = document.getElementById('leadForm');
+      const status = document.getElementById('formStatus');
+      const visitKey = 'landing-visit-lpg_1775000099207_rs422';
+      if (window.location.protocol !== 'file:' && !window.sessionStorage.getItem(visitKey)) {
+        window.sessionStorage.setItem(visitKey, '1');
+        fetch('/api/funnel-records', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            action: 'createTouch',
+            data: {
+              client_id: 'cli_default',
+              campaign_id: 'cmp_default',
+              content_asset_id: '',
+              published_post_id: '',
+              platform: 'instagram',
+              cta_id: 'cta_default',
+              cta_keyword: 'GUIDE',
+              landing_page_id: 'lpg_1775000099207_rs422',
+              utm_source: 'organic_social',
+              utm_medium: 'short_form',
+              utm_campaign: 'jacks-photography-wedding-photography-booking',
+              touch_type: 'landing_page_visit',
+              source_system: 'landing_page_service',
+              created_by: 'landing_page_service'
+            }
+          }),
+        }).catch(() => {});
+      }
+      if (!form || !status) return;
+
+      form.addEventListener('submit', async function (event) {
+        event.preventDefault();
+        const data = Object.fromEntries(new FormData(form).entries());
+        status.textContent = 'Sending...';
+
+        try {
+          if (window.location.protocol === 'file:') {
+            status.textContent = 'Lead capture is configured. Host this page on Agent OS to post into the funnel records.';
+            form.reset();
+            return;
+          }
+
+          const response = await fetch('/api/funnel-records', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              action: 'createLead',
+              data: {
+                client_id: data.client_id,
+                campaign_id: data.campaign_id,
+                landing_page_id: data.landing_page_id,
+                cta_id: data.cta_id,
+                cta_keyword: data.cta_keyword,
+                content_asset_id: data.content_asset_id,
+                name: data.name,
+                email: data.email,
+                phone: data.phone,
+                qualification_notes: data.qualification_notes,
+                quality_score: 0.5,
+                status: 'new',
+                platform: data.platform || 'instagram',
+                source_system: 'landing_page_service',
+              },
+              touch: {
+                client_id: data.client_id,
+                campaign_id: data.campaign_id,
+                content_asset_id: data.content_asset_id,
+                published_post_id: data.published_post_id,
+                platform: data.platform || 'instagram',
+                cta_id: data.cta_id,
+                cta_keyword: data.cta_keyword,
+                landing_page_id: data.landing_page_id,
+                utm_source: data.utm_source,
+                utm_medium: data.utm_medium,
+                utm_campaign: data.utm_campaign,
+                touch_type: 'form_submitted',
+                source_system: 'landing_page_service',
+              }
+            }),
+          });
+
+          const result = await response.json();
+          if (!response.ok || result.error) throw new Error(result.error || 'Form submit failed');
+          status.textContent = 'Thanks. Your lead was captured and attribution was recorded.';
+          form.reset();
+        } catch (error) {
+          status.textContent = error.message || 'Something went wrong.';
+        }
+      });
+    }());
+  </script>
+</body>
+</html>

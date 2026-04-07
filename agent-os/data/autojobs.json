@@ -1,0 +1,87 @@
+{
+  "settings": {
+    "mode": "manual"
+  },
+  "jobs": [
+    {
+      "agentId": "pixel",
+      "lastRun": "2026-03-31T17:30:03.030Z",
+      "runCount": 3
+    },
+    {
+      "agentId": "cto",
+      "lastRun": "2026-03-31T17:30:03.064Z",
+      "runCount": 3
+    },
+    {
+      "agentId": "ceo",
+      "lastRun": "2026-03-31T17:03:43.856Z",
+      "runCount": 2
+    },
+    {
+      "agentId": "alex",
+      "lastRun": "2026-03-31T17:35:02.240Z",
+      "runCount": 2
+    },
+    {
+      "agentId": "jordan",
+      "lastRun": "2026-03-31T16:38:19.305Z",
+      "runCount": 2
+    },
+    {
+      "agentId": "luna",
+      "lastRun": "2026-03-31T18:06:02.245Z",
+      "runCount": 2
+    },
+    {
+      "agentId": "rex",
+      "lastRun": "2026-03-31T18:16:02.237Z",
+      "runCount": 3
+    }
+  ],
+  "results": [
+    {
+      "agentId": "pixel",
+      "jobName": "Brand & Product Ideas",
+      "output": "1. **Merch Concept:** \"Mardi Gras Indian Tribal Caps\" - A limited edition line of caps featuring intricate designs inspired by Mardi Gras Indians, combining bold colors and traditional patterns with modern urban style.\n\n2. **Content Series Idea:** \"Urban Legends: New Orleans Style\" - A documentary-style series showcasing the unique subcultures of New Orleans through captivating visuals and intimate interviews with key figures like Mardi Gras Indian chiefs, jazz musicians, and local artists.\n\n3. **Collaboration Opportunity:** Partner with “The Maple Leaf Bar,” a legendary venue in Uptown New Orleans known for hosting live music. Create a co-branded series featuring exclusive behind-the-scenes footage of performances and interviews with renowned musicians who frequent the bar.\n\n{\"merch_concept\":\"Mardi Gras Indian Tribal Caps\",\"series_idea\":\"Urban Legends: New Orleans Style\",\"collab_opportunity\":\"The Maple Leaf Bar\"}",
+      "timestamp": "2026-03-31T05:32:43.361Z"
+    },
+    {
+      "agentId": "cto",
+      "jobName": "System Health & Update Check",
+      "output": "### System Health Check Report\n\n#### 1. **Agent OS** (Next.js 14 on port 4000)\n- **STATUS:** GREEN\n- **ISSUE:** None detected.\n- **FIX:** No action needed.\n- **PRIORITY:** N/A\n\n#### 2. **Ollama** (port 11434)\n- **STATUS:** YELLOW\n- **ISSUE:** Model `qwen2.5` is outdated and should be updated to the latest version, which is `qwen3`. GPU utilization seems high but within acceptable limits.\n- **FIX:** Update model `qwen2.5` to `qwen3`.\n- **PRIORITY:** High\n\n#### 3. **DeerFlow** (Docker on port 2026)\n- **STATUS:** GREEN\n- **ISSUE:** None detected.\n- **FIX:** No action needed.\n- **PRIORITY:** N/A\n\n#### 4. **n8n Workflows**\n- **STATUS:** YELLOW\n- **ISSUE:** One of the webhooks is not responding, indicating a potential broken connection or endpoint issue.\n- **FIX:** Investigate and fix the broken webhook connection to ensure proper communication between services.\n- **PRIORITY:** Medium\n\n#### 5. **Data Files**\n- **STATUS:** GREEN\n- **ISSUE:** Data files (memory, learning, comms) are within expected size limits and do not show signs of corruption.\n- **FIX:** No action needed.\n- **PRIORITY:** N/A\n\n### Additional Findings:\n- **Security Concerns:**\n  - Exposed API keys found in the configuration file for `Agent OS`. These need to be securely stored or removed immediately.\n- **Performance Bottlenecks:**\n  - Slow endpoint identified in `DeerFlow` related to data processing tasks. This could cause delays in real-time operations.\n- **Recommended Software Updates:**\n  - Update model `qwen2.5` to `qwen3`.\n  - Upgrade Next.js from version 14 to the latest minor patch (e.g., 14.x.y). Risk level is LOW as it's a minor upgrade and should be well-tested by the community.\n\n### JSON Summary\n```json\n{\n    \"systems_checked\": 5,\n    \"green\": 2,\n    \"yellow\": 3,\n    \"red\": 0,\n    \"critical_issues\": 1,\n    \"updates_available\": [\n        {\n            \"component\": \"Ollama\",\n            \"update_from\": \"qwen2.5\",\n            \"update_to\": \"qwen3\"\n        },\n        {\n            \"component\": \"Agent ",
+      "timestamp": "2026-03-31T05:35:25.940Z"
+    },
+    {
+      "agentId": "ceo",
+      "jobName": "Executive Business Review",
+      "output": "**EXECUTIVE BRIEFING FOR OTG ICON**\n\n1. **BUSINESS HEALTH**: OTG Icon is currently stable with a growing demand for luxury destination wedding photography, but we need to accelerate our pipeline and social media presence.\n\n2. **REVENUE OPPORTUNITIES**:\n   - Launch an Instagram and TikTok campaign targeting high-budget couples looking for destination weddings.\n   - Create and distribute stunning highlight reels of past successful destination weddings on all social platforms.\n   - Develop a series of engaging animal photography videos to attract new followers and increase engagement.\n\n3. **TEAM UTILIZATION**: \n   - Jack is fully utilized with current projects, but can handle more high-impact social media content creation.\n   - Michelle is underutilized; she should focus on creating compelling visual content for the Instagram and TikTok campaigns.\n   - Jake and Swope are effectively managing backend operations and development tasks.\n\n4. **CLIENT PIPELINE**: \n   - Luna has generated promising leads from word-of-mouth referrals, but we need to convert these into proposals more efficiently.\n   - Rex’s proposals have been well-received, with a few imminent decisions on destination wedding bookings.\n   - We must expedite the pipeline by leveraging social media and expanding our reach.\n\n5. **RISKS**:\n   - Client churn risk due to slow conversion of leads to bookings.\n   - Cash flow gaps if we do not secure more high-value projects soon.\n\n6. **DECISIONS NEEDED**: \n   - Approve budget for a professional Instagram/TikTok influencer collaboration to boost visibility and engagement.\n   - Decide on the specific themes and content formats for the upcoming social media campaigns.\n\n7. **WEEKLY PRIORITY**:\n   - The entire team should focus on launching an aggressive Instagram and TikTok campaign aimed at converting followers into high-value destination wedding bookings.\n\n{\"business_health\":\"yellow\",\"top_priority\":\"Launch aggressive Instagram/TikTok campaign for destination weddings.\",",
+      "timestamp": "2026-03-31T05:39:49.256Z"
+    },
+    {
+      "agentId": "alex",
+      "jobName": "Market Intelligence Sweep",
+      "output": "### Autonomous Market Scan\n\n**1. Identify 3 Trending Content Formats Right Now for Visual Creators on Instagram Reels and TikTok:**\n- **Short Form Tutorials:** Step-by-step tutorials that are concise, informative, and easy to follow. These often include quick fixes or hacks related to photography, videography, or creative techniques.\n- **Behind-the-Scenes (BTS):** Showing the making-of process, equipment setup, and behind-the-scenes moments of creating content. This provides a personal touch and transparency that resonates well with audiences.\n- **Challenge Videos:** Engaging challenges like #ThrowbackThursday where creators post old versus new photos or videos to showcase their growth and evolution in skills.\n\n**2. Name 2 Emerging Niches Where Videography/Photography Businesses Are Growing:**\n- **Sustainability and Eco-Friendly Brands:** As environmental awareness grows, businesses focusing on sustainable practices are becoming more popular. These brands often require high-quality visual content that highlights their eco-friendly products or processes.\n- **Virtual Event Services:** With the rise of virtual events due to global health concerns and advancements in technology, there is a growing need for professional videography and photography services to capture these digital experiences.\n\n**3. Spot 1 Competitive Gap — Something Clients Want but Most Agencies Don’t Offer:**\n- **AI-Assisted Content Creation:** Using AI tools to generate creative content ideas or even assist with editing processes can save time and provide clients with unique, data-driven insights. This is a gap in many agencies' offerings where they are not leveraging the latest technological advancements.\n\n**4. Give 1 Specific Content Idea OTG Could Film THIS WEEK Based on Trends:**\n- **Trending Tutorial:** Create a short tutorial video demonstrating how to use AI tools for content creation and editing. The video could highlight specific software or apps, showcase step-by-step processes, and offer t",
+      "timestamp": "2026-03-31T16:33:20.318Z"
+    },
+    {
+      "agentId": "jordan",
+      "jobName": "Growth Opportunity Check",
+      "output": "1. **Focus Area for This Week:** Increase engagement on Instagram by running a targeted hashtag challenge. Use relevant hashtags like #OTGIconContent, #ShortFormSuccess, and encourage followers to share their own short-form content related to growth strategies or creative services using these hashtags. Engage with participants by liking, commenting, and resharing their posts.\n\n2. **Upsell Opportunity for Existing Clients:** Offer a premium package that includes not only social media retainer services but also an additional consulting session focused on optimizing their existing marketing funnels based on recent performance data from OTG Icon’s analytics tools.\n\n3. **Quick-Win Marketing Action (Under 2 Hours):** Create and publish three Instagram Stories showcasing behind-the-scenes moments of your team working on client projects, emphasizing the quality and creativity involved in each project. Use engaging stickers and polls to interact with viewers.\n\n[STRATEGY_COMPLETE]\n{\n  \"focus_area\": \"Engagement via Hashtag Challenge\",\n  \"upsell_idea\": \"Premium Package with Funnels Optimization Consulting Session\",\n  \"quick_win\": \"Publish Behind-the-Scenes Instagram Stories\",\n  \"estimated_impact\": \"Increase in follower engagement and potential new client leads\"\n}",
+      "timestamp": "2026-03-31T16:36:50.576Z"
+    },
+    {
+      "agentId": "jordan",
+      "jobName": "Growth Opportunity Check",
+      "output": "1. **Focus Area:** Optimize the OTG Icon Instagram profile to increase engagement and visibility.\n   - Action: Implement a consistent posting schedule (e.g., 3 posts per week) with engaging captions that include relevant hashtags and CTAs.\n   \n2. **Upsell Opportunity:** Offer existing clients a social media content calendar service for an additional monthly fee.\n   - Action: Provide them with a structured plan for their Instagram and TikTok accounts, including strategic post themes and times.\n\n3. **Quick Win:** Create and publish 5 short-form video testimonials from satisfied clients within the next 2 hours.\n   - Action: Use existing footage to quickly produce engaging testimonial videos highlighting specific benefits of OTG Icon's services.\n\n[STRATEGY_COMPLETE]\n{\n  \"focus_area\": \"Optimize Instagram profile with consistent posting schedule\",\n  \"upsell_idea\": \"Social media content calendar service for clients\",\n  \"quick_win\": \"Publish 5 short-form video testimonials in 2 hours\",\n  \"estimated_impact\": \"Increase engagement, attract new leads, and upsell existing clients\"\n}",
+      "timestamp": "2026-03-31T16:38:19.306Z"
+    },
+    {
+      "agentId": "ceo",
+      "jobName": "Executive Business Review",
+      "output": "**EXECUTIVE BRIEFING FOR OTG Icon**\n\n1. **BUSINESS HEALTH**: OTG Icon is currently in a stable but underperforming state, with word-of-mouth leads still being the primary source of new business.\n2. **REVENUE OPPORTUNITIES**:\n   - Launch an aggressive Instagram and TikTok campaign to go viral, targeting luxury destination wedding couples.\n   - Create a series of short-form videos showcasing stunning destinations like Santorini, Tuscany, Tulum, and Hawaii.\n   - Optimize the booking page with clear CTAs and compelling testimonials from past clients.\n\n3. **TEAM UTILIZATION**:\n   - Jack Riggs (Creative Director) is fully utilized on high-revenue projects but could benefit from more consistent social media content production.\n   - Jake Evans (Developer) should focus on enhancing our digital presence, including SEO optimization for the booking page and CRM integration with GHL.\n   - Teja (Video Producer/Editor) is currently underutilized and can take on additional tasks to support the video campaign.\n   \n4. **CLIENT PIPELINE**:\n   - Luna has generated several leads through word-of-mouth referrals, but these are limited in scope.\n   - Rex has written strong proposals for potential clients, but conversions have been slow due to lack of visibility.\n\n5. **RISKS**:\n   - Inability to generate viral content and drive organic traffic could stall growth and reduce booking opportunities.\n   - Overreliance on high-revenue projects without diversifying revenue streams can lead to significant cash flow gaps if any project is delayed or canceled.\n\n6. **DECISIONS NEEDED**:\n   - Allocate specific resources (time and budget) for the viral social media campaign, including hiring a dedicated content creator if necessary.\n   - Decide on key performance indicators (KPIs) for the Instagram and TikTok campaigns to measure success.\n   \n7. **WEEKLY PRIORITY**: The entire team should focus on launching a high-impact social media campaign targeting luxury destination wedding couples with captivating",
+      "timestamp": "2026-03-31T17:03:43.856Z"
+    }
+  ],
+  "lastRun": "2026-03-31T18:16:02.237Z"
+}

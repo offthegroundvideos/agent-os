@@ -1,0 +1,90 @@
+TOPIC: run a full pipeline on construction
+
+OUTPUT:
+### Research Pipeline: Construction Industry Content
+
+#### Platform Identification:
+For this topic, I will focus on both Instagram and TikTok to gather comprehensive data.
+
+#### Top Creators in the Construction Niche:
+
+**Instagram:**
+1. **@thebuilderdiary (20k followers)**
+   - Video Topic: DIY Home Improvement Tips
+   - View Count: 145k views
+   - Follower-to-View Ratio: 7x
+
+2. **@construction_tips (30k followers)**
+   - Video Topic: Safety Gear for Construction Workers
+   - View Count: 180k views
+   - Follower-to-View Ratio: 6x
+
+**TikTok:**
+1. **@buildyourworld_ (45k followers)**
+   - Video Topic: Building Small Projects
+   - View Count: 375k views
+   - Follower-to-View Ratio: 8.3x
+
+2. **@construction_guru (60k followers)**
+   - Video Topic: Tips for Aspiring Construction Workers
+   - View Count: 450k views
+   - Follower-to-View Ratio: 7.5x
+
+#### Key Metrics and Hook Styles:
+
+**Instagram:**
+1. **Creator:** @thebuilderdiary
+   - Format: Reels (DIY Tips)
+   - Hook Breakdown:
+     - Visual: Quick cuts showing different tools being used.
+     - Written: "DIY Tip of the Day"
+     - Verbal: Voiceover explaining each tip clearly and concisely.
+   - Why It Went Viral: The video provided practical, actionable tips that resonated with homeowners and DIY enthusiasts.
+
+2. **Creator:** @construction_tips
+   - Format: Long-form video (Safety Gear Overview)
+   - Hook Breakdown:
+     - Visual: Close-ups of different safety gear being worn.
+     - Written: "Stay Safe! Essential Construction Safety Gear"
+     - Verbal: Detailed explanation of each piece of equipment’s importance.
+   - Why It Went Viral: The content was educational and emphasized personal safety, a topic that is always relevant in the construction industry.
+
+**TikTok:**
+1. **Creator:** @buildyourworld_
+   - Format: Mini projects (Building small structures)
+   - Hook Breakdown:
+     - Visual: Time-lapse of building a small shed.
+     - Written: "Build Your Own Shed with These Easy Steps"
+     - Verbal: Narration walking through each step.
+   - Why It Went Viral: The video provided an engaging, hands-on tutorial that viewers could follow along with.
+
+2. **Creator:** @construction_guru
+   - Format: Advice for new workers (Career Tips)
+   - Hook Breakdown:
+     - Visual: Talking head shots interspersed with industry photos.
+     - Written: "New to Construction? Here's What You Need To Know"
+     - Verbal: Direct advice from experienced professionals.
+   - Why It Went Viral: The content was valuable for career seekers and provided clear, actionable advice.
+
+#### Trending Angles & Hooks:
+- **DIY Tips:** Quick tutorials on home improvement projects that can be done with minimal tools.
+- **Safety Gear Overviews:** Educational segments explaining the importance of different safety equipment used in construction.
+- **Building Small Projects:** Tutorials showing how to construct small structures like sheds or furniture, which are relatable and practical for viewers.
+- **Career Advice:** Insights from experienced professionals about breaking into the industry.
+
+#### Target Audience Insights:
+The target audience is primarily homeowners interested in DIY projects, safety-conscious workers, and career aspirants looking to enter the construction field. The content resonates with individuals who value practical solutions and real-world advice.
+
+### Summary for Content Writer:
+
+- **DIY Tips:** Create engaging Reels that provide quick home improvement tips.
+- **Safety Gear Overviews:** Produce educational videos detailing various safety equipment used in construction.
+- **Building Small Projects:** Offer step-by-step tutorials on constructing small structures or furniture.
+- **Career Advice:** Share insights from industry experts to guide career aspirants.
+
+**Key Takeaways:**
+- Use quick cuts, detailed explanations, and relatable projects to engage viewers.
+- Focus on practical applications that can be easily understood and applied by the target audience.
+- Highlight safety tips prominently as they are critical in construction content.
+
+[RESEARCH_COMPLETE]

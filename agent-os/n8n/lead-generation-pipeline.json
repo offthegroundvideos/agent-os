@@ -1,0 +1,311 @@
+{
+  "name": "OTG Lead Generation Pipeline",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "otg-lead",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook-trigger",
+      "name": "Lead Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 300],
+      "webhookId": "otg-lead-gen"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": { "caseSensitive": false },
+          "conditions": [
+            {
+              "id": "has-name",
+              "leftValue": "={{ $json.body.name }}",
+              "rightValue": "",
+              "operator": { "type": "string", "operation": "notEmpty" }
+            }
+          ],
+          "combinator": "and"
+        }
+      },
+      "id": "validate-lead",
+      "name": "Validate Lead Data",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://localhost:4000/api/n8n",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ action: 'sales-pipeline', lead: { name: $json.body.name || '', email: $json.body.email || '', phone: $json.body.phone || '', service: $json.body.service || $json.body.message || '', message: $json.body.message || '', source: $json.body.source || 'n8n-webhook', budget: $json.body.budget || '', timeline: $json.body.timeline || '', location: $json.body.location || '' } }) }}",
+        "options": {
+          "timeout": 900000,
+          "response": { "response": { "fullResponse": true } }
+        }
+      },
+      "id": "run-sales-pipeline",
+      "name": "Run AI Sales Pipeline",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [700, 260],
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ status: 'error', message: 'Missing required field: name' }) }}",
+        "options": { "responseCode": 400 }
+      },
+      "id": "reject-invalid",
+      "name": "Reject Invalid",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [700, 460]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Extract and structure all AI pipeline results\nconst pipeline = $input.first().json.body || $input.first().json;\n\n// Lead qualification from Luna\nconst qual = pipeline.qualification || {};\nconst score = pipeline.score || qual.score || 0;\nconst temperature = pipeline.temperature || (score >= 8 ? 'hot' : score >= 5 ? 'warm' : 'cold');\n\n// Build GHL-ready tags\nconst tags = ['agent-os', 'ai-qualified', `${temperature}-lead`];\nif (qual.service_needed) tags.push(qual.service_needed.toLowerCase().replace(/\\s+/g, '-'));\nif (score >= 8) tags.push('priority');\n\n// Extract proposal highlights (first 500 chars for GHL note)\nconst proposalPreview = (pipeline.proposal || '').substring(0, 500);\nconst clientPlanPreview = (pipeline.clientPlan || '').substring(0, 500);\n\nreturn [{\n  json: {\n    // Lead info (passthrough)\n    leadName: pipeline.lead?.name || '',\n    leadEmail: pipeline.lead?.email || '',\n    leadPhone: pipeline.lead?.phone || '',\n    leadSource: pipeline.lead?.source || 'n8n',\n    \n    // Luna's qualification\n    score,\n    temperature,\n    serviceNeeded: qual.service_needed || pipeline.serviceNeeded || '',\n    budgetRange: qual.budget_range || pipeline.budgetRange || '',\n    timeline: qual.timeline || pipeline.timeline || '',\n    nextStep: qual.next_step || pipeline.nextStep || '',\n    recommendedPackage: qual.recommended_package || pipeline.recommendedPackage || '',\n    qualificationNotes: qual.notes || '',\n    \n    // Tags for GHL\n    tags,\n    \n    // Full outputs for storage\n    proposalFull: pipeline.proposal || pipeline.fullOutputs?.rex || '',\n    clientPlanFull: pipeline.clientPlan || pipeline.fullOutputs?.nova || '',\n    proposalPreview,\n    clientPlanPreview,\n    \n    // Session tracking\n    sessionId: pipeline.sessionId || '',\n    success: pipeline.success || false,\n  }\n}];"
+      },
+      "id": "parse-results",
+      "name": "Parse AI Results",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [940, 260]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": { "caseSensitive": false },
+          "conditions": [
+            {
+              "id": "is-hot",
+              "leftValue": "={{ $json.temperature }}",
+              "rightValue": "hot",
+              "operator": { "type": "string", "operation": "equals" }
+            }
+          ],
+          "combinator": "and"
+        }
+      },
+      "id": "score-router",
+      "name": "Lead Temperature",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [1180, 260]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://localhost:4000/api/ghl",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ action: 'fullClientSetup', data: { contact: { firstName: $json.leadName.split(' ')[0] || $json.leadName, lastName: $json.leadName.split(' ').slice(1).join(' ') || '', email: $json.leadEmail, phone: $json.leadPhone }, niche: $json.serviceNeeded, contentPlan: 'AI-Qualified Score: ' + $json.score + '/10 | ' + $json.temperature.toUpperCase() + ' | Service: ' + $json.serviceNeeded + ' | Budget: ' + $json.budgetRange + ' | Timeline: ' + $json.timeline + ' | Next Step: ' + $json.nextStep + ' | Package: ' + $json.recommendedPackage } }) }}",
+        "options": { "timeout": 30000 }
+      },
+      "id": "ghl-create-contact",
+      "name": "Create GHL Contact",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1420, 120],
+      "retryOnFail": true,
+      "maxTries": 2
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://localhost:4000/api/ghl",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ action: 'addTags', data: { contactId: $json.contactId, tags: $('Parse AI Results').first().json.tags } }) }}",
+        "options": { "timeout": 15000 }
+      },
+      "id": "ghl-add-tags",
+      "name": "Add Lead Tags",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1660, 120]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://localhost:4000/api/ghl",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ action: 'createNote', data: { contactId: $('Create GHL Contact').first().json.contactId, note: '--- AI QUALIFICATION (Luna) ---\\nScore: ' + $('Parse AI Results').first().json.score + '/10 (' + $('Parse AI Results').first().json.temperature + ')\\nService: ' + $('Parse AI Results').first().json.serviceNeeded + '\\nBudget: ' + $('Parse AI Results').first().json.budgetRange + '\\nTimeline: ' + $('Parse AI Results').first().json.timeline + '\\nPackage: ' + $('Parse AI Results').first().json.recommendedPackage + '\\nNext Step: ' + $('Parse AI Results').first().json.nextStep + '\\n\\n--- AI PROPOSAL (Rex) ---\\n' + $('Parse AI Results').first().json.proposalPreview + '\\n\\n--- CLIENT PLAN (Nova) ---\\n' + $('Parse AI Results').first().json.clientPlanPreview } }) }}",
+        "options": { "timeout": 15000 }
+      },
+      "id": "ghl-add-proposal-note",
+      "name": "Save Proposal to GHL",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1900, 120]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": { "caseSensitive": false },
+          "conditions": [
+            {
+              "id": "is-warm",
+              "leftValue": "={{ $json.temperature }}",
+              "rightValue": "warm",
+              "operator": { "type": "string", "operation": "equals" }
+            }
+          ],
+          "combinator": "and"
+        }
+      },
+      "id": "warm-check",
+      "name": "Warm Lead?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [1420, 380]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://localhost:4000/api/ghl",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ action: 'fullClientSetup', data: { contact: { firstName: $('Parse AI Results').first().json.leadName.split(' ')[0] || $('Parse AI Results').first().json.leadName, lastName: $('Parse AI Results').first().json.leadName.split(' ').slice(1).join(' ') || '', email: $('Parse AI Results').first().json.leadEmail, phone: $('Parse AI Results').first().json.leadPhone }, niche: $('Parse AI Results').first().json.serviceNeeded, contentPlan: 'WARM LEAD | Score: ' + $('Parse AI Results').first().json.score + '/10 | Service: ' + $('Parse AI Results').first().json.serviceNeeded + ' | Needs nurture sequence' } }) }}",
+        "options": { "timeout": 30000 }
+      },
+      "id": "ghl-warm-contact",
+      "name": "Create Warm Contact",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1660, 320]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://localhost:4000/api/ghl",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ action: 'fullClientSetup', data: { contact: { firstName: $('Parse AI Results').first().json.leadName.split(' ')[0] || $('Parse AI Results').first().json.leadName, lastName: $('Parse AI Results').first().json.leadName.split(' ').slice(1).join(' ') || '', email: $('Parse AI Results').first().json.leadEmail, phone: $('Parse AI Results').first().json.leadPhone }, niche: $('Parse AI Results').first().json.serviceNeeded, contentPlan: 'COLD LEAD | Score: ' + $('Parse AI Results').first().json.score + '/10 | Low priority — add to long-term nurture' } }) }}",
+        "options": { "timeout": 30000 }
+      },
+      "id": "ghl-cold-contact",
+      "name": "Create Cold Contact",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1660, 500]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ status: 'success', score: $('Parse AI Results').first().json.score, temperature: $('Parse AI Results').first().json.temperature, serviceNeeded: $('Parse AI Results').first().json.serviceNeeded, recommendedPackage: $('Parse AI Results').first().json.recommendedPackage, nextStep: $('Parse AI Results').first().json.nextStep, sessionId: $('Parse AI Results').first().json.sessionId }) }}",
+        "options": { "responseCode": 200 }
+      },
+      "id": "respond-hot",
+      "name": "Respond Hot",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [2140, 120]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ status: 'success', score: $('Parse AI Results').first().json.score, temperature: $('Parse AI Results').first().json.temperature, serviceNeeded: $('Parse AI Results').first().json.serviceNeeded, nextStep: 'nurture-sequence', sessionId: $('Parse AI Results').first().json.sessionId }) }}",
+        "options": { "responseCode": 200 }
+      },
+      "id": "respond-warm",
+      "name": "Respond Warm",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1900, 320]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ status: 'success', score: $('Parse AI Results').first().json.score, temperature: 'cold', nextStep: 'long-term-nurture', sessionId: $('Parse AI Results').first().json.sessionId }) }}",
+        "options": { "responseCode": 200 }
+      },
+      "id": "respond-cold",
+      "name": "Respond Cold",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1900, 500]
+    }
+  ],
+  "connections": {
+    "Lead Webhook": {
+      "main": [
+        [{ "node": "Validate Lead Data", "type": "main", "index": 0 }]
+      ]
+    },
+    "Validate Lead Data": {
+      "main": [
+        [{ "node": "Run AI Sales Pipeline", "type": "main", "index": 0 }],
+        [{ "node": "Reject Invalid", "type": "main", "index": 0 }]
+      ]
+    },
+    "Run AI Sales Pipeline": {
+      "main": [
+        [{ "node": "Parse AI Results", "type": "main", "index": 0 }]
+      ]
+    },
+    "Parse AI Results": {
+      "main": [
+        [{ "node": "Lead Temperature", "type": "main", "index": 0 }]
+      ]
+    },
+    "Lead Temperature": {
+      "main": [
+        [{ "node": "Create GHL Contact", "type": "main", "index": 0 }],
+        [{ "node": "Warm Lead?", "type": "main", "index": 0 }]
+      ]
+    },
+    "Create GHL Contact": {
+      "main": [
+        [{ "node": "Add Lead Tags", "type": "main", "index": 0 }]
+      ]
+    },
+    "Add Lead Tags": {
+      "main": [
+        [{ "node": "Save Proposal to GHL", "type": "main", "index": 0 }]
+      ]
+    },
+    "Save Proposal to GHL": {
+      "main": [
+        [{ "node": "Respond Hot", "type": "main", "index": 0 }]
+      ]
+    },
+    "Warm Lead?": {
+      "main": [
+        [{ "node": "Create Warm Contact", "type": "main", "index": 0 }],
+        [{ "node": "Create Cold Contact", "type": "main", "index": 0 }]
+      ]
+    },
+    "Create Warm Contact": {
+      "main": [
+        [{ "node": "Respond Warm", "type": "main", "index": 0 }]
+      ]
+    },
+    "Create Cold Contact": {
+      "main": [
+        [{ "node": "Respond Cold", "type": "main", "index": 0 }]
+      ]
+    }
+  },
+  "settings": {
+    "executionTimeout": 1200,
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "timezone": "America/Chicago"
+  },
+  "staticData": null,
+  "tags": [
+    { "name": "lead-generation" },
+    { "name": "otg-icon" },
+    { "name": "ai-pipeline" }
+  ],
+  "pinData": {}
+}
