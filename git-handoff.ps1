@@ -203,11 +203,21 @@ function Sync-Repo($Repo) {
         return
     }
 
+    $skipUpstreamRebase = $false
+    if ($repoName -eq 'deer-flow' -and $pushRemote -ne 'origin' -and $syncState.Ahead -gt 0 -and $syncState.Behind -gt 0) {
+        $skipUpstreamRebase = $true
+        Write-Host 'deer-flow has local custom commits and upstream has moved. Skipping automatic upstream rebase during handoff and keeping your local branch intact.' -ForegroundColor DarkYellow
+    }
+
     if ($syncState.Behind -gt 0) {
-        Write-Host "Branch is behind upstream by $($syncState.Behind) commit(s). Rebasing..." -ForegroundColor Yellow
-        git -C $repoPath pull --rebase
-        if ($LASTEXITCODE -ne 0) {
-            throw "git pull --rebase failed for $repoName. Resolve conflicts manually before switching tools."
+        if ($skipUpstreamRebase) {
+            Write-Host 'Upstream sync is deferred for this repo. Use a separate maintenance pass when you want to merge/rebase DeerFlow upstream changes intentionally.' -ForegroundColor DarkYellow
+        } else {
+            Write-Host "Branch is behind upstream by $($syncState.Behind) commit(s). Rebasing..." -ForegroundColor Yellow
+            git -C $repoPath pull --rebase
+            if ($LASTEXITCODE -ne 0) {
+                throw "git pull --rebase failed for $repoName. Resolve conflicts manually before switching tools."
+            }
         }
     }
 
