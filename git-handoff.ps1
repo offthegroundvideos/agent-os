@@ -117,7 +117,7 @@ function Get-AheadBehind($Path) {
         return @{ Ahead = 0; Behind = 0; HasUpstream = $false }
     }
 
-    $counts = git -C $Path rev-list --left-right --count HEAD...@{u}
+    $counts = git -C $Path rev-list --left-right --count "HEAD...@{u}"
     if ($LASTEXITCODE -ne 0) {
         throw "Failed to compare local and upstream history for $Path"
     }
