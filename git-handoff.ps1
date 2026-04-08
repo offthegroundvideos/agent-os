@@ -95,6 +95,14 @@ function Get-ConfiguredPushRemote($Path) {
     return ($remote -join '').Trim()
 }
 
+function Get-ConfiguredPushBranch($Path) {
+    $branch = git -C $Path config --local --get ai.pushBranch 2>$null
+    if ($LASTEXITCODE -ne 0) {
+        return ''
+    }
+    return ($branch -join '').Trim()
+}
+
 function Test-UpstreamRepoUrl($Url) {
     return $Url -match 'bytedance[/:]deer-flow(\.git)?$'
 }
@@ -187,6 +195,10 @@ function Sync-Repo($Repo) {
     }
 
     $pushRemote = Get-PushRemote $repoName $repoPath
+    $pushBranch = Get-ConfiguredPushBranch $repoPath
+    if ([string]::IsNullOrWhiteSpace($pushBranch)) {
+        $pushBranch = $branch
+    }
     $pushRemoteUrl = Get-RemoteUrl $repoPath $pushRemote
     $pushEnabled = $true
     if ($repoName -eq 'deer-flow' -and (Test-UpstreamRepoUrl $pushRemoteUrl)) {
@@ -228,11 +240,11 @@ function Sync-Repo($Repo) {
     }
 
     if ($postPullState.Ahead -gt 0) {
-        Write-Host "Pushing $($postPullState.Ahead) commit(s) from $repoName via $pushRemote..." -ForegroundColor Yellow
+        Write-Host "Pushing $($postPullState.Ahead) commit(s) from $repoName via $pushRemote to $pushBranch..." -ForegroundColor Yellow
         if ($pushRemote -eq 'origin') {
             git -C $repoPath push
         } else {
-            git -C $repoPath push $pushRemote "HEAD:$branch"
+            git -C $repoPath push $pushRemote "HEAD:$pushBranch"
         }
         if ($LASTEXITCODE -ne 0) {
             throw "git push failed for $repoName"
