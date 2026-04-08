@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { createCanonicalId, withSystemFields } from './canonicalDataModel.js';
 import { emitEvent } from './eventLog.js';
+import { queueWorkingMemoryRefresh } from './workingMemory.js';
 
 const ASSET_FILE = path.join(process.cwd(), 'data', 'assets.json');
 
@@ -58,6 +59,7 @@ function saveData(data) {
   ensureFile();
   data.lastUpdated = new Date().toISOString();
   fs.writeFileSync(ASSET_FILE, JSON.stringify(data, null, 2));
+  queueWorkingMemoryRefresh('assets-updated');
 }
 
 function buildAssetId(topic = 'asset') {

@@ -5,6 +5,7 @@ import { listScripts } from './contentRecords.js';
 import { loadContentOS } from './contentOS.js';
 import { listSourceMedia, listClipCandidates } from './mediaIntelligence.js';
 import { ensureProductionBundleForCalendarEntry, listProductionBundles } from './productionOps.js';
+import { queueWorkingMemoryRefresh } from './workingMemory.js';
 
 const DATA_FILE = path.join(process.cwd(), 'data', 'content-calendar.json');
 const FOOTAGE_FILE = path.join(process.cwd(), 'data', 'footage', 'library.json');
@@ -30,6 +31,7 @@ function saveData(data) {
   ensureFile();
   data.lastUpdated = new Date().toISOString();
   fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2));
+  queueWorkingMemoryRefresh('calendar-updated');
 }
 
 function loadFootageLibrary() {

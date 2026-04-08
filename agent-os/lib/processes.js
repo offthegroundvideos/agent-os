@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { queueWorkingMemoryRefresh } from './workingMemory.js';
 
 const PROCESSES_FILE = path.join(process.cwd(), 'data', 'processes.json');
 const STALE_RUNNING_MS = 1000 * 60 * 90;
@@ -52,6 +53,7 @@ export function clearStaleProcesses() {
   // Keep only last 20 processes
   data.processes = data.processes.slice(-20);
   fs.writeFileSync(PROCESSES_FILE, JSON.stringify(data, null, 2));
+  queueWorkingMemoryRefresh('processes-cleared-stale');
 }
 
 export function registerProcess(id, type, description, meta = {}) {
@@ -74,6 +76,7 @@ export function registerProcess(id, type, description, meta = {}) {
   });
 
   fs.writeFileSync(PROCESSES_FILE, JSON.stringify(data, null, 2));
+  queueWorkingMemoryRefresh('process-registered');
 }
 
 export function updateProcessProgress(id, progress) {
@@ -87,6 +90,7 @@ export function updateProcessProgress(id, progress) {
   if (proc) Object.assign(proc, progress);
 
   fs.writeFileSync(PROCESSES_FILE, JSON.stringify(data, null, 2));
+  queueWorkingMemoryRefresh('process-progress-updated');
 }
 
 export function resumeProcess(id) {
@@ -105,6 +109,7 @@ export function resumeProcess(id) {
   }
 
   fs.writeFileSync(PROCESSES_FILE, JSON.stringify(data, null, 2));
+  queueWorkingMemoryRefresh('process-resumed');
   return proc || null;
 }
 
@@ -122,6 +127,7 @@ export function stopProcess(id) {
   }
 
   fs.writeFileSync(PROCESSES_FILE, JSON.stringify(data, null, 2));
+  queueWorkingMemoryRefresh('process-stopping');
   return proc || null;
 }
 
@@ -139,6 +145,7 @@ export function forceKillProcess(id) {
   }
 
   fs.writeFileSync(PROCESSES_FILE, JSON.stringify(data, null, 2));
+  queueWorkingMemoryRefresh('process-killed');
   return proc || null;
 }
 
@@ -156,11 +163,13 @@ export function forceKillAll() {
   }));
 
   fs.writeFileSync(PROCESSES_FILE, JSON.stringify(data, null, 2));
+  queueWorkingMemoryRefresh('all-processes-killed');
   return data.processes;
 }
 
 export function clearAllProcesses() {
   fs.writeFileSync(PROCESSES_FILE, JSON.stringify({ processes: [] }, null, 2));
+  queueWorkingMemoryRefresh('all-processes-cleared');
 }
 
 export function completeProcess(id, status = 'complete') {
@@ -177,6 +186,7 @@ export function completeProcess(id, status = 'complete') {
   }
 
   fs.writeFileSync(PROCESSES_FILE, JSON.stringify(data, null, 2));
+  queueWorkingMemoryRefresh('process-completed');
 }
 
 export function isProcessStopped(id) {
@@ -210,5 +220,6 @@ export function stopAll() {
   );
 
   fs.writeFileSync(PROCESSES_FILE, JSON.stringify(data, null, 2));
+  queueWorkingMemoryRefresh('all-processes-stopping');
   return data.processes;
 }

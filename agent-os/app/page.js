@@ -1754,6 +1754,7 @@ export default function MissionControl() {
                   { label: "CONTENT CAL", color: "#3b82f6", bg: "rgba(59,130,246,0.1)", border: "rgba(59,130,246,0.3)", onClick: () => { setShowContentCalendar(true); setShowToolsMenu(false); } },
                   { label: "PUBLISH Q", color: "#10b981", bg: "rgba(16,185,129,0.1)", border: "rgba(16,185,129,0.3)", onClick: () => { setShowPublishQueue(true); setShowToolsMenu(false); } },
                   { label: "PUBLISH OPS", color: "#22c55e", bg: "rgba(34,197,94,0.1)", border: "rgba(34,197,94,0.3)", onClick: () => { setShowPublishIntegrations(true); setShowToolsMenu(false); } },
+                  { label: "VIDEO EDITOR", color: "#f97316", bg: "rgba(249,115,22,0.12)", border: "rgba(249,115,22,0.34)", onClick: () => { window.location.href = "/video-editor"; setShowToolsMenu(false); } },
                   { label: "CLOUDFLARE OPS", color: "#22d3ee", bg: "rgba(34,211,238,0.1)", border: "rgba(34,211,238,0.3)", onClick: () => { setShowCloudflareOps(true); setShowToolsMenu(false); } },
                   { label: "DEERFLOW OPS", color: "#22d3ee", bg: "rgba(34,211,238,0.1)", border: "rgba(34,211,238,0.3)", onClick: () => { setShowDeerFlow(true); setShowToolsMenu(false); } },
                   { label: "FUNNEL OPS", color: "#e97b2c", bg: "rgba(233,123,44,0.1)", border: "rgba(233,123,44,0.3)", onClick: () => { setShowFunnelDashboard(true); setShowToolsMenu(false); } },

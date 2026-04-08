@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { findBestLandingPageMatch } from './funnelRecords.js';
 import { getPublishingGatewaySummary } from './publishingGateway.js';
+import { queueWorkingMemoryRefresh } from './workingMemory.js';
 
 const DATA_FILE = path.join(process.cwd(), 'data', 'publish-queue.json');
 export const PUBLISH_JOB_STATUSES = ['draft', 'queued', 'publishing', 'published', 'failed'];
@@ -52,6 +53,7 @@ function saveData(data) {
   ensureFile();
   data.lastUpdated = new Date().toISOString();
   fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2));
+  queueWorkingMemoryRefresh('publish-queue-updated');
 }
 
 function createPublishJobId() {

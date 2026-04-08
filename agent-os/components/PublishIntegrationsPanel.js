@@ -51,6 +51,11 @@ export default function PublishIntegrationsPanel({ onClose }) {
     publicMediaBaseUrl: '',
     nextPublicAppUrl: '',
     instagramMode: 'simulate',
+    facebookMode: 'simulate',
+    tiktokMode: 'simulate',
+    youtubeMode: 'simulate',
+    linkedinMode: 'simulate',
+    xMode: 'simulate',
   });
   const [instagramTest, setInstagramTest] = useState(null);
 
@@ -69,6 +74,11 @@ export default function PublishIntegrationsPanel({ onClose }) {
         publicMediaBaseUrl: data.status?.runtime?.publicMediaBaseUrl || '',
         nextPublicAppUrl: data.status?.runtime?.nextPublicAppUrl || '',
         instagramMode: data.status?.runtime?.instagramMode || 'simulate',
+        facebookMode: data.status?.runtime?.facebookMode || 'simulate',
+        tiktokMode: data.status?.runtime?.tiktokMode || 'simulate',
+        youtubeMode: data.status?.runtime?.youtubeMode || 'simulate',
+        linkedinMode: data.status?.runtime?.linkedinMode || 'simulate',
+        xMode: data.status?.runtime?.xMode || 'simulate',
       });
       setError('');
     } catch (err) {
@@ -90,6 +100,11 @@ export default function PublishIntegrationsPanel({ onClose }) {
           publicMediaBaseUrl: runtime.publicMediaBaseUrl,
           nextPublicAppUrl: runtime.nextPublicAppUrl,
           instagramMode: runtime.instagramMode,
+          facebookMode: runtime.facebookMode,
+          tiktokMode: runtime.tiktokMode,
+          youtubeMode: runtime.youtubeMode,
+          linkedinMode: runtime.linkedinMode,
+          xMode: runtime.xMode,
         }),
       });
       const data = await res.json();
@@ -193,6 +208,27 @@ export default function PublishIntegrationsPanel({ onClose }) {
                     <option value="simulate">Instagram simulate</option>
                     <option value="api">Instagram API</option>
                   </select>
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, minmax(0, 1fr))', gap: 10, marginBottom: 10 }}>
+                  {[
+                    ['facebookMode', 'Facebook Reels'],
+                    ['tiktokMode', 'TikTok'],
+                    ['youtubeMode', 'YouTube Shorts'],
+                    ['linkedinMode', 'LinkedIn'],
+                    ['xMode', 'X'],
+                  ].map(([key, label]) => (
+                    <div key={key} style={{ display: 'grid', gap: 6 }}>
+                      <div style={{ fontSize: 10, color: '#666', letterSpacing: '0.12em' }}>{label}</div>
+                      <select
+                        value={runtime[key]}
+                        onChange={(e) => setRuntime((prev) => ({ ...prev, [key]: e.target.value }))}
+                        style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 4, color: '#e2e2e8', padding: '8px 10px', fontSize: 12 }}
+                      >
+                        <option value="simulate">Simulate</option>
+                        <option value="api">API</option>
+                      </select>
+                    </div>
+                  ))}
                 </div>
                 <div style={{ display: 'flex', gap: 10 }}>
                   <button onClick={saveSettings} disabled={saving} style={{ background: 'rgba(16,185,129,0.12)', border: '1px solid rgba(16,185,129,0.3)', color: '#10b981', padding: '7px 12px', borderRadius: 4, cursor: 'pointer', fontSize: 11 }}>

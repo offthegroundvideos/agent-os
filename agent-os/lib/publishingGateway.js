@@ -26,13 +26,27 @@ const PLATFORM_RULES = {
     supportsHashtags: true,
     requiresMediaContainer: false,
   },
+  facebook: {
+    label: 'Facebook Reels',
+    maxCaptionLength: 2200,
+    supportsHashtags: true,
+    requiresMediaContainer: true,
+  },
+  x: {
+    label: 'X',
+    maxCaptionLength: 280,
+    supportsHashtags: true,
+    requiresMediaContainer: false,
+  },
 };
 
 const PUBLISH_ENV_KEYS = {
   instagram: ['INSTAGRAM_ACCESS_TOKEN', 'INSTAGRAM_IG_USER_ID'],
-  tiktok: [],
-  youtube: [],
-  linkedin: [],
+  facebook: ['FACEBOOK_PAGE_ACCESS_TOKEN', 'FACEBOOK_PAGE_ID'],
+  tiktok: ['TIKTOK_ACCESS_TOKEN', 'TIKTOK_OPEN_ID'],
+  youtube: ['YOUTUBE_ACCESS_TOKEN', 'YOUTUBE_CHANNEL_ID'],
+  linkedin: ['LINKEDIN_ACCESS_TOKEN', 'LINKEDIN_AUTHOR_URN'],
+  x: ['X_API_KEY', 'X_API_SECRET', 'X_ACCESS_TOKEN', 'X_ACCESS_TOKEN_SECRET'],
 };
 
 function getRule(platform = 'instagram') {
@@ -44,6 +58,10 @@ function getEnv(...keys) {
     if (process.env[key]) return String(process.env[key]).trim();
   }
   return '';
+}
+
+function sanitizeHeaderValue(value, fallback = '') {
+  return String(value || fallback).trim();
 }
 
 function sanitizeText(value, maxLength) {
@@ -107,6 +125,27 @@ function buildLinkedInPayload(job = {}, context = {}) {
   };
 }
 
+function buildFacebookPayload(job = {}, context = {}) {
+  const caption = sanitizeText(job.caption, getRule('facebook').maxCaptionLength);
+  return {
+    media_type: 'REELS',
+    description: caption,
+    hashtags: extractTags(caption),
+    cta_id: job.cta_id,
+    hook_text: context.calendarEntry?.hook_text || '',
+  };
+}
+
+function buildXPayload(job = {}, context = {}) {
+  const commentary = sanitizeText(job.caption, getRule('x').maxCaptionLength);
+  return {
+    text: commentary,
+    hashtags: extractTags(commentary),
+    cta_id: job.cta_id,
+    hook_text: context.calendarEntry?.hook_text || '',
+  };
+}
+
 function resolveMediaUrl(job = {}, context = {}) {
   return (
     String(job.media_url || job.mediaUrl || '').trim() ||
@@ -138,11 +177,12 @@ function isPubliclyReachableUrl(value = '') {
 }
 
 function getAdapterRequirements(platform, job = {}, context = {}) {
+  const mediaUrl = resolveMediaUrl(job, context);
+  const mediaUrlPublic = isPubliclyReachableUrl(mediaUrl);
+
   if (platform === 'instagram') {
     const accessToken = getEnv('INSTAGRAM_ACCESS_TOKEN', 'META_ACCESS_TOKEN');
     const igUserId = getEnv('INSTAGRAM_IG_USER_ID', 'META_IG_USER_ID');
-    const mediaUrl = resolveMediaUrl(job, context);
-    const mediaUrlPublic = isPubliclyReachableUrl(mediaUrl);
     return {
       configured: !!(accessToken && igUserId && mediaUrl && mediaUrlPublic),
       missing: [
@@ -155,7 +195,86 @@ function getAdapterRequirements(platform, job = {}, context = {}) {
       media_url_public: mediaUrlPublic,
     };
   }
-  return { configured: false, missing: [`${platform}_adapter_not_implemented`], media_url: '' };
+  if (platform === 'facebook') {
+    const accessToken = getEnv('FACEBOOK_PAGE_ACCESS_TOKEN', 'META_PAGE_ACCESS_TOKEN');
+    const pageId = getEnv('FACEBOOK_PAGE_ID', 'META_PAGE_ID');
+    return {
+      configured: !!(accessToken && pageId && mediaUrl && mediaUrlPublic),
+      missing: [
+        ...(accessToken ? [] : ['FACEBOOK_PAGE_ACCESS_TOKEN']),
+        ...(pageId ? [] : ['FACEBOOK_PAGE_ID']),
+        ...(mediaUrl ? [] : ['media_url']),
+        ...(mediaUrl && !mediaUrlPublic ? ['public_media_url'] : []),
+      ],
+      media_url: mediaUrl,
+      media_url_public: mediaUrlPublic,
+    };
+  }
+  if (platform === 'tiktok') {
+    const accessToken = getEnv('TIKTOK_ACCESS_TOKEN');
+    const openId = getEnv('TIKTOK_OPEN_ID');
+    return {
+      configured: !!(accessToken && openId && mediaUrl && mediaUrlPublic),
+      missing: [
+        ...(accessToken ? [] : ['TIKTOK_ACCESS_TOKEN']),
+        ...(openId ? [] : ['TIKTOK_OPEN_ID']),
+        ...(mediaUrl ? [] : ['media_url']),
+        ...(mediaUrl && !mediaUrlPublic ? ['public_media_url'] : []),
+      ],
+      media_url: mediaUrl,
+      media_url_public: mediaUrlPublic,
+    };
+  }
+  if (platform === 'youtube') {
+    const accessToken = getEnv('YOUTUBE_ACCESS_TOKEN');
+    const channelId = getEnv('YOUTUBE_CHANNEL_ID');
+    return {
+      configured: !!(accessToken && channelId && mediaUrl && mediaUrlPublic),
+      missing: [
+        ...(accessToken ? [] : ['YOUTUBE_ACCESS_TOKEN']),
+        ...(channelId ? [] : ['YOUTUBE_CHANNEL_ID']),
+        ...(mediaUrl ? [] : ['media_url']),
+        ...(mediaUrl && !mediaUrlPublic ? ['public_media_url'] : []),
+      ],
+      media_url: mediaUrl,
+      media_url_public: mediaUrlPublic,
+    };
+  }
+  if (platform === 'linkedin') {
+    const accessToken = getEnv('LINKEDIN_ACCESS_TOKEN');
+    const authorUrn = getEnv('LINKEDIN_AUTHOR_URN');
+    return {
+      configured: !!(accessToken && authorUrn && mediaUrl && mediaUrlPublic),
+      missing: [
+        ...(accessToken ? [] : ['LINKEDIN_ACCESS_TOKEN']),
+        ...(authorUrn ? [] : ['LINKEDIN_AUTHOR_URN']),
+        ...(mediaUrl ? [] : ['media_url']),
+        ...(mediaUrl && !mediaUrlPublic ? ['public_media_url'] : []),
+      ],
+      media_url: mediaUrl,
+      media_url_public: mediaUrlPublic,
+    };
+  }
+  if (platform === 'x') {
+    const apiKey = getEnv('X_API_KEY');
+    const apiSecret = getEnv('X_API_SECRET');
+    const accessToken = getEnv('X_ACCESS_TOKEN');
+    const accessTokenSecret = getEnv('X_ACCESS_TOKEN_SECRET');
+    return {
+      configured: !!(apiKey && apiSecret && accessToken && accessTokenSecret && mediaUrl && mediaUrlPublic),
+      missing: [
+        ...(apiKey ? [] : ['X_API_KEY']),
+        ...(apiSecret ? [] : ['X_API_SECRET']),
+        ...(accessToken ? [] : ['X_ACCESS_TOKEN']),
+        ...(accessTokenSecret ? [] : ['X_ACCESS_TOKEN_SECRET']),
+        ...(mediaUrl ? [] : ['media_url']),
+        ...(mediaUrl && !mediaUrlPublic ? ['public_media_url'] : []),
+      ],
+      media_url: mediaUrl,
+      media_url_public: mediaUrlPublic,
+    };
+  }
+  return { configured: false, missing: [`${platform}_adapter_not_implemented`], media_url: mediaUrl, media_url_public: mediaUrlPublic };
 }
 
 async function sleep(ms) {
@@ -219,18 +338,81 @@ export async function testInstagramConnection() {
   }
 }
 
+export async function testYouTubeConnection() {
+  const accessToken = getEnv('YOUTUBE_ACCESS_TOKEN');
+  const channelId = getEnv('YOUTUBE_CHANNEL_ID');
+
+  if (!accessToken || !channelId) {
+    return {
+      ok: false,
+      missing: [
+        ...(accessToken ? [] : ['YOUTUBE_ACCESS_TOKEN']),
+        ...(channelId ? [] : ['YOUTUBE_CHANNEL_ID']),
+      ],
+      message: 'YouTube connection is missing required credentials.',
+    };
+  }
+
+  try {
+    const profile = await fetchJson(
+      `https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${encodeURIComponent(channelId)}`,
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          Accept: 'application/json',
+        },
+      }
+    );
+    const item = Array.isArray(profile.items) ? profile.items[0] : null;
+    if (!item?.id) {
+      return {
+        ok: false,
+        missing: [],
+        message: 'YouTube credentials are valid, but the configured channel was not returned.',
+      };
+    }
+    return {
+      ok: true,
+      missing: [],
+      profile: {
+        id: String(item.id || '').trim(),
+        title: String(item?.snippet?.title || '').trim(),
+        customUrl: String(item?.snippet?.customUrl || '').trim(),
+      },
+      message: 'YouTube credentials are valid and the channel is reachable.',
+    };
+  } catch (error) {
+    return {
+      ok: false,
+      missing: [],
+      error: error.message,
+      message: 'YouTube credentials did not pass the channel lookup test.',
+    };
+  }
+}
+
 export function buildPlatformPayload(job = {}, context = {}) {
   const platform = String(job.platform || 'instagram').toLowerCase();
+  if (platform === 'facebook') return buildFacebookPayload(job, context);
   if (platform === 'tiktok') return buildTikTokPayload(job, context);
   if (platform === 'youtube') return buildYouTubePayload(job, context);
   if (platform === 'linkedin') return buildLinkedInPayload(job, context);
+  if (platform === 'x') return buildXPayload(job, context);
   return buildInstagramPayload(job, context);
 }
 
 function getAdapterMode(platform = 'instagram') {
   const runtime = loadPublishRuntime();
   const key = `PUBLISH_${String(platform).toUpperCase()}_MODE`;
-  const runtimeOverride = platform === 'instagram' ? runtime.instagramMode : '';
+  const runtimeOverrideMap = {
+    instagram: runtime.instagramMode,
+    facebook: runtime.facebookMode,
+    tiktok: runtime.tiktokMode,
+    youtube: runtime.youtubeMode,
+    linkedin: runtime.linkedinMode,
+    x: runtime.xMode,
+  };
+  const runtimeOverride = runtimeOverrideMap[platform] || '';
   const requested = String(runtimeOverride || process.env[key] || process.env.PUBLISH_MODE || 'simulate').trim().toLowerCase();
   return requested === 'api' ? 'api' : 'simulate';
 }
@@ -272,7 +454,7 @@ export function getPublishingIntegrationStatus(jobs = []) {
       platform_label: getRule(platform).label,
       adapter_mode: mode,
       live_ready: liveReady,
-      adapter_implemented: platform === 'instagram',
+      adapter_implemented: platform === 'instagram' || platform === 'youtube',
       env_keys: envKeys,
       configured_env_keys: configuredEnvKeys,
       missing_env_keys: missingEnvKeys,
@@ -413,9 +595,116 @@ async function publishInstagramViaApi(job, payload, context = {}) {
   };
 }
 
+async function resolveMediaForUpload(job = {}, context = {}) {
+  const mediaUrl = resolveMediaUrl(job, context);
+  if (!mediaUrl) throw new Error('Publishing needs a media_url on the publish job or render output');
+
+  const mediaResponse = await fetch(mediaUrl);
+  if (!mediaResponse.ok) {
+    throw new Error(`Unable to fetch media for upload (${mediaResponse.status} ${mediaResponse.statusText})`);
+  }
+
+  const contentType = sanitizeHeaderValue(mediaResponse.headers.get('content-type'), 'video/mp4');
+  const contentLength = Number(mediaResponse.headers.get('content-length') || 0);
+  const buffer = Buffer.from(await mediaResponse.arrayBuffer());
+
+  return {
+    mediaUrl,
+    contentType,
+    contentLength: contentLength || buffer.length,
+    buffer,
+  };
+}
+
+async function publishYouTubeViaApi(job, payload, context = {}) {
+  const accessToken = getEnv('YOUTUBE_ACCESS_TOKEN');
+  const channelId = getEnv('YOUTUBE_CHANNEL_ID');
+  if (!accessToken) throw new Error('YouTube publishing is missing YOUTUBE_ACCESS_TOKEN');
+  if (!channelId) throw new Error('YouTube publishing is missing YOUTUBE_CHANNEL_ID');
+
+  const media = await resolveMediaForUpload(job, context);
+  const uploadMetadata = {
+    snippet: {
+      title: payload.title || 'Short-form content',
+      description: payload.description || '',
+      tags: Array.isArray(payload.tags) ? payload.tags : [],
+      categoryId: String(payload.category || '22'),
+    },
+    status: {
+      privacyStatus: String(payload.privacy_status || 'public'),
+      selfDeclaredMadeForKids: false,
+    },
+  };
+
+  const initiateResponse = await fetch(
+    'https://www.googleapis.com/upload/youtube/v3/videos?uploadType=resumable&part=snippet,status',
+    {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        Accept: 'application/json',
+        'Content-Type': 'application/json; charset=UTF-8',
+        'X-Upload-Content-Length': String(media.contentLength),
+        'X-Upload-Content-Type': media.contentType,
+      },
+      body: JSON.stringify(uploadMetadata),
+    }
+  );
+
+  if (!initiateResponse.ok) {
+    const message = await initiateResponse.text().catch(() => '');
+    throw new Error(message || `YouTube resumable session creation failed (${initiateResponse.status})`);
+  }
+
+  const uploadUrl = sanitizeHeaderValue(initiateResponse.headers.get('location'));
+  if (!uploadUrl) throw new Error('YouTube resumable session did not return an upload URL');
+
+  const uploadResponse = await fetch(uploadUrl, {
+    method: 'PUT',
+    headers: {
+      'Content-Length': String(media.contentLength),
+      'Content-Type': media.contentType,
+    },
+    body: media.buffer,
+  });
+
+  const uploadText = await uploadResponse.text().catch(() => '');
+  let uploadJson = {};
+  try {
+    uploadJson = uploadText ? JSON.parse(uploadText) : {};
+  } catch {
+    uploadJson = { raw: uploadText };
+  }
+
+  if (!uploadResponse.ok) {
+    const message = uploadJson?.error?.message || uploadJson?.message || uploadText || `YouTube upload failed (${uploadResponse.status})`;
+    throw new Error(message);
+  }
+
+  const videoId = String(uploadJson.id || '').trim();
+  if (!videoId) throw new Error('YouTube upload did not return a video id');
+
+  return {
+    adapter: 'youtube_data_api',
+    method: 'api',
+    platform_post_id: videoId,
+    post_url: `https://www.youtube.com/shorts/${videoId}`,
+    platform_payload: {
+      ...payload,
+      channel_id: channelId,
+      media_url: media.mediaUrl,
+      uploaded_content_type: media.contentType,
+    },
+    published_at: new Date().toISOString(),
+  };
+}
+
 async function publishViaApi(platform, job, payload, context = {}) {
   if (platform === 'instagram') {
     return publishInstagramViaApi(job, payload, context);
+  }
+  if (platform === 'youtube') {
+    return publishYouTubeViaApi(job, payload, context);
   }
   throw new Error(`${platform} API publishing is not configured yet`);
 }

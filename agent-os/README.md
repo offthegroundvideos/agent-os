@@ -27,6 +27,19 @@ Phone: http://YOUR-TAILSCALE-IP:4000
 - Example: `PUBLIC_MEDIA_BASE_URL=https://your-public-host.example.com`
 - Without that, publish readiness will correctly flag localhost media as not publicly reachable for live adapters.
 
+## Booking Research Intake
+- Agent OS now includes `POST /api/booking-research` for website booking intake.
+- The booking payload should include at least `name` or `companyName`, plus `niche`.
+- Example fields: `name`, `companyName`, `email`, `phone`, `website`, `niche`, `targetAudience`, `primaryGoal`, `primaryOffer`, `location`, `notes`.
+- When a booking arrives, Agent OS creates or updates the client record, marks it active, and starts the research pipeline automatically.
+- Set `BOOKING_WEBHOOK_SECRET` and send it as `x-booking-secret` to protect the route in production.
+
+## YouTube Live Publishing
+- The next live adapter after Instagram is now YouTube Shorts via the YouTube Data API resumable upload flow.
+- Set `PUBLISH_YOUTUBE_MODE=api`, `YOUTUBE_ACCESS_TOKEN`, and `YOUTUBE_CHANNEL_ID` to enable live uploads.
+- Test the connection at `/api/publish-integrations/test-youtube` or with `POST /api/publish-integrations` and action `test-youtube-connection`.
+- Shorts are uploaded through the standard YouTube video upload endpoint; YouTube determines Shorts eligibility from the uploaded video itself.
+
 ## Research Discovery Providers
 - Viral Research supports a browser-search discovery lane by default.
 - Firecrawl can be added as a second discovery provider for broader current-web recall during niche research.
@@ -42,6 +55,12 @@ Phone: http://YOUR-TAILSCALE-IP:4000
 ## Website Studio
 - Website Studio builds landing pages directly inside Agent OS from pipeline context.
 - The builder is optimized around clear outcome promises, proof-led heroes, one primary CTA, and mobile-safe qualification flows.
+
+## Working Memory
+- Agent OS now keeps a live-generated memory snapshot at `data/system/working-memory.json`.
+- A human-readable version is written to `WORKING-MEMORY.md`.
+- The snapshot auto-refreshes when clients, assets, calendar entries, processes, bookings, production ops, or publishing state change.
+- You can fetch the latest snapshot at `/api/working-memory` and force a refresh with `/api/working-memory?refresh=true`.
 
 ## DeerFlow Coding Bridge
 - Agent OS now includes a DeerFlow bridge at `/api/deerflow`.

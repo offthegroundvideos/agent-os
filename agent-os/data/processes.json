@@ -1,15 +1,13 @@
 {
   "processes": [
     {
-      "id": "pipeline-1775190868622",
-      "type": "pipeline",
-      "description": "Pipeline: Client: Jose pool\nNiche: Mechanic\nPrimary offer: Fix your car!\nTarget audience: Commuters and families\nService area or geography: San Anselmo, Ca\nPrimary business goal: More calls to Jose. \nPriority platforms: instagram, tiktok",
-      "status": "running",
-      "startedAt": "2026-04-03T04:34:28.639Z",
+      "id": "agent-alex-1775677981915",
+      "type": "agent",
+      "description": "Alex: wedding videography",
+      "status": "killed",
+      "startedAt": "2026-04-08T19:53:01.927Z",
       "stoppedAt": null,
-      "pipelineTopic": "Client: Jose pool\nNiche: Mechanic\nPrimary offer: Fix your car!\nTarget audience: Commuters and families\nService area or geography: San Anselmo, Ca\nPrimary business goal: More calls to Jose. \nPriority platforms: instagram, tiktok",
-      "pipelineType": "full",
-      "completedStepIndex": 2
+      "completedAt": "2026-04-08T19:53:01.934Z"
     }
   ]
 }

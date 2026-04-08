@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { createCanonicalId, withSystemFields } from './canonicalDataModel.js';
+import { queueWorkingMemoryRefresh } from './workingMemory.js';
 
 export const CLIENTS_FILE = path.join(process.cwd(), 'data', 'clients', 'clients.json');
 
@@ -16,6 +17,7 @@ export function saveClients(data) {
   const dir = path.dirname(CLIENTS_FILE);
   fs.mkdirSync(dir, { recursive: true });
   fs.writeFileSync(CLIENTS_FILE, JSON.stringify(data, null, 2));
+  queueWorkingMemoryRefresh('clients-updated');
 }
 
 export function normalizeClient(input = {}) {

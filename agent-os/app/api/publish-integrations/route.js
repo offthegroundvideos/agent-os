@@ -1,5 +1,5 @@
 import { listPublishJobs } from '../../../lib/publishQueue.js';
-import { getPublishingIntegrationStatus, testInstagramConnection } from '../../../lib/publishingGateway.js';
+import { getPublishingIntegrationStatus, testInstagramConnection, testYouTubeConnection } from '../../../lib/publishingGateway.js';
 import { savePublishRuntime } from '../../../lib/publishRuntime.js';
 import { refreshAllRenderMediaUrls, getProductionBundleForCalendarEntry } from '../../../lib/productionOps.js';
 import { updatePublishJob, listPublishJobs as listQueueJobs } from '../../../lib/publishQueue.js';
@@ -26,6 +26,11 @@ export async function POST(request) {
         publicMediaBaseUrl: body.publicMediaBaseUrl,
         nextPublicAppUrl: body.nextPublicAppUrl,
         instagramMode: body.instagramMode,
+        facebookMode: body.facebookMode,
+        tiktokMode: body.tiktokMode,
+        youtubeMode: body.youtubeMode,
+        linkedinMode: body.linkedinMode,
+        xMode: body.xMode,
       });
       return Response.json({ success: true, runtime });
     }
@@ -59,6 +64,11 @@ export async function POST(request) {
     if (action === 'test-instagram-connection' || action === 'testinstagramconnection' || action === 'test-instagram') {
       const result = await testInstagramConnection();
       return Response.json({ success: result.ok, result });
+    }
+
+    if (action === 'test-youtube-connection' || action === 'testyoutubeconnection' || action === 'test-youtube') {
+      const result = await testYouTubeConnection();
+      return Response.json({ success: result.ok, result }, { status: result.ok ? 200 : 400 });
     }
 
     return Response.json({ error: 'Unknown action' }, { status: 400 });

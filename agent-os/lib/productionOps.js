@@ -7,6 +7,7 @@ import { getAsset, transitionAsset } from './assets.js';
 import { updateCalendarEntry } from './contentCalendar.js';
 import { ensurePublishJobsForCalendarEntry } from './publishQueue.js';
 import { ensureRenderMediaOutputs, getPublicMediaBaseUrl } from './renderMediaStore.js';
+import { queueWorkingMemoryRefresh } from './workingMemory.js';
 
 const DATA_FILE = path.join(process.cwd(), 'data', 'production-ops.json');
 const SHOOT_STATUSES = ['ready_to_shoot', 'shoot_scheduled', 'shot', 'handoff_to_edit', 'archived', 'shoot_blocked'];
@@ -37,6 +38,7 @@ function saveData(data) {
   ensureFile();
   data.lastUpdated = new Date().toISOString();
   fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2));
+  queueWorkingMemoryRefresh('production-ops-updated');
 }
 
 function addDays(dateString, days) {

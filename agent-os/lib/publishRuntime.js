@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { queueWorkingMemoryRefresh } from './workingMemory.js';
 
 const DATA_FILE = path.join(process.cwd(), 'data', 'publish-runtime.json');
 
@@ -7,6 +8,11 @@ const DEFAULT_STATE = {
   publicMediaBaseUrl: '',
   nextPublicAppUrl: '',
   instagramMode: '',
+  facebookMode: '',
+  tiktokMode: '',
+  youtubeMode: '',
+  linkedinMode: '',
+  xMode: '',
   updatedAt: null,
 };
 
@@ -36,8 +42,14 @@ export function savePublishRuntime(patch = {}) {
     publicMediaBaseUrl: String(patch.publicMediaBaseUrl ?? current.publicMediaBaseUrl ?? '').trim(),
     nextPublicAppUrl: String(patch.nextPublicAppUrl ?? current.nextPublicAppUrl ?? '').trim(),
     instagramMode: String(patch.instagramMode ?? current.instagramMode ?? '').trim().toLowerCase(),
+    facebookMode: String(patch.facebookMode ?? current.facebookMode ?? '').trim().toLowerCase(),
+    tiktokMode: String(patch.tiktokMode ?? current.tiktokMode ?? '').trim().toLowerCase(),
+    youtubeMode: String(patch.youtubeMode ?? current.youtubeMode ?? '').trim().toLowerCase(),
+    linkedinMode: String(patch.linkedinMode ?? current.linkedinMode ?? '').trim().toLowerCase(),
+    xMode: String(patch.xMode ?? current.xMode ?? '').trim().toLowerCase(),
     updatedAt: new Date().toISOString(),
   };
   fs.writeFileSync(DATA_FILE, JSON.stringify(next, null, 2));
+  queueWorkingMemoryRefresh('publish-runtime-updated');
   return next;
 }

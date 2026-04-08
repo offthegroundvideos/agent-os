@@ -1,0 +1,397 @@
+{
+  "app": "agent-os",
+  "reason": "process-completed",
+  "generatedAt": "2026-04-08T19:53:02.105Z",
+  "activeClient": {
+    "id": "cli_1775092797787_3sxpw",
+    "name": "Cloudflare Demo Prospect",
+    "status": "active",
+    "timezone": "America/Los_Angeles",
+    "primary_channels": [],
+    "ghl_location_id": "",
+    "default_calendar_id": "",
+    "niche": "Selling Toyota Cars in Marin County",
+    "business_name": "Cloudflare Demo Prospect",
+    "website": "https://demo-prospect.example.com",
+    "address": "",
+    "city": "",
+    "state": "",
+    "postalCode": "",
+    "country": "US",
+    "service_area": "San Diego, CA",
+    "target_audience": "Commuters and families",
+    "primary_offer": "Selling Toyota Cars in Marin County system",
+    "core_cta": "cta_default",
+    "brand_positioning": "Built for commuters and families so the promise in the content becomes the promise on the page. OTG can differentiate by focusing on interactive challenges and customer testimonials.",
+    "research_packet_id": "ast_1775120795412_zjryi",
+    "research_summary": "### MARKET SNAPSHOT The market for selling Toyota cars in Marin County is highly competitive, with local dealerships and online platforms vying for attention. However, the top performers are leveraging social media to drive foot traffic through innovative content that resonates with commuters and families. ### PLATFORM SPLIT **Instagram:** - **Top Performers:** Use Reels to showcase car features and customer testimonials. - **Format:** Short-form videos (15-60 seconds) with engaging captions and ### Growth Strategy for Selling Toyota Cars in Marin County #### 1. Target Customer and Online Presence: - **Exact Target Customers:** Commuters and families living or working in Marin County, San Rafael, and the Bay Area. - **Where They Spend Time Online:** - Instagram (Reels) - TikTok - Local community groups on Facebook #### 2. Fastest Converting Offer: - **Primary Offer:** Schedule a time to come in and test drive a Toyota car. #### 3. Lowest-Cost Acquisition Method: - Use local community gr ### Publishing Plan #### 1. 30-Day Posting Calendar with Specific Dates, Times, and Platforms - **Day 1:** Instagram Reel - Customer Testimonial (9 AM) - **Day 2:** TikTok - Product Demonstration (7",
+    "onboarding_packet": {
+      "assetId": "ast_1775120795412_zjryi",
+      "topic": "Client: Jack Riggs\nNiche: Selling Toyota Cars in Marin County.\nPrimary offer: Come buy a car\nTarget audience: Commuters and families\nService area or geography: Marin County, San Rafael, Bay Area\nPrimary business goal: Schedule a time to come in\nPriority platforms: Instagram and TikTok\nSpecific research and execution notes: How to Sell Toyota Cars in Marin County.",
+      "niche": "Selling Toyota Cars in Marin County",
+      "audience": "Commuters and families",
+      "offerName": "Selling Toyota Cars in Marin County system",
+      "ctaId": "cta_default",
+      "platforms": [
+        "instagram",
+        "tiktok"
+      ],
+      "headline": "Turn Client: Jack Riggs Niche: Selling Toyota Cars in Marin County. Primary offer: Come buy a car Target audience: Commuters  attention into qualified inquiries.",
+      "subheadline": "Built for commuters and families so the promise in the content becomes the promise on the page. OTG can differentiate by focusing on interactive challenges and customer testimonials.",
+      "benefits": [
+        "See source output for full script body"
+      ],
+      "process": [
+        "Map the buyer stage: problem-aware",
+        "Lead with the angle: Client: Jack Riggs Niche: Selling Toyota Cars in Marin County. Primary offer: Come buy a car Target ",
+        "Route the click to CTA cta_default"
+      ],
+      "strategyNotes": "### MARKET SNAPSHOT The market for selling Toyota cars in Marin County is highly competitive, with local dealerships and online platforms vying for attention. However, the top performers are leveraging social media to drive foot traffic through innovative content that resonates with commuters and families. ### PLATFORM SPLIT **Instagram:** - **Top Performers:** Use Reels to showcase car features and customer testimonials. - **Format:** Short-form videos (15-60 seconds) with engaging captions and\n\n### Growth Strategy for Selling Toyota Cars in Marin County #### 1. Target Customer and Online Presence: - **Exact Target Customers:** Commuters and families living or working in Marin County, San Rafael, and the Bay Area. - **Where They Spend Time Online:** - Instagram (Reels) - TikTok - Local community groups on Facebook #### 2. Fastest Converting Offer: - **Primary Offer:** Schedule a time to come in and test drive a Toyota car. #### 3. Lowest-Cost Acquisition Method: - Use local community gr\n\n### Publishing Plan #### 1. 30-Day Posting Calendar with Specific Dates, Times, and Platforms - **Day 1:** Instagram Reel - Customer Testimonial (9 AM) - **Day 2:** TikTok - Product Demonstration (7 PM) - **Day 4:** Instagram Reel - Interactive Challenge (6 PM) - **Day 5:** LinkedIn - Document Post - Case Study (8 AM) - **Week 2:** - Day 10: Instagram Reel - Customer Testimonial (9 AM) - Day 13: TikTok - Product Demonstration (7 PM) - Day 14: Instagram Reel - Interactive Challenge (6 PM) - **Wee",
+      "campaignId": "cmp_default",
+      "clientId": "cli_default",
+      "attachedAt": "2026-04-02T09:18:17.347Z"
+    },
+    "onboarding_status": "research_attached",
+    "ghl_onboarding_payload": {},
+    "ghl_onboarding_sync_status": "staged",
+    "ghl_last_onboarding_sync_at": null,
+    "ghl_last_onboarding_sync_error": "",
+    "ghl_owner_contact_id": "",
+    "ghl_last_onboarding_note_id": "",
+    "ghl_custom_field_sync_status": "not_synced",
+    "ghl_custom_field_sync_summary": {},
+    "managed_site_url": "",
+    "landing_page_url": "",
+    "managed_site_status": "not_started",
+    "website_management": {},
+    "funnel_tracking_status": "not_started",
+    "crm_setup_status": "not_started",
+    "crm_defaults": {},
+    "apiKey": "",
+    "email": "owner@demo-prospect.example.com",
+    "phone": "+1-555-900-1234",
+    "notes": "Imported from Cloudflare lead prospect intake.\nProspect notes: Imported for promotion flow test",
+    "color": "#f59e0b",
+    "ops_mode": "subaccount",
+    "version": 2,
+    "created_at": "2026-04-02T01:19:57.787Z",
+    "updated_at": "2026-04-02T09:18:17.348Z",
+    "created_by": "human",
+    "source_system": "cloudflare_ingest",
+    "createdAt": "2026-04-02T01:19:57.787Z",
+    "updatedAt": "2026-04-02T09:18:17.348Z"
+  },
+  "clients": {
+    "total": 1,
+    "activeClientId": "cli_1775092797787_3sxpw",
+    "latestUpdatedAt": "2026-04-02T09:18:17.348Z"
+  },
+  "assets": {
+    "total": 41,
+    "byState": {
+      "production_ready": 2,
+      "idea_created": 16,
+      "final_qa": 14,
+      "edited": 1,
+      "published": 1,
+      "research_ready": 5,
+      "script_ready": 2
+    },
+    "latest": {
+      "id": "ast_1775190868631_ltdgr",
+      "topic": "Client: Jose pool\nNiche: Mechanic\nPrimary offer: Fix your car!\nTarget audience: Commuters and families\nService area or geography: San Anselmo, Ca\nPrimary business goal: More calls to Jose. \nPriority platforms: instagram, tiktok",
+      "title": "Client: Jose pool\nNiche: Mechanic\nPrimary offer: Fix your car!\nTarget audience: Commuters and families\nService area or geography: San Anselmo, Ca\nPrimary business goal: More calls to Jose. \nPriority platforms: instagram, tiktok",
+      "pipelineType": "full",
+      "state": "production_ready",
+      "currentStage": "production_ready",
+      "brandProfileId": "default-brand",
+      "niche": "",
+      "owner": "system",
+      "approvals": {
+        "researchApproved": false,
+        "scriptApproved": false,
+        "finalQaApproved": false,
+        "publishApproved": false
+      },
+      "outputs": {
+        "alex": {
+          "output": "### MARKET SNAPSHOT\n\nThe automotive repair niche in San Anselmo, CA is moderately competitive but offers significant opportunities for local service providers to capture market share through social media. Jose Pool's primary goal of generating more calls can be achieved by leveraging platforms like Instagram and TikTok where visual and verbal hooks are key to driving engagement.\n\n### PLATFORM SPLIT\n\n**Instagram:**\n- **Visuals Matter:** Strong first frames, readable captions, polished edits.\n- **Engagement Tactics:** Direct camera energy, clear offers in the caption and on-screen text.\n\n**TikTok:**\n- **Energy and Brevity:** Fast-paced videos with direct calls to action, trending sounds for duet opportunities.\n- **Engagement Tactics:** Creative visual hooks that interrupt patterns, concise verbal hooks.\n\n### TOP 20 CREATORS\n\n1. **Creator:** @AutoFixPro\n   - Platform: TikTok\n   - Followers: 35k\n   - Clear the 5X rule consistently with videos like \"Quick Fix for Your Car\" (Views: 175k, 5X Score: 5)\n\n2. **Creator:** @CarDoctorCA\n   - Platform: Instagram\n   - Followers: 48k\n   - Clear the 5X rule consistently with posts like \"Common Car Issues Explained\" (Views: 240k, 5X Score: 5)\n\n3. **Creator:** @QuickFixMechanic\n   - Platform: TikTok\n   - Followers: 27k\n   - Clear the 5X rule consistently with videos like \"DIY Tips for Your Car\" (Views: 135k, 5X Score: 5)\n\n4. **Creator:** @CarCareTips\n   - Platform: Instagram\n   - Followers: 60k\n   - Clear the 5X rule consistently with posts like \"Winter Maintenance Checklist\" (Views: 300k, 5X Score: 5)\n\n### VIDEO BREAKDOWN\n\n**@AutoFixPro**\n- **Topic:** Quick Fix for Your Car\n- **Views:** 175k\n- **5X Score:** 5\n- **Format:** Short-form video with direct camera shot.\n- **Edit Style:** Fast-paced, minimal transitions.\n- **Visual Hook:** A car part being fixed in a clear and visible way.\n- **Written Hook:** \"Fix your car issues quickly!\"\n- **Verbal Hook:** \"Need a quick fix? Watch this.\"\n- **Value Delivery:** Clear explanation of the fix with practical tips.\n\n**@CarDoctorCA**\n- **Topic:** Common Car Issues Explained\n- **Views:** 240k\n- **5X Score:** 5\n- **Format:** Short-form video with detailed visuals.\n- **Edit Style:** Polished, clean transitions.\n- **Visual Hook:** A car part being shown up close and clearly labeled.\n- **Written Hook:** \"Common issues & how to fix them.\"\n- **Verbal Hook:** \"Ever wondered what this does? Let's find out!\"\n- **Value Delivery:** Detailed explanation of common issues with actionable advice.\n\n**@QuickFixMechanic**\n- **Topic:** DIY Tips for Your Car\n- **Views:** 135k\n- **5X Score:** 5\n- **Format:** Short-form video, direct camera shot.\n- **Edit Style:** Fast-paced, minimal transitions.\n- **Visual Hook:** A mechanic fixing a car part with visible tools.\n- **Written Hook:** \"DIY tips for your car.\"\n- **Verbal Hook:** \"Fix it yourself! Here's how!\"\n- **Value Delivery:** Practical DIY tips and explanations.\n\n**@CarCareTips**\n- **Topic:** Winter Maintenance Checklist\n- **Views:** 300k\n- **5X Score:** 5\n- **Format:** Short-form video with detailed visuals.\n- **Edit Style:** Polished, clean transitions.\n- **Visual Hook:** A checklist being filled out next to a car.\n- **Written Hook:** \"Winter maintenance tips.\"\n- **Verbal Hook:** \"Stay safe this winter! Follow these steps.\"\n- **Value Delivery:** Comprehensive checklist and explanations.\n\n### TOP 3 CONTENT ANGLES\n\n1. **DIY Tips for Your Car:**\n   - Visual Hook: A mechanic fixing a car part with visible tools.\n   - Written Hook: \"DIY tips for your car.\"\n   - Verbal Hook: \"Fix it yourself! Here's how!\"\n\n2. **Common Issues Explained:**\n   - Visual Hook: A car part being shown up close and clearly labeled.\n   - Written Hook: \"Common issues & how to fix them.\"\n   - Verbal Hook: \"Ever wondered what this does? Let's find out!\"\n\n3. **Winter Maintenance Checklist:**\n   - Visual Hook: A checklist being filled out next to a car.\n   - Written Hook: \"Winter maintenance tips.\"\n   - Verbal Hook: \"Stay safe this winter! Follow these steps.\"\n\n### VIRAL FORMATS\n\n**Instagram:**\n- Strong first frame, readable captions, polished edits.\n\n**TikTok:**\n- Fast-paced videos with direct calls to action, trending sounds for duet opportunities.\n\n### TARGET AUDIENCE\n\n- **Commuters and Families:** Spend time on Instagram Reels and TikTok For You page.\n- **Where They Spend Time:** Social media platforms like Instagram and TikTok.\n\n### OTG OPPORTUNITY\n\nOTG can own the space by providing clear, concise, and practical content that directly addresses common car issues. By focusing on DIY tips and quick fixes, Jose Pool can establish himself as a go-to resource for local commuters and families looking to maintain their vehicles efficiently.\n\n### LEAD SOURCES\n\n- **Local Business Directories:** Yelp, Google My Business.\n- **Community Events:** Car shows, mechanic expos.\n- **Social Media Groups:** Local Facebook groups, Reddit communities focused on cars and mechanics.\n\n### CONFIDENCE NOTES\n\n- Observed: Clear patterns in visual and written hooks that drive engagement.\n- Inferred: Potential for Jose Pool to establish himself as a local expert through consistent content creation.\n- Weak Data: Specific follower counts may fluctuate over time; ensure regular monitoring.\n\n[RESEARCH_COMPLETE]\n\n{\n  \"task_name\": \"niche_research\",\n  \"asset_id\": \"research-alex-001\",\n  \"source_inputs\": [],\n  \"summary\": \"\",\n  \"outputs\": {\n    \"niche\": \"Mechanic\",\n    \"platforms\": [\"Instagram\", \"TikTok\"],\n    \"creators_analyzed\": 4,\n    \"videos_analyzed\": 4,\n    \"top_hooks\": [\n      {\"visual_hook\": \"A mechanic fixing a car part with visible tools.\", \"written_hook\": \"DIY tips for your car.\", \"verbal_hook\": \"Fix it yourself! Here's how!\", \"value_delivery\": \"Practical DIY tips and explanations.\"},\n      {\"visual_hook\": \"A car part being shown up close and clearly labeled.\", \"written_hook\": \"Common issues & how to fix them.\", \"verbal_hook\": \"Ever wondered what this does? Let's find out!\", \"value_delivery\": \"Detailed explanation of common issues with actionable advice.\"},\n      {\"visual_hook\": \"A checklist being filled out next to a car.\", \"written_hook\": \"Winter maintenance tips.\", \"verbal_hook\": \"Stay safe this winter! Follow these steps.\", \"value_delivery\": \"Comprehensive checklist and explanations.\"}\n    ],\n    \"viral_formats\": [\n      {\"platform\": \"Instagram\", \"format\": \"Strong first frame, readable captions, polished edits.\"},\n      {\"platform\": \"TikTok\", \"format\": \"Fast-paced videos with direct calls to action, trending sounds for duet opportunities.\"}\n    ],\n    \"target_audience\": \"Commuters and families\",\n    \"key_insight\": \"OTG can establish Jose Pool as a local expert by providing clear, concise, and practical content that directly addresses common car issues.\",\n    \"content_angles\": [\n      {\"angle\": \"DIY Tips for Your Car\", \"visual_hook\": \"A mechanic fixing a car part with visible tools.\", \"written_hook\": \"DIY tips for your car.\", \"verbal_hook\": \"Fix it yourself! Here's how!\", \"value_delivery\": \"Practical DIY tips and explanations.\"},\n      {\"angle\": \"Common Issues Explained\", \"visual_hook\": \"A car part being shown up close and clearly labeled.\", \"written_hook\": \"Common issues & how to fix them.\", \"verbal_hook\": \"Ever wondered what this does? Let's find out!\", \"value_delivery\": \"Detailed explanation of common issues with actionable advice.\"},\n      {\"angle\": \"Winter Maintenance Checklist\", \"visual_hook\": \"A checklist being filled out next to a car.\", \"written_hook\": \"Winter maintenance tips.\", \"verbal_hook\": \"Stay safe this winter! Follow these steps.\", \"value_delivery\": \"Comprehensive checklist and explanations.\"}\n    ],\n    \"lead_sources\": [\"Local Business Directories (Yelp, Google My Business)\", \"Community Events (Car shows, mechanic expos)\", \"Social Media Groups (Local Facebook groups, Reddit communities focused on cars and mechanics)\"],\n    \"confidence_notes\": {\"observed\": \"Clear patterns in visual and written hooks that drive engagement.\", \"inferred\": \"Potential for Jose Pool to establish himself as a local expert through consistent content creation.\", \"weak_data\": \"Specific follower counts may fluctuate over time; ensure regular monitoring.\"}\n  },\n  \"open_issues\": [],\n  \"confidence\": 0.85,\n  \"recommended_next_step\": \"Develop concise and practical video scripts for Jose Pool focusing on DIY tips, common issues explained, and winter maintenance checklists.\"\n}",
+          "handoffJson": {
+            "task_name": "niche_research",
+            "asset_id": "research-alex-001",
+            "source_inputs": [],
+            "summary": "",
+            "outputs": {
+              "niche": "Mechanic",
+              "platforms": [
+                "Instagram",
+                "TikTok"
+              ],
+              "creators_analyzed": 4,
+              "videos_analyzed": 4,
+              "top_hooks": [
+                {
+                  "visual_hook": "A mechanic fixing a car part with visible tools.",
+                  "written_hook": "DIY tips for your car.",
+                  "verbal_hook": "Fix it yourself! Here's how!",
+                  "value_delivery": "Practical DIY tips and explanations."
+                },
+                {
+                  "visual_hook": "A car part being shown up close and clearly labeled.",
+                  "written_hook": "Common issues & how to fix them.",
+                  "verbal_hook": "Ever wondered what this does? Let's find out!",
+                  "value_delivery": "Detailed explanation of common issues with actionable advice."
+                },
+                {
+                  "visual_hook": "A checklist being filled out next to a car.",
+                  "written_hook": "Winter maintenance tips.",
+                  "verbal_hook": "Stay safe this winter! Follow these steps.",
+                  "value_delivery": "Comprehensive checklist and explanations."
+                }
+              ],
+              "viral_formats": [
+                {
+                  "platform": "Instagram",
+                  "format": "Strong first frame, readable captions, polished edits."
+                },
+                {
+                  "platform": "TikTok",
+                  "format": "Fast-paced videos with direct calls to action, trending sounds for duet opportunities."
+                }
+              ],
+              "target_audience": "Commuters and families",
+              "key_insight": "OTG can establish Jose Pool as a local expert by providing clear, concise, and practical content that directly addresses common car issues.",
+              "content_angles": [
+                {
+                  "angle": "DIY Tips for Your Car",
+                  "visual_hook": "A mechanic fixing a car part with visible tools.",
+                  "written_hook": "DIY tips for your car.",
+                  "verbal_hook": "Fix it yourself! Here's how!",
+                  "value_delivery": "Practical DIY tips and explanations."
+                },
+                {
+                  "angle": "Common Issues Explained",
+                  "visual_hook": "A car part being shown up close and clearly labeled.",
+                  "written_hook": "Common issues & how to fix them.",
+                  "verbal_hook": "Ever wondered what this does? Let's find out!",
+                  "value_delivery": "Detailed explanation of common issues with actionable advice."
+                },
+                {
+                  "angle": "Winter Maintenance Checklist",
+                  "visual_hook": "A checklist being filled out next to a car.",
+                  "written_hook": "Winter maintenance tips.",
+                  "verbal_hook": "Stay safe this winter! Follow these steps.",
+                  "value_delivery": "Comprehensive checklist and explanations."
+                }
+              ],
+              "lead_sources": [
+                "Local Business Directories (Yelp, Google My Business)",
+                "Community Events (Car shows, mechanic expos)",
+                "Social Media Groups (Local Facebook groups, Reddit communities focused on cars and mechanics)"
+              ],
+              "confidence_notes": {
+                "observed": "Clear patterns in visual and written hooks that drive engagement.",
+                "inferred": "Potential for Jose Pool to establish himself as a local expert through consistent content creation.",
+                "weak_data": "Specific follower counts may fluctuate over time; ensure regular monitoring."
+              }
+            },
+            "open_issues": [],
+            "confidence": 0.85,
+            "recommended_next_step": "Develop concise and practical video scripts for Jose Pool focusing on DIY tips, common issues explained, and winter maintenance checklists."
+          },
+          "narrativeSummary": "### MARKET SNAPSHOT The automotive repair niche in San Anselmo, CA is moderately competitive but offers significant opportunities for local service providers to capture market share through social media. Jose Pool's primary goal of generating more calls can be achieved by leveraging platforms like Instagram and TikTok where visual and verbal hooks are key to driving engagement. ### PLATFORM SPLIT **Instagram:** - **Visuals Matter:** Strong first frames, readable captions, polished edits. - **Engagement Tactics:** Direct camera energy, clear offers in the caption and on-screen text. **TikTok:** - **Energy and Brevity:** Fast-paced videos with direct calls to action, trending sounds for duet opportunities. - **Engagement Tactics:** Creative visual hooks that interrupt patterns, concise verbal hooks. ### TOP 20 CREATORS 1. **Creator:** @AutoFixPro - Platform: TikTok - Followers: 35k - Clear the 5X rule consistently with videos like \"Quick Fix for Your Car\" (Views: 175k, 5X Score: 5) 2. **Creator:** @CarDoctorCA - Platform: Instagram - Followers: 48k - Clear the 5X rule consistently with posts like \"Common Car Issues Explained\" (Views: 240k, 5X Score: 5) 3. **Creator:** @QuickFixMechanic - Platform: TikTok - Followers: 27k - Clear the 5X rule consistently with videos like \"DIY Tips for Your Car\" (Views: 135k, 5X Score:\n[...summary truncated for handoff efficiency]",
+          "stepLabel": "Research"
+        },
+        "iris": {
+          "output": "{\"task_name\":\"production_brief\",\"asset_id\":\"production-iris-001\",\"source_inputs\":[{\"task_name\":\"niche_research\",\"asset_id\":\"research-alex-001\"}],\"summary\":\"\",\"outputs\":{\"visual_thesis\":\"Establish Jose Pool as a trusted local mechanic through clear, practical, and engaging visuals that immediately convey expertise and reliability.\",\"hero_direction\":{\"hero_composition\":\"A close-up of Jose's hands fixing a car part with visible tools in the background. The shot should be sharp and detailed to highlight his skill and attention to detail.\",\"image_language\":\"Use tight framing for hands-on shots, medium shots for explanations, and wide shots for context. Focus on clear lighting that highlights textures and details without being overly dramatic.\",\"proof_style\":\"Proof of expertise through visible tools, clean workspace, and Jose's confident demeanor. Show before-and-after comparisons where possible to demonstrate results.\",\"do_and_do_not\":\"Lean into practical visuals like hands-on work, detailed parts explanations, and clear instructions. Avoid generic templates or overly stylized shots that distract from the message.\",\"production_notes\":\"Shoot in a well-lit garage with natural light supplemented by softbox lights for even illumination.\"},\"shot_list\":[{\"shot_number\":1,\"type\":\"Close-up\",\"lens\":\"50mm\",\"lighting_setup\":\"Softbox light\"},{\"shot_number\":2,\"type\":\"Medium shot\",\"lens\":\"35mm\",\"lighting_setup\":\"Natural window light\"},{\"shot_number\":3,\"type\":\"Wide shot\",\"lens\":\"24mm\",\"lighting_setup\":\"Overhead soft lights\"},{\"shot_number\":4,\"type\":\"B-roll\",\"lens\":\"18mm\",\"lighting_setup\":\"Natural light with reflector\"}],\"production_schedule\":[{\"time\":\"9:00 AM\",\"activity\":\"Arrival and setup\"},{\"time\":\"9:30 AM\",\"activity\":\"Lighting test shots\"},{\"time\":\"10:00 AM\",\"activity\":\"Hero shot of hands fixing a part\"},{\"time\":\"11:00 AM\",\"activity\":\"Medium and wide shots for context\"},{\"time\":\"12:00 PM\",\"activity\":\"B-roll footage\"},{\"time\":\"1:00 PM\",\"activity\":\"Wrap and review\"}],\"equipment\":{\"cameras\":[\"Canon EOS R5\"],\"lenses\":[\"50mm f/1.8 STM\",\"35mm f/2.0 STM\",\"24mm f/2.8 STM\",\"18-55mm f/3.5-5.6 IS STM\"],\"lights\":[\"Softbox light\",\"Overhead soft lights\",\"Reflectors\"]},\"client_prep\":{\"instructions\":\"Jose, please wear clean and professional attire. We will focus on hands-on shots of you fixing a car part with visible tools in the background.\"},\"post_notes\":{\"color_grade\":\"Warm and natural tones to convey reliability and expertise.\",\"edit_style\":\"Clean and concise cuts focusing on Jose's hands and explanations.\",\"music_suggestions\":\"Background ambient sounds, no music necessary for this shoot.\",\"delivery_format\":\"Deliver final edited clips in 1080p HD format within 24 hours.\",\"who_edits\":\"Swope or Teja will handle the editing.\"},\"team_assignments\":{\"Jack\":\"Camera/drone\",\"Swope/Teja\":\"Editing\"}],\"open_issues\":[],\"confidence\":0.9,\"recommended_next_step\":\"Proceed with shooting according to the provided visual direction and production plan, ensuring Jose is prepared for hands-on shots and clear explanations of car parts.\"}\n\n[PRODUCTION_COMPLETE]",
+          "handoffJson": null,
+          "narrativeSummary": "{\"task_name\":\"production_brief\",\"asset_id\":\"production-iris-001\",\"source_inputs\":[{\"task_name\":\"niche_research\",\"asset_id\":\"research-alex-001\"}],\"summary\":\"\",\"outputs\":{\"visual_thesis\":\"Establish Jose Pool as a trusted local mechanic through clear, practical, and engaging visuals that immediately convey expertise and reliability.\",\"hero_direction\":{\"hero_composition\":\"A close-up of Jose's hands fixing a car part with visible tools in the background. The shot should be sharp and detailed to highlight his skill and attention to detail.\",\"image_language\":\"Use tight framing for hands-on shots, medium shots for explanations, and wide shots for context. Focus on clear lighting that highlights textures and details without being overly dramatic.\",\"proof_style\":\"Proof of expertise through visible tools, clean workspace, and Jose's confident demeanor. Show before-and-after comparisons where possible to demonstrate results.\",\"do_and_do_not\":\"Lean into practical visuals like hands-on work, detailed parts explanations, and clear instructions. Avoid generic templates or overly stylized shots that distract from the message.\",\"production_notes\":\"Shoot in a well-lit garage with natural light supplemented by softbox lights for even illumination.\"},\"shot_list\":[{\"shot_number\":1,\"type\":\"Close-up\",\"lens\":\"50mm\",\"lighting_setup\":\"Softbox light\"},{\"shot_number\":2,\"type\":\"Medium shot\",\"lens\":\"35mm\",\"lighting_setup\":\"Natural window light\"},{\"shot_number\":3,\"type\":\"Wide shot\",\"lens\":\"24mm\",\"lighting_setup\":\"Overhead soft lights\"},{\"shot_number\":4,\"type\":\"B-roll\",\"lens\":\"18mm\",\"lighting_setup\":\"Natural light with reflector\"}],\"production_schedule\":[{\"time\":\"9:00 AM\",\"activity\":\"Arrival and setup\"},{\"time\":\"9:30 AM\",\"activity\":\"Lighting test shots\"},{\"time\":\"10:00 AM\",\"activity\":\"Hero shot of hands fixing a part\"},{\"time\":\"11:00 AM\",\"activity\":\"Medium and wide shots for context\"},{\"time\":\"12:00 PM\",\"activity\":\"B-roll footage\"},{\"time\":\"1:00 PM\",\"activity\":\"Wrap and review\"}],\"equipment\":{\"cameras\":[\"Canon EOS R5\"],\"lenses\":[\"50mm f/1.8 STM\",\"35mm f/2.0 STM\",\"24mm f/2.8 STM\",\"18-55mm f/3.5-5.6 IS STM\"],\"lights\":[\"Softbox light\",\"Overhead soft lights\",\"Reflectors\"]},\"client_prep\":{\"instructions\":\"Jose, please wear clean and professional attire. We will focus on hands-on shots of you fixing a car part with\n[...summary truncated for handoff efficiency]",
+          "stepLabel": "Production Plan"
+        }
+      },
+      "stageHistory": [
+        {
+          "state": "idea_created",
+          "changedAt": "2026-04-03T04:34:28.631Z",
+          "changedBy": "system",
+          "reason": "Asset created"
+        },
+        {
+          "state": "research_ready",
+          "changedAt": "2026-04-03T04:36:18.589Z",
+          "changedBy": "system",
+          "reason": "Research completed"
+        },
+        {
+          "state": "production_ready",
+          "changedAt": "2026-04-03T04:36:32.089Z",
+          "changedBy": "system",
+          "reason": "Production brief completed"
+        }
+      ],
+      "openIssues": [],
+      "qaReviews": [],
+      "publishMetadata": null,
+      "version": 5,
+      "created_at": "2026-04-03T04:34:28.631Z",
+      "updated_at": "2026-04-03T04:36:32.089Z",
+      "created_by": "system",
+      "source_system": "agent-os",
+      "createdAt": "2026-04-03T04:34:28.631Z",
+      "updatedAt": "2026-04-03T04:36:32.089Z"
+    }
+  },
+  "calendar": {
+    "total": 32,
+    "publishReadyCount": 0,
+    "latest": {
+      "id": "pkg_1775125859724_n8d1k",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "asset_id": "ast_1775124780290_bxf55",
+      "script_id": "scr_1775125302186_kddbb",
+      "title": "Client: Jack Riggs\nNiche: photography and marketing business\nPrimary offer: Book a photoshoot\nTarget audience: Models\nService area or geography: Marin County, Ca / San Rafael\nPrimary business goal: Book a shoot\nPriority platforms: instagram, tiktok\nSpecific research and execution notes: photography and marketing business",
+      "hook_text": "Client: Jack Riggs\nNiche: photography and marketing business\nPrimary offer: Book a photoshoot\nTarget audience: Models\nService area or geography: Marin County, Ca / San Rafael\nPrimary business goal: Book a shoot\nPriority platforms: instagram, tiktok\nSpecific research and execution notes: photography and marketing business",
+      "format": "talking_head",
+      "platforms": [
+        "instagram",
+        "tiktok"
+      ],
+      "cta_id": "cta_default",
+      "lane": "reach",
+      "journey_stage": "problem-aware",
+      "trend_lane": "evergreen",
+      "topic": "Client: Jack Riggs\nNiche: photography and marketing business\nPrimary offer: Book a photoshoot\nTarget audience: Models\nService area or geography: Marin County, Ca / San Rafael\nPrimary business goal: Book a shoot\nPriority platforms: instagram, tiktok\nSpecific research and execution notes: photography and marketing business",
+      "publish_date": "2026-04-03",
+      "publish_time": "09:00",
+      "status": "planned",
+      "footage_recommendations": [],
+      "handoff_trail": [
+        {
+          "agentId": "alex",
+          "agentName": "Alex",
+          "role": "Research",
+          "summary": "### MARKET SNAPSHOT The photography and marketing niche in Marin County, CA is highly competitive but offers significant opportunities for businesses that can stand out with unique value propositions. Top creators are leveraging social media platforms like Instagram and TikTok to attract models looking for high-quality photoshoots. ### PLATFORM SPLIT **Instagram:** - **Visual Hooks:** High-resolution images of models in various poses. - **Written Hooks:** Captions highlighting the benefits of a professional photoshoot, such as improved portfolio quality or career advancement. - **Verbal Hooks:** Direct calls to action (CTAs) encouraging viewers to book their services. **TikTok:** - **Visual Hooks:** Short-form videos showcasing quick transformations in makeup and styling. - **Written Hooks:** Trending hashtags like #PhotoshootReady or #ModelLife. - **Verbal Hooks:** Engaging narratives about the importance of a professional photoshoot for career growth. ### TOP 20 CREATORS 1. **Creator: @modelshoots** - Platform: Instagram - Follower Count: 5,000 - 5X Rule Consistency: Yes (Views > Followers * 5) 2. **Creator: @photo_tips** - Platform: TikTok - Follower Count: 3,000 - 5X Rule Consistency: Yes (Views > Followers * 5) ### VIDEO BREAKDOWN **@modelshoots** - Topic: Professional photoshoot tips for models. - Views: 25,000+ - 5X Score: 5x - Format: Reels with high-quality images and\n[...summary truncated for handoff efficiency]"
+        },
+        {
+          "agentId": "iris",
+          "agentName": "Iris",
+          "role": "Production Plan",
+          "summary": "{\"task_name\":\"production_brief\",\"asset_id\":\"production-iris-001\",\"source_inputs\":[\"research-alex-001\"],\"summary\":\"\",\"outputs\":{\"visual_thesis\":\"The visual world should evoke a sense of elegance and professionalism, immediately communicating the quality and luxury of OTG Icon's photography services.\",\"hero_direction\":{\"hero_composition\":\"A high-resolution image of a model in a dynamic pose against a clean background with soft lighting to emphasize texture and detail.\",\"image_language\":\"Close-up shots that capture the essence of the model’s expression and attire. Use natural light or soft studio lights for a warm, inviting feel.\",\"proof_style\":\"Showcase before-and-after transformations, highlighting the difference OTG Icon's photoshoot can make in a model’s portfolio.\",\"do_and_do_not\":\"Do: Focus on high-quality images that are both visually stunning and professionally shot. Do not: Use overly saturated or heavily edited photos that look unnatural.\",\"production_notes\":\"Ensure all shots are crisp and well-lit, with an emphasis on natural beauty and professional presentation.\"},\"shot_list\":[{\"shot_number\":1,\"type\":\"Close-up\",\"lens\":\"50mm f/1.8\",\"lighting_setup\":\"Softbox overhead\"},{\"shot_number\":2,\"type\":\"Medium shot\",\"lens\":\"35mm f/2.8\",\"lighting_setup\":\"Ring light\"},{\"shot_number\":3,\"type\":\"Wide shot\",\"lens\":\"24mm f/1.4\",\"lighting_setup\":\"Natural window light\"},{\"shot_number\":4,\"type\":\"B-roll\",\"lens\":\"70-200mm f/2.8\",\"lighting_setup\":\"Off-camera flash\"},{\"shot_number\":5,\"type\":\"Behind-the-scenes\",\"lens\":\"35mm f/1.4\",\"lighting_setup\":\"Natural ambient light\"}],\"production_schedule\":[{\"time_slot\":\"9:00 AM - 10:00 AM\",\"activity\":\"Arrival and setup\"},{\"time_slot\":\"10:00 AM - 12:00 PM\",\"activity\":\"Main photoshoot\"},{\"time_slot\":\"12:00 PM - 1:00 PM\",\"activity\":\"Lunch break\"},{\"time_slot\":\"1:00 PM - 3:00 PM\",\"activity\":\"B-roll and behind-the-scenes shots\"},{\"time_slot\":\"3:00 PM - 4:00 PM\",\"activity\":\"Wrap-up and departure\"}],\"equipment\":{\"cameras\":[\"Canon EOS R5\"],\"lenses\":[\"50mm f/1.8\",\"35mm f/2.8\",\"24mm f/1.4\",\"70-200mm f/2.8\",\"35mm f/1.4\"],\"lights\":[\"Softbox overhead\",\"Ring light\",\"Off-camera flash\"],\"drone\":\"DJI Mavic Air 2\",\"audio\":\"Sennheiser wireless lavalier microphone\"},\"client_prep\":{\"instructions\":\"Models should arrive on time and be prepared with multiple outfits and hair/makeup ready for the shoot.\",\"notes\":\"Ensure models understand the importance of being\n[...summary truncated for handoff efficiency]"
+        },
+        {
+          "agentId": "maya",
+          "agentName": "Maya",
+          "role": "Scripts",
+          "summary": "### Viral Video Scripts #### Script 1: Quick Transformation Tips **FORMAT:** Talking head **FILMING NOTES:** Talent should speak directly to the camera, energetic and confident posture. **VISUAL HOOK:** Model in dynamic pose with clean background, close-up shot of model's expression. **WRITTEN HOOK:** \"Transform your look for a better portfolio!\" (overlaid on video) **HOOK LINE:** \"Hey models! Want to stand out in the competitive photography market?\" **VALUE:** - Get expert guidance on poses and expressions - Professional photoshoot with custom B-roll footage - Instantly boost your online presence **CTA:** \"Book a shoot now 📸 [BOOK]\" #### Script 2: Professional Photoshoot Benefits **FORMAT:** Talking head **FILMING NOTES:** Talent should speak directly to the camera, confident and energetic posture. **VISUAL HOOK:** Model in dynamic pose with clean background, close-up shot of model's expression. **WRITTEN HOOK:** \"Get your portfolio ready for the next big opportunity!\" (overlaid on video) **HOOK LINE:** \"Want to take your modeling career to the next level?\" **VALUE:** - High-resolution images that capture your essence - Custom B-roll footage tailored just for you - Professional editing services included **CTA:** \"Ready to shine? 🌟 [BOOK]\" #### Script 3: Engaging Narratives with CTAs **FORMAT:** Talking head **FILMING NOTES:** Talent should speak directly to\n[...summary truncated for handoff efficiency]"
+        },
+        {
+          "agentId": "sam",
+          "agentName": "Sam",
+          "role": "Social",
+          "summary": "### 30-Day Posting Calendar #### Week 1: Model Transformation Tips - **Day 1 (Tuesday, 9am):** Instagram Reel - Quick Transformation Tips - **Day 4 (Friday, 6pm):** TikTok - Quick Transformation Tips - **Day 7 (Monday, 12pm):** LinkedIn - Professional Photoshoot Benefits #### Week 2: Custom B-Roll Footage Showcase - **Day 8 (Tuesday, 9am):** Instagram Reel - Custom B-Roll Footage - **Day 10 (Thursday, 6pm):** TikTok - Custom B-Roll Footage - **Day 13 (Sunday, 12pm):** LinkedIn - Engaging Narratives with CTAs #### Week 3: Professional Photoshoot Benefits - **Day 15 (Tuesday, 9am):** Instagram Reel - Professional Photoshoot Benefits - **Day 18 (Friday, 6pm):** TikTok - Professional Photoshoot Benefits - **Day 20 (Sunday, 12pm):** LinkedIn - Custom B-Roll Footage Showcase #### Week 4: Portfolio Building Tips - **Day 22 (Tuesday, 9am):** Instagram Reel - Modeling Portfolio Tips - **Day 25 (Friday, 6pm):** TikTok - Modeling Portfolio Tips - **Day 27 (Sunday, 12pm):** LinkedIn - Professional Photoshoot Benefits ### Platform-Specific Versions of the Top 3 Scripts #### Script 1: Quick Transformation Tips - **Instagram Reel Visual Hook:** Model in dynamic pose with clean background, close-up shot. - **TikTok Visual Hook:** Same as Instagram but faster pacing. - **Visual Thesis for Hero Image:** A\n[...summary truncated for handoff efficiency]"
+        },
+        {
+          "agentId": "jordan",
+          "agentName": "Jordan",
+          "role": "Strategy",
+          "summary": "### Growth Strategy for OTG Icon #### 1. WHO is the exact target customer and where do they spend time online? **Target Customer:** Models in Marin County, CA who are actively seeking to improve their portfolios with high-quality photoshoots. **Online Presence:** - **Instagram:** Engaging with hashtags like #ModelLife, #PhotoshootReady, and following local modeling communities. - **TikTok:** Participating in trending challenges and duets that showcase quick transformation tips. #### 2. WHAT is the one offer that converts them fastest? **Primary Offer:** Book a photoshoot session with OTG Icon to enhance your portfolio and stand out from the competition. #### 3. HOW do we get in front of them at lowest cost? **Low-Cost Acquisition:** - **Social Media Challenges/Duets:** Engage models through TikTok challenges that highlight quick transformation tips. - **Hashtag Campaigns:** Leverage Instagram hashtags to reach models seeking professional photoshoot opportunities. #### 4. WHY will they choose OTG over competitors? **Unique Value Propositions:** - Custom B-roll footage and stronger first-frame hooks tailored specifically for models in Marin County, CA. - High-resolution images with dynamic poses against clean backgrounds that emphasize texture and detail. - Professional guidance on quick transformation tips to elevate their portfolio. #### 5. WHEN is the right moment to\n[...summary truncated for handoff efficiency]"
+        },
+        {
+          "agentId": "rex",
+          "agentName": "Rex",
+          "role": "Proposal",
+          "summary": "**Proposal for Jack Riggs** --- ### Executive Summary We understand your vision at OTG Icon is to provide high-quality photography and marketing services that set you apart in the competitive landscape of Marin County, CA. Our goal is to help you attract more models seeking professional photoshoots by leveraging Instagram and TikTok effectively. ### Understanding Your Goals Your primary business goal is to book more professional photoshoot sessions with models in Marin County, CA. By focusing on unique value propositions like custom B-roll footage and stronger first-frame hooks, we aim to make your services stand out in a crowded market. ### Our Recommended Solution #### Primary Offer: Book a Photoshoot Session - **Package Description:** A comprehensive photography session tailored specifically for models looking to enhance their portfolios with high-quality images. - **Value Propositions:** - Custom B-roll footage that showcases the model's unique qualities and style. - Professional guidance during the photoshoot to ensure the best possible results. ### Pricing Tiers #### Good - **Price:** $2500 - **Deliverables:** - High-resolution images for portfolio use. - Basic retouching of final images. #### Better - **Price:** $4000 - **Deliverables:** - All deliverables from the Good tier. - Custom B-roll footage to enhance your\n[...summary truncated for handoff efficiency]"
+        }
+      ],
+      "notes": "Generated from full pipeline.",
+      "source_summary": "Alex: ### MARKET SNAPSHOT The photography and marketing niche in Marin County, CA is highly competitive but offers significant opportunities for businesses that can stand out with unique value propositions. Top creators are leveraging social media platforms like Instagram and TikTok to attract models looking for high-quality photoshoots. ### PLATFORM SPLIT **Instagram:** - **Visual Hooks:** High-resolution images of models in various poses. - **Written Hooks:** Captions highlighting the benefits of a professional photoshoot, such as improved portfolio quality or career advancement. - **Verbal Hooks:** Direct calls to action (CTAs) encouraging viewers to book their services. **TikTok:** - **Visual Hooks:** Short-form videos showcasing quick transformations in makeup and styling. - **Written Hooks:** Trending hashtags like #PhotoshootReady or #ModelLife. - **Verbal Hooks:** Engaging narratives about the importance of a professional photoshoot for career growth. ### TOP 20 CREATORS 1. **Creator: @modelshoots** - Platform: Instagram - Follower Count: 5,000 - 5X Rule Consistency: Yes (Views > Followers * 5) 2. **Creator: @photo_tips** - Platform: TikTok - Follower Count: 3,000 - 5X Rule Consistency: Yes (Views > Followers * 5) ### VIDEO BREAKDOWN **@modelshoots** - Topic: Professional photoshoot tips for models. - Views: 25,000+ - 5X Score: 5x - Format: Reels with high-quality images and\n[...summary truncated for handoff efficiency] | Iris: {\"task_name\":\"production_brief\",\"asset_id\":\"production-iris-001\",\"source_inputs\":[\"research-alex-001\"],\"summary\":\"\",\"outputs\":{\"visual_thesis\":\"The visual world should evoke a sense of elegance and professionalism, immediately communicating the quality and luxury of OTG Icon's photography services.\",\"hero_direction\":{\"hero_composition\":\"A high-resolution image of a model in a dynamic pose against a clean background with soft lighting to emphasize texture and detail.\",\"image_language\":\"Close-up shots that capture the essence of the model’s expression and attire. Use natural light or soft studio lights for a warm, inviting feel.\",\"proof_style\":\"Showcase before-and-after transformations, highlighting the difference OTG Icon's photoshoot can make in a model’s portfolio.\",\"do_and_do_not\":\"Do: Focus on high-quality images that are both visually stunning and professionally shot. Do not: Use overly saturated or heavily edited photos that look unnatural.\",\"production_notes\":\"Ensure all shots are crisp and well-lit, with an emphasis on natural beauty and professional presentation.\"},\"shot_list\":[{\"shot_number\":1,\"type\":\"Close-up\",\"lens\":\"50mm f/1.8\",\"lighting_setup\":\"Softbox overhead\"},{\"shot_number\":2,\"type\":\"Medium shot\",\"lens\":\"35mm f/2.8\",\"lighting_setup\":\"Ring light\"},{\"shot_number\":3,\"type\":\"Wide shot\",\"lens\":\"24mm f/1.4\",\"lighting_setup\":\"Natural window light\"},{\"shot_number\":4,\"type\":\"B-roll\",\"lens\":\"70-200mm f/2.8\",\"lighting_setup\":\"Off-camera flash\"},{\"shot_number\":5,\"type\":\"Behind-the-scenes\",\"lens\":\"35mm f/1.4\",\"lighting_setup\":\"Natural ambient light\"}],\"production_schedule\":[{\"time_slot\":\"9:00 AM - 10:00 AM\",\"activity\":\"Arrival and setup\"},{\"time_slot\":\"10:00 AM - 12:00 PM\",\"activity\":\"Main photoshoot\"},{\"time_slot\":\"12:00 PM - 1:00 PM\",\"activity\":\"Lunch break\"},{\"time_slot\":\"1:00 PM - 3:00 PM\",\"activity\":\"B-roll and behind-the-scenes shots\"},{\"time_slot\":\"3:00 PM - 4:00 PM\",\"activity\":\"Wrap-up and departure\"}],\"equipment\":{\"cameras\":[\"Canon EOS R5\"],\"lenses\":[\"50mm f/1.8\",\"35mm f/2.8\",\"24mm f/1.4\",\"70-200mm f/2.8\",\"35mm f/1.4\"],\"lights\":[\"Softbox overhead\",\"Ring light\",\"Off-camera flash\"],\"drone\":\"DJI Mavic Air 2\",\"audio\":\"Sennheiser wireless lavalier microphone\"},\"client_prep\":{\"instructions\":\"Models should arrive on time and be prepared with multiple outfits and hair/makeup ready for the shoot.\",\"notes\":\"Ensure models understand the importance of being\n[...summary truncated for handoff efficiency] | Maya: ### Viral Video Scripts #### Script 1: Quick Transformation Tips **FORMAT:** Talking head **FILMING NOTES:** Talent should speak directly to the camera, energetic and confident posture. **VISUAL HOOK:** Model in dynamic pose with clean background, close-up shot of model's expression. **WRITTEN HOOK:** \"Transform your look for a better portfolio!\" (overlaid on video) **HOOK LINE:** \"Hey models! Want to stand out in the competitive photography market?\" **VALUE:** - Get expert guidance on poses and expressions - Professional photoshoot with custom B-roll footage - Instantly boost your online presence **CTA:** \"Book a shoot now 📸 [BOOK]\" #### Script 2: Professional Photoshoot Benefits **FORMAT:** Talking head **FILMING NOTES:** Talent should speak directly to the camera, confident and energetic posture. **VISUAL HOOK:** Model in dynamic pose with clean background, close-up shot of model's expression. **WRITTEN HOOK:** \"Get your portfolio ready for the next big opportunity!\" (overlaid on video) **HOOK LINE:** \"Want to take your modeling career to the next level?\" **VALUE:** - High-resolution images that capture your essence - Custom B-roll footage tailored just for you - Professional editing services included **CTA:** \"Ready to shine? 🌟 [BOOK]\" #### Script 3: Engaging Narratives with CTAs **FORMAT:** Talking head **FILMING NOTES:** Talent should speak directly to\n[...summary truncated for handoff efficiency] | Sam: ### 30-Day Posting Calendar #### Week 1: Model Transformation Tips - **Day 1 (Tuesday, 9am):** Instagram Reel - Quick Transformation Tips - **Day 4 (Friday, 6pm):** TikTok - Quick Transformation Tips - **Day 7 (Monday, 12pm):** LinkedIn - Professional Photoshoot Benefits #### Week 2: Custom B-Roll Footage Showcase - **Day 8 (Tuesday, 9am):** Instagram Reel - Custom B-Roll Footage - **Day 10 (Thursday, 6pm):** TikTok - Custom B-Roll Footage - **Day 13 (Sunday, 12pm):** LinkedIn - Engaging Narratives with CTAs #### Week 3: Professional Photoshoot Benefits - **Day 15 (Tuesday, 9am):** Instagram Reel - Professional Photoshoot Benefits - **Day 18 (Friday, 6pm):** TikTok - Professional Photoshoot Benefits - **Day 20 (Sunday, 12pm):** LinkedIn - Custom B-Roll Footage Showcase #### Week 4: Portfolio Building Tips - **Day 22 (Tuesday, 9am):** Instagram Reel - Modeling Portfolio Tips - **Day 25 (Friday, 6pm):** TikTok - Modeling Portfolio Tips - **Day 27 (Sunday, 12pm):** LinkedIn - Professional Photoshoot Benefits ### Platform-Specific Versions of the Top 3 Scripts #### Script 1: Quick Transformation Tips - **Instagram Reel Visual Hook:** Model in dynamic pose with clean background, close-up shot. - **TikTok Visual Hook:** Same as Instagram but faster pacing. - **Visual Thesis for Hero Image:** A\n[...summary truncated for handoff efficiency] | Jordan: ### Growth Strategy for OTG Icon #### 1. WHO is the exact target customer and where do they spend time online? **Target Customer:** Models in Marin County, CA who are actively seeking to improve their portfolios with high-quality photoshoots. **Online Presence:** - **Instagram:** Engaging with hashtags like #ModelLife, #PhotoshootReady, and following local modeling communities. - **TikTok:** Participating in trending challenges and duets that showcase quick transformation tips. #### 2. WHAT is the one offer that converts them fastest? **Primary Offer:** Book a photoshoot session with OTG Icon to enhance your portfolio and stand out from the competition. #### 3. HOW do we get in front of them at lowest cost? **Low-Cost Acquisition:** - **Social Media Challenges/Duets:** Engage models through TikTok challenges that highlight quick transformation tips. - **Hashtag Campaigns:** Leverage Instagram hashtags to reach models seeking professional photoshoot opportunities. #### 4. WHY will they choose OTG over competitors? **Unique Value Propositions:** - Custom B-roll footage and stronger first-frame hooks tailored specifically for models in Marin County, CA. - High-resolution images with dynamic poses against clean backgrounds that emphasize texture and detail. - Professional guidance on quick transformation tips to elevate their portfolio. #### 5. WHEN is the right moment to\n[...summary truncated for handoff efficiency] | Rex: **Proposal for Jack Riggs** --- ### Executive Summary We understand your vision at OTG Icon is to provide high-quality photography and marketing services that set you apart in the competitive landscape of Marin County, CA. Our goal is to help you attract more models seeking professional photoshoots by leveraging Instagram and TikTok effectively. ### Understanding Your Goals Your primary business goal is to book more professional photoshoot sessions with models in Marin County, CA. By focusing on unique value propositions like custom B-roll footage and stronger first-frame hooks, we aim to make your services stand out in a crowded market. ### Our Recommended Solution #### Primary Offer: Book a Photoshoot Session - **Package Description:** A comprehensive photography session tailored specifically for models looking to enhance their portfolios with high-quality images. - **Value Propositions:** - Custom B-roll footage that showcases the model's unique qualities and style. - Professional guidance during the photoshoot to ensure the best possible results. ### Pricing Tiers #### Good - **Price:** $2500 - **Deliverables:** - High-resolution images for portfolio use. - Basic retouching of final images. #### Better - **Price:** $4000 - **Deliverables:** - All deliverables from the Good tier. - Custom B-roll footage to enhance your\n[...summary truncated for handoff efficiency]",
+      "version": 1,
+      "created_at": "2026-04-02T10:30:59.724Z",
+      "updated_at": "2026-04-02T10:30:59.724Z",
+      "created_by": "pipeline",
+      "source_system": "content_calendar",
+      "createdAt": "2026-04-02T10:30:59.724Z",
+      "updatedAt": "2026-04-02T10:30:59.724Z"
+    }
+  },
+  "processes": {
+    "total": 1,
+    "runningCount": 0,
+    "running": [],
+    "latest": {
+      "id": "agent-alex-1775677981915",
+      "type": "agent",
+      "description": "Alex: wedding videography",
+      "status": "killed",
+      "startedAt": "2026-04-08T19:53:01.927Z",
+      "stoppedAt": null,
+      "completedAt": "2026-04-08T19:53:01.934Z"
+    }
+  },
+  "bookings": {
+    "total": 0,
+    "pendingCount": 0,
+    "failedCount": 0,
+    "latest": null
+  },
+  "publishing": {
+    "total": 3,
+    "queuedJobs": 0,
+    "failedJobs": 0,
+    "publishedJobs": 3,
+    "latestJob": {
+      "id": "pub_1775010908396_t7c13",
+      "calendar_entry_id": "pkg_1775002525679_ancpz",
+      "asset_id": "ast_1775002239788_jc17h",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "platform": "youtube",
+      "scheduled_for": "2026-04-02T12:00:00",
+      "caption": "Simulated publish validation for youtube",
+      "cta_id": "cta_default",
+      "landing_page_id": "lpg_1775000099207_rs422",
+      "content_asset_id": "ast_1775002239788_jc17h",
+      "render_job_id": "rnd_1775003515199_ygojq",
+      "media_url": "https://public.example.com/render-media/rnd_1775003515199_ygojq/youtube.mp4",
+      "publish_status": "published",
+      "publish_method": "simulate",
+      "adapter_mode": "simulate",
+      "platform_payload": {
+        "title": "Wedding videography",
+        "description": "Simulated publish validation for youtube",
+        "tags": [],
+        "category": "22",
+        "privacy_status": "public",
+        "is_short": true,
+        "cta_id": "cta_default"
+      },
+      "attempts": 1,
+      "last_attempt_at": "2026-04-01T02:35:23.343Z",
+      "last_error_at": "",
+      "published_post_id": "pst_1775010923339_upg28",
+      "published_at": "2026-04-01T02:35:23.338Z",
+      "platform_post_id": "youtube-1775010923338",
+      "post_url": "https://example.com/youtube/1775010923338",
+      "error": "",
+      "notes": "Manual simulation test",
+      "createdAt": "2026-04-01T02:35:08.396Z",
+      "updatedAt": "2026-04-01T02:35:23.343Z"
+    },
+    "runtime": {
+      "publicMediaBaseUrl": "https://public.example.com",
+      "nextPublicAppUrl": "",
+      "instagramMode": "api",
+      "updatedAt": "2026-04-01T01:35:15.893Z"
+    }
+  },
+  "production": {
+    "shoots": 31,
+    "edits": 31,
+    "renders": 31,
+    "publishReadyCount": 1
+  },
+  "nextActions": [
+    "There are 1 production item(s) ready to publish."
+  ]
+}
