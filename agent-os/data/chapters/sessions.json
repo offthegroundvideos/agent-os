@@ -596,6 +596,11 @@
           "description": "Used Maya for: Write 3 hooks for a nutrition coaching reel",
           "agentId": "maya",
           "timestamp": "2026-04-09T22:35:21.791Z"
+        },
+        {
+          "description": "Used Alex for: Say only: online",
+          "agentId": "alex",
+          "timestamp": "2026-04-17T23:15:42.191Z"
         }
       ],
       "agentsUsed": [
@@ -637,6 +642,11 @@
           "topic": "Client: Jack Riggs\nNiche: Photography\nPriority platforms: Instagram, TikTok, LinkedIn, Facebook, YouTube, Yelp, Google Business Profile, Twitch, Discord, Reddit, Snapchat, Threads, X / Twitter, YouTube Shorts, Pinterest",
           "sessionId": "pipeline-1776347570117",
           "timestamp": "2026-04-16T13:55:12.268Z"
+        },
+        {
+          "topic": "Client: Jack Riggs\nNiche: Selling cars\nPrimary offer: Come buy a car!\nTarget audience: People who need a car or recently crashed their car. Also businesses that need a fleet of cars such as uber or construction companies. \nService area or geography: Bay area\nPrimary business goal: Sell cars and warranty on the cars",
+          "sessionId": "pipeline-1776470031312",
+          "timestamp": "2026-04-17T23:57:06.991Z"
         }
       ],
       "notes": "",

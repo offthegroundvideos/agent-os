@@ -1,6 +1,29 @@
 {
   "landing_pages": [
     {
+      "id": "lpg_1776467655557_jnj2r",
+      "client_id": "cli_demo_milo_brooks",
+      "offer_id": "off_default",
+      "campaign_id": "cmp_default",
+      "type": "booking",
+      "name": "Milo Brooks Nutrition booking",
+      "slug": "milo-brooks-nutrition-nutrition-coaching-booking",
+      "page_url": "http://localhost:4000/landing/milo-brooks-nutrition-nutrition-coaching-booking",
+      "cta_id": "cta_default",
+      "cta_keyword": "GUIDE",
+      "status": "active",
+      "headline": "Book a nutrition strategy call",
+      "subheadline": "Get a clear plan for energy, body composition, and consistency.",
+      "primary_outcome": "More consultation call inquiries",
+      "version": 1,
+      "created_at": "2026-04-17T23:14:15.557Z",
+      "updated_at": "2026-04-17T23:14:15.557Z",
+      "created_by": "dev",
+      "source_system": "landing_page_service",
+      "createdAt": "2026-04-17T23:14:15.557Z",
+      "updatedAt": "2026-04-17T23:14:15.557Z"
+    },
+    {
       "id": "lpg_1776149572164_bsh4v",
       "client_id": "cli_default",
       "offer_id": "off_default",
@@ -1394,5 +1417,5 @@
       "updatedAt": "2026-03-31T17:09:32.212Z"
     }
   ],
-  "lastUpdated": "2026-04-14T06:52:52.164Z"
+  "lastUpdated": "2026-04-17T23:14:15.557Z"
 }

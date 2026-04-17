@@ -158,6 +158,40 @@
       "jobType": "pipeline_reflection",
       "relatedRunId": "pipeline-1776347570117",
       "completedAt": "2026-04-16T13:56:12.101Z"
+    },
+    {
+      "id": "pipeline-1776465156286",
+      "type": "pipeline",
+      "description": "Pipeline: Client: Jack Riggs\nNiche: Toyota New and Used car dealer\nPrimary offer: Book a call to see if we have your car in stock!\nTarget audience: People who need cars, or recently crashed their cars, or people looking to buy a fleet of vehicles for their company. \nService area or geography: The bay area\nPrimary business goal: Sell cars\nPriority platforms: Instagram, TikTok, Facebook, YouTube Shorts, YouTube, X / Twitter, Threads, Snapchat, Reddit\nSpecific research and execution notes: I want to see the best plan for selling cars and generating leads on people who want to come buy a car. It’s important they trust us as an advisor, rather then think of us as salesmen.",
+      "status": "running",
+      "startedAt": "2026-04-17T22:32:36.315Z",
+      "stoppedAt": null,
+      "pipelineTopic": "Client: Jack Riggs\nNiche: Toyota New and Used car dealer\nPrimary offer: Book a call to see if we have your car in stock!\nTarget audience: People who need cars, or recently crashed their cars, or people looking to buy a fleet of vehicles for their company. \nService area or geography: The bay area\nPrimary business goal: Sell cars\nPriority platforms: Instagram, TikTok, Facebook, YouTube Shorts, YouTube, X / Twitter, Threads, Snapchat, Reddit\nSpecific research and execution notes: I want to see the best plan for selling cars and generating leads on people who want to come buy a car. It’s important they trust us as an advisor, rather then think of us as salesmen.",
+      "pipelineType": "full",
+      "assetId": "ast_1776465156305_6lzzx",
+      "completedStepIndex": 1
+    },
+    {
+      "id": "agent-alex-1776467736115",
+      "type": "agent",
+      "description": "Alex: Say only: online",
+      "status": "complete",
+      "startedAt": "2026-04-17T23:15:36.116Z",
+      "stoppedAt": null,
+      "completedAt": "2026-04-17T23:15:42.193Z"
+    },
+    {
+      "id": "pipeline-1776470031312",
+      "type": "pipeline",
+      "description": "Pipeline: Client: Jack Riggs\nNiche: Selling cars\nPrimary offer: Come buy a car!\nTarget audience: People who need a car or recently crashed their car. Also businesses that need a fleet of cars such as uber or construction companies. \nService area or geography: Bay area\nPrimary business goal: Sell cars and warranty on the cars",
+      "status": "complete",
+      "startedAt": "2026-04-17T23:53:51.343Z",
+      "stoppedAt": null,
+      "pipelineTopic": "Client: Jack Riggs\nNiche: Selling cars\nPrimary offer: Come buy a car!\nTarget audience: People who need a car or recently crashed their car. Also businesses that need a fleet of cars such as uber or construction companies. \nService area or geography: Bay area\nPrimary business goal: Sell cars and warranty on the cars",
+      "pipelineType": "full",
+      "assetId": "ast_1776470031332_55vgf",
+      "completedStepIndex": 6,
+      "completedAt": "2026-04-17T23:57:06.982Z"
     }
   ]
 }

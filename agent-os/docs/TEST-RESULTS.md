@@ -530,3 +530,60 @@ Expected preview:
   - the current app is acceptable for testing and single-operator workflows
   - but once the system is up and running operationally, proper multi-user session handling should be treated as a meaningful product requirement, not a minor polish item
 
+### 21. Automated smoke pass on April 17, 2026
+
+- Status: `PARTIAL PASS`
+- Scope:
+  - build health
+  - homepage/server health
+  - key API route checks
+  - browser-level shell sanity check
+  - Website Studio launch sanity check
+
+- Passed:
+  - `npm run build` passed in [C:\AI-Agents\agent-os](/C:/AI-Agents/agent-os)
+  - homepage responded with `200` at [http://localhost:4000](http://localhost:4000)
+  - these API routes returned healthy payloads:
+    - `/api/clients`
+    - `/api/cloudflare-ingest`
+    - `/api/prospect-radar`
+    - `/api/working-memory`
+    - `/api/deerflow`
+    - `/api/publish-integrations`
+    - `/api/ghl?action=agencyStatus`
+    - `/api/landingpage` with a Milo nutrition payload
+  - browser shell rendered successfully through Playwright
+  - tools menu opened successfully through Playwright
+  - Website Studio / `PAGE ->` launched successfully through Playwright
+
+- Partial / follow-up findings:
+  - `/api/agent` responded successfully for Alex, but the reply to `Say only: online` was not strictly literal
+  - this is not a route failure, but it is still a behavior-quality issue for exact-output prompts
+  - tools menu still labels Website Studio as:
+    - `PAGE ->`
+  - this remains a UX naming issue, not a functional failure
+
+- Important state-quality issue found:
+  - `/api/page-context` and `/api/pipeline-runs` are still surfacing a polluted/latest pipeline asset tied to:
+    - `Jack Riggs`
+    - Toyota/car-dealer content
+  - this means any workflow that intentionally or accidentally relies on the latest pipeline context can still inherit stale or contaminated research
+  - direct clean Website Studio generation is much safer now because it no longer silently uses the latest asset unless explicitly requested
+  - but the underlying shared latest-asset layer is still not clean
+
+- DeerFlow status:
+  - panel/status route is reachable
+  - stored jobs still show the known downstream `404` failure for live DeerFlow execution
+  - so DeerFlow shell visibility is healthy, but real execution remains blocked
+
+- GHL status:
+  - `agencyStatus` route is reachable and returns configuration metadata
+  - this does not invalidate the earlier live-auth concern
+  - a deeper live CRM operation would still need separate verification
+
+- Overall takeaway:
+  - shell, server, build, and most read-oriented APIs are healthy
+  - Website Studio launch is healthy
+  - clean Milo landing-page generation API is healthy
+  - the biggest remaining automated concern is still shared/latest pipeline-state contamination, not a total app failure
+

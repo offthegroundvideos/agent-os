@@ -318,6 +318,19 @@
       "timestamp": "2026-04-16T13:55:21.400Z",
       "id": "1776347721400",
       "scoreCategory": "poor"
+    },
+    {
+      "task": "Say only: online",
+      "workflowType": "chat",
+      "score": 1,
+      "what_worked": "The task was clear and straightforward.",
+      "what_failed": "I failed to adhere to the instruction of saying only 'online', instead providing an unnecessarily lengthy response.",
+      "improvement": "Ensure that responses are exactly as specified in the instructions, no more, no less.",
+      "root_cause": "Misinterpretation or misunderstanding of the task requirements.",
+      "severity": "critical",
+      "timestamp": "2026-04-17T23:15:44.210Z",
+      "id": "1776467744210",
+      "scoreCategory": "critical"
     }
   ],
   "wins": [],
@@ -510,18 +523,27 @@
       "severity": "moderate",
       "workflowType": "pipeline",
       "timestamp": "2026-04-16T13:55:21.400Z"
+    },
+    {
+      "description": "I failed to adhere to the instruction of saying only 'online', instead providing an unnecessarily lengthy response.",
+      "task": "Say only: online",
+      "fix": "Ensure that responses are exactly as specified in the instructions, no more, no less.",
+      "score": 1,
+      "severity": "critical",
+      "workflowType": "chat",
+      "timestamp": "2026-04-17T23:15:44.210Z"
     }
   ],
-  "taskCount": 26,
-  "avgScore": 5.4,
-  "lastReflection": "2026-04-16T13:55:21.400Z",
+  "taskCount": 27,
+  "avgScore": 5.2,
+  "lastReflection": "2026-04-17T23:15:44.210Z",
   "workflowStats": {
     "chat": {
-      "taskCount": 7,
-      "avgScore": 5.4,
+      "taskCount": 8,
+      "avgScore": 4.9,
       "winCount": 0,
-      "failureCount": 6,
-      "lastUsedAt": "2026-04-09T21:49:36.929Z",
+      "failureCount": 7,
+      "lastUsedAt": "2026-04-17T23:15:44.210Z",
       "scoreTrend": [
         5,
         2,
@@ -529,7 +551,8 @@
         6,
         7,
         6,
-        6
+        6,
+        1
       ]
     },
     "pipeline": {

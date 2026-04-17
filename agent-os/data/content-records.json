@@ -1,6 +1,28 @@
 {
   "scripts": [
     {
+      "id": "scr_1776470133740_fc78o",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "topic_brief_id": "tpc_default",
+      "format": "talking_head",
+      "hook_text": "Client: Jack Riggs\nNiche: Selling cars\nPrimary offer: Come buy a car!\nTarget audience: People who need a car or recently crashed their car. Also businesses that need a fleet of cars such as uber or construction companies. \nService area or geography: Bay area\nPrimary business goal: Sell cars and warranty on the cars",
+      "body_bullets": [
+        "See source output for full script body"
+      ],
+      "cta_id": "cta_default",
+      "approval_status": "draft",
+      "asset_id": "ast_1776470031332_55vgf",
+      "agent_id": "maya",
+      "version": 1,
+      "created_at": "2026-04-17T23:55:33.740Z",
+      "updated_at": "2026-04-17T23:55:33.740Z",
+      "created_by": "maya",
+      "source_system": "content_intelligence",
+      "createdAt": "2026-04-17T23:55:33.740Z",
+      "updatedAt": "2026-04-17T23:55:33.740Z"
+    },
+    {
       "id": "scr_1776347643103_pdg7l",
       "client_id": "cli_default",
       "campaign_id": "cmp_default",
@@ -1665,5 +1687,5 @@
       "updatedAt": "2026-04-01T00:51:13.543Z"
     }
   ],
-  "lastUpdated": "2026-04-16T13:54:03.103Z"
+  "lastUpdated": "2026-04-17T23:55:33.740Z"
 }

@@ -1,446 +1,6 @@
 {
   "sessions": [
     {
-      "id": "pipeline-1775030962606",
-      "topic": "Wedding videography/photography",
-      "startedAt": "2026-04-01T08:10:23.564Z",
-      "handoffs": [
-        {
-          "from": "alex",
-          "to": "iris",
-          "timestamp": "2026-04-01T08:10:23.564Z",
-          "summary": "### MARKET SNAPSHOT  The wedding videography and photography niche is highly competitive but lucrative, with a large audience seeking high-quality visual content for their special day. Top creators in this space are consistently producing engaging content that resonates with couples looking to captu",
-          "fullContent": "### MARKET SNAPSHOT\n\nThe wedding videography and photography niche is highly competitive but lucrative, with a large audience seeking high-quality visual content for their special day. Top creators in this space are consistently producing engaging content that resonates with couples looking to capture unique moments during their wedding.\n\n### TOP 20 CREATORS\n\n1. **@weddingvisions**\n   - Platform: Instagram\n   - Followers: 50k\n   - Clear the 5X rule: Yes (Views: 480k)\n   \n2. **@loveandlens**\n   - Platform: TikTok\n   - Followers: 30k\n   - Clear the 5X rule: Yes (Views: 190k)\n\n3. **@momentcapture**\n   - Platform: Instagram\n   - Followers: 40k\n   - Clear the 5X rule: Yes (Views: 380k)\n\n...\n\n### VIDEO BREAKDOWN\n\n**Creator:** @weddingvisions  \n- **Topic:** \"Unique Wedding Moments\"  \n- **Views:** 120k  \n- **5X Score:** 2.4x  \n- **Format:** Instagram Reels, TikTok Duet  \n- **Edit Style:** Minimalist with smooth transitions  \n- **Visual Hook:** Breathtaking drone footage of a sunset ceremony  \n- **Written Hook:** \"Capture your love story like never before\"  \n- **Verbal Hook:** Direct camera address to the viewer  \n- **Value Delivery:** Clear explanation on how their service can capture unique wedding moments\n\n**Creator:** @loveandlens  \n- **Topic:** \"DIY Wedding Photography Tips\"  \n- **Views:** 105k  \n- **5X Score:** 3.5x  \n- **Format:** TikTok Duet, Instagram Reels  \n- **Edit Style:** Fast-paced with text overlays  \n- **Visual Hook:** DIY setup using everyday items for a stunning photo  \n- **Written Hook:** \"DIY wedding photography tips for the budget-conscious\"  \n- **Verbal Hook:** Step-by-step guide in the video description  \n- **Value Delivery:** Practical and affordable solutions for capturing memories\n\n...\n\n### TOP 3 CONTENT ANGLES\n\n1. **Unique Wedding Moments**\n   - Visual Hook: Dramatic drone footage of a sunset ceremony\n   - Written Hook: \"Capture your love story like never before\"\n   - Verbal Hook: Direct camera address to the viewer\n\n2. **DIY Wedding Photography Tips**\n   - Visual Hook: DIY setup using everyday items for a stunning photo\n   - Written Hook: \"DIY wedding photography tips for the budget-conscious\"\n   - Verbal Hook: Step-by-step guide in the video description\n\n3. **Behind-the-Scenes of a Perfect Wedding Day**\n   - Visual Hook: Sneak peek into the preparation process\n   - Written Hook: \"The magic behind every perfect wedding day\"\n   - Verbal Hook: Personal anecdotes and tips from real weddings\n\n### VIRAL FORMATS\n\n**Instagram Reels:**  \n- **DIY Tips & Tricks**: Fast-paced, text-heavy, practical advice.\n- **Behind-the-Scenes**: Sneak peeks into the preparation process with engaging visuals.\n\n**TikTok:**  \n- **Duet Challenges**: Engaging duet challenges that encourage user participation and interaction.\n- **Step-by-Step Guides**: Practical guides on how to capture unique wedding moments using everyday items.\n\n### TARGET AUDIENCE\n\nCouples planning their weddings, aged 25-35, who spend time on Instagram Reels and TikTok looking for inspi",
-          "wordCount": 765,
-          "keyTopics": [
-            "wedding",
-            "photography",
-            "visual",
-            "instagram",
-            "unique",
-            "moments",
-            "tiktok",
-            "written",
-            "verbal",
-            "capture",
-            "footage",
-            "everyday"
-          ],
-          "usedPreviousContext": {
-            "confidence": 65,
-            "pickedUpTopics": [
-              "wedding",
-              "photography",
-              "unique",
-              "moments",
-              "capture",
-              "footage"
-            ],
-            "droppedTopics": [
-              "visual",
-              "instagram",
-              "tiktok",
-              "written",
-              "verbal",
-              "everyday"
-            ],
-            "topicPickupRate": 50
-          }
-        },
-        {
-          "from": "iris",
-          "to": "maya",
-          "timestamp": "2026-04-01T08:10:47.463Z",
-          "summary": "{\"task_name\":\"production_brief\",\"asset_id\":\"production-iris-001\",\"source_inputs\":[\"research-alex-001\"],\"summary\":\"Based on the research provided, this production plan focuses on creating engaging wedding videography and photography content that captures unique moments. The plan includes a shot list,",
-          "fullContent": "{\"task_name\":\"production_brief\",\"asset_id\":\"production-iris-001\",\"source_inputs\":[\"research-alex-001\"],\"summary\":\"Based on the research provided, this production plan focuses on creating engaging wedding videography and photography content that captures unique moments. The plan includes a shot list, production schedule, equipment list, client prep instructions, post-production notes, and team assignments.\",\"outputs\":{\"shot_list\":[{\"shot_number\":1,\"type\":\"Opening Shot\",\"lens\":\"24mm\",\"lighting_setup\":\"Natural Light\"},{\"shot_number\":2,\"type\":\"Drone Footage\",\"lens\":\"70-200mm\",\"lighting_setup\":\"Sunset Natural Light\"},{\"shot_number\":3,\"type\":\"DIY Setup\",\"lens\":\"50mm\",\"lighting_setup\":\"Softbox Lighting\"},{\"shot_number\":4,\"type\":\"Ceremony Close-Up\",\"lens\":\"85mm\",\"lighting_setup\":\"Natural Light\"},{\"shot_number\":5,\"type\":\"Reception Dance\",\"lens\":\"24-70mm\",\"lighting_setup\":\"LED Strip Lights\"}],\"production_schedule\":[{\"time\":\"Arrival\",\"activity\":\"Set up equipment and meet with client\"},{\"time\":\"1 PM - 3 PM\",\"activity\":\"Opening shots, drone footage, DIY setup\"},{\"time\":\"3 PM - 5 PM\",\"activity\":\"Ceremony coverage\"},{\"time\":\"6 PM - 8 PM\",\"activity\":\"Reception dance and closing shots\"},{\"time\":\"Wrap\",\"activity\":\"Pack up equipment, review day's work with client\"}],\"equipment\":{\"cameras\":[\"Canon EOS R5\"],\"lenses\":[\"24mm\",\"70-200mm\",\"50mm\",\"85mm\",\"24-70mm\"],\"lights\":[\"Softbox Lighting\",\"LED Strip Lights\"],\"drone\":\"DJI Mavic Air 2\",\"audio\":[\"Sennheiser ME66 Microphone\"]},\"client_prep\":[{\"prep_item\":\"Provide a detailed shot list to the client\"},{\"prep_item\":\"Discuss key moments and unique elements of their wedding\"},{\"prep_item\":\"Confirm lighting and audio requirements with venue staff\"}],\"post_notes\":{\"color_grade\":\"Warm, moody tones\",\"edit_style\":\"Smooth transitions, cinematic feel\",\"music_suggestions\":[\"Cinematic Wedding Music Pack by Epidemic Sound\"]},\"team_assignments\":{\"Jack\":\"Camera, Drone Operations\",\"Swope or Teja\":\"Editing\"}},\"open_issues\":[],\"confidence\":0.92,\"recommended_next_step\":\"Proceed with the shoot according to the production plan and ensure all team members are briefed on their roles.\"}[PRODUCTION_COMPLETE]",
-          "wordCount": 151,
-          "keyTopics": [
-            "production",
-            "lighting",
-            "client",
-            "activity",
-            "equipment",
-            "wedding",
-            "natural",
-            "lights",
-            "research",
-            "unique",
-            "moments",
-            "schedule"
-          ],
-          "usedPreviousContext": {
-            "confidence": 83,
-            "pickedUpTopics": [
-              "production",
-              "lighting",
-              "client",
-              "equipment",
-              "wedding",
-              "lights",
-              "research",
-              "unique",
-              "moments"
-            ],
-            "droppedTopics": [
-              "activity",
-              "natural",
-              "schedule"
-            ],
-            "topicPickupRate": 75
-          }
-        },
-        {
-          "from": "maya",
-          "to": "sam",
-          "timestamp": "2026-04-01T08:12:45.877Z",
-          "summary": "### Script Bank: Wedding Videography/Photography  #### Viral Video Scripts (15)",
-          "fullContent": "### Script Bank: Wedding Videography/Photography\n\n#### Viral Video Scripts (15)\n\n**Script 1: Unique Sunset Ceremony**\n- **FORMAT:** Talking Head with B-Roll\n- **FILMING NOTES:** Capture dramatic sunset moments, client testimonials.\n- **VISUAL HOOK:** Dramatic drone footage of a sunset ceremony.\n- **WRITTEN HOOK:** Capture your love story like never before.\n- **HOOK LINE:** \"Imagine capturing your vows against the backdrop of a stunning sunset.\"\n- **VALUE:**\n  - Personalized drone shots for unique angles\n  - Post-ceremony interviews for emotional depth\n  - Night-time firework photography to extend the magic\n- **CTA with trigger word:** Book now by clicking “Learn More” 🔗\n\n**Script 2: DIY Wedding Photography Tips**\n- **FORMAT:** Talking Head with B-Roll\n- **FILMING NOTES:** Showcase easy DIY setups, client testimonials.\n- **VISUAL HOOK:** DIY setup using everyday items for a stunning photo.\n- **WRITTEN HOOK:** Budget-friendly wedding photography tips.\n- **HOOK LINE:** \"DIY your wedding photos without breaking the bank.\"\n- **VALUE:**\n  - Step-by-step guide on simple setups\n  - Tips to enhance lighting with minimal equipment\n  - Client testimonials of successful DIY projects\n- **CTA with trigger word:** Explore our DIY package 💡\n\n**Script 3: Unique Wedding Moments**\n- **FORMAT:** Talking Head with B-Roll\n- **FILMING NOTES:** Capture candid moments, client interviews.\n- **VISUAL HOOK:** Dramatic drone footage of a sunset ceremony.\n- **WRITTEN HOOK:** Capture your love story like never before.\n- **HOOK LINE:** \"Capture unique wedding moments that stand out.\"\n- **VALUE:**\n  - Personalized coverage of special traditions\n  - Candid shots of guests and family interactions\n  - Client testimonials highlighting standout moments\n- **CTA with trigger word:** Book now by clicking “Contact” 🔗\n\n**Script 4: Ceremony Close-Up Shots**\n- **FORMAT:** Talking Head with B-Roll\n- **FILMING NOTES:** Focus on close-up shots, client interviews.\n- **VISUAL HOOK:** Ceremony close-ups from various angles.\n- **WRITTEN HOOK:** Capture every intimate detail of your wedding day.\n- **HOOK LINE:** \"Capture all the details that make your day special.\"\n- **VALUE:**\n  - Detailed coverage of vows and exchanges\n  - Close-up shots of rings, flowers, and decorations\n  **CTA with trigger word:** Book now by clicking “Contact” 🔗\n\n**Script 5: Reception Dance Highlights**\n- **FORMAT:** Talking Head with B-Roll\n- **FILMING NOTES:** Capture dance highlights, client testimonials.\n- **VISUAL HOOK:** Dramatic shots of the reception dance floor.\n- **WRITTEN HOOK:** Capture all the energy of your reception dance.\n- **HOOK LINE:** \"Capture the joy and excitement on the dance floor.\"\n- **VALUE:**\n  - Highlight reel of the first dance\n  - Group dances and family traditions\n  - Client testimonials of memorable moments\n- **CTA with trigger word:** Book now by clicking “Learn More” 🔗\n\n**Script 6: Unique Wedding Moments (DIY Setup)**\n- **FORMAT:** Talking Head with B-Roll\n- **FILMING NOTES:** Showcase D",
-          "wordCount": 1592,
-          "keyTopics": [
-            "wedding",
-            "capture",
-            "client",
-            "moments",
-            "reception",
-            "script",
-            "talking",
-            "testimonials",
-            "visual",
-            "written",
-            "trigger",
-            "unique"
-          ],
-          "usedPreviousContext": {
-            "confidence": 94,
-            "pickedUpTopics": [
-              "wedding",
-              "capture",
-              "client",
-              "moments",
-              "reception",
-              "script",
-              "talking",
-              "visual",
-              "written",
-              "trigger",
-              "unique"
-            ],
-            "droppedTopics": [
-              "testimonials"
-            ],
-            "topicPickupRate": 92
-          }
-        },
-        {
-          "from": "sam",
-          "to": "jordan",
-          "timestamp": "2026-04-01T08:15:12.725Z",
-          "summary": "### Publishing Plan: Wedding Videography/Photography  **Summary:** This plan outlines a 30-day posting calendar for OTG Icon's wedding videography and photography services, with platform-specific versions of the top scripts, hashtag strategies, ManyChat trigger words, batch shoot schedules, and refo",
-          "fullContent": "### Publishing Plan: Wedding Videography/Photography\n\n**Summary:** This plan outlines a 30-day posting calendar for OTG Icon's wedding videography and photography services, with platform-specific versions of the top scripts, hashtag strategies, ManyChat trigger words, batch shoot schedules, and reformat plans. The goal is to maximize engagement and lead generation across Instagram, TikTok, and LinkedIn.\n\n---\n\n### 1. **30-Day Posting Calendar**\n- **Week 1: Unique Sunset Ceremony**\n    - **Day 1 (Monday):** Instagram Reel\n        - **Time:** 9am\n        - **Platform:** Instagram\n        - **Script:** Script 1: Unique Sunset Ceremony\n        - **Caption:** Dramatic drone footage of a sunset ceremony. Capture your love story like never before.\n    - **Day 2 (Tuesday):** TikTok Video\n        - **Time:** 7am\n        - **Platform:** TikTok\n        - **Script:** Script 1: Unique Sunset Ceremony\n        - **Caption:** Dramatic drone footage of a sunset ceremony. Capture your love story like never before.\n    - **Day 3 (Wednesday):** LinkedIn Post\n        - **Time:** 8am\n        - **Platform:** LinkedIn\n        - **Script:** Script 1: Unique Sunset Ceremony\n        - **Caption:** Professional, high-quality wedding videography services that capture unique moments.\n\n- **Week 2: DIY Wedding Photography Tips**\n    - **Day 8 (Monday):** Instagram Reel\n        - **Time:** 9am\n        - **Platform:** Instagram\n        - **Script:** Script 2: DIY Wedding Photography Tips\n        - **Caption:** DIY setup using everyday items for a stunning photo. Budget-conscious wedding photography tips.\n    - **Day 9 (Tuesday):** TikTok Video\n        - **Time:** 7am\n        - **Platform:** TikTok\n        - **Script:** Script 2: DIY Wedding Photography Tips\n        - **Caption:** DIY setup using everyday items for a stunning photo. Budget-conscious wedding photography tips.\n    - **Day 10 (Wednesday):** LinkedIn Post\n        - **Time:** 8am\n        - **Platform:** LinkedIn\n        - **Script:** Script 2: DIY Wedding Photography Tips\n        - **Caption:** Professional, budget-friendly wedding photography services with DIY tips.\n\n- **Week 3: Unique Reception Moments**\n    - **Day 15 (Monday):** Instagram Reel\n        - **Time:** 9am\n        - **Platform:** Instagram\n        - **Script:** Script 3: Unique Reception Moments\n        - **Caption:** Capture the joy and laughter of your reception with unique moments.\n    - **Day 16 (Tuesday):** TikTok Video\n        - **Time:** 7am\n        - **Platform:** TikTok\n        - **Script:** Script 3: Unique Reception Moments\n        - **Caption:** Capture the joy and laughter of your reception with unique moments.\n    - **Day 17 (Wednesday):** LinkedIn Post\n        - **Time:** 8am\n        - **Platform:** LinkedIn\n        - **Script:** Script 3: Unique Reception Moments\n        - **Caption:** Professional, high-quality wedding videography services that capture the joy of your reception.\n\n- **Week 4: Highlight Reel Compilation**\n    - **Day 22 (Mo",
-          "wordCount": 2456,
-          "keyTopics": [
-            "wedding",
-            "unique",
-            "script",
-            "capture",
-            "moments",
-            "photography",
-            "instagram",
-            "tiktok",
-            "caption",
-            "reception",
-            "linkedin",
-            "sunset"
-          ],
-          "usedPreviousContext": {
-            "confidence": 83,
-            "pickedUpTopics": [
-              "wedding",
-              "unique",
-              "script",
-              "capture",
-              "moments",
-              "photography",
-              "instagram",
-              "tiktok",
-              "caption"
-            ],
-            "droppedTopics": [
-              "reception",
-              "linkedin",
-              "sunset"
-            ],
-            "topicPickupRate": 75
-          }
-        },
-        {
-          "from": "jordan",
-          "to": "rex",
-          "timestamp": "2026-04-01T08:16:29.006Z",
-          "summary": "### Growth Strategy for Wedding Videography/Photography  **1. WHO is the exact target customer and where do they spend time online?**",
-          "fullContent": "### Growth Strategy for Wedding Videography/Photography\n\n**1. WHO is the exact target customer and where do they spend time online?**\n- **Exact Target Customer:** Couples aged 25-35 planning their weddings.\n- **Online Presence:**\n  - Instagram: For visual inspiration, engagement with wedding content creators.\n  - TikTok: For quick tips and viral trends related to DIY wedding photography.\n\n**2. WHAT is the one offer that converts them fastest?**\n- **Primary Offer:** A personalized wedding videography/photography package tailored for unique moments during their special day.\n- **Value Proposition:** High-quality, cinematic visuals with a personal touch to capture every significant moment.\n\n**3. HOW do we get in front of them at lowest cost?**\n- **Organic Channels:**\n  - Instagram Reels and TikTok duets/challenges to showcase DIY photography tips and unique wedding moments.\n  - Engaging captions and hashtags to increase visibility organically.\n  \n- **Low-Cost Paid Ads:**\n  - Targeted Facebook ads with lookalike audiences of engaged couples.\n\n**4. WHY will they choose OTG over competitors?**\n- **Differentiation Points:**\n  - Personalized service that aligns closely with the couple's vision and unique moments.\n  - High-quality visuals and cinematic editing.\n  - Additional value through educational content (DIY tips, unique moment capture).\n\n**5. WHEN is the right moment to ask for the sale?**\n- **Timing:** After showcasing a series of high-quality wedding videos on Instagram/TikTok.\n- **Trigger Point:** Use ManyChat triggers to engage viewers who show interest in DIY photography or unique moments.\n\n### 30/60/90 Day Growth Plan\n\n**30-Day Goal:**\n- Establish OTG as the go-to resource for wedding videography and photography.\n- Post 50 high-quality videos showcasing unique moments and DIY tips on Instagram/TikTok.\n- Engage with top wedding content creators to build credibility.\n\n**60-Day Goal:**\n- Increase organic reach by at least 25% through consistent posting and engagement.\n- Launch a targeted Facebook ad campaign for lookalike audiences of engaged couples.\n- Begin collecting leads via ManyChat triggers and direct messaging.\n\n**90-Day Goal:**\n- Double the number of followers on Instagram/TikTok compared to Day 30.\n- Convert at least 15% of engaged viewers into qualified leads through ManyChat sequences.\n- Showcase customer testimonials and success stories to build trust.\n\n### Complete Funnel\n\n**Content to Closed Deal Funnel:**\n1. **Social Content:** High-quality videos showcasing unique moments and DIY tips.\n2. **Trigger Engagement:** Use ManyChat triggers for viewers interested in DIY photography or unique moments.\n3. **Landing Page:** Direct them to a landing page with more details about personalized wedding packages.\n4. **Lead Magnet:** Offer a free consultation call to discuss their vision.\n5. **VSL/Demo:** Share a video showcasing OTG's work and services.\n6. **Booking Call:** Schedule a call to finalize the package.\n7. **Proposal & Contract:** Pro",
-          "wordCount": 1103,
-          "keyTopics": [
-            "wedding",
-            "photography",
-            "description",
-            "unique",
-            "engagement",
-            "videos",
-            "instagram",
-            "moments",
-            "tiktok",
-            "quality",
-            "manychat",
-            "couples"
-          ],
-          "usedPreviousContext": {
-            "confidence": 71,
-            "pickedUpTopics": [
-              "wedding",
-              "photography",
-              "unique",
-              "videos",
-              "moments",
-              "quality",
-              "couples"
-            ],
-            "droppedTopics": [
-              "description",
-              "engagement",
-              "instagram",
-              "tiktok",
-              "manychat"
-            ],
-            "topicPickupRate": 58
-          }
-        }
-      ],
-      "status": "complete",
-      "completedAt": "2026-04-01T08:18:22.424Z",
-      "duration": "479s"
-    },
-    {
-      "id": "pipeline-1775031825415",
-      "topic": "Dog Training",
-      "startedAt": "2026-04-01T08:24:07.088Z",
-      "handoffs": [
-        {
-          "from": "alex",
-          "to": "iris",
-          "timestamp": "2026-04-01T08:24:07.088Z",
-          "summary": "### MARKET SNAPSHOT  The dog training niche is a lucrative market with significant growth potential, driven by pet owners seeking professional advice and solutions for their canine companions. Key players like Cesar Millan's \"Cesar's Way\" and Victoria Stilwell's \"Victoria Stilwell Positively Trainin",
-          "fullContent": "### MARKET SNAPSHOT\n\nThe dog training niche is a lucrative market with significant growth potential, driven by pet owners seeking professional advice and solutions for their canine companions. Key players like Cesar Millan's \"Cesar's Way\" and Victoria Stilwell's \"Victoria Stilwell Positively Training\" dominate the space but leave room for specialized content that addresses niche training needs.\n\n### TOP 20 CREATORS\n\n1. **@dogtrainingtips** - Instagram: 35k followers, 5X score: 175k views\n2. **@trainyourpup** - TikTok: 45k followers, 5X score: 225k views\n3. **@positivepaws** - YouTube: 60k subscribers, 5X score: 300k views\n4. **@dogbehaviorist** - Instagram: 70k followers, 5X score: 350k views\n5. **@trainingadvice** - TikTok: 80k followers, 5X score: 400k views\n\n### VIDEO BREAKDOWN\n\n1. **Creator:** @dogtrainingtips\n   - Video Topic: \"Top 5 Training Tips for New Dog Owners\"\n   - Views: 25k\n   - 5X Score: 71%\n   - Format: Instagram Reel, 30 seconds\n   - Edit Style: Fast cuts, minimal text overlay\n   - Visual Hook: Animated dog training icons\n   - Written Hook: \"Training Tips for New Dog Owners\"\n   - Verbal Hook: \"Welcome to the world of dog training!\"\n   - Value Delivery: Practical tips and quick solutions\n\n2. **Creator:** @trainyourpup\n   - Video Topic: \"How to Stop Your Puppy from Chewing Everything\"\n   - Views: 30k\n   - 5X Score: 67%\n   - Format: TikTok, 15 seconds\n   - Edit Style: Fast cuts, sound effects\n   - Visual Hook: Dog chewing objects\n   - Written Hook: \"Chew Less, Train More\"\n   - Verbal Hook: \"Puppy chew problems? Here's the solution!\"\n   - Value Delivery: Simple training techniques\n\n### TOP 3 CONTENT ANGLES\n\n1. **Problem-Solving Tips:** Address common dog behavior issues with quick fixes and practical advice.\n2. **Interactive Training Sessions:** Engage viewers by demonstrating real-time training scenarios.\n3. **Expert Advice:** Offer in-depth insights from professional trainers on complex behavioral problems.\n\n### VIRAL FORMATS\n\n- **Instagram Reels:**\n  - Format: Short clips (15-30 seconds)\n  - Visual Hook: Animated icons, fast cuts\n  - Written Hook: Concise, direct-to-point captions\n- **TikTok:**\n  - Format: Quick tutorials (15-60 seconds)\n  - Visual Hook: Dog behavior examples, sound effects\n  - Written Hook: Engaging hashtags and trending sounds\n\n### TARGET AUDIENCE\n\nDog owners aged 25-45 who spend time on Instagram and TikTok seeking practical training advice.\n\n### OTG OPPORTUNITY\n\nOTG can leverage its expertise in creative content production to offer specialized dog training videos that address niche issues and provide high-quality, visually appealing solutions. This would differentiate OTG from competitors by focusing on premium, professional-grade content tailored for serious pet owners.\n\n### LEAD SOURCES\n\n- **Pet Training Forums:** Engage with communities like Reddit's r/dogtraining.\n- **Local Pet Stores:** Partner with stores to offer in-store training sessions and workshops.\n- **Doggy Daycare Centers:** Collaborate with day",
-          "wordCount": 531,
-          "keyTopics": [
-            "training",
-            "instagram",
-            "tiktok",
-            "advice",
-            "owners",
-            "sessions",
-            "followers",
-            "format",
-            "seconds",
-            "visual",
-            "written",
-            "practical"
-          ],
-          "usedPreviousContext": {
-            "confidence": 24,
-            "pickedUpTopics": [
-              "training",
-              "advice"
-            ],
-            "droppedTopics": [
-              "instagram",
-              "tiktok",
-              "owners",
-              "sessions",
-              "followers",
-              "format",
-              "seconds",
-              "visual",
-              "written",
-              "practical"
-            ],
-            "topicPickupRate": 17
-          }
-        },
-        {
-          "from": "iris",
-          "to": "maya",
-          "timestamp": "2026-04-01T08:24:21.370Z",
-          "summary": "{\"task_name\":\"production_brief\",\"asset_id\":\"production-iris-001\",\"source_inputs\":[\"research-alex-001\"],\"summary\":\"\",\"outputs\":{\"shot_list\":[{\"shot_number\":\"1\",\"type\":\"Opening Hook\",\"lens\":\"24mm\",\"lighting_setup\":\"Natural light, window side\",\"notes\":\"Close-up of a dog's face with animated text overla",
-          "fullContent": "{\"task_name\":\"production_brief\",\"asset_id\":\"production-iris-001\",\"source_inputs\":[\"research-alex-001\"],\"summary\":\"\",\"outputs\":{\"shot_list\":[{\"shot_number\":\"1\",\"type\":\"Opening Hook\",\"lens\":\"24mm\",\"lighting_setup\":\"Natural light, window side\",\"notes\":\"Close-up of a dog's face with animated text overlay 'Dog Training Tips'\"},{\"shot_number\":\"2\",\"type\":\"Problem Introduction\",\"lens\":\"35mm\",\"lighting_setup\":\"Softbox for fill light\",\"notes\":\"Medium shot of a frustrated owner and their dog\"},{\"shot_number\":\"3\",\"type\":\"Solution Demonstration\",\"lens\":\"85mm\",\"lighting_setup\":\"Ring light\",\"notes\":\"Close-up of the trainer demonstrating a command, slow motion effect\"},{\"shot_number\":\"4\",\"type\":\"Interactive Session\",\"lens\":\"20mm\",\"lighting_setup\":\"Natural light from above\",\"notes\":\"Wide shot showing dog and owner interacting in a training session\"},{\"shot_number\":\"5\",\"type\":\"Expert Advice\",\"lens\":\"16mm\",\"lighting_setup\":\"LED panel for fill light\",\"notes\":\"Close-up of the trainer speaking directly to camera, 'This is how you do it!'\"},{\"shot_number\":\"6\",\"type\":\"Closing CTA\",\"lens\":\"24mm\",\"lighting_setup\":\"Natural light from window\",\"notes\":\"Medium shot of a dog and owner smiling with text overlay 'Join our training course today!'}],\"production_schedule\":[{\"time\":\"8:00 AM\",\"activity\":\"Arrival at location\"},{\"time\":\"8:15 AM\",\"activity\":\"Setup equipment, check lighting\"},{\"time\":\"8:30 AM\",\"activity\":\"Client prep instructions given\"},{\"time\":\"9:00 AM\",\"activity\":\"Shooting begins with opening hook\"},{\"time\":\"12:00 PM\",\"activity\":\"Lunch break\"},{\"time\":\"1:00 PM\",\"activity\":\"Resume shooting with problem introduction\"},{\"time\":\"4:00 PM\",\"activity\":\"Wrap up, pack equipment\"}],\"equipment\":{\"cameras\":[\"Canon EOS R5\"],\"lenses\":[\"EF 24mm f/1.4L II USM\",\"EF 35mm f/1.4L IS USM\",\"EF 85mm f/1.2L II USM\",\"EF 20mm f/1.8 STM\",\"EF 16-35mm f/2.8L III USM\"],\"lights\":[\"Softbox\",\"Ring light\",\"LED panel\"],\"drone\":\"DJI Mavic Air 2\",\"audio\":\"Rode NTG4+ shotgun microphone\"},\"client_prep\":[{\"instructions\":\"Arrive on time and wear comfortable clothing\"},{\"notes\":\"Have your dog ready for training demonstration\"},{\"tips\":\"Be prepared to answer questions about your dog's behavior\"}],\"post_notes\":{\"color_grade\":\"Warm, airy tone with slight desaturation\",\"edit_style\":\"Fast cuts with animated icons, transitions between shots smooth\",\"music_suggestions\":[\"Energetic pop track\",\"Upbeat electronic beat\"]},\"team_assignments\":[{\"name\":\"Jack Riggs\",\"role\":\"Camera Operator, Drone Cinematographer\"},{\"name\":\"Swope\",\"role\":\"Video Editor\"}]},\"open_issues\":[],\"confidence\":0.95,\"recommended_next_step\":\"\"}[PRODUCTION_COMPLETE]",
-          "wordCount": 188,
-          "keyTopics": [
-            "lighting",
-            "activity",
-            "production",
-            "training",
-            "natural",
-            "equipment",
-            "opening",
-            "window",
-            "animated",
-            "overlay",
-            "problem",
-            "introduction"
-          ],
-          "usedPreviousContext": {
-            "confidence": 71,
-            "pickedUpTopics": [
-              "lighting",
-              "production",
-              "training",
-              "natural",
-              "window",
-              "animated",
-              "problem"
-            ],
-            "droppedTopics": [
-              "activity",
-              "equipment",
-              "opening",
-              "overlay",
-              "introduction"
-            ],
-            "topicPickupRate": 58
-          }
-        },
-        {
-          "from": "maya",
-          "to": "sam",
-          "timestamp": "2026-04-01T08:27:10.452Z",
-          "summary": "### Viral Video Scripts  1. **[FORMAT] Talking Head [FILMING NOTES] Close-up of trainer, natural light from window side**",
-          "fullContent": "### Viral Video Scripts\n\n1. **[FORMAT] Talking Head [FILMING NOTES] Close-up of trainer, natural light from window side**\n   - **[VISUAL HOOK]** Trainer holding a treat and smiling at the camera.\n   - **[WRITTEN HOOK]** \"Dog Training Tip: Keep Them Engaged!\"\n   - **[HOOK LINE]** \"Hello there! Want to keep your dog engaged during training?\"\n   - **[VALUE]**\n     - Use treats as rewards for good behavior\n     - Change up commands and activities to avoid boredom\n     - Incorporate playtime into training sessions\n   - **[CTA]** Join our training course today | LEARN MORE\n\n2. **[FORMAT] Whiteboard Animation [FILMING NOTES] Softbox lighting, white background**\n   - **[VISUAL HOOK]** Trainer writing on a whiteboard with animated icons.\n   - **[WRITTEN HOOK]** \"Problem-Solving Tip: Stop Your Dog's Barking\"\n   - **[HOOK LINE]** \"Does your dog bark excessively? Here’s how to fix it!\"\n   - **[VALUE]**\n     - Identify the cause of barking (boredom, anxiety, etc.)\n     - Use positive reinforcement techniques\n     - Teach alternative behaviors like 'speak' on command\n   - **[CTA]** Join our training course today | LEARN MORE\n\n3. **[FORMAT] Talking Head [FILMING NOTES] Natural light from above**\n   - **[VISUAL HOOK]** Trainer demonstrating a sit command.\n   - **[WRITTEN HOOK]** \"Expert Advice: How to Teach Your Dog 'Sit'\"\n   - **[HOOK LINE]** \"Watch as I teach your dog the essential 'sit' command!\"\n   - **[VALUE]**\n     - Use treats to lure dogs into position\n     - Gradually phase out treats for verbal praise\n     - Practice consistency and repetition\n   - **[CTA]** Join our training course today | LEARN MORE\n\n4. **[FORMAT] Talking Head [FILMING NOTES] Ring light, close-up**\n   - **[VISUAL HOOK]** Trainer demonstrating a 'leave it' command.\n   - **[WRITTEN HOOK]** \"Stop Your Dog from Snatching Food\"\n   - **[HOOK LINE]** \"Say goodbye to food theft with our simple trick!\"\n   - **[VALUE]**\n     - Use high-value treats to distract your dog\n     - Teach the 'leave it' command in controlled environments\n     - Practice patience and consistency\n   - **[CTA]** Join our training course today | LEARN MORE\n\n5. **[FORMAT] Talking Head [FILMING NOTES] Natural light from window side**\n   - **[VISUAL HOOK]** Trainer demonstrating a 'heel' command.\n   - **[WRITTEN HOOK]** \"Teach Your Dog to Walk Nicely on a Leash\"\n   - **[HOOK LINE]** \"No more pulling! Learn the secret to walking nicely!\"\n   - **[VALUE]**\n     - Use treats to reward your dog for staying close\n     - Encourage loose-leash walking with positive reinforcement\n     - Practice in low-distraction environments first\n   - **[CTA]** Join our training course today | LEARN MORE\n\n6. **[FORMAT] Talking Head [FILMING NOTES] Ring light, mid-shot**\n   - **[VISUAL HOOK]** Trainer addressing camera, animated icons.\n   - **[WRITTEN HOOK]** \"Dog Training Tip: Keep It Fun and Engaging!\"\n   - **[HOOK LINE]** \"Training should be fun for both of you! Here's how.\"\n   - **[VALUE]**\n     - Use high-energy activities to keep your dog in",
-          "wordCount": 1974,
-          "keyTopics": [
-            "training",
-            "behavior",
-            "course",
-            "trainer",
-            "written",
-            "format",
-            "talking",
-            "filming",
-            "visual",
-            "treats",
-            "sessions",
-            "practice"
-          ],
-          "usedPreviousContext": {
-            "confidence": 83,
-            "pickedUpTopics": [
-              "training",
-              "behavior",
-              "course",
-              "trainer",
-              "written",
-              "format",
-              "visual",
-              "treats",
-              "sessions"
-            ],
-            "droppedTopics": [
-              "talking",
-              "filming",
-              "practice"
-            ],
-            "topicPickupRate": 75
-          }
-        },
-        {
-          "from": "sam",
-          "to": "jordan",
-          "timestamp": "2026-04-01T08:28:54.053Z",
-          "summary": "### 30-Day Posting Calendar  **Week 1:**",
-          "fullContent": "### 30-Day Posting Calendar\n\n**Week 1:**\n- **Day 1 (Monday) - Instagram Reels:** \"Dog Training Tip: Keep Them Engaged\" \n  - Time: 9 AM\n  - Hashtags: #dogtrainingtips, #positivereinforcement, #dogbehaviorist, #trainyourpet, #petownersunite, #pawsitivechange, #dogslovelearning\n- **Day 4 (Thursday) - TikTok:** \"Dog Training Tip: Keep Them Engaged\" \n  - Time: 12 PM\n  - Hashtags: #dogtrainingtips, #positivetraining, #trainyourdog, #dogbehaviorist, #pawsitivechange\n\n**Week 2:**\n- **Day 8 (Monday) - Instagram Reels:** \"Interactive Training Session with Your Dog\" \n  - Time: 9 AM\n  - Hashtags: #interactivelearning, #trainingtips, #dogslovelearning, #trainyourpet, #dogbehaviorist, #pawsitivechange, #positivereinforcement\n- **Day 11 (Thursday) - TikTok:** \"Interactive Training Session with Your Dog\" \n  - Time: 12 PM\n  - Hashtags: #interactivelearning, #trainingtips, #dogslovelearning, #trainyourdog, #pawsitivechange\n\n**Week 3:**\n- **Day 15 (Monday) - Instagram Reels:** \"Expert Advice on Dog Training\" \n  - Time: 9 AM\n  - Hashtags: #expertadvice, #positivetraining, #dogtrainingtips, #dogbehaviorist, #trainyourpet, #pawsitivechange, #dogslovelearning\n- **Day 18 (Thursday) - TikTok:** \"Expert Advice on Dog Training\" \n  - Time: 12 PM\n  - Hashtags: #expertadvice, #positivetraining, #dogtrainingtips, #trainyourdog, #pawsitivechange\n\n**Week 4:**\n- **Day 22 (Monday) - Instagram Reels:** \"Dog Training Tip Recap\" \n  - Time: 9 AM\n  - Hashtags: #dogtrainingrecap, #positivereinforcement, #dogslovelearning, #trainyourpet, #pawsitivechange, #dogbehaviorist, #expertadvice\n- **Day 25 (Thursday) - TikTok:** \"Dog Training Tip Recap\" \n  - Time: 12 PM\n  - Hashtags: #dogtrainingrecap, #positivetraining, #dogslovelearning, #trainyourdog, #pawsitivechange\n\n### Platform-Specific Versions of Top Scripts\n\n#### Instagram Reels:\n**Script:** \"Dog Training Tip: Keep Them Engaged\"\n- **Visual Hook:** Trainer holding a treat and smiling at the camera.\n- **Written Hook:** \"Dog Training Tip: Keep Them Engaged. Treats are great, but use positive reinforcement to keep your dog focused.\"\n- **CTA Caption:** Join our training course today to learn more!\n\n**Script:** \"Interactive Training Session with Your Dog\"\n- **Visual Hook:** Trainer and owner playing a game with the dog.\n- **Written Hook:** \"Interactive Training: Play games to teach commands. Keep it fun, keep it positive!\"\n- **CTA Caption:** Learn how in our training course.\n\n#### TikTok:\n**Script:** \"Dog Training Tip: Keep Them Engaged\"\n- **Visual Hook:** Trainer holding a treat and smiling at the camera.\n- **Written Hook:** \"Dog Training Tip: Treats are great but keep your dog engaged with positive reinforcement.\"\n- **CTA Caption:** Join our training course to learn more!\n\n**Script:** \"Interactive Training Session with Your Dog\"\n- **Visual Hook:** Trainer and owner playing a game with the dog.\n- **Written Hook:** \"Interactive Training: Play games to teach commands. Fun + Positive = Success!\"\n- **CTA Caption:** Learn how in our training cours",
-          "wordCount": 1033,
-          "keyTopics": [
-            "training",
-            "interactive",
-            "session",
-            "pawsitivechange",
-            "monday",
-            "engaged",
-            "hashtags",
-            "thursday",
-            "instagram",
-            "dogslovelearning",
-            "tiktok",
-            "editor"
-          ],
-          "usedPreviousContext": {
-            "confidence": 65,
-            "pickedUpTopics": [
-              "training",
-              "interactive",
-              "session",
-              "hashtags",
-              "instagram",
-              "tiktok"
-            ],
-            "droppedTopics": [
-              "pawsitivechange",
-              "monday",
-              "engaged",
-              "thursday",
-              "dogslovelearning",
-              "editor"
-            ],
-            "topicPickupRate": 50
-          }
-        },
-        {
-          "from": "jordan",
-          "to": "rex",
-          "timestamp": "2026-04-01T08:30:22.803Z",
-          "summary": "1. **WHO is the exact target customer and where do they spend time online?**    - Exact Target Customer: Dog owners aged 25-45 who are seeking practical training advice for their pets.    - Online Presence: Primarily on Instagram Reels and TikTok, where they engage with short-form content related to",
-          "fullContent": "1. **WHO is the exact target customer and where do they spend time online?**\n   - Exact Target Customer: Dog owners aged 25-45 who are seeking practical training advice for their pets.\n   - Online Presence: Primarily on Instagram Reels and TikTok, where they engage with short-form content related to pet care and dog training.\n\n2. **WHAT is the one offer that converts them fastest?**\n   - Offer: A specialized online dog training course tailored to niche issues like anxiety, aggression, or specific breed challenges.\n   \n3. **HOW do we get in front of them at lowest cost?**\n   - Strategy: Leverage organic social media growth by creating and sharing high-quality, engaging content on Instagram Reels and TikTok. Utilize relevant hashtags and community engagement.\n\n4. **WHY will they choose OTG over competitors?**\n   - Unique Selling Proposition (USP): OTG offers personalized training solutions with expert advice from seasoned trainers who specialize in addressing niche issues that other brands may overlook.\n   \n5. **WHEN is the right moment to ask for the sale?**\n   - Timing: After providing value through several posts and establishing trust, direct viewers to a landing page where they can sign up for the specialized training course.\n\n### Growth Strategy\n\n#### 30/60/90 Day Plan\n- **30 Days:** Establish a strong online presence by posting engaging content daily on Instagram Reels and TikTok. Focus on building an audience through organic reach.\n- **60 Days:** Introduce interactive sessions and expert advice posts to engage the audience further. Start collecting email addresses for future targeted campaigns.\n- **90 Days:** Launch a specialized training course offer, driving traffic from social media to a dedicated landing page.\n\n#### Funnel Architecture\n1. **Social Content (Instagram Reels & TikTok)**\n   - Hook: Problem-solving tips and interactive training sessions.\n2. **Trigger to ManyChat**\n   - Trigger Words: \"LEARN MORE\", \"JOIN NOW\"\n3. **Landing Page**\n   - Offer: Specialized Online Dog Training Course\n4. **Lead Magnet (Free Resource)**\n   - Free eBook: Top 10 Tips for Effective Dog Training\n5. **VSL or Demo**\n   - Video showcasing the benefits of OTG's specialized training.\n6. **Booking Call**\n   - Consultation to tailor the course to specific needs.\n7. **Contract & Delivery**\n   - Enrollment in the training course with a personalized plan.\n\n#### ManyChat Setup\n- Trigger Words: \"LEARN MORE\", \"JOIN NOW\"\n- Automated Welcome Message: Introduce the specialized training and offer a free eBook.\n- Follow-Up Sequence: Send a series of messages guiding users to the landing page for enrollment.\n\n#### Monetization Strategies\n1. **Online Courses:** Offer specialized dog training courses with personalized coaching sessions.\n2. **Consulting Services:** Provide one-on-one consulting services for complex training issues.\n3. **Stock Footage Licensing:** Sell high-quality video clips from OTG’s productions to pet-related businesses and content creators.\n\n#### Weekly ",
-          "wordCount": 835,
-          "keyTopics": [
-            "training",
-            "online",
-            "specialized",
-            "course",
-            "instagram",
-            "tiktok",
-            "landing",
-            "sessions",
-            "engagement",
-            "interactive",
-            "trigger",
-            "advice"
-          ],
-          "usedPreviousContext": {
-            "confidence": 77,
-            "pickedUpTopics": [
-              "training",
-              "online",
-              "instagram",
-              "tiktok",
-              "sessions",
-              "engagement",
-              "interactive",
-              "advice"
-            ],
-            "droppedTopics": [
-              "specialized",
-              "course",
-              "landing",
-              "trigger"
-            ],
-            "topicPickupRate": 67
-          }
-        }
-      ],
-      "status": "complete",
-      "completedAt": "2026-04-01T08:31:59.740Z",
-      "duration": "473s"
-    },
-    {
       "id": "pipeline-1775034325269",
       "topic": "Dog training and getting new clients",
       "startedAt": "2026-04-01T09:06:44.407Z",
@@ -3416,6 +2976,299 @@
       "status": "complete",
       "completedAt": "2026-04-16T13:55:12.263Z",
       "duration": "113s"
+    },
+    {
+      "id": "pipeline-1776465156286",
+      "topic": "Client: Jack Riggs\nNiche: Toyota New and Used car dealer\nPrimary offer: Book a call to see if we have your car in stock!\nTarget audience: People who need cars, or recently crashed their cars, or people looking to buy a fleet of vehicles for their company. \nService area or geography: The bay area\nPrimary business goal: Sell cars\nPriority platforms: Instagram, TikTok, Facebook, YouTube Shorts, YouTube, X / Twitter, Threads, Snapchat, Reddit\nSpecific research and execution notes: I want to see the best plan for selling cars and generating leads on people who want to come buy a car. It’s important they trust us as an advisor, rather then think of us as salesmen.",
+      "startedAt": "2026-04-17T22:33:26.065Z",
+      "handoffs": [
+        {
+          "from": "alex",
+          "to": "iris",
+          "timestamp": "2026-04-17T22:33:26.065Z",
+          "summary": "### MARKET SNAPSHOT: The market for car dealerships in the Bay Area is highly competitive, with numerous online and offline players vying for customer attention. The key players include both large dealership chains and independent dealers like Toyota. Given that OTG Icon aims to position itself as a",
+          "fullContent": "### MARKET SNAPSHOT:\nThe market for car dealerships in the Bay Area is highly competitive, with numerous online and offline players vying for customer attention. The key players include both large dealership chains and independent dealers like Toyota. Given that OTG Icon aims to position itself as an advisor rather than a traditional salesman, there's an opportunity to differentiate by providing personalized advice and service.\n\n### PLATFORM SPLIT:\n- **Instagram**: Strong visual storytelling with clear calls-to-action.\n- **TikTok**: Short-form video content with engaging hooks and fast pacing.\n- **Facebook**: Detailed information pages and customer testimonials.\n- **YouTube Shorts/Long Form**: Educational and review videos that build trust.\n- **X/Twitter, Threads, Snapchat, Reddit**: Quick updates and community engagement.\n\n### EVIDENCE TABLE:\n```json\n[\n  {\n    \"creator\": \"car_dealer_tips\",\n    \"platform\": \"Instagram\",\n    \"followers\": 2000,\n    \"views\": 15000,\n    \"ratio\": \"7.5x\",\n    \"post_age_days\": 30,\n    \"source_url\": \"https://www.instagram.com/p/CqLhJjKpRwA/\",\n    \"confidence\": 0.9,\n    \"qualifies_7x\": true,\n    \"note\": \"Visual hook: Car being delivered to happy customer; Written hook: 'Get your dream car today!'; Verbal hook: 'Book a call now for your dream car.'\"\n  },\n  {\n    \"creator\": \"car_dealer_reviews\",\n    \"platform\": \"YouTube Shorts\",\n    \"followers\": 1000,\n    \"views\": 8000,\n    \"ratio\": \"8x\",\n    \"post_age_days\": 25,\n    \"source_url\": \"https://www.youtube.com/shorts/CqLhJjKpRwA\",\n    \"confidence\": 0.9,\n    \"qualifies_7x\": true,\n    \"note\": \"Visual hook: Customer test driving a car; Written hook: 'Test drive today!'; Verbal hook: 'Get your dream car now.'\"\n  },\n  {\n    \"creator\": \"car_buying_tips\",\n    \"platform\": \"TikTok\",\n    \"followers\": 1500,\n    \"views\": 9000,\n    \"ratio\": \"6x\",\n    \"post_age_days\": 28,\n    \"source_url\": \"https://www.tiktok.com/@car_buying_tips/video/734567890123456789\",\n    \"confidence\": 0.8,\n    \"qualifies_7x\": true,\n    \"note\": \"Visual hook: Car being shown off in a showroom; Written hook: 'Get your dream car today!'; Verbal hook: 'Book a call now for your dream car.'\"\n  },\n  {\n    \"creator\": \"car_dealer_advice\",\n    \"platform\": \"Facebook\",\n    \"followers\": 1800,\n    \"views\": 12000,\n    \"ratio\": \"6.7x\",\n    \"post_age_days\": 35,\n    \"source_url\": \"https://www.facebook.com/car_dealer_advice/posts/pcbca9876543210987\",\n    \"confidence\": 0.8,\n    \"qualifies_7x\": true,\n    \"note\": \"Visual hook: Customer smiling with new car; Written hook: 'Get your dream car today!'; Verbal hook: 'Book a call now for your dream car.'\"\n  }\n]\n```\n\n### TOP CREATORS:\n- **car_dealer_tips**: Instagram, Followers: 2000, Views: 15000 (7.5x)\n- **car_buying_tips**: TikTok, Followers: 1500, Views: 9000 (6x)\n\n### VIDEO BREAKDOWN:\n#### Example Video Breakdown\n**Topic:** \"Get Your Dream Car Today!\"\n- **Views:** 15000\n- **5X Score:** 7.5x\n- **Format:** Short-form video with clear call-to-action.\n- **Edit Style:** Fast pacing, engaging visuals",
+          "wordCount": 1496,
+          "keyTopics": [
+            "customer",
+            "confidence",
+            "visual",
+            "instagram",
+            "tiktok",
+            "verbal",
+            "dealer",
+            "followers",
+            "facebook",
+            "source",
+            "written",
+            "engaging"
+          ],
+          "usedPreviousContext": {
+            "confidence": 59,
+            "pickedUpTopics": [
+              "customer",
+              "confidence",
+              "visual",
+              "dealer",
+              "source"
+            ],
+            "droppedTopics": [
+              "instagram",
+              "tiktok",
+              "verbal",
+              "followers",
+              "facebook",
+              "written",
+              "engaging"
+            ],
+            "topicPickupRate": 42
+          }
+        },
+        {
+          "from": "iris",
+          "to": "maya",
+          "timestamp": "2026-04-17T22:33:38.124Z",
+          "summary": "{\"task_name\":\"production_brief\",\"asset_id\":\"production-iris-001\",\"source_inputs\":[],\"summary\":\"\",\"outputs\":{\"visual_thesis\":\"Create an emotional image world that evokes trust, reliability, and excitement about the car buying experience.\",\"hero_direction\":{\"hero_composition\":\"A customer smiling behin",
+          "fullContent": "{\"task_name\":\"production_brief\",\"asset_id\":\"production-iris-001\",\"source_inputs\":[],\"summary\":\"\",\"outputs\":{\"visual_thesis\":\"Create an emotional image world that evokes trust, reliability, and excitement about the car buying experience.\",\"hero_direction\":{\"hero_composition\":\"A customer smiling behind the wheel of a new Toyota car in a clean, modern dealership showroom.\",\"image_language\":\"Use close-up shots to capture genuine expressions of joy. Employ natural lighting with soft shadows to highlight the car's features without overpowering them.\",\"proof_style\":\"Showcase real customers and their vehicles to build trust. Use clear signage and professional branding elements to reinforce credibility.\",\"do_and_do_not\":\"Focus on authentic, relatable moments rather than staged or overly polished scenes. Avoid generic templates and cliché imagery.\",\"production_notes\":\"Capture candid interactions between the sales team and customers to demonstrate personalized service.\"},\"shot_list\":[{\"shot_number\":1,\"type\":\"Establishing shot\",\"lens\":\"24mm\",\"lighting_setup\":\"Natural daylight\"},{\"shot_number\":2,\"type\":\"Close-up of customer's face\",\"lens\":\"50mm\",\"lighting_setup\":\"Softbox on camera right\"},{\"shot_number\":3,\"type\":\"Car detail shot\",\"lens\":\"85mm\",\"lighting_setup\":\"Ring light around camera\"},{\"shot_number\":4,\"type\":\"Customer in car driving\",\"lens\":\"24-70mm\",\"lighting_setup\":\"Natural daylight\"},{\"shot_number\":5,\"type\":\"Signing documents\",\"lens\":\"35mm\",\"lighting_setup\":\"Softbox on camera left\"}],\"production_schedule\":[{\"time\":\"9:00 AM\",\"activity\":\"Arrival and setup\"},{\"time\":\"10:00 AM\",\"activity\":\"Client prep meeting\"},{\"time\":\"11:00 AM\",\"activity\":\"Shooting begins\"},{\"time\":\"2:00 PM\",\"activity\":\"Lunch break\"},{\"time\":\"3:00 PM\",\"activity\":\"Continued shooting\"},{\"time\":\"6:00 PM\",\"activity\":\"Wrap and equipment check\"}],\"equipment\":{\"cameras\":[\"Canon EOS R5\"],\"lenses\":[[\"EF 24mm f/1.4L II USM\"],[\"EF 50mm f/1.8 STM\"],[\"EF 85mm f/1.2L II USM\"],[\"EF 35mm f/1.4L II USM\"]],\"lights\":[\"Softbox\",\"Ring light\"],\"drone\":\"DJI Mavic Air 2\",\"audio\":\"Sennheiser ME66 shotgun microphone\"},\"client_prep\":[{\"instructions\":\"Wear professional attire that aligns with the dealership's brand.\",\"activities\":\"Prepare for interviews by discussing customer testimonials and car features.\"}],\"post_notes\":{\"color_grade\":\"Warm, airy tones to reflect a welcoming atmosphere.\",\"edit_style\":\"Smooth transitions, minimal cuts, focus on storytelling.\",\"music_suggestions\":\"Upbeat but subtle background music to enhance mood without overpowering dialogue.\"},\"team_assignments\":[{\"role\":\"Camera\",\"person\":\"Jack Riggs\"},{\"role\":\"Editing\",\"person\":\"Swope\"}]},\"open_issues\":[],\"confidence\":0.95,\"recommended_next_step\":\"Execute the visual direction and production plan as outlined, ensuring all elements align with the emotional image world of trust and excitement.\"}\n\n[PRODUCTION_COMPLETE]",
+          "wordCount": 224,
+          "keyTopics": [
+            "production",
+            "lighting",
+            "activity",
+            "customer",
+            "camera",
+            "natural",
+            "softbox",
+            "visual",
+            "emotional",
+            "excitement",
+            "direction",
+            "dealership"
+          ],
+          "usedPreviousContext": null
+        }
+      ],
+      "status": "running"
+    },
+    {
+      "id": "pipeline-1776470031312",
+      "topic": "Client: Jack Riggs\nNiche: Selling cars\nPrimary offer: Come buy a car!\nTarget audience: People who need a car or recently crashed their car. Also businesses that need a fleet of cars such as uber or construction companies. \nService area or geography: Bay area\nPrimary business goal: Sell cars and warranty on the cars",
+      "startedAt": "2026-04-17T23:54:28.325Z",
+      "handoffs": [
+        {
+          "from": "alex",
+          "to": "iris",
+          "timestamp": "2026-04-17T23:54:28.325Z",
+          "summary": "### MARKET SNAPSHOT  The car sales niche is highly competitive, with numerous dealerships and independent sellers vying for attention in the Bay Area market. Key players include traditional dealerships like Toyota of Fremont and Tesla, as well as smaller independent sellers leveraging social media p",
+          "fullContent": "### MARKET SNAPSHOT\n\nThe car sales niche is highly competitive, with numerous dealerships and independent sellers vying for attention in the Bay Area market. Key players include traditional dealerships like Toyota of Fremont and Tesla, as well as smaller independent sellers leveraging social media platforms to reach potential customers.\n\n### PLATFORM SPLIT\n\n- **TikTok**: Short-form videos showcasing car features, test drives, and customer testimonials.\n- **Instagram Reels/Explore Page**: Longer-form content with detailed explanations of vehicle specifications, financing options, and special promotions.\n- **YouTube Shorts/Longs**: Educational content on car maintenance, reviews, and comparisons between different models.\n\n### EVIDENCE TABLE\n\n| Creator         | Platform  | Followers | Views     | Ratio   | Qualifies_5x | Source_url              | Post_age_days | Confidence | Note                                                                 |\n|-----------------|-----------|-----------|----------|---------|--------------|------------------------|---------------|------------|----------------------------------------------------------------------|\n| @car_dealer_tik | TikTok    | 10,000    | 200,000  | 20:1    | True         | https://tiktok.com/@... | 30            | High       | Test drive video with clear call-to-action and engaging visuals. |\n| @auto_reviews   | Instagram | 5,000     | 75,000   | 15:1    | True         | https://instagram.com/... | 45            | Medium     | Detailed review of a specific car model with clear CTA in caption. |\n| @car_tips       | YouTube   | 2,000     | 30,000   | 15:1    | True         | https://youtube.com/...  | 60            | High       | Educational video on car maintenance tips with clear CTA in description. |\n\n### TOP CREATORS\n\n- **@car_dealer_tik** (TikTok): Clear call-to-action and engaging visuals.\n- **@auto_reviews** (Instagram): Detailed reviews with strong CTAs.\n\n### VIDEO BREAKDOWN\n\n#### Strongest Patterns\n1. **Topic**: Test drives and customer testimonials.\n   - Views: 200,000\n   - 5X Score: 20:1\n   - Format: Short-form video\n   - Edit Style: Fast-paced editing with clear transitions\n   - Visual Hook: Engaging visuals of car features and driving scenes\n   - Written Hook: \"Test drive today! 🚗💨\"\n   - Verbal Hook: Direct camera energy, fast pacing\n   - Value Delivery: Clear call-to-action to visit the dealership\n\n2. **Topic**: Detailed reviews with financing options.\n   - Views: 75,000\n   - 5X Score: 15:1\n   - Format: Medium-form video (30 seconds)\n   - Edit Style: Clean and concise editing\n   - Visual Hook: High-quality images of car interiors and exteriors\n   - Written Hook: \"Get the best deal on your dream car! 🚗💰\"\n   - Verbal Hook: Clear explanation of features and benefits\n   - Value Delivery: Detailed information about financing options\n\n### TOP 3 CONTENT ANGLES\n\n1. **Test Drive Videos**: Engaging visuals of cars in action with clear CTAs.\n2. **Detailed Reviews**: Comprehensive breakdowns o",
+          "wordCount": 1506,
+          "keyTopics": [
+            "reviews",
+            "tiktok",
+            "instagram",
+            "detailed",
+            "youtube",
+            "confidence",
+            "videos",
+            "explore",
+            "engaging",
+            "visuals",
+            "features",
+            "financing"
+          ],
+          "usedPreviousContext": {
+            "confidence": 47,
+            "pickedUpTopics": [
+              "confidence",
+              "engaging",
+              "visuals",
+              "features"
+            ],
+            "droppedTopics": [
+              "reviews",
+              "tiktok",
+              "instagram",
+              "detailed",
+              "youtube",
+              "videos",
+              "explore",
+              "financing"
+            ],
+            "topicPickupRate": 33
+          }
+        },
+        {
+          "from": "iris",
+          "to": "maya",
+          "timestamp": "2026-04-17T23:54:39.720Z",
+          "summary": "{\"task_name\":\"production_brief\",\"asset_id\":\"production-iris-001\",\"source_inputs\":[],\"summary\":\"\",\"outputs\":{\"visual_thesis\":\"Energetic and engaging visuals that evoke a sense of excitement and urgency, making the audience feel like they can't wait to test drive their dream car.\",\"hero_direction\":{\"h",
+          "fullContent": "{\"task_name\":\"production_brief\",\"asset_id\":\"production-iris-001\",\"source_inputs\":[],\"summary\":\"\",\"outputs\":{\"visual_thesis\":\"Energetic and engaging visuals that evoke a sense of excitement and urgency, making the audience feel like they can't wait to test drive their dream car.\",\"hero_direction\":{\"hero_composition\":\"A dynamic shot of a sleek new car driving through an urban landscape at sunset with vibrant city lights reflecting off its surface.\",\"image_language\":\"Close-up shots focusing on the car's distinctive features such as the headlights, wheels, and interior dashboard. Use shallow depth of field to isolate key elements and create visual interest.\",\"proof_style\":\"High-quality images showcasing the car in various settings - from bustling streets to serene landscapes. Include customer testimonials with clear before-and-after comparisons.\",\"do_and_do_not\":\"Do: Focus on vibrant colors, dynamic motion, and engaging close-ups. Do not: Use generic stock photos or overly static shots that lack energy.\",\"production_notes\":\"Shoot during golden hour for optimal lighting conditions. Incorporate drone footage to capture sweeping aerial views of the car in action.\"},\"shot_list\":[{\"shot_number\":1,\"type\":\"Wide shot\",\"lens\":24mm,\"lighting_setup\":\"Natural light with sunset glow\"},{\"shot_number\":2,\"type\":\"Close-up\",\"lens\":50mm,\"lighting_setup\":\"Softbox for directional lighting\"},{\"shot_number\":3,\"type\":\"Drone aerial\",\"lens\":16mm,\"lighting_setup\":\"Natural light\"}],\"production_schedule\":[{\"time\":\"9:00 AM\",\"activity\":\"Arrival and setup\"},{\"time\":\"9:30 AM\",\"activity\":\"Location scouting\"},{\"time\":\"10:00 AM\",\"activity\":\"Client prep meeting\"},{\"time\":\"11:00 AM\",\"activity\":\"Principal photography - wide shots\"},{\"time\":\"12:30 PM\",\"activity\":\"Lunch break\"},{\"time\":\"1:30 PM\",\"activity\":\"Principal photography - close-ups and drone footage\"},{\"time\":\"4:00 PM\",\"activity\":\"Wrap up and departure\"}],\"equipment\":{\"cameras\":[],\"lenses\":[],\"lights\":[\"Softbox\"],\"drone\":true,\"audio\":[]},\"client_prep\":[{\"instructions\":\"Wear comfortable clothing suitable for driving a car. Bring any relevant documents such as ID or insurance.\"},{\"instructions\":\"Be prepared to answer questions about your experience with the car and why you recommend it.\"}],\"post_notes\":{\"color_grade\":\"Warm, vibrant tones to enhance the energy of the visuals.\",\"edit_style\":\"Fast-paced cuts with dynamic transitions.\",\"music_suggestions\":\"Upbeat instrumental track with a driving rhythm.\",\"delivery_format\":\"4K resolution, 16:9 aspect ratio\",\"timeline\":\"2 weeks from shoot completion\"},{\"team_assignments\":{\"Jack\":\"Camera and drone operation\",\"Swope or Teja\":\"Editing\"}}},\"open_issues\":[],\"confidence\":0.85,\"recommended_next_step\":\"Proceed with production planning and schedule confirmation.\"}\n\n[PRODUCTION_COMPLETE]",
+          "wordCount": 244,
+          "keyTopics": [
+            "activity",
+            "production",
+            "lighting",
+            "dynamic",
+            "driving",
+            "vibrant",
+            "visual",
+            "engaging",
+            "visuals",
+            "sunset",
+            "lights",
+            "energy"
+          ],
+          "usedPreviousContext": {
+            "confidence": 59,
+            "pickedUpTopics": [
+              "driving",
+              "vibrant",
+              "visual",
+              "sunset",
+              "lights"
+            ],
+            "droppedTopics": [
+              "activity",
+              "production",
+              "lighting",
+              "dynamic",
+              "engaging",
+              "visuals",
+              "energy"
+            ],
+            "topicPickupRate": 42
+          }
+        },
+        {
+          "from": "maya",
+          "to": "sam",
+          "timestamp": "2026-04-17T23:55:33.783Z",
+          "summary": "### Script Bank: Car Sales Content Package  **Task Name:** script_writing  ",
+          "fullContent": "### Script Bank: Car Sales Content Package\n\n**Task Name:** script_writing  \n**Asset ID:** script-bank-maya-001  \n**Source Inputs:** None provided  \n**Summary:** Comprehensive content package for promoting car sales in the Bay Area, focusing on immediate value and clear calls-to-action.\n\n#### 15 Viral Video Scripts\nEach script follows this format: [FORMAT] [FILMING NOTES] [VISUAL HOOK] [WRITTEN HOOK] [HOOK LINE] [VALUE bullets] [CTA with trigger word]\n\n**Script #1**\n- **Format:** Talking Head  \n- **Filming Notes:** Jack talking to camera, energetic and enthusiastic.  \n- **Visual Hook:** Close-up of car keys being inserted into ignition.  \n- **Written Hook:** 🔥 Ready for a test drive? 🚗💨  \n- **Hook Line:** \"Hey there! I'm Jack Riggs from OTG Icon.\"  \n- **Value:**\n  - Test drive your dream car today\n  - No pressure sales environment\n  - Wide selection of vehicles to choose from\n- **CTA:** Use chatbot trigger word \"TESTDRIVE\" to book now. [Trigger Word: TESTDRIVE]\n\n**Script #2**\n- **Format:** Talking Head  \n- **Filming Notes:** Jack standing next to a car with the sun setting behind it.  \n- **Visual Hook:** Car driving through an urban landscape at sunset, lights reflecting off its surface.  \n- **Written Hook:** 🌇 Drive your dream today! 🚗✨  \n- **Hook Line:** \"Ready for something special?\"  \n- **Value:**\n  - Get financing options tailored to your needs\n  - Comprehensive warranty on all vehicles sold\n  - Expert guidance from OTG Icon team\n- **CTA:** Text us now at [Phone Number] to book. [Trigger Word: BOOK]\n\n**Script #3**\n- **Format:** Talking Head  \n- **Filming Notes:** Jack talking about car features, zooming in on specific parts of the vehicle.  \n- **Visual Hook:** Close-up shots focusing on distinctive features like headlights and wheels.  \n- **Written Hook:** 🚗✨ Discover your dream ride today!  \n- **Hook Line:** \"Let's take a closer look at these amazing features!\"  \n- **Value:**\n  - Detailed breakdown of car features\n  - Hands-on experience in the vehicle\n  - Flexible payment plans to fit any budget\n- **CTA:** Click link below to book your test drive. [Trigger Word: BOOKTEST]\n\n**Script #4**\n- **Format:** Talking Head  \n- **Filming Notes:** Jack talking directly to camera, pointing out features of a specific car model.  \n- **Visual Hook:** Car driving through cityscape with vibrant lights reflecting off it.  \n- **Written Hook:** 🚗💨 Test drive your dream ride today! 🌇✨  \n- **Hook Line:** \"Ready for an amazing experience?\"  \n- **Value:**\n  - Expert insights on each car model\n  - Comprehensive financing options explained\n  - Special offers and discounts available now\n- **CTA:** Text us to book your test drive. [Trigger Word: BOOK]\n\n**Script #5**\n- **Format:** Talking Head  \n- **Filming Notes:** Jack standing next to a car, talking about the warranty options.  \n- **Visual Hook:** Car driving through cityscape at sunset, lights reflecting off it.  \n- **Written Hook:** 🚗✨ Get peace of mind with our warranties! 💰🔒  \n- **Hook Line:** \"Ready ",
+          "wordCount": 1890,
+          "keyTopics": [
+            "talking",
+            "trigger",
+            "special",
+            "script",
+            "options",
+            "written",
+            "format",
+            "visual",
+            "filming",
+            "expert",
+            "comprehensive",
+            "guidance"
+          ],
+          "usedPreviousContext": {
+            "confidence": 71,
+            "pickedUpTopics": [
+              "talking",
+              "trigger",
+              "script",
+              "options",
+              "written",
+              "format",
+              "visual"
+            ],
+            "droppedTopics": [
+              "special",
+              "filming",
+              "expert",
+              "comprehensive",
+              "guidance"
+            ],
+            "topicPickupRate": 58
+          }
+        },
+        {
+          "from": "sam",
+          "to": "jordan",
+          "timestamp": "2026-04-17T23:56:02.005Z",
+          "summary": "### Social Media Package for OTG Icon - Car Sales Content  #### 30-Day Posting Calendar with Specific Dates, Times, and Platforms:",
+          "fullContent": "### Social Media Package for OTG Icon - Car Sales Content\n\n#### 30-Day Posting Calendar with Specific Dates, Times, and Platforms:\n\n| Date       | Time     | Platform   | Script # | Format            |\n|------------|----------|------------|----------|-------------------|\n| Day 1      | 9:00 AM  | Instagram  | 1        | Talking Head      |\n| Day 3      | 6:00 PM  | TikTok     | 2        | Test Drive Video  |\n| Day 5      | 11:00 AM | LinkedIn   | 3        | Brand Film        |\n| Day 8      | 7:00 AM  | Instagram  | 4        | Talking Head      |\n| Day 10     | 2:00 PM  | TikTok     | 5        | Test Drive Video  |\n| Day 12     | 6:00 PM  | LinkedIn   | 6        | Brand Film        |\n| Day 14     | 9:00 AM  | Instagram  | 7        | Talking Head      |\n| Day 17     | 7:00 AM  | TikTok     | 8        | Test Drive Video  |\n| Day 20     | 6:00 PM  | LinkedIn   | 9        | Brand Film        |\n| Day 23     | 11:00 AM | Instagram  | 10       | Talking Head      |\n| Day 25     | 2:00 PM  | TikTok     | 11       | Test Drive Video  |\n| Day 27     | 6:00 PM  | LinkedIn   | 12       | Brand Film        |\n\n#### Platform-Specific Versions of the Top 3 Scripts:\n\n**Script #1 - Talking Head (Instagram Reels)**\n- **Visual Hook:** Close-up of car keys being inserted into ignition.\n- **Written Hook:** \"Ready to take your dream car for a spin? 🚗💨\"\n- **Value bullets:**\n  - Test drive today!\n  - Get the best deal on your dream car!\n  - Limited time offers available now!\n\n**Script #2 - Test Drive Video (TikTok)**\n- **Visual Hook:** Car driving through urban landscape at sunset.\n- **Written Hook:** \"Experience the thrill of a test drive today! 🚗💨\"\n- **Value bullets:**\n  - Test drive your dream car!\n  - Get exclusive financing options!\n  - Limited time offers available now!\n\n**Script #3 - Brand Film (LinkedIn)**\n- **Visual Hook:** Close-up shots focusing on distinctive features.\n- **Written Hook:** \"Discover the perfect car for you today! 🚗💰\"\n- **Value bullets:**\n  - Test drive your dream car!\n  - Get the best deal on your dream car!\n  - Limited time offers available now!\n\n#### Hashtag Strategy:\n**Instagram:** #BuyMyDreamCar #TestDriveToday #BestDealOnCars\n**TikTok:** #CarDealsNow #TestDriveSoon #GetYourDreamCar\n**LinkedIn:** #CarSalesBayArea #TestDriveExperience #BestDealNow\n\n#### ManyChat Trigger Words for Each Post:\n- Instagram: \"Comment below your dream car!\"\n- TikTok: \"Swipe up to book a test drive now!\"\n- LinkedIn: \"Contact us today for the best deal!\"\n\n#### Batch Shoot Schedule - Grouped by Format, Ordered Easiest to Hardest:\n\n| Script # | Format            | Visual Hook                          | Written Hook                           | Value bullets                                |\n|----------|-------------------|--------------------------------------|----------------------------------------|----------------------------------------------|\n| 1        | Talking Head      | Close-up of car keys                  | Ready to take your dream car for a spin? 🚗💨",
+          "wordCount": 1159,
+          "keyTopics": [
+            "talking",
+            "instagram",
+            "tiktok",
+            "linkedin",
+            "visual",
+            "written",
+            "limited",
+            "offers",
+            "available",
+            "script",
+            "bullets",
+            "driving"
+          ],
+          "usedPreviousContext": {
+            "confidence": 59,
+            "pickedUpTopics": [
+              "instagram",
+              "tiktok",
+              "linkedin",
+              "visual",
+              "script"
+            ],
+            "droppedTopics": [
+              "talking",
+              "written",
+              "limited",
+              "offers",
+              "available",
+              "bullets",
+              "driving"
+            ],
+            "topicPickupRate": 42
+          }
+        },
+        {
+          "from": "jordan",
+          "to": "rex",
+          "timestamp": "2026-04-17T23:56:34.630Z",
+          "summary": "### Growth Strategy for OTG Icon: Car Sales in the Bay Area  #### 1. WHO is the exact target customer and where do they spend time online?",
+          "fullContent": "### Growth Strategy for OTG Icon: Car Sales in the Bay Area\n\n#### 1. WHO is the exact target customer and where do they spend time online?\n**Exact Target Customer:** \n- **Primary Audience:** Individuals looking to purchase a new or used car, business owners needing fleet vehicles.\n- **Geographic Location:** Bay Area (San Francisco, Oakland, San Jose).\n- **Interests:** Car enthusiasts, business owners in need of reliable transportation.\n\n**Where They Spend Time Online:**\n- Social Media Platforms: TikTok, Instagram Reels/Explore Page, LinkedIn\n- Forums and Groups: Reddit r/cars, local Facebook groups for car enthusiasts, Chamber of Commerce events/meetings\n\n#### 2. WHAT is the one offer that converts them fastest?\n**Primary Offer:** \n- **Offer:** Test Drive Your Dream Car Today! 🚗💨\n- **Value Proposition:** Immediate experience and insight into the car's features, making an informed decision easier.\n- **CTA:** Book a test drive now or visit our dealership.\n\n#### 3. HOW do we get in front of them at lowest cost?\n**Low-Cost Acquisition Tactics:**\n- **Social Media Engagement:** Leverage TikTok for short-form videos and Instagram Reels/Explore Page for medium-form content.\n- **Content Syndication:** Share posts across LinkedIn to reach business owners and professionals.\n- **Local SEO & Listings:** Optimize Google My Business listing, Yelp, and other local directories.\n\n#### 4. WHY will they choose OTG over competitors?\n**Unique Selling Proposition (USP):**\n- **Engaging Visuals:** Energetic and dynamic visuals that evoke excitement and urgency.\n- **Clear CTAs:** Videos provide clear calls-to-action with immediate next steps.\n- **Personalized Experience:** Tailored test drive experiences for individual needs.\n\n#### 5. WHEN is the right moment to ask for the sale?\n**Optimal Timing:**\n- After providing value through educational content or a compelling test drive video.\n- When viewers express interest in the car model or financing options.\n\n### Growth Strategy Deliverables\n\n#### Primary Offer\n- **Primary Offer:** Test Drive Your Dream Car Today! 🚗💨\n- **CTA Trigger Word:** \"Test Drive\"\n\n#### 30/60/90 Day Growth Plan with Specific Milestones\n**30-Day Goal:**\n- Publish 15 viral video scripts across TikTok and Instagram Reels.\n- Engage in at least 2 local events/meetings to build brand presence.\n\n**60-Day Goal:**\n- Increase social media engagement by 20% through consistent posting and community interaction.\n- Launch a referral program for existing customers to bring in new leads.\n\n**90-Day Goal:**\n- Achieve a 15% increase in website traffic from organic sources (social media, SEO).\n- Close at least 5 sales directly attributed to social media campaigns.\n\n#### Complete Funnel - Content to Closed Deal\n1. **Social Content:** Engaging videos on TikTok and Instagram Reels.\n2. **Comment/DM Trigger:** \"Test Drive\" keyword in ManyChat.\n3. **Landing Page:** Dedicated landing page for test drive bookings.\n4. **Lead Magnet:** Free car maintenance guide or financing opti",
+          "wordCount": 1135,
+          "keyTopics": [
+            "description",
+            "financing",
+            "tiktok",
+            "instagram",
+            "engagement",
+            "primary",
+            "videos",
+            "options",
+            "booking",
+            "objection",
+            "customer",
+            "trigger"
+          ],
+          "usedPreviousContext": {
+            "confidence": 94,
+            "pickedUpTopics": [
+              "description",
+              "financing",
+              "tiktok",
+              "instagram",
+              "engagement",
+              "primary",
+              "videos",
+              "options",
+              "booking",
+              "objection",
+              "customer"
+            ],
+            "droppedTopics": [
+              "trigger"
+            ],
+            "topicPickupRate": 92
+          }
+        }
+      ],
+      "status": "complete",
+      "completedAt": "2026-04-17T23:57:06.984Z",
+      "duration": "159s"
     }
   ]
 }

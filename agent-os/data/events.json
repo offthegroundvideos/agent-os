@@ -1,6 +1,109 @@
 {
   "events": [
     {
+      "event_id": "evt_1776470227014_2hhb8",
+      "event_name": "renderjob.created",
+      "entity_type": "render_job",
+      "entity_id": "rnd_1776470227003_rikgu",
+      "occurred_at": "2026-04-17T23:57:07.014Z",
+      "source_system": "production_ops",
+      "idempotency_key": "renderjob.created:rnd_1776470227003_rikgu:1776470227014",
+      "payload": {
+        "calendar_entry_id": "pkg_1776470226996_wazq1"
+      }
+    },
+    {
+      "event_id": "evt_1776470227014_3mykt",
+      "event_name": "editjob.created",
+      "entity_type": "edit_job",
+      "entity_id": "edt_1776470227003_64k95",
+      "occurred_at": "2026-04-17T23:57:07.014Z",
+      "source_system": "production_ops",
+      "idempotency_key": "editjob.created:edt_1776470227003_64k95:1776470227014",
+      "payload": {
+        "calendar_entry_id": "pkg_1776470226996_wazq1"
+      }
+    },
+    {
+      "event_id": "evt_1776470227013_77ugz",
+      "event_name": "shootschedule.created",
+      "entity_type": "shoot_schedule",
+      "entity_id": "sht_1776470227003_h3urv",
+      "occurred_at": "2026-04-17T23:57:07.013Z",
+      "source_system": "production_ops",
+      "idempotency_key": "shootschedule.created:sht_1776470227003_h3urv:1776470227013",
+      "payload": {
+        "calendar_entry_id": "pkg_1776470226996_wazq1"
+      }
+    },
+    {
+      "event_id": "evt_1776470133741_le9m4",
+      "event_name": "script.created",
+      "entity_type": "script",
+      "entity_id": "scr_1776470133740_fc78o",
+      "occurred_at": "2026-04-17T23:55:33.741Z",
+      "source_system": "content_intelligence",
+      "idempotency_key": "script.created:scr_1776470133740_fc78o:1776470133741",
+      "payload": {
+        "asset_id": "ast_1776470031332_55vgf",
+        "approval_status": "draft"
+      }
+    },
+    {
+      "event_id": "evt_1776468335655_9seik",
+      "event_name": "client.onboarding.prepared",
+      "entity_type": "client",
+      "entity_id": "cli_1776468258461_63xi1",
+      "occurred_at": "2026-04-17T23:25:35.655Z",
+      "source_system": "ghl_connector",
+      "idempotency_key": "client.onboarding.prepared:cli_1776468258461_63xi1:1776468335655",
+      "payload": {
+        "researchPacketId": "ast_1776465156305_6lzzx",
+        "locationId": "",
+        "managedSiteStatus": "ready_to_build"
+      }
+    },
+    {
+      "event_id": "evt_1776468331331_zek5w",
+      "event_name": "client.onboarding.prepared",
+      "entity_type": "client",
+      "entity_id": "cli_1776468258461_63xi1",
+      "occurred_at": "2026-04-17T23:25:31.331Z",
+      "source_system": "ghl_connector",
+      "idempotency_key": "client.onboarding.prepared:cli_1776468258461_63xi1:1776468331331",
+      "payload": {
+        "researchPacketId": "ast_1776465156305_6lzzx",
+        "locationId": "",
+        "managedSiteStatus": "ready_to_build"
+      }
+    },
+    {
+      "event_id": "evt_1776468258463_z997s",
+      "event_name": "client.updated",
+      "entity_type": "client",
+      "entity_id": "cli_1776468258461_63xi1",
+      "occurred_at": "2026-04-17T23:24:18.463Z",
+      "source_system": "client_intelligence",
+      "idempotency_key": "client.updated:cli_1776468258461_63xi1:1776468258463",
+      "payload": {
+        "status": "active",
+        "name": "Test"
+      }
+    },
+    {
+      "event_id": "evt_1776464984748_ulct1",
+      "event_name": "client.updated",
+      "entity_type": "client",
+      "entity_id": "cli_1776464984747_rm8cr",
+      "occurred_at": "2026-04-17T22:29:44.748Z",
+      "source_system": "client_intelligence",
+      "idempotency_key": "client.updated:cli_1776464984747_rm8cr:1776464984748",
+      "payload": {
+        "status": "active",
+        "name": "Jack Riggs"
+      }
+    },
+    {
       "event_id": "evt_1776347712292_9230b",
       "event_name": "renderjob.created",
       "entity_type": "render_job",
@@ -733,5 +836,5 @@
       }
     }
   ],
-  "lastUpdated": "2026-04-16T13:55:12.292Z"
+  "lastUpdated": "2026-04-17T23:57:07.015Z"
 }

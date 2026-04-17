@@ -1,6 +1,35 @@
 {
   "shootSchedules": [
     {
+      "id": "sht_1776470227003_h3urv",
+      "calendar_entry_id": "pkg_1776470226996_wazq1",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "owner": "Production lead",
+      "shoot_date": "2026-04-17",
+      "due_date": "2026-04-17",
+      "location": "Main camera setup",
+      "format": "talking_head",
+      "status": "ready_to_shoot",
+      "talent": [
+        "Founder"
+      ],
+      "shot_requirements": [
+        "First frame must support the hook: Client: Jack Riggs\nNiche: Selling cars\nPrimary offer: Come buy a car!\nTarget audience: People who need a car or recently crashed their car. Also businesses that need a fleet of cars such as uber or construction companies. \nService area or geography: Bay area\nPrimary business goal: Sell cars and warranty on the cars",
+        "Keep format locked to talking head.",
+        "Deliver one clear idea for problem-aware viewers."
+      ],
+      "first_frame_instruction": "Client: Jack Riggs\nNiche: Selling cars\nPrimary offer: Come buy a car!\nTarget audience: People who need a car or recently crashed their car. Also businesses that need a fleet of cars such as uber or construction companies. \nService area or geography: Bay area\nPrimary business goal: Sell cars and warranty on the cars",
+      "notes": "Shoot for instagram, tiktok with default. Capacity mode: high.",
+      "version": 1,
+      "created_at": "2026-04-17T23:57:07.003Z",
+      "updated_at": "2026-04-17T23:57:07.003Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-17T23:57:06.996Z",
+      "updatedAt": "2026-04-17T23:57:07.003Z"
+    },
+    {
       "id": "sht_1776347712280_7nnp4",
       "calendar_entry_id": "pkg_1776347712274_o1xy4",
       "client_id": "cli_default",
@@ -1134,6 +1163,30 @@
   ],
   "editJobs": [
     {
+      "id": "edt_1776470227003_64k95",
+      "calendar_entry_id": "pkg_1776470226996_wazq1",
+      "client_id": "cli_default",
+      "campaign_id": "cmp_default",
+      "content_asset_id": "ast_1776470031332_55vgf",
+      "edit_lane": "resolve",
+      "editor": "Unassigned editor",
+      "edit_tier": "basic",
+      "caption_style": "clean readable captions",
+      "status": "queued",
+      "due_date": "2026-04-18",
+      "revision_ceiling": 2,
+      "source_media_ids": [],
+      "footage_ids": [],
+      "notes": "Edit for reach lane. Keep problem-aware messaging intact.",
+      "version": 1,
+      "created_at": "2026-04-17T23:57:07.003Z",
+      "updated_at": "2026-04-17T23:57:07.003Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-17T23:57:06.996Z",
+      "updatedAt": "2026-04-17T23:57:07.003Z"
+    },
+    {
       "id": "edt_1776347712280_zdice",
       "calendar_entry_id": "pkg_1776347712274_o1xy4",
       "client_id": "cli_default",
@@ -2071,6 +2124,43 @@
     }
   ],
   "renderJobs": [
+    {
+      "id": "rnd_1776470227003_rikgu",
+      "edit_job_id": "edt_1776470227003_64k95",
+      "calendar_entry_id": "pkg_1776470226996_wazq1",
+      "client_id": "cli_default",
+      "content_asset_id": "ast_1776470031332_55vgf",
+      "output_targets": [
+        "instagram_vertical",
+        "tiktok_vertical"
+      ],
+      "public_media_url": "https://public.example.com/render-media/rnd_1776470227003_rikgu/instagram.mp4",
+      "media_url": "https://public.example.com/render-media/rnd_1776470227003_rikgu/instagram.mp4",
+      "output_urls": {
+        "instagram": "https://public.example.com/render-media/rnd_1776470227003_rikgu/instagram.mp4",
+        "tiktok": "https://public.example.com/render-media/rnd_1776470227003_rikgu/tiktok.mp4"
+      },
+      "local_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1776470227003_rikgu\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\data\\render-media\\rnd_1776470227003_rikgu\\tiktok.mp4"
+      },
+      "public_output_paths": {
+        "instagram": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1776470227003_rikgu\\instagram.mp4",
+        "tiktok": "C:\\AI-Agents\\agent-os\\public\\render-media\\rnd_1776470227003_rikgu\\tiktok.mp4"
+      },
+      "render_host_mode": "public_static_file",
+      "render_seed_source": "C:\\AI-Agents\\deer-flow\\frontend\\public\\demo\\threads\\4f3e55ee-f853-43db-bfb3-7d1a411f03cb\\user-data\\outputs\\darcy-proposal-video.mp4",
+      "status": "queued",
+      "due_date": "2026-04-18",
+      "notes": "Render publish-ready vertical variants for instagram, tiktok.",
+      "version": 1,
+      "created_at": "2026-04-17T23:57:07.003Z",
+      "updated_at": "2026-04-17T23:57:07.003Z",
+      "created_by": "system",
+      "source_system": "production_ops",
+      "createdAt": "2026-04-17T23:57:06.996Z",
+      "updatedAt": "2026-04-17T23:57:07.013Z"
+    },
     {
       "id": "rnd_1776347712280_8g298",
       "edit_job_id": "edt_1776347712280_zdice",
@@ -3515,5 +3605,5 @@
       "updatedAt": "2026-04-01T01:35:15.898Z"
     }
   ],
-  "lastUpdated": "2026-04-16T13:55:12.292Z"
+  "lastUpdated": "2026-04-17T23:57:07.015Z"
 }

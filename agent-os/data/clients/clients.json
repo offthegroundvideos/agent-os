@@ -1,90 +1,6 @@
 {
   "clients": [
     {
-      "id": "cli_demo_milo_brooks",
-      "name": "Milo Brooks Nutrition",
-      "status": "active",
-      "timezone": "America/Los_Angeles",
-      "primary_channels": [
-        "instagram",
-        "tiktok"
-      ],
-      "ghl_location_id": "",
-      "default_calendar_id": "",
-      "niche": "Photo Books",
-      "business_name": "Milo Brooks Nutrition",
-      "website": "https://milobrooks.example.com",
-      "address": "",
-      "city": "San Francisco",
-      "state": "CA",
-      "postalCode": "",
-      "country": "US",
-      "context_type": "client",
-      "service_area": "Bay Area, CA",
-      "target_audience": "Art lovers & photo enthusiasts",
-      "primary_offer": "Photo Books system",
-      "core_cta": "cta_default",
-      "brand_positioning": "Built for art lovers & photo enthusiasts so the promise in the content becomes the promise on the page. OTG can differentiate itself by offering personalized storytelling techniques and exclusive post-production effects.",
-      "research_packet_id": "ast_1775834663464_r1beh",
-      "research_summary": "### MARKET SNAPSHOT The photo book niche is growing as more art lovers seek unique and personalized ways to display their favorite photographs. Key players like Blurb, Mixbook, and Shutterfly dominate the market but there's room for local artists and photographers to capture a share through direct engagement with their communities. ### PLATFORM SPLIT **Instagram:** - Strong visual storytelling opportunities. - Captivate art lovers with high-quality images and engaging captions. **TikTok:** - Sho ### Growth Strategy for Photo Books #### 1. WHO is the exact target customer and where do they spend time online? **Target Audience:** Art lovers who appreciate high-quality, personalized photo books. - **Primary Platform:** Instagram (for visual storytelling) - **Secondary Platform:** TikTok (for fast-paced tutorials and transformations) #### 2. WHAT is the one offer that converts them fastest? **Primary Offer:** Buy a beautifully designed photo book with unique storytelling techniques tailored {\"task_name\":\"publishing_plan\",\"asset_id\":\"publishing-sam-001\",\"source_inputs\":[],\"summary\":\"\",\"outputs\":{\"total_posts\":30,\"platforms\":[\"Instagram\",\"TikTok\"],\"posting_frequency\":\"Daily\",\"top_content",
-      "onboarding_packet": {
-        "niche": "Photo Books",
-        "audience": "Art lovers & photo enthusiasts",
-        "offerName": "Photo Books system",
-        "campaignGoal": "Book consultation calls",
-        "platforms": [
-          "instagram",
-          "tiktok"
-        ],
-        "assetId": "ast_1775834663464_r1beh",
-        "topic": "Client: Michelle Elmore\nNiche: Photo Books\nPrimary offer: Buy a book\nTarget audience: Art lovers\nService area or geography: Bay Area, CA\nPrimary business goal: Buy a book\nPriority platforms: Instagram, TikTok",
-        "ctaId": "cta_default",
-        "headline": "Turn Client: Michelle Elmore Niche: Photo Books Primary offer: Buy a book Target audience: Art lovers Service area or geograp attention into qualified inquiries.",
-        "subheadline": "Built for art lovers & photo enthusiasts so the promise in the content becomes the promise on the page. OTG can differentiate itself by offering personalized storytelling techniques and exclusive post-production effects.",
-        "benefits": [
-          "See source output for full script body"
-        ],
-        "process": [
-          "Map the buyer stage: problem-aware",
-          "Lead with the angle: Client: Michelle Elmore Niche: Photo Books Primary offer: Buy a book Target audience: Art lovers Ser",
-          "Route the click to CTA cta_default"
-        ],
-        "strategyNotes": "### MARKET SNAPSHOT The photo book niche is growing as more art lovers seek unique and personalized ways to display their favorite photographs. Key players like Blurb, Mixbook, and Shutterfly dominate the market but there's room for local artists and photographers to capture a share through direct engagement with their communities. ### PLATFORM SPLIT **Instagram:** - Strong visual storytelling opportunities. - Captivate art lovers with high-quality images and engaging captions. **TikTok:** - Sho\n\n### Growth Strategy for Photo Books #### 1. WHO is the exact target customer and where do they spend time online? **Target Audience:** Art lovers who appreciate high-quality, personalized photo books. - **Primary Platform:** Instagram (for visual storytelling) - **Secondary Platform:** TikTok (for fast-paced tutorials and transformations) #### 2. WHAT is the one offer that converts them fastest? **Primary Offer:** Buy a beautifully designed photo book with unique storytelling techniques tailored\n\n{\"task_name\":\"publishing_plan\",\"asset_id\":\"publishing-sam-001\",\"source_inputs\":[],\"summary\":\"\",\"outputs\":{\"total_posts\":30,\"platforms\":[\"Instagram\",\"TikTok\"],\"posting_frequency\":\"Daily\",\"top_content_type\":\"Talking Head Reels and Short Videos\",\"manychat_triggers\":[\"BUY_NOW\",\"DISCOVER_TECHNIQUES\",\"ORDER_NOW\",\"TRANSFORM_PHOTOS\",\"UNIQUE_STORYTELLING\"],\"shoot_days_needed\":2,\"editors_needed\":[\"swope\",\"teja\"],\"reformats\":[{\"script_01\":{\"original_format\":\"Talking Head Reels\",\"alternate_formats\":[\"DIY Tu",
-        "campaignId": "cmp_default",
-        "clientId": "cli_default",
-        "attachedAt": "2026-04-10T15:28:27.901Z"
-      },
-      "onboarding_status": "research_attached",
-      "ghl_onboarding_payload": {},
-      "ghl_onboarding_sync_status": "staged",
-      "ghl_last_onboarding_sync_at": null,
-      "ghl_last_onboarding_sync_error": "",
-      "ghl_owner_contact_id": "",
-      "ghl_last_onboarding_note_id": "",
-      "ghl_custom_field_sync_status": "not_synced",
-      "ghl_custom_field_sync_summary": {},
-      "managed_site_url": "",
-      "landing_page_url": "",
-      "managed_site_status": "not_started",
-      "website_management": {},
-      "funnel_tracking_status": "not_started",
-      "crm_setup_status": "not_started",
-      "crm_defaults": {},
-      "apiKey": "",
-      "email": "hello@milobrooks.example.com",
-      "phone": "",
-      "notes": "Demo client for workflow and testing.",
-      "color": "#10b981",
-      "ops_mode": "subaccount",
-      "version": 2,
-      "created_at": "2026-04-09T23:55:00.000Z",
-      "updated_at": "2026-04-10T15:28:27.902Z",
-      "created_by": "human",
-      "source_system": "agent-os-demo",
-      "createdAt": "2026-04-09T23:55:00.000Z",
-      "updatedAt": "2026-04-10T15:28:27.902Z"
-    },
-    {
       "id": "cli_demo_jack_riggs",
       "name": "Jack Riggs Dog Training",
       "status": "active",
@@ -411,7 +327,252 @@
       "source_system": "cloudflare_ingest",
       "createdAt": "2026-04-09T22:15:14.519Z",
       "updatedAt": "2026-04-09T23:55:00.000Z"
+    },
+    {
+      "id": "cli_1776464984747_rm8cr",
+      "name": "Jack Riggs",
+      "status": "active",
+      "timezone": "America/Los_Angeles",
+      "primary_channels": [],
+      "ghl_location_id": "",
+      "default_calendar_id": "",
+      "niche": "Selling cars",
+      "business_name": "Jack Riggs",
+      "website": "",
+      "address": "",
+      "city": "",
+      "state": "",
+      "postalCode": "",
+      "country": "US",
+      "context_type": "client",
+      "service_area": "",
+      "target_audience": "[object Object]",
+      "primary_offer": "Selling cars system",
+      "core_cta": "cta_default",
+      "brand_positioning": "Built for [object object] so the promise in the content becomes the promise on the page. WHO is the exact target customer and where do they spend time online? **Exact Target Customer:** - **Primary Audience:** Individuals looking to purchase a new or used car, business",
+      "research_packet_id": "ast_1776470031332_55vgf",
+      "research_summary": "### MARKET SNAPSHOT The car sales niche is highly competitive, with numerous dealerships and independent sellers vying for attention in the Bay Area market. Key players include traditional dealerships like Toyota of Fremont and Tesla, as well as smaller independent sellers leveraging social media platforms to reach potential customers. ### PLATFORM SPLIT - **TikTok**: Short-form videos showcasing car features, test drives, and customer testimonials. - **Instagram Reels/Explore Page**: Longer-for WHO is the exact target customer and where do they spend time online? **Exact Target Customer:** - **Primary Audience:** Individuals looking to purchase a new or used car, business owners needing fleet vehicles. - **Geographic Location:** Bay Area (San Francisco, Oakland, San Jose). - **Interests:** Car enthusiasts, business owners in need of reliable transportation. **Where They Spend Time Online:** - Social Media Platforms: TikTok, Instagram Reels/Explore Page, LinkedIn - Forums and Groups: Re",
+      "onboarding_packet": {
+        "assetId": "ast_1776470031332_55vgf",
+        "topic": "Client: Jack Riggs\nNiche: Selling cars\nPrimary offer: Come buy a car!\nTarget audience: People who need a car or recently crashed their car. Also businesses that need a fleet of cars such as uber or construction companies. \nService area or geography: Bay area\nPrimary business goal: Sell cars and warranty on the cars",
+        "niche": "Selling cars",
+        "audience": {
+          "Primary Audience": [
+            "Individuals looking to purchase a new or used car",
+            "Businesses needing fleet vehicles for Uber, construction companies, etc."
+          ],
+          "Geographic Location": [
+            "Bay Area (San Francisco, Oakland, San Jose)"
+          ],
+          "Interests": [
+            "Car enthusiasts",
+            "Business owners in need of reliable transportation"
+          ]
+        },
+        "offerName": "Selling cars system",
+        "ctaId": "cta_default",
+        "platforms": [
+          "instagram",
+          "tiktok"
+        ],
+        "headline": "Turn Selling cars system attention into qualified inquiries.",
+        "subheadline": "Built for [object object] so the promise in the content becomes the promise on the page. WHO is the exact target customer and where do they spend time online? **Exact Target Customer:** - **Primary Audience:** Individuals looking to purchase a new or used car, business",
+        "benefits": [
+          "See source output for full script body"
+        ],
+        "process": [
+          "Map the buyer stage: problem-aware",
+          "Lead with the angle: Client: Jack Riggs Niche: Selling cars Primary offer: Come buy a car! Target audience: People who ne",
+          "Route the click to CTA cta_default"
+        ],
+        "strategyNotes": "### MARKET SNAPSHOT The car sales niche is highly competitive, with numerous dealerships and independent sellers vying for attention in the Bay Area market. Key players include traditional dealerships like Toyota of Fremont and Tesla, as well as smaller independent sellers leveraging social media platforms to reach potential customers. ### PLATFORM SPLIT - **TikTok**: Short-form videos showcasing car features, test drives, and customer testimonials. - **Instagram Reels/Explore Page**: Longer-for WHO is the exact target customer and where do they spend time online? **Exact Target Customer:** - **Primary Audience:** Individuals looking to purchase a new or used car, business owners needing fleet vehicles. - **Geographic Location:** Bay Area (San Francisco, Oakland, San Jose). - **Interests:** Car enthusiasts, business owners in need of reliable transportation. **Where They Spend Time Online:** - Social Media Platforms: TikTok, Instagram Reels/Explore Page, LinkedIn - Forums and Groups: Re",
+        "campaignId": "cmp_default",
+        "clientId": "cli_default",
+        "attachedAt": "2026-04-17T23:57:07.255Z"
+      },
+      "onboarding_status": "research_attached",
+      "ghl_onboarding_payload": {},
+      "ghl_onboarding_sync_status": "staged",
+      "ghl_last_onboarding_sync_at": null,
+      "ghl_last_onboarding_sync_error": "",
+      "ghl_owner_contact_id": "",
+      "ghl_last_onboarding_note_id": "",
+      "ghl_custom_field_sync_status": "not_synced",
+      "ghl_custom_field_sync_summary": {},
+      "managed_site_url": "",
+      "landing_page_url": "",
+      "managed_site_status": "not_started",
+      "website_management": {},
+      "funnel_tracking_status": "not_started",
+      "crm_setup_status": "not_started",
+      "crm_defaults": {},
+      "apiKey": "",
+      "email": "",
+      "phone": "",
+      "notes": "",
+      "color": "#f59e0b",
+      "ops_mode": "subaccount",
+      "version": 2,
+      "created_at": "2026-04-17T22:29:44.747Z",
+      "updated_at": "2026-04-17T23:57:07.255Z",
+      "created_by": "human",
+      "source_system": "agent-os",
+      "createdAt": "2026-04-17T22:29:44.747Z",
+      "updatedAt": "2026-04-17T23:57:07.255Z"
+    },
+    {
+      "id": "cli_1776468258461_63xi1",
+      "name": "Test",
+      "status": "active",
+      "timezone": "America/Los_Angeles",
+      "primary_channels": [],
+      "ghl_location_id": "",
+      "default_calendar_id": "",
+      "niche": "Client: Jack Riggs\nNiche: Toyota New and Used car dealer\nPrimary offer: Book a call to see if we have your car in stock!\nTarget audience: People who need cars, or recently crashed their cars, or people looking to buy a fleet of vehicles for their company. \nService area or geography: The bay area\nPrimary business goal: Sell cars\nPriority platforms: Instagram, TikTok, Facebook, YouTube Shorts, YouTube, X / Twitter, Threads, Snapchat, Reddit\nSpecific research and execution notes: I want to see the best plan for selling cars and generating leads on people who want to come buy a car. It’s important they trust us as an advisor, rather then think of us as salesmen.",
+      "business_name": "Test",
+      "website": "",
+      "address": "",
+      "city": "",
+      "state": "",
+      "postalCode": "",
+      "country": "US",
+      "context_type": "client",
+      "service_area": "",
+      "target_audience": "",
+      "primary_offer": "Client: Jack Riggs\nNiche: Toyota New and Used car dealer\nPrimary offer: Book a call to see if we have your car in stock!\nTarget audience: People who need cars, or recently crashed their cars, or people looking to buy a fleet of vehicles for their company. \nService area or geography: The bay area\nPrimary business goal: Sell cars\nPriority platforms: Instagram, TikTok, Facebook, YouTube Shorts, YouTube, X / Twitter, Threads, Snapchat, Reddit\nSpecific research and execution notes: I want to see the best plan for selling cars and generating leads on people who want to come buy a car. It’s important they trust us as an advisor, rather then think of us as salesmen. system",
+      "core_cta": "cta_default",
+      "brand_positioning": "### MARKET SNAPSHOT: The market for car dealerships in the Bay Area is highly competitive, with numerous online and offline players vying for customer attention. The key players include both large dealership chains and independent dealers like Toyota. ### PLATFORM SPLIT: - **Inst",
+      "research_packet_id": "ast_1776465156305_6lzzx",
+      "research_summary": "### MARKET SNAPSHOT: The market for car dealerships in the Bay Area is highly competitive, with numerous online and offline players vying for customer attention. The key players include both large dealership chains and independent dealers like Toyota. ### PLATFORM SPLIT: - **Instagram**: Strong visual storytelling with clear calls-to-action. - **TikTok**: Short-form video content with engaging hooks and fast pacing. - **Facebook**: Detailed information pages and customer testimonials. - **YouTub",
+      "onboarding_packet": {
+        "assetId": "ast_1776465156305_6lzzx",
+        "topic": "Client: Jack Riggs\nNiche: Toyota New and Used car dealer\nPrimary offer: Book a call to see if we have your car in stock!\nTarget audience: People who need cars, or recently crashed their cars, or people looking to buy a fleet of vehicles for their company. \nService area or geography: The bay area\nPrimary business goal: Sell cars\nPriority platforms: Instagram, TikTok, Facebook, YouTube Shorts, YouTube, X / Twitter, Threads, Snapchat, Reddit\nSpecific research and execution notes: I want to see the best plan for selling cars and generating leads on people who want to come buy a car. It’s important they trust us as an advisor, rather then think of us as salesmen.",
+        "niche": "Client: Jack Riggs\nNiche: Toyota New and Used car dealer\nPrimary offer: Book a call to see if we have your car in stock!\nTarget audience: People who need cars, or recently crashed their cars, or people looking to buy a fleet of vehicles for their company. \nService area or geography: The bay area\nPrimary business goal: Sell cars\nPriority platforms: Instagram, TikTok, Facebook, YouTube Shorts, YouTube, X / Twitter, Threads, Snapchat, Reddit\nSpecific research and execution notes: I want to see the best plan for selling cars and generating leads on people who want to come buy a car. It’s important they trust us as an advisor, rather then think of us as salesmen.",
+        "audience": "",
+        "offerName": "Client: Jack Riggs\nNiche: Toyota New and Used car dealer\nPrimary offer: Book a call to see if we have your car in stock!\nTarget audience: People who need cars, or recently crashed their cars, or people looking to buy a fleet of vehicles for their company. \nService area or geography: The bay area\nPrimary business goal: Sell cars\nPriority platforms: Instagram, TikTok, Facebook, YouTube Shorts, YouTube, X / Twitter, Threads, Snapchat, Reddit\nSpecific research and execution notes: I want to see the best plan for selling cars and generating leads on people who want to come buy a car. It’s important they trust us as an advisor, rather then think of us as salesmen. system",
+        "ctaId": "cta_default",
+        "platforms": [],
+        "headline": "Turn Client: Jack Riggs Niche: Toyota New and Used car dealer Primary offer: Book a call to see if we have your car in stock! attention into qualified inquiries.",
+        "subheadline": "",
+        "benefits": [
+          "Match the language in the content to the promise on the page",
+          "Turn attention into a specific next step",
+          "Use proof and positioning that feel native to the niche"
+        ],
+        "process": [
+          "Move the visitor to one clear next step"
+        ],
+        "strategyNotes": "### MARKET SNAPSHOT: The market for car dealerships in the Bay Area is highly competitive, with numerous online and offline players vying for customer attention. The key players include both large dealership chains and independent dealers like Toyota. ### PLATFORM SPLIT: - **Instagram**: Strong visual storytelling with clear calls-to-action. - **TikTok**: Short-form video content with engaging hooks and fast pacing. - **Facebook**: Detailed information pages and customer testimonials. - **YouTub",
+        "campaignId": "cmp_default",
+        "clientId": "cli_default",
+        "attachedAt": "2026-04-17T23:25:35.654Z"
+      },
+      "onboarding_status": "ready_for_build",
+      "ghl_onboarding_payload": {
+        "clientId": "cli_1776468258461_63xi1",
+        "clientName": "Test",
+        "locationId": "",
+        "businessName": "Test",
+        "niche": "Client: Jack Riggs\nNiche: Toyota New and Used car dealer\nPrimary offer: Book a call to see if we have your car in stock!\nTarget audience: People who need cars, or recently crashed their cars, or people looking to buy a fleet of vehicles for their company. \nService area or geography: The bay area\nPrimary business goal: Sell cars\nPriority platforms: Instagram, TikTok, Facebook, YouTube Shorts, YouTube, X / Twitter, Threads, Snapchat, Reddit\nSpecific research and execution notes: I want to see the best plan for selling cars and generating leads on people who want to come buy a car. It’s important they trust us as an advisor, rather then think of us as salesmen.",
+        "website": "",
+        "targetAudience": "",
+        "primaryOffer": "Client: Jack Riggs\nNiche: Toyota New and Used car dealer\nPrimary offer: Book a call to see if we have your car in stock!\nTarget audience: People who need cars, or recently crashed their cars, or people looking to buy a fleet of vehicles for their company. \nService area or geography: The bay area\nPrimary business goal: Sell cars\nPriority platforms: Instagram, TikTok, Facebook, YouTube Shorts, YouTube, X / Twitter, Threads, Snapchat, Reddit\nSpecific research and execution notes: I want to see the best plan for selling cars and generating leads on people who want to come buy a car. It’s important they trust us as an advisor, rather then think of us as salesmen. system",
+        "coreCta": "cta_default",
+        "brandPositioning": "### MARKET SNAPSHOT: The market for car dealerships in the Bay Area is highly competitive, with numerous online and offline players vying for customer attention. The key players include both large dealership chains and independent dealers like Toyota. ### PLATFORM SPLIT: - **Inst",
+        "researchPacketId": "ast_1776465156305_6lzzx",
+        "campaignId": "cmp_default",
+        "pageBrief": {
+          "title": "Turn Client: Jack Riggs Niche: Toyota New and Used car dealer Primary offer: Book a call to see if we have your car in stock! attention into qualified inquiries.",
+          "subheadline": "Move the content click into a qualified next step.",
+          "sectionHeadlines": [
+            "Why this matters now",
+            "What makes this different",
+            "What happens next"
+          ],
+          "benefitBullets": [
+            "Match the language in the content to the promise on the page",
+            "Turn attention into a specific next step",
+            "Use proof and positioning that feel native to the niche"
+          ],
+          "processBullets": [
+            "Move the visitor to one clear next step"
+          ],
+          "cta": "cta_default",
+          "notes": "### MARKET SNAPSHOT: The market for car dealerships in the Bay Area is highly competitive, with numerous online and offline players vying for customer attention. The key players include both large dealership chains and independent dealers like Toyota. ### PLATFORM SPLIT: - **Instagram**: Strong visual storytelling with clear calls-to-action. - **TikTok**: Short-form video content with engaging hooks and fast pacing. - **Facebook**: Detailed information pages and customer testimonials. - **YouTub",
+          "assetId": "ast_1776465156305_6lzzx",
+          "clientId": "cli_default",
+          "campaignId": "cmp_default"
+        },
+        "onboardingSummary": "### MARKET SNAPSHOT: The market for car dealerships in the Bay Area is highly competitive, with numerous online and offline players vying for customer attention. The key players include both large dealership chains and independent dealers like Toyota. ### PLATFORM SPLIT: - **Instagram**: Strong visual storytelling with clear calls-to-action. - **TikTok**: Short-form video content with engaging hooks and fast pacing. - **Facebook**: Detailed information pages and customer testimonials. - **YouTub",
+        "stagedAt": "2026-04-17T23:25:35.654Z"
+      },
+      "ghl_onboarding_sync_status": "staged",
+      "ghl_last_onboarding_sync_at": "2026-04-17T23:25:35.654Z",
+      "ghl_last_onboarding_sync_error": "",
+      "ghl_owner_contact_id": "",
+      "ghl_last_onboarding_note_id": "",
+      "ghl_custom_field_sync_status": "not_synced",
+      "ghl_custom_field_sync_summary": {},
+      "managed_site_url": "",
+      "landing_page_url": "",
+      "managed_site_status": "ready_to_build",
+      "website_management": {
+        "owner": "agent-os",
+        "managedBy": "otg",
+        "pageContextAssetId": "ast_1776465156305_6lzzx",
+        "landingPageTitle": "Turn Client: Jack Riggs Niche: Toyota New and Used car dealer Primary offer: Book a call to see if we have your car in stock! attention into qualified inquiries.",
+        "landingPageCta": "cta_default",
+        "targetPlatforms": [],
+        "websiteGoal": "Convert content attention into qualified leads",
+        "recommendedSections": [
+          "hero",
+          "proof",
+          "offer",
+          "process",
+          "faq",
+          "cta"
+        ],
+        "lastPlannedAt": "2026-04-17T23:25:35.654Z"
+      },
+      "funnel_tracking_status": "staged",
+      "crm_setup_status": "staged",
+      "crm_defaults": {
+        "tags": [
+          "agent-os",
+          "otg-managed",
+          "client-jack-riggs-niche-toyota-new-and-used-car-dealer-primary-offer-book-a-call-to-see-if-we-have-your-car-in-stock-target-audience-people-who-need-cars-or-recently-crashed-their-cars-or-people-looking-to-buy-a-fleet-of-vehicles-for-their-company-service-area-or-geography-the-bay-area-primary-business-goal-sell-cars-priority-platforms-instagram-tiktok-facebook-youtube-shorts-youtube-x-twitter-threads-snapchat-reddit-specific-research-and-execution-notes-i-want-to-see-the-best-plan-for-selling-cars-and-generating-leads-on-people-who-want-to-come-buy-a-car-it-s-important-they-trust-us-as-an-advisor-rather-then-think-of-us-as-salesmen"
+        ],
+        "attributionFields": [
+          "landing_page_id",
+          "cta_id",
+          "campaign_id",
+          "content_asset_id",
+          "platform"
+        ],
+        "recommendedPipeline": "main_sales",
+        "recommendedStages": [
+          "new_lead",
+          "qualified",
+          "booked_call",
+          "proposal_sent",
+          "won"
+        ],
+        "sourceSystem": "agent-os"
+      },
+      "apiKey": "",
+      "email": "",
+      "phone": "",
+      "notes": "",
+      "color": "#f59e0b",
+      "ops_mode": "subaccount",
+      "version": 3,
+      "created_at": "2026-04-17T23:24:18.461Z",
+      "updated_at": "2026-04-17T23:25:35.655Z",
+      "created_by": "human",
+      "source_system": "agent-os",
+      "createdAt": "2026-04-17T23:24:18.461Z",
+      "updatedAt": "2026-04-17T23:25:35.655Z"
     }
   ],
-  "activeClientId": null
+  "activeClientId": "cli_1776464984747_rm8cr"
 }
