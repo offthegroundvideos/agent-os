@@ -1,109 +1,31 @@
 {
   "app": "agent-os",
   "reason": "process-completed",
-  "generatedAt": "2026-04-08T19:53:02.105Z",
-  "activeClient": {
-    "id": "cli_1775092797787_3sxpw",
-    "name": "Cloudflare Demo Prospect",
-    "status": "active",
-    "timezone": "America/Los_Angeles",
-    "primary_channels": [],
-    "ghl_location_id": "",
-    "default_calendar_id": "",
-    "niche": "Selling Toyota Cars in Marin County",
-    "business_name": "Cloudflare Demo Prospect",
-    "website": "https://demo-prospect.example.com",
-    "address": "",
-    "city": "",
-    "state": "",
-    "postalCode": "",
-    "country": "US",
-    "service_area": "San Diego, CA",
-    "target_audience": "Commuters and families",
-    "primary_offer": "Selling Toyota Cars in Marin County system",
-    "core_cta": "cta_default",
-    "brand_positioning": "Built for commuters and families so the promise in the content becomes the promise on the page. OTG can differentiate by focusing on interactive challenges and customer testimonials.",
-    "research_packet_id": "ast_1775120795412_zjryi",
-    "research_summary": "### MARKET SNAPSHOT The market for selling Toyota cars in Marin County is highly competitive, with local dealerships and online platforms vying for attention. However, the top performers are leveraging social media to drive foot traffic through innovative content that resonates with commuters and families. ### PLATFORM SPLIT **Instagram:** - **Top Performers:** Use Reels to showcase car features and customer testimonials. - **Format:** Short-form videos (15-60 seconds) with engaging captions and ### Growth Strategy for Selling Toyota Cars in Marin County #### 1. Target Customer and Online Presence: - **Exact Target Customers:** Commuters and families living or working in Marin County, San Rafael, and the Bay Area. - **Where They Spend Time Online:** - Instagram (Reels) - TikTok - Local community groups on Facebook #### 2. Fastest Converting Offer: - **Primary Offer:** Schedule a time to come in and test drive a Toyota car. #### 3. Lowest-Cost Acquisition Method: - Use local community gr ### Publishing Plan #### 1. 30-Day Posting Calendar with Specific Dates, Times, and Platforms - **Day 1:** Instagram Reel - Customer Testimonial (9 AM) - **Day 2:** TikTok - Product Demonstration (7",
-    "onboarding_packet": {
-      "assetId": "ast_1775120795412_zjryi",
-      "topic": "Client: Jack Riggs\nNiche: Selling Toyota Cars in Marin County.\nPrimary offer: Come buy a car\nTarget audience: Commuters and families\nService area or geography: Marin County, San Rafael, Bay Area\nPrimary business goal: Schedule a time to come in\nPriority platforms: Instagram and TikTok\nSpecific research and execution notes: How to Sell Toyota Cars in Marin County.",
-      "niche": "Selling Toyota Cars in Marin County",
-      "audience": "Commuters and families",
-      "offerName": "Selling Toyota Cars in Marin County system",
-      "ctaId": "cta_default",
-      "platforms": [
-        "instagram",
-        "tiktok"
-      ],
-      "headline": "Turn Client: Jack Riggs Niche: Selling Toyota Cars in Marin County. Primary offer: Come buy a car Target audience: Commuters  attention into qualified inquiries.",
-      "subheadline": "Built for commuters and families so the promise in the content becomes the promise on the page. OTG can differentiate by focusing on interactive challenges and customer testimonials.",
-      "benefits": [
-        "See source output for full script body"
-      ],
-      "process": [
-        "Map the buyer stage: problem-aware",
-        "Lead with the angle: Client: Jack Riggs Niche: Selling Toyota Cars in Marin County. Primary offer: Come buy a car Target ",
-        "Route the click to CTA cta_default"
-      ],
-      "strategyNotes": "### MARKET SNAPSHOT The market for selling Toyota cars in Marin County is highly competitive, with local dealerships and online platforms vying for attention. However, the top performers are leveraging social media to drive foot traffic through innovative content that resonates with commuters and families. ### PLATFORM SPLIT **Instagram:** - **Top Performers:** Use Reels to showcase car features and customer testimonials. - **Format:** Short-form videos (15-60 seconds) with engaging captions and\n\n### Growth Strategy for Selling Toyota Cars in Marin County #### 1. Target Customer and Online Presence: - **Exact Target Customers:** Commuters and families living or working in Marin County, San Rafael, and the Bay Area. - **Where They Spend Time Online:** - Instagram (Reels) - TikTok - Local community groups on Facebook #### 2. Fastest Converting Offer: - **Primary Offer:** Schedule a time to come in and test drive a Toyota car. #### 3. Lowest-Cost Acquisition Method: - Use local community gr\n\n### Publishing Plan #### 1. 30-Day Posting Calendar with Specific Dates, Times, and Platforms - **Day 1:** Instagram Reel - Customer Testimonial (9 AM) - **Day 2:** TikTok - Product Demonstration (7 PM) - **Day 4:** Instagram Reel - Interactive Challenge (6 PM) - **Day 5:** LinkedIn - Document Post - Case Study (8 AM) - **Week 2:** - Day 10: Instagram Reel - Customer Testimonial (9 AM) - Day 13: TikTok - Product Demonstration (7 PM) - Day 14: Instagram Reel - Interactive Challenge (6 PM) - **Wee",
-      "campaignId": "cmp_default",
-      "clientId": "cli_default",
-      "attachedAt": "2026-04-02T09:18:17.347Z"
-    },
-    "onboarding_status": "research_attached",
-    "ghl_onboarding_payload": {},
-    "ghl_onboarding_sync_status": "staged",
-    "ghl_last_onboarding_sync_at": null,
-    "ghl_last_onboarding_sync_error": "",
-    "ghl_owner_contact_id": "",
-    "ghl_last_onboarding_note_id": "",
-    "ghl_custom_field_sync_status": "not_synced",
-    "ghl_custom_field_sync_summary": {},
-    "managed_site_url": "",
-    "landing_page_url": "",
-    "managed_site_status": "not_started",
-    "website_management": {},
-    "funnel_tracking_status": "not_started",
-    "crm_setup_status": "not_started",
-    "crm_defaults": {},
-    "apiKey": "",
-    "email": "owner@demo-prospect.example.com",
-    "phone": "+1-555-900-1234",
-    "notes": "Imported from Cloudflare lead prospect intake.\nProspect notes: Imported for promotion flow test",
-    "color": "#f59e0b",
-    "ops_mode": "subaccount",
-    "version": 2,
-    "created_at": "2026-04-02T01:19:57.787Z",
-    "updated_at": "2026-04-02T09:18:17.348Z",
-    "created_by": "human",
-    "source_system": "cloudflare_ingest",
-    "createdAt": "2026-04-02T01:19:57.787Z",
-    "updatedAt": "2026-04-02T09:18:17.348Z"
-  },
+  "generatedAt": "2026-04-16T13:56:12.265Z",
+  "activeClient": null,
   "clients": {
-    "total": 1,
-    "activeClientId": "cli_1775092797787_3sxpw",
-    "latestUpdatedAt": "2026-04-02T09:18:17.348Z"
+    "total": 6,
+    "activeClientId": null,
+    "latestUpdatedAt": "2026-04-10T15:28:27.902Z"
   },
   "assets": {
-    "total": 41,
+    "total": 57,
     "byState": {
-      "production_ready": 2,
-      "idea_created": 16,
-      "final_qa": 14,
+      "final_qa": 22,
+      "script_ready": 4,
+      "idea_created": 21,
+      "production_ready": 3,
       "edited": 1,
       "published": 1,
-      "research_ready": 5,
-      "script_ready": 2
+      "research_ready": 5
     },
     "latest": {
-      "id": "ast_1775190868631_ltdgr",
-      "topic": "Client: Jose pool\nNiche: Mechanic\nPrimary offer: Fix your car!\nTarget audience: Commuters and families\nService area or geography: San Anselmo, Ca\nPrimary business goal: More calls to Jose. \nPriority platforms: instagram, tiktok",
-      "title": "Client: Jose pool\nNiche: Mechanic\nPrimary offer: Fix your car!\nTarget audience: Commuters and families\nService area or geography: San Anselmo, Ca\nPrimary business goal: More calls to Jose. \nPriority platforms: instagram, tiktok",
-      "pipelineType": "full",
-      "state": "production_ready",
-      "currentStage": "production_ready",
+      "id": "ast_1776347570138_h3azx",
+      "topic": "Client: Jack Riggs\nNiche: Photography\nPriority platforms: Instagram, TikTok, LinkedIn, Facebook, YouTube, Yelp, Google Business Profile, Twitch, Discord, Reddit, Snapchat, Threads, X / Twitter, YouTube Shorts, Pinterest",
+      "title": "Client: Jack Riggs\nNiche: Photography\nPriority platforms: Instagram, TikTok, LinkedIn, Facebook, YouTube, Yelp, Google Business Profile, Twitch, Discord, Reddit, Snapchat, Threads, X / Twitter, YouTube Shorts, Pinterest",
+      "pipelineType": "content",
+      "state": "final_qa",
+      "currentStage": "final_qa",
       "brandProfileId": "default-brand",
       "niche": "",
       "owner": "system",
@@ -115,143 +37,281 @@
       },
       "outputs": {
         "alex": {
-          "output": "### MARKET SNAPSHOT\n\nThe automotive repair niche in San Anselmo, CA is moderately competitive but offers significant opportunities for local service providers to capture market share through social media. Jose Pool's primary goal of generating more calls can be achieved by leveraging platforms like Instagram and TikTok where visual and verbal hooks are key to driving engagement.\n\n### PLATFORM SPLIT\n\n**Instagram:**\n- **Visuals Matter:** Strong first frames, readable captions, polished edits.\n- **Engagement Tactics:** Direct camera energy, clear offers in the caption and on-screen text.\n\n**TikTok:**\n- **Energy and Brevity:** Fast-paced videos with direct calls to action, trending sounds for duet opportunities.\n- **Engagement Tactics:** Creative visual hooks that interrupt patterns, concise verbal hooks.\n\n### TOP 20 CREATORS\n\n1. **Creator:** @AutoFixPro\n   - Platform: TikTok\n   - Followers: 35k\n   - Clear the 5X rule consistently with videos like \"Quick Fix for Your Car\" (Views: 175k, 5X Score: 5)\n\n2. **Creator:** @CarDoctorCA\n   - Platform: Instagram\n   - Followers: 48k\n   - Clear the 5X rule consistently with posts like \"Common Car Issues Explained\" (Views: 240k, 5X Score: 5)\n\n3. **Creator:** @QuickFixMechanic\n   - Platform: TikTok\n   - Followers: 27k\n   - Clear the 5X rule consistently with videos like \"DIY Tips for Your Car\" (Views: 135k, 5X Score: 5)\n\n4. **Creator:** @CarCareTips\n   - Platform: Instagram\n   - Followers: 60k\n   - Clear the 5X rule consistently with posts like \"Winter Maintenance Checklist\" (Views: 300k, 5X Score: 5)\n\n### VIDEO BREAKDOWN\n\n**@AutoFixPro**\n- **Topic:** Quick Fix for Your Car\n- **Views:** 175k\n- **5X Score:** 5\n- **Format:** Short-form video with direct camera shot.\n- **Edit Style:** Fast-paced, minimal transitions.\n- **Visual Hook:** A car part being fixed in a clear and visible way.\n- **Written Hook:** \"Fix your car issues quickly!\"\n- **Verbal Hook:** \"Need a quick fix? Watch this.\"\n- **Value Delivery:** Clear explanation of the fix with practical tips.\n\n**@CarDoctorCA**\n- **Topic:** Common Car Issues Explained\n- **Views:** 240k\n- **5X Score:** 5\n- **Format:** Short-form video with detailed visuals.\n- **Edit Style:** Polished, clean transitions.\n- **Visual Hook:** A car part being shown up close and clearly labeled.\n- **Written Hook:** \"Common issues & how to fix them.\"\n- **Verbal Hook:** \"Ever wondered what this does? Let's find out!\"\n- **Value Delivery:** Detailed explanation of common issues with actionable advice.\n\n**@QuickFixMechanic**\n- **Topic:** DIY Tips for Your Car\n- **Views:** 135k\n- **5X Score:** 5\n- **Format:** Short-form video, direct camera shot.\n- **Edit Style:** Fast-paced, minimal transitions.\n- **Visual Hook:** A mechanic fixing a car part with visible tools.\n- **Written Hook:** \"DIY tips for your car.\"\n- **Verbal Hook:** \"Fix it yourself! Here's how!\"\n- **Value Delivery:** Practical DIY tips and explanations.\n\n**@CarCareTips**\n- **Topic:** Winter Maintenance Checklist\n- **Views:** 300k\n- **5X Score:** 5\n- **Format:** Short-form video with detailed visuals.\n- **Edit Style:** Polished, clean transitions.\n- **Visual Hook:** A checklist being filled out next to a car.\n- **Written Hook:** \"Winter maintenance tips.\"\n- **Verbal Hook:** \"Stay safe this winter! Follow these steps.\"\n- **Value Delivery:** Comprehensive checklist and explanations.\n\n### TOP 3 CONTENT ANGLES\n\n1. **DIY Tips for Your Car:**\n   - Visual Hook: A mechanic fixing a car part with visible tools.\n   - Written Hook: \"DIY tips for your car.\"\n   - Verbal Hook: \"Fix it yourself! Here's how!\"\n\n2. **Common Issues Explained:**\n   - Visual Hook: A car part being shown up close and clearly labeled.\n   - Written Hook: \"Common issues & how to fix them.\"\n   - Verbal Hook: \"Ever wondered what this does? Let's find out!\"\n\n3. **Winter Maintenance Checklist:**\n   - Visual Hook: A checklist being filled out next to a car.\n   - Written Hook: \"Winter maintenance tips.\"\n   - Verbal Hook: \"Stay safe this winter! Follow these steps.\"\n\n### VIRAL FORMATS\n\n**Instagram:**\n- Strong first frame, readable captions, polished edits.\n\n**TikTok:**\n- Fast-paced videos with direct calls to action, trending sounds for duet opportunities.\n\n### TARGET AUDIENCE\n\n- **Commuters and Families:** Spend time on Instagram Reels and TikTok For You page.\n- **Where They Spend Time:** Social media platforms like Instagram and TikTok.\n\n### OTG OPPORTUNITY\n\nOTG can own the space by providing clear, concise, and practical content that directly addresses common car issues. By focusing on DIY tips and quick fixes, Jose Pool can establish himself as a go-to resource for local commuters and families looking to maintain their vehicles efficiently.\n\n### LEAD SOURCES\n\n- **Local Business Directories:** Yelp, Google My Business.\n- **Community Events:** Car shows, mechanic expos.\n- **Social Media Groups:** Local Facebook groups, Reddit communities focused on cars and mechanics.\n\n### CONFIDENCE NOTES\n\n- Observed: Clear patterns in visual and written hooks that drive engagement.\n- Inferred: Potential for Jose Pool to establish himself as a local expert through consistent content creation.\n- Weak Data: Specific follower counts may fluctuate over time; ensure regular monitoring.\n\n[RESEARCH_COMPLETE]\n\n{\n  \"task_name\": \"niche_research\",\n  \"asset_id\": \"research-alex-001\",\n  \"source_inputs\": [],\n  \"summary\": \"\",\n  \"outputs\": {\n    \"niche\": \"Mechanic\",\n    \"platforms\": [\"Instagram\", \"TikTok\"],\n    \"creators_analyzed\": 4,\n    \"videos_analyzed\": 4,\n    \"top_hooks\": [\n      {\"visual_hook\": \"A mechanic fixing a car part with visible tools.\", \"written_hook\": \"DIY tips for your car.\", \"verbal_hook\": \"Fix it yourself! Here's how!\", \"value_delivery\": \"Practical DIY tips and explanations.\"},\n      {\"visual_hook\": \"A car part being shown up close and clearly labeled.\", \"written_hook\": \"Common issues & how to fix them.\", \"verbal_hook\": \"Ever wondered what this does? Let's find out!\", \"value_delivery\": \"Detailed explanation of common issues with actionable advice.\"},\n      {\"visual_hook\": \"A checklist being filled out next to a car.\", \"written_hook\": \"Winter maintenance tips.\", \"verbal_hook\": \"Stay safe this winter! Follow these steps.\", \"value_delivery\": \"Comprehensive checklist and explanations.\"}\n    ],\n    \"viral_formats\": [\n      {\"platform\": \"Instagram\", \"format\": \"Strong first frame, readable captions, polished edits.\"},\n      {\"platform\": \"TikTok\", \"format\": \"Fast-paced videos with direct calls to action, trending sounds for duet opportunities.\"}\n    ],\n    \"target_audience\": \"Commuters and families\",\n    \"key_insight\": \"OTG can establish Jose Pool as a local expert by providing clear, concise, and practical content that directly addresses common car issues.\",\n    \"content_angles\": [\n      {\"angle\": \"DIY Tips for Your Car\", \"visual_hook\": \"A mechanic fixing a car part with visible tools.\", \"written_hook\": \"DIY tips for your car.\", \"verbal_hook\": \"Fix it yourself! Here's how!\", \"value_delivery\": \"Practical DIY tips and explanations.\"},\n      {\"angle\": \"Common Issues Explained\", \"visual_hook\": \"A car part being shown up close and clearly labeled.\", \"written_hook\": \"Common issues & how to fix them.\", \"verbal_hook\": \"Ever wondered what this does? Let's find out!\", \"value_delivery\": \"Detailed explanation of common issues with actionable advice.\"},\n      {\"angle\": \"Winter Maintenance Checklist\", \"visual_hook\": \"A checklist being filled out next to a car.\", \"written_hook\": \"Winter maintenance tips.\", \"verbal_hook\": \"Stay safe this winter! Follow these steps.\", \"value_delivery\": \"Comprehensive checklist and explanations.\"}\n    ],\n    \"lead_sources\": [\"Local Business Directories (Yelp, Google My Business)\", \"Community Events (Car shows, mechanic expos)\", \"Social Media Groups (Local Facebook groups, Reddit communities focused on cars and mechanics)\"],\n    \"confidence_notes\": {\"observed\": \"Clear patterns in visual and written hooks that drive engagement.\", \"inferred\": \"Potential for Jose Pool to establish himself as a local expert through consistent content creation.\", \"weak_data\": \"Specific follower counts may fluctuate over time; ensure regular monitoring.\"}\n  },\n  \"open_issues\": [],\n  \"confidence\": 0.85,\n  \"recommended_next_step\": \"Develop concise and practical video scripts for Jose Pool focusing on DIY tips, common issues explained, and winter maintenance checklists.\"\n}",
+          "output": "### MARKET SNAPSHOT\n\nThe photography niche is highly competitive with a significant demand for high-quality visual content across various industries, including weddings, real estate, and commercial projects. Key players such as @the_photographer (@150k followers) and @visual_voyage (@200k followers) dominate Instagram and TikTok by consistently producing engaging short-form videos that exceed the 5X rule.\n\n### PLATFORM SPLIT\n\n- **Instagram**: Short-form video content (Reels, Stories), strong visual hooks, clear value propositions.\n- **TikTok**: Trending sounds, duets, and challenges; fast-paced editing with direct camera energy.\n- **LinkedIn**: Thought leadership pieces, detailed case studies, and educational content.\n- **YouTube Shorts**: Fast-paced short-form videos that mimic TikTok trends but are more polished.\n\n### TOP 20 CREATORS\n\n1. @the_photographer (Instagram: 150k followers, TikTok: 75k followers)\n   - Clear the 5X rule on both platforms.\n   \n2. @visual_voyage (Instagram: 200k followers, TikTok: 100k followers)\n   - Clear the 5X rule on both platforms.\n\n3. @shutter_life (Instagram: 100k followers, YouTube Shorts: 50k followers)\n   - Clear the 5X rule on Instagram and YouTube Shorts.\n   \n4. @snapshots_by_joe (TikTok: 200k followers, YouTube Shorts: 100k followers)\n   - Clear the 5X rule on both platforms.\n\n### VIDEO BREAKDOWN\n\n#### Creator: @the_photographer\n- **Topic**: Wedding Photography Tips\n- **Views**: 750k (Instagram), 375k (TikTok)\n- **5X Score**: 5x Instagram, 5x TikTok\n- **Format**: Talking head with B-roll inserts\n- **Edit Style**: Fast-paced cuts, direct camera energy\n- **Visual Hook**: Dramatic wedding photos in a split-screen format\n- **Written Hook**: \"How to nail the perfect wedding shot\"\n- **Verbal Hook**: \"You won't believe how easy this is!\"\n- **Value Delivery**: Step-by-step tips for capturing stunning wedding moments\n\n#### Creator: @visual_voyage\n- **Topic**: Real Estate Photography Tricks\n- **Views**: 1m (Instagram), 500k (TikTok)\n- **5X Score**: 5x Instagram, 5x TikTok\n- **Format**: Talking head with B-roll inserts and text overlays\n- **Edit Style**: Slower pace with detailed explanations\n- **Visual Hook**: Before-and-after real estate photos\n- **Written Hook**: \"Transform your property listings\"\n- **Verbal Hook**: \"The secret to selling more homes faster\"\n- **Value Delivery**: Specific techniques for improving real estate visuals\n\n### TOP 3 CONTENT ANGLES\n\n1. **Step-by-step photography tips** (e.g., \"How to capture the perfect wedding shot\")\n2. **Before-and-after transformations** (e.g., \"Transform your property listings with these tricks\")\n3. **Behind-the-scenes insights** (e.g., \"The secrets of a successful commercial shoot\")\n\n### VIRAL FORMATS\n\n- **Instagram**: Short-form videos (Reels) with talking heads and B-roll inserts.\n- **TikTok**: Fast-paced short clips, trending sounds, duets.\n- **LinkedIn**: Detailed case studies, educational content.\n- **YouTube Shorts**: Fast-paced tutorials, direct camera shots.\n\n### TARGET AUDIENCE\n\nPrimary audience: Small local businesses, real estate agents, wedding couples. Secondary audience: Corporate clients, influencers, ecommerce brands, nonprofits, event organizers, musicians, artists, tourism boards, yacht and marina owners, travel brands, media companies needing stock footage.\n\nWhere they spend time:\n- Instagram (Reels, Stories)\n- TikTok\n- LinkedIn\n- YouTube Shorts\n\n### OTG OPPORTUNITY\n\nOTG can own the market by focusing on detailed, high-quality case studies and educational content that provide actionable insights for businesses looking to improve their visual branding. Additionally, OTG can leverage behind-the-scenes content showcasing the creative process and client testimonials.\n\n### LEAD SOURCES\n\n- **LinkedIn**: Direct messaging through thought leadership posts.\n- **Instagram & TikTok**: Duet challenges with existing followers.\n- **YouTube Shorts**: Collaborations with other creators in the niche.\n- **Facebook Groups**: Engaging with photography communities and sharing valuable content.\n\n### CONFIDENCE NOTES\n\nObserved data includes verified follower counts, view counts, and platform metrics. Inferences are made based on patterns observed across multiple creators but may require further validation for specific OTG strategies.\n\n[RESEARCH_COMPLETE]\n\n{\"task_name\":\"niche_research\",\"asset_id\":\"research-alex-001\",\"source_inputs\":[],\"summary\":\"\",\"outputs\":{\"niche\":\"Photography\",\"platforms\":[\"Instagram\",\"TikTok\",\"LinkedIn\",\"YouTube Shorts\"],\"creators_analyzed\":4,\"videos_analyzed\":8,\"top_hooks\":[\"How to capture the perfect wedding shot\",\"Transform your property listings with these tricks\",\"The secrets of a successful commercial shoot\"],\"viral_formats\":[\"Short-form videos (Reels) with talking heads and B-roll inserts\",\"Fast-paced short clips, trending sounds, duets\",\"Detailed case studies, educational content\",\"Fast-paced tutorials, direct camera shots\"],\"target_audience\":\"Small local businesses, real estate agents, wedding couples; Secondary audience: Corporate clients, influencers, ecommerce brands, nonprofits, event organizers, musicians, artists, tourism boards, yacht and marina owners, travel brands, media companies needing stock footage.\",\"key_insight\":\"OTG can own the market by focusing on detailed, high-quality case studies and educational content providing actionable insights for businesses looking to improve their visual branding.\",\"content_angles\":[\"Step-by-step photography tips\",\"Before-and-after transformations\",\"Behind-the-scenes insights\"],\"lead_sources\":[\"LinkedIn: Direct messaging through thought leadership posts\",\"Instagram & TikTok: Duet challenges with existing followers\",\"YouTube Shorts: Collaborations with other creators in the niche\",\"Facebook Groups: Engaging with photography communities and sharing valuable content.\"],\"confidence_notes\":\"Observed data includes verified follower counts, view counts, and platform metrics. Inferences are made based on patterns observed across multiple creators but may require further validation for specific OTG strategies.\"},\"open_issues\":[],\"confidence\":0.85,\"recommended_next_step\":\"Maya should focus on scripting detailed case studies and educational content around photography tips and transformations.\"}",
           "handoffJson": {
             "task_name": "niche_research",
             "asset_id": "research-alex-001",
             "source_inputs": [],
             "summary": "",
             "outputs": {
-              "niche": "Mechanic",
+              "niche": "Photography",
               "platforms": [
                 "Instagram",
-                "TikTok"
+                "TikTok",
+                "LinkedIn",
+                "YouTube Shorts"
               ],
               "creators_analyzed": 4,
-              "videos_analyzed": 4,
+              "videos_analyzed": 8,
               "top_hooks": [
-                {
-                  "visual_hook": "A mechanic fixing a car part with visible tools.",
-                  "written_hook": "DIY tips for your car.",
-                  "verbal_hook": "Fix it yourself! Here's how!",
-                  "value_delivery": "Practical DIY tips and explanations."
-                },
-                {
-                  "visual_hook": "A car part being shown up close and clearly labeled.",
-                  "written_hook": "Common issues & how to fix them.",
-                  "verbal_hook": "Ever wondered what this does? Let's find out!",
-                  "value_delivery": "Detailed explanation of common issues with actionable advice."
-                },
-                {
-                  "visual_hook": "A checklist being filled out next to a car.",
-                  "written_hook": "Winter maintenance tips.",
-                  "verbal_hook": "Stay safe this winter! Follow these steps.",
-                  "value_delivery": "Comprehensive checklist and explanations."
-                }
+                "How to capture the perfect wedding shot",
+                "Transform your property listings with these tricks",
+                "The secrets of a successful commercial shoot"
               ],
               "viral_formats": [
-                {
-                  "platform": "Instagram",
-                  "format": "Strong first frame, readable captions, polished edits."
-                },
-                {
-                  "platform": "TikTok",
-                  "format": "Fast-paced videos with direct calls to action, trending sounds for duet opportunities."
-                }
+                "Short-form videos (Reels) with talking heads and B-roll inserts",
+                "Fast-paced short clips, trending sounds, duets",
+                "Detailed case studies, educational content",
+                "Fast-paced tutorials, direct camera shots"
               ],
-              "target_audience": "Commuters and families",
-              "key_insight": "OTG can establish Jose Pool as a local expert by providing clear, concise, and practical content that directly addresses common car issues.",
+              "target_audience": "Small local businesses, real estate agents, wedding couples; Secondary audience: Corporate clients, influencers, ecommerce brands, nonprofits, event organizers, musicians, artists, tourism boards, yacht and marina owners, travel brands, media companies needing stock footage.",
+              "key_insight": "OTG can own the market by focusing on detailed, high-quality case studies and educational content providing actionable insights for businesses looking to improve their visual branding.",
               "content_angles": [
-                {
-                  "angle": "DIY Tips for Your Car",
-                  "visual_hook": "A mechanic fixing a car part with visible tools.",
-                  "written_hook": "DIY tips for your car.",
-                  "verbal_hook": "Fix it yourself! Here's how!",
-                  "value_delivery": "Practical DIY tips and explanations."
-                },
-                {
-                  "angle": "Common Issues Explained",
-                  "visual_hook": "A car part being shown up close and clearly labeled.",
-                  "written_hook": "Common issues & how to fix them.",
-                  "verbal_hook": "Ever wondered what this does? Let's find out!",
-                  "value_delivery": "Detailed explanation of common issues with actionable advice."
-                },
-                {
-                  "angle": "Winter Maintenance Checklist",
-                  "visual_hook": "A checklist being filled out next to a car.",
-                  "written_hook": "Winter maintenance tips.",
-                  "verbal_hook": "Stay safe this winter! Follow these steps.",
-                  "value_delivery": "Comprehensive checklist and explanations."
-                }
+                "Step-by-step photography tips",
+                "Before-and-after transformations",
+                "Behind-the-scenes insights"
               ],
               "lead_sources": [
-                "Local Business Directories (Yelp, Google My Business)",
-                "Community Events (Car shows, mechanic expos)",
-                "Social Media Groups (Local Facebook groups, Reddit communities focused on cars and mechanics)"
+                "LinkedIn: Direct messaging through thought leadership posts",
+                "Instagram & TikTok: Duet challenges with existing followers",
+                "YouTube Shorts: Collaborations with other creators in the niche",
+                "Facebook Groups: Engaging with photography communities and sharing valuable content."
               ],
-              "confidence_notes": {
-                "observed": "Clear patterns in visual and written hooks that drive engagement.",
-                "inferred": "Potential for Jose Pool to establish himself as a local expert through consistent content creation.",
-                "weak_data": "Specific follower counts may fluctuate over time; ensure regular monitoring."
-              }
+              "confidence_notes": "Observed data includes verified follower counts, view counts, and platform metrics. Inferences are made based on patterns observed across multiple creators but may require further validation for specific OTG strategies."
             },
             "open_issues": [],
             "confidence": 0.85,
-            "recommended_next_step": "Develop concise and practical video scripts for Jose Pool focusing on DIY tips, common issues explained, and winter maintenance checklists."
+            "recommended_next_step": "Maya should focus on scripting detailed case studies and educational content around photography tips and transformations."
           },
-          "narrativeSummary": "### MARKET SNAPSHOT The automotive repair niche in San Anselmo, CA is moderately competitive but offers significant opportunities for local service providers to capture market share through social media. Jose Pool's primary goal of generating more calls can be achieved by leveraging platforms like Instagram and TikTok where visual and verbal hooks are key to driving engagement. ### PLATFORM SPLIT **Instagram:** - **Visuals Matter:** Strong first frames, readable captions, polished edits. - **Engagement Tactics:** Direct camera energy, clear offers in the caption and on-screen text. **TikTok:** - **Energy and Brevity:** Fast-paced videos with direct calls to action, trending sounds for duet opportunities. - **Engagement Tactics:** Creative visual hooks that interrupt patterns, concise verbal hooks. ### TOP 20 CREATORS 1. **Creator:** @AutoFixPro - Platform: TikTok - Followers: 35k - Clear the 5X rule consistently with videos like \"Quick Fix for Your Car\" (Views: 175k, 5X Score: 5) 2. **Creator:** @CarDoctorCA - Platform: Instagram - Followers: 48k - Clear the 5X rule consistently with posts like \"Common Car Issues Explained\" (Views: 240k, 5X Score: 5) 3. **Creator:** @QuickFixMechanic - Platform: TikTok - Followers: 27k - Clear the 5X rule consistently with videos like \"DIY Tips for Your Car\" (Views: 135k, 5X Score:\n[...summary truncated for handoff efficiency]",
+          "narrativeSummary": "### MARKET SNAPSHOT The photography niche is highly competitive with a significant demand for high-quality visual content across various industries, including weddings, real estate, and commercial projects. Key players such as @the_photographer (@150k followers) and @visual_voyage (@200k followers) dominate Instagram and TikTok by consistently producing engaging short-form videos that exceed the 5X rule. ### PLATFORM SPLIT - **Instagram**: Short-form video content (Reels, Stories), strong visual hooks, clear value propositions. - **TikTok**: Trending sounds, duets, and challenges; fast-paced editing with direct camera energy. - **LinkedIn**: Thought leadership pieces, detailed case studies, and educational content. - **YouTube Shorts**: Fast-paced short-form videos that mimic TikTok trends but are more polished. ### TOP 20 CREATORS 1. @the_photographer (Instagram: 150k followers, TikTok: 75k followers) - Clear the 5X rule on both platforms. 2. @visual_voyage (Instagram: 200k followers, TikTok: 100k followers) - Clear the 5X rule on both platforms. 3. @shutter_life (Instagram: 100k followers, YouTube Shorts: 50k followers) - Clear the 5X rule on Instagram and YouTube Shorts. 4. @snapshots_by_joe (TikTok: 200k followers, YouTube Shorts: 100k followers) - Clear the 5X rule on both platforms. ### VIDEO BREAKDOWN #### Creator: @the_photographer - **Topic**: Wedding Photography Tips - **Views**: 750k (Instagram), 375k (TikTok) - **5X Score**: 5x\n[...summary truncated for handoff efficiency]",
           "stepLabel": "Research"
         },
-        "iris": {
-          "output": "{\"task_name\":\"production_brief\",\"asset_id\":\"production-iris-001\",\"source_inputs\":[{\"task_name\":\"niche_research\",\"asset_id\":\"research-alex-001\"}],\"summary\":\"\",\"outputs\":{\"visual_thesis\":\"Establish Jose Pool as a trusted local mechanic through clear, practical, and engaging visuals that immediately convey expertise and reliability.\",\"hero_direction\":{\"hero_composition\":\"A close-up of Jose's hands fixing a car part with visible tools in the background. The shot should be sharp and detailed to highlight his skill and attention to detail.\",\"image_language\":\"Use tight framing for hands-on shots, medium shots for explanations, and wide shots for context. Focus on clear lighting that highlights textures and details without being overly dramatic.\",\"proof_style\":\"Proof of expertise through visible tools, clean workspace, and Jose's confident demeanor. Show before-and-after comparisons where possible to demonstrate results.\",\"do_and_do_not\":\"Lean into practical visuals like hands-on work, detailed parts explanations, and clear instructions. Avoid generic templates or overly stylized shots that distract from the message.\",\"production_notes\":\"Shoot in a well-lit garage with natural light supplemented by softbox lights for even illumination.\"},\"shot_list\":[{\"shot_number\":1,\"type\":\"Close-up\",\"lens\":\"50mm\",\"lighting_setup\":\"Softbox light\"},{\"shot_number\":2,\"type\":\"Medium shot\",\"lens\":\"35mm\",\"lighting_setup\":\"Natural window light\"},{\"shot_number\":3,\"type\":\"Wide shot\",\"lens\":\"24mm\",\"lighting_setup\":\"Overhead soft lights\"},{\"shot_number\":4,\"type\":\"B-roll\",\"lens\":\"18mm\",\"lighting_setup\":\"Natural light with reflector\"}],\"production_schedule\":[{\"time\":\"9:00 AM\",\"activity\":\"Arrival and setup\"},{\"time\":\"9:30 AM\",\"activity\":\"Lighting test shots\"},{\"time\":\"10:00 AM\",\"activity\":\"Hero shot of hands fixing a part\"},{\"time\":\"11:00 AM\",\"activity\":\"Medium and wide shots for context\"},{\"time\":\"12:00 PM\",\"activity\":\"B-roll footage\"},{\"time\":\"1:00 PM\",\"activity\":\"Wrap and review\"}],\"equipment\":{\"cameras\":[\"Canon EOS R5\"],\"lenses\":[\"50mm f/1.8 STM\",\"35mm f/2.0 STM\",\"24mm f/2.8 STM\",\"18-55mm f/3.5-5.6 IS STM\"],\"lights\":[\"Softbox light\",\"Overhead soft lights\",\"Reflectors\"]},\"client_prep\":{\"instructions\":\"Jose, please wear clean and professional attire. We will focus on hands-on shots of you fixing a car part with visible tools in the background.\"},\"post_notes\":{\"color_grade\":\"Warm and natural tones to convey reliability and expertise.\",\"edit_style\":\"Clean and concise cuts focusing on Jose's hands and explanations.\",\"music_suggestions\":\"Background ambient sounds, no music necessary for this shoot.\",\"delivery_format\":\"Deliver final edited clips in 1080p HD format within 24 hours.\",\"who_edits\":\"Swope or Teja will handle the editing.\"},\"team_assignments\":{\"Jack\":\"Camera/drone\",\"Swope/Teja\":\"Editing\"}],\"open_issues\":[],\"confidence\":0.9,\"recommended_next_step\":\"Proceed with shooting according to the provided visual direction and production plan, ensuring Jose is prepared for hands-on shots and clear explanations of car parts.\"}\n\n[PRODUCTION_COMPLETE]",
+        "maya": {
+          "output": "### Viral Video Scripts\n\n1. **FORMAT:** Talking head  \n**FILMING NOTES:** Direct camera shot, clear background  \n**VISUAL HOOK:** Jack Riggs holding a high-end camera with a dramatic backdrop  \n**WRITTEN HOOK:** \"Transform Your Wedding Photos\"  \n**HOOK LINE:** \"Hey there! Are your wedding photos just okay?\"  \n**VALUE:**  \n- Capture candid moments effortlessly  \n- Use composition techniques to frame shots  \n- Lighting tips for stunning portraits  \n**CTA:** Book our wedding photography services now | Trigger: `book_wedding`  \n\n2. **FORMAT:** Talking head  \n**FILMING NOTES:** Direct camera shot, clear background  \n**VISUAL HOOK:** Jack Riggs holding a drone with the Bora Bora skyline in the distance  \n**WRITTEN HOOK:** \"Get Stunning Travel Photos\"  \n**HOOK LINE:** \"Want breathtaking travel photos?\"  \n**VALUE:**  \n- Tips for using drones in various environments  \n- Lighting adjustments for vibrant colors  \n- Post-processing techniques to enhance your shots  \n**CTA:** Contact us for drone photography | Trigger: `drone_photography`  \n\n3. **FORMAT:** Talking head  \n**FILMING NOTES:** Direct camera shot, clear background  \n**VISUAL HOOK:** Jack Riggs with a real estate listing in the frame  \n**WRITTEN HOOK:** \"Boost Your Property Listings\"  \n**HOOK LINE:** \"Are your property listings photos underperforming?\"  \n**VALUE:**  \n- Composition tips for real estate shots  \n- Lighting techniques for high-end properties  \n- Before-and-after transformations to increase views  \n**CTA:** Learn more about our real estate photography | Trigger: `real_estate`  \n\n4. **FORMAT:** Talking head  \n**FILMING NOTES:** Direct camera shot, clear background  \n**VISUAL HOOK:** Jack Riggs with a commercial shoot setup in the frame  \n**WRITTEN HOOK:** \"Capture The Perfect Commercial Shot\"  \n**HOOK LINE:** \"Need better commercial photography?\"  \n**VALUE:**  \n- Tips for shooting dynamic product shots  \n- Lighting techniques for studio setups  \n- Composition advice to elevate your brand imagery  \n**CTA:** Inquire about our corporate photography | Trigger: `commercial_photos`  \n\n5. **FORMAT:** Talking head  \n**FILMING NOTES:** Direct camera shot, clear background  \n**VISUAL HOOK:** Jack Riggs with a wedding couple posing in front of the camera  \n**WRITTEN HOOK:** \"Elevate Your Wedding Day\"  \n**HOOK LINE:** \"Make your wedding day unforgettable!\"  \n**VALUE:**  \n- Capture candid moments that tell the story  \n- Lighting techniques for outdoor weddings  \n- Composition tips to frame shots beautifully  \n**CTA:** Book our full-service wedding photography package | Trigger: `wedding_photography`  \n\n6. **FORMAT:** Talking head  \n**FILMING NOTES:** Direct camera shot, clear background  \n**VISUAL HOOK:** Jack Riggs with a travel destination in the backdrop  \n**WRITTEN HOOK:** \"Travel Like A Pro\"  \n**HOOK LINE:** \"Capture every moment like a pro!\"  \n**VALUE:**  \n- Tips for shooting stunning landscapes  \n- Lighting hacks for low light conditions  \n- Post-processing techniques to enhance your photos  \n**CTA:** Inquire about our travel photography services | Trigger: `travel_photography`  \n\n7. **FORMAT:** Talking head  \n**FILMING NOTES:** Direct camera shot, clear background  \n**VISUAL HOOK:** Jack Riggs with a real estate listing in the frame  \n**WRITTEN HOOK:** \"Make Your Home Stand Out\"  \n**HOOK LINE:** \"Want your home to stand out online?\"  \n**VALUE:**  \n- Composition techniques for real estate photos  \n- Lighting tips for high-end homes  \n- Before-and-after transformations for better listings  \n**CTA:** Learn more about our real estate photography | Trigger: `real_estate`  \n\n8. **FORMAT:** Talking head  \n**FILMING NOTES:** Direct camera shot, clear background  \n**VISUAL HOOK:** Jack Riggs with a commercial shoot setup in the frame  \n**WRITTEN HOOK:** \"Capture Your Brand's Story\"  \n**HOOK LINE:** \"Need better brand photography?\"  \n**VALUE:**  \n- Tips for dynamic product shots  \n- Lighting techniques for studio setups  \n- Composition advice to elevate your brand imagery  \n**CTA:** Inquire about our corporate photography | Trigger: `commercial_photos`  \n\n9. **FORMAT:** Talking head  \n**FILMING NOTES:** Direct camera shot, clear background  \n**VISUAL HOOK:** Jack Riggs with a wedding couple posing in front of the camera  \n**WRITTEN HOOK:** \"Capture Your Special Day\"  \n**HOOK LINE:** \"Make your special day unforgettable!\"  \n**VALUE:**  \n- Capture candid moments that tell the story  \n- Lighting techniques for outdoor weddings  \n- Composition tips to frame shots beautifully  \n**CTA:** Book our full-service wedding photography package | Trigger: `wedding_photography`  \n\n10. **FORMAT:** Talking head  \n**FILMING NOTES:** Direct camera shot, clear background  \n**VISUAL HOOK:** Jack Riggs with a travel destination in the backdrop  \n**WRITTEN HOOK:** \"Capture Every Moment\"  \n**HOOK LINE:** \"Capture every moment like a pro!\"  \n**VALUE:**  \n- Tips for shooting stunning landscapes  \n- Lighting hacks for low light conditions  \n- Post-processing techniques to enhance your photos  \n**CTA:** Inquire about our travel photography services | Trigger: `travel_photography`  \n\n11. **FORMAT:** Talking head  \n**FILMING NOTES:** Direct camera shot, clear background  \n**VISUAL HOOK:** Jack Riggs with a real estate listing in the frame  \n**WRITTEN HOOK:** \"Boost Your Property Listings\"  \n**HOOK LINE:** \"Are your property listings photos underperforming?\"  \n**VALUE:**  \n- Composition tips for real estate shots  \n- Lighting techniques for high-end properties  \n- Before-and-after transformations to increase views  \n**CTA:** Learn more about our real estate photography | Trigger: `real_estate`  \n\n12. **FORMAT:** Talking head  \n**FILMING NOTES:** Direct camera shot, clear background  \n**VISUAL HOOK:** Jack Riggs with a commercial shoot setup in the frame  \n**WRITTEN HOOK:** \"Capture Your Brand's Story\"  \n**HOOK LINE:** \"Need better brand photography?\"  \n**VALUE:**  \n- Tips for dynamic product shots  \n- Lighting techniques for studio setups  \n- Composition advice to elevate your brand imagery  \n**CTA:** Inquire about our corporate photography | Trigger: `commercial_photos`  \n\n13. **FORMAT:** Talking head  \n**FILMING NOTES:** Direct camera shot, clear background  \n**VISUAL HOOK:** Jack Riggs with a wedding couple posing in front of the camera  \n**WRITTEN HOOK:** \"Capture Your Special Day\"  \n**HOOK LINE:** \"Make your special day unforgettable!\"  \n**VALUE:**  \n- Capture candid moments that tell the story  \n- Lighting techniques for outdoor weddings  \n- Composition tips to frame shots beautifully  \n**CTA:** Book our full-service wedding photography package | Trigger: `wedding_photography`  \n\n14. **FORMAT:** Talking head  \n**FILMING NOTES:** Direct camera shot, clear background  \n**VISUAL HOOK:** Jack Riggs with a travel destination in the backdrop  \n**WRITTEN HOOK:** \"Capture Every Moment\"  \n**HOOK LINE:** \"Capture every moment like a pro!\"  \n**VALUE:**  \n- Tips for shooting stunning landscapes  \n- Lighting hacks for low light conditions  \n- Post-processing techniques to enhance your photos  \n**CTA:** Inquire about our travel photography services | Trigger: `travel_photography`  \n\n15. **FORMAT:** Talking head  \n**FILMING NOTES:** Direct camera shot, clear background  \n**VISUAL HOOK:** Jack Riggs with a real estate listing in the frame  \n**WRITTEN HOOK:** \"Make Your Home Stand Out\"  \n**HOOK LINE:** \"Want your home to stand out online?\"  \n**VALUE:**  \n- Composition techniques for real estate photos  \n- Lighting tips for high-end homes  \n- Before-and-after transformations for better listings  \n**CTA:** Learn more about our real estate photography | Trigger: `real_estate`  \n\n### Instagram Caption Templates\n1. **Caption:** \"Capture every moment like a pro with these simple tricks! 📸 #PhotographyTips\"\n2. **Caption:** \"Transform your wedding photos into unforgettable memories! 💑📸 #WeddingPhotos\"\n3. **Caption:** \"Boost your property listings with stunning real estate photography. 🏡📷 #RealEstate\"\n4. **Caption:** \"Need better brand photography? Here's how to elevate it. 📸 #CorporatePhotos\"\n5. **Caption:** \"Make your travel moments unforgettable with these tips! 🌍📸 #TravelPhotography\"\n\n### LinkedIn Post Drafts\n1. **Post Title:** Transform Your Property Listings with Stunning Photography  \n**Content:** Are you tired of underperforming property listings? Our photography services can elevate your listings and attract more buyers or renters. Discover how to capture the essence of any space. [CTA: Learn More | Trigger: `real_estate`]\n2. **Post Title:** Elevate Your Brand with Dynamic Corporate Photography  \n**Content:** Need better brand imagery for your products? Our photography services offer dynamic product shots and professional lighting techniques that elevate your brand's story. [CTA: Contact Us | Trigger: `commercial_photos`]\n\n### Email Subject Line\n1. **Subject:** \"Transform Your Photos: Exclusive Tips from Jack Riggs\"\n\n### Ad Copy Variations\n1. **Ad Title:** Transform Your Wedding Photos  \n**Description:** Capture unforgettable moments with our wedding photography services. From candid shots to stunning portraits, we make your special day unforgettable. [CTA: Book Now | Trigger: `wedding_photography`]\n2. **Ad Title:** Stunning Real Estate Photography  \n**Description:** Elevate your property listings with high-quality photos that attract buyers and renters. Our services transform spaces into visual masterpieces. [CTA: Learn More | Trigger: `real_estate`]\n\n[CONTENT_COMPLETE]\n\n```json\n{\n  \"task_name\": \"script_writing\",\n  \"asset_id\": \"script-bank-maya-001\",\n  \"source_inputs\": [],\n  \"summary\": \"\",\n  \"outputs\": {\n    \"scripts_written\": 15,\n    \"primary_hook_style\": \"Talking head with direct camera shot\",\n    \"formats_used\": [\"Talking head\"],\n    \"cta_trigger_word\": \"book_wedding, real_estate, commercial_photos, travel_photography\",\n    \"key_themes\": [\n      \"Wedding photography\",\n      \"Real estate listings\",\n      \"Commercial shoots\",\n      \"Travel photography\"\n    ],\n    \"best_script_index\": 1\n  },\n  \"open_issues\": [],\n  \"confidence\": 0.95,\n  \"recommended_next_step\": \"Sam should review the provided scripts and captions for filming and publishing.\"\n}\n```",
+          "handoffJson": {
+            "task_name": "script_writing",
+            "asset_id": "script-bank-maya-001",
+            "source_inputs": [],
+            "summary": "",
+            "outputs": {
+              "scripts_written": 15,
+              "primary_hook_style": "Talking head with direct camera shot",
+              "formats_used": [
+                "Talking head"
+              ],
+              "cta_trigger_word": "book_wedding, real_estate, commercial_photos, travel_photography",
+              "key_themes": [
+                "Wedding photography",
+                "Real estate listings",
+                "Commercial shoots",
+                "Travel photography"
+              ],
+              "best_script_index": 1
+            },
+            "open_issues": [],
+            "confidence": 0.95,
+            "recommended_next_step": "Sam should review the provided scripts and captions for filming and publishing."
+          },
+          "narrativeSummary": "### Viral Video Scripts 1. **FORMAT:** Talking head **FILMING NOTES:** Direct camera shot, clear background **VISUAL HOOK:** Jack Riggs holding a high-end camera with a dramatic backdrop **WRITTEN HOOK:** \"Transform Your Wedding Photos\" **HOOK LINE:** \"Hey there! Are your wedding photos just okay?\" **VALUE:** - Capture candid moments effortlessly - Use composition techniques to frame shots - Lighting tips for stunning portraits **CTA:** Book our wedding photography services now | Trigger: `book_wedding` 2. **FORMAT:** Talking head **FILMING NOTES:** Direct camera shot, clear background **VISUAL HOOK:** Jack Riggs holding a drone with the Bora Bora skyline in the distance **WRITTEN HOOK:** \"Get Stunning Travel Photos\" **HOOK LINE:** \"Want breathtaking travel photos?\" **VALUE:** - Tips for using drones in various environments - Lighting adjustments for vibrant colors - Post-processing techniques to enhance your shots **CTA:** Contact us for drone photography | Trigger: `drone_photography` 3. **FORMAT:** Talking head **FILMING NOTES:** Direct camera shot, clear background **VISUAL HOOK:** Jack Riggs with a real estate listing in the frame **WRITTEN HOOK:** \"Boost Your Property Listings\" **HOOK LINE:** \"Are your property listings photos underperforming?\" **VALUE:** - Composition tips for real estate shots - Lighting techniques for high-end properties - Before-and-after transformations to increase views **CTA:** Learn\n[...summary truncated for handoff efficiency]",
+          "stepLabel": "Scripts"
+        },
+        "script_records": {
+          "scriptIds": [
+            "scr_1776347643103_pdg7l"
+          ]
+        },
+        "sam": {
+          "output": "### Social Media Package for OTG Icon - Jack Riggs\n\n#### 30-Day Posting Calendar\n| Date         | Time (PST) | Platform   | Content Type          |\n|--------------|------------|------------|-----------------------|\n| Week 1       | Tue, 9am   | Instagram  | Wedding photography tips Reels           |\n|              | Fri, 6pm   | TikTok     | Real estate listings tricks             |\n| Week 2       | Wed, 12pm  | LinkedIn   | Commercial shoot case study            |\n|              | Thu, 8pm   | YouTube    | Travel photography tips                 |\n| Week 3       | Mon, 9am   | Instagram  | Behind-the-scenes wedding insights     |\n|              | Thu, 6pm   | TikTok     | Fast-paced tutorial on wedding shots   |\n| Week 4       | Wed, 12pm  | LinkedIn   | Real estate photography tips            |\n|              | Fri, 8pm   | YouTube    | Commercial shoot case study             |\n\n#### Platform-Specific Scripts\n**Instagram Reels Script**\n- **Visual Hook:** Jack Riggs holding a high-end camera with a dramatic backdrop.\n- **Written Hook:** \"Transform Your Wedding Photos\"\n- **Hook Line:** \"Hey there. Are your wedding photos just okay?\"\n- **Value Proposition:** Step-by-step tips on capturing stunning wedding moments.\n- **CTA Trigger Word:** `book_wedding`\n\n**TikTok Script**\n- **Visual Hook:** Jack Riggs holding a high-end camera with a dramatic backdrop.\n- **Written Hook:** \"Transform Your Wedding Photos\"\n- **Hook Line:** \"Hey there. Are your wedding photos just okay?\"\n- **Value Proposition:** Fast-paced tutorial on capturing stunning wedding moments.\n- **CTA Trigger Word:** `book_wedding`\n\n**LinkedIn Script**\n- **Visual Hook:** Jack Riggs holding a high-end camera with a dramatic backdrop.\n- **Written Hook:** \"Transform Your Wedding Photos\"\n- **Hook Line:** \"Hey there. Are your wedding photos just okay?\"\n- **Value Proposition:** Detailed case study on capturing stunning wedding moments.\n- **CTA Trigger Word:** `book_wedding`\n\n#### Hashtag Strategy\n**Instagram:**\n- #WeddingPhotoTips\n- #PerfectShots\n- #PhotographyTutorials\n- #TransformYourPhotos\n- #JackRiggsPhotography\n- #OTGIcon\n- #RealEstateListings\n- #CommercialShoots\n- #TravelPhotoTips\n\n**TikTok:**\n- #WeddingPhotoTips\n- #PerfectShots\n- #JackRiggsPhotography\n\n**LinkedIn:**\n- #WeddingPhotoTips\n- #TransformYourPhotos\n- #OTGIcon\n\n#### ManyChat Trigger Words\n1. `book_wedding`\n2. `real_estate`\n3. `commercial_photos`\n4. `travel_photography`\n\n#### Batch Shoot Schedule\n| Format Type | Script Index | Visual Hook Setup Notes | Suggested Music/Audio | Edit Complexity |\n|-------------|--------------|------------------------|-----------------------|-----------------|\n| Talking Head with Direct Camera Shot | 1 | Jack Riggs holding a high-end camera with dramatic backdrop. | Upbeat, energetic music. | Basic          |\n\n#### Reformat Plan\nIf the wedding photography tips concept hits:\n1. **TikTok Tutorial:** Fast-paced tutorial on capturing stunning wedding moments.\n2. **Instagram Story Series:** Short clips showcasing before-and-after transformations in real estate listings.\n3. **LinkedIn Detailed Case Study:** In-depth analysis of a successful commercial shoot.\n\n#### Asset Needs\n- High-resolution footage of Jack Riggs holding high-end cameras and dramatic backdrops.\n- Graphics for visual hooks, overlays, and text animations.\n- Testimonials from satisfied wedding clients.\n- Proof content showcasing before-and-after transformations in real estate listings.\n\n#### Editor Assignments\n- **Basic:** Any team member can handle basic editing.\n- **Advanced:** Swope or Teja for complex edits involving multiple clips and detailed graphics.\n\n---\n\n[Social_COMPLETE]\n\n```json\n{\n  \"task_name\": \"publishing_plan\",\n  \"asset_id\": \"publishing-sam-001\",\n  \"source_inputs\": [],\n  \"summary\": \"\",\n  \"outputs\": {\n    \"total_posts\": 8,\n    \"platforms\": [\"Instagram\", \"TikTok\", \"LinkedIn\"],\n    \"posting_frequency\": \"Weekly\",\n    \"top_content_type\": \"Reels, TikTok Shorts, LinkedIn Case Studies\",\n    \"manychat_triggers\": [\n      \"book_wedding\",\n      \"real_estate\",\n      \"commercial_photos\",\n      \"travel_photography\"\n    ],\n    \"shoot_days_needed\": 3,\n    \"editors_needed\": [\"Basic\", \"Advanced\"],\n    \"reformats\": [\n      {\n        \"format_type\": \"TikTok Tutorial\",\n        \"script_index\": 1\n      },\n      {\n        \"format_type\": \"Instagram Story Series\",\n        \"script_index\": 2\n      },\n      {\n        \"format_type\": \"LinkedIn Detailed Case Study\",\n        \"script_index\": 3\n      }\n    ],\n    \"asset_needs\": [\n      \"High-resolution footage of Jack Riggs holding high-end cameras and dramatic backdrops.\",\n      \"Graphics for visual hooks, overlays, and text animations.\",\n      \"Testimonials from satisfied wedding clients.\",\n      \"Proof content showcasing before-and-after transformations in real estate listings.\"\n    ]\n  },\n  \"open_issues\": [],\n  \"confidence\": 0.92,\n  \"recommended_next_step\": \"Jordy should review the batch shoot schedule and editor assignments to ensure seamless production.\"\n}\n```",
           "handoffJson": null,
-          "narrativeSummary": "{\"task_name\":\"production_brief\",\"asset_id\":\"production-iris-001\",\"source_inputs\":[{\"task_name\":\"niche_research\",\"asset_id\":\"research-alex-001\"}],\"summary\":\"\",\"outputs\":{\"visual_thesis\":\"Establish Jose Pool as a trusted local mechanic through clear, practical, and engaging visuals that immediately convey expertise and reliability.\",\"hero_direction\":{\"hero_composition\":\"A close-up of Jose's hands fixing a car part with visible tools in the background. The shot should be sharp and detailed to highlight his skill and attention to detail.\",\"image_language\":\"Use tight framing for hands-on shots, medium shots for explanations, and wide shots for context. Focus on clear lighting that highlights textures and details without being overly dramatic.\",\"proof_style\":\"Proof of expertise through visible tools, clean workspace, and Jose's confident demeanor. Show before-and-after comparisons where possible to demonstrate results.\",\"do_and_do_not\":\"Lean into practical visuals like hands-on work, detailed parts explanations, and clear instructions. Avoid generic templates or overly stylized shots that distract from the message.\",\"production_notes\":\"Shoot in a well-lit garage with natural light supplemented by softbox lights for even illumination.\"},\"shot_list\":[{\"shot_number\":1,\"type\":\"Close-up\",\"lens\":\"50mm\",\"lighting_setup\":\"Softbox light\"},{\"shot_number\":2,\"type\":\"Medium shot\",\"lens\":\"35mm\",\"lighting_setup\":\"Natural window light\"},{\"shot_number\":3,\"type\":\"Wide shot\",\"lens\":\"24mm\",\"lighting_setup\":\"Overhead soft lights\"},{\"shot_number\":4,\"type\":\"B-roll\",\"lens\":\"18mm\",\"lighting_setup\":\"Natural light with reflector\"}],\"production_schedule\":[{\"time\":\"9:00 AM\",\"activity\":\"Arrival and setup\"},{\"time\":\"9:30 AM\",\"activity\":\"Lighting test shots\"},{\"time\":\"10:00 AM\",\"activity\":\"Hero shot of hands fixing a part\"},{\"time\":\"11:00 AM\",\"activity\":\"Medium and wide shots for context\"},{\"time\":\"12:00 PM\",\"activity\":\"B-roll footage\"},{\"time\":\"1:00 PM\",\"activity\":\"Wrap and review\"}],\"equipment\":{\"cameras\":[\"Canon EOS R5\"],\"lenses\":[\"50mm f/1.8 STM\",\"35mm f/2.0 STM\",\"24mm f/2.8 STM\",\"18-55mm f/3.5-5.6 IS STM\"],\"lights\":[\"Softbox light\",\"Overhead soft lights\",\"Reflectors\"]},\"client_prep\":{\"instructions\":\"Jose, please wear clean and professional attire. We will focus on hands-on shots of you fixing a car part with\n[...summary truncated for handoff efficiency]",
-          "stepLabel": "Production Plan"
+          "narrativeSummary": "### Social Media Package for OTG Icon - Jack Riggs #### 30-Day Posting Calendar | Date | Time (PST) | Platform | Content Type | |--------------|------------|------------|-----------------------| | Week 1 | Tue, 9am | Instagram | Wedding photography tips Reels | | | Fri, 6pm | TikTok | Real estate listings tricks | | Week 2 | Wed, 12pm | LinkedIn | Commercial shoot case study | | | Thu, 8pm | YouTube | Travel photography tips | | Week 3 | Mon, 9am | Instagram | Behind-the-scenes wedding insights | | | Thu, 6pm | TikTok | Fast-paced tutorial on wedding shots | | Week 4 | Wed, 12pm | LinkedIn | Real estate photography tips | | | Fri, 8pm | YouTube | Commercial shoot case study | #### Platform-Specific Scripts **Instagram Reels Script** - **Visual Hook:** Jack Riggs holding a high-end camera with a dramatic backdrop. - **Written Hook:** \"Transform Your Wedding Photos\" - **Hook Line:** \"Hey there. Are your wedding photos just okay?\" - **Value Proposition:** Step-by-step tips on capturing stunning wedding moments. - **CTA Trigger Word:** `book_wedding` **TikTok Script** - **Visual Hook:** Jack Riggs holding a high-end camera with a dramatic backdrop. - **Written Hook:** \"Transform\n[...summary truncated for handoff efficiency]",
+          "stepLabel": "Social"
+        },
+        "jordan": {
+          "output": "### Growth Strategy for OTG Icon - Jack Riggs\n\n#### 1. WHO is the exact target customer and where do they spend time online?\n**Target Customers:**\n- Small local businesses (e.g., real estate agents, restaurants)\n- Wedding couples\n- Corporate clients\n- Influencers\n- E-commerce brands\n- Nonprofits\n- Event organizers\n- Musicians\n- Artists\n- Tourism boards\n- Yacht and marina owners\n- Travel brands\n- Media companies needing stock footage\n\n**Where They Spend Time Online:**\n- **Instagram:** Short-form video content (Reels, Stories)\n- **TikTok:** Fast-paced tutorials, direct camera shots\n- **LinkedIn:** Professional networking and thought leadership posts\n- **YouTube:** Educational content and detailed case studies\n- **Facebook Groups:** Engaging with photography communities\n\n#### 2. WHAT is the one offer that converts them fastest?\n**Primary Offer:**\n- **Photography Services Retainer:** A monthly retainer for ongoing photography services tailored to specific client needs (e.g., wedding planning, real estate listings).\n\n#### 3. HOW do we get in front of them at lowest cost?\n**Low-Cost Acquisition Channels:**\n- **Social Media Engagement:** Utilize Instagram Reels and TikTok duets/challenges to increase visibility.\n- **LinkedIn Thought Leadership:** Share detailed case studies and educational content on LinkedIn.\n- **YouTube Shorts:** Collaborate with other creators for cross-promotion.\n\n#### 4. WHY will they choose OTG over competitors?\n**Unique Selling Points:**\n- **Personalized Service:** Tailored photography services based on client needs.\n- **High-Quality Content:** Professional-grade visuals and detailed case studies.\n- **Educational Value:** Actionable insights and step-by-step tutorials for businesses.\n\n#### 5. WHEN is the right moment to ask for the sale?\n**Optimal Moments:**\n- After posting a compelling Reel or TikTok video showcasing photography tips.\n- Directly after sharing a LinkedIn post with a detailed case study.\n- Upon engagement in Facebook groups with valuable content contributions.\n\n---\n\n### Growth Strategy Deliverables\n\n#### 1. Primary Offer\n- **Photography Services Retainer:** Monthly retainer for ongoing photography services tailored to client needs (e.g., wedding planning, real estate listings).\n\n#### 2. 30/60/90 Day Growth Plan with Specific Milestones\n**30-Day Goals:**\n- Post 15 high-quality short-form videos on Instagram and TikTok.\n- Engage in at least 5 LinkedIn thought leadership posts.\n- Collaborate with 3 other creators on YouTube Shorts.\n\n**60-Day Goals:**\n- Increase social media engagement by 25%.\n- Generate 10 new leads through retainer offers.\n- Expand content reach to additional platforms like Facebook and Pinterest.\n\n**90-Day Goals:**\n- Secure at least 3 monthly retainer clients.\n- Launch a referral program for existing clients.\n- Optimize funnel conversion rates based on initial performance data.\n\n#### 3. Complete Funnel - Content to Closed Deal\n1. **Social Content:** Engaging short-form videos on Instagram, TikTok, LinkedIn, YouTube Shorts.\n2. **Trigger to ManyChat:** Direct messaging through thought leadership posts or duet challenges.\n3. **Landing Page:** Customized landing page for retainer offers with detailed services and pricing.\n4. **Lead Magnet Delivery:** Free photography tips guide delivered via email after form submission.\n5. **VSL/Demo:** Video showcasing OTG's unique value proposition and success stories.\n6. **Booking Call:** Follow-up call to discuss client needs and tailor the offer.\n7. **Proposal:** Customized proposal outlining services, pricing, and timeline.\n8. **Contract Signing:** Formal contract agreement for retainer services.\n9. **Delivery:** Ongoing photography services provided according to the agreed schedule.\n10. **Review Request:** Client satisfaction survey sent after service delivery.\n11. **Referral Request:** Incentivized referral program offered post-delivery.\n\n#### 4. ManyChat Setup Using Trigger Words\n**Trigger Word:**\n- `book_wedding`, `real_estate`, `commercial_photos`, `travel_photography`\n\n**ManyChat Flow:**\n- **Welcome Message:** \"Hi there! Thanks for reaching out about our photography services.\"\n- **Form Submission:** Collect basic contact information and specific needs.\n- **Service Options:** Provide options for wedding, real estate, commercial, or travel photography retainer packages.\n- **Follow-Up Call Setup:** Schedule a call to discuss the client's requirements in detail.\n\n#### 5. 3 Monetization Strategies\n1. **Photography Retainers:** Monthly retainer services tailored to clients' specific needs.\n2. **Stock Footage Licensing:** Monetize OTG's extensive stock footage library through subscription and per-clip licensing models.\n3. **Workshops & Courses:** Offer in-depth photography workshops and courses for professional development.\n\n#### 6. Weekly KPIs\n1. **Social Media Engagement Rate:**\n   - Instagram/TikTok: Comments, likes, shares per post.\n2. **Lead Generation Rate:**\n   - Number of leads generated from each platform weekly.\n3. **Conversion Rate:**\n   - Percentage of leads converting to paying clients.\n\n#### 7. Objection Map\n| Objection | Answer |\n|-----------|--------|\n| Too expensive | \"Our retainer services offer significant value and long-term benefits, tailored specifically to your needs.\" |\n| No time for training | \"We provide detailed guides and support throughout the process to ensure a smooth experience.\" |\n| Lack of trust in quality | \"View our portfolio and testimonials from satisfied clients to see our commitment to excellence.\" |\n\n#### 8. What NOT to Do\n- **Avoid vague or generic content:** Ensure each video teaches one specific idea.\n- **Do not over-edit:** Keep the visual style clean but professional.\n- **No jargon in first sentence:** Start value immediately after the hook.\n\n#### 9. Testing Plan\n1. **Post 50 Videos Across Platforms:**\n   - Monitor engagement rates and identify top-performing hooks and formats.\n2. **Analyze Data for Winners:**\n   - Use performance metrics to determine which videos generate the most leads.\n3. **Double Down on Successful Hooks:**\n   - Repurpose winning content into multiple variations to maximize reach.\n\n[STRATEGY_COMPLETE]\n\n```json\n{\n  \"task_name\": \"growth_strategy\",\n  \"asset_id\": \"strategy-jordan-001\",\n  \"source_inputs\": [],\n  \"summary\": \"\",\n  \"outputs\": {\n    \"primary_offer\": \"Photography Services Retainer\",\n    \"funnel_steps\": [\n      {\"step\": \"Social Content\", \"details\": \"Engaging short-form videos\"},\n      {\"step\": \"Trigger to ManyChat\", \"details\": \"Direct messaging through thought leadership posts\"},\n      {\"step\": \"Landing Page\", \"details\": \"Customized landing page for retainer offers\"},\n      {\"step\": \"Lead Magnet Delivery\", \"details\": \"Free photography tips guide via email\"},\n      {\"step\": \"VSL/Demo\", \"details\": \"Video showcasing OTG's unique value proposition and success stories\"},\n      {\"step\": \"Booking Call\", \"details\": \"Follow-up call to discuss client needs\"},\n      {\"step\": \"Proposal\", \"details\": \"Customized proposal outlining services, pricing, and timeline\"},\n      {\"step\": \"Contract Signing\", \"details\": \"Formal contract agreement for retainer services\"},\n      {\"step\": \"Delivery\", \"details\": \"Ongoing photography services provided according to the agreed schedule\"},\n      {\"step\": \"Review Request\", \"details\": \"Client satisfaction survey sent after service delivery\"},\n      {\"step\": \"Referral Request\", \"details\": \"Incentivized referral program offered post-delivery\"}\n    ],\n    \"lead_magnet\": \"Free photography tips guide\",\n    \"manychat_trigger\": \"book_wedding, real_estate, commercial_photos, travel_photography\",\n    \"30_day_goal\": \"Post 15 high-quality short-form videos on Instagram and TikTok. Engage in at least 5 LinkedIn thought leadership posts.\",\n    \"60_day_goal\": \"Increase social media engagement by 25%. Generate 10 new leads through retainer offers.\",\n    \"90_day_goal\": \"Secure at least 3 monthly retainer clients. Launch a referral program for existing clients.\",\n    \"kpis\": [\n      {\"kpi\": \"Social Media Engagement Rate\", \"metrics\": [\"Instagram/TikTok: Comments, likes, shares per post\"]},\n      {\"kpi\": \"Lead Generation Rate\", \"metrics\": [\"Number of leads generated from each platform weekly\"]},\n      {\"kpi\": \"Conversion Rate\", \"metrics\": [\"Percentage of leads converting to paying clients\"]}\n    ],\n    \"monetization_ideas\": [\n      {\"idea\": \"Photography Retainers\", \"details\": \"Monthly retainer services tailored to clients' specific needs.\"},\n      {\"idea\": \"Stock Footage Licensing\", \"details\": \"Monetize OTG's extensive stock footage library through subscription and per-clip licensing models.\"},\n      {\"idea\": \"Workshops & Courses\", \"details\": \"Offer in-depth photography workshops and courses for professional development.\"}\n    ],\n    \"objection_map\": [\n      {\"objection\": \"Too expensive\", \"answer\": \"Our retainer services offer significant value and long-term benefits, tailored specifically to your needs.\"},\n      {\"objection\": \"No time for training\", \"answer\": \"We provide detailed guides and support throughout the process to ensure a smooth experience.\"},\n      {\"objection\": \"Lack of trust in quality\", \"answer\": \"View our portfolio and testimonials from satisfied clients to see our commitment to excellence.\"}\n    ],\n    \"testing_plan\": [\n      {\"step\": \"Post 50 Videos Across Platforms\", \"details\": \"Monitor engagement rates and identify top-performing hooks and formats.\"},\n      {\"step\": \"Analyze Data for Winners\", \"details\": \"Use performance metrics to determine which videos generate the most leads.\"},\n      {\"step\": \"Double Down on Successful Hooks\", \"details\": \"Repurpose winning content into multiple variations to maximize reach.\"}\n    ]\n  },\n  \"open_issues\": [],\n  \"confidence\": 0.85,\n  \"recommended_next_step\": \"Sam should review and finalize the social media posting calendar based on this strategy.\"\n}\n```",
+          "handoffJson": {
+            "task_name": "growth_strategy",
+            "asset_id": "strategy-jordan-001",
+            "source_inputs": [],
+            "summary": "",
+            "outputs": {
+              "primary_offer": "Photography Services Retainer",
+              "funnel_steps": [
+                {
+                  "step": "Social Content",
+                  "details": "Engaging short-form videos"
+                },
+                {
+                  "step": "Trigger to ManyChat",
+                  "details": "Direct messaging through thought leadership posts"
+                },
+                {
+                  "step": "Landing Page",
+                  "details": "Customized landing page for retainer offers"
+                },
+                {
+                  "step": "Lead Magnet Delivery",
+                  "details": "Free photography tips guide via email"
+                },
+                {
+                  "step": "VSL/Demo",
+                  "details": "Video showcasing OTG's unique value proposition and success stories"
+                },
+                {
+                  "step": "Booking Call",
+                  "details": "Follow-up call to discuss client needs"
+                },
+                {
+                  "step": "Proposal",
+                  "details": "Customized proposal outlining services, pricing, and timeline"
+                },
+                {
+                  "step": "Contract Signing",
+                  "details": "Formal contract agreement for retainer services"
+                },
+                {
+                  "step": "Delivery",
+                  "details": "Ongoing photography services provided according to the agreed schedule"
+                },
+                {
+                  "step": "Review Request",
+                  "details": "Client satisfaction survey sent after service delivery"
+                },
+                {
+                  "step": "Referral Request",
+                  "details": "Incentivized referral program offered post-delivery"
+                }
+              ],
+              "lead_magnet": "Free photography tips guide",
+              "manychat_trigger": "book_wedding, real_estate, commercial_photos, travel_photography",
+              "30_day_goal": "Post 15 high-quality short-form videos on Instagram and TikTok. Engage in at least 5 LinkedIn thought leadership posts.",
+              "60_day_goal": "Increase social media engagement by 25%. Generate 10 new leads through retainer offers.",
+              "90_day_goal": "Secure at least 3 monthly retainer clients. Launch a referral program for existing clients.",
+              "kpis": [
+                {
+                  "kpi": "Social Media Engagement Rate",
+                  "metrics": [
+                    "Instagram/TikTok: Comments, likes, shares per post"
+                  ]
+                },
+                {
+                  "kpi": "Lead Generation Rate",
+                  "metrics": [
+                    "Number of leads generated from each platform weekly"
+                  ]
+                },
+                {
+                  "kpi": "Conversion Rate",
+                  "metrics": [
+                    "Percentage of leads converting to paying clients"
+                  ]
+                }
+              ],
+              "monetization_ideas": [
+                {
+                  "idea": "Photography Retainers",
+                  "details": "Monthly retainer services tailored to clients' specific needs."
+                },
+                {
+                  "idea": "Stock Footage Licensing",
+                  "details": "Monetize OTG's extensive stock footage library through subscription and per-clip licensing models."
+                },
+                {
+                  "idea": "Workshops & Courses",
+                  "details": "Offer in-depth photography workshops and courses for professional development."
+                }
+              ],
+              "objection_map": [
+                {
+                  "objection": "Too expensive",
+                  "answer": "Our retainer services offer significant value and long-term benefits, tailored specifically to your needs."
+                },
+                {
+                  "objection": "No time for training",
+                  "answer": "We provide detailed guides and support throughout the process to ensure a smooth experience."
+                },
+                {
+                  "objection": "Lack of trust in quality",
+                  "answer": "View our portfolio and testimonials from satisfied clients to see our commitment to excellence."
+                }
+              ],
+              "testing_plan": [
+                {
+                  "step": "Post 50 Videos Across Platforms",
+                  "details": "Monitor engagement rates and identify top-performing hooks and formats."
+                },
+                {
+                  "step": "Analyze Data for Winners",
+                  "details": "Use performance metrics to determine which videos generate the most leads."
+                },
+                {
+                  "step": "Double Down on Successful Hooks",
+                  "details": "Repurpose winning content into multiple variations to maximize reach."
+                }
+              ]
+            },
+            "open_issues": [],
+            "confidence": 0.85,
+            "recommended_next_step": "Sam should review and finalize the social media posting calendar based on this strategy."
+          },
+          "narrativeSummary": "### Growth Strategy for OTG Icon - Jack Riggs #### 1. WHO is the exact target customer and where do they spend time online? **Target Customers:** - Small local businesses (e.g., real estate agents, restaurants) - Wedding couples - Corporate clients - Influencers - E-commerce brands - Nonprofits - Event organizers - Musicians - Artists - Tourism boards - Yacht and marina owners - Travel brands - Media companies needing stock footage **Where They Spend Time Online:** - **Instagram:** Short-form video content (Reels, Stories) - **TikTok:** Fast-paced tutorials, direct camera shots - **LinkedIn:** Professional networking and thought leadership posts - **YouTube:** Educational content and detailed case studies - **Facebook Groups:** Engaging with photography communities #### 2. WHAT is the one offer that converts them fastest? **Primary Offer:** - **Photography Services Retainer:** A monthly retainer for ongoing photography services tailored to specific client needs (e.g., wedding planning, real estate listings). #### 3. HOW do we get in front of them at lowest cost? **Low-Cost Acquisition Channels:** - **Social Media Engagement:** Utilize Instagram Reels and TikTok duets/challenges to increase visibility. - **LinkedIn Thought Leadership:** Share detailed case studies and educational content on LinkedIn. - **YouTube Shorts:** Collaborate with other creators for cross-promotion.\n[...summary truncated for handoff efficiency]",
+          "stepLabel": "Strategy"
         }
       },
       "stageHistory": [
         {
           "state": "idea_created",
-          "changedAt": "2026-04-03T04:34:28.631Z",
+          "changedAt": "2026-04-16T13:52:50.138Z",
           "changedBy": "system",
           "reason": "Asset created"
         },
         {
           "state": "research_ready",
-          "changedAt": "2026-04-03T04:36:18.589Z",
+          "changedAt": "2026-04-16T13:53:19.159Z",
           "changedBy": "system",
           "reason": "Research completed"
         },
         {
-          "state": "production_ready",
-          "changedAt": "2026-04-03T04:36:32.089Z",
+          "state": "script_ready",
+          "changedAt": "2026-04-16T13:54:03.128Z",
           "changedBy": "system",
-          "reason": "Production brief completed"
+          "reason": "Scripts drafted"
+        },
+        {
+          "state": "edited",
+          "changedAt": "2026-04-16T13:54:30.584Z",
+          "changedBy": "system",
+          "reason": "Publishing package prepared"
+        },
+        {
+          "state": "final_qa",
+          "changedAt": "2026-04-16T13:55:12.239Z",
+          "changedBy": "system",
+          "reason": "Strategy package ready for QA"
         }
       ],
       "openIssues": [],
       "qaReviews": [],
       "publishMetadata": null,
-      "version": 5,
-      "created_at": "2026-04-03T04:34:28.631Z",
-      "updated_at": "2026-04-03T04:36:32.089Z",
+      "version": 10,
+      "created_at": "2026-04-16T13:52:50.138Z",
+      "updated_at": "2026-04-16T13:55:12.239Z",
       "created_by": "system",
       "source_system": "agent-os",
-      "createdAt": "2026-04-03T04:34:28.631Z",
-      "updatedAt": "2026-04-03T04:36:32.089Z"
+      "createdAt": "2026-04-16T13:52:50.138Z",
+      "updatedAt": "2026-04-16T13:55:12.239Z"
     }
   },
   "calendar": {
-    "total": 32,
+    "total": 40,
     "publishReadyCount": 0,
     "latest": {
-      "id": "pkg_1775125859724_n8d1k",
+      "id": "pkg_1776347712274_o1xy4",
       "client_id": "cli_default",
       "campaign_id": "cmp_default",
-      "asset_id": "ast_1775124780290_bxf55",
-      "script_id": "scr_1775125302186_kddbb",
-      "title": "Client: Jack Riggs\nNiche: photography and marketing business\nPrimary offer: Book a photoshoot\nTarget audience: Models\nService area or geography: Marin County, Ca / San Rafael\nPrimary business goal: Book a shoot\nPriority platforms: instagram, tiktok\nSpecific research and execution notes: photography and marketing business",
-      "hook_text": "Client: Jack Riggs\nNiche: photography and marketing business\nPrimary offer: Book a photoshoot\nTarget audience: Models\nService area or geography: Marin County, Ca / San Rafael\nPrimary business goal: Book a shoot\nPriority platforms: instagram, tiktok\nSpecific research and execution notes: photography and marketing business",
+      "asset_id": "ast_1776347570138_h3azx",
+      "script_id": "scr_1776347643103_pdg7l",
+      "title": "Client: Jack Riggs\nNiche: Photography\nPriority platforms: Instagram, TikTok, LinkedIn, Facebook, YouTube, Yelp, Google Business Profile, Twitch, Discord, Reddit, Snapchat, Threads, X / Twitter, YouTube Shorts, Pinterest",
+      "hook_text": "Client: Jack Riggs\nNiche: Photography\nPriority platforms: Instagram, TikTok, LinkedIn, Facebook, YouTube, Yelp, Google Business Profile, Twitch, Discord, Reddit, Snapchat, Threads, X / Twitter, YouTube Shorts, Pinterest",
       "format": "talking_head",
       "platforms": [
         "instagram",
@@ -261,8 +321,8 @@
       "lane": "reach",
       "journey_stage": "problem-aware",
       "trend_lane": "evergreen",
-      "topic": "Client: Jack Riggs\nNiche: photography and marketing business\nPrimary offer: Book a photoshoot\nTarget audience: Models\nService area or geography: Marin County, Ca / San Rafael\nPrimary business goal: Book a shoot\nPriority platforms: instagram, tiktok\nSpecific research and execution notes: photography and marketing business",
-      "publish_date": "2026-04-03",
+      "topic": "Client: Jack Riggs\nNiche: Photography\nPriority platforms: Instagram, TikTok, LinkedIn, Facebook, YouTube, Yelp, Google Business Profile, Twitch, Discord, Reddit, Snapchat, Threads, X / Twitter, YouTube Shorts, Pinterest",
+      "publish_date": "2026-04-17",
       "publish_time": "09:00",
       "status": "planned",
       "footage_recommendations": [],
@@ -271,62 +331,53 @@
           "agentId": "alex",
           "agentName": "Alex",
           "role": "Research",
-          "summary": "### MARKET SNAPSHOT The photography and marketing niche in Marin County, CA is highly competitive but offers significant opportunities for businesses that can stand out with unique value propositions. Top creators are leveraging social media platforms like Instagram and TikTok to attract models looking for high-quality photoshoots. ### PLATFORM SPLIT **Instagram:** - **Visual Hooks:** High-resolution images of models in various poses. - **Written Hooks:** Captions highlighting the benefits of a professional photoshoot, such as improved portfolio quality or career advancement. - **Verbal Hooks:** Direct calls to action (CTAs) encouraging viewers to book their services. **TikTok:** - **Visual Hooks:** Short-form videos showcasing quick transformations in makeup and styling. - **Written Hooks:** Trending hashtags like #PhotoshootReady or #ModelLife. - **Verbal Hooks:** Engaging narratives about the importance of a professional photoshoot for career growth. ### TOP 20 CREATORS 1. **Creator: @modelshoots** - Platform: Instagram - Follower Count: 5,000 - 5X Rule Consistency: Yes (Views > Followers * 5) 2. **Creator: @photo_tips** - Platform: TikTok - Follower Count: 3,000 - 5X Rule Consistency: Yes (Views > Followers * 5) ### VIDEO BREAKDOWN **@modelshoots** - Topic: Professional photoshoot tips for models. - Views: 25,000+ - 5X Score: 5x - Format: Reels with high-quality images and\n[...summary truncated for handoff efficiency]"
-        },
-        {
-          "agentId": "iris",
-          "agentName": "Iris",
-          "role": "Production Plan",
-          "summary": "{\"task_name\":\"production_brief\",\"asset_id\":\"production-iris-001\",\"source_inputs\":[\"research-alex-001\"],\"summary\":\"\",\"outputs\":{\"visual_thesis\":\"The visual world should evoke a sense of elegance and professionalism, immediately communicating the quality and luxury of OTG Icon's photography services.\",\"hero_direction\":{\"hero_composition\":\"A high-resolution image of a model in a dynamic pose against a clean background with soft lighting to emphasize texture and detail.\",\"image_language\":\"Close-up shots that capture the essence of the model’s expression and attire. Use natural light or soft studio lights for a warm, inviting feel.\",\"proof_style\":\"Showcase before-and-after transformations, highlighting the difference OTG Icon's photoshoot can make in a model’s portfolio.\",\"do_and_do_not\":\"Do: Focus on high-quality images that are both visually stunning and professionally shot. Do not: Use overly saturated or heavily edited photos that look unnatural.\",\"production_notes\":\"Ensure all shots are crisp and well-lit, with an emphasis on natural beauty and professional presentation.\"},\"shot_list\":[{\"shot_number\":1,\"type\":\"Close-up\",\"lens\":\"50mm f/1.8\",\"lighting_setup\":\"Softbox overhead\"},{\"shot_number\":2,\"type\":\"Medium shot\",\"lens\":\"35mm f/2.8\",\"lighting_setup\":\"Ring light\"},{\"shot_number\":3,\"type\":\"Wide shot\",\"lens\":\"24mm f/1.4\",\"lighting_setup\":\"Natural window light\"},{\"shot_number\":4,\"type\":\"B-roll\",\"lens\":\"70-200mm f/2.8\",\"lighting_setup\":\"Off-camera flash\"},{\"shot_number\":5,\"type\":\"Behind-the-scenes\",\"lens\":\"35mm f/1.4\",\"lighting_setup\":\"Natural ambient light\"}],\"production_schedule\":[{\"time_slot\":\"9:00 AM - 10:00 AM\",\"activity\":\"Arrival and setup\"},{\"time_slot\":\"10:00 AM - 12:00 PM\",\"activity\":\"Main photoshoot\"},{\"time_slot\":\"12:00 PM - 1:00 PM\",\"activity\":\"Lunch break\"},{\"time_slot\":\"1:00 PM - 3:00 PM\",\"activity\":\"B-roll and behind-the-scenes shots\"},{\"time_slot\":\"3:00 PM - 4:00 PM\",\"activity\":\"Wrap-up and departure\"}],\"equipment\":{\"cameras\":[\"Canon EOS R5\"],\"lenses\":[\"50mm f/1.8\",\"35mm f/2.8\",\"24mm f/1.4\",\"70-200mm f/2.8\",\"35mm f/1.4\"],\"lights\":[\"Softbox overhead\",\"Ring light\",\"Off-camera flash\"],\"drone\":\"DJI Mavic Air 2\",\"audio\":\"Sennheiser wireless lavalier microphone\"},\"client_prep\":{\"instructions\":\"Models should arrive on time and be prepared with multiple outfits and hair/makeup ready for the shoot.\",\"notes\":\"Ensure models understand the importance of being\n[...summary truncated for handoff efficiency]"
+          "summary": "### MARKET SNAPSHOT The photography niche is highly competitive with a significant demand for high-quality visual content across various industries, including weddings, real estate, and commercial projects. Key players such as @the_photographer (@150k followers) and @visual_voyage (@200k followers) dominate Instagram and TikTok by consistently producing engaging short-form videos that exceed the 5X rule. ### PLATFORM SPLIT - **Instagram**: Short-form video content (Reels, Stories), strong visual hooks, clear value propositions. - **TikTok**: Trending sounds, duets, and challenges; fast-paced editing with direct camera energy. - **LinkedIn**: Thought leadership pieces, detailed case studies, and educational content. - **YouTube Shorts**: Fast-paced short-form videos that mimic TikTok trends but are more polished. ### TOP 20 CREATORS 1. @the_photographer (Instagram: 150k followers, TikTok: 75k followers) - Clear the 5X rule on both platforms. 2. @visual_voyage (Instagram: 200k followers, TikTok: 100k followers) - Clear the 5X rule on both platforms. 3. @shutter_life (Instagram: 100k followers, YouTube Shorts: 50k followers) - Clear the 5X rule on Instagram and YouTube Shorts. 4. @snapshots_by_joe (TikTok: 200k followers, YouTube Shorts: 100k followers) - Clear the 5X rule on both platforms. ### VIDEO BREAKDOWN #### Creator: @the_photographer - **Topic**: Wedding Photography Tips - **Views**: 750k (Instagram), 375k (TikTok) - **5X Score**: 5x\n[...summary truncated for handoff efficiency]"
         },
         {
           "agentId": "maya",
           "agentName": "Maya",
           "role": "Scripts",
-          "summary": "### Viral Video Scripts #### Script 1: Quick Transformation Tips **FORMAT:** Talking head **FILMING NOTES:** Talent should speak directly to the camera, energetic and confident posture. **VISUAL HOOK:** Model in dynamic pose with clean background, close-up shot of model's expression. **WRITTEN HOOK:** \"Transform your look for a better portfolio!\" (overlaid on video) **HOOK LINE:** \"Hey models! Want to stand out in the competitive photography market?\" **VALUE:** - Get expert guidance on poses and expressions - Professional photoshoot with custom B-roll footage - Instantly boost your online presence **CTA:** \"Book a shoot now 📸 [BOOK]\" #### Script 2: Professional Photoshoot Benefits **FORMAT:** Talking head **FILMING NOTES:** Talent should speak directly to the camera, confident and energetic posture. **VISUAL HOOK:** Model in dynamic pose with clean background, close-up shot of model's expression. **WRITTEN HOOK:** \"Get your portfolio ready for the next big opportunity!\" (overlaid on video) **HOOK LINE:** \"Want to take your modeling career to the next level?\" **VALUE:** - High-resolution images that capture your essence - Custom B-roll footage tailored just for you - Professional editing services included **CTA:** \"Ready to shine? 🌟 [BOOK]\" #### Script 3: Engaging Narratives with CTAs **FORMAT:** Talking head **FILMING NOTES:** Talent should speak directly to\n[...summary truncated for handoff efficiency]"
+          "summary": "### Viral Video Scripts 1. **FORMAT:** Talking head **FILMING NOTES:** Direct camera shot, clear background **VISUAL HOOK:** Jack Riggs holding a high-end camera with a dramatic backdrop **WRITTEN HOOK:** \"Transform Your Wedding Photos\" **HOOK LINE:** \"Hey there! Are your wedding photos just okay?\" **VALUE:** - Capture candid moments effortlessly - Use composition techniques to frame shots - Lighting tips for stunning portraits **CTA:** Book our wedding photography services now | Trigger: `book_wedding` 2. **FORMAT:** Talking head **FILMING NOTES:** Direct camera shot, clear background **VISUAL HOOK:** Jack Riggs holding a drone with the Bora Bora skyline in the distance **WRITTEN HOOK:** \"Get Stunning Travel Photos\" **HOOK LINE:** \"Want breathtaking travel photos?\" **VALUE:** - Tips for using drones in various environments - Lighting adjustments for vibrant colors - Post-processing techniques to enhance your shots **CTA:** Contact us for drone photography | Trigger: `drone_photography` 3. **FORMAT:** Talking head **FILMING NOTES:** Direct camera shot, clear background **VISUAL HOOK:** Jack Riggs with a real estate listing in the frame **WRITTEN HOOK:** \"Boost Your Property Listings\" **HOOK LINE:** \"Are your property listings photos underperforming?\" **VALUE:** - Composition tips for real estate shots - Lighting techniques for high-end properties - Before-and-after transformations to increase views **CTA:** Learn\n[...summary truncated for handoff efficiency]"
         },
         {
           "agentId": "sam",
           "agentName": "Sam",
           "role": "Social",
-          "summary": "### 30-Day Posting Calendar #### Week 1: Model Transformation Tips - **Day 1 (Tuesday, 9am):** Instagram Reel - Quick Transformation Tips - **Day 4 (Friday, 6pm):** TikTok - Quick Transformation Tips - **Day 7 (Monday, 12pm):** LinkedIn - Professional Photoshoot Benefits #### Week 2: Custom B-Roll Footage Showcase - **Day 8 (Tuesday, 9am):** Instagram Reel - Custom B-Roll Footage - **Day 10 (Thursday, 6pm):** TikTok - Custom B-Roll Footage - **Day 13 (Sunday, 12pm):** LinkedIn - Engaging Narratives with CTAs #### Week 3: Professional Photoshoot Benefits - **Day 15 (Tuesday, 9am):** Instagram Reel - Professional Photoshoot Benefits - **Day 18 (Friday, 6pm):** TikTok - Professional Photoshoot Benefits - **Day 20 (Sunday, 12pm):** LinkedIn - Custom B-Roll Footage Showcase #### Week 4: Portfolio Building Tips - **Day 22 (Tuesday, 9am):** Instagram Reel - Modeling Portfolio Tips - **Day 25 (Friday, 6pm):** TikTok - Modeling Portfolio Tips - **Day 27 (Sunday, 12pm):** LinkedIn - Professional Photoshoot Benefits ### Platform-Specific Versions of the Top 3 Scripts #### Script 1: Quick Transformation Tips - **Instagram Reel Visual Hook:** Model in dynamic pose with clean background, close-up shot. - **TikTok Visual Hook:** Same as Instagram but faster pacing. - **Visual Thesis for Hero Image:** A\n[...summary truncated for handoff efficiency]"
+          "summary": "### Social Media Package for OTG Icon - Jack Riggs #### 30-Day Posting Calendar | Date | Time (PST) | Platform | Content Type | |--------------|------------|------------|-----------------------| | Week 1 | Tue, 9am | Instagram | Wedding photography tips Reels | | | Fri, 6pm | TikTok | Real estate listings tricks | | Week 2 | Wed, 12pm | LinkedIn | Commercial shoot case study | | | Thu, 8pm | YouTube | Travel photography tips | | Week 3 | Mon, 9am | Instagram | Behind-the-scenes wedding insights | | | Thu, 6pm | TikTok | Fast-paced tutorial on wedding shots | | Week 4 | Wed, 12pm | LinkedIn | Real estate photography tips | | | Fri, 8pm | YouTube | Commercial shoot case study | #### Platform-Specific Scripts **Instagram Reels Script** - **Visual Hook:** Jack Riggs holding a high-end camera with a dramatic backdrop. - **Written Hook:** \"Transform Your Wedding Photos\" - **Hook Line:** \"Hey there. Are your wedding photos just okay?\" - **Value Proposition:** Step-by-step tips on capturing stunning wedding moments. - **CTA Trigger Word:** `book_wedding` **TikTok Script** - **Visual Hook:** Jack Riggs holding a high-end camera with a dramatic backdrop. - **Written Hook:** \"Transform\n[...summary truncated for handoff efficiency]"
         },
         {
           "agentId": "jordan",
           "agentName": "Jordan",
           "role": "Strategy",
-          "summary": "### Growth Strategy for OTG Icon #### 1. WHO is the exact target customer and where do they spend time online? **Target Customer:** Models in Marin County, CA who are actively seeking to improve their portfolios with high-quality photoshoots. **Online Presence:** - **Instagram:** Engaging with hashtags like #ModelLife, #PhotoshootReady, and following local modeling communities. - **TikTok:** Participating in trending challenges and duets that showcase quick transformation tips. #### 2. WHAT is the one offer that converts them fastest? **Primary Offer:** Book a photoshoot session with OTG Icon to enhance your portfolio and stand out from the competition. #### 3. HOW do we get in front of them at lowest cost? **Low-Cost Acquisition:** - **Social Media Challenges/Duets:** Engage models through TikTok challenges that highlight quick transformation tips. - **Hashtag Campaigns:** Leverage Instagram hashtags to reach models seeking professional photoshoot opportunities. #### 4. WHY will they choose OTG over competitors? **Unique Value Propositions:** - Custom B-roll footage and stronger first-frame hooks tailored specifically for models in Marin County, CA. - High-resolution images with dynamic poses against clean backgrounds that emphasize texture and detail. - Professional guidance on quick transformation tips to elevate their portfolio. #### 5. WHEN is the right moment to\n[...summary truncated for handoff efficiency]"
-        },
-        {
-          "agentId": "rex",
-          "agentName": "Rex",
-          "role": "Proposal",
-          "summary": "**Proposal for Jack Riggs** --- ### Executive Summary We understand your vision at OTG Icon is to provide high-quality photography and marketing services that set you apart in the competitive landscape of Marin County, CA. Our goal is to help you attract more models seeking professional photoshoots by leveraging Instagram and TikTok effectively. ### Understanding Your Goals Your primary business goal is to book more professional photoshoot sessions with models in Marin County, CA. By focusing on unique value propositions like custom B-roll footage and stronger first-frame hooks, we aim to make your services stand out in a crowded market. ### Our Recommended Solution #### Primary Offer: Book a Photoshoot Session - **Package Description:** A comprehensive photography session tailored specifically for models looking to enhance their portfolios with high-quality images. - **Value Propositions:** - Custom B-roll footage that showcases the model's unique qualities and style. - Professional guidance during the photoshoot to ensure the best possible results. ### Pricing Tiers #### Good - **Price:** $2500 - **Deliverables:** - High-resolution images for portfolio use. - Basic retouching of final images. #### Better - **Price:** $4000 - **Deliverables:** - All deliverables from the Good tier. - Custom B-roll footage to enhance your\n[...summary truncated for handoff efficiency]"
+          "summary": "### Growth Strategy for OTG Icon - Jack Riggs #### 1. WHO is the exact target customer and where do they spend time online? **Target Customers:** - Small local businesses (e.g., real estate agents, restaurants) - Wedding couples - Corporate clients - Influencers - E-commerce brands - Nonprofits - Event organizers - Musicians - Artists - Tourism boards - Yacht and marina owners - Travel brands - Media companies needing stock footage **Where They Spend Time Online:** - **Instagram:** Short-form video content (Reels, Stories) - **TikTok:** Fast-paced tutorials, direct camera shots - **LinkedIn:** Professional networking and thought leadership posts - **YouTube:** Educational content and detailed case studies - **Facebook Groups:** Engaging with photography communities #### 2. WHAT is the one offer that converts them fastest? **Primary Offer:** - **Photography Services Retainer:** A monthly retainer for ongoing photography services tailored to specific client needs (e.g., wedding planning, real estate listings). #### 3. HOW do we get in front of them at lowest cost? **Low-Cost Acquisition Channels:** - **Social Media Engagement:** Utilize Instagram Reels and TikTok duets/challenges to increase visibility. - **LinkedIn Thought Leadership:** Share detailed case studies and educational content on LinkedIn. - **YouTube Shorts:** Collaborate with other creators for cross-promotion.\n[...summary truncated for handoff efficiency]"
         }
       ],
-      "notes": "Generated from full pipeline.",
-      "source_summary": "Alex: ### MARKET SNAPSHOT The photography and marketing niche in Marin County, CA is highly competitive but offers significant opportunities for businesses that can stand out with unique value propositions. Top creators are leveraging social media platforms like Instagram and TikTok to attract models looking for high-quality photoshoots. ### PLATFORM SPLIT **Instagram:** - **Visual Hooks:** High-resolution images of models in various poses. - **Written Hooks:** Captions highlighting the benefits of a professional photoshoot, such as improved portfolio quality or career advancement. - **Verbal Hooks:** Direct calls to action (CTAs) encouraging viewers to book their services. **TikTok:** - **Visual Hooks:** Short-form videos showcasing quick transformations in makeup and styling. - **Written Hooks:** Trending hashtags like #PhotoshootReady or #ModelLife. - **Verbal Hooks:** Engaging narratives about the importance of a professional photoshoot for career growth. ### TOP 20 CREATORS 1. **Creator: @modelshoots** - Platform: Instagram - Follower Count: 5,000 - 5X Rule Consistency: Yes (Views > Followers * 5) 2. **Creator: @photo_tips** - Platform: TikTok - Follower Count: 3,000 - 5X Rule Consistency: Yes (Views > Followers * 5) ### VIDEO BREAKDOWN **@modelshoots** - Topic: Professional photoshoot tips for models. - Views: 25,000+ - 5X Score: 5x - Format: Reels with high-quality images and\n[...summary truncated for handoff efficiency] | Iris: {\"task_name\":\"production_brief\",\"asset_id\":\"production-iris-001\",\"source_inputs\":[\"research-alex-001\"],\"summary\":\"\",\"outputs\":{\"visual_thesis\":\"The visual world should evoke a sense of elegance and professionalism, immediately communicating the quality and luxury of OTG Icon's photography services.\",\"hero_direction\":{\"hero_composition\":\"A high-resolution image of a model in a dynamic pose against a clean background with soft lighting to emphasize texture and detail.\",\"image_language\":\"Close-up shots that capture the essence of the model’s expression and attire. Use natural light or soft studio lights for a warm, inviting feel.\",\"proof_style\":\"Showcase before-and-after transformations, highlighting the difference OTG Icon's photoshoot can make in a model’s portfolio.\",\"do_and_do_not\":\"Do: Focus on high-quality images that are both visually stunning and professionally shot. Do not: Use overly saturated or heavily edited photos that look unnatural.\",\"production_notes\":\"Ensure all shots are crisp and well-lit, with an emphasis on natural beauty and professional presentation.\"},\"shot_list\":[{\"shot_number\":1,\"type\":\"Close-up\",\"lens\":\"50mm f/1.8\",\"lighting_setup\":\"Softbox overhead\"},{\"shot_number\":2,\"type\":\"Medium shot\",\"lens\":\"35mm f/2.8\",\"lighting_setup\":\"Ring light\"},{\"shot_number\":3,\"type\":\"Wide shot\",\"lens\":\"24mm f/1.4\",\"lighting_setup\":\"Natural window light\"},{\"shot_number\":4,\"type\":\"B-roll\",\"lens\":\"70-200mm f/2.8\",\"lighting_setup\":\"Off-camera flash\"},{\"shot_number\":5,\"type\":\"Behind-the-scenes\",\"lens\":\"35mm f/1.4\",\"lighting_setup\":\"Natural ambient light\"}],\"production_schedule\":[{\"time_slot\":\"9:00 AM - 10:00 AM\",\"activity\":\"Arrival and setup\"},{\"time_slot\":\"10:00 AM - 12:00 PM\",\"activity\":\"Main photoshoot\"},{\"time_slot\":\"12:00 PM - 1:00 PM\",\"activity\":\"Lunch break\"},{\"time_slot\":\"1:00 PM - 3:00 PM\",\"activity\":\"B-roll and behind-the-scenes shots\"},{\"time_slot\":\"3:00 PM - 4:00 PM\",\"activity\":\"Wrap-up and departure\"}],\"equipment\":{\"cameras\":[\"Canon EOS R5\"],\"lenses\":[\"50mm f/1.8\",\"35mm f/2.8\",\"24mm f/1.4\",\"70-200mm f/2.8\",\"35mm f/1.4\"],\"lights\":[\"Softbox overhead\",\"Ring light\",\"Off-camera flash\"],\"drone\":\"DJI Mavic Air 2\",\"audio\":\"Sennheiser wireless lavalier microphone\"},\"client_prep\":{\"instructions\":\"Models should arrive on time and be prepared with multiple outfits and hair/makeup ready for the shoot.\",\"notes\":\"Ensure models understand the importance of being\n[...summary truncated for handoff efficiency] | Maya: ### Viral Video Scripts #### Script 1: Quick Transformation Tips **FORMAT:** Talking head **FILMING NOTES:** Talent should speak directly to the camera, energetic and confident posture. **VISUAL HOOK:** Model in dynamic pose with clean background, close-up shot of model's expression. **WRITTEN HOOK:** \"Transform your look for a better portfolio!\" (overlaid on video) **HOOK LINE:** \"Hey models! Want to stand out in the competitive photography market?\" **VALUE:** - Get expert guidance on poses and expressions - Professional photoshoot with custom B-roll footage - Instantly boost your online presence **CTA:** \"Book a shoot now 📸 [BOOK]\" #### Script 2: Professional Photoshoot Benefits **FORMAT:** Talking head **FILMING NOTES:** Talent should speak directly to the camera, confident and energetic posture. **VISUAL HOOK:** Model in dynamic pose with clean background, close-up shot of model's expression. **WRITTEN HOOK:** \"Get your portfolio ready for the next big opportunity!\" (overlaid on video) **HOOK LINE:** \"Want to take your modeling career to the next level?\" **VALUE:** - High-resolution images that capture your essence - Custom B-roll footage tailored just for you - Professional editing services included **CTA:** \"Ready to shine? 🌟 [BOOK]\" #### Script 3: Engaging Narratives with CTAs **FORMAT:** Talking head **FILMING NOTES:** Talent should speak directly to\n[...summary truncated for handoff efficiency] | Sam: ### 30-Day Posting Calendar #### Week 1: Model Transformation Tips - **Day 1 (Tuesday, 9am):** Instagram Reel - Quick Transformation Tips - **Day 4 (Friday, 6pm):** TikTok - Quick Transformation Tips - **Day 7 (Monday, 12pm):** LinkedIn - Professional Photoshoot Benefits #### Week 2: Custom B-Roll Footage Showcase - **Day 8 (Tuesday, 9am):** Instagram Reel - Custom B-Roll Footage - **Day 10 (Thursday, 6pm):** TikTok - Custom B-Roll Footage - **Day 13 (Sunday, 12pm):** LinkedIn - Engaging Narratives with CTAs #### Week 3: Professional Photoshoot Benefits - **Day 15 (Tuesday, 9am):** Instagram Reel - Professional Photoshoot Benefits - **Day 18 (Friday, 6pm):** TikTok - Professional Photoshoot Benefits - **Day 20 (Sunday, 12pm):** LinkedIn - Custom B-Roll Footage Showcase #### Week 4: Portfolio Building Tips - **Day 22 (Tuesday, 9am):** Instagram Reel - Modeling Portfolio Tips - **Day 25 (Friday, 6pm):** TikTok - Modeling Portfolio Tips - **Day 27 (Sunday, 12pm):** LinkedIn - Professional Photoshoot Benefits ### Platform-Specific Versions of the Top 3 Scripts #### Script 1: Quick Transformation Tips - **Instagram Reel Visual Hook:** Model in dynamic pose with clean background, close-up shot. - **TikTok Visual Hook:** Same as Instagram but faster pacing. - **Visual Thesis for Hero Image:** A\n[...summary truncated for handoff efficiency] | Jordan: ### Growth Strategy for OTG Icon #### 1. WHO is the exact target customer and where do they spend time online? **Target Customer:** Models in Marin County, CA who are actively seeking to improve their portfolios with high-quality photoshoots. **Online Presence:** - **Instagram:** Engaging with hashtags like #ModelLife, #PhotoshootReady, and following local modeling communities. - **TikTok:** Participating in trending challenges and duets that showcase quick transformation tips. #### 2. WHAT is the one offer that converts them fastest? **Primary Offer:** Book a photoshoot session with OTG Icon to enhance your portfolio and stand out from the competition. #### 3. HOW do we get in front of them at lowest cost? **Low-Cost Acquisition:** - **Social Media Challenges/Duets:** Engage models through TikTok challenges that highlight quick transformation tips. - **Hashtag Campaigns:** Leverage Instagram hashtags to reach models seeking professional photoshoot opportunities. #### 4. WHY will they choose OTG over competitors? **Unique Value Propositions:** - Custom B-roll footage and stronger first-frame hooks tailored specifically for models in Marin County, CA. - High-resolution images with dynamic poses against clean backgrounds that emphasize texture and detail. - Professional guidance on quick transformation tips to elevate their portfolio. #### 5. WHEN is the right moment to\n[...summary truncated for handoff efficiency] | Rex: **Proposal for Jack Riggs** --- ### Executive Summary We understand your vision at OTG Icon is to provide high-quality photography and marketing services that set you apart in the competitive landscape of Marin County, CA. Our goal is to help you attract more models seeking professional photoshoots by leveraging Instagram and TikTok effectively. ### Understanding Your Goals Your primary business goal is to book more professional photoshoot sessions with models in Marin County, CA. By focusing on unique value propositions like custom B-roll footage and stronger first-frame hooks, we aim to make your services stand out in a crowded market. ### Our Recommended Solution #### Primary Offer: Book a Photoshoot Session - **Package Description:** A comprehensive photography session tailored specifically for models looking to enhance their portfolios with high-quality images. - **Value Propositions:** - Custom B-roll footage that showcases the model's unique qualities and style. - Professional guidance during the photoshoot to ensure the best possible results. ### Pricing Tiers #### Good - **Price:** $2500 - **Deliverables:** - High-resolution images for portfolio use. - Basic retouching of final images. #### Better - **Price:** $4000 - **Deliverables:** - All deliverables from the Good tier. - Custom B-roll footage to enhance your\n[...summary truncated for handoff efficiency]",
+      "notes": "Generated from content pipeline.",
+      "source_summary": "Alex: ### MARKET SNAPSHOT The photography niche is highly competitive with a significant demand for high-quality visual content across various industries, including weddings, real estate, and commercial projects. Key players such as @the_photographer (@150k followers) and @visual_voyage (@200k followers) dominate Instagram and TikTok by consistently producing engaging short-form videos that exceed the 5X rule. ### PLATFORM SPLIT - **Instagram**: Short-form video content (Reels, Stories), strong visual hooks, clear value propositions. - **TikTok**: Trending sounds, duets, and challenges; fast-paced editing with direct camera energy. - **LinkedIn**: Thought leadership pieces, detailed case studies, and educational content. - **YouTube Shorts**: Fast-paced short-form videos that mimic TikTok trends but are more polished. ### TOP 20 CREATORS 1. @the_photographer (Instagram: 150k followers, TikTok: 75k followers) - Clear the 5X rule on both platforms. 2. @visual_voyage (Instagram: 200k followers, TikTok: 100k followers) - Clear the 5X rule on both platforms. 3. @shutter_life (Instagram: 100k followers, YouTube Shorts: 50k followers) - Clear the 5X rule on Instagram and YouTube Shorts. 4. @snapshots_by_joe (TikTok: 200k followers, YouTube Shorts: 100k followers) - Clear the 5X rule on both platforms. ### VIDEO BREAKDOWN #### Creator: @the_photographer - **Topic**: Wedding Photography Tips - **Views**: 750k (Instagram), 375k (TikTok) - **5X Score**: 5x\n[...summary truncated for handoff efficiency] | Maya: ### Viral Video Scripts 1. **FORMAT:** Talking head **FILMING NOTES:** Direct camera shot, clear background **VISUAL HOOK:** Jack Riggs holding a high-end camera with a dramatic backdrop **WRITTEN HOOK:** \"Transform Your Wedding Photos\" **HOOK LINE:** \"Hey there! Are your wedding photos just okay?\" **VALUE:** - Capture candid moments effortlessly - Use composition techniques to frame shots - Lighting tips for stunning portraits **CTA:** Book our wedding photography services now | Trigger: `book_wedding` 2. **FORMAT:** Talking head **FILMING NOTES:** Direct camera shot, clear background **VISUAL HOOK:** Jack Riggs holding a drone with the Bora Bora skyline in the distance **WRITTEN HOOK:** \"Get Stunning Travel Photos\" **HOOK LINE:** \"Want breathtaking travel photos?\" **VALUE:** - Tips for using drones in various environments - Lighting adjustments for vibrant colors - Post-processing techniques to enhance your shots **CTA:** Contact us for drone photography | Trigger: `drone_photography` 3. **FORMAT:** Talking head **FILMING NOTES:** Direct camera shot, clear background **VISUAL HOOK:** Jack Riggs with a real estate listing in the frame **WRITTEN HOOK:** \"Boost Your Property Listings\" **HOOK LINE:** \"Are your property listings photos underperforming?\" **VALUE:** - Composition tips for real estate shots - Lighting techniques for high-end properties - Before-and-after transformations to increase views **CTA:** Learn\n[...summary truncated for handoff efficiency] | Sam: ### Social Media Package for OTG Icon - Jack Riggs #### 30-Day Posting Calendar | Date | Time (PST) | Platform | Content Type | |--------------|------------|------------|-----------------------| | Week 1 | Tue, 9am | Instagram | Wedding photography tips Reels | | | Fri, 6pm | TikTok | Real estate listings tricks | | Week 2 | Wed, 12pm | LinkedIn | Commercial shoot case study | | | Thu, 8pm | YouTube | Travel photography tips | | Week 3 | Mon, 9am | Instagram | Behind-the-scenes wedding insights | | | Thu, 6pm | TikTok | Fast-paced tutorial on wedding shots | | Week 4 | Wed, 12pm | LinkedIn | Real estate photography tips | | | Fri, 8pm | YouTube | Commercial shoot case study | #### Platform-Specific Scripts **Instagram Reels Script** - **Visual Hook:** Jack Riggs holding a high-end camera with a dramatic backdrop. - **Written Hook:** \"Transform Your Wedding Photos\" - **Hook Line:** \"Hey there. Are your wedding photos just okay?\" - **Value Proposition:** Step-by-step tips on capturing stunning wedding moments. - **CTA Trigger Word:** `book_wedding` **TikTok Script** - **Visual Hook:** Jack Riggs holding a high-end camera with a dramatic backdrop. - **Written Hook:** \"Transform\n[...summary truncated for handoff efficiency] | Jordan: ### Growth Strategy for OTG Icon - Jack Riggs #### 1. WHO is the exact target customer and where do they spend time online? **Target Customers:** - Small local businesses (e.g., real estate agents, restaurants) - Wedding couples - Corporate clients - Influencers - E-commerce brands - Nonprofits - Event organizers - Musicians - Artists - Tourism boards - Yacht and marina owners - Travel brands - Media companies needing stock footage **Where They Spend Time Online:** - **Instagram:** Short-form video content (Reels, Stories) - **TikTok:** Fast-paced tutorials, direct camera shots - **LinkedIn:** Professional networking and thought leadership posts - **YouTube:** Educational content and detailed case studies - **Facebook Groups:** Engaging with photography communities #### 2. WHAT is the one offer that converts them fastest? **Primary Offer:** - **Photography Services Retainer:** A monthly retainer for ongoing photography services tailored to specific client needs (e.g., wedding planning, real estate listings). #### 3. HOW do we get in front of them at lowest cost? **Low-Cost Acquisition Channels:** - **Social Media Engagement:** Utilize Instagram Reels and TikTok duets/challenges to increase visibility. - **LinkedIn Thought Leadership:** Share detailed case studies and educational content on LinkedIn. - **YouTube Shorts:** Collaborate with other creators for cross-promotion.\n[...summary truncated for handoff efficiency]",
       "version": 1,
-      "created_at": "2026-04-02T10:30:59.724Z",
-      "updated_at": "2026-04-02T10:30:59.724Z",
+      "created_at": "2026-04-16T13:55:12.274Z",
+      "updated_at": "2026-04-16T13:55:12.274Z",
       "created_by": "pipeline",
       "source_system": "content_calendar",
-      "createdAt": "2026-04-02T10:30:59.724Z",
-      "updatedAt": "2026-04-02T10:30:59.724Z"
+      "createdAt": "2026-04-16T13:55:12.274Z",
+      "updatedAt": "2026-04-16T13:55:12.274Z"
     }
   },
   "processes": {
-    "total": 1,
+    "total": 13,
     "runningCount": 0,
     "running": [],
     "latest": {
-      "id": "agent-alex-1775677981915",
+      "id": "queue-job_1776347712259_hm94d",
       "type": "agent",
-      "description": "Alex: wedding videography",
-      "status": "killed",
-      "startedAt": "2026-04-08T19:53:01.927Z",
+      "description": "Queue: pipeline reflection",
+      "status": "complete",
+      "startedAt": "2026-04-16T13:56:09.937Z",
       "stoppedAt": null,
-      "completedAt": "2026-04-08T19:53:01.934Z"
+      "queueJobId": "job_1776347712259_hm94d",
+      "jobType": "pipeline_reflection",
+      "relatedRunId": "pipeline-1776347570117",
+      "completedAt": "2026-04-16T13:56:12.101Z"
     }
   },
   "bookings": {
@@ -386,12 +437,13 @@
     }
   },
   "production": {
-    "shoots": 31,
-    "edits": 31,
-    "renders": 31,
+    "shoots": 39,
+    "edits": 39,
+    "renders": 39,
     "publishReadyCount": 1
   },
   "nextActions": [
+    "Set or create an active client so research and publishing stay scoped.",
     "There are 1 production item(s) ready to publish."
   ]
 }

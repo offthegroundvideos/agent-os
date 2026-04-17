@@ -1,0 +1,15 @@
+{
+  "clientName": "Milo Brooks Nutrition",
+  "clientId": "cli_demo_milo_brooks",
+  "niche": "nutrition coaching",
+  "headline": "Book a nutrition strategy call",
+  "subheadline": "Get a clear plan for energy, body composition, and consistency.",
+  "cta": "Book a consultation",
+  "primaryOutcome": "More consultation call inquiries",
+  "sourcePrompt": "Build a landing page for Milo Brooks Nutrition. Niche: nutrition coaching. Audience: Busy professionals. Geography: Bay Area, CA. Primary offer: Consultation Call.",
+  "leadMagnetLine": "Get a tailored next-step plan for your nutrition and schedule.",
+  "objectionBullets": "No crash diets or extreme meal plans\nBuilt for busy professionals with real schedules\nClear next steps based on your goals and habits",
+  "testimonials": "Clients leave with a clear plan and a confident next step. - Founder",
+  "strategyNotes": "Evidence-based nutrition coaching for busy professionals who want sustainable fat loss and more energy.",
+  "landingPageType": "booking"
+}

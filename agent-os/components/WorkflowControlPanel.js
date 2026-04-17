@@ -213,7 +213,7 @@ export default function WorkflowControlPanel({ onClose }) {
                   <div style={{ padding: 14, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 4 }}>
                     <div style={{ fontSize: 10, color: '#666', letterSpacing: '0.12em', marginBottom: 8 }}>GOVERNANCE</div>
                     <div style={{ color: '#ddd', fontSize: 12, lineHeight: 1.8 }}>
-                      <div>Winner threshold 5x: {governance?.winnerThreshold?.fiveXScoreMin}</div>
+                      <div>5x qualifier min: {governance?.winnerThreshold?.fiveXScoreMin}x follower count</div>
                       <div>Save rate min: {governance?.winnerThreshold?.saveRateMin}</div>
                       <div>Share rate min: {governance?.winnerThreshold?.shareRateMin}</div>
                       <div>Comment-to-DM min: {governance?.winnerThreshold?.commentToDmConversionMin}</div>

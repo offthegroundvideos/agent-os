@@ -18,7 +18,10 @@ import PublishQueuePanel from "../components/PublishQueuePanel";
 import PublishIntegrationsPanel from "../components/PublishIntegrationsPanel";
 import DeerFlowPanel from "../components/DeerFlowPanel";
 import CloudflareOpsPanel from "../components/CloudflareOpsPanel";
+import ProspectRadarPanel from "../components/ProspectRadarPanel";
 import AuraPipelineModal from "../components/AuraPipelineModal";
+import PipelineReportsPanel from "../components/PipelineReportsPanel";
+import WorkingMemoryPanel from "../components/WorkingMemoryPanel";
 
 const AGENTS = {
   alex: { name: "Alex", role: "Market Intelligence", color: "#3b82f6", icon: "🔍", shortcut: "/alex" },
@@ -62,6 +65,75 @@ const EMPTY_PIPELINE_BRIEF = {
   notes: "",
 };
 
+const WORKSPACE_CONTEXTS = {
+  general: {
+    id: "general",
+    label: "General Research",
+    color: "#60a5fa",
+    description: "Fresh testing, niche exploration, and internal research with no client attached.",
+  },
+  client: {
+    id: "client",
+    label: "Selected Client",
+    color: "#10b981",
+    description: "Operate on a real managed client with pipeline, page, and CRM context attached.",
+  },
+  prospect: {
+    id: "prospect",
+    label: "Prospect / Pre-client",
+    color: "#f59e0b",
+    description: "Work on a lead or opportunity before it becomes a fully managed client.",
+  },
+};
+
+const PLATFORM_OPTIONS = [
+  "Instagram",
+  "TikTok",
+  "LinkedIn",
+  "Facebook",
+  "YouTube",
+  "YouTube Shorts",
+  "X / Twitter",
+  "Threads",
+  "Pinterest",
+  "Snapchat",
+  "Reddit",
+  "WhatsApp",
+  "Messenger",
+  "Telegram",
+  "Discord",
+  "Twitch",
+  "Kick",
+  "Vimeo",
+  "Google Business Profile",
+  "Yelp",
+];
+
+function parsePlatformList(value = "") {
+  return String(value || "")
+    .split(",")
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
+
+function serializePlatformList(platforms = []) {
+  return platforms
+    .map((item) => String(item || "").trim())
+    .filter(Boolean)
+    .join(", ");
+}
+
+function togglePlatform(platformsValue = "", platform = "") {
+  const current = parsePlatformList(platformsValue);
+  const exists = current.some((item) => item.toLowerCase() === String(platform || "").toLowerCase());
+  if (exists) {
+    return serializePlatformList(
+      current.filter((item) => item.toLowerCase() !== String(platform || "").toLowerCase())
+    );
+  }
+  return serializePlatformList([...current, platform]);
+}
+
 function buildPipelinePromptFromBrief(brief = {}) {
   const lines = [
     brief.clientName ? `Client: ${brief.clientName}` : "",
@@ -80,17 +152,49 @@ function buildPipelinePromptFromBrief(brief = {}) {
 function buildPipelineBriefFromClient(client = {}, seed = "") {
   const onboarding = client?.onboarding_packet || {};
   const trimmedSeed = String(seed || "").trim();
+  if (trimmedSeed) {
+    return {
+      ...EMPTY_PIPELINE_BRIEF,
+      clientName: client?.name || "",
+      niche: trimmedSeed,
+      offer: "",
+      targetAudience: "",
+      geography: "",
+      primaryGoal: "",
+      platforms: "",
+      notes: "",
+    };
+  }
+  const resolvedNiche = client?.niche || onboarding?.niche || trimmedSeed || "";
   return {
     ...EMPTY_PIPELINE_BRIEF,
     clientName: client?.name || "",
-    niche: trimmedSeed || client?.niche || onboarding?.niche || "",
+    niche: resolvedNiche,
     offer: client?.primary_offer || onboarding?.offerName || "",
     targetAudience: client?.target_audience || onboarding?.audience || "",
     geography: client?.service_area || [client?.city, client?.state].filter(Boolean).join(", "),
     primaryGoal: onboarding?.campaignGoal || "",
     platforms: Array.isArray(onboarding?.platforms) ? onboarding.platforms.join(", ") : "",
-    notes: trimmedSeed || client?.research_summary || onboarding?.strategyNotes || "",
+    notes: trimmedSeed,
   };
+}
+
+function getContextRecordOptions(records = [], contextMode = "client") {
+  const desiredType = contextMode === "prospect" ? "prospect" : "client";
+  return records.filter((record) => String(record?.context_type || "client") === desiredType);
+}
+
+function normalizeName(value = "") {
+  return String(value || "")
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ");
+}
+
+function findClientRecordByName(records = [], name = "") {
+  const normalizedTarget = normalizeName(name);
+  if (!normalizedTarget) return null;
+  return records.find((record) => normalizeName(record?.name) === normalizedTarget) || null;
 }
 
 function Dot({ color, pulse }) {
@@ -585,6 +689,8 @@ export default function MissionControl() {
   const [ghlInitialTab, setGhlInitialTab] = useState("clients");
   const [ghlAssetId, setGhlAssetId] = useState("");
   const [landingPageAssetId, setLandingPageAssetId] = useState("");
+  const [showPipelineReports, setShowPipelineReports] = useState(false);
+  const [pipelineReportAssetId, setPipelineReportAssetId] = useState("");
   const [showLearning, setShowLearning] = useState(false);
   const [showComms, setShowComms] = useState(false);
   const [showProcesses, setShowProcesses] = useState(false);
@@ -600,9 +706,17 @@ export default function MissionControl() {
   const [showPublishIntegrations, setShowPublishIntegrations] = useState(false);
   const [showDeerFlow, setShowDeerFlow] = useState(false);
   const [showCloudflareOps, setShowCloudflareOps] = useState(false);
+  const [showProspectRadar, setShowProspectRadar] = useState(false);
   const [activeUser, setActiveUser] = useState(null);
   const [showUserPicker, setShowUserPicker] = useState(false);
   const [showToolsMenu, setShowToolsMenu] = useState(false);
+  const [showContextMenu, setShowContextMenu] = useState(false);
+  const [workspaceContextMode, setWorkspaceContextMode] = useState("general");
+  const [workspaceContextId, setWorkspaceContextId] = useState("");
+  const [clientContextRecords, setClientContextRecords] = useState([]);
+  const [workspaceClientNameDraft, setWorkspaceClientNameDraft] = useState("");
+  const [workspaceClientAddBusy, setWorkspaceClientAddBusy] = useState(false);
+  const [workspaceClientAddError, setWorkspaceClientAddError] = useState("");
 
   const [streamingTokens, setStreamingTokens] = useState({});
   const [pipelineMinimized, setPipelineMinimized] = useState(false);
@@ -621,6 +735,7 @@ export default function MissionControl() {
   const agentPollRef = useRef(null);
   const autoAttachedPipelineAssetRef = useRef(null);
   const lastMessageCountRef = useRef(0);
+  const workspaceClientNameInputRef = useRef(null);
   const [agentRunning, setAgentRunning] = useState(false);
   const [showPipelinePrompt, setShowPipelinePrompt] = useState(false);
   const [pipelineInput, setPipelineInput] = useState("");
@@ -697,13 +812,54 @@ export default function MissionControl() {
   ]);
 
   useEffect(() => { loadMemorySummary(); }, []);
+  useEffect(() => { loadClientContexts(); }, []);
+
+  useEffect(() => {
+    try {
+      const savedMode = window.localStorage.getItem("agent-os:workspace-context-mode");
+      const savedId = window.localStorage.getItem("agent-os:workspace-context-id");
+      if (savedMode === "client" || savedMode === "prospect") {
+        setWorkspaceContextMode(savedMode);
+        setWorkspaceContextId(savedId || "");
+      } else {
+        setWorkspaceContextMode("general");
+        setWorkspaceContextId("");
+      }
+    } catch {}
+  }, []);
+
+  useEffect(() => {
+    if (!clientContextRecords.length) return;
+    if (workspaceContextMode === "general") return;
+    const exists = clientContextRecords.some((record) => record.id === workspaceContextId);
+    if (!exists) {
+      setWorkspaceContextMode("general");
+      setWorkspaceContextId("");
+    }
+  }, [clientContextRecords, workspaceContextId, workspaceContextMode]);
+
+  useEffect(() => {
+    if (!clientContextRecords.length) return;
+    const action = workspaceContextMode === "general" || !workspaceContextId ? "clearActive" : "setActive";
+    const body = action === "setActive"
+      ? { action, clientId: workspaceContextId }
+      : { action };
+    fetch("/api/clients", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    }).catch(() => {});
+  }, [clientContextRecords.length, workspaceContextId, workspaceContextMode]);
 
   useEffect(() => {
     if (pipeline?.status !== "complete" || !pipeline?.assetId) return;
     if (autoAttachedPipelineAssetRef.current === pipeline.assetId) return;
     autoAttachedPipelineAssetRef.current = pipeline.assetId;
-    autoAttachPipelinePacketToActiveClient(pipeline.assetId);
-  }, [pipeline?.status, pipeline?.assetId]);
+    autoAttachPipelinePacketToClient(pipeline.assetId, {
+      id: pipeline.targetClientId,
+      name: pipeline.targetClientName,
+    });
+  }, [pipeline?.status, pipeline?.assetId, pipeline?.targetClientId, pipeline?.targetClientName]);
 
   useEffect(() => {
     const loadAutoJobSettings = async () => {
@@ -719,6 +875,7 @@ export default function MissionControl() {
   useEffect(() => {
     const handleClick = (e) => {
       if (!e.target.closest("[data-tools-menu]")) setShowToolsMenu(false);
+      if (!e.target.closest("[data-context-menu]")) setShowContextMenu(false);
     };
     document.addEventListener("mousedown", handleClick);
     return () => document.removeEventListener("mousedown", handleClick);
@@ -804,28 +961,113 @@ export default function MissionControl() {
     } catch(e) {}
   };
 
-  const autoAttachPipelinePacketToActiveClient = async (assetId) => {
-    if (!assetId) return;
+  const loadClientContexts = async () => {
     try {
-      const activeRes = await fetch("/api/clients?action=active");
-      const activeData = await activeRes.json();
-      if (!activeRes.ok || !activeData?.active?.id) {
-        setPipeline(prev => prev ? ({
-          ...prev,
-          ghlAutoAttach: {
-            status: "skipped",
-            message: "No active GHL client selected. Pipeline packet stayed local.",
+      const res = await fetch("/api/clients");
+      const data = await res.json();
+      if (res.ok) {
+        setClientContextRecords(Array.isArray(data?.clients) ? data.clients : []);
+      }
+    } catch {}
+  };
+
+  const syncWorkspaceContext = async (nextMode, nextId = "") => {
+    const normalizedMode = nextMode === "client" || nextMode === "prospect" ? nextMode : "general";
+    const normalizedId = String(nextId || "");
+
+    setWorkspaceContextMode(normalizedMode);
+    setWorkspaceContextId(normalizedId);
+    setShowContextMenu(false);
+
+    try {
+      window.localStorage.setItem("agent-os:workspace-context-mode", normalizedMode);
+      window.localStorage.setItem("agent-os:workspace-context-id", normalizedId);
+    } catch {}
+
+    try {
+      if (normalizedMode === "general" || !normalizedId) {
+        await fetch("/api/clients", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ action: "clearActive" }),
+        });
+      } else {
+        await fetch("/api/clients", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ action: "setActive", clientId: normalizedId }),
+        });
+      }
+    } catch {}
+  };
+
+  const quickAddWorkspaceClient = async () => {
+    const name = workspaceClientNameDraft.trim();
+    if (!name || workspaceClientAddBusy) return;
+
+    setWorkspaceClientAddBusy(true);
+    setWorkspaceClientAddError("");
+
+    try {
+      const res = await fetch("/api/clients", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          action: "add",
+          client: {
+            name,
+            status: "active",
+            context_type: "client",
           },
-        }) : prev);
-        return;
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok || data?.error) {
+        throw new Error(data?.error || "Failed to add client");
       }
 
+      const createdClient = data?.client || {};
+      setWorkspaceClientNameDraft("");
+      await loadClientContexts();
+      await syncWorkspaceContext("client", createdClient?.id || "");
+
+      if (createdClient?.id) {
+        const seededBrief = buildPipelineBriefFromClient(createdClient);
+        setPipelineActiveClient(createdClient);
+        setPipelineBrief(seededBrief);
+        if (showPipelinePrompt) {
+          setPipelineInput(buildPipelinePromptFromBrief(seededBrief));
+        }
+      }
+    } catch (error) {
+      setWorkspaceClientAddError(error?.message || "Could not add client.");
+    } finally {
+      setWorkspaceClientAddBusy(false);
+    }
+  };
+
+  const autoAttachPipelinePacketToClient = async (assetId, targetClient = null) => {
+    if (!assetId) return;
+    if (!targetClient?.id) {
+      setPipeline(prev => prev ? ({
+        ...prev,
+        ghlAutoAttach: {
+          status: "skipped",
+          message: targetClient?.name
+            ? `Pipeline packet stayed local because "${targetClient.name}" is not a saved client record.`
+            : "Pipeline packet stayed local because this run was not tied to a specific client record.",
+        },
+      }) : prev);
+      return;
+    }
+
+    try {
       const attachRes = await fetch("/api/ghl", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           action: "attachResearchPacket",
-          clientId: activeData.active.id,
+          clientId: targetClient.id,
           data: { assetId },
         }),
       });
@@ -838,8 +1080,8 @@ export default function MissionControl() {
         ...prev,
         ghlAutoAttach: {
           status: "attached",
-          clientName: attachData.client?.name || activeData.active.name,
-          message: attachData.message || "Pipeline packet attached to the active GHL client.",
+          clientName: attachData.client?.name || targetClient.name,
+          message: attachData.message || "Pipeline packet attached to the matched client record.",
         },
       }) : prev);
     } catch (error) {
@@ -858,18 +1100,21 @@ export default function MissionControl() {
     let nextBrief = {
       ...EMPTY_PIPELINE_BRIEF,
       niche: trimmed,
-      notes: trimmed,
+      notes: "",
     };
     setPipelineActiveClient(null);
 
-    try {
-      const res = await fetch("/api/clients?action=active");
-      const data = await res.json();
-      if (res.ok && data?.active) {
-        setPipelineActiveClient(data.active);
-        nextBrief = buildPipelineBriefFromClient(data.active, trimmed);
-      }
-    } catch {}
+    if (trimmed) {
+      setPipelineInput(buildPipelinePromptFromBrief(nextBrief));
+      setPipelineBrief(nextBrief);
+      setShowPipelinePrompt(true);
+      return;
+    }
+
+    if ((workspaceContextMode === "client" || workspaceContextMode === "prospect") && selectedWorkspaceRecord) {
+      setPipelineActiveClient(selectedWorkspaceRecord);
+      nextBrief = buildPipelineBriefFromClient(selectedWorkspaceRecord, trimmed);
+    }
 
     setPipelineInput(buildPipelinePromptFromBrief(nextBrief));
     setPipelineBrief(nextBrief);
@@ -879,10 +1124,11 @@ export default function MissionControl() {
   const submitPipelineBrief = () => {
     const prompt = buildPipelinePromptFromBrief(pipelineBrief).trim();
     if (!prompt) return;
+    const matchedClient = pipelineActiveClient
+      || findClientRecordByName(clientContextRecords, pipelineBrief.clientName);
     setPipelineInput(prompt);
     setShowPipelinePrompt(false);
-    setPipelineActiveClient(null);
-    runPipeline(prompt, selectedPipelineType);
+    runPipeline(prompt, selectedPipelineType, matchedClient);
   };
 
   const detectPipelineIntent = (userInput) => {
@@ -1270,9 +1516,12 @@ export default function MissionControl() {
     }
   };
 
-  const runPipeline = async (topic, pipelineType = "content") => {
+  const runPipeline = async (topic, pipelineType = "content", targetClient = null) => {
     const ptSteps = {};
     (PIPELINE_TYPES[pipelineType]?.steps || []).forEach((agentId) => { ptSteps[agentId] = null; });
+    const parsedClientNameMatch = String(topic || "").match(/(?:^|\n)\s*Client:\s*(.+?)\s*(?=\n|$)/i);
+    const parsedClientName = parsedClientNameMatch ? parsedClientNameMatch[1].trim() : "";
+    const resolvedTargetClient = targetClient || findClientRecordByName(clientContextRecords, parsedClientName);
     setStreamingTokens({});
     setPipeline({
       topic,
@@ -1283,6 +1532,8 @@ export default function MissionControl() {
       currentStep: null,
       processId: null,
       pipelineType,
+      targetClientId: resolvedTargetClient?.id || "",
+      targetClientName: resolvedTargetClient?.name || parsedClientName || "",
     });
     try {
         const res = await fetch("/api/pipeline", {
@@ -1363,6 +1614,10 @@ export default function MissionControl() {
 
   const isMobile = viewportWidth <= 900;
   const isCompact = viewportWidth <= 1180;
+  const clientOptions = getContextRecordOptions(clientContextRecords, "client");
+  const prospectOptions = getContextRecordOptions(clientContextRecords, "prospect");
+  const selectedWorkspaceRecord = clientContextRecords.find((record) => record.id === workspaceContextId) || null;
+  const currentWorkspaceContext = WORKSPACE_CONTEXTS[workspaceContextMode] || WORKSPACE_CONTEXTS.general;
   const shellHeight = isMobile ? "auto" : "calc(100vh - 82px)";
   const visibleSuggestions = isMobile ? suggestions.slice(0, 2) : suggestions;
   const showAlexModePanel = showAlexModeControl && (!isMobile || !!input.trim());
@@ -1455,6 +1710,27 @@ export default function MissionControl() {
               color: "#f59e0b", letterSpacing: "0.1em",
             }}>SUPERWIZARD5000</div>
             <div style={{ fontSize: 9, color: "#666d7d", letterSpacing: "0.2em" }}>MISSION CONTROL OS</div>
+            <button
+              type="button"
+              onClick={() => {
+                setShowContextMenu(true);
+                window.setTimeout(() => workspaceClientNameInputRef.current?.focus(), 0);
+              }}
+              style={{
+                marginTop: 8,
+                padding: "8px 12px",
+                borderRadius: 999,
+                border: "1px solid rgba(16,185,129,0.38)",
+                background: "rgba(16,185,129,0.12)",
+                color: "#10b981",
+                fontFamily: "Orbitron, sans-serif",
+                fontSize: 10,
+                letterSpacing: "0.1em",
+                cursor: "pointer",
+              }}
+            >
+              + CLIENT
+            </button>
           </div>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 12, marginLeft: isMobile ? 0 : "auto", width: isMobile ? "100%" : "auto", minWidth: 0, flexWrap: "wrap", justifyContent: isMobile ? "flex-start" : "flex-end" }}>
@@ -1615,7 +1891,7 @@ export default function MissionControl() {
             cursor: "pointer",
           }}>GHL →</button>
 
-          <button onClick={() => setShowLandingPage(true)} style={{ padding: "6px 14px", background: "rgba(16,185,129,0.1)", border: "1px solid rgba(16,185,129,0.3)", borderRadius: 3, color: "#10b981", fontFamily: "Orbitron, sans-serif", fontSize: 10, letterSpacing: "0.1em", cursor: "pointer", marginLeft: 8 }}>PAGE →</button>
+          <button onClick={() => { setLandingPageAssetId(""); setShowLandingPage(true); }} style={{ padding: "6px 14px", background: "rgba(16,185,129,0.1)", border: "1px solid rgba(16,185,129,0.3)", borderRadius: 3, color: "#10b981", fontFamily: "Orbitron, sans-serif", fontSize: 10, letterSpacing: "0.1em", cursor: "pointer", marginLeft: 8 }}>PAGE →</button>
  */}
 
           {!isMobile && (
@@ -1631,6 +1907,17 @@ export default function MissionControl() {
             flex: isMobile ? "1 1 calc(50% - 6px)" : "0 0 auto",
             minWidth: isMobile ? "calc(50% - 6px)" : "auto",
           }}>🧠 LEARN</button>
+          <button onClick={() => { setPipelineReportAssetId(""); setShowPipelineReports(true); }} style={{
+            padding: "6px 14px",
+            background: "rgba(59,130,246,0.1)",
+            border: "1px solid rgba(59,130,246,0.3)",
+            borderRadius: 3, color: "#60a5fa",
+            fontFamily: "Orbitron, sans-serif",
+            fontSize: 10, letterSpacing: "0.1em",
+            cursor: "pointer", marginLeft: isMobile ? 0 : 8,
+            flex: isMobile ? "1 1 calc(50% - 6px)" : "0 0 auto",
+            minWidth: isMobile ? "calc(50% - 6px)" : "auto",
+          }}>📄 REPORTS</button>
           <button onClick={() => setShowComms(true)} style={{
             padding: "6px 14px",
             background: "rgba(0,207,255,0.1)",
@@ -1742,13 +2029,15 @@ export default function MissionControl() {
                 {[
                   ...(isMobile ? [
                     { label: "LEARN", color: "#8b5cf6", bg: "rgba(139,92,246,0.1)", border: "rgba(139,92,246,0.3)", onClick: () => { setShowLearning(true); setShowToolsMenu(false); } },
+                    { label: "REPORTS", color: "#60a5fa", bg: "rgba(59,130,246,0.1)", border: "rgba(59,130,246,0.3)", onClick: () => { setPipelineReportAssetId(""); setShowPipelineReports(true); setShowToolsMenu(false); } },
                     { label: "COMMS", color: "#00cfff", bg: "rgba(0,207,255,0.1)", border: "rgba(0,207,255,0.3)", onClick: () => { setShowComms(true); setShowToolsMenu(false); } },
                     { label: "STOP ALL", color: "#ef4444", bg: "rgba(239,68,68,0.1)", border: "rgba(239,68,68,0.3)", onClick: () => { stopAllProcesses(); setShowToolsMenu(false); } },
                     { label: autoJobsMode === "idle" ? "AUTO IDLE" : "AUTO MANUAL", color: autoJobsMode === "idle" ? "#10b981" : "#a1a1aa", bg: autoJobsMode === "idle" ? "rgba(16,185,129,0.1)" : "rgba(255,255,255,0.04)", border: autoJobsMode === "idle" ? "rgba(16,185,129,0.3)" : "rgba(255,255,255,0.12)", onClick: () => { toggleAutoJobMode(); setShowToolsMenu(false); } },
                     { label: "PROCESSES", color: "#f59e0b", bg: "rgba(245,158,11,0.1)", border: "rgba(245,158,11,0.3)", onClick: () => { setShowProcesses(true); setShowToolsMenu(false); } },
                   ] : []),
                   { label: "GHL →", color: "#f59e0b", bg: "rgba(245,158,11,0.1)", border: "rgba(245,158,11,0.3)", onClick: () => { setShowGHL(true); setShowToolsMenu(false); } },
-                  { label: "PAGE →", color: "#10b981", bg: "rgba(16,185,129,0.1)", border: "rgba(16,185,129,0.3)", onClick: () => { setShowLandingPage(true); setShowToolsMenu(false); } },
+                  { label: "PIPELINE REPORTS", color: "#60a5fa", bg: "rgba(59,130,246,0.1)", border: "rgba(59,130,246,0.3)", onClick: () => { setPipelineReportAssetId(""); setShowPipelineReports(true); setShowToolsMenu(false); } },
+                  { label: "PAGE →", color: "#10b981", bg: "rgba(16,185,129,0.1)", border: "rgba(16,185,129,0.3)", onClick: () => { setLandingPageAssetId(""); setShowLandingPage(true); setShowToolsMenu(false); } },
                   { label: "VIRAL RESEARCH", color: "#3b82f6", bg: "rgba(59,130,246,0.1)", border: "rgba(59,130,246,0.3)", onClick: () => { setShowViralResearch(true); setShowToolsMenu(false); } },
                   { label: "CONTENT OS", color: "#22d3ee", bg: "rgba(34,211,238,0.1)", border: "rgba(34,211,238,0.3)", onClick: () => { setShowContentOS(true); setShowToolsMenu(false); } },
                   { label: "CONTENT CAL", color: "#3b82f6", bg: "rgba(59,130,246,0.1)", border: "rgba(59,130,246,0.3)", onClick: () => { setShowContentCalendar(true); setShowToolsMenu(false); } },
@@ -1756,6 +2045,7 @@ export default function MissionControl() {
                   { label: "PUBLISH OPS", color: "#22c55e", bg: "rgba(34,197,94,0.1)", border: "rgba(34,197,94,0.3)", onClick: () => { setShowPublishIntegrations(true); setShowToolsMenu(false); } },
                   { label: "VIDEO EDITOR", color: "#f97316", bg: "rgba(249,115,22,0.12)", border: "rgba(249,115,22,0.34)", onClick: () => { window.location.href = "/video-editor"; setShowToolsMenu(false); } },
                   { label: "CLOUDFLARE OPS", color: "#22d3ee", bg: "rgba(34,211,238,0.1)", border: "rgba(34,211,238,0.3)", onClick: () => { setShowCloudflareOps(true); setShowToolsMenu(false); } },
+                  { label: "PROSPECT RADAR", color: "#34d399", bg: "rgba(16,185,129,0.1)", border: "rgba(16,185,129,0.3)", onClick: () => { setShowProspectRadar(true); setShowToolsMenu(false); } },
                   { label: "DEERFLOW OPS", color: "#22d3ee", bg: "rgba(34,211,238,0.1)", border: "rgba(34,211,238,0.3)", onClick: () => { setShowDeerFlow(true); setShowToolsMenu(false); } },
                   { label: "FUNNEL OPS", color: "#e97b2c", bg: "rgba(233,123,44,0.1)", border: "rgba(233,123,44,0.3)", onClick: () => { setShowFunnelDashboard(true); setShowToolsMenu(false); } },
                   { label: "SUCCESS KPIS", color: "#10b981", bg: "rgba(16,185,129,0.1)", border: "rgba(16,185,129,0.3)", onClick: () => { setShowKpis(true); setShowToolsMenu(false); } },
@@ -1787,6 +2077,335 @@ export default function MissionControl() {
           <div style={{ display: "none" }}>
           </div>
         </div>
+      </div>
+
+      <div
+        style={{
+          width: "min(1560px, calc(100% - 24px))",
+          margin: "14px auto 0",
+          padding: isMobile ? "0" : "0 6px",
+          position: "relative",
+          zIndex: 40,
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            flexDirection: isMobile ? "column" : "row",
+            alignItems: isMobile ? "stretch" : "center",
+            justifyContent: "space-between",
+            gap: 12,
+            padding: isMobile ? "14px 14px 12px" : "14px 18px",
+            borderRadius: 16,
+            border: "1px solid rgba(255,255,255,0.06)",
+            background: `linear-gradient(180deg, ${currentWorkspaceContext.color}14, rgba(255,255,255,0.02))`,
+            boxShadow: "inset 0 1px 0 rgba(255,255,255,0.03)",
+          }}
+        >
+          <div style={{ minWidth: 0 }}>
+            <div
+              style={{
+                fontSize: 9,
+                color: currentWorkspaceContext.color,
+                letterSpacing: "0.18em",
+                fontFamily: "Orbitron, sans-serif",
+                marginBottom: 6,
+              }}
+            >
+              WORKSPACE CONTEXT
+            </div>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 10,
+                flexWrap: "wrap",
+              }}
+            >
+              <button
+                onClick={() => setShowContextMenu((prev) => !prev)}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 8,
+                  padding: "10px 14px",
+                  borderRadius: 999,
+                  border: `1px solid ${currentWorkspaceContext.color}44`,
+                  background: `${currentWorkspaceContext.color}16`,
+                  color: currentWorkspaceContext.color,
+                  fontFamily: "Orbitron, sans-serif",
+                  fontSize: 10,
+                  letterSpacing: "0.1em",
+                  cursor: "pointer",
+                }}
+                data-context-menu="true"
+              >
+                {currentWorkspaceContext.label.toUpperCase()}
+                <span style={{ color: "#9ca3af" }}>▼</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setShowContextMenu(true);
+                  window.setTimeout(() => workspaceClientNameInputRef.current?.focus(), 0);
+                }}
+                style={{
+                  padding: "10px 14px",
+                  borderRadius: 999,
+                  border: "1px solid rgba(16,185,129,0.35)",
+                  background: "rgba(16,185,129,0.12)",
+                  color: "#10b981",
+                  fontFamily: "Orbitron, sans-serif",
+                  fontSize: 10,
+                  letterSpacing: "0.1em",
+                  cursor: "pointer",
+                }}
+              >
+                + CLIENT
+              </button>
+              <div style={{ fontSize: 12, color: "#d4d7df", minWidth: 0 }}>
+                {selectedWorkspaceRecord
+                  ? selectedWorkspaceRecord.name
+                  : "No client attached. Clean mode for research, testing, and fresh pipelines."}
+              </div>
+            </div>
+            <div style={{ marginTop: 8, fontSize: 11, color: "#6f7b90", lineHeight: 1.6 }}>
+              {currentWorkspaceContext.description}
+            </div>
+          </div>
+
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
+            {workspaceContextMode !== "general" && selectedWorkspaceRecord && (
+              <div
+                style={{
+                  padding: "8px 10px",
+                  borderRadius: 10,
+                  border: "1px solid rgba(255,255,255,0.08)",
+                  background: "rgba(255,255,255,0.03)",
+                  fontSize: 10,
+                  color: "#aab3c4",
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                }}
+              >
+                {String(selectedWorkspaceRecord.context_type || "client") === "prospect" ? "Prospect" : "Client"} linked
+              </div>
+            )}
+            {showContextMenu && (
+              <div
+                data-context-menu="true"
+                style={{
+                  position: "absolute",
+                  top: isMobile ? "calc(100% + 8px)" : "16px",
+                  right: isMobile ? 0 : 12,
+                  left: isMobile ? 0 : "auto",
+                  width: isMobile ? "100%" : 420,
+                  maxWidth: "100%",
+                  background: "#0d0d14",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                  borderRadius: 14,
+                  padding: 12,
+                  boxShadow: "0 18px 36px rgba(0,0,0,0.45)",
+                  zIndex: 240,
+                }}
+              >
+                <div style={{ display: "grid", gap: 8 }}>
+                  {Object.values(WORKSPACE_CONTEXTS).map((context) => (
+                    <button
+                      key={context.id}
+                      onClick={() => {
+                        if (context.id === "general") {
+                          syncWorkspaceContext("general");
+                          return;
+                        }
+                        const defaultOptions = context.id === "prospect" ? prospectOptions : clientOptions;
+                        syncWorkspaceContext(context.id, defaultOptions[0]?.id || "");
+                      }}
+                      style={{
+                        textAlign: "left",
+                        padding: "10px 12px",
+                        borderRadius: 10,
+                        cursor: "pointer",
+                        border: `1px solid ${workspaceContextMode === context.id ? context.color + "55" : "rgba(255,255,255,0.08)"}`,
+                        background: workspaceContextMode === context.id ? context.color + "18" : "rgba(255,255,255,0.02)",
+                        color: workspaceContextMode === context.id ? context.color : "#d7dbe5",
+                      }}
+                    >
+                      <div style={{ fontFamily: "Orbitron, sans-serif", fontSize: 10, letterSpacing: "0.1em" }}>
+                        {context.label.toUpperCase()}
+                      </div>
+                      <div style={{ fontSize: 11, color: "#7f8796", marginTop: 5, lineHeight: 1.5 }}>
+                        {context.description}
+                      </div>
+                    </button>
+                  ))}
+                </div>
+
+                <div style={{
+                  marginTop: 12,
+                  padding: 12,
+                  borderRadius: 12,
+                  background: "rgba(16,185,129,0.08)",
+                  border: "1px solid rgba(16,185,129,0.18)",
+                }}>
+                  <div style={{ fontSize: 9, color: "#10b981", letterSpacing: "0.18em", marginBottom: 8 }}>
+                    CLIENT SETUP
+                  </div>
+                  <div style={{ fontSize: 11, color: "#93a4b8", lineHeight: 1.5, marginBottom: 10 }}>
+                    Add a client by name only, and it will appear here as a selectable workspace context.
+                  </div>
+                  <form
+                    onSubmit={(event) => {
+                      event.preventDefault();
+                      quickAddWorkspaceClient();
+                    }}
+                    style={{ display: "grid", gap: 8 }}
+                  >
+                    <input
+                      ref={workspaceClientNameInputRef}
+                      value={workspaceClientNameDraft}
+                      onChange={(event) => {
+                        setWorkspaceClientNameDraft(event.target.value);
+                        if (workspaceClientAddError) setWorkspaceClientAddError("");
+                      }}
+                      placeholder="Client name"
+                      style={{
+                        width: "100%",
+                        boxSizing: "border-box",
+                        padding: "10px 12px",
+                        borderRadius: 10,
+                        border: "1px solid rgba(255,255,255,0.12)",
+                        background: "rgba(255,255,255,0.04)",
+                        color: "#eef2f7",
+                        fontSize: 12,
+                        outline: "none",
+                      }}
+                    />
+                    {workspaceClientAddError && (
+                      <div style={{ fontSize: 10, color: "#f87171", lineHeight: 1.4 }}>
+                        {workspaceClientAddError}
+                      </div>
+                    )}
+                    <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                      <button
+                        type="submit"
+                        disabled={!workspaceClientNameDraft.trim() || workspaceClientAddBusy}
+                        style={{
+                          flex: 1,
+                          minWidth: 120,
+                          textAlign: "center",
+                          padding: "10px 12px",
+                          borderRadius: 10,
+                          cursor: !workspaceClientNameDraft.trim() || workspaceClientAddBusy ? "not-allowed" : "pointer",
+                          border: "1px solid rgba(16,185,129,0.38)",
+                          background: workspaceClientNameDraft.trim() && !workspaceClientAddBusy ? "rgba(16,185,129,0.12)" : "rgba(16,185,129,0.06)",
+                          color: "#10b981",
+                          fontFamily: "Orbitron, sans-serif",
+                          fontSize: 10,
+                          letterSpacing: "0.1em",
+                        }}
+                      >
+                        {workspaceClientAddBusy ? "ADDING..." : "+ ADD CLIENT"}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setGhlInitialTab("clients");
+                          setShowGHL(true);
+                          setShowContextMenu(false);
+                        }}
+                        style={{
+                          flex: 1,
+                          minWidth: 120,
+                          textAlign: "center",
+                          padding: "10px 12px",
+                          borderRadius: 10,
+                          cursor: "pointer",
+                          border: "1px solid rgba(255,255,255,0.08)",
+                          background: "rgba(255,255,255,0.03)",
+                          color: "#d7dbe5",
+                          fontFamily: "Orbitron, sans-serif",
+                          fontSize: 10,
+                          letterSpacing: "0.08em",
+                        }}
+                      >
+                        CLIENT HUB
+                      </button>
+                    </div>
+                  </form>
+                </div>
+
+                <div style={{ marginTop: 12, display: "grid", gap: 12 }}>
+                  <div>
+                    <div style={{ fontSize: 9, color: "#10b981", letterSpacing: "0.18em", marginBottom: 8 }}>
+                      SELECTED CLIENT
+                    </div>
+                    <div style={{ display: "grid", gap: 6 }}>
+                      {clientOptions.map((client) => (
+                        <button
+                          key={client.id}
+                          onClick={() => syncWorkspaceContext("client", client.id)}
+                          style={{
+                            textAlign: "left",
+                            padding: "10px 12px",
+                            borderRadius: 10,
+                            cursor: "pointer",
+                            border: `1px solid ${workspaceContextId === client.id && workspaceContextMode === "client" ? "rgba(16,185,129,0.45)" : "rgba(255,255,255,0.08)"}`,
+                            background: workspaceContextId === client.id && workspaceContextMode === "client" ? "rgba(16,185,129,0.12)" : "rgba(255,255,255,0.02)",
+                            color: "#d7dbe5",
+                          }}
+                        >
+                          <div style={{ fontSize: 12, color: "#f3f4f6" }}>{client.name}</div>
+                          <div style={{ fontSize: 10, color: "#6f7b90", marginTop: 4 }}>
+                            {client.niche || "No niche"}{client.service_area ? ` • ${client.service_area}` : ""}
+                          </div>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <div style={{ fontSize: 9, color: "#f59e0b", letterSpacing: "0.18em", marginBottom: 8 }}>
+                      PROSPECT / PRE-CLIENT
+                    </div>
+                    <div style={{ display: "grid", gap: 6 }}>
+                      {prospectOptions.map((prospect) => (
+                        <button
+                          key={prospect.id}
+                          onClick={() => syncWorkspaceContext("prospect", prospect.id)}
+                          style={{
+                            textAlign: "left",
+                            padding: "10px 12px",
+                            borderRadius: 10,
+                            cursor: "pointer",
+                            border: `1px solid ${workspaceContextId === prospect.id && workspaceContextMode === "prospect" ? "rgba(245,158,11,0.45)" : "rgba(255,255,255,0.08)"}`,
+                            background: workspaceContextId === prospect.id && workspaceContextMode === "prospect" ? "rgba(245,158,11,0.12)" : "rgba(255,255,255,0.02)",
+                            color: "#d7dbe5",
+                          }}
+                        >
+                          <div style={{ fontSize: 12, color: "#f3f4f6" }}>{prospect.name}</div>
+                          <div style={{ fontSize: 10, color: "#6f7b90", marginTop: 4 }}>
+                            {prospect.niche || "No niche"}{prospect.service_area ? ` • ${prospect.service_area}` : ""}
+                          </div>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <div style={{
+        width: "min(1560px, calc(100% - 24px))",
+        margin: "16px auto 0",
+        padding: isMobile ? "0" : "0 6px",
+        position: "relative",
+        zIndex: 10,
+      }}>
+        <WorkingMemoryPanel compact={isMobile} refreshKey={`${workspaceContextMode}:${workspaceContextId || 'none'}`} />
       </div>
 
       <div style={{ display: "flex", flex: 1, overflow: isMobile ? "auto" : "hidden", overflowX: "hidden", flexDirection: isMobile ? "column" : "row", position: "relative", zIndex: 1, padding: isMobile ? "10px 10px 90px" : "10px 10px 12px", gap: 10, minWidth: 0 }}>
@@ -2352,7 +2971,7 @@ export default function MissionControl() {
                     autoFocus
                     value={pipelineBrief.clientName}
                     onChange={e => setPipelineBrief(prev => ({ ...prev, clientName: e.target.value }))}
-                    placeholder="Jack Riggs Dog Training"
+                    placeholder="Client name"
                     style={{
                       width: "100%",
                       background: "rgba(255,255,255,0.04)",
@@ -2372,7 +2991,7 @@ export default function MissionControl() {
                   <input
                     value={pipelineBrief.niche}
                     onChange={e => setPipelineBrief(prev => ({ ...prev, niche: e.target.value }))}
-                    placeholder="Dog training for busy families"
+                    placeholder="Business niche"
                     style={{
                       width: "100%",
                       background: "rgba(255,255,255,0.04)",
@@ -2395,7 +3014,7 @@ export default function MissionControl() {
                   <input
                     value={pipelineBrief.offer}
                     onChange={e => setPipelineBrief(prev => ({ ...prev, offer: e.target.value }))}
-                    placeholder="Private obedience program"
+                    placeholder="Primary offer"
                     style={{
                       width: "100%",
                       background: "rgba(255,255,255,0.04)",
@@ -2415,7 +3034,7 @@ export default function MissionControl() {
                   <input
                     value={pipelineBrief.targetAudience}
                     onChange={e => setPipelineBrief(prev => ({ ...prev, targetAudience: e.target.value }))}
-                    placeholder="First-time dog owners with reactive dogs"
+                    placeholder="Target audience"
                     style={{
                       width: "100%",
                       background: "rgba(255,255,255,0.04)",
@@ -2438,7 +3057,7 @@ export default function MissionControl() {
                   <input
                     value={pipelineBrief.geography}
                     onChange={e => setPipelineBrief(prev => ({ ...prev, geography: e.target.value }))}
-                    placeholder="Orange County, CA"
+                    placeholder="Service area or geography"
                     style={{
                       width: "100%",
                       background: "rgba(255,255,255,0.04)",
@@ -2458,7 +3077,7 @@ export default function MissionControl() {
                   <input
                     value={pipelineBrief.primaryGoal}
                     onChange={e => setPipelineBrief(prev => ({ ...prev, primaryGoal: e.target.value }))}
-                    placeholder="Booked consultations from Instagram and local search"
+                    placeholder="Primary business goal"
                     style={{
                       width: "100%",
                       background: "rgba(255,255,255,0.04)",
@@ -2477,12 +3096,58 @@ export default function MissionControl() {
 
               <div>
                 <div style={{ fontSize: 9, color: "#666", letterSpacing: "0.14em", marginBottom: 5 }}>PRIORITY PLATFORMS</div>
+                <div
+                  style={{
+                    maxHeight: isMobile ? 188 : 164,
+                    overflowY: "auto",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                    borderRadius: 8,
+                    background: "rgba(255,255,255,0.03)",
+                    padding: 10,
+                    display: "grid",
+                    gridTemplateColumns: isMobile ? "1fr 1fr" : "repeat(3, minmax(0, 1fr))",
+                    gap: 8,
+                  }}
+                >
+                  {PLATFORM_OPTIONS.map((platform) => {
+                    const selected = parsePlatformList(pipelineBrief.platforms)
+                      .some((item) => item.toLowerCase() === platform.toLowerCase());
+                    return (
+                      <button
+                        key={platform}
+                        type="button"
+                        onClick={() => setPipelineBrief((prev) => ({
+                          ...prev,
+                          platforms: togglePlatform(prev.platforms, platform),
+                        }))}
+                        style={{
+                          textAlign: "left",
+                          padding: "10px 11px",
+                          borderRadius: 8,
+                          border: "1px solid " + (selected ? "rgba(245,158,11,0.45)" : "rgba(255,255,255,0.08)"),
+                          background: selected ? "rgba(245,158,11,0.12)" : "rgba(255,255,255,0.02)",
+                          color: selected ? "#f5b24b" : "#d6d8df",
+                          fontSize: 11,
+                          fontFamily: "JetBrains Mono",
+                          cursor: "pointer",
+                          transition: "all 0.18s ease",
+                        }}
+                      >
+                        {selected ? "✓ " : ""}{platform}
+                      </button>
+                    );
+                  })}
+                </div>
+                <div style={{ marginTop: 8, fontSize: 10, color: "#7a8090", lineHeight: 1.5 }}>
+                  Selected: {pipelineBrief.platforms || "None yet"}
+                </div>
                 <input
                   value={pipelineBrief.platforms}
                   onChange={e => setPipelineBrief(prev => ({ ...prev, platforms: e.target.value }))}
-                  placeholder="Instagram Reels, TikTok, YouTube Shorts"
+                  placeholder="Add or edit selected platforms manually"
                   style={{
                     width: "100%",
+                    marginTop: 8,
                     background: "rgba(255,255,255,0.04)",
                     border: "1px solid rgba(255,255,255,0.08)",
                     borderRadius: 4,
@@ -2507,7 +3172,7 @@ export default function MissionControl() {
                       submitPipelineBrief();
                     }
                   }}
-                  placeholder="Competitors, positioning, objections, style notes, content wins, page goals..."
+                  placeholder="Optional notes for this run"
                   style={{
                     width: "100%", height: 92,
                     background: "rgba(255,255,255,0.04)",
@@ -2564,8 +3229,10 @@ export default function MissionControl() {
               <button
                 onClick={() => {
                   if (!pipelineInput.trim()) return;
+                  const matchedClient = pipelineActiveClient
+                    || findClientRecordByName(clientContextRecords, pipelineBrief.clientName);
                   setShowPipelinePrompt(false);
-                  runPipeline(pipelineInput.trim(), selectedPipelineType);
+                  runPipeline(pipelineInput.trim(), selectedPipelineType, matchedClient);
                 }}
                 disabled={!pipelineInput.trim()}
                 style={{
@@ -2600,10 +3267,15 @@ export default function MissionControl() {
             setGhlInitialTab("pages");
             setShowGHL(true);
           }}
+          onOpenPipelineReports={(assetId) => {
+            setPipelineReportAssetId(assetId || "");
+            setShowPipelineReports(true);
+          }}
         />
       )}
       {showGHL && <GHLPanel onClose={() => setShowGHL(false)} initialTab={ghlInitialTab} initialAssetId={ghlAssetId} />}
       {showLandingPage && <LandingPageBuilder onClose={() => setShowLandingPage(false)} initialAssetId={landingPageAssetId} />}
+      {showPipelineReports && <PipelineReportsPanel onClose={() => setShowPipelineReports(false)} initialAssetId={pipelineReportAssetId} />}
       {showLearning && <LearningPanel onClose={() => setShowLearning(false)} />}
       {showComms && <CommsMonitor onClose={() => setShowComms(false)} />}
       {showProcesses && <ProcessManager onClose={() => setShowProcesses(false)} onStopAgent={stopAgentProcess} onReopen={handleReopenProcess} />}
@@ -2615,6 +3287,7 @@ export default function MissionControl() {
       {showPublishQueue && <PublishQueuePanel onClose={() => setShowPublishQueue(false)} />}
       {showPublishIntegrations && <PublishIntegrationsPanel onClose={() => setShowPublishIntegrations(false)} />}
       {showCloudflareOps && <CloudflareOpsPanel onClose={() => setShowCloudflareOps(false)} />}
+      {showProspectRadar && <ProspectRadarPanel onClose={() => setShowProspectRadar(false)} />}
       {showDeerFlow && <DeerFlowPanel onClose={() => setShowDeerFlow(false)} />}
       {showFunnelDashboard && <FunnelDashboardPanel onClose={() => setShowFunnelDashboard(false)} />}
       {showKpis && <KpiPanel onClose={() => setShowKpis(false)} />}

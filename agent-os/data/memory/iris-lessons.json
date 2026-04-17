@@ -13,13 +13,105 @@
       "timestamp": "2026-04-01T12:02:10.324Z",
       "id": "1775044930324",
       "scoreCategory": "good"
+    },
+    {
+      "task": "Client: Cloudflare Demo Prospect\nNiche: Selling Toyota Cars in Marin County\nPrimary offer: Selling Toyota Cars in Marin County system\nTarget audience: Commuters and families\nService area or geography:",
+      "workflowType": "pipeline",
+      "score": 6,
+      "what_worked": "The initial concept of leveraging Cloudflare's platform for a car dealership in Marin County is innovative and aligns with the client’s needs.",
+      "what_failed": "The primary offer 'Selling T' appears to be incomplete or unclear, which could lead to confusion about what exactly is being offered.",
+      "improvement": "Clarify the primary offer by specifying whether it refers to a particular Toyota model or service related to selling cars. Additionally, consider integrating more specific features of Cloudflare that enhance the car dealership's online presence and customer experience.",
+      "timestamp": "2026-04-09T21:52:31.480Z",
+      "id": "1775771551480",
+      "scoreCategory": "poor"
+    },
+    {
+      "task": "Client: Michelle Elmore\nNiche: Photo Books\nPrimary offer: Buy a book\nTarget audience: Art lovers\nService area or geography: Bay Area, CA\nPrimary business goal: Buy a book\nPriority platforms: Instagram",
+      "workflowType": "pipeline",
+      "score": 5,
+      "what_worked": "The primary offer of 'Buy a book' is clear and straightforward.",
+      "what_failed": "The target audience description lacks specificity, which could lead to a less targeted marketing approach.",
+      "improvement": "Specify the unique characteristics or preferences of art lovers who would be interested in photo books, such as those who appreciate photography as an art form or collectors of rare editions.",
+      "timestamp": "2026-04-10T15:26:33.934Z",
+      "id": "1775834793934",
+      "scoreCategory": "poor"
+    },
+    {
+      "task": "Client: Teja Reygle\nNiche: Wedding Photography\nPrimary offer: Photograph Weddings\nTarget audience: Just Engaged\nService area or geography: New York, VFirginia\nPrimary business goal: Wedding Photograph",
+      "workflowType": "pipeline",
+      "score": 7,
+      "what_worked": "The target audience was clearly defined, focusing on a niche market for wedding photography.",
+      "what_failed": "There is no detailed production plan or strategy outlined to achieve the primary offer of photographing weddings.",
+      "improvement": "Develop a comprehensive marketing and operational plan that includes specific strategies for attracting clients, managing events, and delivering high-quality photographs.",
+      "timestamp": "2026-04-12T08:50:03.963Z",
+      "id": "1775983803963",
+      "scoreCategory": "good"
+    },
+    {
+      "task": "Client: North Bay Wedding Films\nNiche: wedding videography\nPrimary offer: Wedding highlight film package\nTarget audience: Couples planning premium weddings\nService area or geography: North Bay, CA\nPri",
+      "workflowType": "pipeline",
+      "score": 6,
+      "what_worked": "The primary offer of a wedding highlight film package is well-suited to the niche market of North Bay Wedding Films, focusing on high-quality videography for weddings.",
+      "what_failed": "There was an over-reliance on a single product offering without considering additional services or upsells that could enhance customer satisfaction and revenue.",
+      "improvement": "Introduce complementary offerings such as drone footage capture, pre-wedding consultations, and post-wedding photo albums to diversify the service portfolio and increase client engagement.",
+      "timestamp": "2026-04-14T05:42:32.594Z",
+      "id": "1776145352594",
+      "scoreCategory": "poor"
+    },
+    {
+      "task": "Client: Jack Riggs\nNiche: a photography business in marin county\nPrimary offer: Photoshoot\nTarget audience: Models\nService area or geography: Marin COunty\nPrimary business goal: Book photoshoots ect\nP",
+      "workflowType": "pipeline",
+      "score": 6,
+      "what_worked": "The primary offer of a photoshoot for models in Marin County aligns well with the niche and target audience.",
+      "what_failed": "The description is incomplete and lacks clarity, making it difficult to fully understand the scope or specifics of the service offered beyond 'Servi'.",
+      "improvement": "Clarify the full range of services provided under 'Servi' and ensure all details are complete for a comprehensive production plan.",
+      "timestamp": "2026-04-14T07:10:53.155Z",
+      "id": "1776150653155",
+      "scoreCategory": "poor"
     }
   ],
   "wins": [],
-  "failures": [],
-  "taskCount": 1,
-  "avgScore": 7,
-  "lastReflection": "2026-04-01T12:02:10.324Z",
+  "failures": [
+    {
+      "description": "The primary offer 'Selling T' appears to be incomplete or unclear, which could lead to confusion about what exactly is being offered.",
+      "task": "Client: Cloudflare Demo Prospect\nNiche: Selling Toyota Cars in Marin County\nPrimary offer: Selling T",
+      "fix": "Clarify the primary offer by specifying whether it refers to a particular Toyota model or service related to selling cars. Additionally, consider integrating more specific features of Cloudflare that enhance the car dealership's online presence and customer experience.",
+      "score": 6,
+      "severity": "moderate",
+      "workflowType": "pipeline",
+      "timestamp": "2026-04-09T21:52:31.480Z"
+    },
+    {
+      "description": "The target audience description lacks specificity, which could lead to a less targeted marketing approach.",
+      "task": "Client: Michelle Elmore\nNiche: Photo Books\nPrimary offer: Buy a book\nTarget audience: Art lovers\nSer",
+      "fix": "Specify the unique characteristics or preferences of art lovers who would be interested in photo books, such as those who appreciate photography as an art form or collectors of rare editions.",
+      "score": 5,
+      "severity": "moderate",
+      "workflowType": "pipeline",
+      "timestamp": "2026-04-10T15:26:33.934Z"
+    },
+    {
+      "description": "There was an over-reliance on a single product offering without considering additional services or upsells that could enhance customer satisfaction and revenue.",
+      "task": "Client: North Bay Wedding Films\nNiche: wedding videography\nPrimary offer: Wedding highlight film pac",
+      "fix": "Introduce complementary offerings such as drone footage capture, pre-wedding consultations, and post-wedding photo albums to diversify the service portfolio and increase client engagement.",
+      "score": 6,
+      "severity": "moderate",
+      "workflowType": "pipeline",
+      "timestamp": "2026-04-14T05:42:32.594Z"
+    },
+    {
+      "description": "The description is incomplete and lacks clarity, making it difficult to fully understand the scope or specifics of the service offered beyond 'Servi'.",
+      "task": "Client: Jack Riggs\nNiche: a photography business in marin county\nPrimary offer: Photoshoot\nTarget au",
+      "fix": "Clarify the full range of services provided under 'Servi' and ensure all details are complete for a comprehensive production plan.",
+      "score": 6,
+      "severity": "moderate",
+      "workflowType": "pipeline",
+      "timestamp": "2026-04-14T07:10:53.155Z"
+    }
+  ],
+  "taskCount": 6,
+  "avgScore": 6.2,
+  "lastReflection": "2026-04-14T07:10:53.155Z",
   "workflowStats": {
     "chat": {
       "taskCount": 1,
@@ -32,12 +124,18 @@
       ]
     },
     "pipeline": {
-      "taskCount": 0,
-      "avgScore": 0,
+      "taskCount": 5,
+      "avgScore": 6,
       "winCount": 0,
-      "failureCount": 0,
-      "lastUsedAt": null,
-      "scoreTrend": []
+      "failureCount": 4,
+      "lastUsedAt": "2026-04-14T07:10:53.155Z",
+      "scoreTrend": [
+        6,
+        5,
+        7,
+        6,
+        6
+      ]
     },
     "autojob": {
       "taskCount": 0,
@@ -63,5 +161,11 @@
       "lastUsedAt": null,
       "scoreTrend": []
     }
-  }
+  },
+  "refinements": [
+    "Include sketches or mockups to visually represent design directions in future visual briefs.",
+    "Clarify primary offers by specifying product details or services when working on client projects.",
+    "Develop comprehensive marketing and operational plans for clients, including strategies for attracting and retaining customers."
+  ],
+  "refinedAt": "2026-04-14T05:42:38.013Z"
 }

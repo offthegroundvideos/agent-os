@@ -210,6 +210,13 @@ function getCustomFieldCollection(payload = {}) {
   return [];
 }
 
+function normalizeName(value = '') {
+  return String(value || '')
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, ' ');
+}
+
 function buildDesiredCustomFieldValues(client = {}, payload = {}) {
   return {
     'Agent OS Research Packet ID': payload.researchPacketId || client.research_packet_id || '',
@@ -420,6 +427,14 @@ export async function POST(request) {
         const pageContext = buildPageContext(data?.assetId || '');
         if (!pageContext) {
           return Response.json({ error: 'No pipeline page context found to attach.' }, { status: 404 });
+        }
+
+        const packetClientName = normalizeName(pageContext.clientName);
+        const targetClientName = normalizeName(targetClient.name || targetClient.business_name || '');
+        if (packetClientName && targetClientName && packetClientName !== targetClientName) {
+          return Response.json({
+            error: `Pipeline packet client "${pageContext.clientName}" does not match target client "${targetClient.name}".`,
+          }, { status: 409 });
         }
 
         const onboardingPacket = buildClientOnboardingPacket(pageContext);

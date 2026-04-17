@@ -6,6 +6,25 @@ function compact(value = '', max = 220) {
   return String(value || '').replace(/\s+/g, ' ').trim().slice(0, max);
 }
 
+function stripOtgReferences(value = '') {
+  const text = String(value || '').replace(/\s+/g, ' ').trim();
+  if (!text) return '';
+
+  const sentences = text
+    .split(/(?<=[.!?])\s+/)
+    .map((sentence) => sentence.trim())
+    .filter(Boolean)
+    .filter((sentence) => !/\botg\b|\botg icon\b/i.test(sentence))
+    .filter((sentence) => !/\bwe\b.*\bdifferentiat|\bcompetitor|\bgap\b.*\bown\b/i.test(sentence));
+
+  return sentences.join(' ').trim();
+}
+
+function parseStructuredTopicField(topic = '', label = '') {
+  const match = String(topic || '').match(new RegExp(`${label}:\\s*(.+?)(?=\\s+[A-Z][a-z]+:|$)`, 'i'));
+  return match ? match[1].trim() : '';
+}
+
 function firstNonEmpty(...values) {
   return values.find((value) => {
     if (Array.isArray(value)) return value.length > 0;
@@ -49,21 +68,27 @@ function normalizeSam(asset) {
 
 function summarizeStrategyNotes(asset) {
   return [
-    compact(asset?.outputs?.alex?.narrativeSummary || '', 500),
-    compact(asset?.outputs?.jordan?.narrativeSummary || '', 500),
-    compact(asset?.outputs?.sam?.narrativeSummary || '', 500),
+    compact(stripOtgReferences(asset?.outputs?.alex?.narrativeSummary || ''), 500),
+    compact(stripOtgReferences(asset?.outputs?.jordan?.narrativeSummary || ''), 500),
+    compact(stripOtgReferences(asset?.outputs?.sam?.narrativeSummary || ''), 500),
   ].filter(Boolean).join('\n\n');
 }
 
-function inferHeadline(topic = '', niche = '') {
-  const subject = compact(topic || niche, 120);
+function inferHeadline({ niche = '', offerName = '', clientName = '', topic = '' } = {}) {
+  const safeNiche = compact(niche, 120);
+  const safeOffer = compact(offerName, 120);
+  const safeClient = compact(clientName, 120);
+  const parsedNiche = compact(parseStructuredTopicField(topic, 'Niche'), 120);
+  const parsedOffer = compact(parseStructuredTopicField(topic, 'Primary offer'), 120);
+
+  const subject = safeOffer || safeNiche || parsedOffer || parsedNiche || safeClient;
   if (!subject) return '';
   return `Turn ${subject} attention into qualified inquiries.`;
 }
 
 function inferSubheadline(topic = '', audience = '', insight = '') {
   const safeAudience = compact(audience, 120);
-  const safeInsight = compact(insight, 180);
+  const safeInsight = compact(stripOtgReferences(insight), 180);
   if (safeAudience && safeInsight) {
     return `Built for ${safeAudience.toLowerCase()} so the promise in the content becomes the promise on the page. ${safeInsight}`;
   }
@@ -116,21 +141,27 @@ export function buildPageContext(assetId = '') {
   const calendarEntries = listCalendarEntries({ asset_id: asset.id });
   const calendar = calendarEntries[0] || null;
 
-  const alexSummary = typeof alex === 'object'
+  const alexSummary = alex && typeof alex === 'object'
     ? (alex.summary || alex.outputs || alex)
     : {};
-  const jordanSummary = typeof jordan === 'object'
+  const jordanSummary = jordan && typeof jordan === 'object'
     ? (jordan.summary || jordan.outputs || jordan)
     : {};
-  const samSummary = typeof sam === 'object'
+  const samSummary = sam && typeof sam === 'object'
     ? (sam.summary || sam.outputs || sam)
     : {};
 
   const niche = firstNonEmpty(
     alexSummary.niche,
     jordanSummary.niche,
+    parseStructuredTopicField(asset.topic, 'Niche'),
     calendar?.topic,
     asset.topic,
+  ) || '';
+  const clientName = firstNonEmpty(
+    parseStructuredTopicField(asset.topic, 'Client'),
+    asset.clientName,
+    asset.client_name,
   ) || '';
   const audience = firstNonEmpty(
     alexSummary.target_audience,
@@ -152,13 +183,14 @@ export function buildPageContext(assetId = '') {
     compact(asset.outputs?.maya?.narrativeSummary || '', 120),
   ) || '';
   const keyInsight = firstNonEmpty(
-    alexSummary.key_insight,
-    jordanSummary.key_insight,
-    compact(asset.outputs?.jordan?.narrativeSummary || '', 180),
+    stripOtgReferences(alexSummary.key_insight),
+    stripOtgReferences(jordanSummary.key_insight),
+    compact(stripOtgReferences(asset.outputs?.jordan?.narrativeSummary || ''), 180),
   ) || '';
   const offerName = firstNonEmpty(
     jordanSummary.offer_name,
     samSummary.offer_name,
+    parseStructuredTopicField(asset.topic, 'Primary offer'),
     niche ? `${niche} system` : '',
   ) || '';
 
@@ -168,6 +200,7 @@ export function buildPageContext(assetId = '') {
     title: asset.title,
     pipelineType: asset.pipelineType,
     state: asset.state,
+    clientName,
     clientId: scripts[0]?.client_id || calendar?.client_id || 'cli_default',
     campaignId: scripts[0]?.campaign_id || calendar?.campaign_id || 'cmp_default',
     offerId: 'off_default',
@@ -178,13 +211,13 @@ export function buildPageContext(assetId = '') {
     ctaId,
     ctaKeyword: 'GUIDE',
     hook,
-    headline: inferHeadline(asset.topic, niche),
+    headline: inferHeadline({ niche, offerName, clientName, topic: asset.topic }),
     subheadline: inferSubheadline(asset.topic, audience, keyInsight),
     benefits: buildBenefits(scripts, alexSummary),
     process: buildProcess(asset, scripts),
-    strategyNotes: summarizeStrategyNotes(asset),
+    strategyNotes: stripOtgReferences(summarizeStrategyNotes(asset)),
     sourcePrompt: [
-      `Build a premium ${niche || asset.topic} landing page.`,
+      `Build a premium ${niche || offerName || clientName || 'service business'} landing page.`,
       audience ? `Target audience: ${audience}.` : '',
       keyInsight ? `Key insight: ${keyInsight}` : '',
       hook ? `Lead with this angle: ${hook}` : '',
@@ -230,8 +263,8 @@ export function buildClientOnboardingPacket(pageContext) {
     target_audience: pageContext.audience || '',
     primary_offer: pageContext.offerName || '',
     core_cta: pageContext.ctaId || '',
-    brand_positioning: compact(pageContext.subheadline || pageContext.strategyNotes || '', 280),
-    research_summary: compact(pageContext.strategyNotes || pageContext.sourcePrompt || '', 1200),
+    brand_positioning: compact(stripOtgReferences(pageContext.subheadline || pageContext.strategyNotes || ''), 280),
+    research_summary: compact(stripOtgReferences(pageContext.strategyNotes || pageContext.sourcePrompt || ''), 1200),
     onboarding_status: 'research_attached',
     onboarding_packet: {
       assetId: pageContext.assetId,
@@ -245,7 +278,7 @@ export function buildClientOnboardingPacket(pageContext) {
       subheadline: pageContext.subheadline || '',
       benefits: Array.isArray(pageContext.benefits) ? pageContext.benefits : [],
       process: Array.isArray(pageContext.process) ? pageContext.process : [],
-      strategyNotes: pageContext.strategyNotes || '',
+      strategyNotes: stripOtgReferences(pageContext.strategyNotes || ''),
       campaignId: pageContext.campaignId || '',
       clientId: pageContext.clientId || '',
       attachedAt: new Date().toISOString(),

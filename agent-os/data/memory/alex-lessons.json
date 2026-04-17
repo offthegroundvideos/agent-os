@@ -182,6 +182,142 @@
       "timestamp": "2026-04-02T10:07:06.408Z",
       "id": "1775124426408",
       "scoreCategory": "poor"
+    },
+    {
+      "task": "wedding venues",
+      "workflowType": "chat",
+      "score": 6,
+      "what_worked": "Provided a concise list of wedding venues with descriptions.",
+      "what_failed": "Failed to include specific details such as pricing and capacity.",
+      "improvement": "Include detailed information about each venue, including pricing, capacity, and amenities.",
+      "root_cause": "Insufficient research on the specific requirements for wedding venues.",
+      "severity": "moderate",
+      "timestamp": "2026-04-09T21:49:36.929Z",
+      "id": "1775771376929",
+      "scoreCategory": "poor"
+    },
+    {
+      "task": "Client: Cloudflare Demo Prospect\nNiche: Selling Toyota Cars in Marin County\nPrimary offer: Selling Toyota Cars in Marin County system\nTarget audience: Commuters and families\nService area or geography:",
+      "workflowType": "pipeline",
+      "score": 7,
+      "what_worked": "The initial outreach to the Cloudflare demo prospect was well-received, showing interest in the Toyota car sales niche.",
+      "what_failed": "There was a disconnect between the client's expectations and the actual value proposition of selling Toyota cars through Cloudflare services.",
+      "improvement": "Specifically target the unique benefits of using Cloudflare for online automotive retailing, such as enhanced website performance and security features tailored to e-commerce needs.",
+      "timestamp": "2026-04-09T21:51:28.363Z",
+      "id": "1775771488363",
+      "scoreCategory": "good"
+    },
+    {
+      "task": "Client: Cloudflare Demo Prospect\nNiche: Selling Toyota Cars in Marin County\nPrimary offer: Selling Toyota Cars in Marin County system\nTarget audience: Commuters and families\nService area or geography:",
+      "workflowType": "pipeline",
+      "score": 3,
+      "what_worked": "I attempted to provide a response within the given context.",
+      "what_failed": "The provided task was incomplete and lacked specific details, leading to an output that did not fully address the client's needs or requirements for selling Toyota cars in Marin County.",
+      "improvement": "Request clarification on missing information before proceeding with the task.",
+      "root_cause": "Insufficient information and context were provided about the client's request and project scope.",
+      "severity": "moderate",
+      "timestamp": "2026-04-09T21:54:56.569Z",
+      "id": "1775771696569",
+      "scoreCategory": "critical"
+    },
+    {
+      "task": "Niche: nutrition coaching\nSpecific research and execution notes: Focus on Instagram reels for busy professionals who want sustainable fat loss.",
+      "workflowType": "pipeline",
+      "score": 5,
+      "what_worked": "Identifying the target audience as busy professionals and tailoring content to their needs.",
+      "what_failed": "Failing to incorporate user-generated content or community engagement strategies in the initial plan.",
+      "improvement": "Incorporating a feedback loop where client testimonials and Q&A sessions are featured regularly on Instagram Reels.",
+      "timestamp": "2026-04-09T23:04:35.525Z",
+      "id": "1775775875525",
+      "scoreCategory": "poor"
+    },
+    {
+      "task": "Client: North Bay Wedding Films\nNiche: wedding videography\nPrimary offer: Wedding highlight film package\nTarget audience: Couples planning premium weddings\nService area or geography: North Bay, CA\nPri",
+      "workflowType": "pipeline",
+      "score": 3,
+      "what_worked": "The primary offer of a wedding highlight film package is well-defined and aligns with the niche of wedding videography.",
+      "what_failed": "There's no clear differentiation or unique selling proposition (USP) that sets North Bay Wedding Films apart from competitors in the market.",
+      "improvement": "Develop a unique selling proposition that highlights a distinctive aspect of your service, such as personalized storytelling techniques or exclusive post-production effects.",
+      "timestamp": "2026-04-10T01:17:24.104Z",
+      "id": "1775783844104",
+      "scoreCategory": "critical"
+    },
+    {
+      "task": "Client: Michelle Elmore\nNiche: Photo Books\nPrimary offer: Buy a book\nTarget audience: Art lovers\nService area or geography: Bay Area, CA\nPrimary business goal: Buy a book\nPriority platforms: Instagram",
+      "workflowType": "pipeline",
+      "score": 6,
+      "what_worked": "The primary offer of buying a book aligns well with the niche of photo books, which is likely to attract art lovers.",
+      "what_failed": "The target audience description could be more detailed and specific to better understand the nuances of what appeals to art lovers in this context.",
+      "improvement": "Conduct further research on the preferences and behaviors of art enthusiasts when it comes to photo books, including their motivations for purchasing such items and any current trends or demands within the market.",
+      "timestamp": "2026-04-10T15:25:32.955Z",
+      "id": "1775834732955",
+      "scoreCategory": "poor"
+    },
+    {
+      "task": "Client: Chris Schumacher\nNiche: Celebrity Haiku’s \nPrimary offer: Comment!\nTarget audience: Haiku lovers\nService area or geography: Worldwide\nPrimary business goal: Get views\nPriority platforms: Insta",
+      "workflowType": "pipeline",
+      "score": 3,
+      "what_worked": "The niche of celebrity haikus is unique and could attract a dedicated audience interested in both poetry and celebrity culture.",
+      "what_failed": "The target audience description seems incomplete, making it difficult to fully understand the demographic or interests of potential followers.",
+      "improvement": "Clarify the target audience by specifying age range, geographic location, and specific interests within haiku poetry (e.g., traditionalists, modernists).",
+      "timestamp": "2026-04-11T06:31:08.251Z",
+      "id": "1775889068251",
+      "scoreCategory": "critical"
+    },
+    {
+      "task": "Client: Michelle Elmore\nNiche: Street Photography\nPrimary offer: Come buy a book!\nTarget audience: Art lovers, photography nerds\nService area or geography: Marin County\nPrimary business goal: Sell Boo",
+      "workflowType": "pipeline",
+      "score": 7,
+      "what_worked": "The primary offer of 'Come buy a book!' is clear and straightforward, making it easy for the target audience to understand the value proposition.",
+      "what_failed": "The niche of street photography might not be as widely appealing or understood by the general public, potentially limiting the reach of the campaign.",
+      "improvement": "Consider expanding the offer to include additional incentives such as exclusive prints or workshops to attract a broader audience and increase engagement.",
+      "timestamp": "2026-04-12T08:42:48.343Z",
+      "id": "1775983368343",
+      "scoreCategory": "good"
+    },
+    {
+      "task": "Client: Teja Reygle\nNiche: Wedding Photography\nPrimary offer: Photograph Weddings\nTarget audience: Just Engaged\nService area or geography: New York, VFirginia\nPrimary business goal: Wedding Photograph",
+      "workflowType": "pipeline",
+      "score": 7,
+      "what_worked": "The primary offer of photographing weddings aligns well with the niche and target audience.",
+      "what_failed": "There is a lack of specificity regarding the target demographic 'J', which could lead to misalignment in marketing efforts.",
+      "improvement": "Clarify the exact characteristics or preferences of the target audience 'J' to tailor marketing strategies more effectively.",
+      "timestamp": "2026-04-12T08:48:58.769Z",
+      "id": "1775983738769",
+      "scoreCategory": "good"
+    },
+    {
+      "task": "Client: North Bay Wedding Films\nNiche: wedding videography\nPrimary offer: Wedding highlight film package\nTarget audience: Couples planning premium weddings\nService area or geography: North Bay, CA\nPri",
+      "workflowType": "pipeline",
+      "score": 7,
+      "what_worked": "The primary offer of a wedding highlight film package is well-aligned with the niche of wedding videography, targeting clients who seek high-quality and memorable video content for their special day.",
+      "what_failed": "There was no clear differentiation from competitors in terms of unique selling propositions or additional value-added services within the initial research scope.",
+      "improvement": "To enhance competitiveness, North Bay Wedding Films should identify and incorporate distinctive features such as personalized storytelling techniques, exclusive client perks (e.g., social media teasers), or advanced editing styles that set them apart from other wedding videography providers.",
+      "timestamp": "2026-04-14T05:41:39.561Z",
+      "id": "1776145299561",
+      "scoreCategory": "good"
+    },
+    {
+      "task": "Client: Jack Riggs\nNiche: a photography business in marin county\nPrimary offer: Photoshoot\nTarget audience: Models\nService area or geography: Marin COunty\nPrimary business goal: Book photoshoots ect\nP",
+      "workflowType": "pipeline",
+      "score": 6,
+      "what_worked": "Identifying the niche and primary offer clearly.",
+      "what_failed": "The target audience is too broad (Models) without specifying the type of models or their interests, which could limit effective marketing strategies.",
+      "improvement": "Narrow down the target audience to a specific segment within 'models', such as fashion models for high-end brands in Marin County, to better tailor marketing efforts and services offered.",
+      "timestamp": "2026-04-14T07:10:51.340Z",
+      "id": "1776150651340",
+      "scoreCategory": "poor"
+    },
+    {
+      "task": "Client: Jack Riggs\nNiche: Photography\nPriority platforms: Instagram, TikTok, LinkedIn, Facebook, YouTube, Yelp, Google Business Profile, Twitch, Discord, Reddit, Snapchat, Threads, X / Twitter, YouTub",
+      "workflowType": "pipeline",
+      "score": 5,
+      "what_worked": "The client's interest in leveraging multiple social media platforms for photography content is a strong starting point.",
+      "what_failed": "There was no clear strategy or specific goals outlined for each platform, which could lead to ineffective distribution of resources and time.",
+      "improvement": "Developing a detailed content calendar that aligns with the unique features and audience engagement patterns of Instagram, TikTok, LinkedIn, Facebook, YouTube, Yelp, and Google Business can enhance visibility and interaction.",
+      "timestamp": "2026-04-16T13:55:21.400Z",
+      "id": "1776347721400",
+      "scoreCategory": "poor"
     }
   ],
   "wins": [],
@@ -302,34 +438,115 @@
       "severity": "moderate",
       "workflowType": "pipeline",
       "timestamp": "2026-04-02T10:07:06.408Z"
+    },
+    {
+      "description": "Failed to include specific details such as pricing and capacity.",
+      "task": "wedding venues",
+      "fix": "Include detailed information about each venue, including pricing, capacity, and amenities.",
+      "score": 6,
+      "severity": "moderate",
+      "workflowType": "chat",
+      "timestamp": "2026-04-09T21:49:36.929Z"
+    },
+    {
+      "description": "The provided task was incomplete and lacked specific details, leading to an output that did not fully address the client's needs or requirements for selling Toyota cars in Marin County.",
+      "task": "Client: Cloudflare Demo Prospect\nNiche: Selling Toyota Cars in Marin County\nPrimary offer: Selling T",
+      "fix": "Request clarification on missing information before proceeding with the task.",
+      "score": 3,
+      "severity": "critical",
+      "workflowType": "pipeline",
+      "timestamp": "2026-04-09T21:54:56.569Z"
+    },
+    {
+      "description": "Failing to incorporate user-generated content or community engagement strategies in the initial plan.",
+      "task": "Niche: nutrition coaching\nSpecific research and execution notes: Focus on Instagram reels for busy p",
+      "fix": "Incorporating a feedback loop where client testimonials and Q&A sessions are featured regularly on Instagram Reels.",
+      "score": 5,
+      "severity": "moderate",
+      "workflowType": "pipeline",
+      "timestamp": "2026-04-09T23:04:35.525Z"
+    },
+    {
+      "description": "There's no clear differentiation or unique selling proposition (USP) that sets North Bay Wedding Films apart from competitors in the market.",
+      "task": "Client: North Bay Wedding Films\nNiche: wedding videography\nPrimary offer: Wedding highlight film pac",
+      "fix": "Develop a unique selling proposition that highlights a distinctive aspect of your service, such as personalized storytelling techniques or exclusive post-production effects.",
+      "score": 3,
+      "severity": "critical",
+      "workflowType": "pipeline",
+      "timestamp": "2026-04-10T01:17:24.104Z"
+    },
+    {
+      "description": "The target audience description could be more detailed and specific to better understand the nuances of what appeals to art lovers in this context.",
+      "task": "Client: Michelle Elmore\nNiche: Photo Books\nPrimary offer: Buy a book\nTarget audience: Art lovers\nSer",
+      "fix": "Conduct further research on the preferences and behaviors of art enthusiasts when it comes to photo books, including their motivations for purchasing such items and any current trends or demands within the market.",
+      "score": 6,
+      "severity": "moderate",
+      "workflowType": "pipeline",
+      "timestamp": "2026-04-10T15:25:32.955Z"
+    },
+    {
+      "description": "The target audience description seems incomplete, making it difficult to fully understand the demographic or interests of potential followers.",
+      "task": "Client: Chris Schumacher\nNiche: Celebrity Haiku’s \nPrimary offer: Comment!\nTarget audience: Haiku lo",
+      "fix": "Clarify the target audience by specifying age range, geographic location, and specific interests within haiku poetry (e.g., traditionalists, modernists).",
+      "score": 3,
+      "severity": "critical",
+      "workflowType": "pipeline",
+      "timestamp": "2026-04-11T06:31:08.251Z"
+    },
+    {
+      "description": "The target audience is too broad (Models) without specifying the type of models or their interests, which could limit effective marketing strategies.",
+      "task": "Client: Jack Riggs\nNiche: a photography business in marin county\nPrimary offer: Photoshoot\nTarget au",
+      "fix": "Narrow down the target audience to a specific segment within 'models', such as fashion models for high-end brands in Marin County, to better tailor marketing efforts and services offered.",
+      "score": 6,
+      "severity": "moderate",
+      "workflowType": "pipeline",
+      "timestamp": "2026-04-14T07:10:51.340Z"
+    },
+    {
+      "description": "There was no clear strategy or specific goals outlined for each platform, which could lead to ineffective distribution of resources and time.",
+      "task": "Client: Jack Riggs\nNiche: Photography\nPriority platforms: Instagram, TikTok, LinkedIn, Facebook, You",
+      "fix": "Developing a detailed content calendar that aligns with the unique features and audience engagement patterns of Instagram, TikTok, LinkedIn, Facebook, YouTube, Yelp, and Google Business can enhance visibility and interaction.",
+      "score": 5,
+      "severity": "moderate",
+      "workflowType": "pipeline",
+      "timestamp": "2026-04-16T13:55:21.400Z"
     }
   ],
-  "taskCount": 14,
-  "avgScore": 4.8,
-  "lastReflection": "2026-04-02T10:07:06.408Z",
+  "taskCount": 26,
+  "avgScore": 5.4,
+  "lastReflection": "2026-04-16T13:55:21.400Z",
   "workflowStats": {
     "chat": {
-      "taskCount": 6,
-      "avgScore": 5.3,
+      "taskCount": 7,
+      "avgScore": 5.4,
       "winCount": 0,
-      "failureCount": 5,
-      "lastUsedAt": "2026-04-01T18:35:38.791Z",
+      "failureCount": 6,
+      "lastUsedAt": "2026-04-09T21:49:36.929Z",
       "scoreTrend": [
         5,
         2,
         6,
         6,
         7,
+        6,
         6
       ]
     },
     "pipeline": {
-      "taskCount": 2,
-      "avgScore": 5.5,
+      "taskCount": 13,
+      "avgScore": 5.2,
       "winCount": 0,
-      "failureCount": 2,
-      "lastUsedAt": "2026-04-02T10:07:06.408Z",
+      "failureCount": 9,
+      "lastUsedAt": "2026-04-16T13:55:21.400Z",
       "scoreTrend": [
+        3,
+        5,
+        3,
+        6,
+        3,
+        7,
+        7,
+        7,
         6,
         5
       ]
@@ -368,9 +585,9 @@
   },
   "improvements": [],
   "refinements": [
-    "Adhere strictly to task instructions regarding length and detail.",
-    "Provide specific examples or case studies to illustrate key points.",
-    "Ensure all requested information is clearly stated and directly answered."
+    "Incorporate",
+    "Provide",
+    "Request"
   ],
-  "refinedAt": "2026-04-02T10:08:46.092Z"
+  "refinedAt": "2026-04-14T05:42:26.210Z"
 }

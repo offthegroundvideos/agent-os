@@ -5,9 +5,9 @@ const COLORS = ['#f59e0b', '#3b82f6', '#ec4899', '#10b981', '#8b5cf6', '#ef4444'
 const STEPS = ['Offer', 'Message', 'Look', 'Build'];
 
 const DEFAULT_FORM = {
-  clientId: 'cli_default',
-  campaignId: 'cmp_default',
-  offerId: 'off_default',
+  clientId: '',
+  campaignId: '',
+  offerId: '',
   clientName: '',
   niche: '',
   headline: '',
@@ -18,9 +18,9 @@ const DEFAULT_FORM = {
   leadMagnetLine: '',
   objectionBullets: '',
   testimonials: '',
-  cta: 'Book Your Free Strategy Call',
-  ctaId: 'cta_default',
-  ctaKeyword: 'GUIDE',
+  cta: '',
+  ctaId: '',
+  ctaKeyword: '',
   landingPageType: 'booking',
   color: '#f59e0b',
   darkMode: true,
@@ -31,6 +31,61 @@ const DEFAULT_FORM = {
   model: 'qwen2.5:14b',
 };
 
+function stripOtgReferences(value = '') {
+  const text = String(value || '').replace(/\s+/g, ' ').trim();
+  if (!text) return '';
+
+  return text
+    .split(/(?<=[.!?])\s+/)
+    .map((sentence) => sentence.trim())
+    .filter(Boolean)
+    .filter((sentence) => !/\botg\b|\botg icon\b/i.test(sentence))
+    .join(' ')
+    .trim();
+}
+
+function buildNicheAwareHeadline(nicheValue = '', ctaValue = '') {
+  const niche = String(nicheValue || '').trim().toLowerCase();
+  const cta = String(ctaValue || '').trim().toLowerCase();
+  if (!niche) return '';
+
+  if (niche.endsWith('coaching') && /(consult|call|book)/.test(cta)) {
+    const subject = niche.replace(/\s*coaching$/, '').trim();
+    return subject ? `Book a ${subject} strategy call` : '';
+  }
+
+  if (niche.includes('training') && /(evalu|consult|call|book)/.test(cta)) {
+    return `Book a ${niche} evaluation`;
+  }
+
+  if (niche.includes('videography') && cta.includes('availability')) {
+    return 'Check date availability';
+  }
+
+  if (niche.includes('videography') && /(consult|call|book)/.test(cta)) {
+    const subject = niche.replace(/\s*videography$/, '').trim();
+    return subject ? `Book your ${subject} film consult` : '';
+  }
+
+  return '';
+}
+
+function buildClientDefaultHeadline(client) {
+  const nicheAwareHeadline = buildNicheAwareHeadline(client?.niche, client?.core_cta);
+  if (nicheAwareHeadline) return nicheAwareHeadline;
+
+  const cta = String(client?.core_cta || '').trim();
+  if (cta) return cta;
+
+  const offer = String(client?.primary_offer || '').trim();
+  if (offer) return `Book your ${offer.toLowerCase()}`;
+
+  const niche = String(client?.niche || '').trim();
+  if (niche) return `Get a clear next step for ${niche.toLowerCase()}.`;
+
+  return '';
+}
+
 export default function LandingPageBuilder({ onClose, initialAssetId = '' }) {
   const [step, setStep] = useState(1);
   const [viewportWidth, setViewportWidth] = useState(1280);
@@ -40,6 +95,7 @@ export default function LandingPageBuilder({ onClose, initialAssetId = '' }) {
   const [previewHtml, setPreviewHtml] = useState('');
   const [showPreview, setShowPreview] = useState(false);
   const [pageContext, setPageContext] = useState(null);
+  const [activeClient, setActiveClient] = useState(null);
   const [contextStatus, setContextStatus] = useState('');
   const [form, setForm] = useState(DEFAULT_FORM);
 
@@ -71,7 +127,13 @@ export default function LandingPageBuilder({ onClose, initialAssetId = '' }) {
   const update = (key, val) => setForm((prev) => ({ ...prev, [key]: val }));
 
   useEffect(() => {
-    loadLatestPipelineContext(initialAssetId);
+    loadActiveClientContext();
+    if (initialAssetId) {
+      loadLatestPipelineContext(initialAssetId);
+    } else {
+      setPageContext(null);
+      setContextStatus('Selected client context loaded. Load pipeline context only when you explicitly want the latest asset.');
+    }
   }, [initialAssetId]);
 
   useEffect(() => {
@@ -97,9 +159,44 @@ export default function LandingPageBuilder({ onClose, initialAssetId = '' }) {
       primaryOutcome: context.offerName ? `More ${context.offerName.toLowerCase()} inquiries` : prev.primaryOutcome,
       objectionBullets: (context.benefits || []).slice(0, 3).join('\n') || prev.objectionBullets,
       ctaId: context.ctaId || prev.ctaId,
-      sourcePrompt: context.sourcePrompt || prev.sourcePrompt,
-      strategyNotes: context.strategyNotes || prev.strategyNotes,
+      sourcePrompt: stripOtgReferences(context.sourcePrompt || '') || prev.sourcePrompt,
+      strategyNotes: stripOtgReferences(context.strategyNotes || '') || prev.strategyNotes,
     }));
+  };
+
+  const applyClientContext = (client) => {
+    if (!client) return;
+    setForm((prev) => ({
+      ...prev,
+      clientId: client.id || prev.clientId,
+      clientName: client.name || prev.clientName,
+      niche: client.niche || prev.niche,
+      headline: prev.headline || buildClientDefaultHeadline(client),
+      subheadline: prev.subheadline || stripOtgReferences(client.brand_positioning || '') || prev.subheadline,
+      primaryOutcome: client.primary_offer
+        ? `More ${String(client.primary_offer).toLowerCase()} inquiries`
+        : prev.primaryOutcome,
+      cta: client.core_cta || prev.cta,
+      strategyNotes: stripOtgReferences(client.brand_positioning || '') || prev.strategyNotes,
+      sourcePrompt: prev.sourcePrompt || [
+        client.name ? `Build a landing page for ${client.name}.` : '',
+        client.niche ? `Niche: ${client.niche}.` : '',
+        client.target_audience ? `Audience: ${client.target_audience}.` : '',
+        client.service_area ? `Geography: ${client.service_area}.` : '',
+        client.primary_offer ? `Primary offer: ${client.primary_offer}.` : '',
+      ].filter(Boolean).join(' '),
+    }));
+  };
+
+  const loadActiveClientContext = async () => {
+    try {
+      const res = await fetch('/api/clients?action=active');
+      const data = await res.json();
+      if (!res.ok || !data?.active) return;
+      setActiveClient(data.active);
+      applyClientContext(data.active);
+      setContextStatus((prev) => prev || `Loaded selected client context for ${data.active.name}`);
+    } catch {}
   };
 
   const loadLatestPipelineContext = async (assetId = '') => {
@@ -163,6 +260,7 @@ export default function LandingPageBuilder({ onClose, initialAssetId = '' }) {
       sourcePrompt: '',
       strategyNotes: '',
     }));
+    if (activeClient) applyClientContext(activeClient);
     if (pageContext) applyPageContext(pageContext);
   };
 
@@ -320,40 +418,40 @@ export default function LandingPageBuilder({ onClose, initialAssetId = '' }) {
                     style={{ ...inputStyle, minHeight: 110, resize: 'vertical' }}
                     value={form.sourcePrompt}
                     onChange={(e) => update('sourcePrompt', e.target.value)}
-                    placeholder="Build a landing page for a dog trainer that promises calmer walks and better obedience. Keep it sparse, mobile-first, and focused on booking qualified consults."
+                    placeholder="Build a landing page for the selected client with one clear promise, a proof-led hero, and a strong qualified-lead CTA."
                   />
 
                   <label style={labelStyle}>Client / Business Name</label>
-                  <input style={inputStyle} value={form.clientName} onChange={(e) => update('clientName', e.target.value)} placeholder="Smith Photography" />
+                  <input style={inputStyle} value={form.clientName} onChange={(e) => update('clientName', e.target.value)} placeholder="Client or business name" />
 
                   <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: 8 }}>
                     <div>
                       <label style={labelStyle}>Client ID</label>
-                      <input style={inputStyle} value={form.clientId} onChange={(e) => update('clientId', e.target.value)} placeholder="cli_default" />
+                      <input style={inputStyle} value={form.clientId} onChange={(e) => update('clientId', e.target.value)} placeholder="Client id (optional)" />
                     </div>
                     <div>
                       <label style={labelStyle}>Campaign ID</label>
-                      <input style={inputStyle} value={form.campaignId} onChange={(e) => update('campaignId', e.target.value)} placeholder="cmp_default" />
+                      <input style={inputStyle} value={form.campaignId} onChange={(e) => update('campaignId', e.target.value)} placeholder="Campaign id (optional)" />
                     </div>
                   </div>
 
                   <label style={labelStyle}>Niche</label>
-                  <input style={inputStyle} value={form.niche} onChange={(e) => update('niche', e.target.value)} placeholder="Dog training for busy families" />
+                  <input style={inputStyle} value={form.niche} onChange={(e) => update('niche', e.target.value)} placeholder="Nutrition coaching, wedding videography, dog training, etc." />
 
                   <label style={labelStyle}>Primary Outcome</label>
-                  <input style={inputStyle} value={form.primaryOutcome} onChange={(e) => update('primaryOutcome', e.target.value)} placeholder="More qualified training consults" />
+                  <input style={inputStyle} value={form.primaryOutcome} onChange={(e) => update('primaryOutcome', e.target.value)} placeholder="More qualified consults, bookings, or applications" />
 
                   <label style={labelStyle}>Main Call To Action</label>
-                  <input style={inputStyle} value={form.cta} onChange={(e) => update('cta', e.target.value)} placeholder="Get a custom training plan by booking a consult" />
+                  <input style={inputStyle} value={form.cta} onChange={(e) => update('cta', e.target.value)} placeholder="Book your consult" />
 
                   <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: 8 }}>
                     <div>
                       <label style={labelStyle}>CTA ID</label>
-                      <input style={inputStyle} value={form.ctaId} onChange={(e) => update('ctaId', e.target.value)} placeholder="cta_default" />
+                      <input style={inputStyle} value={form.ctaId} onChange={(e) => update('ctaId', e.target.value)} placeholder="CTA id (optional)" />
                     </div>
                     <div>
                       <label style={labelStyle}>CTA Keyword</label>
-                      <input style={inputStyle} value={form.ctaKeyword} onChange={(e) => update('ctaKeyword', e.target.value)} placeholder="GUIDE" />
+                      <input style={inputStyle} value={form.ctaKeyword} onChange={(e) => update('ctaKeyword', e.target.value)} placeholder="CTA keyword (optional)" />
                     </div>
                   </div>
 
@@ -378,22 +476,22 @@ export default function LandingPageBuilder({ onClose, initialAssetId = '' }) {
                   </div>
 
                   <label style={labelStyle}>Headline Promise</label>
-                  <input style={inputStyle} value={form.headline} onChange={(e) => update('headline', e.target.value)} placeholder="Get calmer walks and better obedience without guessing what to do next" />
+                  <input style={inputStyle} value={form.headline} onChange={(e) => update('headline', e.target.value)} placeholder="Book a nutrition strategy call" />
 
                   <label style={labelStyle}>Subheadline Context</label>
-                  <input style={inputStyle} value={form.subheadline} onChange={(e) => update('subheadline', e.target.value)} placeholder="Built for busy families who need a clear training plan, proof it works, and an easy next step." />
+                  <input style={inputStyle} value={form.subheadline} onChange={(e) => update('subheadline', e.target.value)} placeholder="Get a clear plan for energy, body composition, and consistency." />
 
                   <label style={labelStyle}>Lead Magnet / Form Justification</label>
-                  <input style={inputStyle} value={form.leadMagnetLine} onChange={(e) => update('leadMagnetLine', e.target.value)} placeholder="Answer a few quick questions and we will recommend the right training path." />
+                  <input style={inputStyle} value={form.leadMagnetLine} onChange={(e) => update('leadMagnetLine', e.target.value)} placeholder="Get a tailored next-step plan for your nutrition and schedule." />
 
                   <label style={labelStyle}>Three Objection Bullets</label>
-                  <textarea style={{ ...inputStyle, minHeight: 90, resize: 'vertical' }} value={form.objectionBullets} onChange={(e) => update('objectionBullets', e.target.value)} placeholder={'You do not need more dog tips. You need a plan.\nThe form qualifies fit before the consult.\nEverything points to one next step.'} />
+                  <textarea style={{ ...inputStyle, minHeight: 90, resize: 'vertical' }} value={form.objectionBullets} onChange={(e) => update('objectionBullets', e.target.value)} placeholder={'No crash diets or extreme meal plans\nBuilt for busy professionals with real schedules\nClear next steps based on your goals and habits'} />
 
                   <label style={labelStyle}>Supporting Benefits / Notes</label>
                   <textarea style={{ ...inputStyle, minHeight: 90, resize: 'vertical' }} value={form.benefits} onChange={(e) => update('benefits', e.target.value)} placeholder={'Promise-matched page copy\nFaster qualification\nClearer CTA handoff'} />
 
                   <label style={labelStyle}>Optional Social Proof</label>
-                  <textarea style={{ ...inputStyle, minHeight: 80, resize: 'vertical' }} value={form.testimonials} onChange={(e) => update('testimonials', e.target.value)} placeholder={'Only add this if it helps a complex offer.\nWe stopped attracting browsers and started attracting buyers. - Founder'} />
+                  <textarea style={{ ...inputStyle, minHeight: 80, resize: 'vertical' }} value={form.testimonials} onChange={(e) => update('testimonials', e.target.value)} placeholder={'Only add this if it helps a complex offer.\nClients leave with a clear plan and a confident next step. - Founder'} />
 
                   <label style={labelStyle}>Qualification / Process Notes</label>
                   <textarea style={{ ...inputStyle, minHeight: 90, resize: 'vertical' }} value={form.process} onChange={(e) => update('process', e.target.value)} placeholder={'Keep the form to 4-5 fields\nFocus the page on one CTA\nUse the hero image as proof'} />

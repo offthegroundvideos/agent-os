@@ -75,5 +75,24 @@ export default {
 ## Notes
 
 - Keep viral research and lead scraping in separate records.
+- Use `prospect_opportunity` for public service-request posts you want to track in Prospect Radar.
 - Agent OS upserts by canonical identity so repeated sends update instead of duplicating.
 - The `CLOUD OPS` panel in Agent OS shows recent records and ingest events from this endpoint.
+
+### `prospect_opportunity`
+
+```json
+{
+  "recordType": "prospect_opportunity",
+  "title": "Looking for a wedding photographer for October 12 in Orange County",
+  "niche": "wedding photography",
+  "requestedService": "wedding photographer",
+  "sourcePlatform": "public-facebook",
+  "sourceLabel": "Public Facebook result",
+  "sourceUrl": "https://example.com/post/123",
+  "location": "Orange County, CA",
+  "postedAt": "2026-04-08T10:00:00Z",
+  "summary": "Need someone available for an October wedding. Budget is flexible for the right fit.",
+  "outreachAngle": "Lead with portfolio proof and confirm date availability fast."
+}
+```

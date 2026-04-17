@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import WorkingMemoryPanel from './WorkingMemoryPanel';
 
 export default function VideoEditorBridge() {
   const [integrationStatus, setIntegrationStatus] = useState(null);
@@ -329,6 +330,8 @@ export default function VideoEditorBridge() {
             </div>
           </div>
         </section>
+
+        <WorkingMemoryPanel />
 
         <section
           style={{

@@ -1,22 +1,32 @@
-import { AGENTS, PIPELINE_TYPES, OLLAMA_URL, MODEL_TIMEOUTS, DEFAULT_TIMEOUT } from '../../../lib/agents.js';
+﻿import { AGENTS, PIPELINE_TYPES, OLLAMA_URL, MODEL_TIMEOUTS, DEFAULT_TIMEOUT } from '../../../lib/agents.js';
 import { addToMemory, saveToWorkspace } from '../../../lib/memory.js';
 import { buildPipelinePrompt, extractHandoffJson, extractNarrativeSummary, stripThinkBlocks } from '../../../lib/router.js';
 import { logHandoff, updateHandoffUsage, completeSession } from '../../../lib/comms.js';
 import { registerProcess, completeProcess, isProcessStopped, updateProcessProgress, resumeProcess } from '../../../lib/processes.js';
 import { logPipelineRun } from '../../../lib/chapters.js';
-import { addLesson, getLessonsPrompt, saveLastTask, triggerAutoRefine } from '../../../lib/learning.js';
+import { getLessonsPrompt, saveLastTask } from '../../../lib/learning.js';
 import { buildGrowthOSContext } from '../../../lib/growthOS.js';
 import { buildArchitectureTargetContext } from '../../../lib/architectureSpec.js';
 import { buildCanonicalDataModelContext } from '../../../lib/canonicalDataModel.js';
 import { buildContentOSContext } from '../../../lib/contentOS.js';
 import { getResearchContextForTopic, getViralSystemAddendum } from '../../../lib/viralResearch.js';
-import { createAsset, transitionAsset, updateAssetOutput } from '../../../lib/assets.js';
+import { createAsset, listAssets, transitionAsset, updateAssetOutput } from '../../../lib/assets.js';
 import { addScript } from '../../../lib/contentRecords.js';
 import { autoJobsCanRunInBackground } from '../../../lib/autojobs.js';
 import { generateCalendarEntriesForAsset } from '../../../lib/contentCalendar.js';
+import {
+  recordPipelineRunComplete,
+  recordPipelineRunFailure,
+  recordPipelineRunStart,
+  recordPipelineRunStep,
+} from '../../../lib/durableStore.js';
+import {
+  queuePipelineLeadGenJob,
+  queuePipelineReflectionJob,
+} from '../../../lib/backgroundQueue.js';
 
 export const dynamic = 'force-dynamic';
-export const maxDuration = 300;
+export const maxDuration = 900;
 
 // Sanitize topic string for use as a filename
 function slugify(str) {
@@ -107,6 +117,28 @@ function getFirstTokenTimeoutMs(stepAgentId) {
   return 30000;
 }
 
+function findExistingPipelineAsset({ topic, pipelineType, startedAt }) {
+  const normalizedTopic = String(topic || '').trim().toLowerCase();
+  if (!normalizedTopic) return null;
+
+  const startedAtMs = startedAt ? new Date(startedAt).getTime() : 0;
+  const candidates = listAssets().filter((asset) => {
+    if (String(asset?.topic || '').trim().toLowerCase() !== normalizedTopic) return false;
+    if (pipelineType && String(asset?.pipelineType || '').trim() !== String(pipelineType).trim()) return false;
+    return true;
+  });
+
+  if (!candidates.length) return null;
+
+  return candidates.sort((a, b) => {
+    const aCreated = new Date(a?.createdAt || a?.updatedAt || 0).getTime();
+    const bCreated = new Date(b?.createdAt || b?.updatedAt || 0).getTime();
+    const aScore = startedAtMs && aCreated && aCreated >= startedAtMs ? aCreated : aCreated || 0;
+    const bScore = startedAtMs && bCreated && bCreated >= startedAtMs ? bCreated : bCreated || 0;
+    return bScore - aScore;
+  })[0] || null;
+}
+
 export async function POST(request) {
   const encoder = new TextEncoder();
 
@@ -134,18 +166,52 @@ export async function POST(request) {
           : PIPELINE_TYPES['content'];
         const stepsToRun = selectedType.steps;
         const researchContext = getResearchContextForTopic(topic);
-        const asset = createAsset({ topic, title: topic, pipelineType: pipelineType || 'content', owner: 'system' });
-        const assetId = asset.id;
+        const existingProcess = isResume ? resumeProcess(processId) : null;
+        const assetId = existingProcess?.assetId
+          || findExistingPipelineAsset({
+            topic,
+            pipelineType: pipelineType || 'content',
+            startedAt: existingProcess?.startedAt || null,
+          })?.id
+          || createAsset({ topic, title: topic, pipelineType: pipelineType || 'content', owner: 'system' }).id;
 
         if (isResume) {
-          resumeProcess(processId);
+          if (existingProcess && !existingProcess.assetId) {
+            updateProcessProgress(processId, { assetId });
+          } else if (!existingProcess) {
+            registerProcess(processId, 'pipeline', 'Pipeline: ' + topic, {
+              pipelineTopic: topic,
+              pipelineType: pipelineType || 'content',
+              assetId,
+              completedStepIndex: resumeFrom || 0,
+              resumedFromMissingRecord: true,
+            });
+          }
         } else {
           registerProcess(processId, 'pipeline', 'Pipeline: ' + topic, {
             pipelineTopic: topic,
             pipelineType: pipelineType || 'content',
+            assetId,
             completedStepIndex: 0,
           });
         }
+        try {
+          recordPipelineRunStart({
+            id: processId,
+            processId,
+            sessionId,
+            topic,
+            pipelineType: selectedType.id,
+            assetId,
+            resumeFrom: resumeFrom || 0,
+            status: 'running',
+            metadata: {
+              resumed: isResume,
+              source: 'pipeline_route',
+            },
+          });
+        } catch {}
+        const runTag = `${topicSlug}-${assetId}`;
         send({ type: 'start', topic, totalSteps: stepsToRun.length, sessionId, processId, assetId, resumed: isResume, resumeFrom: resumeFrom || 0 });
         send({ type: 'pipeline_type', pipelineType: selectedType.id, label: selectedType.label, totalSteps: stepsToRun.length });
 
@@ -155,7 +221,9 @@ export async function POST(request) {
         const results = {};
 
         // If resuming, rebuild completedSteps from prior results so downstream agents have context
-        const startIndex = isResume ? resumeFrom : 0;
+        const startIndex = isResume
+          ? Math.max(0, Math.min(Number(resumeFrom) || 0, stepsToRun.length))
+          : 0;
         if (isResume && priorResults) {
           for (let j = 0; j < startIndex && j < stepsToRun.length; j++) {
             const s = stepsToRun[j];
@@ -190,6 +258,20 @@ export async function POST(request) {
           // Check stop signal before each step
           if (isProcessStopped(processId)) {
             send({ type: 'stopped', message: 'Pipeline stopped by user', completedSteps: i });
+            try {
+              recordPipelineRunComplete(processId, {
+                processId,
+                sessionId,
+                topic,
+                pipelineType: selectedType.id,
+                assetId,
+                resumeFrom: resumeFrom || 0,
+                status: 'stopped',
+                eventType: 'stopped',
+                message: 'Pipeline stopped by user',
+                completedStepCount: i,
+              });
+            } catch {}
             completeProcess(processId, 'stopped');
             completeSession(sessionId, 'stopped');
             controller.close();
@@ -307,7 +389,7 @@ export async function POST(request) {
                       const token = json.message.content;
                       output += token;
 
-                      // Track <think> blocks — accumulate them in output but don't stream to UI
+                      // Track <think> blocks â€” accumulate them in output but don't stream to UI
                       if (token.includes('<think>')) inThinkBlock = true;
                       if (!inThinkBlock) {
                         if (!sawVisibleToken) {
@@ -331,6 +413,20 @@ export async function POST(request) {
 
                 if (isProcessStopped(processId)) {
                   send({ type: 'stopped', message: 'Stopped during ' + agent.name, completedSteps: i });
+                  try {
+                    recordPipelineRunComplete(processId, {
+                      processId,
+                      sessionId,
+                      topic,
+                      pipelineType: selectedType.id,
+                      assetId,
+                      resumeFrom: resumeFrom || 0,
+                      status: 'stopped',
+                      eventType: 'stopped',
+                      message: 'Pipeline stopped mid-step',
+                      completedStepCount: i,
+                    });
+                  } catch {}
                   completeProcess(processId, 'stopped');
                   completeSession(sessionId, 'stopped');
                   controller.close();
@@ -368,7 +464,7 @@ export async function POST(request) {
             }
           }
 
-          // HALT pipeline on failure — never pass bad output downstream
+          // HALT pipeline on failure â€” never pass bad output downstream
           if (!success) {
             send({
               type: 'step_error',
@@ -379,13 +475,26 @@ export async function POST(request) {
               fatal: true,
               message: agent.name + ` failed after trying ${modelCandidates.join(', ')}. Pipeline halted.`,
             });
+            try {
+              recordPipelineRunFailure(processId, {
+                processId,
+                sessionId,
+                topic,
+                pipelineType: selectedType.id,
+                assetId,
+                resumeFrom: resumeFrom || 0,
+                status: 'failed',
+                error: lastError || `${agent.name} failed after trying ${modelCandidates.join(', ')}`,
+                message: `${agent.name} failed after trying ${modelCandidates.join(', ')}`,
+              });
+            } catch {}
             completeProcess(processId, 'failed');
             completeSession(sessionId, 'failed');
             controller.close();
             return;
           }
 
-          // Strip deepseek-r1 <think>...</think> blocks — these are internal reasoning
+          // Strip deepseek-r1 <think>...</think> blocks â€” these are internal reasoning
           // and must never be passed to downstream agents or they echo the reasoning back
           output = stripThinkBlocks(output);
 
@@ -445,57 +554,57 @@ export async function POST(request) {
           addToMemory(step.agentId, 'assistant', output);
 
           // Store for manual re-reflection from Learn tab
-          try { saveLastTask(step.agentId, topic + ' — ' + step.label, output, { workflowType: 'pipeline' }); } catch {}
+          try { saveLastTask(step.agentId, topic + ' â€” ' + step.label, output, { workflowType: 'pipeline' }); } catch {}
 
-          // Save individual step file with topic in name — findable by topic
-          const stepFilename = topicSlug + '-' + step.agentId + '-' + step.label.toLowerCase().replace(/\s+/g, '-') + '.md';
+          // Save individual step file with topic in name â€” findable by topic
+          const stepFilename = `${runTag}-${step.agentId}-${step.label.toLowerCase().replace(/\s+/g, '-')}.md`;
           saveToWorkspace(step.agentId, stepFilename,
-            `# ${agent.name} — ${step.label}\nTopic: ${topic}\nDate: ${new Date().toISOString()}\nSession: ${sessionId}\n\n---\n\n${output}`
+            `# ${agent.name} â€” ${step.label}\nTopic: ${topic}\nDate: ${new Date().toISOString()}\nSession: ${sessionId}\n\n---\n\n${output}`
           );
 
-          // Background reflection — delayed 8s so next agent gets GPU first, 60s timeout so it never hangs
-          const reflectAgentId = step.agentId;
-          const reflectAgentName = agent.name;
-          const reflectOutput = output;
-          setTimeout(() => {
-            const reflectAbort = new AbortController();
-            const reflectTimeout = setTimeout(() => reflectAbort.abort(), 60000);
-            fetch(OLLAMA_URL + '/api/chat', {
-              method: 'POST',
-              signal: reflectAbort.signal,
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                model: 'qwen2.5:14b',
-                messages: [{
-                  role: 'user',
-                  content: `You are ${reflectAgentName}. Pipeline step "${step.label}" for: "${topic.substring(0, 100)}"\nOutput: ${reflectOutput.split(' ').length} words.\n\nReflect. JSON only:\n{"score":7,"what_worked":"one sentence","what_failed":"one sentence","improvement":"one specific thing","is_win":false}`,
-                }],
-                stream: false,
-                options: { temperature: 0.3, num_ctx: 2048, num_predict: 200 },
-              }),
-            }).then(async r => {
-              clearTimeout(reflectTimeout);
-              if (!r.ok) return;
-              const d = await r.json();
-              let c = (d.message?.content || '{}')
-                .replace(/^```json\n?/i, '').replace(/^```\n?/i, '').replace(/\n?```$/i, '').trim();
-              try {
-                const ref = JSON.parse(c);
-                addLesson(reflectAgentId, {
-                  task: topic.substring(0, 200),
-                  workflowType: 'pipeline',
-                  score: Math.max(1, Math.min(10, parseInt(ref.score) || 7)),
-                  what_worked: ref.what_worked || '',
-                  what_failed: ref.what_failed || '',
-                  improvement: ref.improvement || '',
-                });
-                await triggerAutoRefine(reflectAgentId);
-                // addLesson already records wins when score >= 8 - no separate addWin needed
-              } catch {}
-            }).catch(() => { clearTimeout(reflectTimeout); });
-          }, 8000 + (i * 15000)); // stagger reflections — 8s base + 15s per step so they serialize
+          // Queue reflection so it survives restarts and runs when the worker is idle.
+          try {
+            queuePipelineReflectionJob({
+              runId: processId,
+              processId,
+              sessionId,
+              topic,
+              pipelineType: selectedType.id,
+              assetId,
+              stepIndex: i + 1,
+              agentId: step.agentId,
+              agentName: agent.name,
+              stepLabel: step.label,
+              output,
+              workflowType: 'pipeline',
+              delayMs: 8000 + (i * 15000),
+            });
+          } catch {}
 
           // Track progress so pipeline can be resumed from this point
+          updateProcessProgress(processId, { completedStepIndex: i + 1 });
+
+          try {
+            recordPipelineRunStep(processId, {
+              processId,
+              sessionId,
+              topic,
+              pipelineType: selectedType.id,
+              assetId,
+              resumeFrom: resumeFrom || 0,
+              stepIndex: i + 1,
+              agentId: step.agentId,
+              agentName: agent.name,
+              stepLabel: step.label,
+              model: finalModelUsed,
+              wordCount: output.split(' ').length,
+              hasStructuredHandoff: !!handoffJson,
+              narrativeSummary,
+              handoffJson,
+              output,
+              message: `${agent.name} completed ${step.label}`,
+            });
+          } catch {}
           updateProcessProgress(processId, { completedStepIndex: i + 1 });
 
           send({
@@ -514,8 +623,8 @@ export async function POST(request) {
         completeProcess(processId, 'complete');
         completeSession(sessionId, 'complete');
 
-        // Save ONE combined report with ALL agents' full output — topic in filename
-        const reportFilename = topicSlug + '-full-pipeline.md';
+        // Save ONE combined report with ALL agents' full output â€” topic in filename
+        const reportFilename = `${runTag}-full-pipeline.md`;
         const reportLines = [
           '# Pipeline Report: ' + topic,
           'Type: ' + selectedType.label,
@@ -528,8 +637,8 @@ export async function POST(request) {
         stepsToRun.forEach(s => {
           const agentOutput = results[s.agentId] || 'No output';
           const hj = completedSteps.find(c => c.agentId === s.agentId)?.handoffJson;
-          reportLines.push('## ' + AGENTS[s.agentId].icon + ' ' + AGENTS[s.agentId].name + ' — ' + s.label);
-          reportLines.push('*' + AGENTS[s.agentId].role + ' · ' + agentOutput.split(' ').length + ' words*');
+          reportLines.push('## ' + AGENTS[s.agentId].icon + ' ' + AGENTS[s.agentId].name + ' â€” ' + s.label);
+          reportLines.push('*' + AGENTS[s.agentId].role + ' Â· ' + agentOutput.split(' ').length + ' words*');
           if (hj) reportLines.push('\n**Structured Data:** `' + JSON.stringify(hj) + '`');
           reportLines.push('');
           reportLines.push(agentOutput);
@@ -551,51 +660,34 @@ export async function POST(request) {
           completedSteps,
         });
 
-        // Only run background lead generation when idle auto-jobs are explicitly enabled.
         if (autoJobsCanRunInBackground()) {
-          setTimeout(() => {
-            const leadPrompt = `You are Luna, OTG Icon's lead qualifier. A pipeline just completed on: "${topic}"
-
-Based on this topic, generate 3-5 detailed potential client leads who would buy THIS specific service.
-
-For EACH lead provide:
-1. **Business Name** — realistic business in this niche
-2. **Why They Need This** — specific pain point related to "${topic}"
-3. **Service Match** — which OTG package (video, photo, social content, full brand)
-4. **Budget Range** — realistic estimate
-5. **Temperature** — HOT/WARM/COLD
-6. **Personalized Pitch** — a ready-to-send outreach message for this lead
-7. **Objection & Counter** — what they'll push back on and how to handle it
-
-End with [QUALIFIED] and JSON: {"leads_found":0,"hot_leads":0,"pipeline_topic":"${topic.substring(0, 100)}"}`;
-
-            fetch(OLLAMA_URL + '/api/chat', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                model: 'qwen2.5-ctx32k',
-                messages: [
-                  { role: 'system', content: AGENTS['luna'].systemPrompt },
-                  { role: 'user', content: leadPrompt },
-                ],
-                stream: false,
-                options: { temperature: 0.7, num_ctx: 16384 },
-              }),
-            }).then(async r => {
-              if (!r.ok) return;
-              const d = await r.json();
-              const output = (d.message?.content || '').replace(/<think>[\s\S]*?<\/think>\s*/g, '').trim();
-              if (output) {
-                addToMemory('luna', 'user', '[AUTO] Lead gen for pipeline: ' + topic);
-                addToMemory('luna', 'assistant', output);
-                const ts = new Date().toISOString().replace(/[:.]/g, '-');
-                saveToWorkspace('luna', `auto-leads-${topicSlug}-${ts}.md`,
-                  `# Auto Lead Generation\nPipeline Topic: ${topic}\nDate: ${new Date().toISOString()}\n\n---\n\n${output}`
-                );
-              }
-            }).catch(() => {});
-          }, 10000); // 10s delay so reflections finish first
+          try {
+            queuePipelineLeadGenJob({
+              runId: processId,
+              processId,
+              sessionId,
+              topic,
+              pipelineType: selectedType.id,
+              assetId,
+              delayMs: 10000,
+            });
+          } catch {}
         }
+
+        try {
+          recordPipelineRunComplete(processId, {
+            processId,
+            sessionId,
+            topic,
+            pipelineType: selectedType.id,
+            assetId,
+            resumeFrom: resumeFrom || 0,
+            status: 'complete',
+            reportFilename,
+            calendarEntryCount: calendarEntries.length,
+            completedStepCount: stepsToRun.length,
+          });
+        } catch {}
 
         send({
           type: 'complete',
@@ -637,3 +729,5 @@ function getAgentModel(agentId) {
   };
   return models[agentId] || 'qwen2.5-ctx32k';
 }
+
+

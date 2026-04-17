@@ -274,6 +274,10 @@ export default function ViralResearchPanel({ onClose }) {
               ))}
             </div>
 
+            <div style={{ marginBottom: 14, padding: 10, background: 'rgba(59,130,246,0.05)', border: '1px solid rgba(59,130,246,0.12)', borderRadius: 4, fontSize: 11, color: '#b8ccff', lineHeight: 1.5 }}>
+              5x rule in this workspace: a video only qualifies once views reach at least 5x follower count. Example: 50k followers needs 250k views.
+            </div>
+
             <div style={{ marginBottom: 14 }}>
               <div style={{ fontSize: 10, color: '#666', letterSpacing: '0.12em', marginBottom: 8 }}>PLATFORM SCOPE</div>
               <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>

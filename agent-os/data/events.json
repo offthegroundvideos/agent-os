@@ -1,6 +1,541 @@
 {
   "events": [
     {
+      "event_id": "evt_1776347712292_9230b",
+      "event_name": "renderjob.created",
+      "entity_type": "render_job",
+      "entity_id": "rnd_1776347712280_8g298",
+      "occurred_at": "2026-04-16T13:55:12.292Z",
+      "source_system": "production_ops",
+      "idempotency_key": "renderjob.created:rnd_1776347712280_8g298:1776347712292",
+      "payload": {
+        "calendar_entry_id": "pkg_1776347712274_o1xy4"
+      }
+    },
+    {
+      "event_id": "evt_1776347712291_e2e71",
+      "event_name": "editjob.created",
+      "entity_type": "edit_job",
+      "entity_id": "edt_1776347712280_zdice",
+      "occurred_at": "2026-04-16T13:55:12.291Z",
+      "source_system": "production_ops",
+      "idempotency_key": "editjob.created:edt_1776347712280_zdice:1776347712291",
+      "payload": {
+        "calendar_entry_id": "pkg_1776347712274_o1xy4"
+      }
+    },
+    {
+      "event_id": "evt_1776347712291_g3zsc",
+      "event_name": "shootschedule.created",
+      "entity_type": "shoot_schedule",
+      "entity_id": "sht_1776347712280_7nnp4",
+      "occurred_at": "2026-04-16T13:55:12.291Z",
+      "source_system": "production_ops",
+      "idempotency_key": "shootschedule.created:sht_1776347712280_7nnp4:1776347712291",
+      "payload": {
+        "calendar_entry_id": "pkg_1776347712274_o1xy4"
+      }
+    },
+    {
+      "event_id": "evt_1776347643104_i4hgd",
+      "event_name": "script.created",
+      "entity_type": "script",
+      "entity_id": "scr_1776347643103_pdg7l",
+      "occurred_at": "2026-04-16T13:54:03.104Z",
+      "source_system": "content_intelligence",
+      "idempotency_key": "script.created:scr_1776347643103_pdg7l:1776347643104",
+      "payload": {
+        "asset_id": "ast_1776347570138_h3azx",
+        "approval_status": "draft"
+      }
+    },
+    {
+      "event_id": "evt_1776149335505_pm3z8",
+      "event_name": "renderjob.created",
+      "entity_type": "render_job",
+      "entity_id": "rnd_1776149335495_syqsd",
+      "occurred_at": "2026-04-14T06:48:55.505Z",
+      "source_system": "production_ops",
+      "idempotency_key": "renderjob.created:rnd_1776149335495_syqsd:1776149335505",
+      "payload": {
+        "calendar_entry_id": "pkg_1776149335489_t3sk1"
+      }
+    },
+    {
+      "event_id": "evt_1776149335504_xae01",
+      "event_name": "editjob.created",
+      "entity_type": "edit_job",
+      "entity_id": "edt_1776149335495_jpxx3",
+      "occurred_at": "2026-04-14T06:48:55.504Z",
+      "source_system": "production_ops",
+      "idempotency_key": "editjob.created:edt_1776149335495_jpxx3:1776149335504",
+      "payload": {
+        "calendar_entry_id": "pkg_1776149335489_t3sk1"
+      }
+    },
+    {
+      "event_id": "evt_1776149335504_jpeyc",
+      "event_name": "shootschedule.created",
+      "entity_type": "shoot_schedule",
+      "entity_id": "sht_1776149335494_iqhpo",
+      "occurred_at": "2026-04-14T06:48:55.504Z",
+      "source_system": "production_ops",
+      "idempotency_key": "shootschedule.created:sht_1776149335494_iqhpo:1776149335504",
+      "payload": {
+        "calendar_entry_id": "pkg_1776149335489_t3sk1"
+      }
+    },
+    {
+      "event_id": "evt_1776149248034_drbja",
+      "event_name": "script.created",
+      "entity_type": "script",
+      "entity_id": "scr_1776149248033_qscz7",
+      "occurred_at": "2026-04-14T06:47:28.034Z",
+      "source_system": "content_intelligence",
+      "idempotency_key": "script.created:scr_1776149248033_qscz7:1776149248034",
+      "payload": {
+        "asset_id": "ast_1776149138535_yqi2g",
+        "approval_status": "draft"
+      }
+    },
+    {
+      "event_id": "evt_1776145345473_2x3rl",
+      "event_name": "script.created",
+      "entity_type": "script",
+      "entity_id": "scr_1776145345471_34lry",
+      "occurred_at": "2026-04-14T05:42:25.473Z",
+      "source_system": "content_intelligence",
+      "idempotency_key": "script.created:scr_1776145345471_34lry:1776145345473",
+      "payload": {
+        "asset_id": "ast_1776145245319_u3u0g",
+        "approval_status": "draft"
+      }
+    },
+    {
+      "event_id": "evt_1775983916596_1fry7",
+      "event_name": "renderjob.created",
+      "entity_type": "render_job",
+      "entity_id": "rnd_1775983916586_n3ede",
+      "occurred_at": "2026-04-12T08:51:56.596Z",
+      "source_system": "production_ops",
+      "idempotency_key": "renderjob.created:rnd_1775983916586_n3ede:1775983916596",
+      "payload": {
+        "calendar_entry_id": "pkg_1775983916580_ggfu3"
+      }
+    },
+    {
+      "event_id": "evt_1775983916595_t7afj",
+      "event_name": "editjob.created",
+      "entity_type": "edit_job",
+      "entity_id": "edt_1775983916586_1writ",
+      "occurred_at": "2026-04-12T08:51:56.595Z",
+      "source_system": "production_ops",
+      "idempotency_key": "editjob.created:edt_1775983916586_1writ:1775983916595",
+      "payload": {
+        "calendar_entry_id": "pkg_1775983916580_ggfu3"
+      }
+    },
+    {
+      "event_id": "evt_1775983916594_d7gre",
+      "event_name": "shootschedule.created",
+      "entity_type": "shoot_schedule",
+      "entity_id": "sht_1775983916586_0831d",
+      "occurred_at": "2026-04-12T08:51:56.594Z",
+      "source_system": "production_ops",
+      "idempotency_key": "shootschedule.created:sht_1775983916586_0831d:1775983916594",
+      "payload": {
+        "calendar_entry_id": "pkg_1775983916580_ggfu3"
+      }
+    },
+    {
+      "event_id": "evt_1775983798489_premd",
+      "event_name": "script.created",
+      "entity_type": "script",
+      "entity_id": "scr_1775983798488_d9bti",
+      "occurred_at": "2026-04-12T08:49:58.489Z",
+      "source_system": "content_intelligence",
+      "idempotency_key": "script.created:scr_1775983798488_d9bti:1775983798489",
+      "payload": {
+        "asset_id": "ast_1775983692344_c73v0",
+        "approval_status": "draft"
+      }
+    },
+    {
+      "event_id": "evt_1775983445014_0quxc",
+      "event_name": "renderjob.created",
+      "entity_type": "render_job",
+      "entity_id": "rnd_1775983445004_sp9ed",
+      "occurred_at": "2026-04-12T08:44:05.014Z",
+      "source_system": "production_ops",
+      "idempotency_key": "renderjob.created:rnd_1775983445004_sp9ed:1775983445014",
+      "payload": {
+        "calendar_entry_id": "pkg_1775983444998_3l04x"
+      }
+    },
+    {
+      "event_id": "evt_1775983445013_3aw5p",
+      "event_name": "editjob.created",
+      "entity_type": "edit_job",
+      "entity_id": "edt_1775983445004_smvd0",
+      "occurred_at": "2026-04-12T08:44:05.013Z",
+      "source_system": "production_ops",
+      "idempotency_key": "editjob.created:edt_1775983445004_smvd0:1775983445013",
+      "payload": {
+        "calendar_entry_id": "pkg_1775983444998_3l04x"
+      }
+    },
+    {
+      "event_id": "evt_1775983445012_h2ju7",
+      "event_name": "shootschedule.created",
+      "entity_type": "shoot_schedule",
+      "entity_id": "sht_1775983445004_32kco",
+      "occurred_at": "2026-04-12T08:44:05.013Z",
+      "source_system": "production_ops",
+      "idempotency_key": "shootschedule.created:sht_1775983445004_32kco:1775983445013",
+      "payload": {
+        "calendar_entry_id": "pkg_1775983444998_3l04x"
+      }
+    },
+    {
+      "event_id": "evt_1775983362557_a0iei",
+      "event_name": "script.created",
+      "entity_type": "script",
+      "entity_id": "scr_1775983362556_kzduv",
+      "occurred_at": "2026-04-12T08:42:42.557Z",
+      "source_system": "content_intelligence",
+      "idempotency_key": "script.created:scr_1775983362556_kzduv:1775983362557",
+      "payload": {
+        "asset_id": "ast_1775983292564_fmr7r",
+        "approval_status": "draft"
+      }
+    },
+    {
+      "event_id": "evt_1775950796792_hyd82",
+      "event_name": "script.created",
+      "entity_type": "script",
+      "entity_id": "scr_1775950796792_op82s",
+      "occurred_at": "2026-04-11T23:39:56.792Z",
+      "source_system": "content_intelligence",
+      "idempotency_key": "script.created:scr_1775950796792_op82s:1775950796792",
+      "payload": {
+        "asset_id": "ast_1775950699573_eq6nw",
+        "approval_status": "draft"
+      }
+    },
+    {
+      "event_id": "evt_1775950796791_m45gl",
+      "event_name": "script.created",
+      "entity_type": "script",
+      "entity_id": "scr_1775950796790_sqzk1",
+      "occurred_at": "2026-04-11T23:39:56.791Z",
+      "source_system": "content_intelligence",
+      "idempotency_key": "script.created:scr_1775950796790_sqzk1:1775950796791",
+      "payload": {
+        "asset_id": "ast_1775950699573_eq6nw",
+        "approval_status": "draft"
+      }
+    },
+    {
+      "event_id": "evt_1775950796790_2dz45",
+      "event_name": "script.created",
+      "entity_type": "script",
+      "entity_id": "scr_1775950796788_2clf5",
+      "occurred_at": "2026-04-11T23:39:56.790Z",
+      "source_system": "content_intelligence",
+      "idempotency_key": "script.created:scr_1775950796788_2clf5:1775950796790",
+      "payload": {
+        "asset_id": "ast_1775950699573_eq6nw",
+        "approval_status": "draft"
+      }
+    },
+    {
+      "event_id": "evt_1775889140722_1nofw",
+      "event_name": "renderjob.created",
+      "entity_type": "render_job",
+      "entity_id": "rnd_1775889140712_egpeb",
+      "occurred_at": "2026-04-11T06:32:20.722Z",
+      "source_system": "production_ops",
+      "idempotency_key": "renderjob.created:rnd_1775889140712_egpeb:1775889140722",
+      "payload": {
+        "calendar_entry_id": "pkg_1775889140707_gv8jo"
+      }
+    },
+    {
+      "event_id": "evt_1775889140722_w6d21",
+      "event_name": "editjob.created",
+      "entity_type": "edit_job",
+      "entity_id": "edt_1775889140712_0kziv",
+      "occurred_at": "2026-04-11T06:32:20.722Z",
+      "source_system": "production_ops",
+      "idempotency_key": "editjob.created:edt_1775889140712_0kziv:1775889140722",
+      "payload": {
+        "calendar_entry_id": "pkg_1775889140707_gv8jo"
+      }
+    },
+    {
+      "event_id": "evt_1775889140721_p16gf",
+      "event_name": "shootschedule.created",
+      "entity_type": "shoot_schedule",
+      "entity_id": "sht_1775889140712_k1rzh",
+      "occurred_at": "2026-04-11T06:32:20.721Z",
+      "source_system": "production_ops",
+      "idempotency_key": "shootschedule.created:sht_1775889140712_k1rzh:1775889140721",
+      "payload": {
+        "calendar_entry_id": "pkg_1775889140707_gv8jo"
+      }
+    },
+    {
+      "event_id": "evt_1775889062619_udavu",
+      "event_name": "script.created",
+      "entity_type": "script",
+      "entity_id": "scr_1775889062618_w1cz7",
+      "occurred_at": "2026-04-11T06:31:02.619Z",
+      "source_system": "content_intelligence",
+      "idempotency_key": "script.created:scr_1775889062618_w1cz7:1775889062619",
+      "payload": {
+        "asset_id": "ast_1775888990989_o6br4",
+        "approval_status": "draft"
+      }
+    },
+    {
+      "event_id": "evt_1775834907862_raw8c",
+      "event_name": "renderjob.created",
+      "entity_type": "render_job",
+      "entity_id": "rnd_1775834907850_hzoam",
+      "occurred_at": "2026-04-10T15:28:27.862Z",
+      "source_system": "production_ops",
+      "idempotency_key": "renderjob.created:rnd_1775834907850_hzoam:1775834907862",
+      "payload": {
+        "calendar_entry_id": "pkg_1775834907844_ney2i"
+      }
+    },
+    {
+      "event_id": "evt_1775834907861_nudou",
+      "event_name": "editjob.created",
+      "entity_type": "edit_job",
+      "entity_id": "edt_1775834907849_9lv31",
+      "occurred_at": "2026-04-10T15:28:27.861Z",
+      "source_system": "production_ops",
+      "idempotency_key": "editjob.created:edt_1775834907849_9lv31:1775834907861",
+      "payload": {
+        "calendar_entry_id": "pkg_1775834907844_ney2i"
+      }
+    },
+    {
+      "event_id": "evt_1775834907860_apto2",
+      "event_name": "shootschedule.created",
+      "entity_type": "shoot_schedule",
+      "entity_id": "sht_1775834907849_qcfyc",
+      "occurred_at": "2026-04-10T15:28:27.860Z",
+      "source_system": "production_ops",
+      "idempotency_key": "shootschedule.created:sht_1775834907849_qcfyc:1775834907860",
+      "payload": {
+        "calendar_entry_id": "pkg_1775834907844_ney2i"
+      }
+    },
+    {
+      "event_id": "evt_1775834788436_z9dun",
+      "event_name": "script.created",
+      "entity_type": "script",
+      "entity_id": "scr_1775834788435_jtvjm",
+      "occurred_at": "2026-04-10T15:26:28.436Z",
+      "source_system": "content_intelligence",
+      "idempotency_key": "script.created:scr_1775834788435_jtvjm:1775834788436",
+      "payload": {
+        "asset_id": "ast_1775834663464_r1beh",
+        "approval_status": "draft"
+      }
+    },
+    {
+      "event_id": "evt_1775784047188_j159s",
+      "event_name": "prospect_radar.outreach_marked",
+      "entity_type": "opportunity",
+      "entity_id": "opp_1775682809563_4dkmr",
+      "occurred_at": "2026-04-10T01:20:47.188Z",
+      "source_system": "agent-os",
+      "idempotency_key": "prospect_radar.outreach_marked:opp_1775682809563_4dkmr:1775784047188",
+      "payload": {
+        "outreachStatus": "actioned"
+      }
+    },
+    {
+      "event_id": "evt_1775776052389_m81df",
+      "event_name": "renderjob.created",
+      "entity_type": "render_job",
+      "entity_id": "rnd_1775776052377_jy3cw",
+      "occurred_at": "2026-04-09T23:07:32.389Z",
+      "source_system": "production_ops",
+      "idempotency_key": "renderjob.created:rnd_1775776052377_jy3cw:1775776052389",
+      "payload": {
+        "calendar_entry_id": "pkg_1775776052371_hm7ly"
+      }
+    },
+    {
+      "event_id": "evt_1775776052388_cw6nw",
+      "event_name": "editjob.created",
+      "entity_type": "edit_job",
+      "entity_id": "edt_1775776052377_ydwju",
+      "occurred_at": "2026-04-09T23:07:32.388Z",
+      "source_system": "production_ops",
+      "idempotency_key": "editjob.created:edt_1775776052377_ydwju:1775776052388",
+      "payload": {
+        "calendar_entry_id": "pkg_1775776052371_hm7ly"
+      }
+    },
+    {
+      "event_id": "evt_1775776052387_4t7rg",
+      "event_name": "shootschedule.created",
+      "entity_type": "shoot_schedule",
+      "entity_id": "sht_1775776052376_bxiew",
+      "occurred_at": "2026-04-09T23:07:32.387Z",
+      "source_system": "production_ops",
+      "idempotency_key": "shootschedule.created:sht_1775776052376_bxiew:1775776052387",
+      "payload": {
+        "calendar_entry_id": "pkg_1775776052371_hm7ly"
+      }
+    },
+    {
+      "event_id": "evt_1775775947835_fyhh2",
+      "event_name": "script.created",
+      "entity_type": "script",
+      "entity_id": "scr_1775775947834_iiubq",
+      "occurred_at": "2026-04-09T23:05:47.835Z",
+      "source_system": "content_intelligence",
+      "idempotency_key": "script.created:scr_1775775947834_iiubq:1775775947835",
+      "payload": {
+        "asset_id": "ast_1775775806023_bjj1e",
+        "approval_status": "draft"
+      }
+    },
+    {
+      "event_id": "evt_1775772914521_lgxfs",
+      "event_name": "cloudflare.prospect.promoted",
+      "entity_type": "client",
+      "entity_id": "cli_1775772914519_t5cjw",
+      "occurred_at": "2026-04-09T22:15:14.521Z",
+      "source_system": "cloudflare_ingest",
+      "idempotency_key": "cloudflare.prospect.promoted:cli_1775772914519_t5cjw:1775772914521",
+      "payload": {
+        "prospectId": "prospect-1775771895158-7jg0n",
+        "clientName": "Looking for a wedding photographer for October 12 in Orange County"
+      }
+    },
+    {
+      "event_id": "evt_1775771895159_brzjj",
+      "event_name": "prospect_radar.saved_to_leads",
+      "entity_type": "opportunity",
+      "entity_id": "opp_1775682809563_4dkmr",
+      "occurred_at": "2026-04-09T21:58:15.159Z",
+      "source_system": "agent-os",
+      "idempotency_key": "prospect_radar.saved_to_leads:opp_1775682809563_4dkmr:1775771895159",
+      "payload": {
+        "leadProspectId": "prospect-1775771895158-7jg0n"
+      }
+    },
+    {
+      "event_id": "evt_1775771892898_khr3i",
+      "event_name": "prospect_radar.saved_to_leads",
+      "entity_type": "opportunity",
+      "entity_id": "opp_1775683546608_hnvw8",
+      "occurred_at": "2026-04-09T21:58:12.898Z",
+      "source_system": "agent-os",
+      "idempotency_key": "prospect_radar.saved_to_leads:opp_1775683546608_hnvw8:1775771892898",
+      "payload": {
+        "leadProspectId": "prospect-1775771892896-t38d9"
+      }
+    },
+    {
+      "event_id": "evt_1775771666142_sfiia",
+      "event_name": "renderjob.created",
+      "entity_type": "render_job",
+      "entity_id": "rnd_1775771666131_i641a",
+      "occurred_at": "2026-04-09T21:54:26.142Z",
+      "source_system": "production_ops",
+      "idempotency_key": "renderjob.created:rnd_1775771666131_i641a:1775771666142",
+      "payload": {
+        "calendar_entry_id": "pkg_1775771666125_3s8aq"
+      }
+    },
+    {
+      "event_id": "evt_1775771666142_idce1",
+      "event_name": "editjob.created",
+      "entity_type": "edit_job",
+      "entity_id": "edt_1775771666131_mmz1p",
+      "occurred_at": "2026-04-09T21:54:26.142Z",
+      "source_system": "production_ops",
+      "idempotency_key": "editjob.created:edt_1775771666131_mmz1p:1775771666142",
+      "payload": {
+        "calendar_entry_id": "pkg_1775771666125_3s8aq"
+      }
+    },
+    {
+      "event_id": "evt_1775771666141_o7vqd",
+      "event_name": "shootschedule.created",
+      "entity_type": "shoot_schedule",
+      "entity_id": "sht_1775771666130_yznx8",
+      "occurred_at": "2026-04-09T21:54:26.141Z",
+      "source_system": "production_ops",
+      "idempotency_key": "shootschedule.created:sht_1775771666130_yznx8:1775771666141",
+      "payload": {
+        "calendar_entry_id": "pkg_1775771666125_3s8aq"
+      }
+    },
+    {
+      "event_id": "evt_1775771544704_c5de4",
+      "event_name": "script.created",
+      "entity_type": "script",
+      "entity_id": "scr_1775771544703_9ay7v",
+      "occurred_at": "2026-04-09T21:52:24.704Z",
+      "source_system": "content_intelligence",
+      "idempotency_key": "script.created:scr_1775771544703_9ay7v:1775771544704",
+      "payload": {
+        "asset_id": "ast_1775771415013_xdtlk",
+        "approval_status": "draft"
+      }
+    },
+    {
+      "event_id": "evt_1775683546609_khmp4",
+      "event_name": "cloudflare.opportunity.created",
+      "entity_type": "prospect_opportunity",
+      "entity_id": "opp_1775683546608_hnvw8",
+      "occurred_at": "2026-04-08T21:25:46.609Z",
+      "source_system": "cloudflare_ingest",
+      "idempotency_key": "cloudflare.opportunity.created:opp_1775683546608_hnvw8:1775683546609",
+      "payload": {
+        "title": "Need a festival videographer for summer 2027 in San Diego",
+        "sourceUrl": "https://example.com/festival-opportunity"
+      }
+    },
+    {
+      "event_id": "evt_1775683430114_8eq9v",
+      "event_name": "cloudflare.record.rejected",
+      "entity_type": "prospect_opportunity",
+      "entity_id": "rejected-1775683430114-0",
+      "occurred_at": "2026-04-08T21:23:50.114Z",
+      "source_system": "cloudflare_ingest",
+      "idempotency_key": "cloudflare.record.rejected:rejected-1775683430114-0:1775683430114",
+      "payload": {
+        "index": 0,
+        "errors": [
+          "recordType must be viral_research or lead_prospect"
+        ],
+        "recordType": "prospect_opportunity"
+      }
+    },
+    {
+      "event_id": "evt_1775682809564_z7cwp",
+      "event_name": "prospect_radar.created",
+      "entity_type": "opportunity",
+      "entity_id": "opp_1775682809563_4dkmr",
+      "occurred_at": "2026-04-08T21:13:29.564Z",
+      "source_system": "agent-os",
+      "idempotency_key": "prospect_radar.created:opp_1775682809563_4dkmr:1775682809564",
+      "payload": {
+        "title": "Looking for a wedding photographer for October 12 in Orange County",
+        "sourceUrl": "https://example.com/post/123"
+      }
+    },
+    {
       "event_id": "evt_1775125859740_bj3w2",
       "event_name": "renderjob.created",
       "entity_type": "render_job",
@@ -198,5 +733,5 @@
       }
     }
   ],
-  "lastUpdated": "2026-04-02T10:30:59.740Z"
+  "lastUpdated": "2026-04-16T13:55:12.292Z"
 }

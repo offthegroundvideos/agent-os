@@ -544,18 +544,104 @@
       "startedAt": "2026-04-02T10:26:49.427Z",
       "endedAt": null,
       "goals": "",
-      "accomplishments": [],
-      "agentsUsed": [],
+      "accomplishments": [
+        {
+          "description": "Used Alex for: Say only: online",
+          "agentId": "alex",
+          "timestamp": "2026-04-09T02:01:20.300Z"
+        },
+        {
+          "description": "Used Alex for: wedding venues",
+          "agentId": "alex",
+          "timestamp": "2026-04-09T21:49:34.966Z"
+        }
+      ],
+      "agentsUsed": [
+        "alex"
+      ],
       "pipelinesRun": [
         {
           "topic": "Client: Jack Riggs\nNiche: photography and marketing business\nPrimary offer: Book a photoshoot\nTarget audience: Models\nService area or geography: Marin County, Ca / San Rafael\nPrimary business goal: Book a shoot\nPriority platforms: instagram, tiktok\nSpecific research and execution notes: photography and marketing business",
           "sessionId": "pipeline-1775124780281",
           "timestamp": "2026-04-02T10:30:59.720Z"
+        },
+        {
+          "topic": "Client: Cloudflare Demo Prospect\nNiche: Selling Toyota Cars in Marin County\nPrimary offer: Selling Toyota Cars in Marin County system\nTarget audience: Commuters and families\nService area or geography: San Diego, CA\nPriority platforms: instagram, tiktok",
+          "sessionId": "pipeline-1775771415003",
+          "timestamp": "2026-04-09T21:54:26.120Z"
+        }
+      ],
+      "notes": "",
+      "status": "active"
+    },
+    {
+      "id": "session-1775771847459",
+      "memberId": "jake",
+      "memberName": "Jake Evans",
+      "startedAt": "2026-04-09T21:57:27.459Z",
+      "endedAt": null,
+      "goals": "",
+      "accomplishments": [
+        {
+          "description": "Used Alex for: Say only: online",
+          "agentId": "alex",
+          "timestamp": "2026-04-09T22:08:00.860Z"
+        },
+        {
+          "description": "Used Alex for: Say only: online",
+          "agentId": "alex",
+          "timestamp": "2026-04-09T22:34:44.291Z"
+        },
+        {
+          "description": "Used Maya for: Write 3 hooks for a nutrition coaching reel",
+          "agentId": "maya",
+          "timestamp": "2026-04-09T22:35:21.791Z"
+        }
+      ],
+      "agentsUsed": [
+        "alex",
+        "maya"
+      ],
+      "pipelinesRun": [
+        {
+          "topic": "Niche: nutrition coaching\nSpecific research and execution notes: Focus on Instagram reels for busy professionals who want sustainable fat loss.",
+          "sessionId": "pipeline-1775775806014",
+          "timestamp": "2026-04-09T23:07:32.366Z"
+        },
+        {
+          "topic": "Client: Michelle Elmore\nNiche: Photo Books\nPrimary offer: Buy a book\nTarget audience: Art lovers\nService area or geography: Bay Area, CA\nPrimary business goal: Buy a book\nPriority platforms: Instagram, TikTok",
+          "sessionId": "pipeline-1775834663454",
+          "timestamp": "2026-04-10T15:28:27.839Z"
+        },
+        {
+          "topic": "Client: Chris Schumacher\nNiche: Celebrity Haiku’s \nPrimary offer: Comment!\nTarget audience: Haiku lovers\nService area or geography: Worldwide\nPrimary business goal: Get views\nPriority platforms: Instagram\nSpecific research and execution notes: I want to get lots of views on my Instagram page.",
+          "sessionId": "pipeline-1775888990979",
+          "timestamp": "2026-04-11T06:32:20.702Z"
+        },
+        {
+          "topic": "Client: Michelle Elmore\nNiche: Street Photography\nPrimary offer: Come buy a book!\nTarget audience: Art lovers, photography nerds\nService area or geography: Marin County\nPrimary business goal: Sell Books\nPriority platforms: Instagram, TikTok",
+          "sessionId": "pipeline-1775983292553",
+          "timestamp": "2026-04-12T08:44:04.993Z"
+        },
+        {
+          "topic": "Client: Teja Reygle\nNiche: Wedding Photography\nPrimary offer: Photograph Weddings\nTarget audience: Just Engaged\nService area or geography: New York, VFirginia\nPrimary business goal: Wedding Photography\nPriority platforms: instagram, Tiktok, Linked in, Facebook",
+          "sessionId": "pipeline-1775983692333",
+          "timestamp": "2026-04-12T08:51:56.574Z"
+        },
+        {
+          "topic": "Client: Jack Riggs\nNiche: a photography business in marin county\nPrimary offer: Photoshoot\nTarget audience: Models\nService area or geography: Marin COunty\nPrimary business goal: Book photoshoots ect\nPriority platforms: Instagram, TikTok, Facebook, Threads",
+          "sessionId": "pipeline-1776149138512",
+          "timestamp": "2026-04-14T06:48:55.484Z"
+        },
+        {
+          "topic": "Client: Jack Riggs\nNiche: Photography\nPriority platforms: Instagram, TikTok, LinkedIn, Facebook, YouTube, Yelp, Google Business Profile, Twitch, Discord, Reddit, Snapchat, Threads, X / Twitter, YouTube Shorts, Pinterest",
+          "sessionId": "pipeline-1776347570117",
+          "timestamp": "2026-04-16T13:55:12.268Z"
         }
       ],
       "notes": "",
       "status": "active"
     }
   ],
-  "activeSession": "session-1775125609427"
+  "activeSession": "session-1775771847459"
 }

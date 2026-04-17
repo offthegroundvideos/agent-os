@@ -1,9 +1,9 @@
-﻿import './globals.css'
+import './globals.css';
 
 export const metadata = {
-  title: 'Agent OS — Mission Control',
+  title: 'Agent OS - Mission Control',
   description: 'SuperWizard5000 Multi-Agent Mission Control',
-}
+};
 
 export default function RootLayout({ children }) {
   return (
@@ -15,5 +15,5 @@ export default function RootLayout({ children }) {
       </head>
       <body>{children}</body>
     </html>
-  )
+  );
 }

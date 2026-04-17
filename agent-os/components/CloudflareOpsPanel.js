@@ -186,6 +186,7 @@ export default function CloudflareOpsPanel({ onClose }) {
                 {[
                   { label: 'Viral Records', value: summary.viralRecords || 0, tone: '#3b82f6' },
                   { label: 'Lead Prospects', value: summary.leadProspects || 0, tone: '#10b981' },
+                  { label: 'Opportunity Posts', value: summary.prospectOpportunities || 0, tone: '#34d399' },
                   { label: 'Recent Events', value: summary.recentEvents || 0, tone: '#22d3ee' },
                   { label: 'Last Viral Intake', value: formatTime(summary.lastViralImportAt), tone: '#f59e0b', isText: true },
                   { label: 'Last Prospect Intake', value: formatTime(summary.lastLeadImportAt), tone: '#a78bfa', isText: true },

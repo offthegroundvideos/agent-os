@@ -92,6 +92,109 @@
       "timestamp": "2026-04-01T12:02:12.353Z",
       "id": "1775044932353",
       "scoreCategory": "poor"
+    },
+    {
+      "task": "Client: Cloudflare Demo Prospect\nNiche: Selling Toyota Cars in Marin County\nPrimary offer: Selling Toyota Cars in Marin County system\nTarget audience: Commuters and families\nService area or geography:",
+      "workflowType": "pipeline",
+      "score": 3,
+      "what_worked": "I attempted to provide a response within the given context.",
+      "what_failed": "The provided task description was incomplete and lacked specific details, making it impossible to deliver a targeted and actionable response.",
+      "improvement": "Request clarification on ambiguous or missing information before proceeding with the task.",
+      "root_cause": "Insufficient information in the initial request made it difficult to understand the full scope of what was needed.",
+      "severity": "moderate",
+      "timestamp": "2026-04-09T21:55:16.818Z",
+      "id": "1775771716818",
+      "scoreCategory": "critical"
+    },
+    {
+      "task": "Write 3 hooks for a nutrition coaching reel",
+      "workflowType": "chat",
+      "score": 6,
+      "what_worked": "Provided three distinct and engaging hooks for a nutrition coaching reel.",
+      "what_failed": "The response did not include specific details or creative elements that would make the hooks stand out more.",
+      "improvement": "Incorporate unique selling propositions and vivid imagery in future responses to enhance engagement.",
+      "root_cause": "Lack of detailed brainstorming on how to uniquely position each hook for maximum impact.",
+      "severity": "minor",
+      "timestamp": "2026-04-09T22:35:24.126Z",
+      "id": "1775774124126",
+      "scoreCategory": "poor"
+    },
+    {
+      "task": "Niche: nutrition coaching\nSpecific research and execution notes: Focus on Instagram reels for busy professionals who want sustainable fat loss.",
+      "workflowType": "pipeline",
+      "score": 7,
+      "what_worked": "The focus on Instagram Reels for a busy professional audience was well-received, providing engaging and quick-to-consume nutritional advice.",
+      "what_failed": "There was an overreliance on visual content without sufficient interactive elements to engage the audience beyond passive viewing.",
+      "improvement": "Incorporate more interactive features such as polls or quizzes within Reels to enhance user engagement and gather valuable feedback from the target audience.",
+      "timestamp": "2026-04-09T23:07:02.183Z",
+      "id": "1775776022183",
+      "scoreCategory": "good"
+    },
+    {
+      "task": "Client: Michelle Elmore\nNiche: Photo Books\nPrimary offer: Buy a book\nTarget audience: Art lovers\nService area or geography: Bay Area, CA\nPrimary business goal: Buy a book\nPriority platforms: Instagram",
+      "workflowType": "pipeline",
+      "score": 7,
+      "what_worked": "The primary offer of 'Buy a book' is clear and directly aligns with the niche of photo books, which appeals to art lovers.",
+      "what_failed": "The target audience description lacks specificity regarding demographics or interests beyond being art lovers, potentially limiting effective marketing strategies.",
+      "improvement": "Include more detailed demographic information about the target audience, such as age range, preferred styles of photography/art, and digital habits (e.g., social media platforms used).",
+      "timestamp": "2026-04-10T15:27:17.289Z",
+      "id": "1775834837289",
+      "scoreCategory": "good"
+    },
+    {
+      "task": "Client: Chris Schumacher\nNiche: Celebrity Haiku’s \nPrimary offer: Comment!\nTarget audience: Haiku lovers\nService area or geography: Worldwide\nPrimary business goal: Get views\nPriority platforms: Insta",
+      "workflowType": "pipeline",
+      "score": 5,
+      "what_worked": "The primary offer of 'Comment!' effectively engages the target audience by encouraging interaction and discussion around celebrity haikus.",
+      "what_failed": "The niche description is incomplete, making it difficult to fully understand the scope and nature of the project or content.",
+      "improvement": "Clarify the niche description to provide a complete understanding of what 'Celebrity Haiku's' entails and how it aligns with the target audience's interests in haikus.",
+      "timestamp": "2026-04-11T06:31:46.145Z",
+      "id": "1775889106145",
+      "scoreCategory": "poor"
+    },
+    {
+      "task": "Client: Michelle Elmore\nNiche: Street Photography\nPrimary offer: Come buy a book!\nTarget audience: Art lovers, photography nerds\nService area or geography: Marin County\nPrimary business goal: Sell Boo",
+      "workflowType": "pipeline",
+      "score": 5,
+      "what_worked": "The primary offer of 'Come buy a book!' is clear and direct, which can effectively attract the target audience interested in street photography.",
+      "what_failed": "The pipeline step description lacks specificity regarding the scripts to be created or used for Michelle Elmore's street photography project. It does not outline the necessary actions or content creation steps required to achieve the primary offer.",
+      "improvement": "Specify detailed script outlines for social media posts, email campaigns, and website copy that promote Michelle Elmore's book on street photography, ensuring they resonate with her target audience and niche.",
+      "timestamp": "2026-04-12T08:43:28.442Z",
+      "id": "1775983408442",
+      "scoreCategory": "poor"
+    },
+    {
+      "task": "Client: Teja Reygle\nNiche: Wedding Photography\nPrimary offer: Photograph Weddings\nTarget audience: Just Engaged\nService area or geography: New York, VFirginia\nPrimary business goal: Wedding Photograph",
+      "workflowType": "pipeline",
+      "score": 7,
+      "what_worked": "The primary offer of photographing weddings aligns well with the niche and target audience.",
+      "what_failed": "There is a lack of specificity regarding the target demographic 'J', which could hinder effective marketing strategies.",
+      "improvement": "Clarify the specific characteristics or preferences of the target audience to tailor the wedding photography services more effectively.",
+      "timestamp": "2026-04-12T08:50:46.153Z",
+      "id": "1775983846153",
+      "scoreCategory": "good"
+    },
+    {
+      "task": "Client: Jack Riggs\nNiche: a photography business in marin county\nPrimary offer: Photoshoot\nTarget audience: Models\nService area or geography: Marin COunty\nPrimary business goal: Book photoshoots ect\nP",
+      "workflowType": "pipeline",
+      "score": 7,
+      "what_worked": "The primary offer of a photoshoot for models in Marin County aligns well with the niche and target audience.",
+      "what_failed": "The description is incomplete, missing details about services offered beyond the initial photoshoot, which could confuse potential clients or stakeholders.",
+      "improvement": "Expand the service offerings to include post-shoot editing, portfolio development assistance, and model coaching to provide a more comprehensive package for aspiring models.",
+      "timestamp": "2026-04-14T07:10:54.976Z",
+      "id": "1776150654976",
+      "scoreCategory": "good"
+    },
+    {
+      "task": "Client: Jack Riggs\nNiche: Photography\nPriority platforms: Instagram, TikTok, LinkedIn, Facebook, YouTube, Yelp, Google Business Profile, Twitch, Discord, Reddit, Snapchat, Threads, X / Twitter, YouTub",
+      "workflowType": "pipeline",
+      "score": 7,
+      "what_worked": "The photography niche content was well-received on Instagram and TikTok, with high engagement rates.",
+      "what_failed": "LinkedIn posts did not generate the expected level of interaction or traffic.",
+      "improvement": "Implement more targeted LinkedIn strategies, such as sharing industry insights and collaborating with other photographers for guest posts to increase visibility.",
+      "timestamp": "2026-04-16T13:55:23.076Z",
+      "id": "1776347723076",
+      "scoreCategory": "good"
     }
   ],
   "wins": [
@@ -164,29 +267,75 @@
       "severity": "moderate",
       "workflowType": "chat",
       "timestamp": "2026-04-01T12:02:12.353Z"
+    },
+    {
+      "description": "The provided task description was incomplete and lacked specific details, making it impossible to deliver a targeted and actionable response.",
+      "task": "Client: Cloudflare Demo Prospect\nNiche: Selling Toyota Cars in Marin County\nPrimary offer: Selling T",
+      "fix": "Request clarification on ambiguous or missing information before proceeding with the task.",
+      "score": 3,
+      "severity": "critical",
+      "workflowType": "pipeline",
+      "timestamp": "2026-04-09T21:55:16.818Z"
+    },
+    {
+      "description": "The response did not include specific details or creative elements that would make the hooks stand out more.",
+      "task": "Write 3 hooks for a nutrition coaching reel",
+      "fix": "Incorporate unique selling propositions and vivid imagery in future responses to enhance engagement.",
+      "score": 6,
+      "severity": "moderate",
+      "workflowType": "chat",
+      "timestamp": "2026-04-09T22:35:24.126Z"
+    },
+    {
+      "description": "The niche description is incomplete, making it difficult to fully understand the scope and nature of the project or content.",
+      "task": "Client: Chris Schumacher\nNiche: Celebrity Haiku’s \nPrimary offer: Comment!\nTarget audience: Haiku lo",
+      "fix": "Clarify the niche description to provide a complete understanding of what 'Celebrity Haiku's' entails and how it aligns with the target audience's interests in haikus.",
+      "score": 5,
+      "severity": "moderate",
+      "workflowType": "pipeline",
+      "timestamp": "2026-04-11T06:31:46.145Z"
+    },
+    {
+      "description": "The pipeline step description lacks specificity regarding the scripts to be created or used for Michelle Elmore's street photography project. It does not outline the necessary actions or content creation steps required to achieve the primary offer.",
+      "task": "Client: Michelle Elmore\nNiche: Street Photography\nPrimary offer: Come buy a book!\nTarget audience: A",
+      "fix": "Specify detailed script outlines for social media posts, email campaigns, and website copy that promote Michelle Elmore's book on street photography, ensuring they resonate with her target audience and niche.",
+      "score": 5,
+      "severity": "moderate",
+      "workflowType": "pipeline",
+      "timestamp": "2026-04-12T08:43:28.442Z"
     }
   ],
-  "taskCount": 8,
+  "taskCount": 17,
   "avgScore": 6.1,
-  "lastReflection": "2026-04-01T12:02:12.353Z",
+  "lastReflection": "2026-04-16T13:55:23.076Z",
   "workflowStats": {
     "chat": {
-      "taskCount": 1,
+      "taskCount": 2,
       "avgScore": 6,
       "winCount": 0,
-      "failureCount": 1,
-      "lastUsedAt": "2026-04-01T12:02:12.353Z",
+      "failureCount": 2,
+      "lastUsedAt": "2026-04-09T22:35:24.126Z",
       "scoreTrend": [
+        6,
         6
       ]
     },
     "pipeline": {
-      "taskCount": 0,
-      "avgScore": 0,
+      "taskCount": 8,
+      "avgScore": 6,
       "winCount": 0,
-      "failureCount": 0,
-      "lastUsedAt": null,
-      "scoreTrend": []
+      "failureCount": 3,
+      "lastUsedAt": "2026-04-16T13:55:23.076Z",
+      "scoreTrend": [
+        3,
+        7,
+        7,
+        5,
+        5,
+        7,
+        7,
+        7
+      ]
     },
     "autojob": {
       "taskCount": 0,
@@ -223,9 +372,9 @@
   },
   "improvements": [],
   "refinements": [
-    "Prioritize thorough testing and validation of configurations before initiating full pipeline runs.",
-    "Focus on conciseness and clarity to ensure reports are precise and relevant without unnecessary details.",
-    "Always provide a direct, specific answer to the question asked without introducing unrelated information or errors."
+    "Clarify",
+    "Adhere strictly to",
+    "Incorporate"
   ],
-  "refinedAt": "2026-03-30T03:45:57.355Z"
+  "refinedAt": "2026-04-16T13:55:28.191Z"
 }

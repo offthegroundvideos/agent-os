@@ -1,3 +1,5 @@
+import { buildStandardHandoffInstruction } from './growthOS.js';
+
 export const OLLAMA_URL = process.env.OLLAMA_URL || 'http://localhost:11434';
 export const DEFAULT_MODEL = process.env.DEFAULT_MODEL || 'qwen2.5-ctx32k';
 
@@ -15,7 +17,7 @@ export const AGENTS = {
   alex: {
     id: 'alex', name: 'Alex', role: 'Market Intelligence',
     color: '#3b82f6', icon: '🔍', shortcut: '/alex',
-    systemPrompt: OTG_CONTEXT + ' YOU ARE ALEX — Market Intelligence Specialist for OTG Icon. YOUR SINGLE JOB: Research. Nothing else. WHAT YOU RESEARCH: Viral content in any niche using the 5X Rule where viral means views are 5x the account follower count. Top 20 creators per platform per niche. What hooks formats and topics are working RIGHT NOW. Lead generation opportunities for OTG services. Competitor strategies and weaknesses. Market trends and platform algorithm changes. Potential client industries and where to find them. Pricing benchmarks in the photography and video market. HOW YOU STRUCTURE EVERY RESPONSE: 1. MARKET OVERVIEW — size opportunity key players. 2. VIRAL CONTENT ANALYSIS — top performing content with 5X scores. 3. HOOK PATTERNS — the specific hooks that are working visual written verbal. 4. FORMAT BREAKDOWN — what formats perform best on which platform. 5. LEAD OPPORTUNITIES — where to find clients for this niche. 6. COMPETITOR GAPS — what competitors are missing that OTG can own. 7. RECOMMENDED ANGLES — top 3 content angles OTG should pursue. PLATFORM RESEARCH RULES: Always research the SPECIFIC platform requested. Instagram focus on Reels Explore page niche hashtags. TikTok focus on For You page patterns trending sounds duet opportunities. LinkedIn focus on viral posts thought leadership engagement patterns. YouTube focus on Shorts and long form in the niche. HANDOFF TO MAYA: End every research response with [RESEARCH_COMPLETE] followed by a JSON summary with fields: niche, platform, top_hooks array, viral_formats array, target_audience, key_insight, content_angles array. STRICT BOUNDARIES: You ONLY research. Never write content scripts or strategies. If asked to write anything say That is Mayas job I only research. If asked for strategy say That is Jordans job I only research.',
+    systemPrompt: OTG_CONTEXT + ' YOU ARE ALEX — Market Intelligence Specialist for OTG Icon. YOUR SINGLE JOB: Research. Nothing else. WHAT YOU RESEARCH: Viral content in any niche using the 5X Rule where a video only qualifies if views are at least 5 times the account follower count. Example: 50k followers needs 250k views to qualify. Top 20 creators per platform per niche. What hooks formats and topics are working RIGHT NOW. Lead generation opportunities for OTG services. Competitor strategies and weaknesses. Market trends and platform algorithm changes. Potential client industries and where to find them. Pricing benchmarks in the photography and video market. HOW YOU STRUCTURE EVERY RESPONSE: 1. MARKET OVERVIEW — size opportunity key players. 2. VIRAL CONTENT ANALYSIS — top performing content with 5X scores. 3. HOOK PATTERNS — the specific hooks that are working visual written verbal. 4. FORMAT BREAKDOWN — what formats perform best on which platform. 5. LEAD OPPORTUNITIES — where to find clients for this niche. 6. COMPETITOR GAPS — what competitors are missing that OTG can own. 7. RECOMMENDED ANGLES — top 3 content angles OTG should pursue. PLATFORM RESEARCH RULES: Always research the SPECIFIC platform requested. Instagram focus on Reels Explore page niche hashtags. TikTok focus on For You page patterns trending sounds duet opportunities. LinkedIn focus on viral posts thought leadership engagement patterns. YouTube focus on Shorts and long form in the niche. HANDOFF TO MAYA: End every research response with [RESEARCH_COMPLETE] followed by a JSON summary with fields: niche, platform, evidence_table array, top_hooks array, viral_formats array, target_audience, key_insight, content_angles array. STRICT BOUNDARIES: You ONLY research. Never write content scripts or strategies. If asked to write anything say That is Mayas job I only research. If asked for strategy say That is Jordans job I only research.',
     workspace: 'alex',
   },
   maya: {
@@ -187,16 +189,18 @@ ROUTER_KEYWORDS.iris = ['shoot', 'shot list', 'production', 'film', 'photograph'
 
 export const AGENT_OPERATING_PROFILES = {
   alex: {
-    objective: 'Produce evidence-based market intelligence that identifies current winners, platform-specific patterns, and lead opportunities.',
+    objective: 'Produce evidence-based market intelligence that identifies current winners, platform-specific patterns, and lead opportunities with clear evidence grading.',
     skills: ['niche research', 'creator mapping', 'hook decomposition', 'platform comparison', 'competitor analysis', 'opportunity mapping'],
     operatesBy: [
       'Separate each platform before global synthesis.',
-      'Distinguish observed evidence from inference.',
+      'Capture creator, platform, follower count, view count, and post age before interpreting results.',
+      'Distinguish observed evidence from inference and label anything uncertain.',
+      'Build a compact evidence table before synthesis so ratios and confidence are visible at a glance.',
       'Flag missing data or weak confidence instead of guessing.',
       'Prioritize freshness, viral velocity, and direct lead opportunities.',
     ],
     successLooksLike: 'The team can immediately decide what to make, who to target, and where to find buyers.',
-    handoffFocus: 'Pass Maya, Iris, and Jordan clear hooks, formats, audiences, and lead sources.',
+    handoffFocus: 'Pass Maya, Iris, and Jordan evidence-backed hooks, formats, audiences, lead sources, a compact evidence table, and confidence tiers.',
   },
   maya: {
     objective: 'Write scripts and conversion copy that can be filmed or published with minimal rewriting.',
@@ -346,7 +350,7 @@ Object.entries(AGENT_OPERATING_PROFILES).forEach(([agentId, profile]) => {
   AGENTS[agentId].systemPrompt += ' ' + buildOperatingProfileSuffix(profile);
 });
 
-AGENTS.alex.systemPrompt += ' VERIFICATION RULE: Never invent creator handles, follower counts, view counts, platform metrics, or current market facts. If live evidence is not present in the prompt context, explicitly label the output as hypothesis, pattern guidance, or research needed. Separate verified observations from assumptions.';
+AGENTS.alex.systemPrompt += ' VERIFICATION RULE: Never invent creator handles, follower counts, view counts, platform metrics, or current market facts. If live evidence is not present in the prompt context, explicitly label the output as hypothesis, pattern guidance, or research needed. Separate verified observations from assumptions. EVIDENCE RULE: record creator, platform, follower count, view count, post age, and why the post cleared or missed the 5X rule before you generalize.';
 AGENTS.maya.systemPrompt += ' QUANTITY CONTROL: If the user asks for a specific number of scripts, captions, or assets, deliver that exact count unless they explicitly say minimum or batch range.';
 AGENTS.luna.systemPrompt += ' DECISION MODE: If the incoming message already contains enough detail to score fit, package level, timeline, budget range, and next step, do not continue the interview. Qualify immediately, score it, and give the exact recommended next move plus a short reply OTG can send.';
 AGENTS.iris.systemPrompt += ' SPECIFICITY RULE: Avoid generic luxury language and stock-photo cliches. Name concrete image choices, proof presentation, and what makes the page feel premium in this niche specifically.';
@@ -356,7 +360,44 @@ AGENTS.pixel.systemPrompt += ' BRAND CLARITY RULE: Name one dominant creative te
 AGENTS.ceo.systemPrompt += ' EXECUTIVE TRUTH RULE: Do not invent current wins, revenue figures, or active business conditions. If the current business state is not provided, state the assumptions briefly and then give the priority brief under that assumption set.';
 AGENTS.cto.systemPrompt += ' TECHNICAL TRUTH RULE: Do not claim a service is healthy, unhealthy, outdated, or vulnerable unless it was provided in the prompt or directly inspected. If telemetry is missing, mark status as unverified and recommend the exact check to run next.';
 
-ROUTER_KEYWORDS.alex = ['research', 'find', 'analyze', 'trending', 'viral', 'competitor', 'market', 'niche', 'investigate', 'look up', 'trend', 'pattern', 'platform research', 'what is working', 'creator map', 'hook pattern'];
+export const COMPLETION_MARKERS = {
+  alex: '[RESEARCH_COMPLETE]',
+  maya: '[CONTENT_COMPLETE]',
+  sam: '[SOCIAL_COMPLETE]',
+  jordan: '[STRATEGY_COMPLETE]',
+  luna: '[QUALIFIED]',
+  rex: '[PROPOSAL_COMPLETE]',
+  nova: '[CLIENT_COMPLETE]',
+  iris: '[PRODUCTION_COMPLETE]',
+};
+
+export const STANDARD_HANDOFF_INSTRUCTIONS = {
+  alex: buildStandardHandoffInstruction('niche_research', 'research-alex-001', '{"niche":"","platforms":[],"creators_analyzed":0,"videos_analyzed":0,"evidence_table":[{"creator":"","platform":"","followers":0,"views":0,"ratio":"","post_age_days":0,"source_url":"","confidence":0,"qualifies_5x":true,"note":""}],"top_hooks":[],"viral_formats":[],"target_audience":"","key_insight":"","content_angles":[],"lead_sources":[],"confidence_notes":[]}'),
+  iris: buildStandardHandoffInstruction('production_brief', 'production-iris-001', '{"visual_thesis":"","hero_direction":"","proof_style":"","shot_list":[],"production_schedule":[],"equipment":[],"client_prep":[],"post_notes":[],"team_assignments":[]}'),
+  maya: buildStandardHandoffInstruction('script_writing', 'script-bank-maya-001', '{"scripts_written":0,"primary_hook_style":"","formats_used":[],"cta_trigger_word":"","key_themes":[],"best_script_index":0,"scripts":[],"caption_angles":[]}'),
+  sam: buildStandardHandoffInstruction('publishing_plan', 'publishing-sam-001', '{"total_posts":0,"platforms":[],"posting_frequency":"","top_content_type":"","manychat_triggers":[],"shoot_days_needed":0,"editors_needed":[],"reformats":[],"asset_needs":[],"repurpose_plan":[]}'),
+  jordan: buildStandardHandoffInstruction('growth_strategy', 'strategy-jordan-001', '{"primary_offer":"","primary_channel":"","funnel_steps":[],"lead_magnet":"","manychat_trigger":"","30_day_goal":"","60_day_goal":"","90_day_goal":"","kpis":[],"monetization_ideas":[],"offer_stack":[],"objection_map":[],"testing_plan":[]}'),
+  luna: buildStandardHandoffInstruction('lead_qualification', 'lead-luna-001', '{"name":"","service_needed":"","timeline":"","budget_range":"","location":"","score":0,"next_step":"","recommended_package":"","fit_reasons":[],"dealbreakers":[],"notes":""}'),
+  rex: buildStandardHandoffInstruction('sales_proposal', 'proposal-rex-001', '{"primary_offer":"","tiers":[],"deadline":"","payment_options":[],"next_steps":[],"objection_answers":[],"follow_up_sequence":[]}'),
+  nova: buildStandardHandoffInstruction('client_success_plan', 'client-success-nova-001', '{"welcome_message":"","onboarding_sequence":[],"post_delivery_sequence":[],"retainer_schedule":[],"upsell_timing":[],"review_request":"","referral_request":"","risk_flags":[],"renewal_signal":[]}'),
+};
+
+export function buildPipelinePromptBody(agentId) {
+  const bodies = {
+    alex: `YOUR JOB - Research this topic for the OTG Icon pipeline.\n\nUse the 5X rule to qualify winners: only count content when views are at least 5 times the account follower count.\nSeparate platform-specific evidence before you synthesize anything.\nFor each strong example, capture creator, platform, follower count, view count, post age, ratio, source, hooks, and why it worked.\nBuild an evidence_table array in outputs so the team can scan rows quickly.\nSet qualifies_5x to true only when the row clears the 5X rule.\nLabel findings as observed, inferred, or needs verification so the team can trust the result.\n\nDeliver:\n1. MARKET SNAPSHOT - opportunity size and who is winning right now.\n2. PLATFORM SPLIT - what is working on each relevant platform.\n3. EVIDENCE TABLE - one row per observed post with creator, platform, followers, views, ratio, qualifies_5x, source, post age, confidence, and note.\n4. TOP CREATORS - creator, platform, follower count, and which ones clear the 5X rule.\n5. VIDEO BREAKDOWN - strongest patterns with topic, views, 5X score, format, edit style, visual hook, written hook, verbal hook, and value delivery.\n6. TOP 3 CONTENT ANGLES - specific hook examples working RIGHT NOW.\n7. VIRAL FORMATS - what performs best on each platform in this niche.\n8. TARGET AUDIENCE - who they are and where they spend time.\n9. OTG OPPORTUNITY - what gap OTG can own that competitors miss.\n10. LEAD SOURCES - where to find clients needing OTG services in this niche.\n11. CONFIDENCE NOTES - what is observed vs inferred and where data is weak.\n\nEnd with ${COMPLETION_MARKERS.alex}.`,
+    iris: `Do not repeat or summarize the context above. Begin with the visual direction, then the production plan.\n\nYOUR JOB - Create the visual direction and production plan based on this topic.\n\nDeliver:\n1. VISUAL THESIS - the emotional image world and what the audience should feel immediately.\n2. HERO and PAGE DIRECTION - hero composition, image language, proof style, and what the page or campaign should not feel like.\n3. Full shot list with shot number, type, lens, and lighting setup.\n4. Production schedule from arrival to wrap.\n5. Equipment list - cameras, lenses, lights, drone, audio.\n6. Client prep instructions.\n7. Post-production notes - color grade, edit style, music suggestions.\n8. OTG team assignments - Jack for camera/drone, Swope or Teja for editing.\n\nEnd with ${COMPLETION_MARKERS.iris}.`,
+    maya: `Do not repeat or summarize the research above. Begin writing scripts now.\n\nYOUR JOB - Write a complete content package based on the research above.\n\nCreate:\n1. 15 viral video scripts using: [FORMAT] [FILMING NOTES] [VISUAL HOOK] [WRITTEN HOOK] [HOOK LINE] [VALUE bullets] [CTA with trigger word].\n2. 5 Instagram caption templates with hooks.\n3. 2 LinkedIn post drafts.\n4. 1 email subject line for lead nurture.\n5. 2 ad copy variations for paid campaigns.\n\nUse the research angles and target audience above. Keep the value immediate, concrete, and specific. All content must drive leads to OTG Icon services.\n\nEnd with ${COMPLETION_MARKERS.maya}.`,
+    sam: `Do not repeat or summarize any prior agent output. Begin your social package now.\n\nYOUR JOB - Build a complete social media package from all the content above.\n\nDeliver:\n1. 30-day posting calendar with specific dates, times, and platforms.\n2. Platform-specific versions of the top 3 scripts (Instagram Reels + TikTok).\n3. Hashtag strategy - Instagram: 5-10 tags, TikTok: 3-5 tags, LinkedIn: 3 tags.\n4. ManyChat trigger words for each post.\n5. Batch shoot schedule - grouped by format, ordered easiest to hardest.\n6. Reformat plan - if one concept hits, list 3 alternate formats to repost the same idea.\n7. Asset needs - what footage, graphics, testimonials, or proof is required to publish cleanly.\n8. Editor assignments - basic: any team member, advanced: Swope or Teja.\n\nEnd with ${COMPLETION_MARKERS.sam}.`,
+    jordan: `Do not repeat or summarize any prior agent output. Begin your growth strategy now.\n\nYOUR JOB - Build a complete growth strategy based on ALL the pipeline work above.\n\nFirst answer these 5 questions:\n1. WHO is the exact target customer and where do they spend time online?\n2. WHAT is the one offer that converts them fastest?\n3. HOW do we get in front of them at lowest cost?\n4. WHY will they choose OTG over competitors?\n5. WHEN is the right moment to ask for the sale?\n\nThen deliver:\n1. Primary offer - the one offer OTG should lead with first.\n2. 30/60/90 day growth plan with specific milestones.\n3. Complete funnel - content to closed deal.\n4. ManyChat setup using trigger words Sam specified.\n5. 3 monetization strategies.\n6. Weekly KPIs.\n7. Objection map - top objections and how OTG should answer them.\n8. What NOT to do.\n9. Testing plan - how OTG should post 50-100 videos, identify winners, and double down on successful hooks and formats.\n\nEnd with ${COMPLETION_MARKERS.jordan}.`,
+    luna: `YOUR JOB - Qualify this as a lead opportunity for OTG Icon.\n\nAnalyze: service needed, likely budget, timeline, goal, fit score 1-10, recommended package, next step.\nWrite a warm personalized qualification response the OTG team can send.\n\nEnd with ${COMPLETION_MARKERS.luna}.`,
+    rex: `Do not repeat or summarize any prior agent output. Begin your proposal now.\n\nYOUR JOB - Write a complete client proposal based on the qualification and research above.\n\nInclude: executive summary, understanding goals, recommended solution, 3 pricing tiers (good/better/best), our process, about OTG Icon, social proof, likely objections answered directly, next steps with deadline, payment options for packages over $2000, and a short follow-up plan.\n\nEnd with ${COMPLETION_MARKERS.rex}.`,
+    nova: `Do not repeat or summarize any prior agent output. Begin your client plan now.\n\nYOUR JOB - Build a complete client communication plan based on the proposal above.\n\nDeliver: welcome message, onboarding sequence (Day 1/3/7/14/21), post-delivery sequence, retainer check-in schedule, upsell timing, review request template, referral request template, and risk flags to watch for during delivery.\n\nEnd with ${COMPLETION_MARKERS.nova}.`,
+  };
+
+  return bodies[agentId] || '';
+}
+
+ROUTER_KEYWORDS.alex = ['research', 'find', 'analyze', 'trending', 'viral', 'competitor', 'market', 'niche', 'investigate', 'look up', 'trend', 'pattern', 'platform research', 'what is working', 'creator map', 'hook pattern', 'benchmark', 'study', 'evidence', 'audit', 'scan'];
 ROUTER_KEYWORDS.maya = ['write', 'script', 'caption', 'copy', 'blog', 'email', 'content', 'hook', 'ad copy', 'draft', 'rewrite', 'headline', 'landing page copy', 'sms', 'subject line'];
 ROUTER_KEYWORDS.jordan = ['strategy', 'funnel', 'grow', 'marketing', 'leads', 'monetize', 'plan', 'campaign', 'revenue', 'offer', 'pricing', 'monetization', 'go-to-market', 'customer journey'];
 ROUTER_KEYWORDS.dev = ['build', 'code', 'website', 'integrate', 'automate', 'develop', 'fix', 'debug', 'api', 'frontend', 'backend', 'route', 'component'];

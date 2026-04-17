@@ -264,6 +264,51 @@ function buildQualificationFields(input) {
   ].filter((field) => field.name !== 'business' || input.landingPageType !== 'booking');
 }
 
+function buildNicheAwareHeadline(nicheValue = '', ctaValue = '') {
+  const niche = String(nicheValue || '').trim().toLowerCase();
+  const cta = String(ctaValue || '').trim().toLowerCase();
+  if (!niche) return '';
+
+  if (niche.endsWith('coaching') && /(consult|call|book)/.test(cta)) {
+    const subject = niche.replace(/\s*coaching$/, '').trim();
+    return subject ? `Book a ${subject} strategy call` : '';
+  }
+
+  if (niche.includes('training') && /(evalu|consult|call|book)/.test(cta)) {
+    return `Book a ${niche} evaluation`;
+  }
+
+  if (niche.includes('videography') && cta.includes('availability')) {
+    return 'Check date availability';
+  }
+
+  if (niche.includes('videography') && /(consult|call|book)/.test(cta)) {
+    const subject = niche.replace(/\s*videography$/, '').trim();
+    return subject ? `Book your ${subject} film consult` : '';
+  }
+
+  return '';
+}
+
+function buildDefaultHeadline(input) {
+  const explicitHeadline = String(input.headline || '').trim();
+  if (explicitHeadline) return explicitHeadline;
+
+  const nicheAwareHeadline = buildNicheAwareHeadline(input.niche, input.cta);
+  if (nicheAwareHeadline) return nicheAwareHeadline;
+
+  const cta = String(input.cta || '').trim();
+  if (cta) return cta;
+
+  const offerName = String(input.offerName || '').trim();
+  if (offerName) return `Book your ${offerName.toLowerCase()}`;
+
+  const niche = String(input.niche || '').trim();
+  if (niche) return `Get a clear next step for ${niche.toLowerCase()}.`;
+
+  return 'Book the next step';
+}
+
 function buildFallbackBlueprint(input) {
   const theme = inferTheme(input);
   const objections = splitLines(input.objectionBullets || '', 3);
@@ -281,7 +326,7 @@ function buildFallbackBlueprint(input) {
       'Keep the form area calm and direct.',
     ],
     eyebrow: input.niche ? `${input.niche} landing page` : 'Qualified lead landing page',
-    headline: input.headline || `Turn attention into ${outcome}.`,
+    headline: buildDefaultHeadline(input),
     subheadline:
       input.subheadline ||
       'The headline makes the promise. The page adds only the context, proof, and qualification needed to turn the right click into the right lead.',
@@ -320,9 +365,7 @@ function applyInputGuardrails(input, blueprint) {
   if (input.objectionBullets) guarded.objectionItems = splitLines(input.objectionBullets, 3);
   if (input.testimonials) guarded.socialProofItems = splitLines(input.testimonials, 3);
   if (input.visualTheme) guarded.visualThesis = input.visualTheme;
-  if (input.primaryOutcome && !input.headline) {
-    guarded.headline = `Turn attention into ${input.primaryOutcome}.`;
-  }
+  if (!guarded.headline) guarded.headline = buildDefaultHeadline(input);
 
   return guarded;
 }
@@ -377,6 +420,7 @@ Rules:
 - Social proof is optional. Only include it when it genuinely helps a more complex offer.
 - Keep copy concise, specific, mobile-first, and conversion-aware.
 - Any implied imagery, proof, or examples must match the actual niche. Never default to weddings or photographers unless the niche is explicitly wedding-related.
+- Never mention OTG, OTG Icon, or the agency/operator building the page unless the client name itself is OTG.
 - No markdown, no commentary, JSON only.`;
 
   try {
@@ -434,12 +478,49 @@ function escapeHtml(value = '') {
     .replace(/'/g, '&#39;');
 }
 
+function clientAllowsAgencyBrand(clientName = '') {
+  return /\botg\b|\botg icon\b/i.test(String(clientName || '').trim());
+}
+
+function extractForbiddenAgencyBrandHits(value = '') {
+  const text = String(value || '');
+  const matches = text.match(/\botg icon\b|\botg\b/gi) || [];
+  return [...new Set(matches.map((match) => match.trim()))];
+}
+
+function enforceClientFacingBrandSafety(input, blueprint, html = '') {
+  if (clientAllowsAgencyBrand(input.clientName)) return;
+
+  const blueprintCopy = [
+    blueprint?.eyebrow,
+    blueprint?.headline,
+    blueprint?.subheadline,
+    blueprint?.heroProofLabel,
+    blueprint?.heroProofDetail,
+    blueprint?.leadMagnetLine,
+    ...(Array.isArray(blueprint?.objectionItems) ? blueprint.objectionItems : []),
+    ...(Array.isArray(blueprint?.socialProofItems) ? blueprint.socialProofItems : []),
+    blueprint?.finalCtaHeadline,
+    blueprint?.finalCtaBody,
+    blueprint?.formIntro,
+    blueprint?.legalLine,
+    blueprint?.visualThesis,
+    ...(Array.isArray(blueprint?.interactionThesis) ? blueprint.interactionThesis : []),
+    html,
+  ].filter(Boolean).join('\n');
+
+  const hits = extractForbiddenAgencyBrandHits(blueprintCopy);
+  if (!hits.length) return;
+
+  throw new Error(`Client-facing brand firewall blocked this page because it still contains internal agency branding: ${hits.join(', ')}.`);
+}
+
 function renderLandingPage({ input, landingPage, hiddenFields, blueprint }) {
   const themeKey = THEME_PRESETS[blueprint.theme] ? blueprint.theme : 'studio';
   const theme = THEME_PRESETS[themeKey] || THEME_PRESETS.studio;
   const imagery = resolveThemeImages(input, themeKey);
   const accent = input.color || theme.accent;
-  const pageTitle = `${input.clientName || 'OTG'} - ${blueprint.headline}`;
+  const pageTitle = `${input.clientName || 'Landing Page'} - ${blueprint.headline}`;
   const formFields = buildQualificationFields(input);
   const primaryCta = blueprint.finalCtaHeadline || input.cta || 'Book the next step';
   const showSocialProof = blueprint.showSocialProof && blueprint.socialProofItems.length > 0;
@@ -525,6 +606,7 @@ function renderLandingPage({ input, landingPage, hiddenFields, blueprint }) {
     letter-spacing: -0.05em;
     max-width: 10ch;
     margin: 0;
+    font-weight: 700;
   }
   .hero-copy p {
     margin-top: 1.1rem;
@@ -583,6 +665,22 @@ function renderLandingPage({ input, landingPage, hiddenFields, blueprint }) {
   .hero.poster .hero-copy {
     position: relative;
     min-height: 100svh;
+  }
+  .hero.poster h1 {
+    color: #f8f5ef;
+    font-size: clamp(3.4rem, 9vw, 7.25rem);
+    line-height: 0.9;
+    letter-spacing: -0.06em;
+    max-width: 8ch;
+    text-shadow: 0 14px 42px rgba(0,0,0,0.42);
+  }
+  .hero.poster .hero-copy > p {
+    color: rgba(248, 245, 239, 0.9);
+    max-width: 28rem;
+    text-shadow: 0 6px 24px rgba(0,0,0,0.28);
+  }
+  .hero.poster .hero-proof span {
+    color: rgba(248, 245, 239, 0.92);
   }
   .hero.poster .hero-copy::before {
     content: "";
@@ -745,6 +843,10 @@ function renderLandingPage({ input, landingPage, hiddenFields, blueprint }) {
     .hero-copy { padding: 1.5rem 1.1rem 2rem; }
     section { padding: 2.2rem 1.1rem; }
     .visual-card { position: static; width: auto; margin: 1rem; }
+    .hero.poster h1 {
+      font-size: clamp(2.8rem, 14vw, 4.8rem);
+      max-width: 8.5ch;
+    }
   }
 </style>
 </head>
@@ -876,9 +978,16 @@ function renderLandingPage({ input, landingPage, hiddenFields, blueprint }) {
 export async function POST(request) {
   try {
     const body = await request.json();
-    const derivedContext = buildPageContext(body.assetId || body.asset_id || '');
+    const requestedAssetId = String(
+      body.assetId ||
+      body.asset_id ||
+      body.contentAssetId ||
+      body.content_asset_id ||
+      ''
+    ).trim();
+    const derivedContext = requestedAssetId ? buildPageContext(requestedAssetId) : null;
     const input = {
-      clientName: body.clientName || body.client_name || 'OTG',
+      clientName: body.clientName || body.client_name || derivedContext?.clientName || 'Client',
       niche: body.niche || derivedContext?.niche || 'Short-form content',
       headline: body.headline || derivedContext?.headline || '',
       subheadline: body.subheadline || derivedContext?.subheadline || '',
@@ -914,6 +1023,28 @@ export async function POST(request) {
     const fallbackBlueprint = buildFallbackBlueprint(input);
     const blueprint = await generateBlueprint(input, fallbackBlueprint);
 
+    const hiddenFields = {
+      client_id: input.clientId,
+      campaign_id: input.campaignId,
+      content_asset_id: input.contentAssetId,
+      published_post_id: input.publishedPostId,
+      platform: input.platform,
+      cta_id: input.ctaId,
+      cta_keyword: input.ctaKeyword,
+      landing_page_id: 'preview_guard',
+      utm_source: input.utm_source,
+      utm_medium: input.utm_medium,
+      utm_campaign: body.utm_campaign || pageSlug,
+    };
+
+    const previewLandingPage = {
+      id: 'preview_guard',
+      slug: pageSlug,
+      page_url: `http://localhost:4000/landing/${pageSlug}`,
+    };
+    const previewHtml = renderLandingPage({ input, landingPage: previewLandingPage, hiddenFields, blueprint });
+    enforceClientFacingBrandSafety(input, blueprint, previewHtml);
+
     const landingPage = addLandingPage({
       client_id: input.clientId,
       offer_id: input.offerId,
@@ -932,21 +1063,12 @@ export async function POST(request) {
       source_system: 'landing_page_service',
     });
 
-    const hiddenFields = {
-      client_id: input.clientId,
-      campaign_id: input.campaignId,
-      content_asset_id: input.contentAssetId,
-      published_post_id: input.publishedPostId,
-      platform: input.platform,
-      cta_id: input.ctaId,
-      cta_keyword: input.ctaKeyword,
+    const finalHiddenFields = {
+      ...hiddenFields,
       landing_page_id: landingPage.id,
-      utm_source: input.utm_source,
-      utm_medium: input.utm_medium,
-      utm_campaign: body.utm_campaign || pageSlug,
     };
 
-    const html = renderLandingPage({ input, landingPage, hiddenFields, blueprint });
+    const html = renderLandingPage({ input, landingPage, hiddenFields: finalHiddenFields, blueprint });
     const filename = `${pageSlug}.html`;
 
     saveToWorkspace('dev', `landing-pages/${filename}`, html);

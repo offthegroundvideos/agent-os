@@ -1,6 +1,47 @@
 {
   "prospects": [
     {
+      "id": "prospect-1775771895158-7jg0n",
+      "businessName": "Looking for a wedding photographer for October 12 in Orange County",
+      "website": "https://example.com/post/123",
+      "publicEmail": "",
+      "publicPhone": "",
+      "niche": "wedding photography",
+      "geography": "Orange County, CA",
+      "socialProfiles": [],
+      "notes": "Service request saved from Prospect Radar. Source: Public Facebook result Summary: Need someone available for an October wedding. Budget is flexible for the right fit. Event date: 2026-10-12T07:00:00.000Z Suggested outreach: Lead with portfolio proof and confirm date availability fast.",
+      "rawArtifactPath": "",
+      "source": "prospect_radar",
+      "sourceUrl": "https://example.com/post/123",
+      "crawlJobId": "",
+      "discoveredFrom": "public-facebook",
+      "crawlTimestamp": "2026-04-08T10:00:00Z",
+      "createdAt": "2026-04-09T21:58:15.158Z",
+      "updatedAt": "2026-04-09T22:15:14.521Z",
+      "promotedToClientId": "cli_1775772914519_t5cjw",
+      "promotedAt": "2026-04-09T22:15:14.520Z",
+      "status": "promoted"
+    },
+    {
+      "id": "prospect-1775771892896-t38d9",
+      "businessName": "Need a festival videographer for summer 2027 in San Diego",
+      "website": "https://example.com/festival-opportunity",
+      "publicEmail": "",
+      "publicPhone": "",
+      "niche": "festival videography",
+      "geography": "San Diego, CA",
+      "socialProfiles": [],
+      "notes": "Service request saved from Prospect Radar. Source: Public event board Summary: Planning a summer 2027 festival and looking for photo/video coverage. Suggested outreach: Lead with event coverage proof and confirm future-date availability.",
+      "rawArtifactPath": "",
+      "source": "prospect_radar",
+      "sourceUrl": "https://example.com/festival-opportunity",
+      "crawlJobId": "",
+      "discoveredFrom": "public-web",
+      "crawlTimestamp": "2026-04-08T11:00:00Z",
+      "createdAt": "2026-04-09T21:58:12.896Z",
+      "updatedAt": "2026-04-09T21:58:12.896Z"
+    },
+    {
       "id": "prospect-1775092758046-1bs5i",
       "businessName": "Cloudflare Demo Prospect",
       "website": "https://demo-prospect.example.com",
@@ -23,5 +64,5 @@
       "status": "promoted"
     }
   ],
-  "lastUpdated": "2026-04-02T01:19:57.789Z"
+  "lastUpdated": "2026-04-09T22:15:14.521Z"
 }

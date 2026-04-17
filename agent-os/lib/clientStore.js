@@ -25,6 +25,11 @@ export function normalizeClient(input = {}) {
     created_by: input.created_by || 'human',
     source_system: input.source_system || 'agent-os',
   });
+  const resolvedContextType = String(
+    input.context_type || input.contextType || (input.status === 'prospect' ? 'prospect' : 'client'),
+  ).trim().toLowerCase() === 'prospect'
+    ? 'prospect'
+    : 'client';
 
   return {
     id: input.id || createCanonicalId('client'),
@@ -47,6 +52,7 @@ export function normalizeClient(input = {}) {
     state: String(input.state || '').trim(),
     postalCode: String(input.postalCode || input.postal_code || '').trim(),
     country: String(input.country || 'US').trim(),
+    context_type: resolvedContextType,
     service_area: String(input.service_area || '').trim(),
     target_audience: String(input.target_audience || '').trim(),
     primary_offer: String(input.primary_offer || '').trim(),
@@ -148,4 +154,11 @@ export function setActiveClientRecord(clientId) {
   data.activeClientId = clientId;
   saveClients(data);
   return { data, client: exists };
+}
+
+export function clearActiveClientRecord() {
+  const data = loadClients();
+  data.activeClientId = null;
+  saveClients(data);
+  return data;
 }

@@ -1,0 +1,10 @@
+{
+  "clientName": "Milo Brooks Nutrition",
+  "clientId": "cli_demo_milo_brooks",
+  "niche": "nutrition coaching",
+  "cta": "Book a consultation",
+  "primaryOutcome": "More consultation call inquiries",
+  "sourcePrompt": "Build a landing page for Milo Brooks Nutrition. Niche: nutrition coaching. Audience: Busy professionals. Geography: Bay Area, CA. Primary offer: Consultation Call.",
+  "strategyNotes": "Evidence-based nutrition coaching for busy professionals who want sustainable fat loss and more energy.",
+  "landingPageType": "booking"
+}

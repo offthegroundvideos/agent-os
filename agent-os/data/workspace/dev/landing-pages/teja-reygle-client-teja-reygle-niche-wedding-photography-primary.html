@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teja Reygle - Turn Client: Teja Reygle Niche: Wedding Photography Primary offer: Photograph Weddings Target audience: Just Engaged Service  attention into qualified inquiries.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --accent: #f59e0b;
+    --bg: #faf7f2;
+    --bg-alt: #ffffff;
+    --surface: rgba(255,255,255,0.92);
+    --text: #141414;
+    --muted: #6a6a6a;
+    --line: rgba(20,20,20,0.1);
+    --display: 'DM Serif Display', serif;
+    --body: 'Inter', sans-serif;
+    --shadow: 0 30px 80px rgba(0,0,0,0.18);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+  }
+  a { color: inherit; text-decoration: none; }
+  .page-shell { min-height: 100vh; }
+  .hero {
+    min-height: 100svh;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: stretch;
+    position: relative;
+    overflow: clip;
+  }
+  .hero-copy {
+    padding: clamp(2rem, 6vw, 5rem) clamp(1.25rem, 4vw, 4rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 48rem;
+    z-index: 2;
+  }
+  .eyebrow {
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 800;
+    font-size: 0.78rem;
+    margin-bottom: 1rem;
+  }
+  .hero h1 {
+    font-family: var(--display);
+    font-size: clamp(2.9rem, 8vw, 6rem);
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+    max-width: 10ch;
+    margin: 0;
+    font-weight: 700;
+  }
+  .hero-copy p {
+    margin-top: 1.1rem;
+    color: var(--muted);
+    line-height: 1.62;
+    font-size: clamp(1rem, 1.6vw, 1.18rem);
+    max-width: 34rem;
+  }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    margin-top: 1.8rem;
+  }
+  .hero-actions a {
+    padding: 1rem 1.3rem;
+    border-radius: 999px;
+    font-weight: 800;
+    border: 1px solid transparent;
+    background: var(--accent);
+    color: #111;
+    box-shadow: 0 18px 48px #f59e0b33;
+  }
+  .hero-proof {
+    margin-top: 1.5rem;
+    display: grid;
+    gap: 0.35rem;
+    padding-left: 1rem;
+    border-left: 2px solid var(--accent);
+    max-width: 26rem;
+  }
+  .hero-proof strong {
+    display: block;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--accent);
+  }
+  .hero-proof span {
+    color: var(--text);
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  .hero-visual {
+    position: relative;
+    min-height: 30rem;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.42)),
+      url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+  }
+  .hero.poster .hero-visual {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .hero.poster .hero-copy {
+    position: relative;
+    min-height: 100svh;
+  }
+  .hero.poster h1 {
+    color: #f8f5ef;
+    font-size: clamp(3.4rem, 9vw, 7.25rem);
+    line-height: 0.9;
+    letter-spacing: -0.06em;
+    max-width: 8ch;
+    text-shadow: 0 14px 42px rgba(0,0,0,0.42);
+  }
+  .hero.poster .hero-copy > p {
+    color: rgba(248, 245, 239, 0.9);
+    max-width: 28rem;
+    text-shadow: 0 6px 24px rgba(0,0,0,0.28);
+  }
+  .hero.poster .hero-proof span {
+    color: rgba(248, 245, 239, 0.92);
+  }
+  .hero.poster .hero-copy::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(0,0,0,0.74), rgba(0,0,0,0.24));
+    z-index: -1;
+  }
+  .visual-card {
+    position: absolute;
+    right: clamp(1rem, 3vw, 2rem);
+    bottom: clamp(1rem, 3vw, 2rem);
+    width: min(24rem, calc(100% - 2rem));
+    padding: 1rem 1.05rem;
+    background: color-mix(in srgb, var(--bg) 80%, transparent);
+    border: 1px solid var(--line);
+    border-radius: 1.25rem;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(18px);
+  }
+  .visual-card small {
+    display: block;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 0.45rem;
+  }
+  .visual-card strong {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 0.45rem;
+  }
+  .visual-card p {
+    color: var(--muted);
+    line-height: 1.55;
+    margin: 0;
+  }
+  section { padding: clamp(2.6rem, 6vw, 5rem) clamp(1.25rem, 4vw, 4rem); }
+  .section-inner { max-width: 72rem; margin: 0 auto; }
+  .objections {
+    background: var(--bg-alt);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .objection-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  .objection-grid article,
+  .proof-strip article,
+  .cta-panel,
+  .form-panel {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 1.25rem;
+    padding: 1.2rem;
+  }
+  .objection-grid h2,
+  .proof-strip h2,
+  .cta-panel h2,
+  .form-panel h2 {
+    margin: 0 0 0.45rem;
+    font-size: 1.08rem;
+  }
+  .objection-grid p,
+  .proof-strip p,
+  .cta-panel p,
+  .form-panel p {
+    color: var(--muted);
+    line-height: 1.65;
+    margin: 0;
+  }
+  .proof-strip {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    gap: 1rem;
+  }
+  .form-band {
+    display: grid;
+    grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+    gap: 1.1rem;
+  }
+  .form-panel {
+    padding: 1.35rem 1.35rem 1.1rem;
+  }
+  .field { display: grid; gap: 0.42rem; margin-bottom: 0.9rem; }
+  .field label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-weight: 700;
+    color: var(--muted);
+  }
+  .field input,
+  .field textarea {
+    width: 100%;
+    padding: 0.95rem 1rem;
+    border-radius: 0.95rem;
+    border: 1px solid var(--line);
+    background: rgba(255,255,255,0.01);
+    color: var(--text);
+    font: inherit;
+  }
+  .field textarea {
+    min-height: 7rem;
+    resize: vertical;
+  }
+  .submit {
+    width: 100%;
+    border: 0;
+    border-radius: 999px;
+    padding: 1rem 1.2rem;
+    font: inherit;
+    font-weight: 800;
+    background: var(--accent);
+    color: #111;
+    cursor: pointer;
+  }
+  .microcopy {
+    margin-top: 0.8rem;
+    color: var(--muted);
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .legal {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+  footer {
+    padding: 1.5rem 1.4rem 2.2rem;
+    color: var(--muted);
+    font-size: 0.82rem;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  @media (max-width: 980px) {
+    .hero,
+    .form-band,
+    .objection-grid {
+      grid-template-columns: 1fr;
+    }
+    .hero { min-height: auto; }
+    .hero-copy,
+    .hero.poster .hero-copy { min-height: auto; }
+    .hero-visual { min-height: 22rem; order: -1; }
+    .hero.poster .hero-visual { position: relative; inset: auto; min-height: 24rem; }
+    .hero.poster .hero-copy::before { display: none; }
+  }
+  @media (max-width: 680px) {
+    .hero-copy { padding: 1.5rem 1.1rem 2rem; }
+    section { padding: 2.2rem 1.1rem; }
+    .visual-card { position: static; width: auto; margin: 1rem; }
+    .hero.poster h1 {
+      font-size: clamp(2.8rem, 14vw, 4.8rem);
+      max-width: 8.5ch;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="page-shell">
+    <section class="hero poster">
+      <div class="hero-copy">
+        <div class="eyebrow">Client: Teja Reygle
+Niche: Wedding Photography
+Primary offer: Photograph Weddings
+Target audience: Just Engaged
+Service area or geography: New York, VFirginia
+Primary business goal: Wedding Photography
+Priority platforms: instagram, Tiktok, Linked in, Facebook landing page</div>
+        <h1>Turn Client: Teja Reygle Niche: Wedding Photography Primary offer: Photograph Weddings Target audience: Just Engaged Service  attention into qualified inquiries.</h1>
+        <p>1. **WHO is the exact target customer and where do they spend time online?** - Exact Target Customer: Couples aged 25-35 who are newly engaged and planning their wedding in New Yor</p>
+        <div class="hero-actions">
+          <a href="#apply">Book Your Strategy Call</a>
+        </div>
+        <div class="hero-proof">
+          <strong>What they are getting</strong>
+          <span>A direct path to More client: teja reygle
+niche: wedding photography
+primary offer: photograph weddings
+target audience: just engaged
+service area or geography: new york, vfirginia
+primary business goal: wedding photography
+priority platforms: instagram, tiktok, linked in, facebook system inquiries without padding the page with sections that do not help the opt-in.</span>
+        </div>
+      </div>
+      <div class="hero-visual" role="img" aria-label="Teja Reygle proof image">
+        <div class="visual-card">
+          <small>Teja Reygle</small>
+          <strong>Sparse high-conversion landing page with one dominant proof image and no generic SaaS cards</strong>
+          <p>book-your-strategy-call view-portfolio check-pricing</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="objections">
+      <div class="section-inner">
+        <div class="objection-grid">
+          
+            <article>
+              <h2>01</h2>
+              <p>See source output for full script body</p>
+            </article>
+          
+        </div>
+      </div>
+    </section>
+
+    
+      <section>
+        <div class="section-inner">
+          <div class="proof-strip">
+            
+              <article>
+                <h2>Proof</h2>
+                <p>&quot;Teja&#39;s photography captured the essence of our day perfectly.&quot; - Emily D.</p>
+              </article>
+            
+              <article>
+                <h2>Proof</h2>
+                <p>&quot;The best decision we made was choosing Teja for our wedding!&quot; - John S.</p>
+              </article>
+            
+          </div>
+        </div>
+      </section>
+    
+
+    <section id="apply">
+      <div class="section-inner form-band">
+        <div class="cta-panel">
+          <div class="eyebrow">Qualified next step</div>
+          <h2 style="margin-top:0;">Book Your Strategy Call</h2>
+          <p>Answer the few questions that matter so the next step starts with context instead of guesswork.</p>
+          <p style="margin-top:1rem;">Ask for enough information to qualify the lead without turning the form into a wall.</p>
+        </div>
+        <div class="form-panel">
+          <form id="leadForm">
+            <h2 style="margin-top:0;">Tell us enough to qualify the next step</h2>
+            <p>Keep the form short enough for mobile, but specific enough to filter for fit.</p>
+            <div class="field">
+      <label for="name">Full name</label>
+      <input id="name" name="name" type="text" placeholder="Your name" required />
+    </div><div class="field">
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" placeholder="you@example.com" required />
+    </div><div class="field">
+      <label for="phone">Phone</label>
+      <input id="phone" name="phone" type="tel" placeholder="(555) 555-5555" required />
+    </div><div class="field">
+        <label for="message">What result are you after?</label>
+        <textarea id="message" name="message" placeholder="Tell us the outcome you want and what is getting in the way." required></textarea>
+      </div>
+            <input type="hidden" name="client_id" value="cli_default" /><input type="hidden" name="campaign_id" value="cmp_default" /><input type="hidden" name="content_asset_id" value="" /><input type="hidden" name="published_post_id" value="" /><input type="hidden" name="platform" value="instagram" /><input type="hidden" name="cta_id" value="cta_default" /><input type="hidden" name="cta_keyword" value="GUIDE" /><input type="hidden" name="landing_page_id" value="lpg_1776009899323_pv4f4" /><input type="hidden" name="utm_source" value="organic_social" /><input type="hidden" name="utm_medium" value="short_form" /><input type="hidden" name="utm_campaign" value="teja-reygle-client-teja-reygle-niche-wedding-photography-primary" />
+            <button class="submit" type="submit">Book Your Strategy Call</button>
+            <div class="microcopy">This form keeps the lead context, attribution, and CTA source attached to the record.</div>
+            <div class="legal">
+              <span>By submitting this form, you agree to be contacted about this offer and accept the privacy and consent terms linked below.</span>
+              <span>Privacy Policy</span>
+              <span>Terms</span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>Teja Reygle - booking page - lpg_1776009899323_pv4f4</span>
+      <span>CTA GUIDE - Page teja-reygle-client-teja-reygle-niche-wedding-photography-primary</span>
+    </footer>
+  </div>
+  <script>
+    const form = document.getElementById('leadForm');
+    if (form) {
+      form.addEventListener('submit', async function(event) {
+        event.preventDefault();
+        const data = Object.fromEntries(new FormData(form).entries());
+        try {
+          await fetch('/api/funnel-records', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              action: 'create-lead',
+              lead: {
+                client_id: data.client_id,
+                campaign_id: data.campaign_id,
+                content_asset_id: data.content_asset_id,
+                published_post_id: data.published_post_id,
+                landing_page_id: data.landing_page_id,
+                cta_id: data.cta_id,
+                cta_keyword: data.cta_keyword,
+                platform: data.platform,
+                name: data.name,
+                email: data.email,
+                phone: data.phone,
+                business: data.business,
+                message: data.message,
+                source: 'landing_page_form',
+              }
+            })
+          });
+          alert('Thanks - your request has been captured.');
+          form.reset();
+        } catch (error) {
+          alert('Your form was captured locally, but the lead sync hit an issue.');
+        }
+      });
+    }
+  </script>
+</body>
+</html>

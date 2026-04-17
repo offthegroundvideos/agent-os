@@ -51,6 +51,10 @@ Phone: http://YOUR-TAILSCALE-IP:4000
 - Viral research and lead prospect records are ingested separately so content intelligence and prospecting data stay cleanly partitioned.
 - Worker payload examples now live in `docs/cloudflare-worker-ingest-example.md`, and the `CLOUDFLARE OPS` panel shows recent ingest records plus event history from the UI.
 - A deploy-ready proxy worker template now lives at `cloudflare/agent-os-ingest-worker.js`.
+- Prospect Radar now supports public-web service-request discovery for categories like weddings, festivals, and automotive.
+- The Cloudflare worker template for that lives at `cloudflare/prospect-radar-discovery-worker.js`.
+- Deployment instructions live at `docs/PROSPECT-RADAR-DISCOVERY-WORKER.md`.
+- To launch discovery directly from the UI, set `PROSPECT_RADAR_DISCOVERY_URL` in `.env.local` after deploying the worker.
 
 ## Website Studio
 - Website Studio builds landing pages directly inside Agent OS from pipeline context.

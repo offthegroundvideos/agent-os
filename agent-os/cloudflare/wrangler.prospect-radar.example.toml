@@ -1,0 +1,16 @@
+name = "prospect-radar-discovery"
+main = "prospect-radar-discovery-worker.js"
+compatibility_date = "2026-04-08"
+
+[observability.logs]
+enabled = true
+
+[vars]
+AGENT_OS_BASE_URL = "https://your-agent-os-domain"
+
+# Secrets to set with Wrangler:
+# wrangler secret put CLOUDFLARE_INGEST_SECRET
+# wrangler secret put FIRECRAWL_API_KEY
+
+# Optional:
+# route = { pattern = "prospect-radar-discovery.yourdomain.com/*", zone_name = "yourdomain.com" }

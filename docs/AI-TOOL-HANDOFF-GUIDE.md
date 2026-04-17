@@ -5,6 +5,9 @@ This guide explains how the team should switch between:
 - a new Codex account
 - Claude Code
 
+Quick version:
+- [C:\AI-Agents\docs\AI-TOOL-HANDOFF-CHEATSHEET.md](C:\AI-Agents\docs\AI-TOOL-HANDOFF-CHEATSHEET.md)
+
 The goal is simple:
 - keep code synced to GitHub
 - keep shared AI context updated

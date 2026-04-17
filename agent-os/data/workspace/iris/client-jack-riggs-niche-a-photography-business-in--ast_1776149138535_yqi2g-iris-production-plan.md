@@ -1,0 +1,16 @@
+# Iris â€” Production Plan
+Topic: Client: Jack Riggs
+Niche: a photography business in marin county
+Primary offer: Photoshoot
+Target audience: Models
+Service area or geography: Marin COunty
+Primary business goal: Book photoshoots ect
+Priority platforms: Instagram, TikTok, Facebook, Threads
+Date: 2026-04-14T06:46:25.261Z
+Session: pipeline-1776149138512
+
+---
+
+{"task_name":"production_brief","asset_id":"production-iris-001","source_inputs":[{"client":"Jack Riggs","niche":"Photography business in Marin County","primary_offer":"Photoshoots","target_audience":"Models","service_area":"Marin County","priority_platforms":["Instagram","TikTok","Facebook","Threads"]}],"summary":"","outputs":{"visual_thesis":"Capture the essence of elegance and creativity, evoking a sense of confidence and empowerment for models in Marin County.","hero_direction":{"image_language":"Close-up shots focusing on facial expressions and body language to convey emotion. Use natural light and shallow depth of field to create a soft, dreamy look.","typography_and_spatial_feel":"Minimalistic layout with ample negative space to let the visuals breathe and draw attention to key elements.","proof_style":"Showcase before-and-after transformations in photoshoots, highlighting the professional growth journey of models. Use testimonials from satisfied clients to build trust."},"shot_list":[{"shot_number":1,"type":"Close-up","lens":"50mm f/1.8","lighting_setup":"Natural light"},{"shot_number":2,"type":"Medium shot","lens":"35mm f/2.8","lighting_setup":"Softbox"},{"shot_number":3,"type":"Wide shot","lens":"24mm f/1.4","lighting_setup":"Ring light"},{"shot_number":4,"type":"B-Roll","lens":"70-200mm f/2.8","lighting_setup":"LED panel"},{"shot_number":5,"type":"Droneshot","lens":"24mm f/1.4","lighting_setup":"Natural light"}],"production_schedule":{"arrival_time":"9:00 AM","talent_arrival":"9:30 AM","setup_start":"10:00 AM","shooting_start":"11:00 AM","wrap_up":"5:00 PM"},"equipment":{"cameras":["Canon EOS R5"],"lenses":["50mm f/1.8","35mm f/2.8","24mm f/1.4","70-200mm f/2.8"],"lights":["Softbox","Ring light","LED panel"],"drone":"DJI Mavic Air 2","audio":"Rode NTG5 shotgun microphone"},"client_prep":{"instructions":"Please arrive on time and bring any preferred clothing or accessories for the shoot.","outfit_suggestions":"Choose outfits that highlight your features, such as form-fitting dresses or sleek jumpsuits."},"post_notes":{"color_grade":"Warm and airy tone with a slight softness to enhance natural skin tones.","edit_style":"Smooth transitions between shots, incorporating B-Roll footage to provide context.","music_and_audio":"Uplifting instrumental music to complement the visuals. Ensure audio is clear and balanced.","delivery_format":"Deliver high-resolution images in JPEG format and 4K video clips in MP4 format."},"team_assignments":{"Jack_Riggs":"Camera, Drone","Swope_or_Teja":"Editing"}},"open_issues":[],"confidence":0.95,"recommended_next_step":"Execute the production plan as outlined to create visually compelling content that resonates with models in Marin County and showcases Jack Riggs' unique style."}
+
+[PRODUCTION_COMPLETE]

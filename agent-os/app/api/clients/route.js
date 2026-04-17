@@ -1,6 +1,7 @@
 import { emitEvent } from '../../../lib/eventLog.js';
 import {
   addClientRecord,
+  clearActiveClientRecord,
   getActiveClientRecord,
   loadClients,
   removeClientRecord,
@@ -34,6 +35,11 @@ export async function POST(request) {
     const result = setActiveClientRecord(clientId);
     if (!result) return Response.json({ error: 'Client not found' }, { status: 404 });
     return Response.json({ success: true, activeClientId: clientId });
+  }
+
+  if (action === 'clearActive') {
+    clearActiveClientRecord();
+    return Response.json({ success: true, activeClientId: null });
   }
 
   if (action === 'remove') {

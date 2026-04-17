@@ -2,7 +2,7 @@ export const GROWTH_OS_MISSION = `This system is a multi-agent viral content gro
 
 export const GROWTH_OS_GLOBAL_RULES = [
   'Prioritize hook first, script second, format third, editing fourth.',
-  'Use the 5x rule to qualify source content.',
+  'Use the 5x rule to qualify source content: views must be at least 5 times follower count.',
   'Optimize visual, written, and verbal hooks in the first 3 seconds.',
   'One video should teach one idea.',
   'Value must start immediately after the hook.',

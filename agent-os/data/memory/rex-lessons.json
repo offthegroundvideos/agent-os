@@ -35,6 +35,28 @@
       "timestamp": "2026-04-01T09:21:23.402Z",
       "id": "1775035283402",
       "scoreCategory": "poor"
+    },
+    {
+      "task": "Client: Cloudflare Demo Prospect\nNiche: Selling Toyota Cars in Marin County\nPrimary offer: Selling Toyota Cars in Marin County system\nTarget audience: Commuters and families\nService area or geography:",
+      "workflowType": "pipeline",
+      "score": 5,
+      "what_worked": "The proposal effectively highlights the client's need for a robust online presence to sell Toyota cars in Marin County.",
+      "what_failed": "The primary offer 'Selling T' is unclear and does not align with the niche of selling Toyota cars, which could confuse the prospect.",
+      "improvement": "Clarify the primary offer to specify that it involves leveraging Cloudflare's services to enhance the online sales process for Toyota vehicles in Marin County.",
+      "timestamp": "2026-04-09T21:55:55.523Z",
+      "id": "1775771755523",
+      "scoreCategory": "poor"
+    },
+    {
+      "task": "Niche: nutrition coaching\nSpecific research and execution notes: Focus on Instagram reels for busy professionals who want sustainable fat loss.",
+      "workflowType": "pipeline",
+      "score": 3,
+      "what_worked": "The focus on Instagram Reels as a primary platform for reaching busy professionals interested in nutrition coaching is well-suited to the target audience.",
+      "what_failed": "The proposal lacks specificity regarding the content strategy and engagement tactics that will be employed on Instagram Reels.",
+      "improvement": "Develop a detailed content calendar with specific themes, topics, and interactive elements tailored for busy individuals looking for quick nutrition tips and insights.",
+      "timestamp": "2026-04-09T23:08:57.588Z",
+      "id": "1775776137588",
+      "scoreCategory": "critical"
     }
   ],
   "wins": [],
@@ -65,11 +87,29 @@
       "severity": "moderate",
       "workflowType": "pipeline",
       "timestamp": "2026-04-01T09:21:23.402Z"
+    },
+    {
+      "description": "The primary offer 'Selling T' is unclear and does not align with the niche of selling Toyota cars, which could confuse the prospect.",
+      "task": "Client: Cloudflare Demo Prospect\nNiche: Selling Toyota Cars in Marin County\nPrimary offer: Selling T",
+      "fix": "Clarify the primary offer to specify that it involves leveraging Cloudflare's services to enhance the online sales process for Toyota vehicles in Marin County.",
+      "score": 5,
+      "severity": "moderate",
+      "workflowType": "pipeline",
+      "timestamp": "2026-04-09T21:55:55.523Z"
+    },
+    {
+      "description": "The proposal lacks specificity regarding the content strategy and engagement tactics that will be employed on Instagram Reels.",
+      "task": "Niche: nutrition coaching\nSpecific research and execution notes: Focus on Instagram reels for busy p",
+      "fix": "Develop a detailed content calendar with specific themes, topics, and interactive elements tailored for busy individuals looking for quick nutrition tips and insights.",
+      "score": 3,
+      "severity": "critical",
+      "workflowType": "pipeline",
+      "timestamp": "2026-04-09T23:08:57.588Z"
     }
   ],
-  "taskCount": 3,
-  "avgScore": 4.7,
-  "lastReflection": "2026-04-01T09:21:23.402Z",
+  "taskCount": 5,
+  "avgScore": 4.4,
+  "lastReflection": "2026-04-09T23:08:57.588Z",
   "workflowStats": {
     "chat": {
       "taskCount": 0,
@@ -80,14 +120,16 @@
       "scoreTrend": []
     },
     "pipeline": {
-      "taskCount": 2,
+      "taskCount": 4,
       "avgScore": 4,
       "winCount": 0,
-      "failureCount": 2,
-      "lastUsedAt": "2026-04-01T09:21:23.402Z",
+      "failureCount": 4,
+      "lastUsedAt": "2026-04-09T23:08:57.588Z",
       "scoreTrend": [
         3,
-        5
+        5,
+        5,
+        3
       ]
     },
     "autojob": {
@@ -116,5 +158,11 @@
         6
       ]
     }
-  }
+  },
+  "refinements": [
+    "Incorporate",
+    "Provide clear",
+    "Include specific"
+  ],
+  "refinedAt": "2026-04-09T23:09:02.053Z"
 }

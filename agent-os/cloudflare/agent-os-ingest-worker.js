@@ -6,6 +6,11 @@ export default {
 
     const body = await request.json();
 
+    // Supported record types:
+    // - viral_research
+    // - lead_prospect
+    // - prospect_opportunity
+
     const response = await fetch(`${env.AGENT_OS_BASE_URL}/api/cloudflare-ingest`, {
       method: 'POST',
       headers: {

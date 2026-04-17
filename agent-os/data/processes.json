@@ -1,13 +1,163 @@
 {
   "processes": [
     {
-      "id": "agent-alex-1775677981915",
-      "type": "agent",
-      "description": "Alex: wedding videography",
+      "id": "pipeline-1776145245310",
+      "type": "pipeline",
+      "description": "Pipeline: Client: North Bay Wedding Films\nNiche: wedding videography\nPrimary offer: Wedding highlight film package\nTarget audience: Couples planning premium weddings\nService area or geography: North Bay, CA\nPrimary business goal: Booked wedding consults for the 2027 season\nPriority platforms: Instagram, TikTok, Facebook, Threads, X / Twitter",
       "status": "killed",
-      "startedAt": "2026-04-08T19:53:01.927Z",
+      "startedAt": "2026-04-14T05:40:45.329Z",
       "stoppedAt": null,
-      "completedAt": "2026-04-08T19:53:01.934Z"
+      "pipelineTopic": "Client: North Bay Wedding Films\nNiche: wedding videography\nPrimary offer: Wedding highlight film package\nTarget audience: Couples planning premium weddings\nService area or geography: North Bay, CA\nPrimary business goal: Booked wedding consults for the 2027 season\nPriority platforms: Instagram, TikTok, Facebook, Threads, X / Twitter",
+      "pipelineType": "full",
+      "completedStepIndex": 2,
+      "killedAt": "2026-04-14T07:10:46.386Z",
+      "reason": "Process marked stale automatically"
+    },
+    {
+      "id": "pipeline-1776149138512",
+      "type": "pipeline",
+      "description": "Pipeline: Client: Jack Riggs\nNiche: a photography business in marin county\nPrimary offer: Photoshoot\nTarget audience: Models\nService area or geography: Marin COunty\nPrimary business goal: Book photoshoots ect\nPriority platforms: Instagram, TikTok, Facebook, Threads",
+      "status": "complete",
+      "startedAt": "2026-04-14T06:45:38.545Z",
+      "stoppedAt": null,
+      "pipelineTopic": "Client: Jack Riggs\nNiche: a photography business in marin county\nPrimary offer: Photoshoot\nTarget audience: Models\nService area or geography: Marin COunty\nPrimary business goal: Book photoshoots ect\nPriority platforms: Instagram, TikTok, Facebook, Threads",
+      "pipelineType": "full",
+      "assetId": "ast_1776149138535_yqi2g",
+      "completedStepIndex": 6,
+      "completedAt": "2026-04-14T06:48:55.476Z"
+    },
+    {
+      "id": "queue-job_1776149171924_vy1oh",
+      "type": "agent",
+      "description": "Queue: pipeline reflection",
+      "status": "complete",
+      "startedAt": "2026-04-14T07:10:46.388Z",
+      "stoppedAt": null,
+      "queueJobId": "job_1776149171924_vy1oh",
+      "jobType": "pipeline_reflection",
+      "relatedRunId": "pipeline-1776149138512",
+      "completedAt": "2026-04-14T07:10:51.342Z"
+    },
+    {
+      "id": "queue-job_1776149185262_ipvjq",
+      "type": "agent",
+      "description": "Queue: pipeline reflection",
+      "status": "complete",
+      "startedAt": "2026-04-14T07:10:51.344Z",
+      "stoppedAt": null,
+      "queueJobId": "job_1776149185262_ipvjq",
+      "jobType": "pipeline_reflection",
+      "relatedRunId": "pipeline-1776149138512",
+      "completedAt": "2026-04-14T07:10:53.157Z"
+    },
+    {
+      "id": "queue-job_1776149248080_pxk8a",
+      "type": "agent",
+      "description": "Queue: pipeline reflection",
+      "status": "complete",
+      "startedAt": "2026-04-14T07:10:53.158Z",
+      "stoppedAt": null,
+      "queueJobId": "job_1776149248080_pxk8a",
+      "jobType": "pipeline_reflection",
+      "relatedRunId": "pipeline-1776149138512",
+      "completedAt": "2026-04-14T07:10:54.977Z"
+    },
+    {
+      "id": "queue-job_1776149278215_eh1md",
+      "type": "agent",
+      "description": "Queue: pipeline reflection",
+      "status": "complete",
+      "startedAt": "2026-04-14T07:10:54.979Z",
+      "stoppedAt": null,
+      "queueJobId": "job_1776149278215_eh1md",
+      "jobType": "pipeline_reflection",
+      "relatedRunId": "pipeline-1776149138512",
+      "completedAt": "2026-04-14T07:10:56.815Z"
+    },
+    {
+      "id": "queue-job_1776149307812_gp16o",
+      "type": "agent",
+      "description": "Queue: pipeline reflection",
+      "status": "complete",
+      "startedAt": "2026-04-14T07:10:56.817Z",
+      "stoppedAt": null,
+      "queueJobId": "job_1776149307812_gp16o",
+      "jobType": "pipeline_reflection",
+      "relatedRunId": "pipeline-1776149138512",
+      "completedAt": "2026-04-14T07:10:58.823Z"
+    },
+    {
+      "id": "queue-job_1776149335474_ju8nq",
+      "type": "agent",
+      "description": "Queue: pipeline reflection",
+      "status": "failed",
+      "startedAt": "2026-04-14T07:11:56.503Z",
+      "stoppedAt": null,
+      "queueJobId": "job_1776149335474_ju8nq",
+      "jobType": "pipeline_reflection",
+      "relatedRunId": "pipeline-1776149138512",
+      "completedAt": "2026-04-14T07:12:00.028Z"
+    },
+    {
+      "id": "pipeline-1776347570117",
+      "type": "pipeline",
+      "description": "Pipeline: Client: Jack Riggs\nNiche: Photography\nPriority platforms: Instagram, TikTok, LinkedIn, Facebook, YouTube, Yelp, Google Business Profile, Twitch, Discord, Reddit, Snapchat, Threads, X / Twitter, YouTube Shorts, Pinterest",
+      "status": "complete",
+      "startedAt": "2026-04-16T13:52:50.148Z",
+      "stoppedAt": null,
+      "pipelineTopic": "Client: Jack Riggs\nNiche: Photography\nPriority platforms: Instagram, TikTok, LinkedIn, Facebook, YouTube, Yelp, Google Business Profile, Twitch, Discord, Reddit, Snapchat, Threads, X / Twitter, YouTube Shorts, Pinterest",
+      "pipelineType": "content",
+      "assetId": "ast_1776347570138_h3azx",
+      "completedStepIndex": 4,
+      "completedAt": "2026-04-16T13:55:12.261Z"
+    },
+    {
+      "id": "queue-job_1776347599178_5bv6g",
+      "type": "agent",
+      "description": "Queue: pipeline reflection",
+      "status": "complete",
+      "startedAt": "2026-04-16T13:55:14.828Z",
+      "stoppedAt": null,
+      "queueJobId": "job_1776347599178_5bv6g",
+      "jobType": "pipeline_reflection",
+      "relatedRunId": "pipeline-1776347570117",
+      "completedAt": "2026-04-16T13:55:21.402Z"
+    },
+    {
+      "id": "queue-job_1776347643151_8u031",
+      "type": "agent",
+      "description": "Queue: pipeline reflection",
+      "status": "complete",
+      "startedAt": "2026-04-16T13:55:21.404Z",
+      "stoppedAt": null,
+      "queueJobId": "job_1776347643151_8u031",
+      "jobType": "pipeline_reflection",
+      "relatedRunId": "pipeline-1776347570117",
+      "completedAt": "2026-04-16T13:55:28.193Z"
+    },
+    {
+      "id": "queue-job_1776347670607_2usfl",
+      "type": "agent",
+      "description": "Queue: pipeline reflection",
+      "status": "complete",
+      "startedAt": "2026-04-16T13:55:28.196Z",
+      "stoppedAt": null,
+      "queueJobId": "job_1776347670607_2usfl",
+      "jobType": "pipeline_reflection",
+      "relatedRunId": "pipeline-1776347570117",
+      "completedAt": "2026-04-16T13:55:34.457Z"
+    },
+    {
+      "id": "queue-job_1776347712259_hm94d",
+      "type": "agent",
+      "description": "Queue: pipeline reflection",
+      "status": "complete",
+      "startedAt": "2026-04-16T13:56:09.937Z",
+      "stoppedAt": null,
+      "queueJobId": "job_1776347712259_hm94d",
+      "jobType": "pipeline_reflection",
+      "relatedRunId": "pipeline-1776347570117",
+      "completedAt": "2026-04-16T13:56:12.101Z"
     }
   ]
 }

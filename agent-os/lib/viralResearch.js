@@ -17,6 +17,7 @@ export const VIDEO_FORMATS = [
 ];
 
 export const EDIT_LEVELS = ['basic', 'medium', 'advanced'];
+export const FIVE_X_QUALIFYING_SCORE_MIN = 5;
 
 function ensureDataFile() {
   const dir = path.dirname(DATA_FILE);
@@ -210,7 +211,7 @@ export function normalizeVideo(input = {}) {
     followerCount,
     viewCount,
     fiveXScore,
-    qualifiesFiveX: followerCount > 0 ? fiveXScore >= 5 : false,
+    qualifiesFiveX: followerCount > 0 ? fiveXScore >= FIVE_X_QUALIFYING_SCORE_MIN : false,
     insufficientFollowerData: followerCount <= 0,
     url: String(input.url || '').trim(),
     topic: String(input.topic || '').trim(),
@@ -701,7 +702,7 @@ export function getResearchContextForTopic(topic, filters = {}) {
 }
 
 export function getViralSystemAddendum(agentId) {
-  const base = 'VIRAL CONTENT OPERATING SYSTEM: Use the 5X rule. A video only counts as viral if views are at least 5 times the creator follower count when follower data is visible. Track top creators, analyze visual hooks, written hooks, verbal hooks, format, edit complexity, and how the value is delivered. Keep platform-native datasets separate first, then synthesize cross-platform themes second.';
+  const base = 'VIRAL CONTENT OPERATING SYSTEM: Use the 5X rule. A video only qualifies if views are at least 5 times the creator follower count when follower data is visible. Example: 50k followers needs 250k views. Track top creators, analyze visual hooks, written hooks, verbal hooks, format, edit complexity, and how the value is delivered. Keep platform-native datasets separate first, then synthesize cross-platform themes second.';
 
   if (agentId === 'alex') {
     return `${base} Research per platform first. Explain what is specifically working on TikTok, YouTube, LinkedIn, and Instagram separately, then identify cross-platform themes that appear across multiple platforms. Distinguish platform-native patterns from portable patterns.`;

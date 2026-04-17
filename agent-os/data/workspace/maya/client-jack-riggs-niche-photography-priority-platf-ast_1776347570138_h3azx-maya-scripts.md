@@ -1,0 +1,224 @@
+# Maya â€” Scripts
+Topic: Client: Jack Riggs
+Niche: Photography
+Priority platforms: Instagram, TikTok, LinkedIn, Facebook, YouTube, Yelp, Google Business Profile, Twitch, Discord, Reddit, Snapchat, Threads, X / Twitter, YouTube Shorts, Pinterest
+Date: 2026-04-16T13:54:03.151Z
+Session: pipeline-1776347570117
+
+---
+
+### Viral Video Scripts
+
+1. **FORMAT:** Talking head  
+**FILMING NOTES:** Direct camera shot, clear background  
+**VISUAL HOOK:** Jack Riggs holding a high-end camera with a dramatic backdrop  
+**WRITTEN HOOK:** "Transform Your Wedding Photos"  
+**HOOK LINE:** "Hey there! Are your wedding photos just okay?"  
+**VALUE:**  
+- Capture candid moments effortlessly  
+- Use composition techniques to frame shots  
+- Lighting tips for stunning portraits  
+**CTA:** Book our wedding photography services now | Trigger: `book_wedding`  
+
+2. **FORMAT:** Talking head  
+**FILMING NOTES:** Direct camera shot, clear background  
+**VISUAL HOOK:** Jack Riggs holding a drone with the Bora Bora skyline in the distance  
+**WRITTEN HOOK:** "Get Stunning Travel Photos"  
+**HOOK LINE:** "Want breathtaking travel photos?"  
+**VALUE:**  
+- Tips for using drones in various environments  
+- Lighting adjustments for vibrant colors  
+- Post-processing techniques to enhance your shots  
+**CTA:** Contact us for drone photography | Trigger: `drone_photography`  
+
+3. **FORMAT:** Talking head  
+**FILMING NOTES:** Direct camera shot, clear background  
+**VISUAL HOOK:** Jack Riggs with a real estate listing in the frame  
+**WRITTEN HOOK:** "Boost Your Property Listings"  
+**HOOK LINE:** "Are your property listings photos underperforming?"  
+**VALUE:**  
+- Composition tips for real estate shots  
+- Lighting techniques for high-end properties  
+- Before-and-after transformations to increase views  
+**CTA:** Learn more about our real estate photography | Trigger: `real_estate`  
+
+4. **FORMAT:** Talking head  
+**FILMING NOTES:** Direct camera shot, clear background  
+**VISUAL HOOK:** Jack Riggs with a commercial shoot setup in the frame  
+**WRITTEN HOOK:** "Capture The Perfect Commercial Shot"  
+**HOOK LINE:** "Need better commercial photography?"  
+**VALUE:**  
+- Tips for shooting dynamic product shots  
+- Lighting techniques for studio setups  
+- Composition advice to elevate your brand imagery  
+**CTA:** Inquire about our corporate photography | Trigger: `commercial_photos`  
+
+5. **FORMAT:** Talking head  
+**FILMING NOTES:** Direct camera shot, clear background  
+**VISUAL HOOK:** Jack Riggs with a wedding couple posing in front of the camera  
+**WRITTEN HOOK:** "Elevate Your Wedding Day"  
+**HOOK LINE:** "Make your wedding day unforgettable!"  
+**VALUE:**  
+- Capture candid moments that tell the story  
+- Lighting techniques for outdoor weddings  
+- Composition tips to frame shots beautifully  
+**CTA:** Book our full-service wedding photography package | Trigger: `wedding_photography`  
+
+6. **FORMAT:** Talking head  
+**FILMING NOTES:** Direct camera shot, clear background  
+**VISUAL HOOK:** Jack Riggs with a travel destination in the backdrop  
+**WRITTEN HOOK:** "Travel Like A Pro"  
+**HOOK LINE:** "Capture every moment like a pro!"  
+**VALUE:**  
+- Tips for shooting stunning landscapes  
+- Lighting hacks for low light conditions  
+- Post-processing techniques to enhance your photos  
+**CTA:** Inquire about our travel photography services | Trigger: `travel_photography`  
+
+7. **FORMAT:** Talking head  
+**FILMING NOTES:** Direct camera shot, clear background  
+**VISUAL HOOK:** Jack Riggs with a real estate listing in the frame  
+**WRITTEN HOOK:** "Make Your Home Stand Out"  
+**HOOK LINE:** "Want your home to stand out online?"  
+**VALUE:**  
+- Composition techniques for real estate photos  
+- Lighting tips for high-end homes  
+- Before-and-after transformations for better listings  
+**CTA:** Learn more about our real estate photography | Trigger: `real_estate`  
+
+8. **FORMAT:** Talking head  
+**FILMING NOTES:** Direct camera shot, clear background  
+**VISUAL HOOK:** Jack Riggs with a commercial shoot setup in the frame  
+**WRITTEN HOOK:** "Capture Your Brand's Story"  
+**HOOK LINE:** "Need better brand photography?"  
+**VALUE:**  
+- Tips for dynamic product shots  
+- Lighting techniques for studio setups  
+- Composition advice to elevate your brand imagery  
+**CTA:** Inquire about our corporate photography | Trigger: `commercial_photos`  
+
+9. **FORMAT:** Talking head  
+**FILMING NOTES:** Direct camera shot, clear background  
+**VISUAL HOOK:** Jack Riggs with a wedding couple posing in front of the camera  
+**WRITTEN HOOK:** "Capture Your Special Day"  
+**HOOK LINE:** "Make your special day unforgettable!"  
+**VALUE:**  
+- Capture candid moments that tell the story  
+- Lighting techniques for outdoor weddings  
+- Composition tips to frame shots beautifully  
+**CTA:** Book our full-service wedding photography package | Trigger: `wedding_photography`  
+
+10. **FORMAT:** Talking head  
+**FILMING NOTES:** Direct camera shot, clear background  
+**VISUAL HOOK:** Jack Riggs with a travel destination in the backdrop  
+**WRITTEN HOOK:** "Capture Every Moment"  
+**HOOK LINE:** "Capture every moment like a pro!"  
+**VALUE:**  
+- Tips for shooting stunning landscapes  
+- Lighting hacks for low light conditions  
+- Post-processing techniques to enhance your photos  
+**CTA:** Inquire about our travel photography services | Trigger: `travel_photography`  
+
+11. **FORMAT:** Talking head  
+**FILMING NOTES:** Direct camera shot, clear background  
+**VISUAL HOOK:** Jack Riggs with a real estate listing in the frame  
+**WRITTEN HOOK:** "Boost Your Property Listings"  
+**HOOK LINE:** "Are your property listings photos underperforming?"  
+**VALUE:**  
+- Composition tips for real estate shots  
+- Lighting techniques for high-end properties  
+- Before-and-after transformations to increase views  
+**CTA:** Learn more about our real estate photography | Trigger: `real_estate`  
+
+12. **FORMAT:** Talking head  
+**FILMING NOTES:** Direct camera shot, clear background  
+**VISUAL HOOK:** Jack Riggs with a commercial shoot setup in the frame  
+**WRITTEN HOOK:** "Capture Your Brand's Story"  
+**HOOK LINE:** "Need better brand photography?"  
+**VALUE:**  
+- Tips for dynamic product shots  
+- Lighting techniques for studio setups  
+- Composition advice to elevate your brand imagery  
+**CTA:** Inquire about our corporate photography | Trigger: `commercial_photos`  
+
+13. **FORMAT:** Talking head  
+**FILMING NOTES:** Direct camera shot, clear background  
+**VISUAL HOOK:** Jack Riggs with a wedding couple posing in front of the camera  
+**WRITTEN HOOK:** "Capture Your Special Day"  
+**HOOK LINE:** "Make your special day unforgettable!"  
+**VALUE:**  
+- Capture candid moments that tell the story  
+- Lighting techniques for outdoor weddings  
+- Composition tips to frame shots beautifully  
+**CTA:** Book our full-service wedding photography package | Trigger: `wedding_photography`  
+
+14. **FORMAT:** Talking head  
+**FILMING NOTES:** Direct camera shot, clear background  
+**VISUAL HOOK:** Jack Riggs with a travel destination in the backdrop  
+**WRITTEN HOOK:** "Capture Every Moment"  
+**HOOK LINE:** "Capture every moment like a pro!"  
+**VALUE:**  
+- Tips for shooting stunning landscapes  
+- Lighting hacks for low light conditions  
+- Post-processing techniques to enhance your photos  
+**CTA:** Inquire about our travel photography services | Trigger: `travel_photography`  
+
+15. **FORMAT:** Talking head  
+**FILMING NOTES:** Direct camera shot, clear background  
+**VISUAL HOOK:** Jack Riggs with a real estate listing in the frame  
+**WRITTEN HOOK:** "Make Your Home Stand Out"  
+**HOOK LINE:** "Want your home to stand out online?"  
+**VALUE:**  
+- Composition techniques for real estate photos  
+- Lighting tips for high-end homes  
+- Before-and-after transformations for better listings  
+**CTA:** Learn more about our real estate photography | Trigger: `real_estate`  
+
+### Instagram Caption Templates
+1. **Caption:** "Capture every moment like a pro with these simple tricks! 📸 #PhotographyTips"
+2. **Caption:** "Transform your wedding photos into unforgettable memories! 💑📸 #WeddingPhotos"
+3. **Caption:** "Boost your property listings with stunning real estate photography. 🏡📷 #RealEstate"
+4. **Caption:** "Need better brand photography? Here's how to elevate it. 📸 #CorporatePhotos"
+5. **Caption:** "Make your travel moments unforgettable with these tips! 🌍📸 #TravelPhotography"
+
+### LinkedIn Post Drafts
+1. **Post Title:** Transform Your Property Listings with Stunning Photography  
+**Content:** Are you tired of underperforming property listings? Our photography services can elevate your listings and attract more buyers or renters. Discover how to capture the essence of any space. [CTA: Learn More | Trigger: `real_estate`]
+2. **Post Title:** Elevate Your Brand with Dynamic Corporate Photography  
+**Content:** Need better brand imagery for your products? Our photography services offer dynamic product shots and professional lighting techniques that elevate your brand's story. [CTA: Contact Us | Trigger: `commercial_photos`]
+
+### Email Subject Line
+1. **Subject:** "Transform Your Photos: Exclusive Tips from Jack Riggs"
+
+### Ad Copy Variations
+1. **Ad Title:** Transform Your Wedding Photos  
+**Description:** Capture unforgettable moments with our wedding photography services. From candid shots to stunning portraits, we make your special day unforgettable. [CTA: Book Now | Trigger: `wedding_photography`]
+2. **Ad Title:** Stunning Real Estate Photography  
+**Description:** Elevate your property listings with high-quality photos that attract buyers and renters. Our services transform spaces into visual masterpieces. [CTA: Learn More | Trigger: `real_estate`]
+
+[CONTENT_COMPLETE]
+
+```json
+{
+  "task_name": "script_writing",
+  "asset_id": "script-bank-maya-001",
+  "source_inputs": [],
+  "summary": "",
+  "outputs": {
+    "scripts_written": 15,
+    "primary_hook_style": "Talking head with direct camera shot",
+    "formats_used": ["Talking head"],
+    "cta_trigger_word": "book_wedding, real_estate, commercial_photos, travel_photography",
+    "key_themes": [
+      "Wedding photography",
+      "Real estate listings",
+      "Commercial shoots",
+      "Travel photography"
+    ],
+    "best_script_index": 1
+  },
+  "open_issues": [],
+  "confidence": 0.95,
+  "recommended_next_step": "Sam should review the provided scripts and captions for filming and publishing."
+}
+```

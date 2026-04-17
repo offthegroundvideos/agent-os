@@ -17,6 +17,7 @@ body {
   color: var(--text);
   font-family: "JetBrains Mono", monospace;
   overflow-x: hidden;
+  position: relative;
 }
 
 body::before {
@@ -28,7 +29,7 @@ body::before {
     rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px
   );
   pointer-events: none;
-  z-index: 9999;
+  z-index: -1;
 }
 
 ::-webkit-scrollbar { width: 4px; height: 4px; }
@@ -45,3 +46,10 @@ body::before {
 }
 
 .animate-slide-in { animation: slide-in 0.3s ease forwards; }
+
+
+@media (hover: none) and (pointer: coarse) {
+  body::before {
+    display: none;
+  }
+}

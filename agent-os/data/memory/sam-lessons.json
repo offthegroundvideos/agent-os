@@ -78,6 +78,94 @@
       "timestamp": "2026-04-01T10:20:00.917Z",
       "id": "1775038800917",
       "scoreCategory": "poor"
+    },
+    {
+      "task": "Client: Cloudflare Demo Prospect\nNiche: Selling Toyota Cars in Marin County\nPrimary offer: Selling Toyota Cars in Marin County system\nTarget audience: Commuters and families\nService area or geography:",
+      "workflowType": "pipeline",
+      "score": 3,
+      "what_worked": "The prospect's interest in Cloudflare indicates a focus on cybersecurity and performance optimization, which are valuable for any business.",
+      "what_failed": "The primary offer of 'Selling T' is vague and does not align with the niche of selling Toyota cars in Marin County.",
+      "improvement": "Clarify the primary offer to directly relate to the sale of Toyota vehicles or services that enhance their online presence, such as website security and performance through Cloudflare's solutions.",
+      "timestamp": "2026-04-09T21:54:32.581Z",
+      "id": "1775771672581",
+      "scoreCategory": "critical"
+    },
+    {
+      "task": "Niche: nutrition coaching\nSpecific research and execution notes: Focus on Instagram reels for busy professionals who want sustainable fat loss.",
+      "workflowType": "pipeline",
+      "score": 7,
+      "what_worked": "Focusing on Instagram Reels helped engage a busy professional audience with quick, digestible nutrition tips.",
+      "what_failed": "The initial content strategy did not adequately address the diverse nutritional needs and preferences of all followers.",
+      "improvement": "Integrate user feedback to tailor content more precisely to individual dietary requirements and lifestyle constraints.",
+      "timestamp": "2026-04-09T23:07:37.942Z",
+      "id": "1775776057942",
+      "scoreCategory": "good"
+    },
+    {
+      "task": "Client: Michelle Elmore\nNiche: Photo Books\nPrimary offer: Buy a book\nTarget audience: Art lovers\nService area or geography: Bay Area, CA\nPrimary business goal: Buy a book\nPriority platforms: Instagram",
+      "workflowType": "pipeline",
+      "score": 6,
+      "what_worked": "The primary offer of 'Buy a book' is clear and straightforward.",
+      "what_failed": "The target audience description ('Art lovers') is too broad, lacking specificity about the segment's interests or demographics.",
+      "improvement": "Refine the target audience to include more specific characteristics such as age range, geographic location, or particular art styles they prefer.",
+      "timestamp": "2026-04-10T15:28:33.213Z",
+      "id": "1775834913213",
+      "scoreCategory": "poor"
+    },
+    {
+      "task": "Client: Chris Schumacher\nNiche: Celebrity Haiku’s \nPrimary offer: Comment!\nTarget audience: Haiku lovers\nService area or geography: Worldwide\nPrimary business goal: Get views\nPriority platforms: Insta",
+      "workflowType": "pipeline",
+      "score": 3,
+      "what_worked": "The niche of celebrity haikus is unique and could attract a dedicated audience interested in both poetry and celebrity culture.",
+      "what_failed": "The primary offer 'Comment!' seems vague and unclear, lacking specificity on what action or benefit it provides to the target audience.",
+      "improvement": "Clarify the primary offer by specifying an actionable call-to-action that aligns with the niche, such as inviting users to comment their own celebrity haikus or share their thoughts on featured poems.",
+      "timestamp": "2026-04-11T06:32:26.444Z",
+      "id": "1775889146444",
+      "scoreCategory": "critical"
+    },
+    {
+      "task": "Client: Michelle Elmore\nNiche: Street Photography\nPrimary offer: Come buy a book!\nTarget audience: Art lovers, photography nerds\nService area or geography: Marin County\nPrimary business goal: Sell Boo",
+      "workflowType": "pipeline",
+      "score": 5,
+      "what_worked": "The primary offer of 'Come buy a book!' is clear and straightforward.",
+      "what_failed": "The target audience description lacks specificity, making it difficult to tailor the social media strategy effectively.",
+      "improvement": "Define a more specific demographic for the target audience based on age range, interests, location, etc., to enhance engagement strategies.",
+      "timestamp": "2026-04-12T08:44:10.365Z",
+      "id": "1775983450365",
+      "scoreCategory": "poor"
+    },
+    {
+      "task": "Client: Teja Reygle\nNiche: Wedding Photography\nPrimary offer: Photograph Weddings\nTarget audience: Just Engaged\nService area or geography: New York, VFirginia\nPrimary business goal: Wedding Photograph",
+      "workflowType": "pipeline",
+      "score": 3,
+      "what_worked": "The primary offer of photographing weddings is clear and aligns well with the niche.",
+      "what_failed": "There's no specified target audience demographic or location, making it difficult to tailor social media strategies effectively.",
+      "improvement": "Define a specific target audience including age range, income level, and geographic location to better focus marketing efforts on social platforms.",
+      "timestamp": "2026-04-12T08:52:01.972Z",
+      "id": "1775983921972",
+      "scoreCategory": "critical"
+    },
+    {
+      "task": "Client: Jack Riggs\nNiche: a photography business in marin county\nPrimary offer: Photoshoot\nTarget audience: Models\nService area or geography: Marin COunty\nPrimary business goal: Book photoshoots ect\nP",
+      "workflowType": "pipeline",
+      "score": 6,
+      "what_worked": "The primary offer of a photoshoot for models in Marin County is well-defined and aligns with the niche.",
+      "what_failed": "The target audience description could be more detailed to better understand the specific needs and preferences of the models.",
+      "improvement": "Expand the target audience section to include demographic details, such as age range, experience level, and preferred photography styles (e.g., fashion, portrait, etc.).",
+      "timestamp": "2026-04-14T07:10:56.814Z",
+      "id": "1776150656814",
+      "scoreCategory": "poor"
+    },
+    {
+      "task": "Client: Jack Riggs\nNiche: Photography\nPriority platforms: Instagram, TikTok, LinkedIn, Facebook, YouTube, Yelp, Google Business Profile, Twitch, Discord, Reddit, Snapchat, Threads, X / Twitter, YouTub",
+      "workflowType": "pipeline",
+      "score": 7,
+      "what_worked": "Jack Riggs effectively utilized Instagram and TikTok to showcase his photography skills through visually engaging content, which helped in building a strong initial following.",
+      "what_failed": "The engagement on LinkedIn and Facebook was lower than expected due to less frequent posting and less interactive content compared to other platforms.",
+      "improvement": "Jack should focus on increasing the frequency of posts and enhancing interaction with followers on LinkedIn and Facebook by incorporating more user-generated content and polls.",
+      "timestamp": "2026-04-16T13:55:34.455Z",
+      "id": "1776347734455",
+      "scoreCategory": "good"
     }
   ],
   "wins": [
@@ -134,11 +222,65 @@
       "severity": "moderate",
       "workflowType": "chat",
       "timestamp": "2026-04-01T10:20:00.917Z"
+    },
+    {
+      "description": "The primary offer of 'Selling T' is vague and does not align with the niche of selling Toyota cars in Marin County.",
+      "task": "Client: Cloudflare Demo Prospect\nNiche: Selling Toyota Cars in Marin County\nPrimary offer: Selling T",
+      "fix": "Clarify the primary offer to directly relate to the sale of Toyota vehicles or services that enhance their online presence, such as website security and performance through Cloudflare's solutions.",
+      "score": 3,
+      "severity": "critical",
+      "workflowType": "pipeline",
+      "timestamp": "2026-04-09T21:54:32.581Z"
+    },
+    {
+      "description": "The target audience description ('Art lovers') is too broad, lacking specificity about the segment's interests or demographics.",
+      "task": "Client: Michelle Elmore\nNiche: Photo Books\nPrimary offer: Buy a book\nTarget audience: Art lovers\nSer",
+      "fix": "Refine the target audience to include more specific characteristics such as age range, geographic location, or particular art styles they prefer.",
+      "score": 6,
+      "severity": "moderate",
+      "workflowType": "pipeline",
+      "timestamp": "2026-04-10T15:28:33.213Z"
+    },
+    {
+      "description": "The primary offer 'Comment!' seems vague and unclear, lacking specificity on what action or benefit it provides to the target audience.",
+      "task": "Client: Chris Schumacher\nNiche: Celebrity Haiku’s \nPrimary offer: Comment!\nTarget audience: Haiku lo",
+      "fix": "Clarify the primary offer by specifying an actionable call-to-action that aligns with the niche, such as inviting users to comment their own celebrity haikus or share their thoughts on featured poems.",
+      "score": 3,
+      "severity": "critical",
+      "workflowType": "pipeline",
+      "timestamp": "2026-04-11T06:32:26.444Z"
+    },
+    {
+      "description": "The target audience description lacks specificity, making it difficult to tailor the social media strategy effectively.",
+      "task": "Client: Michelle Elmore\nNiche: Street Photography\nPrimary offer: Come buy a book!\nTarget audience: A",
+      "fix": "Define a more specific demographic for the target audience based on age range, interests, location, etc., to enhance engagement strategies.",
+      "score": 5,
+      "severity": "moderate",
+      "workflowType": "pipeline",
+      "timestamp": "2026-04-12T08:44:10.365Z"
+    },
+    {
+      "description": "There's no specified target audience demographic or location, making it difficult to tailor social media strategies effectively.",
+      "task": "Client: Teja Reygle\nNiche: Wedding Photography\nPrimary offer: Photograph Weddings\nTarget audience: J",
+      "fix": "Define a specific target audience including age range, income level, and geographic location to better focus marketing efforts on social platforms.",
+      "score": 3,
+      "severity": "critical",
+      "workflowType": "pipeline",
+      "timestamp": "2026-04-12T08:52:01.972Z"
+    },
+    {
+      "description": "The target audience description could be more detailed to better understand the specific needs and preferences of the models.",
+      "task": "Client: Jack Riggs\nNiche: a photography business in marin county\nPrimary offer: Photoshoot\nTarget au",
+      "fix": "Expand the target audience section to include demographic details, such as age range, experience level, and preferred photography styles (e.g., fashion, portrait, etc.).",
+      "score": 6,
+      "severity": "moderate",
+      "workflowType": "pipeline",
+      "timestamp": "2026-04-14T07:10:56.814Z"
     }
   ],
-  "taskCount": 7,
-  "avgScore": 7.1,
-  "lastReflection": "2026-04-01T10:20:00.917Z",
+  "taskCount": 15,
+  "avgScore": 6,
+  "lastReflection": "2026-04-16T13:55:34.455Z",
   "workflowStats": {
     "chat": {
       "taskCount": 1,
@@ -151,12 +293,21 @@
       ]
     },
     "pipeline": {
-      "taskCount": 0,
-      "avgScore": 0,
+      "taskCount": 8,
+      "avgScore": 5,
       "winCount": 0,
-      "failureCount": 0,
-      "lastUsedAt": null,
-      "scoreTrend": []
+      "failureCount": 6,
+      "lastUsedAt": "2026-04-16T13:55:34.455Z",
+      "scoreTrend": [
+        3,
+        7,
+        6,
+        3,
+        5,
+        3,
+        6,
+        7
+      ]
     },
     "autojob": {
       "taskCount": 0,
@@ -192,9 +343,9 @@
   },
   "improvements": [],
   "refinements": [
-    "Always conduct a thorough equipment check before starting any shoot to prevent technical issues.",
-    "Include specific examples and case studies in all future tasks to provide concrete value.",
-    "Focus on concise, actionable steps tailored specifically to the needs of the task at hand."
+    "Ensure all materials and equipment are pre-checked and stored ahead of schedule to prevent delays.",
+    "Tailor social media strategies specifically to the unique needs and characteristics of the target audience and niche.",
+    "Provide concise, single-sentence summaries when instructed, strictly adhering to length constraints."
   ],
-  "refinedAt": "2026-03-30T03:49:10.708Z"
+  "refinedAt": "2026-04-11T06:32:31.746Z"
 }

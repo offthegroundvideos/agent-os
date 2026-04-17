@@ -1,5 +1,6 @@
 import { emitEvent, listEvents } from '../../../lib/eventLog.js';
 import { getLeadProspectById, loadLeadProspects, updateLeadProspect, upsertLeadProspects } from '../../../lib/leadProspects.js';
+import { getProspectRadarSummary, upsertOpportunities } from '../../../lib/prospectRadar.js';
 import { addClientRecord, setActiveClientRecord } from '../../../lib/clientStore.js';
 import { getResearchSummary, loadResearchData, upsertImportedVideos } from '../../../lib/viralResearch.js';
 
@@ -77,9 +78,27 @@ function validateLeadProspectRecord(record = {}) {
   };
 }
 
+function validateProspectOpportunityRecord(record = {}) {
+  const errors = [];
+  const title = String(record.title || '').trim();
+  const sourceUrl = String(record.sourceUrl || record.url || '').trim();
+  const niche = String(record.niche || record.requestedService || record.service || '').trim();
+
+  if (!title) errors.push('title is required');
+  if (!sourceUrl) errors.push('sourceUrl is required');
+  if (sourceUrl && !/^https?:\/\//i.test(sourceUrl)) errors.push('sourceUrl must be an absolute http(s) URL');
+  if (!niche) errors.push('niche or requestedService is required');
+
+  return {
+    valid: errors.length === 0,
+    errors,
+  };
+}
+
 function buildRejectEventName(recordType = 'unknown') {
   if (recordType === 'viral_research') return 'cloudflare.viral.rejected';
   if (recordType === 'lead_prospect') return 'cloudflare.prospect.rejected';
+  if (recordType === 'prospect_opportunity') return 'cloudflare.opportunity.rejected';
   return 'cloudflare.record.rejected';
 }
 
@@ -125,6 +144,7 @@ export async function GET(request) {
       summary: {
         viralRecords: researchData.videos?.length || 0,
         leadProspects: leadData.prospects?.length || 0,
+        prospectOpportunities: getProspectRadarSummary().total || 0,
         lastViralImportAt: researchData.lastUpdated || null,
         lastLeadImportAt: leadData.lastUpdated || null,
         recentEvents: recentEvents.length,
@@ -158,6 +178,17 @@ export async function GET(request) {
           niche: 'dog training',
           geography: 'Orange County, CA',
           source: 'cloudflare-worker',
+        },
+        prospectOpportunity: {
+          recordType: 'prospect_opportunity',
+          title: 'Looking for a wedding photographer for October 12 in Orange County',
+          niche: 'wedding photography',
+          requestedService: 'wedding photographer',
+          sourcePlatform: 'public-facebook',
+          sourceUrl: 'https://example.com/post/123',
+          location: 'Orange County, CA',
+          postedAt: '2026-04-08T10:00:00Z',
+          summary: 'Need someone available for an October wedding. Budget is flexible for the right fit.',
         },
       },
     });
@@ -244,6 +275,7 @@ export async function POST(request) {
 
     const acceptedViralRecords = [];
     const acceptedLeadRecords = [];
+    const acceptedOpportunityRecords = [];
     const rejectedRecords = [];
     const perRecordResults = [];
 
@@ -253,8 +285,9 @@ export async function POST(request) {
 
       if (recordType === 'viral_research') validation = validateViralRecord(record);
       if (recordType === 'lead_prospect') validation = validateLeadProspectRecord(record);
-      if (!['viral_research', 'lead_prospect'].includes(recordType)) {
-        validation = { valid: false, errors: ['recordType must be viral_research or lead_prospect'] };
+      if (recordType === 'prospect_opportunity') validation = validateProspectOpportunityRecord(record);
+      if (!['viral_research', 'lead_prospect', 'prospect_opportunity'].includes(recordType)) {
+        validation = { valid: false, errors: ['recordType must be viral_research, lead_prospect, or prospect_opportunity'] };
       }
 
       if (!validation.valid) {
@@ -277,10 +310,12 @@ export async function POST(request) {
 
       if (recordType === 'viral_research') acceptedViralRecords.push({ index, record });
       if (recordType === 'lead_prospect') acceptedLeadRecords.push({ index, record });
+      if (recordType === 'prospect_opportunity') acceptedOpportunityRecords.push({ index, record });
     });
 
     const viralResults = acceptedViralRecords.length ? upsertImportedVideos(acceptedViralRecords.map((item) => item.record)) : [];
     const leadResults = acceptedLeadRecords.length ? upsertLeadProspects(acceptedLeadRecords.map((item) => item.record)) : [];
+    const opportunityResults = acceptedOpportunityRecords.length ? upsertOpportunities(acceptedOpportunityRecords.map((item) => item.record)) : [];
 
     viralResults.forEach(({ video, created }, resultIndex) => {
       const sourceIndex = acceptedViralRecords[resultIndex]?.index ?? resultIndex;
@@ -318,6 +353,24 @@ export async function POST(request) {
       });
     });
 
+    opportunityResults.forEach(({ opportunity, created }, resultIndex) => {
+      const sourceIndex = acceptedOpportunityRecords[resultIndex]?.index ?? resultIndex;
+      emitEvent(
+        created ? 'cloudflare.opportunity.created' : 'cloudflare.opportunity.updated',
+        'prospect_opportunity',
+        opportunity.id,
+        { title: opportunity.title, sourceUrl: opportunity.sourceUrl },
+        { source_system: 'cloudflare_ingest' }
+      );
+      perRecordResults.push({
+        index: sourceIndex,
+        recordType: 'prospect_opportunity',
+        status: created ? 'created' : 'updated',
+        id: opportunity.id,
+        url: opportunity.sourceUrl,
+      });
+    });
+
     return Response.json({
       success: true,
       received: records.length,
@@ -330,6 +383,11 @@ export async function POST(request) {
         received: acceptedLeadRecords.length,
         created: leadResults.filter((item) => item.created).length,
         updated: leadResults.filter((item) => !item.created).length,
+      },
+      prospectOpportunities: {
+        received: acceptedOpportunityRecords.length,
+        created: opportunityResults.filter((item) => item.created).length,
+        updated: opportunityResults.filter((item) => !item.created).length,
       },
       rejected: rejectedRecords.length,
       perRecordResults: perRecordResults.sort((a, b) => a.index - b.index),

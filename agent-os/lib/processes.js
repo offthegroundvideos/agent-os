@@ -5,6 +5,7 @@ import { queueWorkingMemoryRefresh } from './workingMemory.js';
 const PROCESSES_FILE = path.join(process.cwd(), 'data', 'processes.json');
 const STALE_RUNNING_MS = 1000 * 60 * 90;
 const STALE_STOPPING_MS = 1000 * 60 * 15;
+const MAX_PROCESS_HISTORY = 200;
 
 function ensureFile() {
   const dir = path.dirname(PROCESSES_FILE);
@@ -50,8 +51,8 @@ export function clearStaleProcesses() {
     return p;
   });
 
-  // Keep only last 20 processes
-  data.processes = data.processes.slice(-20);
+  // Keep a longer history so the app can inspect prior runs without losing provenance.
+  data.processes = data.processes.slice(-MAX_PROCESS_HISTORY);
   fs.writeFileSync(PROCESSES_FILE, JSON.stringify(data, null, 2));
   queueWorkingMemoryRefresh('processes-cleared-stale');
 }
@@ -63,9 +64,7 @@ export function registerProcess(id, type, description, meta = {}) {
   catch { data = { processes: [] }; }
   data = normalizeProcesses(data);
 
-  data.processes = data.processes.filter(p =>
-    p.status === 'running' || p.status === 'stopping'
-  );
+  data.processes = data.processes.filter(p => p.id !== id);
 
   data.processes.push({
     id, type, description,
@@ -74,6 +73,8 @@ export function registerProcess(id, type, description, meta = {}) {
     stoppedAt: null,
     ...meta,
   });
+
+  data.processes = data.processes.slice(-MAX_PROCESS_HISTORY);
 
   fs.writeFileSync(PROCESSES_FILE, JSON.stringify(data, null, 2));
   queueWorkingMemoryRefresh('process-registered');
