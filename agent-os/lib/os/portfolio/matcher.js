@@ -1,7 +1,9 @@
 // lib/os/portfolio/matcher.js
 // Picks the 2-3 pieces most likely to make a prospect reply: same lane first, then style, then place, then recency.
 const YEAR_MS = 365 * 24 * 3600 * 1000;
-const STOP_WORDS = new Set(['the', 'and', 'county', 'california', 'valley', 'usa', 'french']);
+const STOP_WORDS = new Set(['the', 'and', 'county', 'california', 'valley', 'usa', 'french',
+  'san', 'santa', 'los', 'las', 'lake', 'bay', 'beach', 'north', 'south', 'east', 'west', 'new', 'city', 'island', 'islands',
+  'port', 'palm', 'mount', 'saint', 'area', 'coast']);
 
 function places(text) {
   return new Set(String(text ?? '').toLowerCase().split(/[^a-z]+/).filter((word) => word.length > 2 && !STOP_WORDS.has(word)));

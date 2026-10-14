@@ -14,18 +14,22 @@ export function createPortfolioStore({ db }, { now = () => new Date() } = {}) {
     return toItem(db.prepare('SELECT * FROM portfolio_items WHERE id = ?').get(Number(id)));
   }
 
-  function upsert(item) {
+  function upsert(item = {}) {
+    const url = String(item.url ?? '').trim();
+    const source = String(item.source ?? '').trim();
+    if (!url || !source) throw new Error('Portfolio items need a url and a source.');
     const time = stamp();
-    const existing = db.prepare('SELECT * FROM portfolio_items WHERE url = ?').get(item.url);
+    const existing = db.prepare('SELECT * FROM portfolio_items WHERE url = ?').get(url);
     if (existing) {
-      db.prepare('UPDATE portfolio_items SET title = ?, description = ?, thumbnail_url = ?, published_at = ?, updated_at = ? WHERE id = ?')
-        .run(item.title || existing.title, item.description ?? existing.description, item.thumbnailUrl || existing.thumbnail_url,
-          item.publishedAt || existing.published_at, time, existing.id);
+      // A re-import with empty fields never blanks text we already have.
+      db.prepare('UPDATE portfolio_items SET title = ?, description = ?, thumbnail_url = ?, deliverable_type = ?, published_at = ?, updated_at = ? WHERE id = ?')
+        .run(item.title || existing.title, item.description || existing.description, item.thumbnailUrl || existing.thumbnail_url,
+          item.deliverableType || existing.deliverable_type, item.publishedAt || existing.published_at, time, existing.id);
       return { item: get(existing.id), created: false };
     }
     const info = db.prepare(`INSERT INTO portfolio_items (source, url, title, description, thumbnail_url, deliverable_type, published_at, created_at, updated_at)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`)
-      .run(item.source, item.url, item.title || item.url, item.description ?? '', item.thumbnailUrl ?? '', item.deliverableType ?? '',
+      .run(source, url, item.title || url, item.description ?? '', item.thumbnailUrl ?? '', item.deliverableType ?? '',
         item.publishedAt ?? '', time, time);
     return { item: get(Number(info.lastInsertRowid)), created: true };
   }
@@ -44,13 +48,18 @@ export function createPortfolioStore({ db }, { now = () => new Date() } = {}) {
     const current = get(id);
     if (!current) throw new Error(`No portfolio item ${id}.`);
     if (current.tagsConfirmed && !confirmed) return current;
+    // Suggestions never erase with blanks; the owner (confirmed) may blank a field on purpose.
+    const pick = (next, old) => (confirmed ? (next ?? old) : (next || old));
+    const norm = (value) => (value == null ? value : String(value).trim().toLowerCase());
     db.prepare(`UPDATE portfolio_items SET lane = ?, style = ?, location = ?, deliverable_type = ?, tags_confirmed = ?, updated_at = ? WHERE id = ?`)
-      .run(lane ?? current.lane, style ?? current.style, location ?? current.location, deliverableType ?? current.deliverableType,
+      .run(pick(norm(lane), current.lane), pick(norm(style), current.style), pick(location, current.location),
+        pick(deliverableType, current.deliverableType),
         confirmed || current.tagsConfirmed ? 1 : 0, stamp(), current.id);
     return get(current.id);
   }
 
   function setActive(id, active) {
+    if (!get(id)) throw new Error(`No portfolio item ${id}.`);
     db.prepare('UPDATE portfolio_items SET active = ?, updated_at = ? WHERE id = ?').run(active ? 1 : 0, stamp(), Number(id));
     return get(id);
   }
