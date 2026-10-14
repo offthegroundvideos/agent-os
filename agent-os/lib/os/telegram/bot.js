@@ -4,16 +4,23 @@ import { approvalText, LEVEL_LABELS, REJECT_REASONS, rejectReasonKeyboard, trunc
 export const HELP_TEXT = [
   'OTG-OS commands:',
   '/status – running or paused, approvals waiting, failures',
-  '/approvals – show everything waiting for you',
+  '/approvals – show everything waiting for approval',
   '/budget – AI and data spend this month',
   '/pause – stop all outgoing actions now',
   '/resume – start again',
   '/cancel – cancel an edit in progress',
+  '/team – who can use this bot',
+  '/remove <name> – take someone off the team (owner only)',
   'Anything else you type is a question for OTG-OS.',
 ].join('\n');
 
-export function createTelegramBot({ api, ownerId, settings, ledger, registry, gate, budget, chat, log = console.error }) {
+function displayName(from) {
+  return String(from.first_name || from.username || `user ${from.id}`).trim();
+}
+
+export function createTelegramBot({ api, team, settings, ledger, registry, gate, budget, chat, log = console.error }) {
   const send = (chatId, text, keyboard) => api.sendMessage(chatId, truncate(text), keyboard);
+  const owner = () => team.members().find((member) => member.role === 'owner') ?? null;
 
   async function safeEdit(chatId, messageId, text) {
     if (!messageId) return;
@@ -22,6 +29,25 @@ export function createTelegramBot({ api, ownerId, settings, ledger, registry, ga
     } catch (error) {
       log(`Telegram edit failed: ${error.message}`);
     }
+  }
+
+  // Every member got their own copy of an approval; keep them all in step. Approvals sent before
+  // copies were tracked fall back to the message whose button was pressed.
+  async function editCopies(actionId, text, fallback) {
+    const copies = ledger.telegramMessages(actionId);
+    if (!copies.length && fallback) return safeEdit(fallback.chatId, fallback.messageId, text);
+    for (const copy of copies) await safeEdit(copy.chatId, copy.messageId, text);
+  }
+
+  function pendingEdits() {
+    return settings.get('telegram.pending_edits');
+  }
+
+  function setPendingEdit(userId, actionId) {
+    const edits = pendingEdits();
+    if (actionId) edits[String(userId)] = actionId;
+    else delete edits[String(userId)];
+    settings.set('telegram.pending_edits', edits);
   }
 
   function statusText() {
@@ -44,14 +70,66 @@ export function createTelegramBot({ api, ownerId, settings, ledger, registry, ga
     ].join('\n');
   }
 
-  async function handleCallback(query) {
-    const chatId = query.message?.chat?.id ?? ownerId;
+  function teamText() {
+    const lines = ['Team:', ...team.members().map((member) => `• ${member.name} (${member.role})`)];
+    const waiting = team.pendingRequests();
+    if (waiting.length) lines.push(`Waiting for access: ${waiting.map((request) => request.name).join(', ')}`);
+    return lines.join('\n');
+  }
+
+  async function handleStranger(update, from) {
+    if (update.callback_query) {
+      await api.answerCallbackQuery(update.callback_query.id, "You don't have access to OTG-OS.");
+      return;
+    }
+    const chatId = update.message.chat.id;
+    const name = displayName(from);
+    const { status } = team.requestAccess({ id: from.id, name });
+    const boss = owner();
+    if (status === 'requested') {
+      await send(chatId, `I've asked ${boss.name} to let you in. You'll get a message here once that happens.`);
+      const handle = from.username ? ` (@${from.username})` : '';
+      await send(boss.id, `👤 ${name}${handle} wants access to OTG-OS (Telegram ID ${from.id}). They'd get the same approval rights you have.`, {
+        inline_keyboard: [[
+          { text: '✅ Let them in', callback_data: `ta:${from.id}` },
+          { text: '🚫 Decline', callback_data: `td:${from.id}` },
+        ]],
+      });
+      return;
+    }
+    if (status === 'already_requested') {
+      await send(chatId, `Still waiting for ${boss.name} to let you in.`);
+      return;
+    }
+    log(`Ignored Telegram message from ${from.id}: ${status}`);
+  }
+
+  async function handleCallback(query, member) {
+    const chatId = query.message?.chat?.id ?? member.id;
     const messageId = query.message?.message_id;
+    const pressed = { chatId, messageId };
     const [kind, target, extra] = String(query.data ?? '').split(':');
     try {
+      if (kind === 'ta' || kind === 'td') {
+        if (!team.isOwner(member.id)) {
+          await api.answerCallbackQuery(query.id, `Only ${owner().name} can let people in.`);
+          return;
+        }
+        if (kind === 'ta') {
+          const added = team.approveRequest(Number(target));
+          await safeEdit(chatId, messageId, `✅ ${added.name} is in, with the same approval rights as you. /remove ${added.name} takes them off.`);
+          await send(added.id, `You're in. ${member.name} added you to OTG-OS.\n\n${HELP_TEXT}`);
+          await api.answerCallbackQuery(query.id, 'Added');
+        } else {
+          const declined = team.denyRequest(Number(target));
+          await safeEdit(chatId, messageId, `🚫 Declined ${declined.name}.`);
+          await api.answerCallbackQuery(query.id, 'Declined');
+        }
+        return;
+      }
       if (kind === 'a') {
-        await registry.approve(target);
-        await safeEdit(chatId, messageId, `${query.message?.text ?? ''}\n\n✅ Approved. It runs within a minute.`);
+        const action = await registry.approve(target, { by: member.name });
+        await editCopies(target, `${approvalText(action, registry.describe(action))}\n\n✅ Approved by ${member.name}. It runs within a minute.`, pressed);
         await api.answerCallbackQuery(query.id, 'Approved');
         return;
       }
@@ -64,21 +142,21 @@ export function createTelegramBot({ api, ownerId, settings, ledger, registry, ga
         const action = await registry.reject(target, { reason: extra });
         const label = REJECT_REASONS[extra] ?? 'Other';
         await safeEdit(chatId, messageId, `❌ Rejected (${label}).`);
-        await safeEdit(chatId, action.telegramMessageId, `${approvalText(action, registry.describe(action))}\n\n❌ Rejected (${label}).`);
+        await editCopies(target, `${approvalText(action, registry.describe(action))}\n\n❌ Rejected by ${member.name} (${label}).`);
         await api.answerCallbackQuery(query.id, 'Rejected');
         return;
       }
       if (kind === 'e') {
         const action = ledger.get(target);
         if (!action || action.status !== 'proposed') throw new Error('That action is no longer waiting for approval.');
-        settings.set('telegram.pending_edit_action_id', target);
+        setPendingEdit(member.id, target);
         await send(chatId, 'Send the new text for this draft, or /cancel.');
         await api.answerCallbackQuery(query.id);
         return;
       }
       if (kind === 'p') {
         const policy = gate.promote(target);
-        await safeEdit(chatId, messageId, `⬆️ ${target} now runs at ${LEVEL_LABELS[policy.level]}.`);
+        await safeEdit(chatId, messageId, `⬆️ ${target} now runs at ${LEVEL_LABELS[policy.level]} (${member.name}).`);
         await api.answerCallbackQuery(query.id, 'Promoted');
         return;
       }
@@ -94,17 +172,17 @@ export function createTelegramBot({ api, ownerId, settings, ledger, registry, ga
     }
   }
 
-  async function handleMessage(message) {
+  async function handleMessage(message, member) {
     const chatId = message.chat.id;
     const text = String(message.text ?? '').trim();
     if (!text) return;
-    const command = text.startsWith('/') ? text.split(/\s+/)[0].toLowerCase().replace(/@.*$/, '') : '';
-    const pendingEdit = settings.get('telegram.pending_edit_action_id');
+    const [first, ...rest] = text.split(/\s+/);
+    const command = text.startsWith('/') ? first.toLowerCase().replace(/@.*$/, '') : '';
+    const pendingEdit = pendingEdits()[String(member.id)];
 
     if (pendingEdit && !command) {
-      settings.set('telegram.pending_edit_action_id', '');
-      const before = ledger.get(pendingEdit);
-      await safeEdit(chatId, before?.telegramMessageId, '✏️ Edited. The new version is below.');
+      setPendingEdit(member.id, null);
+      await editCopies(pendingEdit, `✏️ Edited by ${member.name}. The new version is below.`);
       await registry.revise(pendingEdit, text);
       return;
     }
@@ -120,10 +198,32 @@ export function createTelegramBot({ api, ownerId, settings, ledger, registry, ga
       case '/budget':
         await send(chatId, budgetText());
         return;
+      case '/team':
+        await send(chatId, teamText());
+        return;
+      case '/remove': {
+        if (!team.isOwner(member.id)) {
+          await send(chatId, `Only ${owner().name} can remove people.`);
+          return;
+        }
+        try {
+          const removed = team.removeMember(rest.join(' '));
+          setPendingEdit(removed.id, null);
+          await send(chatId, `${removed.name} is off the team.`);
+          try {
+            await send(removed.id, 'Your OTG-OS access was removed.');
+          } catch (error) {
+            log(`Could not tell ${removed.name} they were removed: ${error.message}`);
+          }
+        } catch (error) {
+          await send(chatId, error.message);
+        }
+        return;
+      }
       case '/approvals': {
         const waiting = ledger.list({ status: 'proposed', limit: 20 }).reverse();
         if (!waiting.length) {
-          await send(chatId, 'Nothing is waiting for you.');
+          await send(chatId, 'Nothing is waiting for approval.');
           return;
         }
         for (const action of waiting) await registry.presentApproval(action);
@@ -131,14 +231,14 @@ export function createTelegramBot({ api, ownerId, settings, ledger, registry, ga
       }
       case '/pause':
         settings.set('os.paused', true);
-        await send(chatId, '⏸ Paused. Nothing outgoing will run until /resume.');
+        await send(chatId, `⏸ Paused by ${member.name}. Nothing outgoing will run until /resume.`);
         return;
       case '/resume':
         settings.set('os.paused', false);
-        await send(chatId, '▶️ Running again.');
+        await send(chatId, `▶️ Running again (${member.name}).`);
         return;
       case '/cancel':
-        settings.set('telegram.pending_edit_action_id', '');
+        setPendingEdit(member.id, null);
         await send(chatId, 'Edit cancelled.');
         return;
       case '':
@@ -158,18 +258,16 @@ export function createTelegramBot({ api, ownerId, settings, ledger, registry, ga
   async function handleUpdate(update) {
     const from = update.message?.from ?? update.callback_query?.from;
     if (!from) return;
-    if (!ownerId) {
+    if (!owner()) {
       if (update.message) {
         await send(update.message.chat.id, `Your Telegram user ID is ${from.id}. Add TELEGRAM_OWNER_ID=${from.id} to .env.local and restart the OTG-OS worker.`);
       }
       return;
     }
-    if (from.id !== ownerId) {
-      log(`Ignored Telegram update from user ${from.id}`);
-      return;
-    }
-    if (update.callback_query) return handleCallback(update.callback_query);
-    if (update.message) return handleMessage(update.message);
+    const member = team.get(from.id);
+    if (!member) return handleStranger(update, from);
+    if (update.callback_query) return handleCallback(update.callback_query, member);
+    if (update.message) return handleMessage(update.message, member);
   }
 
   async function pollOnce(timeoutSeconds = 25) {

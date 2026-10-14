@@ -15,6 +15,7 @@ import { demoTool } from './tools/demo.js';
 import { createTelegramApi } from './telegram/api.js';
 import { createConsoleNotifier, createTelegramNotifier } from './telegram/notifier.js';
 import { createTelegramBot } from './telegram/bot.js';
+import { createTeam } from './team.js';
 import { createChat } from './brain/chat.js';
 import { createHeartbeat } from './heartbeat.js';
 import { createBackup } from './backup.js';
@@ -53,18 +54,19 @@ export function createOsRuntime({
 
   const ownerId = Number(env.TELEGRAM_OWNER_ID) || null;
   const api = env.TELEGRAM_BOT_TOKEN ? createTelegramApi({ token: env.TELEGRAM_BOT_TOKEN, fetchImpl }) : null;
-  const notifier = api && ownerId ? createTelegramNotifier({ api, ownerId }) : createConsoleNotifier(log);
+  const team = createTeam({ settings, ownerId, ownerName: env.TELEGRAM_OWNER_NAME || 'Jack' });
+  const notifier = api && ownerId ? createTelegramNotifier({ api, team, log }) : createConsoleNotifier(log);
 
   const registry = createRegistry({ ledger, gate, settings, notifier, now });
   registry.register(demoTool);
 
   const chat = createChat({ router, ledger, budget, gate, settings, liveSearch });
-  const bot = api ? createTelegramBot({ api, ownerId, settings, ledger, registry, gate, budget, chat, log }) : null;
+  const bot = api ? createTelegramBot({ api, team, settings, ledger, registry, gate, budget, chat, log }) : null;
   const heartbeat = createHeartbeat({ url: env.HEALTHCHECKS_PING_URL || '', fetchImpl });
   const backup = createBackup({ osDb, dir: env.OTG_OS_BACKUP_DIR || path.join(cwd, 'data', 'backups', 'otg-os'), now });
 
   return {
-    osDb, settings, ledger, budget, gate, router, providers, liveSearch, registry, notifier, chat, bot, heartbeat, backup,
+    osDb, settings, ledger, budget, gate, router, providers, liveSearch, registry, notifier, team, chat, bot, heartbeat, backup,
     close: () => osDb.close(),
   };
 }

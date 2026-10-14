@@ -1,11 +1,22 @@
 import { approvalKeyboard, approvalText, LEVEL_LABELS, promotionKeyboard, truncate } from './format.js';
 
-export function createTelegramNotifier({ api, ownerId }) {
-  const send = (text, keyboard) => api.sendMessage(ownerId, truncate(text), keyboard);
+// Sends to every team member. One person's failed send (blocked bot, deleted chat) must not stop
+// the others; it only throws when nobody could be reached.
+export function createTelegramNotifier({ api, team, log = console.error }) {
+  async function send(text, keyboard) {
+    const members = team.members();
+    const results = await Promise.allSettled(members.map((member) => api.sendMessage(member.id, truncate(text), keyboard)));
+    const copies = [];
+    results.forEach((result, index) => {
+      if (result.status === 'fulfilled') copies.push({ chatId: members[index].id, messageId: result.value.message_id });
+      else log(`Telegram send to ${members[index].name} failed: ${result.reason?.message ?? result.reason}`);
+    });
+    if (members.length && !copies.length) throw results[0].reason;
+    return copies;
+  }
   return {
     async requestApproval(action, description) {
-      const message = await send(approvalText(action, description), approvalKeyboard(action.id));
-      return message.message_id;
+      return send(approvalText(action, description), approvalKeyboard(action.id));
     },
     async tell(action, description) {
       await send(`✅ Done · ${action.actionType}\n\n${description}`);

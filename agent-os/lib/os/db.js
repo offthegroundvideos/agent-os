@@ -63,6 +63,18 @@ const MIGRATIONS = [
       CREATE INDEX spend_by_time ON spend (created_at);
     `,
   },
+  {
+    // Each approval goes to every team member, so one action can have several Telegram copies.
+    id: 2,
+    sql: `
+      CREATE TABLE telegram_messages (
+        action_id TEXT NOT NULL REFERENCES actions (id),
+        chat_id INTEGER NOT NULL,
+        message_id INTEGER NOT NULL,
+        PRIMARY KEY (action_id, chat_id, message_id)
+      );
+    `,
+  },
 ];
 
 export function openOsDb(file) {

@@ -53,15 +53,27 @@ test('truncate keeps messages under the limit', () => {
   assert.equal(truncate('short'), 'short');
 });
 
-test('telegram notifier sends approvals with buttons and returns the message id', async () => {
+const fakeTeam = (...ids) => ({ members: () => ids.map((id) => ({ id, name: `user${id}` })) });
+
+test('telegram notifier sends approvals with buttons and returns every copy', async () => {
   const sent = [];
   const api = { async sendMessage(chatId, text, keyboard) { sent.push({ chatId, text, keyboard }); return { message_id: 99 }; } };
-  const notifier = createTelegramNotifier({ api, ownerId: 42 });
-  assert.equal(await notifier.requestApproval(action, 'Follow up'), 99);
+  const notifier = createTelegramNotifier({ api, team: fakeTeam(42) });
+  assert.deepEqual(await notifier.requestApproval(action, 'Follow up'), [{ chatId: 42, messageId: 99 }]);
   assert.equal(sent[0].chatId, 42);
   assert.equal(sent[0].keyboard.inline_keyboard[0].length, 3);
   await notifier.offerPromotion({ actionType: 'email.follow_up', from: 'ask', to: 'tell' });
   assert.match(sent[1].text, /from Ask to Tell/);
+});
+
+test('one member failing does not stop the others, but everyone failing throws', async () => {
+  const api = { async sendMessage(chatId) { if (chatId === 7) throw new Error('blocked'); return { message_id: chatId * 10 }; } };
+  const lines = [];
+  const notifier = createTelegramNotifier({ api, team: fakeTeam(42, 7), log: (line) => lines.push(line) });
+  assert.deepEqual(await notifier.requestApproval(action, 'Follow up'), [{ chatId: 42, messageId: 420 }]);
+  assert.match(lines[0], /user7 failed: blocked/);
+  const broken = createTelegramNotifier({ api, team: fakeTeam(7), log: () => {} });
+  await assert.rejects(broken.alert('x'), /blocked/);
 });
 
 test('console notifier logs and returns no message id', async () => {

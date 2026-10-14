@@ -108,6 +108,7 @@ export function createLedger({ db, transaction }, { now = () => new Date() } = {
       requireStatus(id, ['proposed']);
       db.prepare('UPDATE actions SET payload = ?, telegram_message_id = NULL, updated_at = ? WHERE id = ?')
         .run(JSON.stringify(payload), stamp(), id);
+      db.prepare('DELETE FROM telegram_messages WHERE action_id = ?').run(id);
       return get(id);
     });
   }
@@ -158,6 +159,20 @@ export function createLedger({ db, transaction }, { now = () => new Date() } = {
     db.prepare('UPDATE actions SET telegram_message_id = ? WHERE id = ?').run(messageId, id);
   }
 
+  function addTelegramMessages(id, copies) {
+    if (!copies.length) return;
+    transaction(() => {
+      const insert = db.prepare('INSERT OR IGNORE INTO telegram_messages (action_id, chat_id, message_id) VALUES (?, ?, ?)');
+      for (const copy of copies) insert.run(id, copy.chatId, copy.messageId);
+      db.prepare('UPDATE actions SET telegram_message_id = ? WHERE id = ?').run(copies[0].messageId, id);
+    });
+  }
+
+  function telegramMessages(id) {
+    return db.prepare('SELECT chat_id, message_id FROM telegram_messages WHERE action_id = ? ORDER BY rowid').all(id)
+      .map((row) => ({ chatId: row.chat_id, messageId: row.message_id }));
+  }
+
   function list({ status = null, limit = 20 } = {}) {
     const rows = status
       ? db.prepare('SELECT * FROM actions WHERE status = ? ORDER BY created_at DESC, id DESC LIMIT ?').all(status, limit)
@@ -172,6 +187,6 @@ export function createLedger({ db, transaction }, { now = () => new Date() } = {
 
   return {
     get, propose, approve, reject, revise, claimNextDue, markDone, markFailed,
-    recoverInterrupted, addCost, setTelegramMessage, list, pendingUnsent,
+    recoverInterrupted, addCost, setTelegramMessage, addTelegramMessages, telegramMessages, list, pendingUnsent,
   };
 }

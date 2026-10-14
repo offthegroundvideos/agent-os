@@ -25,8 +25,9 @@ export function createRegistry({ ledger, gate, settings, notifier, now = () => n
   }
 
   async function presentApproval(action) {
-    const messageId = await notifier.requestApproval(action, describe(action));
-    if (messageId != null) ledger.setTelegramMessage(action.id, messageId);
+    const sent = await notifier.requestApproval(action, describe(action));
+    if (Array.isArray(sent)) ledger.addTelegramMessages(action.id, sent);
+    else if (sent != null) ledger.setTelegramMessage(action.id, sent);
   }
 
   async function request({ tool: name, payload = {}, why, idempotencyKey, opportunityId = null, urgent = false }) {

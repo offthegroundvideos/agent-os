@@ -7,8 +7,12 @@ import { createBudget } from '../lib/os/budget.js';
 import { createApprovalGate } from '../lib/os/approvalGate.js';
 import { createRegistry } from '../lib/os/registry.js';
 import { demoTool } from '../lib/os/tools/demo.js';
+import { createTeam } from '../lib/os/team.js';
 import { createTelegramNotifier } from '../lib/os/telegram/notifier.js';
 import { createTelegramBot } from '../lib/os/telegram/bot.js';
+
+const JACK = 42;
+const SWOPE = 7;
 
 function fakeApi() {
   let nextId = 100;
@@ -24,84 +28,133 @@ function fakeApi() {
   };
 }
 
-function setup({ ownerId = 42 } = {}) {
+function setup({ ownerId = JACK } = {}) {
   const osDb = openOsDb(':memory:');
   const settings = createSettings(osDb);
   const ledger = createLedger(osDb);
   const gate = createApprovalGate(osDb);
   const budget = createBudget(osDb, settings);
   const api = fakeApi();
-  const notifier = createTelegramNotifier({ api, ownerId: 42 });
+  const team = createTeam({ settings, ownerId, ownerName: 'Jack' });
+  const notifier = createTelegramNotifier({ api, team });
   const registry = createRegistry({ ledger, gate, settings, notifier });
   registry.register(demoTool);
   const questions = [];
   const chat = { async ask(question) { questions.push(question); return `answer: ${question}`; } };
-  const bot = createTelegramBot({ api, ownerId, settings, ledger, registry, gate, budget, chat, log: () => {} });
-  return { osDb, settings, ledger, gate, api, registry, bot, questions };
+  const bot = createTelegramBot({ api, team, settings, ledger, registry, gate, budget, chat, log: () => {} });
+  return { osDb, settings, ledger, gate, api, team, registry, bot, questions };
 }
 
-const fromOwner = (text, updateId = 1) => ({ update_id: updateId, message: { message_id: 1, from: { id: 42 }, chat: { id: 42 }, text } });
-const press = (data, messageId = 500) => ({
+const message = (from, text, updateId = 1) => ({ update_id: updateId, message: { message_id: 1, from: { id: from, first_name: from === SWOPE ? 'Swope' : 'Someone' }, chat: { id: from }, text } });
+const fromOwner = (text, updateId = 1) => message(JACK, text, updateId);
+const press = (data, { from = JACK, messageId = 500 } = {}) => ({
   update_id: 2,
-  callback_query: { id: 'cb1', from: { id: 42 }, data, message: { message_id: messageId, chat: { id: 42 }, text: 'approval text' } },
+  callback_query: { id: 'cb1', from: { id: from }, data, message: { message_id: messageId, chat: { id: from }, text: 'approval text' } },
 });
 const propose = (registry, key = 'k1') => registry.request({
   tool: 'system.demo', payload: { draft: 'Hello there' }, why: { goal: 'Test', expected: 'Approved' }, idempotencyKey: key, urgent: true,
 });
 
-test('messages from anyone but the owner are ignored', async () => {
-  const { osDb, api, bot } = setup();
-  await bot.handleUpdate({ update_id: 1, message: { message_id: 1, from: { id: 999 }, chat: { id: 999 }, text: '/status' } });
-  assert.equal(api.sent.length, 0);
+async function addSwope(ctx) {
+  await ctx.bot.handleUpdate(message(SWOPE, '/start'));
+  await ctx.bot.handleUpdate(press(`ta:${SWOPE}`));
+}
+
+test('a stranger gets an access request, and only the owner is asked', async () => {
+  const { osDb, api, bot, team } = setup();
+  await bot.handleUpdate(message(SWOPE, '/status'));
+  assert.equal(api.sent[0].chatId, SWOPE);
+  assert.match(api.sent[0].text, /asked Jack/);
+  assert.equal(api.sent[1].chatId, JACK);
+  assert.match(api.sent[1].text, /Swope.*wants access/);
+  assert.deepEqual(api.sent[1].keyboard.inline_keyboard[0].map((button) => button.callback_data), [`ta:${SWOPE}`, `td:${SWOPE}`]);
+  assert.equal(api.sent.some((sent) => /Approvals waiting/.test(sent.text)), false);
+  assert.deepEqual(team.pendingRequests().map((request) => request.id), [SWOPE]);
   osDb.close();
+});
+
+test('the owner approving a request adds an admin and welcomes them', async () => {
+  const ctx = setup();
+  await addSwope(ctx);
+  assert.deepEqual(ctx.team.get(SWOPE), { id: SWOPE, name: 'Swope', role: 'admin' });
+  assert.equal(ctx.api.sent.at(-1).chatId, SWOPE);
+  assert.match(ctx.api.sent.at(-1).text, /You're in/);
+  ctx.osDb.close();
+});
+
+test('only the owner can approve access requests', async () => {
+  const ctx = setup();
+  await addSwope(ctx);
+  await ctx.bot.handleUpdate(message(99, '/start'));
+  await ctx.bot.handleUpdate(press('ta:99', { from: SWOPE }));
+  assert.equal(ctx.team.isMember(99), false);
+  assert.match(ctx.api.answers.at(-1).text, /Only Jack/);
+  ctx.osDb.close();
 });
 
 test('without an owner ID the bot tells the sender their ID', async () => {
   const { osDb, api, bot } = setup({ ownerId: null });
-  await bot.handleUpdate({ update_id: 1, message: { message_id: 1, from: { id: 777 }, chat: { id: 777 }, text: '/start' } });
+  await bot.handleUpdate(message(777, '/start'));
   assert.equal(api.sent[0].chatId, 777);
   assert.match(api.sent[0].text, /TELEGRAM_OWNER_ID=777/);
   osDb.close();
 });
 
-test('the approve button approves and marks the message', async () => {
+test('approvals go to every member and whoever approves is recorded on all copies', async () => {
+  const ctx = setup();
+  await addSwope(ctx);
+  const action = await propose(ctx.registry);
+  const copies = ctx.ledger.telegramMessages(action.id);
+  assert.deepEqual(copies.map((copy) => copy.chatId).sort(), [SWOPE, JACK].sort());
+  await ctx.bot.handleUpdate(press(`a:${action.id}`, { from: SWOPE }));
+  assert.equal(ctx.ledger.get(action.id).status, 'approved');
+  assert.equal(ctx.ledger.get(action.id).approvedBy, 'Swope');
+  const edited = ctx.api.edits.filter((edit) => /Approved by Swope/.test(edit.text)).map((edit) => edit.messageId).sort();
+  assert.deepEqual(edited, copies.map((copy) => copy.messageId).sort());
+  ctx.osDb.close();
+});
+
+test('the approve button works for the owner and rejects a second press', async () => {
   const { osDb, api, bot, ledger, registry } = setup();
   const action = await propose(registry);
   await bot.handleUpdate(press(`a:${action.id}`));
-  assert.equal(ledger.get(action.id).status, 'approved');
-  assert.match(api.edits[0].text, /Approved/);
+  assert.equal(ledger.get(action.id).approvedBy, 'Jack');
   assert.equal(api.answers[0].text, 'Approved');
   await bot.handleUpdate(press(`a:${action.id}`));
   assert.match(api.answers[1].text, /expected proposed/);
   osDb.close();
 });
 
-test('the reject button asks why, then records the reason', async () => {
+test('the reject button asks why, then records the reason on every copy', async () => {
   const { osDb, api, bot, ledger, registry } = setup();
   const action = await propose(registry);
-  const approvalMessageId = ledger.get(action.id).telegramMessageId;
+  const [copy] = ledger.telegramMessages(action.id);
   await bot.handleUpdate(press(`r:${action.id}`));
   assert.equal(api.sent.at(-1).text, 'Why are you rejecting it?');
-  await bot.handleUpdate(press(`rr:${action.id}:wrong_tone`, 600));
+  await bot.handleUpdate(press(`rr:${action.id}:wrong_tone`, { messageId: 600 }));
   const rejected = ledger.get(action.id);
   assert.equal(rejected.status, 'rejected');
   assert.equal(rejected.rejectReason, 'wrong_tone');
   const editedIds = api.edits.map((edit) => edit.messageId);
   assert.ok(editedIds.includes(600));
-  assert.ok(editedIds.includes(approvalMessageId));
+  assert.ok(editedIds.includes(copy.messageId));
+  assert.match(api.edits.find((edit) => edit.messageId === copy.messageId).text, /Rejected by Jack/);
   osDb.close();
 });
 
-test('edit flow: the next message becomes the new draft and is re-sent', async () => {
-  const { osDb, api, bot, ledger, registry, settings } = setup();
-  const action = await propose(registry);
-  await bot.handleUpdate(press(`e:${action.id}`));
-  assert.equal(settings.get('telegram.pending_edit_action_id'), action.id);
-  await bot.handleUpdate(fromOwner('New text please'));
-  assert.equal(settings.get('telegram.pending_edit_action_id'), '');
-  assert.equal(ledger.get(action.id).payload.draft, 'New text please');
-  assert.match(api.sent.at(-1).text, /New text please/);
-  osDb.close();
+test('edit flow is tracked per person', async () => {
+  const ctx = setup();
+  await addSwope(ctx);
+  const action = await propose(ctx.registry);
+  await ctx.bot.handleUpdate(press(`e:${action.id}`, { from: SWOPE }));
+  assert.equal(ctx.settings.get('telegram.pending_edits')[String(SWOPE)], action.id);
+  await ctx.bot.handleUpdate(fromOwner('What is booked this week?'));
+  assert.deepEqual(ctx.questions, ['What is booked this week?']);
+  await ctx.bot.handleUpdate(message(SWOPE, 'New text please'));
+  assert.equal(ctx.settings.get('telegram.pending_edits')[String(SWOPE)], undefined);
+  assert.equal(ctx.ledger.get(action.id).payload.draft, 'New text please');
+  assert.match(ctx.api.sent.at(-1).text, /New text please/);
+  ctx.osDb.close();
 });
 
 test('pause and resume toggle the pause flag', async () => {
@@ -124,6 +177,19 @@ test('budget and status commands report spend and waiting approvals', async () =
   osDb.close();
 });
 
+test('team command lists members and the owner can remove an admin', async () => {
+  const ctx = setup();
+  await addSwope(ctx);
+  await ctx.bot.handleUpdate(fromOwner('/team'));
+  assert.match(ctx.api.sent.at(-1).text, /Jack \(owner\)/);
+  assert.match(ctx.api.sent.at(-1).text, /Swope \(admin\)/);
+  await ctx.bot.handleUpdate(message(SWOPE, '/remove Jack'));
+  assert.match(ctx.api.sent.at(-1).text, /Only Jack/);
+  await ctx.bot.handleUpdate(fromOwner('/remove Swope'));
+  assert.equal(ctx.team.isMember(SWOPE), false);
+  ctx.osDb.close();
+});
+
 test('approvals command re-sends everything waiting', async () => {
   const { osDb, api, bot, registry } = setup();
   await propose(registry, 'k1');
@@ -134,7 +200,7 @@ test('approvals command re-sends everything waiting', async () => {
   osDb.close();
 });
 
-test('plain text goes to the owner chat', async () => {
+test('plain text goes to the chat', async () => {
   const { osDb, api, bot, questions } = setup();
   await bot.handleUpdate(fromOwner('What is booked this week?'));
   assert.deepEqual(questions, ['What is booked this week?']);
@@ -151,7 +217,7 @@ test('the promote button raises the autonomy level', async () => {
 
 test('pollOnce advances the offset even when an update fails', async () => {
   const { osDb, api, bot, settings } = setup();
-  api.updates = [fromOwner('/status', 10), { update_id: 11, message: { from: { id: 42 }, text: 'no chat field' } }];
+  api.updates = [fromOwner('/status', 10), { update_id: 11, message: { from: { id: JACK }, text: 'no chat field' } }];
   assert.equal(await bot.pollOnce(0), 2);
   assert.equal(settings.get('telegram.update_offset'), 12);
   osDb.close();
