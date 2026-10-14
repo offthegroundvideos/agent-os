@@ -16,6 +16,19 @@ test('ignores brackets inside strings and escaped quotes', () => {
   assert.deepEqual(extractJson('{"t": "say \\"hi\\" }", "n": {"x": 2}}'), { t: 'say "hi" }', n: { x: 2 } });
 });
 
+test('skips stray brackets and non-JSON code fences', () => {
+  assert.deepEqual(extractJson('Format is {name}. Here: {"a":1}'), { a: 1 });
+  assert.deepEqual(extractJson('<think>maybe {x}</think>{"a":1}'), { a: 1 });
+  assert.deepEqual(extractJson('```js\nconst a=1;\n```\nResult: {"a":1}'), { a: 1 });
+  const withFence = '{"body":"x ```js\\ncode\\n``` y","n":1}';
+  assert.deepEqual(extractJson(withFence), JSON.parse(withFence));
+});
+
+test('reports invalid JSON and null input', () => {
+  assert.throws(() => extractJson('{"a":1,}'), /Invalid JSON/);
+  assert.throws(() => extractJson(null), /No JSON/);
+});
+
 test('throws when there is no JSON', () => {
   assert.throws(() => extractJson('no data here'), /No JSON/);
   assert.throws(() => extractJson('{"open": 1'), /Unterminated/);
