@@ -217,7 +217,7 @@ The playbook holds lane targeting rules, pitch guidelines, follow-up cadence, se
 
 ## 8. Data model
 
-Database: `data/otg-os.sqlite`. Money is stored in integer cents. Times are UTC ISO strings; display is Pacific.
+Database: `data/otg-os.sqlite`. Client money (quotes, deposits) is stored in integer cents. AI and data spend is stored in integer micro-dollars (1 = $0.000001), because single model calls cost fractions of a cent. Times are UTC ISO strings; display is Pacific. Budget months and daily tool caps follow the UTC calendar, matching API billing.
 
 | Table | Key fields |
 |---|---|
@@ -226,10 +226,10 @@ Database: `data/otg-os.sqlite`. Money is stored in integer cents. Times are UTC 
 | `contacts` | id, business_id, name, role, email, email_source_url, suppressed |
 | `opportunities` | id, business_id, contact_id, lane, stage, package_id, proposed_date, quote_cents, deposit_cents, stripe_session_id, calendar_event_id, gmail_thread_id, attributed_to_otg_os, version, created_at, updated_at |
 | `stage_events` | id, opportunity_id, from_stage, to_stage, reason, actor, created_at |
-| `actions` (ledger) | id, idempotency_key (unique), action_type, opportunity_id, payload (JSON), why (goal, evidence, expected_result), autonomy_level, status (`proposed` / `approved` / `rejected` / `executing` / `done` / `failed`), approved_by, edit_ratio, cost_cents, result (JSON), outcome (JSON), created_at, executed_at |
+| `actions` (ledger) | id, idempotency_key (unique), action_type, tool, opportunity_id, payload (JSON), original_draft, why (goal, expected, evidence), autonomy_level, status (`proposed` / `approved` / `rejected` / `executing` / `done` / `failed`), urgent, approved_by, reject_reason, edit_ratio, cost_micros, attempts, next_attempt_at, last_error, result (JSON), outcome (JSON), telegram_message_id, created_at, updated_at, executed_at |
 | `autonomy_policies` | action_type, level, ceiling, consecutive_clean_approvals, last_demotion_reason |
 | `suppression` | email_or_domain (unique), reason, created_at |
-| `spend` | id, provider, model_or_tool, task_type, tokens_in, tokens_out, units, cost_cents, action_id, created_at |
+| `spend` | id, provider, model_or_tool, task_type, tokens_in, tokens_out, units, cost_micros, action_id, created_at |
 | `portfolio_items` | id, source, url (unique), title, thumbnail_url, lane, style, location, deliverable_type, published_at, tags_confirmed |
 | `portfolio_sends` | id, opportunity_id, portfolio_item_id, action_id |
 | `playbook_versions` | id, version, content (JSON), reason, evidence, rollback_condition, approved_at, rolled_back_at |
@@ -249,7 +249,7 @@ All writes that touch more than one table run in a transaction. Opportunity upda
 | Failure | Behavior |
 |---|---|
 | Claude unavailable or slow | Drafting falls back per Section 4; decisions wait and retry with backoff; partial messages are never sent |
-| Tool error (Gmail, Calendar, Stripe, Telegram) | Action stays `approved` or `executing`, retried with exponential backoff (1, 5, 15, 60 minutes); after 4 failures the owner is told in Telegram |
+| Tool error (Gmail, Calendar, Stripe, Telegram) | Action returns to `approved` and is retried up to 4 times with backoff (1, 5, 15, then 60 minutes); if the 5th attempt fails it is marked `failed` and the owner is told in Telegram |
 | Expired Google or Stripe credentials | Action pauses; owner gets "Google disconnected — reconnect" with the steps |
 | Retry after a crash mid-send | Idempotency key prevents a second send; Gmail sent-thread check confirms whether the first attempt went out |
 | Calendar conflict at hold or booking | No event is created; owner is asked |
