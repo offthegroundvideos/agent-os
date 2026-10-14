@@ -8,11 +8,19 @@ export function domainOf(url) {
   try {
     const text = String(url ?? '').trim();
     if (!text || /\s/.test(text)) return '';
-    const host = new URL(/^https?:\/\//i.test(text) ? text : `https://${text}`).hostname.toLowerCase();
+    const host = new URL(/^https?:\/\//i.test(text) ? text : `https://${text}`).hostname.toLowerCase().replace(/\.$/, '');
     return host.includes('.') ? host.replace(/^www\./, '') : '';
   } catch {
     return '';
   }
+}
+
+// Extracts the bare address from "Name <addr>" / "<addr>" forms; '' when it is not a usable address.
+export function normalizeEmail(value) {
+  const text = String(value ?? '');
+  const angle = text.match(/<([^<>]*)>/);
+  const clean = (angle ? angle[1] : text).trim().toLowerCase().replace(/\.$/, '');
+  return /^[^@\s]+@[^@\s]+\.[^@\s.]+$/.test(clean) ? clean : '';
 }
 
 const normalizeWebsite = (website) => (/^https?:\/\//i.test(website) ? website : `https://${website}`);
@@ -73,7 +81,8 @@ export function createGigStore({ db, transaction }, { now = () => new Date() } =
   }
 
   function addContact(businessId, { name = '', role = '', email, emailSourceUrl }) {
-    const clean = String(email).trim().toLowerCase();
+    const clean = normalizeEmail(email);
+    if (!clean) throw new GigStoreError(`Invalid contact email: ${email}`);
     db.prepare(`INSERT OR IGNORE INTO contacts (id, business_id, name, role, email, email_source_url, created_at)
       VALUES (?, ?, ?, ?, ?, ?, ?)`)
       .run(`ct_${randomUUID()}`, businessId, String(name ?? ''), String(role ?? ''), clean, String(emailSourceUrl ?? ''), stamp());
@@ -87,11 +96,13 @@ export function createGigStore({ db, transaction }, { now = () => new Date() } =
     return { ...toOpportunity(row), business: getBusiness(row.business_id), contact };
   }
 
+  const run = (fn) => (db.isTransaction ? fn() : transaction(fn));
+
   const many = (rows) => rows.map((row) => getOpportunity(row.id));
 
   // One opportunity per business, ever: a business we already contacted (or closed) is never re-found.
   function createOpportunity(businessId) {
-    return transaction(() => {
+    return run(() => {
       const existing = db.prepare('SELECT id FROM opportunities WHERE business_id = ? ORDER BY created_at DESC LIMIT 1').get(businessId);
       if (existing) return { opportunity: getOpportunity(existing.id), created: false };
       const business = getBusiness(businessId);
@@ -113,13 +124,15 @@ export function createGigStore({ db, transaction }, { now = () => new Date() } =
   }
 
   function findByThread(threadId) {
-    const row = db.prepare('SELECT id FROM opportunities WHERE gmail_thread_id = ? ORDER BY updated_at DESC LIMIT 1').get(String(threadId ?? ''));
+    const thread = String(threadId ?? '').trim();
+    if (!thread) return null;
+    const row = db.prepare('SELECT id FROM opportunities WHERE gmail_thread_id = ? ORDER BY updated_at DESC LIMIT 1').get(thread);
     return row ? getOpportunity(row.id) : null;
   }
 
   function findByContactEmail(email) {
     const row = db.prepare(`SELECT o.id FROM opportunities o JOIN contacts c ON c.id = o.contact_id
-      WHERE c.email = ? ORDER BY o.updated_at DESC LIMIT 1`).get(String(email ?? '').trim().toLowerCase());
+      WHERE c.email = ? ORDER BY o.updated_at DESC LIMIT 1`).get(normalizeEmail(email));
     return row ? getOpportunity(row.id) : null;
   }
 
@@ -138,13 +151,17 @@ export function createGigStore({ db, transaction }, { now = () => new Date() } =
   }
 
   function suppress(value, reason) {
-    db.prepare('INSERT OR IGNORE INTO suppression (value, reason, created_at) VALUES (?, ?, ?)')
-      .run(String(value).trim().toLowerCase(), String(reason), stamp());
+    const text = String(value ?? '');
+    const entry = text.includes('@') ? normalizeEmail(text) : text.trim().toLowerCase().replace(/\.$/, '');
+    if (!entry) throw new GigStoreError(`Cannot suppress invalid email: ${value}`);
+    db.prepare('INSERT OR IGNORE INTO suppression (value, reason, created_at) VALUES (?, ?, ?)').run(entry, String(reason), stamp());
   }
 
-  // An address is blocked if it, or its whole domain, is on the list.
+  // An address is blocked if it, or its whole domain, is on the list. Unparseable addresses fail closed.
   function isSuppressed(value) {
-    const clean = String(value ?? '').trim().toLowerCase();
+    const text = String(value ?? '');
+    const clean = text.includes('@') ? normalizeEmail(text) : text.trim().toLowerCase().replace(/\.$/, '');
+    if (text.includes('@') && !clean) return true;
     const domain = clean.includes('@') ? clean.split('@').pop() : clean;
     return Boolean(db.prepare('SELECT 1 FROM suppression WHERE value IN (?, ?)').get(clean, domain));
   }
@@ -172,7 +189,7 @@ export function createGigStore({ db, transaction }, { now = () => new Date() } =
 
   function markEmailOutcome(opportunityId, { bounced = false, unsubscribed = false } = {}) {
     db.prepare(`UPDATE email_sends SET bounced = MAX(bounced, ?), unsubscribed = MAX(unsubscribed, ?)
-      WHERE id = (SELECT MAX(id) FROM email_sends WHERE opportunity_id = ?)`).run(bounced ? 1 : 0, unsubscribed ? 1 : 0, opportunityId);
+      WHERE id = (SELECT MAX(id) FROM email_sends WHERE opportunity_id = ? AND mode = 'send')`).run(bounced ? 1 : 0, unsubscribed ? 1 : 0, opportunityId);
   }
 
   function recordPortfolioSends(opportunityId, actionId, itemIds) {

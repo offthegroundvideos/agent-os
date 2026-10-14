@@ -2,7 +2,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { openOsDb } from '../lib/os/db.js';
-import { businessKey, createGigStore, domainOf, isSharedHost } from '../lib/os/gigs/store.js';
+import { businessKey, createGigStore, domainOf, isSharedHost, normalizeEmail } from '../lib/os/gigs/store.js';
 
 function setup() {
   let t = Date.parse('2026-10-14T16:00:00Z');
@@ -15,6 +15,16 @@ test('domainOf normalizes websites', () => {
   assert.equal(domainOf('https://www.Example-Winery.com/visit?x=1'), 'example-winery.com');
   assert.equal(domainOf('example.com'), 'example.com');
   assert.equal(domainOf('not a url'), '');
+  assert.equal(domainOf('https://example.com./x'), 'example.com');
+});
+
+test('normalizeEmail extracts and cleans addresses', () => {
+  assert.equal(normalizeEmail('Jane <Jane@X.com>'), 'jane@x.com');
+  assert.equal(normalizeEmail('<jane@x.com>'), 'jane@x.com');
+  assert.equal(normalizeEmail(' jane@x.com. '), 'jane@x.com');
+  assert.equal(normalizeEmail('not-an-email@'), '');
+  assert.equal(normalizeEmail(undefined), '');
+  assert.equal(normalizeEmail('a@b'), '');
 });
 
 test('shared hosts are keyed by page path, everything else by domain', () => {
@@ -62,6 +72,11 @@ test('contacts, thread and email lookups', () => {
   assert.equal(store.findByThread('th1').id, opportunity.id);
   assert.equal(store.findByContactEmail('ANA@bayhomes.com').id, opportunity.id);
   assert.equal(store.findByThread('nope'), null);
+  assert.equal(store.findByThread(''), null);
+  assert.equal(store.findByThread(null), null);
+  assert.equal(store.findByContactEmail('Ana <ANA@bayhomes.com>').id, opportunity.id);
+  assert.throws(() => store.addContact(business.id, { name: 'No email', emailSourceUrl: 'x' }), /email/i);
+  assert.throws(() => store.addContact(business.id, { email: 'nope@', emailSourceUrl: 'x' }), /email/i);
   assert.deepEqual(store.stageCounts(), { found: 1 });
   osDb.close();
 });
@@ -74,6 +89,13 @@ test('suppression covers the address and its whole domain', () => {
   assert.equal(store.isSuppressed('other@shop.com'), false);
   assert.equal(store.isSuppressed('anyone@blocked.com'), true);
   assert.equal(store.isSuppressed('blocked.com'), true);
+  store.suppress('jane@x.com', 'unsubscribe');
+  store.suppress('Shop.com.', 'unsubscribe');
+  for (const form of ['Jane <Jane@X.com>', '<jane@x.com>', 'jane@x.com.', 'a@SHOP.com.']) assert.equal(store.isSuppressed(form), true, form);
+  assert.equal(store.isSuppressed('not-an-email@'), true);
+  store.suppress('Bob <BOB@y.com>', 'unsubscribe');
+  assert.equal(store.isSuppressed('bob@y.com'), true);
+  assert.throws(() => store.suppress('bad@', 'x'), /email/i);
   osDb.close();
 });
 
@@ -87,10 +109,12 @@ test('email counts roll over 24 hours and lane stats only count real sends', () 
   send('pitch', 'draft');
   assert.equal(store.emailsInLast24h(), 3);
   assert.equal(store.emailsInLast24h({ kind: 'pitch' }), 2);
+  send('draft_only', 'draft');
+  // the newest row is a draft; the outcome must land on the last real send, not the draft
   store.markEmailOutcome(opportunity.id, { bounced: true });
-  assert.deepEqual(store.laneSendStats('wedding'), { sends: 2, bounces: 0, unsubscribes: 0 });
-  osDb.db.prepare("UPDATE email_sends SET bounced = 1 WHERE kind = 'follow_up'").run();
   assert.deepEqual(store.laneSendStats('wedding'), { sends: 2, bounces: 1, unsubscribes: 0 });
+  assert.equal(osDb.db.prepare("SELECT bounced FROM email_sends WHERE kind = 'follow_up'").get().bounced, 1);
+  assert.equal(osDb.db.prepare("SELECT SUM(bounced) AS n FROM email_sends WHERE mode = 'draft'").get().n, 0);
   clock.advance(25 * 3600_000);
   assert.equal(store.emailsInLast24h(), 0);
   osDb.close();
@@ -106,5 +130,14 @@ test('inbound messages, portfolio sends and action lookups', () => {
     VALUES ('act1', 'pitch:x', 'email.first_contact', 'email.pitch', '{}', '{}', 'ask', 'rejected', '2026-10-14T16:00:00.000Z', '2026-10-14T16:00:00.000Z')`).run();
   assert.equal(store.actionByKey('pitch:x').status, 'rejected');
   assert.equal(store.actionsSince('email.first_contact', '2026-10-14T00:00:00.000Z'), 1);
+  osDb.close();
+});
+
+test('createOpportunity works inside a caller transaction', () => {
+  const { osDb, store } = setup();
+  const { business } = store.upsertBusiness({ name: 'Nest', lane: 'wedding', website: 'nest.com' });
+  const result = osDb.transaction(() => store.createOpportunity(business.id));
+  assert.equal(result.created, true);
+  assert.equal(store.stageCounts().found, 1);
   osDb.close();
 });
