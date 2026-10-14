@@ -10,7 +10,7 @@ export class RouterError extends Error {
 export const DEFAULT_ROUTES = Object.freeze({
   decision: [{ provider: 'anthropic', model: 'claude-sonnet-5-5' }],
   chat: [
-    { provider: 'ollama', model: 'qwen3.5:9b' },
+    { provider: 'ollama', model: 'gemma4:latest' },
     { provider: 'anthropic', model: 'claude-sonnet-5-5', effort: 'low' },
   ],
   draft: [
