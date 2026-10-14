@@ -46,3 +46,55 @@ test('importSite reads the index then each page and reports failures', async () 
   assert.deepEqual(items.map((i) => i.title), ['Brynlee Hall']);
   assert.match(errors[0], /cypress-garden-editorial.*404/);
 });
+
+const pageWith = (head) => `<html><head>${head}</head></html>`;
+const parse = (head) => parseWorkPage(pageWith(head), 'https://madebyotg.com/work/x/');
+
+test('meta keeps apostrophes inside double-quoted content', () => {
+  assert.equal(parse(`<meta property="og:title" content="Brynlee's Reel">`).title, "Brynlee's Reel");
+});
+
+test('meta keeps double quotes inside single-quoted content', () => {
+  assert.equal(parse(`<meta property="og:title" content='He said "hi"'>`).title, 'He said "hi"');
+});
+
+test('meta handles swapped attribute order with an apostrophe', () => {
+  assert.equal(parse(`<meta content="Brynlee's Reel" property="og:title">`).title, "Brynlee's Reel");
+});
+
+test('decode handles numeric entities and decodes &amp; last', () => {
+  assert.equal(parse(`<meta property="og:title" content="Brynlee&#8217;s &#x2019; caf&eacute; &mdash; &amp;quot;">`).title,
+    'Brynlee’s ’ café — &quot;');
+});
+
+test('relative og:image resolves against the page url', () => {
+  assert.equal(parse(`<meta property="og:image" content="/assets/p.jpg">`).thumbnailUrl, 'https://madebyotg.com/assets/p.jpg');
+});
+
+test('a VideoObject is preferred over an earlier ImageObject', () => {
+  const head = `<script type="application/ld+json">{"@graph":[{"@type":"ImageObject"},{"@type":"VideoObject"}]}</script>`;
+  assert.equal(parse(head).deliverableType, 'film');
+});
+
+test('work index accepts single-quoted hrefs and skips dotted paths', () => {
+  const html = `<a href='/work/single/'>S</a><a href="/work/c.html">C</a><a href="/work/plain">P</a>`;
+  assert.deepEqual(parseWorkIndex(html, 'https://madebyotg.com/'), [
+    'https://madebyotg.com/work/single/',
+    'https://madebyotg.com/work/plain/',
+  ]);
+});
+
+test('importSite reports a rejecting fetch with the url', async () => {
+  const fetchImpl = async () => { throw new Error('boom'); };
+  await assert.rejects(importSite({ siteUrl: 'https://madebyotg.com', fetchImpl }), /madebyotg\.com\/work\/ failed: boom/);
+});
+
+test('importSite records per-page fetch failures with the url and cause code', async () => {
+  const fetchImpl = async (url) => {
+    if (url.endsWith('/work/')) return { ok: true, status: 200, text: async () => '<a href="/work/a/">A</a>' };
+    throw new Error('fetch failed', { cause: { code: 'ECONNRESET' } });
+  };
+  const { items, errors } = await importSite({ siteUrl: 'https://madebyotg.com', fetchImpl });
+  assert.equal(items.length, 0);
+  assert.match(errors[0], /work\/a\/ failed: ECONNRESET/);
+});
