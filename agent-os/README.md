@@ -1,6 +1,30 @@
 ﻿# Agent OS — Mission Control
 SuperWizard5000 multi-agent system running locally on Next.js.
 
+## Product North Star
+Agent OS is a viral intelligence engine for OTG Icon. The core job is to scrub public and authorized social-platform data, identify content that is already proving organic demand, reverse-engineer the hooks and formats behind it, then hand those patterns through the agent pipeline so they become original scripts, schedules, production briefs, funnels, and client-ready reports.
+
+The 5X rule is mandatory: content only qualifies as verified viral proof when `views >= 5 * follower_count`. For example, an account with `50,000` followers needs `250,000+` views to qualify.
+
+See `docs/viral-intelligence-operating-spec.md` for the canonical operating spec.
+
+## Production Viral Intelligence
+- Evidence, creators, strategies, runs, briefs, and performance snapshots are transactionally stored in SQLite (`data/durable.sqlite`) with unique canonical and idempotency keys. Existing `data/viral-research.json` data is imported automatically on first use and remains as a legacy backup.
+- Research collection runs through the durable background queue. Runs survive restarts, expose progress, support cancellation and retry, and reclaim interrupted workers after the configured heartbeat timeout.
+- Versioned n8n workflows in `n8n/` run a weekly discovery-only trend radar, weekday client-scoped research, and daily performance snapshots. Configure and publish them using `n8n/README.md`.
+- Weekday client collection uses an explicit opt-in queue from `/api/clients?action=researchQueue`; incomplete, prospect, disabled, and non-opted-in test records are skipped with visible reasons.
+- Viral evidence follows a collect -> verify -> select -> approve -> produce gate. Trend-radar evidence is excluded from production strategies, and client briefs cannot enter production until an operator approves a proven source set.
+- DeerFlow receives typed evidence IDs, strategy IDs, and transient execution context through `/api/viral-intelligence/*`; Agent OS remains the canonical owner of records.
+- The Viral Research panel downloads a branded, client-ready PDF with direct source links and a strict separation between verified proof and candidates.
+
+## OTG-OS Core
+- OTG-OS is the always-on operating layer for OFF THE GROUND: an action ledger that records why every action happens, earned autonomy (Ask, Tell, Silent), budget caps, a model router, and a Telegram bot for approvals.
+- Code lives in `lib/os/`; the database is `data/otg-os.sqlite`.
+- Run the worker in a terminal with `npm run os:worker`. Create a test approval with `npm run os:demo`.
+- To start everything at boot, run `scripts/install-otg-os-tasks.ps1` once from an administrator PowerShell.
+- Required in `.env.local`: `TELEGRAM_BOT_TOKEN`, `TELEGRAM_OWNER_ID` (send `/start` to the bot to get it), `ANTHROPIC_API_KEY`. Optional: `HEALTHCHECKS_PING_URL`, `OTG_OS_BACKUP_DIR` (point it at a Google Drive or OneDrive folder for off-machine backups).
+- Design: `docs/superpowers/specs/2026-10-14-otg-os-core-gig-engine-design.md`. Plans: `docs/superpowers/plans/`.
+
 ## Agents
 - Alex — Research Specialist (/alex)
 - Maya — Content Writer (/maya)
@@ -19,6 +43,12 @@ SuperWizard5000 multi-agent system running locally on Next.js.
 ## Access
 Local: http://localhost:4000
 Phone: http://YOUR-TAILSCALE-IP:4000
+
+## Local Startup
+- `npm run dev` starts the hot-reload development server on port `4000`.
+- `npm start` stops any stale Agent OS `next start` process on port `4000`, rebuilds, then starts the fresh production server.
+- `npm run start:no-build` restarts the production server from the existing `.next` build.
+- `npm run start:raw` runs the original `next start` command for low-level debugging.
 
 ## Publish Media Hosting
 - Render outputs are served through `/api/render-media/<renderJobId>?platform=<platform>` as real MP4 responses.
@@ -39,6 +69,12 @@ Phone: http://YOUR-TAILSCALE-IP:4000
 - Set `PUBLISH_YOUTUBE_MODE=api`, `YOUTUBE_ACCESS_TOKEN`, and `YOUTUBE_CHANNEL_ID` to enable live uploads.
 - Test the connection at `/api/publish-integrations/test-youtube` or with `POST /api/publish-integrations` and action `test-youtube-connection`.
 - Shorts are uploaded through the standard YouTube video upload endpoint; YouTube determines Shorts eligibility from the uploaded video itself.
+
+## Instagram / TikTok Metrics Enrichment
+- The live scanner and research library can now fill real views + follower counts for Instagram/TikTok candidates so the 5X rule can verify them (`lib/socialMetricsEnricher.js`).
+- Provider chain, cheapest first: direct page parse (TikTok works with no keys), Cloudflare edge fetch (`cloudflare/social-metrics-worker.js` + `SOCIAL_SCRAPE_WORKER_URL`), Firecrawl (`FIRECRAWL_API_KEY`), and specialized social APIs (`SCRAPECREATORS_API_KEY` or `ENSEMBLEDATA_TOKEN` — recommended for Instagram).
+- Re-verify saved records with `POST /api/viral-research` action `enrichMetrics`, or the "Verify IG/TikTok Metrics" button in the Viral Research panel.
+- See `docs/social-metrics-enrichment.md` for setup and provider recommendations.
 
 ## Research Discovery Providers
 - Viral Research supports a browser-search discovery lane by default.
@@ -70,3 +106,10 @@ Phone: http://YOUR-TAILSCALE-IP:4000
 - Agent OS now includes a DeerFlow bridge at `/api/deerflow`.
 - Deep research requests sent to `Alex` and bounded implementation requests sent to `Dev` or `CTO` can auto-dispatch to DeerFlow instead of relying only on the local Ollama chat path.
 - DeerFlow job records are stored in `data/deerflow-jobs.json`.
+
+## OFF THE GROUND Studio
+
+- Open `/studio` for retainer agreements, monthly production, client acceptance, and the owner overview.
+- Launch locally with `powershell -NoProfile -File scripts/start-otg-studio.ps1`. It uses loopback, `data/studio.sqlite`, and disables unrelated background jobs for this process.
+- Add `-SkipBuild` when a current production build already exists.
+- Implementation and the MadeByOTG integration plan: [docs/studio-dashboard.md](docs/studio-dashboard.md).

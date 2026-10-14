@@ -11,7 +11,7 @@
 
 The system automates the full content pipeline from strategy to publishing by backwards-engineering viral content for OTG's clients.
 
-- **Stack:** Next.js 14, React 18, Tailwind CSS — running on `localhost:4000`
+- **Stack:** Next.js 16, React 19, Tailwind CSS — running on `localhost:4000`
 - **Location:** `C:\AI-Agents\agent-os`
 - **Phone access:** `http://YOUR-TAILSCALE-IP:4000`
 - **Not a git repo** — progress is tracked via files and docs rather than commits
@@ -22,7 +22,7 @@ The system automates the full content pipeline from strategy to publishing by ba
 2. Viral content research (platform-specific + cross-platform synthesis)
 3. Multi-agent pipeline: research → scripts → content plans → social calendar → publishing
 4. Production bundle management and content calendar
-5. Lead prospecting, funnel tracking, and GHL (GoHighLevel) CRM integration
+5. Lead prospecting, funnel tracking, and local CRM records
 6. Landing page / Website Studio generation
 7. YouTube Shorts live publishing via YouTube Data API
 
@@ -68,8 +68,9 @@ Each agent's system prompt and behavior lives in `lib/agents.js`. The pipeline h
 
 - `agents.js` — All 12 agent definitions, Ollama URL/model config, OTG_CONTEXT string
 - `processes.js` — Pipeline process management; stale processes auto-killed after 90 min running / 15 min stopping
-- `backgroundQueue.js` — Background job runner for async pipeline steps
-- `viralResearch.js` — Viral content research engine (browser-search + optional Firecrawl)
+- `backgroundQueue.js` — Durable background worker for pipeline and viral-research jobs
+- `viralResearch.js` + `viralResearchStore.js` — Viral intelligence and transactional SQLite persistence
+- `viralResearchJobs.js` — Durable research execution, progress, cancellation, and retries
 - `contentCalendar.js` — Calendar and production bundle management
 - `publishQueue.js` + `publishRuntime.js` + `publishingGateway.js` — Publishing system (split across three files)
 - `memory.js` + `workingMemory.js` — Agent memory and live system snapshot
@@ -80,8 +81,7 @@ Each agent's system prompt and behavior lives in `lib/agents.js`. The pipeline h
 - `router.js` + `routingPolicy.js` — Agent routing and slash-command dispatch
 - `growthOS.js` + `mediaIntelligence.js` — Growth and media analytics
 - `leadProspects.js` + `prospectRadar.js` — Lead generation and prospecting
-- `deerflowBridge.js` — Bridge to DeerFlow for deep research and bounded coding tasks
-- `ghlConfig.js` — GoHighLevel CRM configuration
+- `deerflowBridge.js` — Bridge to DeerFlow for deep research, bounded coding, and typed viral-intelligence dispatch
 - `durableStore.js` — SQLite-backed durable store (`data/durable.sqlite`)
 - `renderMediaStore.js` — Render media file management (`data/render-media/`)
 
@@ -93,7 +93,7 @@ Every backend action is an API route. Key ones:
 - `POST /api/pipeline` — Start a full pipeline run
 - `GET/POST /api/processes` — Process management
 - `POST /api/booking-research` — Client intake webhook (auto-starts pipeline)
-- `GET/POST /api/viral-research` + `/collect` — Viral research library
+- `GET/POST /api/viral-research` + `/collect` + `/report` — Viral research, durable runs, and branded PDF delivery
 - `GET/POST /api/content-calendar` — Calendar CRUD
 - `GET/POST /api/publish-queue` — Publish job management
 - `POST /api/publish-integrations` — Social platform integration actions
@@ -103,14 +103,15 @@ Every backend action is an API route. Key ones:
 
 ### UI Panels (`components/`)
 
-The main page (`app/page.js`) is a single-page app with a tab system. Panels include: WorkflowControlPanel, ProcessManager, ViralResearchPanel, ContentCalendarPanel, PublishQueuePanel, PublishIntegrationsPanel, ContentOSPanel, FunnelDashboardPanel, GHLPanel, ProspectRadarPanel, LandingPageBuilder, DeerFlowPanel, CloudflareOpsPanel, LearningPanel, CommsMonitor, KpiPanel, ChapterPanel, FootageLibrary, PipelineReportsPanel, WorkingMemoryPanel.
+The main page (`app/page.js`) is a single-page app with a tab system. Panels include: WorkflowControlPanel, ProcessManager, ViralResearchPanel, ContentCalendarPanel, PublishQueuePanel, PublishIntegrationsPanel, ContentOSPanel, FunnelDashboardPanel, ProspectRadarPanel, LandingPageBuilder, DeerFlowPanel, CloudflareOpsPanel, LearningPanel, CommsMonitor, KpiPanel, ChapterPanel, FootageLibrary, PipelineReportsPanel, WorkingMemoryPanel.
 
 ### Data Stores (`data/`)
 
-All persistent state lives here as JSON (except `durable.sqlite`):
+Most legacy persistent state lives here as JSON. Durable pipeline jobs and all canonical viral-intelligence records live in `durable.sqlite`:
 
 - `processes.json` — Active and completed pipeline runs (**can get malformed on bad pipeline output — check this file first if pipeline bugs appear**)
-- `viral-research.json` — Researched viral content library
+- `viral-research.json` — Legacy viral research import/backup; no longer canonical
+- `durable.sqlite` — Transactional viral intelligence, pipeline runs/events, and durable background jobs
 - `content-calendar.json` — Scheduled content entries (40 entries currently)
 - `production-ops.json` — Production state tracking
 - `publish-queue.json` — Queued publish jobs (3 jobs)
@@ -124,12 +125,17 @@ All persistent state lives here as JSON (except `durable.sqlite`):
 
 ---
 
-## Current State (as of April 17, 2026)
+## Current State (as of June 8, 2026)
 
 ### What's Working
 
+
 - Multi-agent pipeline handoffs through the core creative chain (Alex → Maya → Jordan → Sam)
 - Viral research with platform-separated datasets and cross-platform synthesis
+- Transactional viral-intelligence storage with automatic legacy migration
+- Durable research jobs with progress, restart recovery, cancellation, and retry
+- Active n8n weekly trend radar, weekday client-scoped research, performance schedules, and branded PDF delivery
+- Typed DeerFlow viral-intelligence contracts without duplicated canonical state
 - Content calendar → production bundle → publish-ready state progression
 - Publish queue with simulated publish flows
 - YouTube Shorts live publishing via YouTube Data API (resumable upload)
@@ -138,25 +144,32 @@ All persistent state lives here as JSON (except `durable.sqlite`):
 - Cloudflare crawl ingest via `POST /api/cloudflare-ingest`
 - Prospect Radar for public-web service-request discovery
 - Agent learning tracked per workflow type
-- GoHighLevel CRM integration (API key configured in `.env.local`)
+- Local CRM records for clients, bookings, funnel activity, and attribution
 - DeerFlow bridge for delegated deep research and coding tasks
 - Working memory auto-snapshot at `WORKING-MEMORY.md` and `data/system/working-memory.json`
 
 ### Known Issues / Buggy Areas
 
+
 - **Pipeline runs can fail mid-way** — the system is described as "a bit buggy"; processes get auto-killed after 90 min if they don't complete
 - **`processes.json` can get malformed** — truncated or invalid JSON can appear when a pipeline crashes mid-write; if the app behaves oddly, inspect this file manually
 - **Live Instagram API posting** requires valid Meta credentials (not yet wired up)
-- **Pipeline research does not auto-write back** into `viral-research.json` after completing
+- **Pipeline research write-back coverage** still needs expansion, but new viral records must write to SQLite rather than the legacy JSON backup
 - **`PUBLIC_MEDIA_BASE_URL` must be set** to a public URL for live social publishing (localhost media won't reach the platform APIs)
 - **Production build vs dev:** App currently runs via `npm start` (production); rebuild with `npm run build` before restarting if code changes were made
 
 ### Active Right Now
 
-- 1 running pipeline: Jack Riggs / Toyota dealership (Bay Area) — has been "running" for extended period, likely stale
-- 7 clients tracked, 58 assets, 40 calendar entries, 3 publish jobs
+- 0 running pipelines
+- 7 clients tracked, 87 assets, 46 calendar entries, 3 publish jobs
+- 1 viral research entries
+- 3 lead prospects
+- Working memory next actions:
+  - Set or create an active client so research and publishing stay scoped.
+  - There are 1 production item(s) ready to publish.
 
 ---
+
 
 ## Environment Variables (`.env.local`)
 
@@ -164,10 +177,9 @@ Currently configured:
 
 ```
 OLLAMA_URL=http://localhost:11434
-DEFAULT_MODEL=qwen2.5:14b         # primary chat model
-RESEARCH_MODEL=qwen2.5:14b        # used for research tasks
-GHL_API_KEY=...                   # GoHighLevel CRM API key (set)
-GHL_LOCATION_ID=...               # GHL location (set)
+DEFAULT_MODEL=gemma4:latest       # primary chat model
+RESEARCH_MODEL=gemma4:latest      # used for research tasks
+AGENT_OS_API_SECRET=...           # optional; required for protected non-local API access
 CLOUDFLARE_INGEST_SECRET=...      # protects /api/cloudflare-ingest (set)
 ```
 
@@ -176,7 +188,16 @@ Not yet configured (needed for full production):
 ```
 PUBLIC_MEDIA_BASE_URL             # public URL for media serving (live publish requires this)
 BOOKING_WEBHOOK_SECRET            # protects /api/booking-research
-FIRECRAWL_API_KEY                 # enables Firecrawl discovery in viral research
+FIRECRAWL_API_KEY                 # enables Firecrawl discovery + IG/TikTok metrics fallback
+SOCIAL_SCRAPE_WORKER_URL          # Cloudflare edge fetch for IG/TikTok metrics (cloudflare/social-metrics-worker.js)
+SOCIAL_SCRAPE_WORKER_SECRET       # secret for the social metrics worker
+SCRAPECREATORS_API_KEY            # specialized social API for IG/TikTok metrics (recommended for Instagram)
+ENSEMBLEDATA_TOKEN                # alternative specialized social API
+ANTHROPIC_API_KEY                 # OTG-OS brain (Claude Sonnet/Haiku/Opus)
+TELEGRAM_BOT_TOKEN                # OTG-OS Telegram bot (from BotFather)
+TELEGRAM_OWNER_ID                 # the only Telegram user the bot obeys
+HEALTHCHECKS_PING_URL             # outside heartbeat for the OTG-OS worker
+OTG_OS_BACKUP_DIR                 # daily database backups (use a cloud-synced folder)
 PROSPECT_RADAR_DISCOVERY_URL      # URL of deployed Cloudflare discovery worker
 PUBLISH_YOUTUBE_MODE              # set to "api" for live YouTube uploads
 YOUTUBE_ACCESS_TOKEN
@@ -189,8 +210,10 @@ YOUTUBE_CHANNEL_ID
 
 ```bash
 npm run dev    # development server (port 4000, hot reload)
-npm run build  # production build (required before npm start)
-npm start      # production server (port 4000)
+npm run build  # production build
+npm start      # clean local production start: stop stale Agent OS server, rebuild, start on port 4000
+npm run start:no-build  # restart from the current .next build
+npm run start:raw       # raw next start command for debugging
 ```
 
 Check `*.err.log` files in the project root for server errors. Current pattern: `start.err.log`, `start2.err.log` etc. — most recent is `start5.err.log`.
@@ -203,7 +226,7 @@ From `docs/stack-standardization-blueprint.md`:
 
 - **Agent OS** owns the operator interface, client memory, workflow state, and all business-domain records — it is the source of truth for business workflow state
 - **DeerFlow** owns bounded autonomous execution, delegated coding, and deep research tasks — it returns structured artifacts back into Agent OS
-- **n8n** owns webhook glue, lightweight sync jobs, and GHL/CRM automation (current; two workflows in `n8n/`)
+- **n8n** owns webhook glue and lightweight sync jobs that write into Agent OS local CRM records
 - **LangGraph patterns** as reference architecture (durable step-based, checkpointed, retry-aware)
 - **PydanticAI-style discipline** — typed payloads for agent handoffs, freeform text only for explanation
 - **Playwright + Firecrawl/Crawl4AI** for research and browser workflows
@@ -227,22 +250,26 @@ From `docs/stack-standardization-blueprint.md`:
 - Agent behavior (system prompts, routing, model config) lives entirely in `lib/agents.js`
 - Pipeline orchestration flows through `lib/processes.js` → `lib/backgroundQueue.js`
 - Publishing logic is split across three files: `publishQueue.js`, `publishRuntime.js`, `publishingGateway.js`
-- **Do not break JSON data store schemas** without migrating existing data in `data/` — no migrations system exists
+- Preserve legacy JSON schemas; use explicit SQLite schema migrations for durable and viral-intelligence tables
 - After any significant code change, note what was changed in `docs/` as a progress snapshot
 
 ### Both
 
 - This is **not a git repo** — document significant changes in `docs/` rather than commits
 - The system runs locally on Windows (user: AIOTG), accessed via browser or phone on Tailscale
-- Ollama models are at `C:\AI-Agents\ollama-data\models`; default model is `qwen2.5:14b`
+- Ollama models are at `C:\AI-Agents\ollama-data\models`; default model is `gemma4:latest`
 - The `OTG_CONTEXT` string in `lib/agents.js` is the canonical business context injected into every agent — update it if the team or services change
 
 ---
 
 ## Next Priorities
 
+
 1. **Stabilize pipeline runs** — reduce mid-pipeline failures and stale kills; investigate why processes die before completing all steps
 2. **Fix `processes.json` corruption** — add write-safety around pipeline step outputs to prevent malformed JSON
-3. **Add research write-back** — after pipeline completes, auto-write viral content findings into `viral-research.json`
+3. **Expand research write-back** — after pipelines complete, write viral findings through the transactional SQLite store
 4. **Live social publishing** — set `PUBLIC_MEDIA_BASE_URL` to a public tunnel and finish Instagram Meta credential setup
 5. **Wire DeerFlow as auto-coding worker** for bounded implementation tasks triggered from Agent OS
+
+Viral research exports are intentionally limited to proven 5x winners so the video editor only receives formats that have already demonstrated outsized reach.
+The viral research panel now opens with a sticky "what to make next" brief so the operator starts from the next viral cut instead of the raw dataset.
