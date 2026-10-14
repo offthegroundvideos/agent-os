@@ -15,11 +15,14 @@ export const DEFAULT_ROUTES = Object.freeze({
   ],
   draft: [
     { provider: 'anthropic', model: 'claude-sonnet-5-5' },
-    { provider: 'ollama', model: 'qwen3.5:9b', needsReview: true },
+    { provider: 'ollama', model: 'gemma4:latest', needsReview: true },
   ],
   classify: [{ provider: 'anthropic', model: 'claude-haiku-5-5' }],
+  // Public-data bulk work only (research summaries, list sorting). DeepSeek stores data in China,
+  // so it must never appear in routes that carry private client data, such as chat or draft.
   bulk: [
-    { provider: 'ollama', model: 'qwen3.5:9b' },
+    { provider: 'ollama', model: 'gemma4:latest' },
+    { provider: 'deepseek', model: 'deepseek-flash' },
     { provider: 'anthropic', model: 'claude-haiku-5-5' },
   ],
   daily_audit: [{ provider: 'anthropic', model: 'claude-sonnet-5-5' }],

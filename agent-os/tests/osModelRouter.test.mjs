@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { openOsDb } from '../lib/os/db.js';
 import { createSettings } from '../lib/os/settings.js';
 import { createBudget } from '../lib/os/budget.js';
-import { createModelRouter, RouterError } from '../lib/os/modelRouter.js';
+import { createModelRouter, DEFAULT_ROUTES, RouterError } from '../lib/os/modelRouter.js';
 
 function fakeProvider(name, behavior) {
   const calls = [];
@@ -90,4 +90,25 @@ test('missing providers and unknown task types give clear errors', async () => {
   await assert.rejects(() => router.run('chat', { messages: [] }), /anthropic not configured/);
   await assert.rejects(() => router.run('nonsense', { messages: [] }), /unknown task type/);
   osDb.close();
+});
+
+test('bulk work runs locally first, then DeepSeek, priced as a paid call', async () => {
+  const osDb = openOsDb(':memory:');
+  const settings = createSettings(osDb);
+  const budget = createBudget(osDb, settings);
+  const providers = { ollama: fakeProvider('ollama', 'fail'), deepseek: fakeProvider('deepseek', 'ok'), anthropic: fakeProvider('anthropic', 'ok') };
+  const router = createModelRouter({ providers, budget });
+  const result = await router.run('bulk', { messages: [{ role: 'user', content: 'summarize public research' }] });
+  assert.equal(result.provider, 'deepseek');
+  assert.equal(providers.deepseek.calls[0].model, 'deepseek-flash');
+  assert.equal(result.costMicros, 1000 * 0.3 + 100 * 1.2);
+  assert.equal(providers.anthropic.calls.length, 0);
+  osDb.close();
+});
+
+test('local fallbacks use gemma4, the best-scoring local model', () => {
+  assert.equal(DEFAULT_ROUTES.chat[0].model, 'gemma4:latest');
+  assert.equal(DEFAULT_ROUTES.bulk[0].model, 'gemma4:latest');
+  assert.equal(DEFAULT_ROUTES.draft.at(-1).model, 'gemma4:latest');
+  assert.ok(!DEFAULT_ROUTES.chat.some((route) => route.provider === 'deepseek'), 'private chat data never goes to DeepSeek');
 });
