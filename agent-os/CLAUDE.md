@@ -15,7 +15,7 @@ The system automates the full content pipeline from strategy to publishing by ba
 - **Location:** `C:\AI-Agents\agent-os`
 - **Phone access:** `http://YOUR-TAILSCALE-IP:4000`
 - **Not a git repo** — progress is tracked via files and docs rather than commits
-- **Local AI inference:** Ollama at `http://localhost:11434`, models stored at `C:\AI-Agents\ollama-data\models`
+- **Local AI inference:** Ollama at `http://localhost:11434`, models stored at `E:\ollama\models` (user env `OLLAMA_MODELS`; the old unused store is archived at `E:\ollama-archive`)
 
 **What the system handles:**
 1. Client intake via booking research (auto-starts pipeline on booking)
@@ -257,7 +257,7 @@ From `docs/stack-standardization-blueprint.md`:
 
 - This is **not a git repo** — document significant changes in `docs/` rather than commits
 - The system runs locally on Windows (user: AIOTG), accessed via browser or phone on Tailscale
-- Ollama models are at `C:\AI-Agents\ollama-data\models`; default model is `gemma4:latest`
+- Ollama models are at `E:\ollama\models` (set via the `OLLAMA_MODELS` user environment variable); OTG-OS owner chat uses `gemma4:latest`, chosen with `scripts/eval-local-chat.mjs`
 - The `OTG_CONTEXT` string in `lib/agents.js` is the canonical business context injected into every agent — update it if the team or services change
 
 ---
