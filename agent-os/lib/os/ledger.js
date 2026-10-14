@@ -145,6 +145,15 @@ export function createLedger({ db, transaction }, { now = () => new Date() } = {
     });
   }
 
+  function defer(id, until) {
+    return transaction(() => {
+      requireStatus(id, ['executing']);
+      db.prepare(`UPDATE actions SET status = 'approved', attempts = MAX(attempts - 1, 0), next_attempt_at = ?, updated_at = ?
+        WHERE id = ?`).run(until, stamp(), id);
+      return get(id);
+    });
+  }
+
   function recoverInterrupted() {
     const result = db.prepare(`UPDATE actions SET status = 'approved', last_error = 'interrupted by restart', updated_at = ?
       WHERE status = 'executing'`).run(stamp());
@@ -186,7 +195,7 @@ export function createLedger({ db, transaction }, { now = () => new Date() } = {
   }
 
   return {
-    get, propose, approve, reject, revise, claimNextDue, markDone, markFailed,
+    get, propose, approve, reject, revise, claimNextDue, markDone, markFailed, defer,
     recoverInterrupted, addCost, setTelegramMessage, addTelegramMessages, telegramMessages, list, pendingUnsent,
   };
 }

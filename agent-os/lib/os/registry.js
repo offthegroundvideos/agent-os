@@ -79,13 +79,24 @@ export function createRegistry({ ledger, gate, settings, notifier, now = () => n
   async function executeDue({ limit = 10 } = {}) {
     if (settings.get('os.paused')) return { executed: 0, paused: true };
     const retryMinutes = settings.get('executor.retry_minutes');
+    let processed = 0;
     let executed = 0;
-    while (executed < limit) {
+    let deferred = 0;
+    while (processed < limit) {
       const action = ledger.claimNextDue();
       if (!action) break;
-      executed += 1;
+      processed += 1;
+      let waited = false;
       try {
         const tool = toolFor(action);
+        // A tool can ask to run later (sending windows, daily limits). Waiting doesn't use up a retry.
+        const waitUntil = tool.notBefore ? await tool.notBefore(action.payload, { action }) : null;
+        if (waitUntil && waitUntil.getTime() > now().getTime()) {
+          ledger.defer(action.id, waitUntil.toISOString());
+          waited = true;
+          deferred += 1;
+          continue;
+        }
         const result = await tool.execute(action.payload, { action });
         ledger.markDone(action.id, result ?? {});
         if (action.autonomyLevel === 'tell') await notifier.tell(action, tool.describe(action.payload));
@@ -98,9 +109,11 @@ export function createRegistry({ ledger, gate, settings, notifier, now = () => n
           ledger.markFailed(action.id, message);
           await notifier.alert(`${action.actionType} failed after ${action.attempts} attempts: ${message}`);
         }
+      } finally {
+        if (!waited) executed += 1;
       }
     }
-    return { executed, paused: false };
+    return { executed, deferred, paused: false };
   }
 
   return { register, describe, request, presentApproval, flushPendingApprovals, approve, reject, revise, executeDue };

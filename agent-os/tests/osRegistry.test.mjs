@@ -147,3 +147,28 @@ test('unknown tools and incomplete tools are rejected', async () => {
   assert.throws(() => registry.register({ name: 'broken' }), /missing actionType/);
   osDb.close();
 });
+
+test('a tool can push its own start time back without using up a retry', async () => {
+  const { osDb, clock, registry, ledger } = setup();
+  const openAt = clock.now().getTime() + 2 * 3600_000;
+  const ran = [];
+  registry.register({
+    name: 'research.windowed',
+    actionType: 'research.windowed',
+    describe: () => 'windowed',
+    notBefore: async () => (clock.now().getTime() < openAt ? new Date(openAt) : null),
+    execute: async () => { ran.push(clock.now().toISOString()); return { ok: true }; },
+  });
+  const action = await registry.request({ tool: 'research.windowed', payload: {}, why, idempotencyKey: 'w1' });
+  assert.equal(action.status, 'approved');
+  assert.deepEqual(await registry.executeDue(), { executed: 0, deferred: 1, paused: false });
+  const waiting = ledger.get(action.id);
+  assert.equal(waiting.status, 'approved');
+  assert.equal(waiting.attempts, 0);
+  assert.equal(waiting.nextAttemptAt, new Date(openAt).toISOString());
+  clock.advance(2 * 3600_000);
+  assert.deepEqual(await registry.executeDue(), { executed: 1, deferred: 0, paused: false });
+  assert.equal(ledger.get(action.id).status, 'done');
+  assert.equal(ran.length, 1);
+  osDb.close();
+});

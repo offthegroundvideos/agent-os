@@ -134,3 +134,17 @@ test('addCost accumulates micro-dollars and list filters by status', () => {
   assert.equal(ledger.list({ status: 'done' }).length, 0);
   osDb.close();
 });
+
+test('defer puts an executing action back without using up an attempt', () => {
+  const osDb = openOsDb(':memory:');
+  const ledger = createLedger(osDb);
+  const { action } = ledger.propose({ idempotencyKey: 'd1', actionType: 'research.x', tool: 'research.x', why: { goal: 'g', expected: 'e' }, autonomyLevel: 'silent' });
+  const claimed = ledger.claimNextDue();
+  assert.equal(claimed.attempts, 1);
+  const deferred = ledger.defer(action.id, '2099-01-01T00:00:00.000Z');
+  assert.equal(deferred.status, 'approved');
+  assert.equal(deferred.attempts, 0);
+  assert.equal(deferred.nextAttemptAt, '2099-01-01T00:00:00.000Z');
+  assert.equal(ledger.claimNextDue(), null);
+  osDb.close();
+});
