@@ -91,6 +91,9 @@ export function createRegistry({ ledger, gate, settings, notifier, now = () => n
         const tool = toolFor(action);
         // A tool can ask to run later (sending windows, daily limits). Waiting doesn't use up a retry.
         const waitUntil = tool.notBefore ? await tool.notBefore(action.payload, { action }) : null;
+        if (waitUntil != null && !(waitUntil instanceof Date && Number.isFinite(waitUntil.getTime()))) {
+          throw new RegistryError(`${tool.name}.notBefore must return a valid Date or null`);
+        }
         if (waitUntil && waitUntil.getTime() > now().getTime()) {
           ledger.defer(action.id, waitUntil.toISOString());
           waited = true;

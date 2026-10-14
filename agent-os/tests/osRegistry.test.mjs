@@ -172,3 +172,23 @@ test('a tool can push its own start time back without using up a retry', async (
   assert.equal(ran.length, 1);
   osDb.close();
 });
+
+test('a notBefore that returns an invalid Date fails closed instead of running the action', async () => {
+  const { osDb, registry, ledger } = setup();
+  let ran = 0;
+  registry.register({
+    name: 'research.badwindow',
+    actionType: 'research.badwindow',
+    describe: () => 'bad window',
+    notBefore: async () => new Date(NaN),
+    execute: async () => { ran += 1; return { ok: true }; },
+  });
+  const action = await registry.request({ tool: 'research.badwindow', payload: {}, why, idempotencyKey: 'bw1' });
+  await registry.executeDue();
+  assert.equal(ran, 0);
+  const after = ledger.get(action.id);
+  assert.equal(after.status, 'approved');
+  assert.ok(after.nextAttemptAt);
+  assert.match(after.lastError, /must return a valid Date/);
+  osDb.close();
+});
