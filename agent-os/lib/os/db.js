@@ -82,25 +82,28 @@ const MIGRATIONS = [
       CREATE TABLE businesses (
         id TEXT PRIMARY KEY,
         name TEXT NOT NULL,
-        lane TEXT NOT NULL CHECK (lane IN ('travel', 'winery', 'wedding', 'real_estate')),
+        lane TEXT NOT NULL,
         website TEXT NOT NULL,
-        website_domain TEXT NOT NULL UNIQUE,
+        website_domain TEXT NOT NULL,
+        website_key TEXT NOT NULL UNIQUE,
         location TEXT NOT NULL DEFAULT '',
         timezone TEXT NOT NULL DEFAULT 'America/Los_Angeles',
         source_url TEXT NOT NULL DEFAULT '',
         fit_reason TEXT NOT NULL DEFAULT '',
         created_at TEXT NOT NULL
       );
+      CREATE INDEX businesses_by_domain ON businesses (website_domain);
       CREATE TABLE contacts (
         id TEXT PRIMARY KEY,
         business_id TEXT NOT NULL REFERENCES businesses (id),
         name TEXT NOT NULL DEFAULT '',
         role TEXT NOT NULL DEFAULT '',
-        email TEXT NOT NULL,
+        email TEXT NOT NULL COLLATE NOCASE,
         email_source_url TEXT NOT NULL,
         created_at TEXT NOT NULL,
         UNIQUE (business_id, email)
       );
+      CREATE INDEX contacts_by_email ON contacts (email);
       CREATE TABLE opportunities (
         id TEXT PRIMARY KEY,
         business_id TEXT NOT NULL REFERENCES businesses (id),
@@ -124,6 +127,7 @@ const MIGRATIONS = [
         created_at TEXT NOT NULL,
         updated_at TEXT NOT NULL
       );
+      CREATE INDEX opportunities_by_business ON opportunities (business_id);
       CREATE INDEX opportunities_by_stage ON opportunities (stage, next_follow_up_at);
       CREATE INDEX opportunities_by_thread ON opportunities (gmail_thread_id);
       CREATE TABLE stage_events (
@@ -135,8 +139,9 @@ const MIGRATIONS = [
         actor TEXT NOT NULL,
         created_at TEXT NOT NULL
       );
+      CREATE INDEX stage_events_by_opportunity ON stage_events (opportunity_id, id);
       CREATE TABLE suppression (
-        value TEXT PRIMARY KEY,
+        value TEXT PRIMARY KEY COLLATE NOCASE,
         reason TEXT NOT NULL,
         created_at TEXT NOT NULL
       );
@@ -145,7 +150,7 @@ const MIGRATIONS = [
         opportunity_id TEXT NOT NULL REFERENCES opportunities (id),
         action_id TEXT NOT NULL,
         lane TEXT NOT NULL,
-        kind TEXT NOT NULL CHECK (kind IN ('pitch', 'follow_up', 'portfolio')),
+        kind TEXT NOT NULL,
         to_email TEXT NOT NULL,
         mode TEXT NOT NULL CHECK (mode IN ('draft', 'send')),
         gmail_message_id TEXT NOT NULL DEFAULT '',
@@ -155,6 +160,7 @@ const MIGRATIONS = [
         created_at TEXT NOT NULL
       );
       CREATE INDEX email_sends_by_time ON email_sends (created_at);
+      CREATE INDEX email_sends_by_opportunity ON email_sends (opportunity_id);
       CREATE TABLE inbound_messages (
         gmail_message_id TEXT PRIMARY KEY,
         opportunity_id TEXT,
@@ -186,6 +192,7 @@ const MIGRATIONS = [
         action_id TEXT NOT NULL,
         created_at TEXT NOT NULL
       );
+      CREATE INDEX portfolio_sends_by_opportunity ON portfolio_sends (opportunity_id);
     `,
   },
 ];

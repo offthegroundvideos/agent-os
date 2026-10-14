@@ -31,3 +31,13 @@ test('transaction rolls back when the callback throws', () => {
   assert.equal(osDb.db.prepare('SELECT COUNT(*) AS n FROM settings').get().n, 0);
   osDb.close();
 });
+
+test('businesses share a domain but not a website_key', () => {
+  const osDb = openOsDb(':memory:');
+  const insert = osDb.db.prepare(`INSERT INTO businesses (id, name, lane, website, website_domain, website_key, created_at)
+    VALUES (?, ?, 'real_estate', ?, ?, ?, 't')`);
+  insert.run('b1', 'Agent One', 'https://bhhs.com/agent-one', 'bhhs.com', 'bhhs.com/agent-one');
+  insert.run('b2', 'Agent Two', 'https://bhhs.com/agent-two', 'bhhs.com', 'bhhs.com/agent-two');
+  assert.throws(() => insert.run('b3', 'Agent Dupe', 'https://bhhs.com/agent-one', 'bhhs.com', 'bhhs.com/agent-one'), /UNIQUE/);
+  osDb.close();
+});

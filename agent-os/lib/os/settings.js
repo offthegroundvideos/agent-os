@@ -77,6 +77,7 @@ export const DEFAULT_SETTINGS = Object.freeze({
   'outreach.daily_pitch_limit': 15,
   'outreach.daily_email_limit': 40,
   'outreach.follow_up_days': [4, 9],
+  // Days after the last follow-up before an unanswered prospect is closed.
   'outreach.close_after_days': 7,
   'outreach.window': { startHour: 9, endHour: 17 },
   'outreach.paused_lanes': {},
