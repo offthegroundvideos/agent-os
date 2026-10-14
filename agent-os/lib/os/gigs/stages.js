@@ -10,9 +10,10 @@ export const TRANSITIONS = Object.freeze({
   following_up: ['replied', 'closed_bounced', 'closed_unsubscribed', 'closed_lost'],
   replied: ['portfolio_sent', 'quoted', 'closed_no', 'closed_not_now', 'closed_unsubscribed', 'closed_lost'],
   portfolio_sent: ['replied', 'quoted', 'closed_no', 'closed_not_now', 'closed_unsubscribed', 'closed_lost'],
-  quoted: ['replied', 'held', 'booked', 'closed_no', 'closed_lost'],
-  held: ['booked', 'closed_hold_expired', 'closed_lost'],
-  closed_not_now: ['researched'],
+  quoted: ['replied', 'held', 'booked', 'closed_no', 'closed_not_now', 'closed_unsubscribed', 'closed_lost'],
+  held: ['booked', 'closed_no', 'closed_hold_expired', 'closed_unsubscribed', 'closed_lost'],
+  closed_not_now: ['researched', 'replied', 'closed_unsubscribed', 'closed_lost'],
+  closed_lost: ['replied'],
 });
 
 const PATCHABLE = new Set([
@@ -20,6 +21,7 @@ const PATCHABLE = new Set([
   'pitched_at', 'follow_ups_sent', 'next_follow_up_at', 'check_in_at', 'close_reason',
 ]);
 const JSON_COLUMNS = new Set(['evidence', 'portfolio_ids']);
+const TEXT_COLUMNS = new Set(['angle', 'style', 'subject', 'last_message_id_header', 'close_reason']);
 
 export function canMove(from, to) {
   return (TRANSITIONS[from] ?? []).includes(to);
@@ -37,34 +39,51 @@ export function createStages({ db, transaction }, { now = () => new Date() } = {
     return row;
   }
 
-  function write(id, patch) {
+  function normalize(key, value) {
+    if (JSON_COLUMNS.has(key)) {
+      if (value == null) return '[]';
+      if (!Array.isArray(value)) throw new StageError(`${key} must be an array.`);
+      return JSON.stringify(value);
+    }
+    if (TEXT_COLUMNS.has(key)) return value ?? '';
+    if (key === 'follow_ups_sent') return value ?? 0;
+    return value ?? null;
+  }
+
+  function write(id, patch, at) {
+    if (!patch || typeof patch !== 'object' || Array.isArray(patch)) throw new StageError('patch must be an object.');
     const entries = Object.entries(patch);
     for (const [key] of entries) {
       if (key !== 'stage' && !PATCHABLE.has(key)) throw new StageError(`Cannot set ${key} on an opportunity.`);
     }
     const sets = [...entries.map(([key]) => `${key} = ?`), 'version = version + 1', 'updated_at = ?'];
-    const values = entries.map(([key, value]) => (JSON_COLUMNS.has(key) ? JSON.stringify(value ?? []) : value ?? null));
-    db.prepare(`UPDATE opportunities SET ${sets.join(', ')} WHERE id = ?`).run(...values, stamp(), id);
+    const values = entries.map(([key, value]) => normalize(key, value));
+    db.prepare(`UPDATE opportunities SET ${sets.join(', ')} WHERE id = ?`).run(...values, at, id);
   }
+
+  const run = (fn) => (db.isTransaction ? fn() : transaction(fn));
 
   function move(id, to, { reason = '', actor = 'otg-os', patch = {}, expectedVersion = null } = {}) {
     if (!STAGES.includes(to)) throw new StageError(`Unknown stage: ${to}`);
-    return transaction(() => {
+    if (!patch || typeof patch !== 'object' || Array.isArray(patch)) throw new StageError('patch must be an object.');
+    return run(() => {
       const row = load(id, expectedVersion);
       if (!canMove(row.stage, to)) throw new StageError(`Cannot move ${id} from ${row.stage} to ${to}.`);
-      write(id, { ...patch, stage: to });
+      const at = stamp();
+      write(id, { ...patch, stage: to }, at);
       db.prepare('INSERT INTO stage_events (opportunity_id, from_stage, to_stage, reason, actor, created_at) VALUES (?, ?, ?, ?, ?, ?)')
-        .run(id, row.stage, to, String(reason ?? '').slice(0, 500), actor, stamp());
-      return { from: row.stage, to };
+        .run(id, row.stage, to, String(reason ?? '').slice(0, 500), String(actor || 'otg-os'), at);
+      return { from: row.stage, to, version: row.version + 1 };
     });
   }
 
   function update(id, patch, { expectedVersion = null } = {}) {
+    if (!patch || typeof patch !== 'object' || Array.isArray(patch)) throw new StageError('patch must be an object.');
     if ('stage' in patch) throw new StageError('Use move() to change the stage.');
-    return transaction(() => {
+    return run(() => {
       const row = load(id, expectedVersion);
-      write(id, patch);
-      return { stage: row.stage };
+      write(id, patch, stamp());
+      return { stage: row.stage, version: row.version + 1 };
     });
   }
 
