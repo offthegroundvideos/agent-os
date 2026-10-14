@@ -11,7 +11,7 @@ test('runtime works without Telegram or Claude keys', async () => {
   });
   assert.equal(action.status, 'proposed');
   assert.match(lines[0], /approval needed/);
-  await assert.rejects(() => runtime.router.run('chat', { messages: [{ role: 'user', content: 'hi' }] }), /anthropic not configured/);
+  await assert.rejects(() => runtime.router.run('decision', { messages: [{ role: 'user', content: 'hi' }] }), /anthropic not configured/);
   runtime.close();
 });
 

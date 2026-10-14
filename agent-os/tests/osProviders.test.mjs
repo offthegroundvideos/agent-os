@@ -66,3 +66,60 @@ test('ollama provider raises on HTTP errors', async () => {
   const provider = createOllamaProvider({ baseUrl: 'http://ollama.test', fetchImpl: async () => ({ ok: false, status: 500 }) });
   await assert.rejects(() => provider.complete({ model: 'qwen3.5:9b', messages: [{ role: 'user', content: 'x' }] }), /Ollama error 500/);
 });
+
+test('ollama provider sends tools and turns tool calls into tool_use blocks', async () => {
+  const requests = [];
+  const fetchImpl = async (url, init) => {
+    requests.push(JSON.parse(init.body));
+    return {
+      ok: true,
+      json: async () => ({
+        message: { content: '', tool_calls: [{ function: { name: 'list_recent_actions', arguments: { limit: 3 } } }] },
+        prompt_eval_count: 40,
+        eval_count: 8,
+      }),
+    };
+  };
+  const provider = createOllamaProvider({ baseUrl: 'http://ollama.test', fetchImpl });
+  const tools = [{ name: 'list_recent_actions', description: 'Recent actions', strict: true, input_schema: { type: 'object', properties: { limit: { type: 'integer' } }, required: ['limit'], additionalProperties: false } }];
+  const result = await provider.complete({ model: 'qwen3.5:9b', messages: [{ role: 'user', content: 'What happened?' }], tools });
+  assert.equal(result.stopReason, 'tool_use');
+  const [call] = result.content.filter((block) => block.type === 'tool_use');
+  assert.equal(call.name, 'list_recent_actions');
+  assert.deepEqual(call.input, { limit: 3 });
+  assert.match(call.id, /^ollama_/);
+  assert.deepEqual(requests[0].tools, [{
+    type: 'function',
+    function: { name: 'list_recent_actions', description: 'Recent actions', parameters: tools[0].input_schema },
+  }]);
+});
+
+test('ollama provider converts tool history into Ollama tool messages', async () => {
+  const requests = [];
+  const fetchImpl = async (url, init) => {
+    requests.push(JSON.parse(init.body));
+    return { ok: true, json: async () => ({ message: { content: 'Nothing is waiting.' }, prompt_eval_count: 1, eval_count: 1 }) };
+  };
+  const provider = createOllamaProvider({ baseUrl: 'http://ollama.test', fetchImpl });
+  await provider.complete({
+    model: 'qwen3.5:9b',
+    messages: [
+      { role: 'user', content: 'Anything waiting?' },
+      { role: 'assistant', content: [{ type: 'tool_use', id: 'ollama_1_0', name: 'list_pending_approvals', input: {} }] },
+      { role: 'user', content: [{ type: 'tool_result', tool_use_id: 'ollama_1_0', content: '[]' }] },
+    ],
+  });
+  assert.deepEqual(requests[0].messages, [
+    { role: 'user', content: 'Anything waiting?' },
+    { role: 'assistant', content: '', tool_calls: [{ function: { name: 'list_pending_approvals', arguments: {} } }] },
+    { role: 'tool', tool_name: 'list_pending_approvals', content: '[]' },
+  ]);
+});
+
+test('ollama provider treats an empty answer as a failure so the router can fall back', async () => {
+  const provider = createOllamaProvider({
+    baseUrl: 'http://ollama.test',
+    fetchImpl: async () => ({ ok: true, json: async () => ({ message: { content: '<think>hmm</think>' } }) }),
+  });
+  await assert.rejects(() => provider.complete({ model: 'qwen3.5:9b', messages: [{ role: 'user', content: 'x' }] }), /empty response/);
+});

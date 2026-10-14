@@ -34,8 +34,17 @@ function setup({ anthropic = 'ok', ollama = 'ok' } = {}) {
 
 const spendRows = (osDb) => osDb.db.prepare('SELECT * FROM spend ORDER BY id').all();
 
-test('chat goes to Claude Sonnet at low effort and records spend', async () => {
+test('chat runs on the free local model first', async () => {
   const { osDb, providers, router } = setup();
+  const result = await router.run('chat', { messages: [{ role: 'user', content: 'hi' }] });
+  assert.equal(result.provider, 'ollama');
+  assert.equal(result.costMicros, 0);
+  assert.equal(providers.anthropic.calls.length, 0);
+  osDb.close();
+});
+
+test('chat falls back to Claude Sonnet at low effort and records spend', async () => {
+  const { osDb, providers, router } = setup({ ollama: 'fail' });
   const result = await router.run('chat', { messages: [{ role: 'user', content: 'hi' }] }, { actionId: 'act_1' });
   assert.equal(result.provider, 'anthropic');
   assert.equal(result.costMicros, 3000);
