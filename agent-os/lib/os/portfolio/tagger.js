@@ -12,7 +12,8 @@ export function normalizeTags(raw, fallbackDeliverable = '') {
   return {
     lane: TAG_LANES.includes(raw?.lane) ? raw.lane : 'other',
     style: STYLES.includes(raw?.style) ? raw.style : '',
-    location: String(raw?.location ?? '').slice(0, 80),
+    // Captions are untrusted, so keep only letters, digits and place-name punctuation.
+    location: String(raw?.location ?? '').replace(/[^\p{L}\p{N} ,.'-]/gu, ' ').replace(/\s+/g, ' ').trim().slice(0, 80),
     deliverableType: DELIVERABLES.includes(raw?.deliverable_type) ? raw.deliverable_type : fallbackDeliverable,
   };
 }

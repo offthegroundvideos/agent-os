@@ -40,8 +40,9 @@ export function createPortfolio({ store, router, budget, settings, scrapeCreator
         store.setTags(item.id, await suggestTags(router, item));
         report.tagged += 1;
       } catch (error) {
-        report.errors.push(`tagging: ${error.message}`);
-        break;
+        report.errors.push(`tagging ${item.id}: ${error.message}`);
+        // A router failure means every provider is down; a bad reply for one piece should not block the rest.
+        if (error.name === 'RouterError') break;
       }
     }
     return report;
@@ -61,19 +62,25 @@ export function createPortfolio({ store, router, budget, settings, scrapeCreator
   }
 
   // "/tag 3 lane=winery style=cinematic location=Napa_Valley" (underscores become spaces).
+  const TAG_USAGE = 'Usage: /tag <number> lane=… style=… type=… location=…';
   function tag(args) {
     const [idText, ...pairs] = args;
+    const id = Number(idText);
+    if (!Number.isInteger(id) || id < 1 || !pairs.length) return TAG_USAGE;
     const tags = {};
     for (const pair of pairs) {
-      const [key, raw = ''] = pair.split('=');
+      const eq = pair.indexOf('=');
+      if (eq === -1) return 'Use key=value, for example lane=winery.';
+      const key = pair.slice(0, eq).trim().toLowerCase();
+      if (!Object.hasOwn(TAG_RULES, key)) return `Unknown tag ${key}. Use lane, style, type or location.`;
       const rule = TAG_RULES[key];
-      if (!rule) return `Unknown tag ${key}. Use lane, style, type or location.`;
-      const value = raw.replace(/_/g, ' ').trim();
+      let value = pair.slice(eq + 1).replace(/_/g, ' ').trim();
+      if (rule.values) value = value.toLowerCase();
       if (rule.values && !rule.values.includes(value)) return `${key} must be one of: ${rule.values.join(', ')}`;
       tags[rule.field] = value;
     }
     try {
-      const item = store.setTags(Number(idText), tags, { confirmed: true });
+      const item = store.setTags(id, tags, { confirmed: true });
       return `Saved: ${item.title} — ${item.lane || 'untagged'}${item.style ? `/${item.style}` : ''}${item.location ? ` (${item.location})` : ''}`;
     } catch (error) {
       return error.message;
