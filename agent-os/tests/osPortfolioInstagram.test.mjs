@@ -53,3 +53,42 @@ test('import is skipped without a key or when the cap is reached', async () => {
   assert.match((await importInstagram({ handle: 'h', apiKey: '', budget, settings: {} })).skipped, /not set/);
   assert.match((await importInstagram({ handle: 'h', apiKey: 'k', budget, settings: {} })).skipped, /cap/);
 });
+
+test('carousel slides are not imported as separate posts', () => {
+  const payload = {
+    edges: [{ node: {
+      shortcode: 'PARENT', display_url: 'https://cdn/parent.jpg', taken_at_timestamp: 1767225600,
+      edge_media_to_caption: { edges: [{ node: { text: 'Carousel post' } }] },
+      edge_sidecar_to_children: { edges: [
+        { node: { shortcode: 'SLIDE1', display_url: 'https://cdn/s1.jpg' } },
+        { node: { shortcode: 'SLIDE2', display_url: 'https://cdn/s2.jpg' } },
+      ] },
+    } }],
+  };
+  const posts = extractInstagramPosts(payload, 'madebyotg');
+  assert.equal(posts.length, 1);
+  assert.equal(posts[0].url, 'https://www.instagram.com/p/PARENT/');
+});
+
+test('a non-ok response still records the credit, then throws', async () => {
+  const recorded = [];
+  const budget = { canUseTool: () => true, record: (row) => recorded.push(row) };
+  const fetchImpl = async () => ({ ok: false, status: 500, json: async () => ({}) });
+  await assert.rejects(
+    importInstagram({ handle: 'h', apiKey: 'k', budget, settings: { get: () => 2000 }, fetchImpl }),
+    /ScrapeCreators returned 500/,
+  );
+  assert.equal(recorded.length, 1);
+});
+
+test('a fetch that rejects still records the credit once', async () => {
+  const recorded = [];
+  const budget = { canUseTool: () => true, record: (row) => recorded.push(row) };
+  const fetchImpl = async () => { throw new Error('network down'); };
+  await assert.rejects(
+    importInstagram({ handle: 'h', apiKey: 'k', budget, settings: { get: () => undefined }, fetchImpl }),
+    /network down/,
+  );
+  assert.equal(recorded.length, 1);
+  assert.equal(recorded[0].costMicros, 0);
+});
