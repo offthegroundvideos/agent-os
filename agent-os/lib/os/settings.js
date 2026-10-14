@@ -23,6 +23,67 @@ export const DEFAULT_SETTINGS = Object.freeze({
   'executor.retry_minutes': [1, 5, 15, 60],
   'heartbeat.last_ping_at': '',
   'backup.last_date': '',
+  'gigs.lanes': {
+    travel: {
+      active: true,
+      label: 'Yacht, travel and tourism',
+      timezone: 'Pacific/Tahiti',
+      queries: [
+        'Yacht charter companies operating in French Polynesia (Tahiti, Bora Bora, Raiatea, Moorea)',
+        'Luxury resorts and overwater-bungalow hotels in Bora Bora, Moorea and Tahiti',
+        'Cruise, sailing and expedition operators in French Polynesia',
+        'Superyacht charter brokers with yachts cruising French Polynesia',
+      ],
+    },
+    winery: {
+      active: true,
+      label: 'Wineries',
+      timezone: 'America/Los_Angeles',
+      queries: [
+        'Napa Valley wineries that host weddings or private events',
+        'Sonoma County wineries with event venues',
+        'Marin County and West Marin wineries and tasting rooms',
+        'Napa and Sonoma wineries with wine clubs and release events',
+      ],
+    },
+    wedding: {
+      active: true,
+      label: 'Weddings and events',
+      timezone: 'America/Los_Angeles',
+      queries: [
+        'Wedding venues in Marin County, California',
+        'Luxury wedding planners serving Marin, Napa and Sonoma',
+        'Estate and vineyard wedding venues in Napa and Sonoma',
+      ],
+    },
+    real_estate: {
+      active: true,
+      label: 'Real estate',
+      timezone: 'America/Los_Angeles',
+      queries: [
+        'Luxury real estate agents in Marin County with current listings',
+        'Top listing agents in Mill Valley, Tiburon, Ross and Sausalito',
+        'Real estate agents with luxury listings in Napa and Sonoma',
+      ],
+    },
+  },
+  'gigs.query_cursor': {},
+  'gigs.daily_searches': 3,
+  'gigs.daily_research': 12,
+  'gigs.research_today': { date: '', count: 0 },
+  'gigs.last_runs': {},
+  'outreach.mode': 'draft',
+  'outreach.sender_name': 'Jack Riggs',
+  'outreach.daily_pitch_limit': 15,
+  'outreach.daily_email_limit': 40,
+  'outreach.follow_up_days': [4, 9],
+  'outreach.close_after_days': 7,
+  'outreach.window': { startHour: 9, endHour: 17 },
+  'outreach.paused_lanes': {},
+  'portfolio.site_url': 'https://madebyotg.com',
+  'portfolio.instagram_handle': 'madebyotg',
+  'budget.scrapecreators_credit_micros': 2_000,
+  'gmail.last_poll_at': '',
 });
 
 export function createSettings({ db }) {

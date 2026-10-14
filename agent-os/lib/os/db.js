@@ -75,6 +75,119 @@ const MIGRATIONS = [
       );
     `,
   },
+  {
+    // Gig Engine (outreach half) and portfolio library.
+    id: 3,
+    sql: `
+      CREATE TABLE businesses (
+        id TEXT PRIMARY KEY,
+        name TEXT NOT NULL,
+        lane TEXT NOT NULL CHECK (lane IN ('travel', 'winery', 'wedding', 'real_estate')),
+        website TEXT NOT NULL,
+        website_domain TEXT NOT NULL UNIQUE,
+        location TEXT NOT NULL DEFAULT '',
+        timezone TEXT NOT NULL DEFAULT 'America/Los_Angeles',
+        source_url TEXT NOT NULL DEFAULT '',
+        fit_reason TEXT NOT NULL DEFAULT '',
+        created_at TEXT NOT NULL
+      );
+      CREATE TABLE contacts (
+        id TEXT PRIMARY KEY,
+        business_id TEXT NOT NULL REFERENCES businesses (id),
+        name TEXT NOT NULL DEFAULT '',
+        role TEXT NOT NULL DEFAULT '',
+        email TEXT NOT NULL,
+        email_source_url TEXT NOT NULL,
+        created_at TEXT NOT NULL,
+        UNIQUE (business_id, email)
+      );
+      CREATE TABLE opportunities (
+        id TEXT PRIMARY KEY,
+        business_id TEXT NOT NULL REFERENCES businesses (id),
+        contact_id TEXT REFERENCES contacts (id),
+        lane TEXT NOT NULL,
+        stage TEXT NOT NULL,
+        angle TEXT NOT NULL DEFAULT '',
+        evidence TEXT NOT NULL DEFAULT '[]',
+        style TEXT NOT NULL DEFAULT '',
+        portfolio_ids TEXT NOT NULL DEFAULT '[]',
+        gmail_thread_id TEXT,
+        last_message_id_header TEXT NOT NULL DEFAULT '',
+        subject TEXT NOT NULL DEFAULT '',
+        pitched_at TEXT,
+        follow_ups_sent INTEGER NOT NULL DEFAULT 0,
+        next_follow_up_at TEXT,
+        check_in_at TEXT,
+        close_reason TEXT NOT NULL DEFAULT '',
+        attributed_to_otg_os INTEGER NOT NULL DEFAULT 1,
+        version INTEGER NOT NULL DEFAULT 0,
+        created_at TEXT NOT NULL,
+        updated_at TEXT NOT NULL
+      );
+      CREATE INDEX opportunities_by_stage ON opportunities (stage, next_follow_up_at);
+      CREATE INDEX opportunities_by_thread ON opportunities (gmail_thread_id);
+      CREATE TABLE stage_events (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        opportunity_id TEXT NOT NULL REFERENCES opportunities (id),
+        from_stage TEXT NOT NULL,
+        to_stage TEXT NOT NULL,
+        reason TEXT NOT NULL DEFAULT '',
+        actor TEXT NOT NULL,
+        created_at TEXT NOT NULL
+      );
+      CREATE TABLE suppression (
+        value TEXT PRIMARY KEY,
+        reason TEXT NOT NULL,
+        created_at TEXT NOT NULL
+      );
+      CREATE TABLE email_sends (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        opportunity_id TEXT NOT NULL REFERENCES opportunities (id),
+        action_id TEXT NOT NULL,
+        lane TEXT NOT NULL,
+        kind TEXT NOT NULL CHECK (kind IN ('pitch', 'follow_up', 'portfolio')),
+        to_email TEXT NOT NULL,
+        mode TEXT NOT NULL CHECK (mode IN ('draft', 'send')),
+        gmail_message_id TEXT NOT NULL DEFAULT '',
+        gmail_thread_id TEXT NOT NULL DEFAULT '',
+        bounced INTEGER NOT NULL DEFAULT 0,
+        unsubscribed INTEGER NOT NULL DEFAULT 0,
+        created_at TEXT NOT NULL
+      );
+      CREATE INDEX email_sends_by_time ON email_sends (created_at);
+      CREATE TABLE inbound_messages (
+        gmail_message_id TEXT PRIMARY KEY,
+        opportunity_id TEXT,
+        label TEXT NOT NULL,
+        confidence REAL,
+        created_at TEXT NOT NULL
+      );
+      CREATE TABLE portfolio_items (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        source TEXT NOT NULL CHECK (source IN ('site', 'instagram', 'manual')),
+        url TEXT NOT NULL UNIQUE,
+        title TEXT NOT NULL,
+        description TEXT NOT NULL DEFAULT '',
+        thumbnail_url TEXT NOT NULL DEFAULT '',
+        lane TEXT NOT NULL DEFAULT '',
+        style TEXT NOT NULL DEFAULT '',
+        location TEXT NOT NULL DEFAULT '',
+        deliverable_type TEXT NOT NULL DEFAULT '',
+        published_at TEXT NOT NULL DEFAULT '',
+        tags_confirmed INTEGER NOT NULL DEFAULT 0,
+        active INTEGER NOT NULL DEFAULT 1,
+        created_at TEXT NOT NULL,
+        updated_at TEXT NOT NULL
+      );
+      CREATE TABLE portfolio_sends (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        opportunity_id TEXT NOT NULL REFERENCES opportunities (id),
+        portfolio_item_id INTEGER NOT NULL REFERENCES portfolio_items (id),
+        action_id TEXT NOT NULL,
+        created_at TEXT NOT NULL
+      );
+    `,
+  },
 ];
 
 export function openOsDb(file) {
