@@ -6,6 +6,9 @@ import { createBudget } from './budget.js';
 import { createApprovalGate } from './approvalGate.js';
 import { createAnthropicProvider } from './providers/anthropic.js';
 import { createOllamaProvider } from './providers/ollama.js';
+import { createOpenAiChatProvider } from './providers/openaiChat.js';
+import { createXaiSearch } from './providers/xaiSearch.js';
+import { createLiveSearch } from './tools/liveSearch.js';
 import { createModelRouter } from './modelRouter.js';
 import { createRegistry } from './registry.js';
 import { demoTool } from './tools/demo.js';
@@ -34,7 +37,19 @@ export function createOsRuntime({
   if (anthropicClient || env.ANTHROPIC_API_KEY) {
     providers.anthropic = createAnthropicProvider({ client: anthropicClient ?? undefined, apiKey: env.ANTHROPIC_API_KEY });
   }
+  if (env.DEEPSEEK_API_KEY) {
+    providers.deepseek = createOpenAiChatProvider({
+      name: 'deepseek',
+      baseUrl: 'https://api.deepseek.com',
+      apiKey: env.DEEPSEEK_API_KEY,
+      fetchImpl,
+      extraBody: { thinking: { type: 'disabled' } },
+    });
+  }
   const router = createModelRouter({ providers, budget });
+  const liveSearch = env.XAI_API_KEY
+    ? createLiveSearch({ xai: createXaiSearch({ apiKey: env.XAI_API_KEY, fetchImpl }), budget, settings })
+    : null;
 
   const ownerId = Number(env.TELEGRAM_OWNER_ID) || null;
   const api = env.TELEGRAM_BOT_TOKEN ? createTelegramApi({ token: env.TELEGRAM_BOT_TOKEN, fetchImpl }) : null;
@@ -43,13 +58,13 @@ export function createOsRuntime({
   const registry = createRegistry({ ledger, gate, settings, notifier, now });
   registry.register(demoTool);
 
-  const chat = createChat({ router, ledger, budget, gate, settings });
+  const chat = createChat({ router, ledger, budget, gate, settings, liveSearch });
   const bot = api ? createTelegramBot({ api, ownerId, settings, ledger, registry, gate, budget, chat, log }) : null;
   const heartbeat = createHeartbeat({ url: env.HEALTHCHECKS_PING_URL || '', fetchImpl });
   const backup = createBackup({ osDb, dir: env.OTG_OS_BACKUP_DIR || path.join(cwd, 'data', 'backups', 'otg-os'), now });
 
   return {
-    osDb, settings, ledger, budget, gate, router, registry, notifier, chat, bot, heartbeat, backup,
+    osDb, settings, ledger, budget, gate, router, providers, liveSearch, registry, notifier, chat, bot, heartbeat, backup,
     close: () => osDb.close(),
   };
 }

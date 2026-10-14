@@ -23,3 +23,14 @@ test('runtime builds the Telegram bot and Claude provider when keys are set', ()
   assert.notEqual(runtime.bot, null);
   runtime.close();
 });
+
+test('DeepSeek and Grok live search switch on only when their keys are set', () => {
+  const off = createOsRuntime({ env: { OTG_OS_DB_FILE: ':memory:' }, log: () => {} });
+  assert.equal(off.providers.deepseek, undefined);
+  assert.equal(off.liveSearch, null);
+  off.close();
+  const on = createOsRuntime({ env: { OTG_OS_DB_FILE: ':memory:', DEEPSEEK_API_KEY: 'ds', XAI_API_KEY: 'xai' }, log: () => {} });
+  assert.equal(on.providers.deepseek.name, 'deepseek');
+  assert.notEqual(on.liveSearch, null);
+  on.close();
+});
