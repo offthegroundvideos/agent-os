@@ -12,7 +12,8 @@
     "sync-context": "node scripts/update-claude-md.js",
     "os:worker": "node scripts/otg-os-worker.mjs",
     "os:demo": "node scripts/otg-os-demo-approval.mjs",
-    "os:mcp": "node --no-warnings scripts/otg-os-mcp.mjs"
+    "os:mcp": "node --no-warnings scripts/otg-os-mcp.mjs",
+    "os:google-auth": "node scripts/otg-os-google-auth.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.134.0",
