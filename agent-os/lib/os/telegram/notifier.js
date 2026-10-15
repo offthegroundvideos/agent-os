@@ -24,6 +24,9 @@ export function createTelegramNotifier({ api, team, log = console.error }) {
     async alert(text) {
       await send(`⚠️ ${text}`);
     },
+    async report(text) {
+      await send(text);
+    },
     async offerPromotion({ actionType, from, to }) {
       await send(
         `I've had 20 approvals in a row with no edits for ${actionType}. Move it from ${LEVEL_LABELS[from]} to ${LEVEL_LABELS[to]}?`,
@@ -44,6 +47,9 @@ export function createConsoleNotifier(log = console.log) {
     },
     async alert(text) {
       log(`[alert] ${text}`);
+    },
+    async report(text) {
+      log(`[report] ${text}`);
     },
     async offerPromotion({ actionType, from, to }) {
       log(`[promotion offer] ${actionType}: ${from} -> ${to}`);

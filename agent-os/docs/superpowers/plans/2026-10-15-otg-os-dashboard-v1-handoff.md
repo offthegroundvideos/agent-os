@@ -39,6 +39,17 @@ Date: 2026-10-15. Plan: `2026-10-15-otg-os-dashboard-v1.md`. Spec: `docs/superpo
   (Shorter, Warmer, ...); the draft route rewrites the body in the pitch voice. Nothing is saved until Save draft,
   which goes through `approvals.revise`, so the edit ratio and autonomy rules still apply.
 
+## Round 3
+
+- **Console proposals**: dashboard-only brain tools `propose_decision` (approve/reject a waiting action by business name or id)
+  and `propose_control` (pause/resume all or one lane). They only return proposals; `chat.converse` hands them to the page,
+  which shows Confirm buttons that call the normal `/api/os/approvals`, `/control` and `/settings` routes.
+- **Weekly money report**: `lib/os/weeklyReport.js`, `GET /api/os/report`, page `/os/report`; the worker sends the text
+  to Telegram every Sunday at 6pm Pacific (`report.last_weekly` keeps it to once).
+- **Live updates**: `GET /api/os/events` (SSE, read with fetch so the key stays in a header) fires `change` when
+  `dashboard.fingerprint()` changes; `useOsData` reloads on it and only polls while the stream is down. LIVE badge in the header.
+- Voice input needs HTTPS on phones; `tailscale serve` would give https://<machine>.ts.net (then the access key is needed).
+
 ## Bug fixed on the way
 
 `/tag` replaced underscores with spaces before checking listed values, so `lane=real_estate` and `type=photo_set`

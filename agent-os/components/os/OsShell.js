@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { NEED_KEY_EVENT, readKey, saveKey } from "./client";
+import { LIVE_STATE_EVENT, NEED_KEY_EVENT, liveState, readKey, saveKey, startLive } from "./client";
 import Starfield from "./Starfield";
 import { Button } from "./ui";
 
@@ -10,6 +10,7 @@ const NAV = [
   { href: "/os", label: "Today", icon: "M12 3a9 9 0 100 18 9 9 0 000-18zM12 7v5l3 2" },
   { href: "/os/approvals", label: "Approvals", icon: "M5 13l4 4L19 7" },
   { href: "/os/pipeline", label: "Pipeline", icon: "M4 6h16M4 12h10M4 18h6" },
+  { href: "/os/report", label: "Report", icon: "M4 20V10M10 20V4M16 20v-7M22 20H2" },
   { href: "/os/portfolio", label: "Portfolio", icon: "M4 5h16v14H4zM4 15l5-5 4 4 3-3 4 4" },
   { href: "/os/settings", label: "Settings", icon: "M12 15a3 3 0 100-6 3 3 0 000 6zM19 12h2M3 12h2M12 3v2M12 19v2M17 7l1.5-1.5M5.5 18.5L7 17M17 17l1.5 1.5M5.5 5.5L7 7" },
 ];
@@ -23,6 +24,26 @@ function Icon({ d }) {
     <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       <path d={d} />
     </svg>
+  );
+}
+
+function LiveBadge() {
+  const [state, setState] = useState("connecting");
+  useEffect(() => {
+    setState(liveState());
+    const onState = (event) => setState(event.detail);
+    window.addEventListener(LIVE_STATE_EVENT, onState);
+    return () => window.removeEventListener(LIVE_STATE_EVENT, onState);
+  }, []);
+  const isLive = state === "live";
+  return (
+    <span
+      className={`os-mono inline-flex items-center gap-1.5 rounded-md border px-1.5 py-0.5 text-[10px] uppercase tracking-wider ${isLive ? "border-emerald-400/40 text-emerald-300" : "border-amber-400/40 text-amber-300"}`}
+      title={isLive ? "Live: pages update the moment something changes" : "Reconnecting: pages refresh every 30 seconds meanwhile"}
+    >
+      <span className={`os-pulse-dot h-1.5 w-1.5 rounded-full ${isLive ? "bg-emerald-400 text-emerald-400" : "bg-amber-400 text-amber-400"}`} aria-hidden="true" />
+      {isLive ? "Live" : "Sync"}
+    </span>
   );
 }
 
@@ -79,6 +100,7 @@ export default function OsShell({ children }) {
   const [askKey, setAskKey] = useState(false);
 
   useEffect(() => {
+    startLive();
     const open = () => setAskKey(true);
     window.addEventListener(NEED_KEY_EVENT, open);
     window.addEventListener("otg-os-open-key", open);
@@ -116,6 +138,7 @@ export default function OsShell({ children }) {
             ))}
           </nav>
           <div className="flex shrink-0 items-center gap-1 whitespace-nowrap text-sm">
+            <span className="mr-1"><LiveBadge /></span>
             <span className="mr-1 hidden sm:inline"><PacificClock /></span>
             <Link href="/agents" className="os-mono rounded-lg px-2 py-1.5 text-[11px] uppercase text-slate-400 hover:text-cyan-100">Agents</Link>
             <Link href="/studio" className="os-mono hidden rounded-lg px-2 py-1.5 text-[11px] uppercase text-slate-400 hover:text-cyan-100 sm:inline">Studio</Link>
@@ -131,14 +154,14 @@ export default function OsShell({ children }) {
       <main key={pathname} className="relative z-10 mx-auto max-w-5xl px-4 pb-28 pt-6 lg:pb-14">{children}</main>
 
       <nav className="fixed inset-x-0 bottom-0 z-30 border-t border-cyan-300/15 bg-slate-950/80 backdrop-blur-md lg:hidden" aria-label="OTG-OS">
-        <div className="mx-auto grid max-w-md grid-cols-5 pb-[env(safe-area-inset-bottom)]">
+        <div className="mx-auto grid max-w-lg grid-cols-6 pb-[env(safe-area-inset-bottom)]">
           {NAV.map((item) => {
             const active = isActive(pathname, item.href);
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`relative flex flex-col items-center gap-0.5 py-2 text-[10px] font-semibold uppercase tracking-wide transition ${active ? "text-cyan-200" : "text-slate-500"}`}
+                className={`relative flex flex-col items-center gap-0.5 py-2 text-[9px] font-semibold uppercase tracking-wide transition ${active ? "text-cyan-200" : "text-slate-500"}`}
               >
                 {active && <span className="absolute inset-x-4 top-0 h-0.5 rounded-full bg-cyan-300 shadow-[0_0_10px_rgb(34,211,238)]" aria-hidden="true" />}
                 <span className={active ? "drop-shadow-[0_0_6px_rgb(34,211,238)]" : ""}><Icon d={item.icon} /></span>

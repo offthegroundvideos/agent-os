@@ -90,6 +90,7 @@ export const DEFAULT_SETTINGS = Object.freeze({
   'goals.monthly_shoot_days': 12,
   // Dashboard console answers: 'claude' (fast, a cent or two each) or 'local' (Gemma on Ollama, free but slow).
   'chat.console_model': 'claude',
+  'report.last_weekly': '',
 });
 
 export function createSettings({ db }) {

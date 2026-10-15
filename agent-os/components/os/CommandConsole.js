@@ -4,6 +4,7 @@ import { osFetch } from "./client";
 
 const QUICK = [
   "What needs me right now?",
+  "Approve the best pitch waiting",
   "How is the pipeline looking?",
   "What did the worker do overnight?",
   "Which prospect looks most promising?",
@@ -40,6 +41,71 @@ function speak(text) {
   utterance.rate = 1.03;
   utterance.pitch = 0.95;
   window.speechSynthesis.speak(utterance);
+}
+
+const REASON_LABELS = { wrong_target: "wrong target", wrong_tone: "wrong tone", bad_timing: "bad timing", other: "other" };
+
+function describeProposal(proposal) {
+  if (proposal.kind === "decision") {
+    const what = proposal.business ? `${proposal.actionType} to ${proposal.business}` : proposal.actionType;
+    return proposal.decision === "approve" ? `Approve ${what}` : `Reject ${what} (${REASON_LABELS[proposal.reason] ?? "other"})`;
+  }
+  const lane = proposal.lane ? proposal.lane.replaceAll("_", " ") : "";
+  return {
+    pause_all: "Pause all outgoing work",
+    resume_all: "Resume all outgoing work",
+    pause_lane: `Pause ${lane} outreach`,
+    resume_lane: `Resume ${lane} outreach`,
+  }[proposal.op];
+}
+
+// Runs a confirmed proposal through the same routes the buttons elsewhere use. The brain never calls these.
+async function carryOut(proposal) {
+  if (proposal.kind === "decision") {
+    const body = proposal.decision === "approve" ? { id: proposal.actionId, op: "approve" } : { id: proposal.actionId, op: "reject", reason: proposal.reason || "other" };
+    return (await osFetch("approvals", { method: "POST", body })).message;
+  }
+  if (proposal.op === "pause_all" || proposal.op === "resume_all") {
+    return (await osFetch("control", { method: "POST", body: { op: proposal.op === "pause_all" ? "pause" : "resume" } })).message;
+  }
+  return (await osFetch("settings", { method: "POST", body: { op: "pauseLane", lane: proposal.lane, paused: proposal.op === "pause_lane" } })).message;
+}
+
+function ProposalCard({ proposal, onChange }) {
+  const risky = proposal.kind === "decision" ? proposal.decision === "reject" : proposal.op.startsWith("pause");
+  async function confirm() {
+    onChange({ status: "working" });
+    try {
+      onChange({ status: "done", result: await carryOut(proposal) });
+    } catch (error) {
+      onChange({ status: "failed", result: error.message });
+    }
+  }
+  return (
+    <div className="mt-2 rounded-lg border border-amber-300/30 bg-amber-400/5 p-2.5 text-left">
+      <div className="os-mono text-[10px] uppercase tracking-[0.25em] text-amber-200/80">Needs your OK</div>
+      <div className="mt-1 text-[13px] text-amber-50">{describeProposal(proposal)}</div>
+      {proposal.subject && <div className="text-[11px] text-slate-400">“{proposal.subject}”</div>}
+      {proposal.status === "pending" && (
+        <div className="mt-2 flex gap-2">
+          <button
+            type="button"
+            onClick={confirm}
+            className={`os-hud rounded-lg border px-3 py-1.5 text-[11px] font-semibold uppercase ${risky ? "border-rose-300/50 bg-rose-500/20 text-rose-50" : "border-emerald-300/60 bg-emerald-400/20 text-emerald-50"}`}
+          >
+            Confirm
+          </button>
+          <button type="button" onClick={() => onChange({ status: "dismissed" })} className="os-hud rounded-lg px-3 py-1.5 text-[11px] uppercase text-slate-400 hover:text-cyan-100">
+            Dismiss
+          </button>
+        </div>
+      )}
+      {proposal.status === "working" && <p className="os-caret mt-2 text-[11px] text-amber-200">Working</p>}
+      {proposal.status === "done" && <p className="mt-2 text-[11px] text-emerald-300">✓ {proposal.result}</p>}
+      {proposal.status === "failed" && <p className="mt-2 text-[11px] text-rose-300">{proposal.result}</p>}
+      {proposal.status === "dismissed" && <p className="mt-2 text-[11px] text-slate-500">Dismissed.</p>}
+    </div>
+  );
 }
 
 function MicIcon({ live }) {
@@ -108,8 +174,8 @@ export default function CommandConsole() {
     setInput("");
     setBusy(true);
     try {
-      const { answer } = await osFetch("chat", { method: "POST", body: { question: text, history } });
-      setTurns((current) => [...current, { role: "assistant", text: answer }]);
+      const { answer, proposals = [] } = await osFetch("chat", { method: "POST", body: { question: text, history } });
+      setTurns((current) => [...current, { role: "assistant", text: answer, proposals: proposals.map((proposal) => ({ ...proposal, status: "pending" })) }]);
       if (voice) speak(answer);
     } catch (error) {
       setTurns((current) => [...current, { role: "assistant", text: error.message, error: true }]);
@@ -166,10 +232,21 @@ export default function CommandConsole() {
               {turn.role === "user" ? (
                 <span className="inline-block max-w-[90%] rounded-lg border border-violet-300/20 bg-violet-400/10 px-3 py-1.5 text-left text-violet-100">{turn.text}</span>
               ) : (
-                <p className={`max-w-[95%] whitespace-pre-wrap [overflow-wrap:anywhere] ${turn.error ? "text-rose-300" : "text-cyan-50"}`}>
-                  <span className="mr-2 text-cyan-500/70" aria-hidden="true">&gt;</span>
-                  <Typed text={turn.text} instant={i < restored.current} />
-                </p>
+                <div className="max-w-[95%]">
+                  <p className={`whitespace-pre-wrap [overflow-wrap:anywhere] ${turn.error ? "text-rose-300" : "text-cyan-50"}`}>
+                    <span className="mr-2 text-cyan-500/70" aria-hidden="true">&gt;</span>
+                    <Typed text={turn.text} instant={i < restored.current} />
+                  </p>
+                  {(turn.proposals ?? []).map((proposal, k) => (
+                    <ProposalCard
+                      key={`${proposal.kind}-${proposal.actionId ?? proposal.op}-${k}`}
+                      proposal={proposal}
+                      onChange={(patch) => setTurns((current) => current.map((item, n) => (n === i
+                        ? { ...item, proposals: item.proposals.map((p, m) => (m === k ? { ...p, ...patch } : p)) }
+                        : item)))}
+                    />
+                  ))}
+                </div>
               )}
             </div>
           ))}

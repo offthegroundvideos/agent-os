@@ -256,7 +256,22 @@ export function createDashboard({
     };
   }
 
+  // Changes whenever anything the pages show changes; the live stream compares it every couple of seconds.
+  function fingerprint() {
+    const row = db.prepare(`SELECT
+        (SELECT COALESCE(MAX(updated_at), '') FROM actions) AS a,
+        (SELECT COUNT(*) FROM actions) AS ac,
+        (SELECT COALESCE(MAX(updated_at), '') FROM opportunities) AS o,
+        (SELECT COALESCE(MAX(id), 0) FROM stage_events) AS e,
+        (SELECT COALESCE(MAX(id), 0) FROM spend) AS sp,
+        (SELECT COALESCE(MAX(updated_at), '') FROM settings) AS st,
+        (SELECT COALESCE(MAX(updated_at), '') FROM portfolio_items) AS p`).get();
+    const last = readWorkerLog(logDir, now(), 1)[0];
+    return [row.a, row.ac, row.o, row.e, row.sp, row.st, row.p, last?.at ?? ''].join('|');
+  }
+
   return {
+    fingerprint,
     today, pendingApprovals, pipeline, opportunity, findOpportunities, portfolioLibrary, tagPortfolio, settingsView,
     workerLog: (limit = 14) => readWorkerLog(logDir, now(), limit),
   };

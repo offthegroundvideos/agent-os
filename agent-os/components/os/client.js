@@ -24,6 +24,75 @@ export function saveKey(value) {
   window.dispatchEvent(new Event(KEY_SAVED_EVENT));
 }
 
+export const LIVE_CHANGE_EVENT = "otg-os-change";
+export const LIVE_STATE_EVENT = "otg-os-live";
+
+// One live connection per tab. "live" while the event stream is open; pages refresh on each change.
+const live = { started: false, state: "connecting", abort: null, retryMs: 2000 };
+
+export function liveState() {
+  return live.state;
+}
+
+function setLiveState(state) {
+  if (live.state === state) return;
+  live.state = state;
+  window.dispatchEvent(new CustomEvent(LIVE_STATE_EVENT, { detail: state }));
+}
+
+async function connectLive() {
+  const controller = new AbortController();
+  live.abort = controller;
+  try {
+    const headers = { accept: "text/event-stream" };
+    const key = readKey();
+    if (key) headers["x-agent-os-secret"] = key;
+    const response = await fetch("/api/os/events", { headers, cache: "no-store", signal: controller.signal });
+    if (!response.ok || !response.body) throw new Error(`events ${response.status}`);
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = "";
+    for (;;) {
+      const { value, done } = await reader.read();
+      if (done) break;
+      buffer += decoder.decode(value, { stream: true });
+      let cut;
+      while ((cut = buffer.indexOf("\n\n")) !== -1) {
+        const block = buffer.slice(0, cut);
+        buffer = buffer.slice(cut + 2);
+        const event = block.split("\n").find((line) => line.startsWith("event:"))?.slice(6).trim();
+        if (event === "ready") {
+          live.retryMs = 2000;
+          setLiveState("live");
+        } else if (event === "change") {
+          window.dispatchEvent(new Event(LIVE_CHANGE_EVENT));
+        }
+      }
+    }
+  } catch {
+    // Falls through to a retry.
+  }
+  if (controller.signal.aborted) return;
+  setLiveState("reconnecting");
+  setTimeout(connectLive, live.retryMs);
+  live.retryMs = Math.min(live.retryMs * 2, 60_000);
+}
+
+export function startLive() {
+  if (live.started) return;
+  live.started = true;
+  connectLive();
+  window.addEventListener(KEY_SAVED_EVENT, () => {
+    live.abort?.abort();
+    live.retryMs = 2000;
+    connectLive();
+  });
+  // Coming back to the tab: catch up at once in case the phone dropped the connection.
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible") window.dispatchEvent(new Event(LIVE_CHANGE_EVENT));
+  });
+}
+
 export async function osFetch(path, { method = "GET", body } = {}) {
   const headers = { accept: "application/json" };
   const key = readKey();
@@ -45,8 +114,11 @@ export async function osFetch(path, { method = "GET", body } = {}) {
   return data;
 }
 
-// Loads an /api/os path, refreshes every `interval` ms while the tab is visible, and again after the key is saved.
-export function useOsData(path, { interval = 0 } = {}) {
+const SAFETY_REFRESH_MS = 5 * 60_000;
+
+// Loads an /api/os path and refreshes it when the live stream says something changed (or after the key is saved).
+// `interval` is the fallback polling rate used only while the live stream is down.
+export function useOsData(path, { interval = 30_000 } = {}) {
   const [state, setState] = useState({ data: null, error: null, loading: true });
   const alive = useRef(true);
   const reload = useCallback(async () => {
@@ -62,17 +134,28 @@ export function useOsData(path, { interval = 0 } = {}) {
     alive.current = true;
     reload();
     const onKey = () => reload();
+    let pending = null;
+    const onChange = () => {
+      clearTimeout(pending);
+      pending = setTimeout(reload, 400);
+    };
     window.addEventListener(KEY_SAVED_EVENT, onKey);
-    let timer = null;
-    if (interval) {
-      timer = setInterval(() => {
-        if (document.visibilityState === "visible") reload();
-      }, interval);
-    }
+    window.addEventListener(LIVE_CHANGE_EVENT, onChange);
+    let lastLoad = Date.now();
+    const timer = setInterval(() => {
+      if (document.visibilityState !== "visible") return;
+      const wait = liveState() === "live" ? SAFETY_REFRESH_MS : interval;
+      if (wait && Date.now() - lastLoad >= wait) {
+        lastLoad = Date.now();
+        reload();
+      }
+    }, 5_000);
     return () => {
       alive.current = false;
+      clearTimeout(pending);
       window.removeEventListener(KEY_SAVED_EVENT, onKey);
-      if (timer) clearInterval(timer);
+      window.removeEventListener(LIVE_CHANGE_EVENT, onChange);
+      clearInterval(timer);
     };
   }, [reload, interval]);
 

@@ -42,7 +42,7 @@ function StatusBar({ data, reload }) {
 
 function GoalCard({ goal }) {
   return (
-    <Card title="Goal this month">
+    <Card title="Goal this month" action={<Link href="/os/report" className="os-mono text-[11px] uppercase tracking-wider text-cyan-300 hover:text-cyan-100">Weekly report →</Link>}>
       <div className="flex items-baseline gap-2">
         <span className="text-3xl font-semibold tabular-nums text-slate-50">{goal.booked}</span>
         <span className="text-slate-400">of {goal.target} paid shoot days</span>

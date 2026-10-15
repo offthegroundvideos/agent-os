@@ -3,7 +3,7 @@ import { LANES, STAGES } from '../gigs/constants.js';
 
 const CHANNELS = {
   telegram: 'You are talking with Jack in Telegram on his phone. Answer in a few short sentences.',
-  dashboard: 'You are talking with Jack through the OTG-OS dashboard console, like the computer on a ship. Answer in a few short, plain sentences; he may hear your reply read aloud, so avoid tables and markdown.',
+  dashboard: 'You are talking with Jack through the OTG-OS dashboard console, like the computer on a ship. Answer in a few short, plain sentences; he may hear your reply read aloud, so avoid tables and markdown. When he asks you to approve, reject, pause or resume something, use propose_decision or propose_control: that only puts a confirm button in front of him, so say it is ready to confirm and never say it is done.',
 };
 
 const BASE_SYSTEM = [
@@ -69,6 +69,43 @@ export const INSIGHT_TOOLS = [
   { name: 'get_settings', description: 'Outreach mode, daily limits, follow-up days, sending window, caps, the monthly goal and which lanes are paused.', strict: true, input_schema: NO_INPUT },
 ];
 
+const REJECT_REASON_KEYS = ['wrong_target', 'wrong_tone', 'bad_timing', 'other'];
+
+// Dashboard only: these never act. They hand the page a proposal that Jack confirms with a button.
+export const PROPOSAL_TOOLS = [
+  {
+    name: 'propose_decision',
+    description: 'Propose approving or rejecting one action that is waiting for approval. target is the business name (or part of it) or the action id. Jack confirms with a button; nothing happens until he does. Use reason "none" when approving.',
+    strict: true,
+    input_schema: {
+      type: 'object',
+      properties: {
+        target: { type: 'string' },
+        decision: { type: 'string', enum: ['approve', 'reject'] },
+        reason: { type: 'string', enum: ['none', ...REJECT_REASON_KEYS] },
+      },
+      required: ['target', 'decision', 'reason'],
+      additionalProperties: false,
+    },
+  },
+  {
+    name: 'propose_control',
+    description: 'Propose pausing or resuming all outgoing work, or outreach in one lane. Use lane "none" for pause_all and resume_all. Jack confirms with a button.',
+    strict: true,
+    input_schema: {
+      type: 'object',
+      properties: {
+        op: { type: 'string', enum: ['pause_all', 'resume_all', 'pause_lane', 'resume_lane'] },
+        lane: { type: 'string', enum: ['none', ...LANES] },
+      },
+      required: ['op', 'lane'],
+      additionalProperties: false,
+    },
+  },
+];
+
+const MAX_PROPOSALS = 10;
+
 export const SEARCH_TOOL = {
   name: 'search_live',
   description: 'Search X (Twitter) and/or the web right now through Grok. Costs a few cents per search, so only use it when the question needs current outside information.',
@@ -95,6 +132,34 @@ const isClosed = (stage) => stage.startsWith('closed_');
 
 export function createChat({ router, ledger, budget, gate, settings, liveSearch = null, dashboard = null, settingsEditor = null, maxSteps = 5 }) {
   const tools = [...CHAT_TOOLS, ...(dashboard ? INSIGHT_TOOLS : []), ...(liveSearch ? [SEARCH_TOOL] : [])];
+  const toolsFor = (channel) => (channel === 'dashboard' ? [...tools, ...PROPOSAL_TOOLS] : tools);
+
+  function proposeDecision({ target, decision, reason }, proposals) {
+    const wanted = String(target ?? '').trim().toLowerCase();
+    if (!wanted) return { error: 'Say which draft: a business name or an action id.' };
+    const pending = ledger.list({ status: 'proposed', limit: 100 });
+    const matches = pending.filter((action) => action.id.toLowerCase() === wanted)
+      .concat(pending.filter((action) => action.id.toLowerCase() !== wanted && String(action.payload?.business ?? '').toLowerCase().includes(wanted)));
+    if (!matches.length) {
+      return { error: `Nothing waiting matches "${target}".`, waiting: pending.map((action) => action.payload?.business || action.actionType) };
+    }
+    if (matches.length > 1) return { error: 'More than one draft matches; ask Jack which one.', matches: matches.map((action) => ({ id: action.id, business: action.payload?.business ?? '' })) };
+    const [action] = matches;
+    const proposal = {
+      kind: 'decision', actionId: action.id, decision, reason: decision === 'reject' && REJECT_REASON_KEYS.includes(reason) ? reason : decision === 'reject' ? 'other' : null,
+      actionType: action.actionType, business: action.payload?.business ?? '', subject: action.payload?.subject ?? '',
+    };
+    if (proposals.length < MAX_PROPOSALS && !proposals.some((item) => item.kind === 'decision' && item.actionId === action.id)) proposals.push(proposal);
+    return { proposed: true, waitingForJack: true, business: proposal.business, decision };
+  }
+
+  function proposeControl({ op, lane }, proposals) {
+    const needsLane = op === 'pause_lane' || op === 'resume_lane';
+    if (needsLane && !LANES.includes(lane)) return { error: `Pick a lane: ${LANES.join(', ')}` };
+    const proposal = { kind: 'control', op, lane: needsLane ? lane : null };
+    if (proposals.length < MAX_PROPOSALS && !proposals.some((item) => item.kind === 'control' && item.op === op && item.lane === proposal.lane)) proposals.push(proposal);
+    return { proposed: true, waitingForJack: true, op, lane: proposal.lane };
+  }
 
   function today() {
     const view = dashboard.today();
@@ -148,7 +213,9 @@ export function createChat({ router, ledger, budget, gate, settings, liveSearch 
     };
   }
 
-  async function runTool(name, input = {}) {
+  async function runTool(name, input = {}, { proposals = null } = {}) {
+    if (proposals && name === 'propose_decision') return proposeDecision(input, proposals);
+    if (proposals && name === 'propose_control') return proposeControl(input, proposals);
     switch (name) {
       case 'get_budget_status': {
         const status = budget.status();
@@ -187,7 +254,11 @@ export function createChat({ router, ledger, budget, gate, settings, liveSearch 
 
   // history: earlier turns of this conversation, [{ role: 'user' | 'assistant', text }], oldest first.
   // taskType 'console' is the dashboard's faster model route; Telegram keeps 'chat'.
-  async function ask(question, { channel = 'telegram', history = [], taskType = 'chat' } = {}) {
+  // Returns the answer and any proposals (dashboard only) for Jack to confirm.
+  async function converse(question, { channel = 'telegram', history = [], taskType = 'chat' } = {}) {
+    const proposals = [];
+    const offered = toolsFor(channel);
+    const finish = (answer) => ({ answer, proposals: channel === 'dashboard' ? proposals : [] });
     const earlier = (Array.isArray(history) ? history : [])
       .filter((turn) => ['user', 'assistant'].includes(turn?.role) && String(turn.text ?? '').trim())
       .slice(-MAX_HISTORY)
@@ -197,16 +268,16 @@ export function createChat({ router, ledger, budget, gate, settings, liveSearch 
     const messages = [...earlier, { role: 'user', content: String(question) }];
     const system = chatSystem(channel);
     for (let step = 0; step < maxSteps; step += 1) {
-      const response = await router.run(taskType, { system, messages, tools, maxTokens: 4000 });
-      if (response.stopReason === 'refusal') return 'I can’t help with that one.';
-      if (response.stopReason !== 'tool_use') return response.text.trim() || 'I don’t have an answer for that yet.';
+      const response = await router.run(taskType, { system, messages, tools: offered, maxTokens: 4000 });
+      if (response.stopReason === 'refusal') return finish('I can’t help with that one.');
+      if (response.stopReason !== 'tool_use') return finish(response.text.trim() || 'I don’t have an answer for that yet.');
       messages.push({ role: 'assistant', content: response.content });
       const results = response.content
         .filter((block) => block.type === 'tool_use')
         .map(async (block) => {
           let result;
           try {
-            result = await runTool(block.name, block.input);
+            result = await runTool(block.name, block.input, { proposals: channel === 'dashboard' ? proposals : null });
           } catch (error) {
             result = { error: String(error?.message ?? error) };
           }
@@ -214,8 +285,12 @@ export function createChat({ router, ledger, budget, gate, settings, liveSearch 
         });
       messages.push({ role: 'user', content: await Promise.all(results) });
     }
-    return 'I ran out of steps on that one. Try a narrower question.';
+    return finish('I ran out of steps on that one. Try a narrower question.');
   }
 
-  return { ask, runTool, tools };
+  async function ask(question, options = {}) {
+    return (await converse(question, options)).answer;
+  }
+
+  return { ask, converse, runTool, tools };
 }

@@ -184,3 +184,15 @@ test('errorResponse maps already-handled actions to 409 and known errors to 400'
     console.error = original;
   }
 });
+
+test('fingerprint changes when the data the pages show changes', async () => {
+  const { runtime, dashboard, close } = setup();
+  const first = dashboard.fingerprint();
+  assert.equal(dashboard.fingerprint(), first, 'stable when nothing changes');
+  await runtime.registry.request({ tool: 'system.demo', payload: { draft: 'x' }, why: { goal: 'g', expected: 'e' }, idempotencyKey: 'fp1' });
+  const second = dashboard.fingerprint();
+  assert.notEqual(second, first);
+  seedOpportunity(runtime);
+  assert.notEqual(dashboard.fingerprint(), second);
+  close();
+});

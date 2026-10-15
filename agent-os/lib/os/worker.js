@@ -3,7 +3,7 @@ import { isQuietHour, pacificDateKey, pacificParts } from './time.js';
 export const HEARTBEAT_INTERVAL_MS = 5 * 60 * 1000;
 export const BACKUP_HOUR = 3;
 
-export function createWorker({ settings, registry, heartbeat, backup }, { now = () => new Date(), log = console.error } = {}) {
+export function createWorker({ settings, registry, heartbeat, backup, weekly = null, notifier = null }, { now = () => new Date(), log = console.error } = {}) {
   async function maybeFlushApprovals(date) {
     const { hour } = pacificParts(date);
     if (!settings.get('telegram.bundle_hours').includes(hour)) return 0;
@@ -29,6 +29,14 @@ export function createWorker({ settings, registry, heartbeat, backup }, { now = 
     return file;
   }
 
+  // Sunday evening: the weekly money report goes to Telegram (quiet hours don't apply at 6pm).
+  async function maybeWeeklyReport(date) {
+    if (!weekly || !notifier?.report || !weekly.isDue(date)) return false;
+    weekly.markSent(date);
+    await notifier.report(weekly.text(weekly.build(date)));
+    return true;
+  }
+
   async function safely(name, fn, fallback) {
     try {
       return await fn();
@@ -45,8 +53,9 @@ export function createWorker({ settings, registry, heartbeat, backup }, { now = 
       flushed: await safely('approval bundle', () => maybeFlushApprovals(date), 0),
       heartbeat: await safely('heartbeat', () => maybeHeartbeat(date), false),
       backup: await safely('backup', () => maybeBackup(date), null),
+      weekly: await safely('weekly report', () => maybeWeeklyReport(date), false),
     };
   }
 
-  return { tick, maybeFlushApprovals, maybeHeartbeat, maybeBackup };
+  return { tick, maybeFlushApprovals, maybeHeartbeat, maybeBackup, maybeWeeklyReport };
 }

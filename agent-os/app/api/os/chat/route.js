@@ -15,8 +15,9 @@ export async function POST(request) {
     const started = Date.now();
     const { runtime } = osWeb();
     const taskType = runtime.settings.get('chat.console_model') === 'local' ? 'chat' : 'console';
-    const answer = await runtime.chat.ask(text, { channel: 'dashboard', history: Array.isArray(history) ? history : [], taskType });
-    return jsonResponse({ answer, ms: Date.now() - started });
+    const { answer, proposals } = await runtime.chat.converse(text, { channel: 'dashboard', history: Array.isArray(history) ? history : [], taskType });
+    // Proposals never act; the page shows confirm buttons that call the normal approval and control routes.
+    return jsonResponse({ answer, proposals, ms: Date.now() - started });
   } catch (error) {
     if (error?.name === 'RouterError') return jsonResponse({ error: 'No model is answering right now (Ollama and Claude both failed). Try again in a minute.' }, 503);
     return errorResponse(error);
