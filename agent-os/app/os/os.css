@@ -1,0 +1,222 @@
+/* OTG-OS dashboard: deep-space HUD look. Everything is scoped under .os-root so the agent workspace is untouched. */
+
+.os-root {
+  --os-cyan: 34 211 238;
+  --os-violet: 167 139 250;
+  --os-pink: 244 114 182;
+  --os-ink: 3 4 12;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: rgb(var(--os-ink));
+  color: #dbe7f3;
+}
+
+.os-hud {
+  font-family: "Orbitron", ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0.08em;
+}
+
+.os-mono {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* Nebula and horizon grid behind the starfield canvas */
+.os-space {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background:
+    radial-gradient(60vw 45vh at 85% -5%, rgb(var(--os-violet) / 0.16), transparent 70%),
+    radial-gradient(55vw 50vh at -10% 30%, rgb(var(--os-cyan) / 0.10), transparent 70%),
+    radial-gradient(40vw 35vh at 60% 110%, rgb(var(--os-pink) / 0.10), transparent 70%),
+    rgb(var(--os-ink));
+}
+
+.os-nebula {
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(30% 25% at 30% 40%, rgb(var(--os-cyan) / 0.07), transparent 70%),
+    radial-gradient(25% 20% at 70% 60%, rgb(var(--os-violet) / 0.08), transparent 70%);
+  filter: blur(20px);
+  animation: os-drift 60s ease-in-out infinite alternate;
+}
+
+.os-grid {
+  position: absolute;
+  left: -50%;
+  right: -50%;
+  bottom: -10%;
+  height: 45vh;
+  background-image:
+    linear-gradient(rgb(var(--os-cyan) / 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--os-cyan) / 0.12) 1px, transparent 1px);
+  background-size: 64px 64px;
+  transform: perspective(420px) rotateX(62deg);
+  transform-origin: bottom;
+  mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.55), transparent 85%);
+  animation: os-grid-run 6s linear infinite;
+}
+
+.os-scanlines {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: repeating-linear-gradient(0deg, transparent 0 3px, rgba(0, 0, 0, 0.18) 3px 4px);
+  opacity: 0.35;
+}
+
+.os-scanbeam {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 120px;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent, rgb(var(--os-cyan) / 0.05), transparent);
+  animation: os-beam 9s linear infinite;
+}
+
+/* Glass HUD panel with corner brackets */
+.os-panel {
+  position: relative;
+  border: 1px solid rgb(var(--os-cyan) / 0.16);
+  background: linear-gradient(160deg, rgb(var(--os-cyan) / 0.06), rgb(10 14 32 / 0.55) 40%, rgb(var(--os-violet) / 0.05));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.4) inset, 0 10px 40px -20px rgb(var(--os-cyan) / 0.35);
+  animation: os-rise 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.os-panel::before,
+.os-panel::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  border-color: rgb(var(--os-cyan) / 0.75);
+}
+
+.os-panel::before {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid;
+  border-left: 2px solid;
+  border-top-left-radius: 14px;
+}
+
+.os-panel::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 2px solid;
+  border-right: 2px solid;
+  border-bottom-right-radius: 14px;
+}
+
+.os-stagger > * { animation-delay: calc(var(--i, 0) * 60ms); }
+.os-stagger > *:nth-child(1) { --i: 0; }
+.os-stagger > *:nth-child(2) { --i: 1; }
+.os-stagger > *:nth-child(3) { --i: 2; }
+.os-stagger > *:nth-child(4) { --i: 3; }
+.os-stagger > *:nth-child(5) { --i: 4; }
+.os-stagger > *:nth-child(6) { --i: 5; }
+.os-stagger > *:nth-child(n + 7) { --i: 6; }
+
+.os-glow-text {
+  text-shadow: 0 0 12px rgb(var(--os-cyan) / 0.55), 0 0 28px rgb(var(--os-cyan) / 0.25);
+}
+
+.os-title {
+  background: linear-gradient(90deg, #e0fbff, rgb(var(--os-cyan)), rgb(var(--os-violet)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Meter with a moving sheen */
+.os-meter-fill {
+  position: relative;
+  overflow: hidden;
+}
+
+.os-meter-fill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transform: translateX(-100%);
+  animation: os-sheen 2.8s ease-in-out infinite;
+}
+
+.os-pulse-dot {
+  position: relative;
+}
+
+.os-pulse-dot::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 9999px;
+  border: 1px solid currentColor;
+  animation: os-ping 1.8s ease-out infinite;
+}
+
+.os-caret::after {
+  content: "▍";
+  margin-left: 2px;
+  color: rgb(var(--os-cyan));
+  animation: os-blink 1s steps(1) infinite;
+}
+
+/* The computer's "core" */
+.os-core {
+  position: relative;
+  width: 112px;
+  height: 112px;
+  flex: none;
+  color: rgb(var(--os-cyan));
+}
+
+.os-core-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 1px solid currentColor;
+  opacity: 0.5;
+}
+
+.os-core-ring.r1 { inset: 0; border-style: dashed; animation: os-spin 18s linear infinite; }
+.os-core-ring.r2 { inset: 12px; border-width: 2px; border-color: currentColor transparent currentColor transparent; opacity: 0.8; animation: os-spin 7s linear infinite reverse; }
+.os-core-ring.r3 { inset: 26px; border-color: transparent currentColor; animation: os-spin 4s linear infinite; }
+
+.os-core-heart {
+  position: absolute;
+  inset: 38px;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 40% 35%, #ffffff, currentColor 45%, transparent 72%);
+  box-shadow: 0 0 24px currentColor, 0 0 60px currentColor;
+  animation: os-breathe 3.2s ease-in-out infinite;
+}
+
+.os-core-wave {
+  position: absolute;
+  inset: 30px;
+  border-radius: 9999px;
+  border: 1px solid currentColor;
+  animation: os-wave 3.2s ease-out infinite;
+}
+
+@keyframes os-spin { to { transform: rotate(360deg); } }
+@keyframes os-breathe { 0%, 100% { transform: scale(0.88); opacity: 0.85; } 50% { transform: scale(1.06); opacity: 1; } }
+@keyframes os-wave { from { transform: scale(1); opacity: 0.7; } to { transform: scale(2.1); opacity: 0; } }
+@keyframes os-ping { from { transform: scale(0.6); opacity: 0.9; } to { transform: scale(1.8); opacity: 0; } }
+@keyframes os-blink { 50% { opacity: 0; } }
+@keyframes os-sheen { 60%, 100% { transform: translateX(100%); } }
+@keyframes os-rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@keyframes os-drift { from { transform: translate3d(-2%, -1%, 0) scale(1); } to { transform: translate3d(3%, 2%, 0) scale(1.08); } }
+@keyframes os-grid-run { from { background-position: 0 0; } to { background-position: 0 64px; } }
+@keyframes os-beam { from { top: -140px; } to { top: 100%; } }
+

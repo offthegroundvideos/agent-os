@@ -1,8 +1,8 @@
 import './globals.css';
 
 export const metadata = {
-  title: 'Agent OS - Mission Control',
-  description: 'SuperWizard5000 Multi-Agent Mission Control',
+  title: 'OTG-OS',
+  description: 'OFF THE GROUND operating system and agent workspace',
 };
 
 export default function RootLayout({ children }) {

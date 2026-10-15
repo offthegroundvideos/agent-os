@@ -15,6 +15,7 @@ import { demoTool } from './tools/demo.js';
 import { createTelegramApi } from './telegram/api.js';
 import { createConsoleNotifier, createTelegramNotifier } from './telegram/notifier.js';
 import { createTelegramBot } from './telegram/bot.js';
+import { createApprovalActions } from './approvalActions.js';
 import { createTeam } from './team.js';
 import { createChat } from './brain/chat.js';
 import { createHeartbeat } from './heartbeat.js';
@@ -105,12 +106,13 @@ export function createOsRuntime({
   });
 
   const chat = createChat({ router, ledger, budget, gate, settings, liveSearch });
-  const bot = api ? createTelegramBot({ api, team, settings, ledger, registry, gate, budget, chat, gigs, log }) : null;
+  const approvals = createApprovalActions({ ledger, registry, api, log });
+  const bot = api ? createTelegramBot({ api, team, settings, ledger, registry, gate, budget, chat, gigs, log, approvals }) : null;
   const heartbeat = createHeartbeat({ url: env.HEALTHCHECKS_PING_URL || '', fetchImpl });
   const backup = createBackup({ osDb, dir: env.OTG_OS_BACKUP_DIR || path.join(cwd, 'data', 'backups', 'otg-os'), now });
 
   return {
-    osDb, settings, ledger, budget, gate, router, providers, liveSearch, registry, notifier, team, chat, bot, heartbeat, backup,
+    osDb, settings, ledger, budget, gate, router, providers, liveSearch, registry, notifier, team, chat, approvals, bot, heartbeat, backup,
     gigStore, stages, portfolio, gmail, canEmail, gigs,
     close: () => osDb.close(),
   };

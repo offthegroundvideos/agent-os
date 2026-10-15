@@ -189,6 +189,11 @@ export function createLedger({ db, transaction }, { now = () => new Date() } = {
     return rows.map(rowToAction);
   }
 
+  function listForOpportunity(opportunityId, { limit = 50 } = {}) {
+    return db.prepare('SELECT * FROM actions WHERE opportunity_id = ? ORDER BY created_at DESC, id DESC LIMIT ?')
+      .all(opportunityId, limit).map(rowToAction);
+  }
+
   function pendingUnsent() {
     return db.prepare(`SELECT * FROM actions WHERE status = 'proposed' AND telegram_message_id IS NULL
       ORDER BY created_at, id`).all().map(rowToAction);
@@ -196,6 +201,6 @@ export function createLedger({ db, transaction }, { now = () => new Date() } = {
 
   return {
     get, propose, approve, reject, revise, claimNextDue, markDone, markFailed, defer,
-    recoverInterrupted, addCost, setTelegramMessage, addTelegramMessages, telegramMessages, list, pendingUnsent,
+    recoverInterrupted, addCost, setTelegramMessage, addTelegramMessages, telegramMessages, list, listForOpportunity, pendingUnsent,
   };
 }

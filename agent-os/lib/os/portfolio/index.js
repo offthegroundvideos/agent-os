@@ -12,6 +12,25 @@ const TAG_RULES = {
   location: { field: 'location', values: null },
 };
 
+export const TAG_KEYS = Object.keys(TAG_RULES);
+
+// Checks owner tag corrections ({ lane, style, type, location }, or [key, value] pairs) the way /tag does. Returns the store fields to save,
+// or { error } with the message /tag shows. In free text underscores become spaces ("location=Napa_Valley");
+// listed values keep theirs, so lane=real_estate and type=photo_set match.
+export function parseTags(input) {
+  const tags = {};
+  for (const [rawKey, rawValue] of Array.isArray(input) ? input : Object.entries(input ?? {})) {
+    const key = String(rawKey).trim().toLowerCase();
+    if (!Object.hasOwn(TAG_RULES, key)) return { error: `Unknown tag ${key}. Use lane, style, type or location.` };
+    const rule = TAG_RULES[key];
+    const raw = String(rawValue ?? '').trim();
+    const value = rule.values ? raw.toLowerCase() : raw.replace(/_/g, ' ').trim();
+    if (rule.values && !rule.values.includes(value)) return { error: `${key} must be one of: ${rule.values.join(', ')}` };
+    tags[rule.field] = value;
+  }
+  return { tags };
+}
+
 export function createPortfolio({ store, router, budget, settings, scrapeCreatorsKey = '', fetchImpl = fetch, now = () => new Date() }) {
   async function importAll() {
     const report = { site: 0, instagram: 0, created: 0, tagged: 0, errors: [] };
@@ -67,18 +86,14 @@ export function createPortfolio({ store, router, budget, settings, scrapeCreator
     const [idText, ...pairs] = args;
     const id = Number(idText);
     if (!Number.isInteger(id) || id < 1 || !pairs.length) return TAG_USAGE;
-    const tags = {};
+    const input = [];
     for (const pair of pairs) {
       const eq = pair.indexOf('=');
       if (eq === -1) return 'Use key=value, for example lane=winery.';
-      const key = pair.slice(0, eq).trim().toLowerCase();
-      if (!Object.hasOwn(TAG_RULES, key)) return `Unknown tag ${key}. Use lane, style, type or location.`;
-      const rule = TAG_RULES[key];
-      let value = pair.slice(eq + 1).replace(/_/g, ' ').trim();
-      if (rule.values) value = value.toLowerCase();
-      if (rule.values && !rule.values.includes(value)) return `${key} must be one of: ${rule.values.join(', ')}`;
-      tags[rule.field] = value;
+      input.push([pair.slice(0, eq), pair.slice(eq + 1)]);
     }
+    const { tags, error } = parseTags(input);
+    if (error) return error;
     try {
       const item = store.setTags(id, tags, { confirmed: true });
       return `Saved: ${item.title} — ${item.lane || 'untagged'}${item.style ? `/${item.style}` : ''}${item.location ? ` (${item.location})` : ''}`;

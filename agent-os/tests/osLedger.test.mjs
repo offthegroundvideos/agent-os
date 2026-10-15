@@ -148,3 +148,16 @@ test('defer puts an executing action back without using up an attempt', () => {
   assert.equal(ledger.claimNextDue(), null);
   osDb.close();
 });
+
+test('listForOpportunity returns only that opportunity\'s actions, newest first', () => {
+  const { osDb, clock, ledger } = setup();
+  ledger.propose(base({ idempotencyKey: 'o1', opportunityId: 'opp_a' }));
+  clock.advance(1000);
+  ledger.propose(base({ idempotencyKey: 'o2', opportunityId: 'opp_a', autonomyLevel: 'silent' }));
+  ledger.propose(base({ idempotencyKey: 'o3', opportunityId: 'opp_b' }));
+  const actions = ledger.listForOpportunity('opp_a');
+  assert.deepEqual(actions.map((action) => action.idempotencyKey), ['o2', 'o1']);
+  assert.equal(actions[0].why.goal, 'Book shoot days');
+  assert.deepEqual(ledger.listForOpportunity('opp_none'), []);
+  osDb.close();
+});

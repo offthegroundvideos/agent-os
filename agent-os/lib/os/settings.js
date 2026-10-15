@@ -86,6 +86,8 @@ export const DEFAULT_SETTINGS = Object.freeze({
   'portfolio.instagram_handle': 'madebyotg',
   'budget.scrapecreators_credit_micros': 2_000,
   'gmail.last_poll_at': '',
+  // Paid shoot days per month (spec goal); the dashboard shows bookings against it.
+  'goals.monthly_shoot_days': 12,
 });
 
 export function createSettings({ db }) {

@@ -31,3 +31,10 @@ export function utcMonthStart(date = new Date()) {
 export function utcDayStart(date = new Date()) {
   return new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate())).toISOString();
 }
+
+// The UTC instant of midnight Pacific on the given date's Pacific day (DST-aware via the noon offset).
+export function pacificDayStart(date = new Date()) {
+  const { year, month, day } = pacificParts(date);
+  const offsetHours = pacificParts(new Date(Date.UTC(year, month - 1, day, 12))).hour - 12;
+  return new Date(Date.UTC(year, month - 1, day, -offsetHours)).toISOString();
+}

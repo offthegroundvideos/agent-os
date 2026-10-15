@@ -1,5 +1,7 @@
+import { createApprovalActions } from '../approvalActions.js';
 import { formatDollars } from '../budget.js';
-import { approvalText, LEVEL_LABELS, REJECT_REASONS, rejectReasonKeyboard, truncate } from './format.js';
+import { OUTREACH_MODES } from '../settingsEditor.js';
+import { LEVEL_LABELS, rejectReasonKeyboard, truncate } from './format.js';
 
 export const HELP_TEXT = [
   'OTG-OS commands:',
@@ -25,26 +27,13 @@ function displayName(from) {
   return String(from.first_name || from.username || `user ${from.id}`).trim();
 }
 
-export function createTelegramBot({ api, team, settings, ledger, registry, gate, budget, chat, gigs = null, log = console.error }) {
+export function createTelegramBot({
+  api, team, settings, ledger, registry, gate, budget, chat, gigs = null, log = console.error,
+  approvals = createApprovalActions({ ledger, registry, api, log }),
+}) {
   const send = (chatId, text, keyboard) => api.sendMessage(chatId, truncate(text), keyboard);
   const owner = () => team.members().find((member) => member.role === 'owner') ?? null;
-
-  async function safeEdit(chatId, messageId, text) {
-    if (!messageId) return;
-    try {
-      await api.editMessageText(chatId, messageId, truncate(text));
-    } catch (error) {
-      log(`Telegram edit failed: ${error.message}`);
-    }
-  }
-
-  // Every member got their own copy of an approval; keep them all in step. Approvals sent before
-  // copies were tracked fall back to the message whose button was pressed.
-  async function editCopies(actionId, text, fallback) {
-    const copies = ledger.telegramMessages(actionId);
-    if (!copies.length && fallback) return safeEdit(fallback.chatId, fallback.messageId, text);
-    for (const copy of copies) await safeEdit(copy.chatId, copy.messageId, text);
-  }
+  const { safeEdit } = approvals;
 
   function pendingEdits() {
     return settings.get('telegram.pending_edits');
@@ -135,8 +124,7 @@ export function createTelegramBot({ api, team, settings, ledger, registry, gate,
         return;
       }
       if (kind === 'a') {
-        const action = await registry.approve(target, { by: member.name });
-        await editCopies(target, `${approvalText(action, registry.describe(action))}\n\n✅ Approved by ${member.name}. It runs within a minute.`, pressed);
+        await approvals.approve(target, { by: member.name, pressed });
         await api.answerCallbackQuery(query.id, 'Approved');
         return;
       }
@@ -146,16 +134,13 @@ export function createTelegramBot({ api, team, settings, ledger, registry, gate,
         return;
       }
       if (kind === 'rr') {
-        const action = await registry.reject(target, { reason: extra });
-        const label = REJECT_REASONS[extra] ?? 'Other';
+        const { label } = await approvals.reject(target, { reason: extra, by: member.name });
         await safeEdit(chatId, messageId, `❌ Rejected (${label}).`);
-        await editCopies(target, `${approvalText(action, registry.describe(action))}\n\n❌ Rejected by ${member.name} (${label}).`);
         await api.answerCallbackQuery(query.id, 'Rejected');
         return;
       }
       if (kind === 'e') {
-        const action = ledger.get(target);
-        if (!action || action.status !== 'proposed') throw new Error('That action is no longer waiting for approval.');
+        approvals.waiting(target);
         setPendingEdit(member.id, target);
         await send(chatId, 'Send the new text for this draft, or /cancel.');
         await api.answerCallbackQuery(query.id);
@@ -189,8 +174,7 @@ export function createTelegramBot({ api, team, settings, ledger, registry, gate,
 
     if (pendingEdit && !command) {
       setPendingEdit(member.id, null);
-      await editCopies(pendingEdit, `✏️ Edited by ${member.name}. The new version is below.`);
-      await registry.revise(pendingEdit, text);
+      await approvals.revise(pendingEdit, text, { by: member.name });
       return;
     }
 
@@ -255,7 +239,7 @@ export function createTelegramBot({ api, team, settings, ledger, registry, gate,
           return;
         }
         const [mode] = rest;
-        if (!['draft', 'send'].includes(mode)) {
+        if (!OUTREACH_MODES.includes(mode)) {
           await send(chatId, `Emails are in ${settings.get('outreach.mode')} mode. Use /mode draft or /mode send.`);
           return;
         }
