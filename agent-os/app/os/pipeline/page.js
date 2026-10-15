@@ -1,10 +1,35 @@
 "use client";
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import { timeAgo, useOsData, words } from "../../../components/os/client";
+import { pacificTime, timeAgo, useOsData, words } from "../../../components/os/client";
 import { Badge, Card, Loading, PageTitle, StageBadge } from "../../../components/os/ui";
 
 const isClosed = (stage) => stage.startsWith("closed_");
+
+function FollowUpQueue() {
+  const { data } = useOsData("followups", { interval: 300_000 });
+  if (!data || (!data.due.length && !data.drafts)) return null;
+  return (
+    <Card title="Follow-ups due this week" className="mb-4" action={data.drafts ? <Link href="/os/approvals" className="os-mono text-[11px] uppercase text-cyan-300">{data.drafts} drafted →</Link> : null}>
+      {data.due.length ? (
+        <ul className="divide-y divide-white/5">
+          {data.due.map((opp) => (
+            <li key={opp.id}>
+              <Link href={`/os/pipeline/${opp.id}`} className="flex items-center justify-between gap-3 py-2">
+                <span className="min-w-0">
+                  <span className="block truncate text-sm text-slate-100">{opp.business}</span>
+                  <span className="block truncate text-xs text-slate-500">Follow-up {opp.sent + 1} · {words(opp.lane)}</span>
+                </span>
+                <span className={`os-mono shrink-0 text-[11px] ${Date.parse(opp.dueAt) <= Date.now() ? "text-amber-300" : "text-slate-400"}`}>{Date.parse(opp.dueAt) <= Date.now() ? "due now" : pacificTime(opp.dueAt)}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      ) : <p className="text-sm text-slate-500">Nobody is due a nudge this week.</p>}
+      <p className="mt-2 text-[11px] text-slate-500">OTG-OS drafts each follow-up for your approval when it comes due (days {data.followUpDays.join(", ")} after the first email).</p>
+    </Card>
+  );
+}
 
 export default function PipelinePage() {
   const { data, error, loading, reload } = useOsData("pipeline", { interval: 60_000 });
@@ -36,6 +61,7 @@ export default function PipelinePage() {
   return (
     <>
       <PageTitle title="Pipeline" subtitle={`${data.opportunities.length} prospects across ${data.lanes.length} lanes`} />
+      <FollowUpQueue />
 
       <input
         type="search"

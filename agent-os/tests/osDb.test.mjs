@@ -12,12 +12,12 @@ test('migrations create the OTG-OS tables exactly once', () => {
   const tables = first.db.prepare("SELECT name FROM sqlite_master WHERE type = 'table'").all().map((row) => row.name);
   for (const table of ['actions', 'autonomy_policies', 'schema_migrations', 'settings', 'spend', 'telegram_messages',
     'businesses', 'contacts', 'opportunities', 'stage_events', 'suppression', 'email_sends', 'inbound_messages',
-    'portfolio_items', 'portfolio_sends']) {
+    'portfolio_items', 'portfolio_sends', 'dossiers']) {
     assert.ok(tables.includes(table), `missing table ${table}`);
   }
   first.close();
   const second = openOsDb(file);
-  assert.equal(second.db.prepare('SELECT COUNT(*) AS n FROM schema_migrations').get().n, 3);
+  assert.equal(second.db.prepare('SELECT COUNT(*) AS n FROM schema_migrations').get().n, 4);
   second.close();
   fs.rmSync(dir, { recursive: true, force: true });
 });

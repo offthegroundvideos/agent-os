@@ -210,6 +210,13 @@ export function createChat({ router, ledger, budget, gate, settings, liveSearch 
       history: opp.events.slice(0, 6).map((event) => ({ to: event.to, reason: event.reason, at: event.at })),
       actions: opp.actions.slice(0, 6).map((action) => ({ type: action.actionType, status: action.status, why: action.why.goal, subject: action.subject })),
       emails: opp.emails.map((email) => ({ kind: email.kind, mode: email.mode, at: email.at })),
+      researchBrief: opp.dossier ? {
+        summary: opp.dossier.summary,
+        likelyNeeds: opp.dossier.likely_needs,
+        discoveryQuestions: opp.dossier.discovery_questions,
+        interviewQuestions: opp.dossier.interview_questions,
+        nextStep: opp.dossier.next_step,
+      } : null,
     };
   }
 

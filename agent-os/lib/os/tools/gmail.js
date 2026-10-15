@@ -183,5 +183,10 @@ export function createGmail({ clientId, clientSecret, refreshToken, fetchImpl = 
       const data = await call(`/threads/${encodeURIComponent(threadId)}?format=metadata&metadataHeaders=Message-ID&metadataHeaders=From&metadataHeaders=Subject&metadataHeaders=References`);
       return { id: data.id, messages: (data.messages ?? []).map(parseMessage) };
     },
+    // The whole conversation with message bodies, for the dashboard and research briefs (read-only).
+    async fullThread(threadId) {
+      const data = await call(`/threads/${encodeURIComponent(threadId)}?format=full`);
+      return { id: data.id, messages: (data.messages ?? []).map(parseMessage) };
+    },
   };
 }

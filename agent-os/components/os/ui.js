@@ -5,7 +5,7 @@ export function Card({ title, action, children, className = "" }) {
   return (
     <section className={`os-panel rounded-2xl p-4 ${className}`}>
       {(title || action) && (
-        <div className="mb-3 flex items-center justify-between gap-3">
+        <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
           {title && (
             <h2 className="os-hud flex items-center gap-2 text-[11px] font-semibold uppercase text-cyan-300/90">
               <span className="h-1.5 w-1.5 rounded-sm bg-cyan-300 shadow-[0_0_8px_rgb(34,211,238)]" aria-hidden="true" />

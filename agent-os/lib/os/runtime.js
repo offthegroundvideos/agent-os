@@ -21,6 +21,7 @@ import { createSettingsEditor } from './settingsEditor.js';
 import { createRedrafter } from './redraft.js';
 import { createWeeklyReport } from './weeklyReport.js';
 import { createMorningBrief } from './morningBrief.js';
+import { createDossiers } from './dossier.js';
 import { createTeam } from './team.js';
 import { createChat } from './brain/chat.js';
 import { createHeartbeat } from './heartbeat.js';
@@ -95,13 +96,16 @@ export function createOsRuntime({
     for (const tool of emailTools) registry.register(tool);
   }
   const outreach = createOutreach({ router, store: gigStore, portfolio, registry, settings });
+  const siteFetch = createSiteFetch({ fetchImpl });
+  const dossiers = createDossiers({ osDb, router, store: gigStore, stages, siteFetch, gmail, now, log });
   const gigs = createGigEngine({
     settings,
     store: gigStore,
     stages,
     portfolio,
     finder: liveSearch ? createProspectFinder({ liveSearch, router, store: gigStore, settings }) : null,
-    research: createProspectResearch({ siteFetch: createSiteFetch({ fetchImpl }), router, store: gigStore, stages, portfolio }),
+    dossiers,
+    research: createProspectResearch({ siteFetch, router, store: gigStore, stages, portfolio }),
     outreach,
     triage: canEmail ? createReplyTriage({ gmail, store: gigStore, stages, router, outreach, notifier, settings, now, log }) : null,
     gmail,
@@ -115,7 +119,7 @@ export function createOsRuntime({
   const redrafter = createRedrafter({ router, ledger });
   const weekly = createWeeklyReport({ osDb, settings, now });
   const dashboard = createDashboard({
-    osDb, settings, ledger, budget, approvals, gigStore, stages, portfolio, team, logDir: path.join(cwd, 'data', 'logs'), now,
+    osDb, settings, ledger, budget, approvals, gigStore, stages, portfolio, team, dossiers, logDir: path.join(cwd, 'data', 'logs'), now,
   });
   const chat = createChat({ router, ledger, budget, gate, settings, liveSearch, dashboard, settingsEditor });
   const brief = createMorningBrief({ chat, settings, now });
@@ -125,7 +129,7 @@ export function createOsRuntime({
 
   return {
     osDb, settings, ledger, budget, gate, router, providers, liveSearch, registry, notifier, team, chat, approvals, bot, heartbeat, backup,
-    gigStore, stages, portfolio, gmail, canEmail, gigs, dashboard, settingsEditor, redrafter, weekly, brief,
+    gigStore, stages, portfolio, gmail, canEmail, gigs, dashboard, settingsEditor, redrafter, weekly, brief, dossiers,
     close: () => osDb.close(),
   };
 }

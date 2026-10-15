@@ -14,7 +14,7 @@ const words = (text) => text.replaceAll('_', ' ');
 const errorText = (error) => String(error?.message ?? error);
 
 export function createGigEngine({
-  settings, store, stages, portfolio, finder = null, research, outreach, triage = null, gmail = null,
+  settings, store, stages, portfolio, finder = null, research, outreach, triage = null, gmail = null, dossiers = null,
   canEmail = false, now = () => new Date(), log = console.error,
 }) {
   const lastRuns = () => settings.get('gigs.last_runs');
@@ -232,9 +232,34 @@ export function createGigEngine({
     return result.handled ? result : null;
   }
 
+  // Hot prospects and booked clients get a research brief (talking points, call and interview questions), a few a day.
+  async function autoDossiers(date) {
+    if (!dossiers) return null;
+    const today = pacificDateKey(date);
+    const counter = settings.get('dossier.daily');
+    const count = counter.date === today ? counter.count : 0;
+    if (count >= settings.get('dossier.daily_limit')) return null;
+    const id = dossiers.missingForAdvanced(5).find((candidate) => !isBackingOff(`dossier:${candidate}`, date));
+    if (!id) return null;
+    settings.set('dossier.daily', { date: today, count: count + 1 });
+    try {
+      await dossiers.build(id);
+      failures.delete(`dossier:${id}`);
+      return { id };
+    } catch (error) {
+      if (isRouterOutage(error)) {
+        settings.set('dossier.daily', { date: today, count });
+        pauseJob('dossiers', date, error);
+        return null;
+      }
+      recordFailure(`dossier:${id}`, date, 'dossiers', error);
+      return { id, error: errorText(error) };
+    }
+  }
+
   const JOBS = [
     ['portfolio', dailyPortfolio], ['prospecting', dailyProspecting], ['research', researchQueue], ['pitches', draftPitches],
-    ['followUps', followUps], ['checkIns', checkIns], ['replies', pollReplies],
+    ['followUps', followUps], ['checkIns', checkIns], ['replies', pollReplies], ['dossiers', autoDossiers],
   ];
 
   async function tick() {

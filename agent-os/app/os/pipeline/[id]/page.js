@@ -2,6 +2,8 @@
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { dollars, pacificTime, useOsData, words } from "../../../../components/os/client";
+import Conversation from "../../../../components/os/Conversation";
+import ResearchBrief from "../../../../components/os/ResearchBrief";
 import { Badge, Card, Loading, PageTitle, StageBadge } from "../../../../components/os/ui";
 
 const STATUS_TONE = { proposed: "warn", approved: "info", executing: "info", done: "good", rejected: "neutral", failed: "bad" };
@@ -115,6 +117,9 @@ export default function OpportunityPage() {
           )}
         </Card>
       </div>
+
+      <ResearchBrief id={id} dossier={data.dossier} onBuilt={reload} />
+      <Conversation id={id} hasThread={Boolean(data.gmailThreadId)} />
 
       <Card title="Portfolio matches" className="mt-4">
         {data.portfolioMatches.length ? (

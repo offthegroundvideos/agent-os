@@ -18,7 +18,7 @@ function clean(value, max) {
 }
 
 // Removes every site_text tag, repeating so fragments can't reassemble into a new tag.
-function stripFence(text) {
+export function stripFence(text) {
   let out = String(text ?? '');
   for (let previous = null; previous !== out;) {
     previous = out;
@@ -27,7 +27,7 @@ function stripFence(text) {
   return out;
 }
 
-const fenceUrl = (url) => stripFence(url).replace(/["<>\s]/g, (c) => encodeURIComponent(c));
+export const fenceUrl = (url) => stripFence(url).replace(/["<>\s]/g, (c) => encodeURIComponent(c));
 
 const isRoleInbox = (email) => ROLE_INBOXES.has(email.split('@')[0].toLowerCase());
 

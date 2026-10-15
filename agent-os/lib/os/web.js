@@ -8,8 +8,9 @@ import { RegistryError } from './registry.js';
 import { StageError } from './gigs/stages.js';
 import { GigStoreError } from './gigs/store.js';
 import { RedraftError } from './redraft.js';
+import { DossierError } from './dossier.js';
 
-const KNOWN_ERRORS = [LedgerError, RegistryError, ApprovalError, SettingsEditError, StageError, GigStoreError, RedraftError];
+const KNOWN_ERRORS = [LedgerError, RegistryError, ApprovalError, SettingsEditError, StageError, GigStoreError, RedraftError, DossierError];
 
 const LOOPBACK_HOSTS = new Set(['localhost', '127.0.0.1', '::1']);
 const LOOPBACK_IPS = new Set(['127.0.0.1', '::1', '::ffff:127.0.0.1']);

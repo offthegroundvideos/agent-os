@@ -56,7 +56,7 @@ function nextBundleHour(hours, date) {
 }
 
 export function createDashboard({
-  osDb, settings, ledger, budget, approvals, gigStore, stages, portfolio, team = null, logDir, now = () => new Date(),
+  osDb, settings, ledger, budget, approvals, gigStore, stages, portfolio, team = null, dossiers = null, logDir, now = () => new Date(),
 }) {
   const { db } = osDb;
   const scalar = (sql, ...args) => db.prepare(sql).get(...args).n;
@@ -209,6 +209,7 @@ export function createDashboard({
       portfolioSent: sent,
       emails,
       actions,
+      dossier: dossiers ? dossiers.get(id) : null,
     };
   }
 
@@ -270,6 +271,18 @@ export function createDashboard({
     return [row.a, row.ac, row.o, row.e, row.sp, row.st, row.p, last?.at ?? ''].join('|');
   }
 
+  // Who is due a follow-up soon, and follow-up drafts waiting for approval.
+  function followUpQueue(days = 7) {
+    const until = new Date(now().getTime() + days * 86_400_000).toISOString();
+    const due = db.prepare(`SELECT o.id, o.stage, o.lane, o.next_follow_up_at AS dueAt, o.follow_ups_sent AS sent, o.pitched_at AS pitchedAt,
+        b.name AS business, c.email AS contactEmail
+      FROM opportunities o JOIN businesses b ON b.id = o.business_id LEFT JOIN contacts c ON c.id = o.contact_id
+      WHERE o.stage IN ('pitched', 'following_up') AND o.next_follow_up_at IS NOT NULL AND o.next_follow_up_at <= ?
+      ORDER BY o.next_follow_up_at LIMIT 30`).all(until).map((row) => ({ ...row }));
+    const drafts = scalar("SELECT COUNT(*) AS n FROM actions WHERE status = 'proposed' AND action_type = 'email.follow_up'");
+    return { due, drafts, days, followUpDays: settings.get('outreach.follow_up_days') };
+  }
+
   // The counts the page chimes about when they go up.
   function pulse() {
     return db.prepare(`SELECT
@@ -281,6 +294,7 @@ export function createDashboard({
   return {
     fingerprint,
     pulse,
+    followUpQueue,
     today, pendingApprovals, pipeline, opportunity, findOpportunities, portfolioLibrary, tagPortfolio, settingsView,
     workerLog: (limit = 14) => readWorkerLog(logDir, now(), limit),
   };

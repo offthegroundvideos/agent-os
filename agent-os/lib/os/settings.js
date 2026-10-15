@@ -93,6 +93,9 @@ export const DEFAULT_SETTINGS = Object.freeze({
   'report.last_weekly': '',
   'brief.last_date': '',
   'brief.latest': null,
+  // Research briefs written automatically for hot prospects and booked clients (Claude, a few cents each).
+  'dossier.daily': { date: '', count: 0 },
+  'dossier.daily_limit': 5,
 });
 
 export function createSettings({ db }) {

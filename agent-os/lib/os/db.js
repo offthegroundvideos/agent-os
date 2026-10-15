@@ -195,6 +195,20 @@ const MIGRATIONS = [
       CREATE INDEX portfolio_sends_by_opportunity ON portfolio_sends (opportunity_id);
     `,
   },
+  {
+    // Research briefs: what to know, ask and film for one prospect or client.
+    id: 4,
+    sql: `
+      CREATE TABLE dossiers (
+        opportunity_id TEXT PRIMARY KEY REFERENCES opportunities (id),
+        content TEXT NOT NULL,
+        model TEXT NOT NULL DEFAULT '',
+        needs_review INTEGER NOT NULL DEFAULT 0,
+        created_at TEXT NOT NULL,
+        updated_at TEXT NOT NULL
+      );
+    `,
+  },
 ];
 
 export function openOsDb(file) {
