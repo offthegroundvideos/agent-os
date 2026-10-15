@@ -157,13 +157,18 @@ export function createGigStore({ db, transaction }, { now = () => new Date() } =
     db.prepare('INSERT OR IGNORE INTO suppression (value, reason, created_at) VALUES (?, ?, ?)').run(entry, String(reason), stamp());
   }
 
-  // An address is blocked if it, or its whole domain, is on the list. Unparseable addresses fail closed.
+  // An address is blocked if it, its domain, or any parent domain (never the bare TLD) is on the list.
+  // Unparseable addresses fail closed.
   function isSuppressed(value) {
     const text = String(value ?? '');
     const clean = text.includes('@') ? normalizeEmail(text) : text.trim().toLowerCase().replace(/\.$/, '');
     if (text.includes('@') && !clean) return true;
     const domain = clean.includes('@') ? clean.split('@').pop() : clean;
-    return Boolean(db.prepare('SELECT 1 FROM suppression WHERE value IN (?, ?)').get(clean, domain));
+    const labels = domain.split('.');
+    const keys = [clean, domain];
+    for (let i = 1; i <= labels.length - 2; i += 1) keys.push(labels.slice(i).join('.'));
+    const marks = keys.map(() => '?').join(', ');
+    return Boolean(db.prepare(`SELECT 1 FROM suppression WHERE value IN (${marks})`).get(...keys));
   }
 
   function recordEmailSend({ opportunityId, actionId, lane, kind, toEmail, mode, gmailMessageId = '', gmailThreadId = '' }) {

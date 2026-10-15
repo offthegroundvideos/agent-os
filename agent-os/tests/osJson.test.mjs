@@ -33,3 +33,9 @@ test('throws when there is no JSON', () => {
   assert.throws(() => extractJson('no data here'), /No JSON/);
   assert.throws(() => extractJson('{"open": 1'), /Unterminated/);
 });
+
+test('extractJsonCandidates returns every top-level parseable value in order', async () => {
+  const { extractJsonCandidates } = await import('../lib/os/json.js');
+  assert.deepEqual(extractJsonCandidates('Sources [see notes]\n[{"a":1}] then {"b":2}'), [[{ a: 1 }], { b: 2 }]);
+  assert.deepEqual(extractJsonCandidates('nothing here'), []);
+});

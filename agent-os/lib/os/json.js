@@ -27,27 +27,46 @@ function findClose(body, start) {
   return -1;
 }
 
-export function extractJson(text) {
+// Walks every fenced body, then the whole reply, calling visit() with each top-level parseable value in order.
+// visit() returns true to stop. After a value parses its span is skipped, so nested values aren't visited again.
+function scan(text, visit) {
   const source = String(text ?? '');
-  // Fenced bodies first, in order, then the whole reply.
   const bodies = [...source.matchAll(/```(?:json)?\s*([\s\S]*?)```/g)].map((m) => m[1]);
   bodies.push(source);
-  let candidates = 0;
-  let lastError = null;
+  const stats = { candidates: 0, lastError: null };
   for (const body of bodies) {
     for (let start = 0; start < body.length; start += 1) {
       if (body[start] !== '{' && body[start] !== '[') continue;
-      candidates += 1;
+      stats.candidates += 1;
       const end = findClose(body, start);
       if (end === -1) continue;
+      let value;
       try {
-        return JSON.parse(body.slice(start, end + 1));
+        value = JSON.parse(body.slice(start, end + 1));
       } catch (error) {
-        lastError = error;
+        stats.lastError = error;
+        continue;
       }
+      if (visit(value)) return stats;
+      start = end;
     }
   }
-  if (lastError) throw new Error(`Invalid JSON in model reply: ${lastError.message}`, { cause: lastError });
-  if (candidates) throw new Error('Unterminated JSON in model reply.');
+  return stats;
+}
+
+export function extractJson(text) {
+  let found;
+  let hit = false;
+  const stats = scan(text, (value) => { found = value; hit = true; return true; });
+  if (hit) return found;
+  if (stats.lastError) throw new Error(`Invalid JSON in model reply: ${stats.lastError.message}`, { cause: stats.lastError });
+  if (stats.candidates) throw new Error('Unterminated JSON in model reply.');
   throw new Error('No JSON found in model reply.');
+}
+
+// Every top-level parseable JSON value in the reply (fenced bodies first), for callers that must pick the right one.
+export function extractJsonCandidates(text) {
+  const values = [];
+  scan(text, (value) => { values.push(value); return false; });
+  return values;
 }

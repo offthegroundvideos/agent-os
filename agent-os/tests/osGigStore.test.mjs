@@ -141,3 +141,16 @@ test('createOpportunity works inside a caller transaction', () => {
   assert.equal(store.stageCounts().found, 1);
   osDb.close();
 });
+
+test('suppression covers subdomains of a blocked domain but not the bare TLD or siblings', () => {
+  const { osDb, store } = setup();
+  store.suppress('oakcellars.com', 'unsubscribe');
+  assert.equal(store.isSuppressed('events.oakcellars.com'), true);
+  assert.equal(store.isSuppressed('a.b.oakcellars.com'), true);
+  assert.equal(store.isSuppressed('mail@events.oakcellars.com'), true);
+  assert.equal(store.isSuppressed('notoakcellars.com'), false);
+  assert.equal(store.isSuppressed('oakcellars.org'), false);
+  store.suppress('com', 'bad entry');
+  assert.equal(store.isSuppressed('fine.com'), false);
+  osDb.close();
+});
