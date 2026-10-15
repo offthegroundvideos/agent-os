@@ -4,6 +4,7 @@
 import { emailFooter, laneHealth, nextSendingTime, sendBlock } from '../gigs/compliance.js';
 
 const addDays = (date, days) => new Date(date.getTime() + days * 86_400_000);
+const SUPPRESSED = 'on the do-not-contact list';
 
 export function createEmailTools({ gmail, store, stages, settings, senderEmail, mailingAddress, notifier = null, now = () => new Date(), log = console.error }) {
   const footer = () => emailFooter({ senderName: settings.get('outreach.sender_name'), mailingAddress });
@@ -19,6 +20,7 @@ export function createEmailTools({ gmail, store, stages, settings, senderEmail, 
     ].join('\n');
   }
 
+  // A missing opportunity returns null so execute() can skip it straight away instead of waiting.
   function notBefore(kind) {
     return async (payload) => {
       const opp = store.getOpportunity(payload.opportunityId);
@@ -31,16 +33,20 @@ export function createEmailTools({ gmail, store, stages, settings, senderEmail, 
     };
   }
 
+  function report(label, error) {
+    try {
+      log(`${label}: ${error?.message ?? error}`);
+    } catch {
+      // Logging must not throw either.
+    }
+  }
+
   // Runs bookkeeping that must never fail the action; problems are logged instead.
   function safely(label, fn) {
     try {
       fn();
     } catch (error) {
-      try {
-        log(`${label}: ${error?.message ?? error}`);
-      } catch {
-        // Logging must not throw either.
-      }
+      report(label, error);
     }
   }
 
@@ -52,10 +58,18 @@ export function createEmailTools({ gmail, store, stages, settings, senderEmail, 
     await notifier?.alert(`Paused ${lane} outreach: ${problem}. Check the list, then /lane resume ${lane}.`);
   }
 
+  function closeSuppressed(oppId) {
+    safely('suppressed close', () => stages.move(oppId, 'closed_unsubscribed', { reason: SUPPRESSED, patch: { close_reason: 'suppressed' } }));
+  }
+
   async function deliver(payload, kind, action) {
     const opp = store.getOpportunity(payload.opportunityId);
     if (!opp) throw new Error(`Opportunity not found: ${payload.opportunityId}`);
-    if (store.isSuppressed(payload.to)) return { opp, skipped: 'on the do-not-contact list' };
+    // This action already reached Gmail on an earlier run (it crashed before finishing). Never send it again.
+    const earlier = store.emailForAction(action.id);
+    if (earlier) return { opp, mode: earlier.mode, sent: { id: earlier.id, threadId: earlier.threadId, messageIdHeader: '' }, replayed: true };
+    if (!String(payload.draft ?? '').trim()) throw new Error('Empty draft');
+    if (store.isSuppressed(payload.to) || (opp.contact?.email && store.isSuppressed(opp.contact.email))) return { opp, skipped: SUPPRESSED };
     const mode = settings.get('outreach.mode') === 'send' ? 'send' : 'draft';
     const message = {
       from: `${settings.get('outreach.sender_name')} <${senderEmail}>`,
@@ -65,13 +79,15 @@ export function createEmailTools({ gmail, store, stages, settings, senderEmail, 
       threadId: payload.threadId || undefined,
       inReplyTo: payload.inReplyTo || '',
     };
-    const sent = mode === 'send' ? await gmail.send(message) : await gmail.createDraft(message);
+    const sent = (mode === 'send' ? await gmail.send(message) : await gmail.createDraft(message)) ?? {};
     // Gmail has the message now. Nothing below may throw, or the registry would retry and send it twice.
-    try {
-      store.recordEmailSend({ opportunityId: opp.id, actionId: action.id, lane: opp.lane, kind, toEmail: payload.to, mode, gmailMessageId: sent.id, gmailThreadId: sent.threadId });
-      if (mode === 'send') await checkLaneHealth(opp.lane);
-    } catch (error) {
-      safely('email bookkeeping', () => { throw error; });
+    safely('email bookkeeping', () => store.recordEmailSend({ opportunityId: opp.id, actionId: action.id, lane: opp.lane, kind, toEmail: payload.to, mode, gmailMessageId: sent.id, gmailThreadId: sent.threadId }));
+    if (mode === 'send') {
+      try {
+        await checkLaneHealth(opp.lane);
+      } catch (error) {
+        report('lane health', error);
+      }
     }
     return { opp, mode, sent };
   }
@@ -82,26 +98,28 @@ export function createEmailTools({ gmail, store, stages, settings, senderEmail, 
     describe,
     notBefore: notBefore('pitch'),
     async execute(payload, { action }) {
+      const opp = store.getOpportunity(payload.opportunityId);
+      if (opp?.stage !== 'researched') return { skipped: `opportunity is ${opp?.stage ?? 'missing'}` };
       const result = await deliver(payload, 'pitch', action);
       if (result.skipped) {
-        safely('pitch skipped', () => stages.move(result.opp.id, 'closed_unsubscribed', { reason: result.skipped, patch: { close_reason: 'suppressed' } }));
+        closeSuppressed(opp.id);
         return { skipped: result.skipped };
       }
       safely('pitch bookkeeping', () => {
         const days = settings.get('outreach.follow_up_days');
-        stages.move(result.opp.id, 'pitched', {
+        stages.move(opp.id, 'pitched', {
           reason: result.mode === 'send' ? 'first email sent' : 'first email saved as a Gmail draft',
           patch: {
-            gmail_thread_id: result.sent.threadId,
+            gmail_thread_id: result.sent.threadId ?? '',
             subject: payload.subject,
             last_message_id_header: result.sent.messageIdHeader ?? '',
             pitched_at: now().toISOString(),
             next_follow_up_at: days.length ? addDays(now(), days[0]).toISOString() : null,
           },
         });
-        store.recordPortfolioSends(result.opp.id, action.id, payload.portfolioIds ?? []);
       });
-      return { mode: result.mode, messageId: result.sent.id, threadId: result.sent.threadId };
+      safely('pitch portfolio record', () => store.recordPortfolioSends(opp.id, action.id, payload.portfolioIds ?? []));
+      return { mode: result.mode, messageId: result.sent.id ?? '', threadId: result.sent.threadId ?? '' };
     },
   };
 
@@ -114,18 +132,26 @@ export function createEmailTools({ gmail, store, stages, settings, senderEmail, 
       const opp = store.getOpportunity(payload.opportunityId);
       if (!opp || !['pitched', 'following_up'].includes(opp.stage)) return { skipped: `opportunity is ${opp?.stage ?? 'missing'}` };
       const result = await deliver(payload, 'follow_up', action);
-      if (result.skipped) return { skipped: result.skipped };
+      if (result.skipped) {
+        closeSuppressed(opp.id);
+        return { skipped: result.skipped };
+      }
       const number = opp.followUpsSent + 1;
       safely('follow-up bookkeeping', () => {
-        const days = settings.get('outreach.follow_up_days');
-        const next = number < days.length
-          ? new Date(Math.max(addDays(new Date(opp.pitchedAt ?? now()), days[number]).getTime(), addDays(now(), 2).getTime()))
-          : addDays(now(), settings.get('outreach.close_after_days'));
-        const patch = { follow_ups_sent: number, next_follow_up_at: next.toISOString(), last_message_id_header: result.sent.messageIdHeader || opp.lastMessageIdHeader };
+        let next;
+        try {
+          const days = settings.get('outreach.follow_up_days');
+          next = (number < days.length
+            ? new Date(Math.max(addDays(new Date(opp.pitchedAt ?? now()), days[number]).getTime(), addDays(now(), 2).getTime()))
+            : addDays(now(), settings.get('outreach.close_after_days'))).toISOString();
+        } catch {
+          next = addDays(now(), 7).toISOString();
+        }
+        const patch = { follow_ups_sent: number, next_follow_up_at: next, last_message_id_header: result.sent.messageIdHeader || opp.lastMessageIdHeader };
         if (opp.stage === 'pitched') stages.move(opp.id, 'following_up', { reason: `follow-up ${number} ${result.mode === 'send' ? 'sent' : 'drafted'}`, patch });
         else stages.update(opp.id, patch);
       });
-      return { mode: result.mode, messageId: result.sent.id, number };
+      return { mode: result.mode, messageId: result.sent.id ?? '', number };
     },
   };
 
@@ -138,12 +164,13 @@ export function createEmailTools({ gmail, store, stages, settings, senderEmail, 
       const opp = store.getOpportunity(payload.opportunityId);
       if (opp?.stage !== 'replied') return { skipped: `opportunity is ${opp?.stage ?? 'missing'}` };
       const result = await deliver(payload, 'portfolio', action);
-      if (result.skipped) return { skipped: result.skipped };
-      safely('portfolio bookkeeping', () => {
-        stages.move(opp.id, 'portfolio_sent', { reason: 'examples sent', patch: { last_message_id_header: result.sent.messageIdHeader || opp.lastMessageIdHeader } });
-        store.recordPortfolioSends(opp.id, action.id, payload.portfolioIds ?? []);
-      });
-      return { mode: result.mode, messageId: result.sent.id };
+      if (result.skipped) {
+        closeSuppressed(opp.id);
+        return { skipped: result.skipped };
+      }
+      safely('portfolio bookkeeping', () => stages.move(opp.id, 'portfolio_sent', { reason: 'examples sent', patch: { last_message_id_header: result.sent.messageIdHeader || opp.lastMessageIdHeader } }));
+      safely('portfolio record', () => store.recordPortfolioSends(opp.id, action.id, payload.portfolioIds ?? []));
+      return { mode: result.mode, messageId: result.sent.id ?? '' };
     },
   };
 

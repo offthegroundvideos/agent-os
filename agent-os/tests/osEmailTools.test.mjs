@@ -31,7 +31,7 @@ function setup() {
   });
   const [pitch, followUp, portfolio] = tools;
   const payload = { opportunityId: opportunity.id, business: 'Vine Estate', to: 'events@vineestate.com', subject: 'Barrel room films', draft: 'Hi Kim,\nIdea...', portfolioIds: [] };
-  return { osDb, clock, settings, store, stages, gmailCalls, alerts, logs, pitch, followUp, portfolio, payload, id: opportunity.id };
+  return { osDb, clock, settings, store, stages, gmail, gmailCalls, alerts, logs, pitch, followUp, portfolio, payload, id: opportunity.id };
 }
 
 const action = { id: 'act_1' };
@@ -84,8 +84,8 @@ test('a suppressed address is never emailed and the opportunity closes', async (
 });
 
 test('bookkeeping failures after a send are logged, never thrown', async () => {
-  const { osDb, stages, logs, pitch, payload, id } = setup();
-  stages.move(id, 'pitched');
+  const { osDb, stages, logs, pitch, payload } = setup();
+  stages.move = () => { throw new Error('Cannot move opp (forced failure)'); };
   const result = await pitch.execute(payload, { action });
   assert.equal(result.mode, 'draft');
   assert.match(logs[0], /pitch bookkeeping: Cannot move/);
@@ -121,5 +121,93 @@ test('too many bounces pause the lane and alert the team', async () => {
   await pitch.execute(payload, { action });
   assert.equal(settings.get('outreach.paused_lanes').winery, 'bounce rate 9% over the last 11 sends');
   assert.match(alerts[0], /Paused winery outreach/);
+  osDb.close();
+});
+
+const addItems = (osDb, n) => {
+  const ids = [];
+  for (let i = 0; i < n; i += 1) {
+    ids.push(Number(osDb.db.prepare("INSERT INTO portfolio_items (source, url, title, created_at, updated_at) VALUES ('manual', ?, 't', 'x', 'x')").run(`https://x.com/${i}`).lastInsertRowid));
+  }
+  return ids;
+};
+
+test('a pitch only goes to a researched prospect and missing ones are skipped before waiting', async () => {
+  const { osDb, stages, gmailCalls, pitch, payload, id } = setup();
+  stages.move(id, 'closed_lost');
+  assert.deepEqual(await pitch.execute(payload, { action }), { skipped: 'opportunity is closed_lost' });
+  assert.deepEqual(await pitch.execute({ ...payload, opportunityId: 'opp_missing' }, { action }), { skipped: 'opportunity is missing' });
+  assert.equal(await pitch.notBefore({ ...payload, opportunityId: 'opp_missing' }), null);
+  assert.equal(gmailCalls.length, 0);
+  osDb.close();
+});
+
+test('running the same action twice calls Gmail once', async () => {
+  const { osDb, settings, store, gmailCalls, pitch, payload, id } = setup();
+  settings.set('outreach.mode', 'send');
+  const first = await pitch.execute(payload, { action });
+  // Simulate a crash after the send: the stage never moved.
+  osDb.db.prepare("UPDATE opportunities SET stage = 'researched' WHERE id = ?").run(id);
+  const second = await pitch.execute(payload, { action });
+  assert.equal(gmailCalls.length, 1);
+  assert.deepEqual(second, first);
+  assert.equal(store.emailsInLast24h(), 1);
+  assert.equal(store.getOpportunity(id).stage, 'pitched');
+  assert.equal(store.emailForAction('nope'), null);
+  osDb.close();
+});
+
+test('a suppressed follow-up or portfolio reply closes the opportunity', async () => {
+  const a = setup();
+  a.stages.move(a.id, 'pitched');
+  a.store.suppress('events@vineestate.com', 'unsubscribe');
+  assert.deepEqual(await a.followUp.execute(a.payload, { action }), { skipped: 'on the do-not-contact list' });
+  assert.equal(a.store.getOpportunity(a.id).stage, 'closed_unsubscribed');
+  assert.equal(a.gmailCalls.length, 0);
+  a.osDb.close();
+  const b = setup();
+  b.stages.move(b.id, 'pitched');
+  b.stages.move(b.id, 'replied');
+  b.store.suppress('vineestate.com', 'unsubscribe');
+  assert.deepEqual(await b.portfolio.execute(b.payload, { action }), { skipped: 'on the do-not-contact list' });
+  assert.equal(b.store.getOpportunity(b.id).stage, 'closed_unsubscribed');
+  b.osDb.close();
+});
+
+test('the contact address is checked for suppression too', async () => {
+  const { osDb, store, gmailCalls, pitch, payload, id } = setup();
+  store.suppress('events@vineestate.com', 'unsubscribe');
+  assert.deepEqual(await pitch.execute({ ...payload, to: 'other@elsewhere.com' }, { action }), { skipped: 'on the do-not-contact list' });
+  assert.equal(gmailCalls.length, 0);
+  assert.equal(store.getOpportunity(id).stage, 'closed_unsubscribed');
+  osDb.close();
+});
+
+test('an empty draft throws before Gmail is called', async () => {
+  const { osDb, gmailCalls, pitch, payload } = setup();
+  await assert.rejects(() => pitch.execute({ ...payload, draft: '   ' }, { action }), /Empty draft/);
+  assert.equal(gmailCalls.length, 0);
+  osDb.close();
+});
+
+test('a portfolio reply moves replied to portfolio_sent and records the pieces', async () => {
+  const { osDb, stages, store, gmailCalls, portfolio, payload, id } = setup();
+  stages.move(id, 'pitched');
+  stages.move(id, 'replied');
+  const ids = addItems(osDb, 2);
+  const result = await portfolio.execute({ ...payload, portfolioIds: ids }, { action });
+  assert.deepEqual(result, { mode: 'draft', messageId: 'd1' });
+  assert.equal(gmailCalls.length, 1);
+  assert.equal(store.getOpportunity(id).stage, 'portfolio_sent');
+  assert.equal(osDb.db.prepare('SELECT COUNT(*) AS n FROM portfolio_sends WHERE opportunity_id = ?').get(id).n, 2);
+  osDb.close();
+});
+
+test('a Gmail failure does no bookkeeping', async () => {
+  const { osDb, gmail, store, pitch, payload, id } = setup();
+  gmail.createDraft = async () => { throw new Error('Gmail 500'); };
+  await assert.rejects(() => pitch.execute(payload, { action }), /Gmail 500/);
+  assert.equal(store.getOpportunity(id).stage, 'researched');
+  assert.equal(store.emailsInLast24h(), 0);
   osDb.close();
 });

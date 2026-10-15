@@ -177,6 +177,12 @@ export function createGigStore({ db, transaction }, { now = () => new Date() } =
       .run(opportunityId, actionId, lane, kind, String(toEmail).toLowerCase(), mode, String(gmailMessageId ?? ''), String(gmailThreadId ?? ''), stamp());
   }
 
+  // The first email already recorded for an action, so a re-run of that action never sends it again.
+  function emailForAction(actionId) {
+    const row = db.prepare('SELECT gmail_message_id AS id, gmail_thread_id AS threadId, mode FROM email_sends WHERE action_id = ? ORDER BY id LIMIT 1').get(actionId);
+    return row ? { id: row.id, threadId: row.threadId, mode: row.mode } : null;
+  }
+
   function emailsInLast24h({ kind = null } = {}) {
     const since = new Date(now().getTime() - 86_400_000).toISOString();
     const row = kind
@@ -223,7 +229,7 @@ export function createGigStore({ db, transaction }, { now = () => new Date() } =
   return {
     upsertBusiness, getBusiness, addContact, createOpportunity, getOpportunity, listOpportunities,
     findByThread, findByContactEmail, dueFollowUps, dueCheckIns, stageCounts,
-    suppress, isSuppressed, recordEmailSend, emailsInLast24h, laneSendStats, markEmailOutcome,
+    suppress, isSuppressed, recordEmailSend, emailForAction, emailsInLast24h, laneSendStats, markEmailOutcome,
     recordPortfolioSends, seenInbound, recordInbound, actionByKey, actionsSince,
   };
 }
