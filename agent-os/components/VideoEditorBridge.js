@@ -128,7 +128,7 @@ export default function VideoEditorBridge() {
             </div>
             <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
               <a
-                href="/"
+                href="/agents"
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
@@ -141,7 +141,7 @@ export default function VideoEditorBridge() {
                   textDecoration: 'none',
                 }}
               >
-                Back to Mission Control
+                Back to agent workspace
               </a>
               <a
                 href={editorUrl}

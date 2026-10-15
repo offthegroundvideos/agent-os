@@ -88,6 +88,8 @@ export const DEFAULT_SETTINGS = Object.freeze({
   'gmail.last_poll_at': '',
   // Paid shoot days per month (spec goal); the dashboard shows bookings against it.
   'goals.monthly_shoot_days': 12,
+  // Dashboard console answers: 'claude' (fast, a cent or two each) or 'local' (Gemma on Ollama, free but slow).
+  'chat.console_model': 'claude',
 });
 
 export function createSettings({ db }) {

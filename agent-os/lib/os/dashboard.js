@@ -10,31 +10,43 @@ import { pacificDayStart, pacificParts, utcDayStart, utcMonthStart } from './tim
 const WORKER_SILENT_MS = 15 * 60_000; // the spec's Healthchecks alert window
 const LOG_TAIL_BYTES = 16_384;
 
+function tailLines(file) {
+  let handle;
+  try {
+    handle = fs.openSync(file, 'r');
+  } catch {
+    return [];
+  }
+  try {
+    const { size } = fs.fstatSync(handle);
+    const length = Math.min(size, LOG_TAIL_BYTES);
+    const buffer = Buffer.alloc(length);
+    fs.readSync(handle, buffer, 0, length, size - length);
+    const lines = buffer.toString('utf8').split(/\r?\n/).map((item) => item.trim()).filter(Boolean);
+    return length < size ? lines.slice(1) : lines; // the first line of a partial tail may be cut
+  } finally {
+    fs.closeSync(handle);
+  }
+}
+
+function parseLine(line, file) {
+  const match = line.match(/^(\d{4}-\d{2}-\d{2}T\S+Z)\s+(.*)$/);
+  return { at: match ? match[1] : null, message: match ? match[2] : line, file };
+}
+
+// The worker's most recent log lines, oldest first, from the UTC day's log and the day before.
+export function readWorkerLog(logDir, now = new Date(), limit = 14) {
+  const lines = [];
+  for (const date of [new Date(now.getTime() - 86_400_000), now]) {
+    const name = `otg-os-worker-${date.toISOString().slice(0, 10)}.log`;
+    for (const line of tailLines(path.join(logDir, name))) lines.push(parseLine(line, name));
+  }
+  return lines.slice(-limit);
+}
+
 // The last line of the worker's log for today's UTC date (or yesterday's, just after midnight UTC).
 export function latestWorkerLine(logDir, now = new Date()) {
-  for (const date of [now, new Date(now.getTime() - 86_400_000)]) {
-    const file = path.join(logDir, `otg-os-worker-${date.toISOString().slice(0, 10)}.log`);
-    let text;
-    try {
-      const handle = fs.openSync(file, 'r');
-      try {
-        const { size } = fs.fstatSync(handle);
-        const length = Math.min(size, LOG_TAIL_BYTES);
-        const buffer = Buffer.alloc(length);
-        fs.readSync(handle, buffer, 0, length, size - length);
-        text = buffer.toString('utf8');
-      } finally {
-        fs.closeSync(handle);
-      }
-    } catch {
-      continue;
-    }
-    const line = text.split(/\r?\n/).map((item) => item.trim()).filter(Boolean).at(-1);
-    if (!line) continue;
-    const match = line.match(/^(\d{4}-\d{2}-\d{2}T\S+Z)\s+(.*)$/);
-    return { at: match ? match[1] : null, message: match ? match[2] : line, file: path.basename(file) };
-  }
-  return null;
+  return readWorkerLog(logDir, now, 1)[0] ?? null;
 }
 
 function nextBundleHour(hours, date) {
@@ -53,7 +65,8 @@ export function createDashboard({
     const date = now();
     const dayStart = pacificDayStart(date);
     const monthStart = utcMonthStart(date);
-    const worker = latestWorkerLine(logDir, date);
+    const workerLog = readWorkerLog(logDir, date, 14);
+    const worker = workerLog.at(-1) ?? null;
     const heartbeatAt = settings.get('heartbeat.last_ping_at') || null;
     const alive = Boolean(heartbeatAt) && date.getTime() - Date.parse(heartbeatAt) < WORKER_SILENT_MS;
 
@@ -92,6 +105,15 @@ export function createDashboard({
     summary.push(waiting ? `${waiting} approval${waiting === 1 ? ' is' : 's are'} waiting for you.` : 'Nothing is waiting for approval.');
     if (failed) summary.push(`${failed} action${failed === 1 ? '' : 's'} failed and need a look.`);
 
+    // Prospects who answered or are further along: the ones that turn into paid shoot days.
+    const hot = db.prepare(`SELECT o.id, o.stage, o.lane, o.updated_at AS updatedAt, b.name AS business, c.email AS contactEmail
+      FROM opportunities o JOIN businesses b ON b.id = o.business_id LEFT JOIN contacts c ON c.id = o.contact_id
+      WHERE o.stage IN ('replied', 'portfolio_sent', 'quoted', 'held') ORDER BY o.updated_at DESC LIMIT 8`).all();
+    const failedActions = db.prepare(`SELECT a.id, a.action_type AS actionType, a.last_error AS lastError, a.attempts, a.updated_at AS updatedAt,
+        a.opportunity_id AS opportunityId, b.name AS business
+      FROM actions a LEFT JOIN opportunities o ON o.id = a.opportunity_id LEFT JOIN businesses b ON b.id = o.business_id
+      WHERE a.status = 'failed' ORDER BY a.updated_at DESC LIMIT 5`).all();
+
     const recent = db.prepare(`SELECT e.opportunity_id AS id, e.from_stage AS fromStage, e.to_stage AS toStage, e.reason, e.actor, e.created_at AS at,
         b.name AS business, o.lane FROM stage_events e JOIN opportunities o ON o.id = e.opportunity_id JOIN businesses b ON b.id = o.business_id
       ORDER BY e.id DESC LIMIT 8`).all();
@@ -109,13 +131,15 @@ export function createDashboard({
         monthStart,
       },
       spend: { ...spend, byModel, toolCaps, toolDay: utcDayStart(date) },
-      worker: { line: worker, heartbeatAt, alive },
+      worker: { line: worker, recent: workerLog, heartbeatAt, alive },
       day,
       waiting,
       failed,
       nextBundleHour: nextBundleHour(settings.get('telegram.bundle_hours'), date),
       summary,
       recent,
+      hot,
+      failedActions,
     };
   }
 
@@ -188,6 +212,14 @@ export function createDashboard({
     };
   }
 
+  // Prospects whose business name contains the text, newest activity first.
+  function findOpportunities(text, limit = 5) {
+    const needle = String(text ?? '').trim().toLowerCase();
+    if (!needle) return [];
+    return db.prepare(`SELECT o.id FROM opportunities o JOIN businesses b ON b.id = o.business_id
+      WHERE instr(lower(b.name), ?) > 0 ORDER BY o.updated_at DESC LIMIT ?`).all(needle, limit).map((row) => row.id);
+  }
+
   function portfolioLibrary() {
     return {
       items: portfolio.store.list(),
@@ -224,5 +256,8 @@ export function createDashboard({
     };
   }
 
-  return { today, pendingApprovals, pipeline, opportunity, portfolioLibrary, tagPortfolio, settingsView };
+  return {
+    today, pendingApprovals, pipeline, opportunity, findOpportunities, portfolioLibrary, tagPortfolio, settingsView,
+    workerLog: (limit = 14) => readWorkerLog(logDir, now(), limit),
+  };
 }

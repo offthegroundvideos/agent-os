@@ -108,6 +108,27 @@ function ModeSetting({ mode, canEdit, saver }) {
   );
 }
 
+function ConsoleModelSetting({ value, canEdit, saver }) {
+  return (
+    <Row label="Console answers" hint="Which brain answers the console on Today. Telegram questions keep the local model." state={saver.status["chat.console_model"]}>
+      <div className="grid grid-cols-2 gap-2">
+        {[["claude", "Claude", "Fast and sharp, about a cent or two per question"], ["local", "Local Gemma", "Free, runs on this PC, can take a minute or more"]].map(([key, title, text]) => (
+          <button
+            type="button"
+            key={key}
+            disabled={!canEdit}
+            onClick={() => key !== value && saver.save("chat.console_model", { op: "set", key: "chat.console_model", value: key })}
+            className={`rounded-xl border p-3 text-left disabled:opacity-60 ${value === key ? "border-cyan-400 bg-cyan-400/10" : "border-white/10 hover:bg-white/5"}`}
+          >
+            <div className="font-semibold text-slate-50">{title}</div>
+            <div className="text-xs text-slate-400">{text}</div>
+          </button>
+        ))}
+      </div>
+    </Row>
+  );
+}
+
 function LaneCard({ laneKey, lane, pausedReason, canEdit, saver }) {
   const [queries, setQueries] = useState((lane.queries ?? []).join("\n"));
   const dirty = queries !== (lane.queries ?? []).join("\n");
@@ -196,10 +217,11 @@ export default function SettingsPage() {
           </div>
         </Card>
 
-        <Card title="Daily caps and goal">
+        <Card title="Daily caps, goal and console">
           <div className="divide-y divide-white/5">
             <ValueSetting key={k("gigs.daily_searches")} settingKey="gigs.daily_searches" label="Prospect searches per weekday" hint="Each one is a paid Grok search." initial={values["gigs.daily_searches"]} toValue={asNumber} {...props} />
             <ValueSetting key={k("gigs.daily_research")} settingKey="gigs.daily_research" label="Prospects researched per day" initial={values["gigs.daily_research"]} toValue={asNumber} {...props} />
+            <ConsoleModelSetting value={values["chat.console_model"]} {...props} />
             <ValueSetting key={k("goals.monthly_shoot_days")} settingKey="goals.monthly_shoot_days" label="Goal: paid shoot days per month" initial={values["goals.monthly_shoot_days"]} toValue={asNumber} {...props} />
           </div>
         </Card>

@@ -60,6 +60,13 @@ export const EDITABLE_SETTINGS = Object.freeze({
   'gigs.daily_searches': { label: 'Prospect searches per weekday', validate: count('Prospect searches per day', 0, 20) },
   'gigs.daily_research': { label: 'Prospects researched per day', validate: count('Prospects researched per day', 0, 100) },
   'goals.monthly_shoot_days': { label: 'Goal: paid shoot days per month', validate: count('The monthly goal', 1, 100) },
+  'chat.console_model': {
+    label: 'Console answers',
+    validate(value) {
+      if (!['claude', 'local'].includes(value)) throw new SettingsEditError('Console answers must be claude or local.');
+      return value;
+    },
+  },
 });
 
 export function createSettingsEditor({ settings }) {

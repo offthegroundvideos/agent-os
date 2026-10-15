@@ -108,7 +108,7 @@ export function Loading({ error, reload }) {
   }
   return (
     <div className="flex flex-col items-center gap-3 py-14">
-      <div className="os-core scale-50 -my-6" aria-hidden="true">
+      <div className="os-core -my-6 scale-50 text-cyan-300" aria-hidden="true">
         <span className="os-core-ring r1" /><span className="os-core-ring r2" /><span className="os-core-ring r3" /><span className="os-core-heart" />
       </div>
       <div className="os-mono os-caret text-xs uppercase tracking-[0.3em] text-cyan-300/80">Establishing link</div>

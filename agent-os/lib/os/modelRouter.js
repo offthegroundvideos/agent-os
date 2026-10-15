@@ -13,6 +13,11 @@ export const DEFAULT_ROUTES = Object.freeze({
     { provider: 'ollama', model: 'gemma4:latest' },
     { provider: 'anthropic', model: 'claude-sonnet-5-5', effort: 'low' },
   ],
+  // The dashboard console: someone is waiting on the answer, so Claude first and the local model as backup.
+  console: [
+    { provider: 'anthropic', model: 'claude-sonnet-5-5', effort: 'low' },
+    { provider: 'ollama', model: 'gemma4:latest' },
+  ],
   draft: [
     { provider: 'anthropic', model: 'claude-sonnet-5-5' },
     { provider: 'ollama', model: 'gemma4:latest', needsReview: true },

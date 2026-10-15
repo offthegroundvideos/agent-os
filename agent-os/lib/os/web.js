@@ -1,9 +1,7 @@
 // What the Next.js /api/os routes share: one OTG-OS runtime per web process (same database as the worker),
 // the dashboard read models, and the owner check for settings changes.
-import path from 'node:path';
 import { createOsRuntime } from './runtime.js';
-import { createDashboard } from './dashboard.js';
-import { createSettingsEditor, SettingsEditError } from './settingsEditor.js';
+import { SettingsEditError } from './settingsEditor.js';
 import { ApprovalError } from './approvalActions.js';
 import { LedgerError } from './ledger.js';
 import { RegistryError } from './registry.js';
@@ -13,6 +11,14 @@ import { GigStoreError } from './gigs/store.js';
 const KNOWN_ERRORS = [LedgerError, RegistryError, ApprovalError, SettingsEditError, StageError, GigStoreError];
 
 const LOOPBACK_HOSTS = new Set(['localhost', '127.0.0.1', '::1']);
+const LOOPBACK_IPS = new Set(['127.0.0.1', '::1', '::ffff:127.0.0.1']);
+
+// Next.js fills x-forwarded-for from the socket when the client sends none, so a real local request
+// carries a loopback address here. A missing header fails closed.
+function fromLoopback(headers) {
+  const forwarded = String(headers.get('x-forwarded-for') || '').trim();
+  return Boolean(forwarded) && forwarded.split(',').every((ip) => LOOPBACK_IPS.has(ip.trim()));
+}
 
 function hostOf(headers) {
   return String(headers.get('host') || '').trim().toLowerCase().replace(/:\d+$/, '').replace(/^\[|\]$/g, '');
@@ -25,11 +31,12 @@ function providedSecret(headers) {
   return match ? match[1].trim() : '';
 }
 
-// Owner-only changes are allowed on the owner's PC (a loopback host) or with AGENT_OS_API_SECRET.
+// Owner-only changes are allowed on the owner's PC (loopback host and loopback client address) or with
+// AGENT_OS_API_SECRET. Both headers can be forged by a peer that can reach the port, so the key is the real lock.
 // Other private hosts (Tailscale 100.x peers) can read and approve, as Telegram admins can, but not change settings.
 export function isOwnerRequest(request, env = process.env) {
   const headers = request.headers;
-  if (LOOPBACK_HOSTS.has(hostOf(headers))) return true;
+  if (LOOPBACK_HOSTS.has(hostOf(headers)) && fromLoopback(headers)) return true;
   const secret = String(env.AGENT_OS_API_SECRET || '').trim();
   return Boolean(secret) && providedSecret(headers) === secret;
 }
@@ -42,20 +49,7 @@ export function actorFor(request, env = process.env) {
 export function osWeb() {
   if (!globalThis.__otgOsWeb) {
     const runtime = createOsRuntime({ log: (line) => console.error(`[otg-os web] ${line}`) });
-    const editor = createSettingsEditor({ settings: runtime.settings });
-    const dashboard = createDashboard({
-      osDb: runtime.osDb,
-      settings: runtime.settings,
-      ledger: runtime.ledger,
-      budget: runtime.budget,
-      approvals: runtime.approvals,
-      gigStore: runtime.gigStore,
-      stages: runtime.stages,
-      portfolio: runtime.portfolio,
-      team: runtime.team,
-      logDir: path.join(process.cwd(), 'data', 'logs'),
-    });
-    globalThis.__otgOsWeb = { runtime, editor, dashboard };
+    globalThis.__otgOsWeb = { runtime, editor: runtime.settingsEditor, dashboard: runtime.dashboard };
   }
   return globalThis.__otgOsWeb;
 }

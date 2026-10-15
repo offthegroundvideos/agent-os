@@ -95,7 +95,7 @@ export default function OsShell({ children }) {
       <div className="os-scanlines" aria-hidden="true" />
       <div className="os-scanbeam" aria-hidden="true" />
 
-      <header className="sticky top-0 z-30 border-b border-cyan-300/10 bg-slate-950/50 backdrop-blur-md">
+      <header className="sticky top-0 z-30 border-b border-cyan-300/10 bg-slate-950/50 pt-[env(safe-area-inset-top)] backdrop-blur-md">
         <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3">
           <Link href="/os" className="flex shrink-0 items-center gap-2.5 whitespace-nowrap">
             <span className="os-pulse-dot h-2 w-2 rounded-full bg-cyan-300 text-cyan-300 shadow-[0_0_10px_rgb(34,211,238)]" aria-hidden="true" />

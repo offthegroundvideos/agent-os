@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { createOsRuntime } from '../lib/os/runtime.js';
-import { createDashboard, latestWorkerLine } from '../lib/os/dashboard.js';
+import { createDashboard, latestWorkerLine, readWorkerLog } from '../lib/os/dashboard.js';
 import { createSettingsEditor } from '../lib/os/settingsEditor.js';
 import { actorFor, errorResponse, isOwnerRequest } from '../lib/os/web.js';
 import { LedgerError } from '../lib/os/ledger.js';
@@ -40,6 +40,8 @@ test('latestWorkerLine reads the last line of the UTC day log, or the day before
   assert.equal(latestWorkerLine(logDir, NOW).message, 'yesterday');
   fs.writeFileSync(path.join(logDir, 'otg-os-worker-2026-10-15.log'), '2026-10-15T07:29:17.357Z OTG-OS worker started.\r\n2026-10-15T17:59:00.000Z tick {"executed":1}\n\n');
   assert.deepEqual(latestWorkerLine(logDir, NOW), { at: '2026-10-15T17:59:00.000Z', message: 'tick {"executed":1}', file: 'otg-os-worker-2026-10-15.log' });
+  assert.deepEqual(readWorkerLog(logDir, NOW).map((line) => line.message), ['yesterday', 'OTG-OS worker started.', 'tick {"executed":1}']);
+  assert.deepEqual(readWorkerLog(logDir, NOW, 2).map((line) => line.message), ['OTG-OS worker started.', 'tick {"executed":1}']);
   close();
 });
 
@@ -63,8 +65,28 @@ test('today() reports goal, spend, worker liveness and the day so far', async ()
   assert.match(view.summary.join(' '), /Found 1 new prospect and researched 1\./);
   assert.match(view.summary.join(' '), /1 approval is waiting/);
   assert.equal(view.recent[0].business, 'Silver Oak');
+  assert.deepEqual(view.hot, []);
+  assert.deepEqual(view.failedActions, []);
   runtime.settings.set('heartbeat.last_ping_at', '2026-10-15T17:00:00.000Z');
   assert.equal(dashboard.today().worker.alive, false);
+  close();
+});
+
+test('today() lists hot leads (replied and beyond) and failed actions with their errors', async () => {
+  const { runtime, dashboard, close } = setup();
+  const id = seedOpportunity(runtime);
+  runtime.stages.move(id, 'pitched', { reason: 'sent' });
+  runtime.stages.move(id, 'replied', { reason: 'they wrote back' });
+  seedOpportunity(runtime, { name: 'Quiet Co', website: 'quiet.example' });
+  await runtime.registry.request({ tool: 'system.demo', payload: { draft: 'x' }, why: { goal: 'g', expected: 'e' }, idempotencyKey: 'f1', opportunityId: id });
+  const action = runtime.ledger.list({ status: 'proposed' })[0];
+  runtime.ledger.approve(action.id);
+  runtime.ledger.claimNextDue();
+  runtime.ledger.markFailed(action.id, 'Gmail said no');
+  const view = dashboard.today();
+  assert.deepEqual(view.hot.map((opp) => [opp.business, opp.stage]), [['Silver Oak', 'replied']]);
+  assert.equal(view.failedActions[0].lastError, 'Gmail said no');
+  assert.equal(view.failedActions[0].business, 'Silver Oak');
   close();
 });
 
@@ -133,18 +155,21 @@ test('settingsView shows editable values, lanes and read-only budget caps', () =
   close();
 });
 
-test('owner check: loopback host or the API secret; actor names follow it', () => {
+test('owner check: loopback host and client, or the API secret; actor names follow it', () => {
   const req = (headers) => ({ headers: new Headers(headers) });
+  const local = (host) => req({ host, 'x-forwarded-for': '::1' });
   const env = { AGENT_OS_API_SECRET: 's3cret', TELEGRAM_OWNER_NAME: 'Jack' };
-  assert.equal(isOwnerRequest(req({ host: 'localhost:4000' }), env), true);
-  assert.equal(isOwnerRequest(req({ host: '127.0.0.1:4000' }), env), true);
-  assert.equal(isOwnerRequest(req({ host: '[::1]:4000' }), env), true);
+  assert.equal(isOwnerRequest(local('localhost:4000'), env), true);
+  assert.equal(isOwnerRequest(req({ host: '127.0.0.1:4000', 'x-forwarded-for': '127.0.0.1' }), env), true);
+  assert.equal(isOwnerRequest(local('[::1]:4000'), env), true);
+  assert.equal(isOwnerRequest(req({ host: 'localhost:4000' }), env), false, 'no client address fails closed');
+  assert.equal(isOwnerRequest(req({ host: 'localhost:4000', 'x-forwarded-for': '100.101.1.2' }), env), false, 'a peer faking Host');
   assert.equal(isOwnerRequest(req({ host: '100.101.1.2:4000' }), env), false);
   assert.equal(isOwnerRequest(req({ host: '100.101.1.2:4000', 'x-agent-os-secret': 's3cret' }), env), true);
   assert.equal(isOwnerRequest(req({ host: 'pc.tail.ts.net', authorization: 'Bearer s3cret' }), env), true);
   assert.equal(isOwnerRequest(req({ host: 'pc.tail.ts.net', 'x-agent-os-secret': 'wrong' }), env), false);
   assert.equal(isOwnerRequest(req({ host: 'pc.tail.ts.net' }), {}), false);
-  assert.equal(actorFor(req({ host: 'localhost' }), env), 'Jack (dashboard)');
+  assert.equal(actorFor(local('localhost'), env), 'Jack (dashboard)');
   assert.equal(actorFor(req({ host: '100.101.1.2' }), env), 'Dashboard');
 });
 

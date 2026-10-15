@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { dollars, hourLabel, osFetch, pacificTime, timeAgo, useOsData, words } from "../../components/os/client";
+import CommandConsole from "../../components/os/CommandConsole";
 import ComputerConsole from "../../components/os/ComputerConsole";
 import { Badge, Button, Card, Loading, Meter, Notice, PageTitle, Stat, StageBadge } from "../../components/os/ui";
 
@@ -81,15 +82,29 @@ function SpendCard({ spend }) {
   );
 }
 
+function lineTone(message) {
+  if (/fail|error|could not|missing/i.test(message)) return "text-rose-300";
+  if (/paused|waiting|skipped/i.test(message)) return "text-amber-200";
+  if (/gigs|tick|draft|pitch|research/i.test(message)) return "text-cyan-100";
+  return "text-slate-300";
+}
+
 function WorkerCard({ worker }) {
-  const line = worker.line;
+  const lines = worker.recent?.length ? worker.recent : worker.line ? [worker.line] : [];
   return (
-    <Card title="Worker" action={worker.alive ? <Badge tone="good">Alive</Badge> : <Badge tone="bad">No heartbeat</Badge>}>
+    <Card title="Night shift log" action={worker.alive ? <Badge tone="good">Alive</Badge> : <Badge tone="bad">No heartbeat</Badge>}>
       <p className="text-sm text-slate-300">Last heartbeat {timeAgo(worker.heartbeatAt)}{worker.heartbeatAt ? ` (${pacificTime(worker.heartbeatAt)})` : ""}.</p>
-      {line ? (
-        <div className="mt-3 rounded-xl bg-black/40 p-3">
-          <div className="text-[11px] text-slate-500">{line.at ? `${pacificTime(line.at)} · ${timeAgo(line.at)}` : line.file}</div>
-          <p className="os-mono mt-1 text-xs leading-relaxed text-slate-300 [overflow-wrap:anywhere]">{line.message}</p>
+      {lines.length ? (
+        <div className="mt-3 flex max-h-72 flex-col-reverse overflow-y-auto rounded-xl border border-cyan-300/10 bg-black/60 p-3">
+          <ol className="os-mono space-y-1.5 text-[11px] leading-relaxed">
+            {lines.map((line, i) => (
+              <li key={`${line.at}-${i}`} className="flex gap-2">
+                <span className="shrink-0 tabular-nums text-cyan-500/70">{line.at ? pacificTime(line.at, { withDate: false }) : "--:--"}</span>
+                <span className={`min-w-0 [overflow-wrap:anywhere] ${lineTone(line.message)}`}>{line.message}</span>
+              </li>
+            ))}
+            <li className="os-caret text-cyan-500/70" aria-hidden="true" />
+          </ol>
         </div>
       ) : (
         <p className="mt-2 text-sm text-slate-500">No worker log for today yet.</p>
@@ -107,7 +122,7 @@ export default function TodayPage() {
     <>
       <PageTitle title="Today" subtitle={new Intl.DateTimeFormat("en-US", { timeZone: "America/Los_Angeles", weekday: "long", month: "long", day: "numeric" }).format(new Date(data.now))} />
       <div className="os-stagger space-y-4">
-        <ComputerConsole data={data} />
+        <ComputerConsole data={data}><CommandConsole /></ComputerConsole>
         <StatusBar data={data} reload={reload} />
 
         {data.waiting > 0 && (
@@ -120,7 +135,41 @@ export default function TodayPage() {
             </Notice>
           </Link>
         )}
-        {data.failed > 0 && <Notice tone="bad">{data.failed} action{data.failed === 1 ? "" : "s"} failed. Open Pipeline to see which.</Notice>}
+        {data.hot?.length > 0 && (
+          <Card title="Hot leads" action={<Badge tone="warn">{data.hot.length} live</Badge>}>
+            <ul className="divide-y divide-white/5">
+              {data.hot.map((opp) => (
+                <li key={opp.id}>
+                  <Link href={`/os/pipeline/${opp.id}`} className="flex items-center justify-between gap-3 py-2">
+                    <span className="min-w-0">
+                      <span className="block truncate font-semibold text-slate-50">{opp.business}</span>
+                      <span className="block truncate text-xs text-slate-400">{words(opp.lane)}{opp.contactEmail ? ` · ${opp.contactEmail}` : ""} · {timeAgo(opp.updatedAt)}</span>
+                    </span>
+                    <StageBadge stage={opp.stage} />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </Card>
+        )}
+        {data.failedActions?.length > 0 && (
+          <Card title="Needs a look" action={<Badge tone="bad">{data.failed} failed</Badge>}>
+            <ul className="space-y-2">
+              {data.failedActions.map((action) => (
+                <li key={action.id} className="rounded-xl border border-rose-400/20 bg-rose-500/5 p-2.5 text-sm">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="os-mono text-[11px] uppercase text-rose-200">{action.actionType}</span>
+                    {action.opportunityId
+                      ? <Link href={`/os/pipeline/${action.opportunityId}`} className="font-medium text-slate-100 hover:underline">{action.business || "prospect"}</Link>
+                      : <span className="text-slate-300">{action.business}</span>}
+                    <span className="text-xs text-slate-500">{timeAgo(action.updatedAt)} · {action.attempts} tries</span>
+                  </div>
+                  <p className="os-mono mt-1 text-xs text-rose-200/90 [overflow-wrap:anywhere]">{action.lastError || "No error recorded."}</p>
+                </li>
+              ))}
+            </ul>
+          </Card>
+        )}
 
         <Card title="The day so far">
           <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
