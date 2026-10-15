@@ -1,0 +1,169 @@
+// tests/osGigEngine.test.mjs
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { openOsDb } from '../lib/os/db.js';
+import { createSettings } from '../lib/os/settings.js';
+import { createGigStore } from '../lib/os/gigs/store.js';
+import { createStages } from '../lib/os/gigs/stages.js';
+import { pitchKey } from '../lib/os/gigs/outreach.js';
+import { createGigEngine } from '../lib/os/gigs/engine.js';
+
+const PATHS = {
+  found: [],
+  researched: ['researched'],
+  pitched: ['researched', 'pitched'],
+  closed_not_now: ['researched', 'pitched', 'replied', 'closed_not_now'],
+};
+
+function setup({ canEmail = true, finderError = null } = {}) {
+  let t = Date.parse('2026-10-14T12:00:00Z'); // Wednesday 05:00 Pacific
+  const clock = { now: () => new Date(t), set: (iso) => { t = Date.parse(iso); } };
+  const osDb = openOsDb(':memory:');
+  const settings = createSettings(osDb);
+  const store = createGigStore(osDb, { now: clock.now });
+  const stages = createStages(osDb, { now: clock.now });
+  const calls = { imports: 0, finds: [], research: [], pitches: [], followUps: [], polls: 0 };
+  const portfolio = { importAll: async () => { calls.imports += 1; return { created: 0 }; }, text: () => 'portfolio list', tag: (args) => `tag ${args.join(' ')}` };
+  const finder = { findForLane: async (lane) => { if (finderError) throw finderError; calls.finds.push(lane); return { lane }; } };
+  const research = {
+    research: async (id) => {
+      calls.research.push(id);
+      stages.move(id, 'closed_lost', { patch: { close_reason: 'not_a_fit' } });
+      return { closed: 'not_a_fit' };
+    },
+  };
+  const outreach = {
+    draftPitch: async (id) => { calls.pitches.push(id); return { actionId: `act_${calls.pitches.length}` }; },
+    draftFollowUp: async (id, options) => { calls.followUps.push({ id, ...options }); return { actionId: 'act_f' }; },
+  };
+  const threads = {};
+  const gmail = { thread: async (id) => threads[id] ?? { messages: [] } };
+  const triage = { poll: async () => { calls.polls += 1; return { checked: 1, handled: 1 }; } };
+  const logs = [];
+  const engine = createGigEngine({ settings, store, stages, portfolio, finder, research, outreach, triage, gmail, canEmail, now: clock.now, log: (line) => logs.push(line) });
+  function addOpp(name, stage = 'found', patch = {}) {
+    const { business } = store.upsertBusiness({ name, lane: 'winery', website: `${name}.com` });
+    const { opportunity } = store.createOpportunity(business.id);
+    for (const step of PATHS[stage]) stages.move(opportunity.id, step);
+    if (Object.keys(patch).length) stages.update(opportunity.id, patch);
+    return opportunity.id;
+  }
+  function addAction(key, status) {
+    osDb.db.prepare(`INSERT INTO actions (id, idempotency_key, action_type, tool, payload, why, autonomy_level, status, reject_reason, created_at, updated_at)
+      VALUES (?, ?, 'email.first_contact', 'email.pitch', '{}', '{}', 'ask', ?, 'wrong_target', ?, ?)`).run(`act_${key}`, key, status, clock.now().toISOString(), clock.now().toISOString());
+  }
+  return { osDb, clock, settings, store, stages, engine, calls, threads, logs, addOpp, addAction };
+}
+
+test('daily jobs run once per Pacific day at their hour, prospecting only on weekdays', async () => {
+  const ctx = setup();
+  await ctx.engine.tick();
+  assert.deepEqual([ctx.calls.imports, ctx.calls.finds.length, ctx.calls.polls], [0, 0, 1]);
+  ctx.clock.set('2026-10-14T13:01:00Z'); // 06:01
+  await ctx.engine.tick();
+  assert.equal(ctx.calls.imports, 1);
+  assert.equal(ctx.calls.finds.length, 0);
+  ctx.clock.set('2026-10-14T14:30:00Z'); // 07:30 Wednesday
+  await ctx.engine.tick();
+  await ctx.engine.tick();
+  assert.deepEqual(ctx.calls.finds, ['travel', 'winery', 'wedding']);
+  assert.equal(ctx.calls.imports, 1);
+  assert.equal(ctx.calls.polls, 3);
+  ctx.clock.set('2026-10-15T14:30:00Z'); // Thursday: lanes rotate by one
+  await ctx.engine.tick();
+  assert.deepEqual(ctx.calls.finds.slice(3), ['winery', 'wedding', 'real_estate']);
+  ctx.clock.set('2026-10-17T15:00:00Z'); // Saturday
+  await ctx.engine.tick();
+  assert.equal(ctx.calls.finds.length, 6);
+  ctx.osDb.close();
+});
+
+test('research takes two per tick within the daily cap', async () => {
+  const ctx = setup();
+  ctx.settings.set('gigs.daily_research', 3);
+  ['a', 'b', 'c', 'd'].forEach((name) => ctx.addOpp(name));
+  await ctx.engine.tick();
+  assert.equal(ctx.calls.research.length, 2);
+  await ctx.engine.tick();
+  assert.equal(ctx.calls.research.length, 3);
+  await ctx.engine.tick();
+  assert.equal(ctx.calls.research.length, 3);
+  ctx.osDb.close();
+});
+
+test('pitches need email, respect the daily limit and close rejected pitches', async () => {
+  const off = setup({ canEmail: false });
+  off.addOpp('a', 'researched');
+  await off.engine.tick();
+  assert.deepEqual(off.calls.pitches, []);
+  off.osDb.close();
+
+  const ctx = setup();
+  ctx.settings.set('outreach.daily_pitch_limit', 2);
+  const ids = ['a', 'b', 'c'].map((name) => ctx.addOpp(name, 'researched'));
+  await ctx.engine.tick();
+  assert.deepEqual(ctx.calls.pitches, [ids[0], ids[1]]);
+  ctx.addAction(pitchKey(ctx.store.getOpportunity(ids[2])), 'rejected');
+  await ctx.engine.tick();
+  const closed = ctx.store.getOpportunity(ids[2]);
+  assert.equal(closed.stage, 'closed_lost');
+  assert.equal(closed.closeReason, 'pitch_rejected');
+  ctx.osDb.close();
+});
+
+test('follow-ups wait for the first email to be sent, then draft in the thread; the last one closes', async () => {
+  const ctx = setup();
+  ctx.clock.set('2026-10-20T17:00:00Z');
+  const waiting = ctx.addOpp('a', 'pitched', { gmail_thread_id: 'th1', next_follow_up_at: '2026-10-18T17:00:00.000Z', last_message_id_header: '<draft@x>' });
+  const done = ctx.addOpp('b', 'pitched', { follow_ups_sent: 2, next_follow_up_at: '2026-10-19T17:00:00.000Z' });
+  ctx.threads.th1 = { messages: [{ labelIds: ['DRAFT'], messageIdHeader: '<draft@x>' }] };
+  await ctx.engine.tick();
+  assert.deepEqual(ctx.calls.followUps, []);
+  assert.equal(ctx.store.getOpportunity(waiting).nextFollowUpAt, '2026-10-21T17:00:00.000Z');
+  assert.equal(ctx.store.getOpportunity(done).stage, 'closed_lost');
+  assert.equal(ctx.store.getOpportunity(done).closeReason, 'no_reply');
+  ctx.threads.th1 = { messages: [{ labelIds: ['SENT'], messageIdHeader: '<sent@x>' }] };
+  ctx.clock.set('2026-10-21T18:00:00Z');
+  await ctx.engine.tick();
+  assert.deepEqual(ctx.calls.followUps, [{ id: waiting, inReplyTo: '<sent@x>' }]);
+  assert.equal(ctx.store.getOpportunity(waiting).nextFollowUpAt, null);
+  ctx.osDb.close();
+});
+
+test('check-ins reopen not-now prospects', async () => {
+  const ctx = setup();
+  const id = ctx.addOpp('a', 'closed_not_now', { check_in_at: '2026-10-01T00:00:00.000Z' });
+  await ctx.engine.tick();
+  assert.equal(ctx.store.getOpportunity(id).stage, 'researched');
+  assert.equal(ctx.store.getOpportunity(id).checkInAt, null);
+  ctx.osDb.close();
+});
+
+test('pause stops everything, and one failing job does not stop the others', async () => {
+  const paused = setup();
+  paused.settings.set('os.paused', true);
+  assert.deepEqual(await paused.engine.tick(), { paused: true });
+  paused.osDb.close();
+
+  const ctx = setup({ finderError: new Error('xAI 503') });
+  ctx.clock.set('2026-10-14T14:30:00Z');
+  ctx.addOpp('a');
+  const report = await ctx.engine.tick();
+  assert.match(ctx.logs[0], /gigs prospecting failed: xAI 503/);
+  assert.equal(report.research.length, 1);
+  ctx.osDb.close();
+});
+
+test('pipeline text and lane pausing', async () => {
+  const ctx = setup();
+  ctx.addOpp('vine', 'researched');
+  ctx.addOpp('oak');
+  assert.match(ctx.engine.pipelineText(), /^Pipeline · approved emails become Gmail drafts\nfound: 1 · researched: 1\nClosed: 0\nLatest:\n• /);
+  assert.equal(ctx.engine.setLanePaused('winery', 'paused by Jack'), 'Paused winery outreach.');
+  assert.match(ctx.engine.pipelineText(), /Paused: winery \(paused by Jack\)/);
+  assert.equal(ctx.engine.setLanePaused('winery', null), 'Resumed winery outreach.');
+  assert.match(ctx.engine.setLanePaused('boats', null), /Lanes are: travel, winery, wedding, real_estate/);
+  assert.equal(ctx.engine.portfolioText(), 'portfolio list');
+  assert.equal(ctx.engine.tagPortfolio(['3', 'lane=winery']), 'tag 3 lane=winery');
+  ctx.osDb.close();
+});
