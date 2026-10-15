@@ -34,6 +34,20 @@ async function tickLoop() {
   }
 }
 
+// Gig work (Grok searches, Sonnet drafts) is slow, so it runs on its own loop and never delays approvals or the heartbeat.
+async function gigLoop() {
+  while (!stopping) {
+    try {
+      const report = await runtime.gigs.tick();
+      const keys = Object.keys(report ?? {});
+      if (keys.length && !(keys.length === 1 && report.paused === true)) log(`gigs ${JSON.stringify(report)}`);
+    } catch (error) {
+      log(`gigs tick failed: ${error.message}`);
+    }
+    await sleep(30_000);
+  }
+}
+
 async function telegramLoop() {
   if (!runtime.bot) {
     log('Telegram is not configured: set TELEGRAM_BOT_TOKEN in .env.local.');
@@ -58,6 +72,6 @@ process.on('SIGINT', stop);
 process.on('SIGTERM', stop);
 
 log('OTG-OS worker started.');
-await Promise.all([tickLoop(), telegramLoop()]);
+await Promise.all([tickLoop(), gigLoop(), telegramLoop()]);
 runtime.close();
 log('OTG-OS worker stopped.');

@@ -25,6 +25,16 @@ See `docs/viral-intelligence-operating-spec.md` for the canonical operating spec
 - Required in `.env.local`: `TELEGRAM_BOT_TOKEN`, `TELEGRAM_OWNER_ID` (send `/start` to the bot to get it), `ANTHROPIC_API_KEY`. Optional: `HEALTHCHECKS_PING_URL`, `OTG_OS_BACKUP_DIR` (point it at a Google Drive or OneDrive folder for off-machine backups).
 - Design: `docs/superpowers/specs/2026-10-14-otg-os-core-gig-engine-design.md`. Plans: `docs/superpowers/plans/`.
 
+### Gig Engine (outreach)
+
+- Every morning, OTG-OS imports the portfolio from madebyotg.com and @madebyotg (6am Pacific). On weekdays it then searches for prospects in four lanes: yacht/travel, wineries, weddings/events and real estate (7am).
+- It reads each prospect's own website for a public business email, an angle and evidence, and picks the 2–3 best portfolio pieces.
+- Pitches, follow-ups (days 4 and 9) and portfolio replies arrive in Telegram for approval. First contact always needs approval.
+- `/mode draft` (the default) turns approved emails into Gmail drafts. `/mode send` (owner only) sends them inside the recipient's 9–5 weekday window.
+- Replies are read every 5 minutes, but only on OTG-OS threads. Unsubscribes are permanent.
+- Commands: `/pipeline`, `/portfolio`, `/tag`, `/lane pause|resume <lane>`, `/mode`.
+- Setup: Google Cloud Desktop OAuth client → `GOOGLE_CLIENT_ID`/`GOOGLE_CLIENT_SECRET` in `.env.local` → `npm run os:google-auth` → set `OTG_SENDER_EMAIL` → restart the worker. `npm run os:gigs-once -- winery` runs one pass by hand.
+
 ## Agents
 - Alex — Research Specialist (/alex)
 - Maya — Content Writer (/maya)

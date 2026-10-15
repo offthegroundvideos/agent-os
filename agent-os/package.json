@@ -13,7 +13,8 @@
     "os:worker": "node scripts/otg-os-worker.mjs",
     "os:demo": "node scripts/otg-os-demo-approval.mjs",
     "os:mcp": "node --no-warnings scripts/otg-os-mcp.mjs",
-    "os:google-auth": "node scripts/otg-os-google-auth.mjs"
+    "os:google-auth": "node scripts/otg-os-google-auth.mjs",
+    "os:gigs-once": "node scripts/otg-os-gigs-once.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.134.0",

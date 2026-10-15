@@ -197,6 +197,10 @@ ANTHROPIC_API_KEY                 # OTG-OS brain (Claude Sonnet/Haiku/Opus)
 TELEGRAM_BOT_TOKEN                # OTG-OS Telegram bot (from BotFather)
 TELEGRAM_OWNER_ID                 # the only Telegram user the bot obeys
 HEALTHCHECKS_PING_URL             # outside heartbeat for the OTG-OS worker
+GOOGLE_CLIENT_ID                  # OTG-OS Gig Engine Gmail (Desktop OAuth client)
+GOOGLE_CLIENT_SECRET
+GOOGLE_REFRESH_TOKEN              # written by npm run os:google-auth
+OTG_SENDER_EMAIL                  # Gmail address outreach is sent from
 OTG_OS_BACKUP_DIR                 # daily database backups (use a cloud-synced folder)
 PROSPECT_RADAR_DISCOVERY_URL      # URL of deployed Cloudflare discovery worker
 PUBLISH_YOUTUBE_MODE              # set to "api" for live YouTube uploads

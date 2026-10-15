@@ -34,3 +34,18 @@ test('DeepSeek and Grok live search switch on only when their keys are set', () 
   assert.notEqual(on.liveSearch, null);
   on.close();
 });
+
+test('the gig engine is always built, and email tools only with Gmail, sender and address', () => {
+  const base = { OTG_OS_DB_FILE: ':memory:' };
+  const without = createOsRuntime({ env: base, log: () => {} });
+  assert.equal(without.canEmail, false);
+  assert.match(without.gigs.pipelineText(), /Nothing open yet/);
+  without.close();
+  const withEmail = createOsRuntime({
+    env: { ...base, GOOGLE_CLIENT_ID: 'c', GOOGLE_CLIENT_SECRET: 's', GOOGLE_REFRESH_TOKEN: 'r', OTG_SENDER_EMAIL: 'jack@madebyotg.com', OTG_BUSINESS_MAILING_ADDRESS: '21 Bolinas Rd' },
+    log: () => {},
+  });
+  assert.equal(withEmail.canEmail, true);
+  assert.match(withEmail.registry.describe({ tool: 'email.pitch', payload: { business: 'B', to: 't@b.com', subject: 'S', draft: 'D' } }), /^B · t@b.com/);
+  withEmail.close();
+});
