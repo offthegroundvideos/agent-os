@@ -6,26 +6,32 @@ import { createGigStore } from '../lib/os/gigs/store.js';
 import { createStages } from '../lib/os/gigs/stages.js';
 import { createReplyTriage, defaultCheckInDays, senderEmail } from '../lib/os/gigs/replyTriage.js';
 
-function setup({ replies = [], bounces = [], messages = {}, verdicts = [] } = {}) {
+function setup({ replies = [], bounces = [], messages = {}, verdicts = [], website = 'vineestate.com', settings, alertError = null } = {}) {
   const now = () => new Date('2026-10-14T17:00:00Z');
   const osDb = openOsDb(':memory:');
   const store = createGigStore(osDb, { now });
   const stages = createStages(osDb, { now });
-  const { business } = store.upsertBusiness({ name: 'Vine Estate', lane: 'winery', website: 'vineestate.com' });
+  const { business } = store.upsertBusiness({ name: 'Vine Estate', lane: 'winery', website });
   const { opportunity } = store.createOpportunity(business.id);
   const contact = store.addContact(business.id, { email: 'events@vineestate.com', emailSourceUrl: 'https://vineestate.com/contact' });
   stages.move(opportunity.id, 'researched', { patch: { contact_id: contact.id } });
   stages.move(opportunity.id, 'pitched', { patch: { gmail_thread_id: 'th1', next_follow_up_at: '2026-10-18T17:00:00.000Z' } });
   store.recordEmailSend({ opportunityId: opportunity.id, actionId: 'a1', lane: 'winery', kind: 'pitch', toEmail: 'events@vineestate.com', mode: 'send' });
   const fetched = [];
+  const queries = [];
   const gmail = {
-    async search(query) { return query.includes('mailer-daemon OR') ? bounces : replies; },
+    async search(query, max) {
+      queries.push({ query, max });
+      return query.includes('mailer-daemon OR') ? bounces : replies;
+    },
     async getMessage(id) { fetched.push(id); return messages[id]; },
   };
   const tasks = [];
+  const requests = [];
   const router = {
-    async run(task) {
+    async run(task, request) {
       tasks.push(task);
+      requests.push(request);
       const next = verdicts.shift();
       if (next instanceof Error) throw next;
       return { text: JSON.stringify(next) };
@@ -35,8 +41,8 @@ function setup({ replies = [], bounces = [], messages = {}, verdicts = [] } = {}
   const outreach = { async draftPortfolioReply(id, options) { drafted.push({ id, ...options }); return { actionId: 'act_p' }; } };
   const alerts = [];
   const logs = [];
-  const triage = createReplyTriage({ gmail, store, stages, router, outreach, notifier: { alert: async (text) => alerts.push(text) }, now, log: (line) => logs.push(line) });
-  return { osDb, store, stages, triage, fetched, drafted, alerts, logs, tasks, verdicts, id: opportunity.id };
+  const triage = createReplyTriage({ gmail, store, stages, router, outreach, notifier: { alert: async (text) => { if (alertError) throw alertError; alerts.push(text); } }, settings, now, log: (line) => logs.push(line) });
+  return { osDb, store, stages, triage, fetched, drafted, alerts, logs, tasks, requests, queries, verdicts, id: opportunity.id, gmail, outreach, now };
 }
 
 const reply = (id, text) => ({
@@ -149,18 +155,208 @@ test('a failed classification is retried on the next poll', async () => {
   ctx.osDb.close();
 });
 
-test('a verdict after stray brackets is still found, and one bad suppress value does not stop the rest', async () => {
-  const ctx = setup({ replies: [{ id: 'r1', threadId: 'th1' }], messages: { r1: { ...reply('r1', 'Unsubscribe me'), from: 'weird sender @ nowhere' } } });
-  const gmail = {
-    async search(query) { return query.includes('mailer-daemon OR') ? [] : [{ id: 'r1', threadId: 'th1' }]; },
-    async getMessage() { return { ...reply('r1', 'Unsubscribe me'), from: 'weird sender @ nowhere' }; },
-  };
+const memorySettings = (initial = '') => {
+  const values = { 'gmail.last_success_at': initial };
+  return { values, get: (key) => values[key], set: (key, value) => { values[key] = value; } };
+};
+
+test('a verdict after stray brackets is still found, and one failing suppress call does not stop the rest', async () => {
+  const ctx = setup({ replies: [{ id: 'r1', threadId: 'th1' }], messages: { r1: reply('r1', 'Unsubscribe me') } });
+  let calls = 0;
+  const store = { ...ctx.store, suppress(value, reason) { calls += 1; if (calls === 1) throw new Error('disk hiccup'); return ctx.store.suppress(value, reason); } };
   const router = { async run() { return { text: 'Thinking [1] {"note": 1} then {"label": "unsubscribe", "confidence": 0.9}' }; } };
-  const triage = createReplyTriage({ gmail, store: ctx.store, stages: ctx.stages, router, outreach: {}, notifier: { alert: async (text) => ctx.alerts.push(text) }, now: () => new Date('2026-10-14T17:00:00Z'), log: (line) => ctx.logs.push(line) });
+  const triage = createReplyTriage({ gmail: ctx.gmail, store, stages: ctx.stages, router, outreach: {}, notifier: { alert: async (text) => ctx.alerts.push(text) }, now: ctx.now, log: (line) => ctx.logs.push(line) });
   assert.deepEqual(await triage.poll(), { checked: 1, handled: 1 });
   assert.equal(ctx.store.getOpportunity(ctx.id).stage, 'closed_unsubscribed');
-  assert.equal(ctx.store.isSuppressed('events@vineestate.com'), true);
+  assert.match(ctx.logs[0], /could not suppress events@vineestate.com: disk hiccup/);
   assert.equal(ctx.store.isSuppressed('anyone@vineestate.com'), true);
-  assert.match(ctx.logs[0], /could not suppress/);
+  ctx.osDb.close();
+});
+
+test('only the new text of a reply is classified: quoted pitch and footer are cut', async () => {
+  const body = 'Sounds great!\n\nOn Tue, Oct 14, 2026 at 5:00 PM Jack Riggs <jack@otg.com> wrote:\n> Hi Kim, we make films.\n> Reply "unsubscribe" to stop.';
+  const ctx = setup({ replies: [{ id: 'r1', threadId: 'th1' }], messages: { r1: { ...reply('r1', body), snippet: 'Sounds great! On Tue, Oct 14 Jack wrote: Hi Kim' } }, verdicts: [{ label: 'interested', confidence: 0.9 }] });
+  await ctx.triage.poll();
+  const content = ctx.requests[0].messages[0].content;
+  assert.match(content, /Sounds great!/);
+  assert.doesNotMatch(content, /we make films|unsubscribe|wrote:/);
+  assert.match(ctx.alerts[0], /"Sounds great!"/);
+  ctx.osDb.close();
+});
+
+test('quote cutting handles Outlook headers, original-message rules, ">" lines and the unsubscribe footer', async () => {
+  const cases = [
+    ['Yes please\n\nFrom: Jack Riggs <jack@otg.com>\nSent: Tuesday\nWe make films', /Yes please/],
+    ['Yes please\n-----Original Message-----\nWe make films', /Yes please/],
+    ['Yes please\n> We make films', /Yes please/],
+    ['Yes please\nReply "unsubscribe" to stop\nThanks, Kim', /Yes please\s+Thanks, Kim/],
+  ];
+  for (const [body, expected] of cases) {
+    const ctx = setup({ replies: [{ id: 'r1', threadId: 'th1' }], messages: { r1: { ...reply('r1', body), snippet: '' } }, verdicts: [{ label: 'interested', confidence: 0.9 }] });
+    await ctx.triage.poll();
+    const content = ctx.requests[0].messages[0].content;
+    assert.match(content, expected);
+    assert.doesNotMatch(content, /We make films|unsubscribe/);
+    ctx.osDb.close();
+  }
+  // Nothing new left: fall back to the snippet.
+  const empty = setup({ replies: [{ id: 'r1', threadId: 'th1' }], messages: { r1: { ...reply('r1', '> only a quote'), snippet: 'Thanks!' } }, verdicts: [{ label: 'interested', confidence: 0.9 }] });
+  await empty.triage.poll();
+  assert.match(empty.requests[0].messages[0].content, /Thanks!/);
+  empty.osDb.close();
+});
+
+test('alert quotes decode basic HTML entities', async () => {
+  const ctx = setup({ replies: [{ id: 'r1', threadId: 'th1' }], messages: { r1: { ...reply('r1', 'What&#39;s the &quot;price&quot; &amp; &lt;timeline&gt;?'), snippet: '' } }, verdicts: [{ label: 'asks_price', confidence: 0.9 }] });
+  await ctx.triage.poll();
+  assert.match(ctx.alerts[0], /"What's the "price" & <timeline>\?"/);
+  ctx.osDb.close();
+});
+
+test('three failed attempts record the message as unclassified, alert once and stop calling the model', async () => {
+  const boom = new Error('Claude is down');
+  const ctx = setup({ replies: [{ id: 'r1', threadId: 'th1' }], messages: { r1: reply('r1', 'Sounds good') }, verdicts: [boom, boom, boom, { label: 'interested', confidence: 0.9 }] });
+  assert.deepEqual(await ctx.triage.poll(), { checked: 1, handled: 0 });
+  assert.deepEqual(await ctx.triage.poll(), { checked: 1, handled: 0 });
+  assert.deepEqual(await ctx.triage.poll(), { checked: 1, handled: 1 });
+  assert.deepEqual(ctx.alerts, ["I couldn't read a reply from Vine Estate; please check Gmail."]);
+  assert.equal(ctx.store.seenInbound('r1'), true);
+  assert.deepEqual(await ctx.triage.poll(), { checked: 0, handled: 0 });
+  assert.equal(ctx.tasks.length, 3);
+  assert.equal(ctx.store.getOpportunity(ctx.id).stage, 'pitched');
+  ctx.osDb.close();
+});
+
+test('the message is recorded before the alert, so a failing alert cannot cause re-classification', async () => {
+  const ctx = setup({ replies: [{ id: 'r1', threadId: 'th1' }], messages: { r1: reply('r1', 'What does it cost?') }, verdicts: [{ label: 'asks_price', confidence: 0.9 }, { label: 'asks_price', confidence: 0.9 }], alertError: new Error('Telegram down') });
+  assert.deepEqual(await ctx.triage.poll(), { checked: 1, handled: 1 });
+  assert.ok(ctx.logs.some((line) => /alert failed/.test(line)));
+  assert.equal(ctx.store.seenInbound('r1'), true);
+  assert.deepEqual(await ctx.triage.poll(), { checked: 0, handled: 0 });
+  assert.equal(ctx.tasks.length, 1);
+  ctx.osDb.close();
+});
+
+test('check_in_days is clamped to 1..365', async () => {
+  for (const [asked, expected] of [[9999, 365], [0.2, 1]]) {
+    const ctx = setup({ replies: [{ id: 'r1', threadId: 'th1' }], messages: { r1: reply('r1', 'Later') }, verdicts: [{ label: 'not_now', confidence: 0.9, check_in_days: asked }] });
+    await ctx.triage.poll();
+    assert.match(ctx.alerts[0], new RegExp(`check back in ${expected} days`));
+    ctx.osDb.close();
+  }
+});
+
+test('a delivery delay notice is recorded and changes nothing', async () => {
+  const delay = { id: 'b1', threadId: 'other', from: 'Mail Delivery Subsystem <mailer-daemon@googlemail.com>', subject: 'Delivery Status Notification (Delay)', snippet: '', text: 'Gmail will retry. Your message to events@vineestate.com is delayed.', labelIds: ['INBOX'] };
+  const ctx = setup({ bounces: [{ id: 'b1', threadId: 'other' }], messages: { b1: delay } });
+  await ctx.triage.poll();
+  assert.equal(ctx.store.getOpportunity(ctx.id).stage, 'pitched');
+  assert.equal(ctx.store.laneSendStats('winery').bounces, 0);
+  assert.equal(ctx.store.isSuppressed('events@vineestate.com'), false);
+  assert.equal(ctx.store.seenInbound('b1'), true);
+  assert.equal(ctx.osDb.db.prepare("SELECT label FROM inbound_messages WHERE gmail_message_id = 'b1'").get().label, 'bounce_delay');
+  ctx.osDb.close();
+});
+
+test('a real bounce also blocks the contact address, but not the domain', async () => {
+  const hard = { id: 'b1', threadId: 'other', from: 'Mail Delivery Subsystem <mailer-daemon@googlemail.com>', subject: 'Delivery Status Notification (Failure)', snippet: '', text: 'Your message to events@vineestate.com could not be delivered.', labelIds: ['INBOX'] };
+  const ctx = setup({ bounces: [{ id: 'b1', threadId: 'other' }], messages: { b1: hard } });
+  await ctx.triage.poll();
+  assert.equal(ctx.store.getOpportunity(ctx.id).stage, 'closed_bounced');
+  assert.equal(ctx.store.isSuppressed('events@vineestate.com'), true);
+  assert.equal(ctx.store.isSuppressed('other@vineestate.com'), false);
+  ctx.osDb.close();
+});
+
+test('a low-confidence out-of-office is not trusted: the team is asked', async () => {
+  const ctx = setup({ replies: [{ id: 'r1', threadId: 'th1' }], messages: { r1: reply('r1', 'I am away but call me about the quote') }, verdicts: [{ label: 'out_of_office', confidence: 0.5 }] });
+  await ctx.triage.poll();
+  assert.match(ctx.alerts[0], /not sure how to read it \(out_of_office, 50% sure\)/);
+  ctx.osDb.close();
+});
+
+test('unsubscribe on a shared-host business never blocks the whole domain', async () => {
+  const ctx = setup({ website: 'https://www.sothebysrealty.com/agent/jane', replies: [{ id: 'r1', threadId: 'th1' }], messages: { r1: reply('r1', 'Remove me') }, verdicts: [{ label: 'unsubscribe', confidence: 0.95 }] });
+  await ctx.triage.poll();
+  assert.equal(ctx.store.getOpportunity(ctx.id).stage, 'closed_unsubscribed');
+  assert.equal(ctx.store.isSuppressed('events@vineestate.com'), true);
+  assert.equal(ctx.store.isSuppressed('someone@sothebysrealty.com'), false);
+  ctx.osDb.close();
+});
+
+test('a low-confidence unsubscribe alerts a person and suppresses nothing', async () => {
+  const ctx = setup({ replies: [{ id: 'r1', threadId: 'th1' }], messages: { r1: reply('r1', 'Hmm, not sure about this') }, verdicts: [{ label: 'unsubscribe', confidence: 0.4 }] });
+  await ctx.triage.poll();
+  assert.match(ctx.alerts[0], /not sure how to read it \(unsubscribe, 40% sure\)/);
+  assert.equal(ctx.store.isSuppressed('events@vineestate.com'), false);
+  assert.equal(ctx.store.getOpportunity(ctx.id).stage, 'replied');
+  ctx.osDb.close();
+});
+
+test('a skipped portfolio draft alerts a person', async () => {
+  const ctx = setup({ replies: [{ id: 'r1', threadId: 'th1' }], messages: { r1: reply('r1', 'Any wedding films?') }, verdicts: [{ label: 'wants_examples', confidence: 0.9, style: 'cinematic' }] });
+  ctx.outreach.draftPortfolioReply = async () => ({ skipped: 'no contact' });
+  assert.deepEqual(await ctx.triage.poll(), { checked: 1, handled: 1 });
+  assert.match(ctx.alerts[0], /couldn't draft a reply \(no contact\)/);
+  ctx.osDb.close();
+});
+
+test('searches use after: from the last success (minus 1h), 3 days on a first run, never more than 30 days', async () => {
+  const nowSeconds = Date.parse('2026-10-14T17:00:00Z') / 1000;
+  const first = setup({ settings: memorySettings('') });
+  await first.triage.poll();
+  assert.equal(first.queries.length, 2);
+  assert.match(first.queries[0].query, /mailer-daemon OR/);
+  assert.ok(first.queries[0].query.includes(`after:${nowSeconds - 3 * 86400}`));
+  assert.ok(first.queries[1].query.includes(`after:${nowSeconds - 3 * 86400}`));
+  assert.doesNotMatch(first.queries[1].query, /in:inbox|newer_than/);
+  assert.match(first.queries[1].query, /-from:me/);
+  assert.equal(first.queries[1].max, 200);
+  first.osDb.close();
+
+  const settings = memorySettings('2026-10-14T10:00:00.000Z');
+  const next = setup({ settings });
+  await next.triage.poll();
+  assert.ok(next.queries[1].query.includes(`after:${Date.parse('2026-10-14T09:00:00Z') / 1000}`));
+  assert.equal(settings.values['gmail.last_success_at'], '2026-10-14T17:00:00.000Z');
+  next.osDb.close();
+
+  const stale = setup({ settings: memorySettings('2026-01-01T00:00:00.000Z') });
+  await stale.triage.poll();
+  assert.ok(stale.queries[1].query.includes(`after:${nowSeconds - 30 * 86400}`));
+  stale.osDb.close();
+});
+
+test('last success only moves when the searches worked, and a failing phase does not starve the other', async () => {
+  const settings = memorySettings('2026-10-14T10:00:00.000Z');
+  const ctx = setup({ settings, replies: [{ id: 'r1', threadId: 'th1' }], messages: { r1: reply('r1', 'What does it cost?') }, verdicts: [{ label: 'asks_price', confidence: 0.9 }] });
+  const search = ctx.gmail.search;
+  ctx.gmail.search = async (query, max) => { if (query.includes('mailer-daemon OR')) throw new Error('quota'); return search(query, max); };
+  assert.deepEqual(await ctx.triage.poll(), { checked: 1, handled: 1 });
+  assert.ok(ctx.logs.some((line) => /bounce search: quota/.test(line)));
+  assert.equal(settings.values['gmail.last_success_at'], '2026-10-14T10:00:00.000Z');
+  ctx.osDb.close();
+});
+
+test('hitting the reply cap logs a warning', async () => {
+  const replies = Array.from({ length: 200 }, (_, i) => ({ id: `u${i}`, threadId: `zz${i}` }));
+  const ctx = setup({ replies });
+  const result = await ctx.triage.poll();
+  assert.equal(result.checked, 200);
+  assert.ok(ctx.logs.some((line) => /reached the 200 message cap/.test(line)));
+  ctx.osDb.close();
+});
+
+test('a poll that is already running is skipped', async () => {
+  const ctx = setup({ replies: [{ id: 'u1', threadId: 'zz' }] });
+  let release;
+  const gate = new Promise((resolve) => { release = resolve; });
+  const search = ctx.gmail.search;
+  ctx.gmail.search = async (query, max) => { await gate; return search(query, max); };
+  const first = ctx.triage.poll();
+  assert.deepEqual(await ctx.triage.poll(), { skipped: 'already running' });
+  release();
+  assert.deepEqual(await first, { checked: 1, handled: 0 });
+  assert.deepEqual(await ctx.triage.poll(), { checked: 0, handled: 0 });
   ctx.osDb.close();
 });

@@ -22,6 +22,7 @@ export const DEFAULT_SETTINGS = Object.freeze({
   'telegram.last_bundle': '',
   'executor.retry_minutes': [1, 5, 15, 60],
   'heartbeat.last_ping_at': '',
+  'gmail.last_success_at': '',
   'backup.last_date': '',
   'gigs.lanes': {
     travel: {
