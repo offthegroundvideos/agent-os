@@ -51,6 +51,9 @@ const code = await new Promise((resolve, reject) => {
     if (error) reject(new Error(error));
     else resolve(url.searchParams.get('code'));
   });
+  server.on('error', (error) => reject(error.code === 'EADDRINUSE'
+    ? new Error(`Port ${port} is busy. Close whatever is using it and run the script again.`)
+    : error));
   server.listen(port, '127.0.0.1');
 });
 
