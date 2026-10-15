@@ -224,3 +224,15 @@ test('upload access follows the proxy rule', () => {
   assert.equal(isAllowedRequest(req({ host: 'supawizard.tailfa9e27.ts.net' }), { AGENT_OS_API_SECRET: 'k' }), false);
   assert.equal(isAllowedRequest(req({ host: 'supawizard.tailfa9e27.ts.net', 'x-agent-os-secret': 'k' }), { AGENT_OS_API_SECRET: 'k' }), true);
 });
+
+test('pitchPostscript links the prospect page only once the public address is set', () => {
+  const ctx = setup();
+  assert.equal(ctx.sales.pitchPostscript(ctx.id), '');
+  assert.equal(ctx.sales.pageFor(ctx.id), null, 'no page is made while pages are private');
+  ctx.settings.set('public.base_url', 'https://supawizard.tailfa9e27.ts.net:8443');
+  const line = ctx.sales.pitchPostscript(ctx.id);
+  assert.match(line, /^P\.S\. I put together a short page for Silver Oak .*https:\/\/supawizard\.tailfa9e27\.ts\.net:8443\/p\/[A-Za-z0-9_-]{24}$/);
+  assert.equal(ctx.sales.pitchPostscript(ctx.id), line, 'same page every time');
+  assert.throws(() => ctx.sales.pitchPostscript('opp_missing'), /not found/);
+  ctx.done();
+});

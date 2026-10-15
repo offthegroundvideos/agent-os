@@ -155,11 +155,23 @@ function ApprovalCard({ item, nextBundleHour, onDone }) {
           <p className="w-full text-xs text-slate-500">Saving keeps it waiting so you can approve the new version.</p>
         </div>
       ) : (
-        <div className="mt-4 grid grid-cols-3 gap-2">
-          <Button tone="good" disabled={busy} onClick={() => act({ op: "approve" })}>Approve</Button>
-          <Button disabled={busy} onClick={() => setMode("edit")}>Edit</Button>
-          <Button tone="bad" disabled={busy} onClick={() => setMode("reject")}>Reject</Button>
-        </div>
+        <>
+          {item.opportunityId && item.to && !item.draft.includes("/p/") && (
+            <button
+              type="button"
+              disabled={busy}
+              onClick={() => act({ op: "add_page_link" })}
+              className="os-mono mt-4 w-full rounded-xl border border-violet-300/30 bg-violet-400/10 px-3 py-2.5 text-left text-[12px] text-violet-100 transition hover:bg-violet-400/20 disabled:opacity-40"
+            >
+              ＋ Add their page link <span className="text-violet-300/70">(work that fits, your clip, book a call)</span>
+            </button>
+          )}
+          <div className="mt-3 grid grid-cols-3 gap-2">
+            <Button tone="good" disabled={busy} onClick={() => act({ op: "approve" })}>Approve</Button>
+            <Button disabled={busy} onClick={() => setMode("edit")}>Edit</Button>
+            <Button tone="bad" disabled={busy} onClick={() => setMode("reject")}>Reject</Button>
+          </div>
+        </>
       )}
     </Card>
   );

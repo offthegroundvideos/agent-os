@@ -89,6 +89,15 @@ export function createSales({
     return base ? `${base}/p/${token}` : '';
   }
 
+  // The line pitches end with: a link to the prospect's own page. Empty until the public address is set.
+  function pitchPostscript(opportunityId) {
+    if (!publicBase()) return '';
+    const opp = store.getOpportunity(opportunityId);
+    if (!opp) throw new SalesError('Prospect not found.');
+    const url = publicUrl(ensurePage(opportunityId).token);
+    return `P.S. I put together a short page for ${opp.business.name} with a few pieces that fit and an easy way to grab 20 minutes with me: ${url}`;
+  }
+
   function pageFor(opportunityId) {
     return db.prepare('SELECT * FROM lead_pages WHERE opportunity_id = ?').get(opportunityId) ?? null;
   }
@@ -399,7 +408,7 @@ export function createSales({
 
   return {
     touch, logManual, timeline, touchCounts,
-    publicBase, publicUrl, pageFor, ensurePage, updatePage, publicPage, recordView, recordPlay,
+    publicBase, publicUrl, pitchPostscript, pageFor, ensurePage, updatePage, publicPage, recordView, recordPlay,
     getVideo, saveVideo, pageVideo,
     openSlots, slotLabel, closers, book, calls, setOutcome, deal, setDeal, summary,
   };
