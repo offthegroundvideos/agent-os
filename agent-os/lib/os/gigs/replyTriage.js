@@ -10,8 +10,10 @@ export const TRIAGE_SYSTEM = `You classify replies to outreach emails from OFF T
 Reply with only JSON: {"label": one of ${TRIAGE_LABELS.map((label) => `"${label}"`).join(', ')}, "confidence": 0 to 1, "style": one of ${STYLES.join(', ')} or "", "check_in_days": a number or null, "summary": "one sentence"}.
 unsubscribe = asks not to be emailed again, in any wording. out_of_office = an automatic away reply. not_now = maybe later; set check_in_days if they say when. other = anything a person should read.`;
 
-// Delivery-delay notices ("still trying", "will retry") are not bounces: the mail may yet arrive.
-const DELAY_NOTICE = /delay|delayed|still trying|will retry|warning/i;
+// Delivery-delay notices are not bounces: the mail may yet arrive. The subject is trusted for "delay"/"warning";
+// the body only for phrases a hard bounce would not use.
+const DELAY_SUBJECT = /delay|delayed|warning/i;
+const DELAY_BODY = /will (continue to )?retry|still trying|temporar(y|ily)/i;
 const EMAIL = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi;
 // Stages a reply moves to 'replied' (including late replies after 'not now' or after the follow-ups ran out).
 const REPLY_STAGES = ['pitched', 'following_up', 'portfolio_sent', 'closed_not_now', 'closed_lost'];
@@ -85,7 +87,7 @@ export function createReplyTriage({ gmail, store, stages, router, outreach, noti
   }
 
   function handleBounce(message) {
-    if (DELAY_NOTICE.test(message.subject ?? '') || DELAY_NOTICE.test(String(message.text ?? '').slice(0, 500))) {
+    if (DELAY_SUBJECT.test(message.subject ?? '') || DELAY_BODY.test(String(message.text ?? '').slice(0, 500))) {
       return { opportunityId: null, label: 'bounce_delay', confidence: null, quiet: true };
     }
     const addresses = [...new Set((String(message.text ?? '').match(EMAIL) ?? []).map((address) => address.toLowerCase()))];
@@ -192,7 +194,10 @@ export function createReplyTriage({ gmail, store, stages, router, outreach, noti
       async function search(what, query, cap) {
         try {
           const found = await gmail.search(query, cap);
-          if (found.length >= cap) log(`${what} search reached the ${cap} message cap; older mail in the window may wait for the next poll.`);
+          if (found.length >= cap) {
+            log(`Search hit ${cap} messages; older mail will be picked up as newer mail is recorded.`);
+            clean = false; // there may be mail beyond the cap, so don't move the window past it
+          }
           return found;
         } catch (error) {
           log(`${what} search: ${error.message}`);
@@ -201,7 +206,7 @@ export function createReplyTriage({ gmail, store, stages, router, outreach, noti
         }
       }
 
-      const bounces = await search('bounce', `from:(mailer-daemon OR postmaster) after:${since}`, 50);
+      const bounces = await search('bounce', `from:(mailer-daemon OR postmaster) after:${since}`, 200);
       for (const { id } of bounces ?? []) {
         if (store.seenInbound(id)) continue;
         checked += 1;
@@ -209,11 +214,14 @@ export function createReplyTriage({ gmail, store, stages, router, outreach, noti
           record(id, handleBounce(await gmail.getMessage(id)));
         } catch (error) {
           const gaveUp = failed(id, error, 'bounce check', null);
-          if (gaveUp) record(id, gaveUp);
+          if (gaveUp) {
+            record(id, gaveUp);
+            await sendAlert("I couldn't read a bounce notice; please check Gmail.");
+          }
         }
       }
 
-      const replies = await search('reply', `after:${since} -from:me -from:mailer-daemon -from:postmaster`, 200);
+      const replies = await search('reply', `after:${since} -from:me -from:mailer-daemon -from:postmaster`, 1000);
       for (const { id, threadId } of replies ?? []) {
         if (store.seenInbound(id)) continue;
         checked += 1;

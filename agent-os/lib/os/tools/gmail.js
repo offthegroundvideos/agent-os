@@ -162,10 +162,19 @@ export function createGmail({ clientId, clientSecret, refreshToken, fetchImpl = 
       const draft = await call('/drafts', { method: 'POST', body: { message: rawMessage(mime) } });
       return { id: draft.message.id, draftId: draft.id, threadId: draft.message.threadId, messageIdHeader: await lookupMessageIdHeader(draft.message.id) };
     },
+    // Follows nextPageToken (newest first) until `max` results are collected or Gmail has no more.
     async search(query, max = 50) {
-      const data = await call(`/messages?q=${encodeURIComponent(query)}&maxResults=${max}`);
-      // Thread IDs come back with the list, so callers can skip mail that isn't theirs without opening it.
-      return (data.messages ?? []).map((message) => ({ id: message.id, threadId: message.threadId }));
+      const found = [];
+      let pageToken = '';
+      while (found.length < max) {
+        const size = Math.min(500, max - found.length);
+        const data = await call(`/messages?q=${encodeURIComponent(query)}&maxResults=${size}${pageToken ? `&pageToken=${encodeURIComponent(pageToken)}` : ''}`);
+        // Thread IDs come back with the list, so callers can skip mail that isn't theirs without opening it.
+        for (const message of data.messages ?? []) found.push({ id: message.id, threadId: message.threadId });
+        pageToken = data.nextPageToken ?? '';
+        if (!pageToken) break;
+      }
+      return found.slice(0, max);
     },
     async getMessage(id) {
       return parseMessage(await call(`/messages/${encodeURIComponent(id)}?format=full`));

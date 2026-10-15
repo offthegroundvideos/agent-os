@@ -189,3 +189,32 @@ test('ids are URL-encoded and thread() asks for Subject and References', async (
   assert.match(threadUrl, /metadataHeaders=Subject/);
   assert.match(threadUrl, /metadataHeaders=References/);
 });
+
+test('search follows nextPageToken until it has max results or runs out of pages', async () => {
+  const urls = [];
+  const fetchImpl = async (url) => {
+    const u = String(url);
+    if (u.includes('oauth2')) return { ok: true, status: 200, json: async () => ({ access_token: 't', expires_in: 3600 }) };
+    urls.push(u);
+    const page = u.includes('pageToken=p2')
+      ? { messages: [{ id: 'c', threadId: 'tc' }, { id: 'd', threadId: 'td' }] }
+      : { messages: [{ id: 'a', threadId: 'ta' }, { id: 'b', threadId: 'tb' }], nextPageToken: 'p2' };
+    return { ok: true, status: 200, json: async () => page };
+  };
+  const gmail = createGmail({ clientId: 'c', clientSecret: 's', refreshToken: 'r', fetchImpl });
+  assert.deepEqual((await gmail.search('x', 10)).map((m) => m.id), ['a', 'b', 'c', 'd']);
+  assert.equal(urls.length, 2);
+  assert.match(urls[0], /maxResults=10(&|$)/);
+  assert.doesNotMatch(urls[0], /pageToken/);
+  assert.match(urls[1], /maxResults=8(&|$)/);
+  assert.match(urls[1], /pageToken=p2/);
+  // Stops at max even when more pages exist.
+  urls.length = 0;
+  assert.deepEqual((await gmail.search('x', 3)).map((m) => m.id), ['a', 'b', 'c']);
+  assert.equal(urls.length, 2);
+  assert.match(urls[1], /maxResults=1(&|$)/);
+  // Page size is capped at 500.
+  urls.length = 0;
+  await gmail.search('x', 1000);
+  assert.match(urls[0], /maxResults=500(&|$)/);
+});

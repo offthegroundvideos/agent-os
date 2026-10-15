@@ -22,7 +22,7 @@ function setup({ replies = [], bounces = [], messages = {}, verdicts = [], websi
   const gmail = {
     async search(query, max) {
       queries.push({ query, max });
-      return query.includes('mailer-daemon OR') ? bounces : replies;
+      return (query.includes('mailer-daemon OR') ? bounces : replies).slice(0, max); // newest first, like Gmail
     },
     async getMessage(id) { fetched.push(id); return messages[id]; },
   };
@@ -311,7 +311,7 @@ test('searches use after: from the last success (minus 1h), 3 days on a first ru
   assert.ok(first.queries[1].query.includes(`after:${nowSeconds - 3 * 86400}`));
   assert.doesNotMatch(first.queries[1].query, /in:inbox|newer_than/);
   assert.match(first.queries[1].query, /-from:me/);
-  assert.equal(first.queries[1].max, 200);
+  assert.equal(first.queries[1].max, 1000);
   first.osDb.close();
 
   const settings = memorySettings('2026-10-14T10:00:00.000Z');
@@ -338,12 +338,63 @@ test('last success only moves when the searches worked, and a failing phase does
   ctx.osDb.close();
 });
 
-test('hitting the reply cap logs a warning', async () => {
-  const replies = Array.from({ length: 200 }, (_, i) => ({ id: `u${i}`, threadId: `zz${i}` }));
-  const ctx = setup({ replies });
+test('searches ask for up to 1000 replies and 200 bounces', async () => {
+  const ctx = setup();
+  await ctx.triage.poll();
+  assert.equal(ctx.queries[0].max, 200);
+  assert.equal(ctx.queries[1].max, 1000);
+  ctx.osDb.close();
+});
+
+test('hitting a search cap logs it and keeps last success where it was', async () => {
+  const settings = memorySettings('2026-10-14T10:00:00.000Z');
+  const replies = Array.from({ length: 1000 }, (_, i) => ({ id: `u${i}`, threadId: `zz${i}` }));
+  const ctx = setup({ replies, settings });
   const result = await ctx.triage.poll();
-  assert.equal(result.checked, 200);
-  assert.ok(ctx.logs.some((line) => /reached the 200 message cap/.test(line)));
+  assert.equal(result.checked, 1000);
+  assert.ok(ctx.logs.some((line) => line === 'Search hit 1000 messages; older mail will be picked up as newer mail is recorded.'));
+  assert.equal(settings.values['gmail.last_success_at'], '2026-10-14T10:00:00.000Z');
+  ctx.osDb.close();
+});
+
+test('an old reply behind 249 newer messages is still triaged', async () => {
+  const newer = Array.from({ length: 249 }, (_, i) => ({ id: `u${i}`, threadId: `zz${i}` }));
+  const ctx = setup({
+    replies: [...newer, { id: 'r1', threadId: 'th1' }],
+    messages: { r1: reply('r1', 'What would a harvest film cost?') },
+    verdicts: [{ label: 'asks_price', confidence: 0.9 }],
+  });
+  const result = await ctx.triage.poll();
+  assert.deepEqual(result, { checked: 250, handled: 1 });
+  assert.equal(ctx.store.getOpportunity(ctx.id).stage, 'replied');
+  ctx.osDb.close();
+});
+
+test('a bounce notice that cannot be read three times is given up on with one alert', async () => {
+  const ctx = setup({ bounces: [{ id: 'b1', threadId: 'other' }] });
+  ctx.gmail.getMessage = async () => { throw new Error('Gmail 500'); };
+  await ctx.triage.poll();
+  await ctx.triage.poll();
+  assert.deepEqual(ctx.alerts, []);
+  assert.deepEqual(await ctx.triage.poll(), { checked: 1, handled: 1 });
+  assert.deepEqual(ctx.alerts, ["I couldn't read a bounce notice; please check Gmail."]);
+  assert.deepEqual(await ctx.triage.poll(), { checked: 0, handled: 0 });
+  ctx.osDb.close();
+});
+
+test('a hard bounce that mentions "warning" in its body still closes the opportunity', async () => {
+  const hard = { id: 'b1', threadId: 'other', from: 'Mail Delivery Subsystem <mailer-daemon@googlemail.com>', subject: 'Delivery Status Notification (Failure)', snippet: '', text: 'Warning: your message to events@vineestate.com could not be delivered. The address does not exist.', labelIds: ['INBOX'] };
+  const ctx = setup({ bounces: [{ id: 'b1', threadId: 'other' }], messages: { b1: hard } });
+  await ctx.triage.poll();
+  assert.equal(ctx.store.getOpportunity(ctx.id).stage, 'closed_bounced');
+  ctx.osDb.close();
+});
+
+test('delay notices are spotted by the body phrases too', async () => {
+  const still = { id: 'b1', threadId: 'other', from: 'mailer-daemon@googlemail.com', subject: 'Undelivered Mail', snippet: '', text: 'The server is still trying to deliver your message to events@vineestate.com.', labelIds: ['INBOX'] };
+  const ctx = setup({ bounces: [{ id: 'b1', threadId: 'other' }], messages: { b1: still } });
+  await ctx.triage.poll();
+  assert.equal(ctx.store.getOpportunity(ctx.id).stage, 'pitched');
   ctx.osDb.close();
 });
 
