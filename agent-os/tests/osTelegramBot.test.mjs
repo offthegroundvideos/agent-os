@@ -28,7 +28,7 @@ function fakeApi() {
   };
 }
 
-function setup({ ownerId = JACK } = {}) {
+function setup({ ownerId = JACK, gigs = null } = {}) {
   const osDb = openOsDb(':memory:');
   const settings = createSettings(osDb);
   const ledger = createLedger(osDb);
@@ -41,7 +41,7 @@ function setup({ ownerId = JACK } = {}) {
   registry.register(demoTool);
   const questions = [];
   const chat = { async ask(question) { questions.push(question); return `answer: ${question}`; } };
-  const bot = createTelegramBot({ api, team, settings, ledger, registry, gate, budget, chat, log: () => {} });
+  const bot = createTelegramBot({ api, team, settings, ledger, registry, gate, budget, chat, gigs, log: () => {} });
   return { osDb, settings, ledger, gate, api, team, registry, bot, questions };
 }
 
@@ -221,4 +221,43 @@ test('pollOnce advances the offset even when an update fails', async () => {
   assert.equal(await bot.pollOnce(0), 2);
   assert.equal(settings.get('telegram.update_offset'), 12);
   osDb.close();
+});
+
+test('gig commands report the pipeline and portfolio and fix tags and lanes', async () => {
+  const calls = [];
+  const gigs = {
+    pipelineText: () => 'Pipeline · drafts',
+    portfolioText: () => 'Portfolio list',
+    tagPortfolio: (args) => { calls.push(args); return 'Saved'; },
+    setLanePaused: (lane, reason) => { calls.push([lane, reason]); return `ok ${lane}`; },
+  };
+  const ctx = setup({ gigs });
+  await ctx.bot.handleUpdate(fromOwner('/pipeline'));
+  assert.equal(ctx.api.sent.at(-1).text, 'Pipeline · drafts');
+  await ctx.bot.handleUpdate(fromOwner('/portfolio'));
+  assert.equal(ctx.api.sent.at(-1).text, 'Portfolio list');
+  await ctx.bot.handleUpdate(fromOwner('/tag 3 lane=winery'));
+  assert.deepEqual(calls[0], ['3', 'lane=winery']);
+  await ctx.bot.handleUpdate(fromOwner('/lane pause winery'));
+  assert.deepEqual(calls[1], ['winery', 'paused by Jack']);
+  await ctx.bot.handleUpdate(fromOwner('/lane resume winery'));
+  assert.deepEqual(calls[2], ['winery', null]);
+  await ctx.bot.handleUpdate(fromOwner('/lane stop'));
+  assert.match(ctx.api.sent.at(-1).text, /Use \/lane pause <lane>/);
+  ctx.osDb.close();
+});
+
+test('only the owner can switch emails from drafts to sending', async () => {
+  const ctx = setup();
+  await addSwope(ctx);
+  await ctx.bot.handleUpdate(message(SWOPE, '/mode send'));
+  assert.match(ctx.api.sent.at(-1).text, /Only Jack/);
+  assert.equal(ctx.settings.get('outreach.mode'), 'draft');
+  await ctx.bot.handleUpdate(fromOwner('/mode'));
+  assert.match(ctx.api.sent.at(-1).text, /Emails are in draft mode/);
+  await ctx.bot.handleUpdate(fromOwner('/mode send'));
+  assert.equal(ctx.settings.get('outreach.mode'), 'send');
+  await ctx.bot.handleUpdate(fromOwner('/pipeline'));
+  assert.match(ctx.api.sent.at(-1).text, /isn't running yet/);
+  ctx.osDb.close();
 });

@@ -5,6 +5,11 @@ export const HELP_TEXT = [
   'OTG-OS commands:',
   '/status – running or paused, approvals waiting, failures',
   '/approvals – show everything waiting for approval',
+  '/pipeline – prospects and where each one is',
+  '/portfolio – portfolio pieces and their tags',
+  '/tag <number> lane=… style=… – correct a piece\'s tags',
+  '/lane pause|resume <lane> – stop or restart outreach in one lane',
+  '/mode draft|send – Gmail drafts only, or send after approval (owner only)',
   '/budget – AI and data spend this month',
   '/pause – stop all outgoing actions now',
   '/resume – start again',
@@ -14,11 +19,13 @@ export const HELP_TEXT = [
   'Anything else you type is a question for OTG-OS.',
 ].join('\n');
 
+const NO_GIGS = "The Gig Engine isn't running yet.";
+
 function displayName(from) {
   return String(from.first_name || from.username || `user ${from.id}`).trim();
 }
 
-export function createTelegramBot({ api, team, settings, ledger, registry, gate, budget, chat, log = console.error }) {
+export function createTelegramBot({ api, team, settings, ledger, registry, gate, budget, chat, gigs = null, log = console.error }) {
   const send = (chatId, text, keyboard) => api.sendMessage(chatId, truncate(text), keyboard);
   const owner = () => team.members().find((member) => member.role === 'owner') ?? null;
 
@@ -218,6 +225,44 @@ export function createTelegramBot({ api, team, settings, ledger, registry, gate,
         } catch (error) {
           await send(chatId, error.message);
         }
+        return;
+      }
+      case '/pipeline':
+        await send(chatId, gigs ? gigs.pipelineText() : NO_GIGS);
+        return;
+      case '/portfolio':
+        await send(chatId, gigs ? gigs.portfolioText() : NO_GIGS);
+        return;
+      case '/tag':
+        await send(chatId, gigs ? gigs.tagPortfolio(rest) : NO_GIGS);
+        return;
+      case '/lane': {
+        const [verb, lane] = rest;
+        if (!gigs) {
+          await send(chatId, NO_GIGS);
+          return;
+        }
+        if (!['pause', 'resume'].includes(verb)) {
+          await send(chatId, 'Use /lane pause <lane> or /lane resume <lane>.');
+          return;
+        }
+        await send(chatId, gigs.setLanePaused(lane, verb === 'pause' ? `paused by ${member.name}` : null));
+        return;
+      }
+      case '/mode': {
+        if (!team.isOwner(member.id)) {
+          await send(chatId, `Only ${owner().name} can change how emails go out.`);
+          return;
+        }
+        const [mode] = rest;
+        if (!['draft', 'send'].includes(mode)) {
+          await send(chatId, `Emails are in ${settings.get('outreach.mode')} mode. Use /mode draft or /mode send.`);
+          return;
+        }
+        settings.set('outreach.mode', mode);
+        await send(chatId, mode === 'send'
+          ? '📤 Approved emails now send from Gmail on their own, inside each recipient\'s 9-5 weekday window.'
+          : '📝 Approved emails now become Gmail drafts for you to send.');
         return;
       }
       case '/approvals': {
