@@ -118,3 +118,19 @@ test('the console route answers with Claude first, falls back to the local model
   assert.equal(DEFAULT_ROUTES.console.at(-1).model, 'gemma4:latest');
   assert.ok(!DEFAULT_ROUTES.console.some((route) => route.provider === 'deepseek'), 'private chat data never goes to DeepSeek');
 });
+
+test('local first puts the free model ahead of paid ones; preferLocal overrides the setting', async () => {
+  const { createModelRouter, localFirstChain, DEFAULT_ROUTES } = await import('../lib/os/modelRouter.js');
+  assert.deepEqual(localFirstChain(DEFAULT_ROUTES.draft).map((route) => route.provider), ['ollama', 'anthropic']);
+  assert.deepEqual(localFirstChain(DEFAULT_ROUTES.bulk).map((route) => route.provider), ['ollama', 'deepseek', 'anthropic']);
+  const used = [];
+  const provider = (name) => ({ async complete({ model }) { used.push(name); return { text: 'ok', model, usage: { inputTokens: 1, outputTokens: 1 } }; } });
+  const budget = { canUsePaid: () => true, costMicros: () => 0, record: () => {} };
+  let local = true;
+  const router = createModelRouter({ providers: { ollama: provider('ollama'), anthropic: provider('anthropic') }, budget, localFirst: () => local });
+  await router.run('draft', {});
+  await router.run('classify', {}, { preferLocal: false });
+  local = false;
+  await router.run('draft', {});
+  assert.deepEqual(used, ['ollama', 'anthropic', 'anthropic']);
+});

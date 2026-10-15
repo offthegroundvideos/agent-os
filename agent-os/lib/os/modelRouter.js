@@ -22,7 +22,10 @@ export const DEFAULT_ROUTES = Object.freeze({
     { provider: 'anthropic', model: 'claude-sonnet-5-5' },
     { provider: 'ollama', model: 'gemma4:latest', needsReview: true },
   ],
-  classify: [{ provider: 'anthropic', model: 'claude-haiku-5-5' }],
+  classify: [
+    { provider: 'anthropic', model: 'claude-haiku-5-5' },
+    { provider: 'ollama', model: 'gemma4:latest' },
+  ],
   // Public-data bulk work only (research summaries, list sorting). DeepSeek stores data in China,
   // so it must never appear in routes that carry private client data, such as chat or draft.
   bulk: [
@@ -30,7 +33,10 @@ export const DEFAULT_ROUTES = Object.freeze({
     { provider: 'deepseek', model: 'deepseek-flash' },
     { provider: 'anthropic', model: 'claude-haiku-5-5' },
   ],
-  daily_audit: [{ provider: 'anthropic', model: 'claude-sonnet-5-5' }],
+  daily_audit: [
+    { provider: 'anthropic', model: 'claude-sonnet-5-5' },
+    { provider: 'ollama', model: 'gemma4:latest' },
+  ],
   sunday_audit: [
     { provider: 'anthropic', model: 'claude-opus-5-5' },
     { provider: 'anthropic', model: 'claude-sonnet-5-5' },
@@ -39,10 +45,16 @@ export const DEFAULT_ROUTES = Object.freeze({
 
 const FREE_PROVIDERS = new Set(['ollama']);
 
-export function createModelRouter({ providers, budget, routes = DEFAULT_ROUTES }) {
-  async function run(taskType, request, { actionId = null } = {}) {
-    const chain = routes[taskType];
-    if (!chain) throw new RouterError(taskType, [`unknown task type "${taskType}"`]);
+// Local first: the free model on Jack's PC is tried before paid ones, which stay as the backup.
+export function localFirstChain(chain) {
+  return [...chain.filter((route) => FREE_PROVIDERS.has(route.provider)), ...chain.filter((route) => !FREE_PROVIDERS.has(route.provider))];
+}
+
+export function createModelRouter({ providers, budget, routes = DEFAULT_ROUTES, localFirst = () => false }) {
+  async function run(taskType, request, { actionId = null, preferLocal = undefined } = {}) {
+    const listed = routes[taskType];
+    if (!listed) throw new RouterError(taskType, [`unknown task type "${taskType}"`]);
+    const chain = (preferLocal ?? localFirst()) ? localFirstChain(listed) : listed;
     const failures = [];
     for (const route of chain) {
       const provider = providers[route.provider];

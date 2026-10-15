@@ -87,6 +87,13 @@ export const EDITABLE_SETTINGS = Object.freeze({
       return [...new Set(list)];
     },
   },
+  'models.local_first': {
+    label: 'Local AI first',
+    validate(value) {
+      if (typeof value !== 'boolean') throw new SettingsEditError('Local AI first must be on or off.');
+      return value;
+    },
+  },
   'chat.console_model': {
     label: 'Console answers',
     validate(value) {

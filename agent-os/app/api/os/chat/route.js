@@ -14,8 +14,9 @@ export async function POST(request) {
     if (text.length > MAX_QUESTION) return jsonResponse({ error: `Keep questions under ${MAX_QUESTION} characters.` }, 400);
     const started = Date.now();
     const { runtime } = osWeb();
-    const taskType = runtime.settings.get('chat.console_model') === 'local' ? 'chat' : 'console';
-    const { answer, proposals } = await runtime.chat.converse(text, { channel: 'dashboard', history: Array.isArray(history) ? history : [], taskType });
+    // "local": Gemma on this PC first (free). "claude": Claude first, Gemma as backup.
+    const preferLocal = runtime.settings.get('chat.console_model') !== 'claude';
+    const { answer, proposals } = await runtime.chat.converse(text, { channel: 'dashboard', history: Array.isArray(history) ? history : [], taskType: 'console', preferLocal });
     // Proposals never act; the page shows confirm buttons that call the normal approval and control routes.
     return jsonResponse({ answer, proposals, ms: Date.now() - started });
   } catch (error) {

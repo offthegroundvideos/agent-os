@@ -221,6 +221,11 @@ export default function SettingsPage() {
           <div className="divide-y divide-white/5">
             <ValueSetting key={k("gigs.daily_searches")} settingKey="gigs.daily_searches" label="Prospect searches per weekday" hint="Each one is a paid Grok search." initial={values["gigs.daily_searches"]} toValue={asNumber} {...props} />
             <ValueSetting key={k("gigs.daily_research")} settingKey="gigs.daily_research" label="Prospects researched per day" initial={values["gigs.daily_research"]} toValue={asNumber} {...props} />
+            <Row label="Local AI first" hint="Every AI job tries Gemma on this PC first (free) and only uses paid models if it fails. Reply sorting always uses Claude so unsubscribes are never missed." state={saver.status["models.local_first"]}>
+              <Button tone={values["models.local_first"] ? "good" : "neutral"} disabled={!canEdit} onClick={() => saver.save("models.local_first", { op: "set", key: "models.local_first", value: !values["models.local_first"] })}>
+                {values["models.local_first"] ? "On: local first (lowest cost)" : "Off: paid models first (sharper, faster)"}
+              </Button>
+            </Row>
             <ConsoleModelSetting value={values["chat.console_model"]} {...props} />
             <ValueSetting key={k("goals.monthly_shoot_days")} settingKey="goals.monthly_shoot_days" label="Goal: paid shoot days per month" initial={values["goals.monthly_shoot_days"]} toValue={asNumber} {...props} />
           </div>

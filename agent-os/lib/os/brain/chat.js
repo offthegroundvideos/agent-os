@@ -262,7 +262,7 @@ export function createChat({ router, ledger, budget, gate, settings, liveSearch 
   // history: earlier turns of this conversation, [{ role: 'user' | 'assistant', text }], oldest first.
   // taskType 'console' is the dashboard's faster model route; Telegram keeps 'chat'.
   // Returns the answer and any proposals (dashboard only) for Jack to confirm.
-  async function converse(question, { channel = 'telegram', history = [], taskType = 'chat' } = {}) {
+  async function converse(question, { channel = 'telegram', history = [], taskType = 'chat', preferLocal = undefined } = {}) {
     const proposals = [];
     const offered = toolsFor(channel);
     const finish = (answer) => ({ answer, proposals: channel === 'dashboard' ? proposals : [] });
@@ -275,7 +275,7 @@ export function createChat({ router, ledger, budget, gate, settings, liveSearch 
     const messages = [...earlier, { role: 'user', content: String(question) }];
     const system = chatSystem(channel);
     for (let step = 0; step < maxSteps; step += 1) {
-      const response = await router.run(taskType, { system, messages, tools: offered, maxTokens: 4000 });
+      const response = await router.run(taskType, { system, messages, tools: offered, maxTokens: 4000 }, preferLocal === undefined ? {} : { preferLocal });
       if (response.stopReason === 'refusal') return finish('I can’t help with that one.');
       if (response.stopReason !== 'tool_use') return finish(response.text.trim() || 'I don’t have an answer for that yet.');
       messages.push({ role: 'assistant', content: response.content });

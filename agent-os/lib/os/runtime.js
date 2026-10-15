@@ -68,7 +68,7 @@ export function createOsRuntime({
       extraBody: { thinking: { type: 'disabled' } },
     });
   }
-  const router = createModelRouter({ providers, budget });
+  const router = createModelRouter({ providers, budget, localFirst: () => settings.get('models.local_first') });
   const liveSearch = env.XAI_API_KEY
     ? createLiveSearch({ xai: createXaiSearch({ apiKey: env.XAI_API_KEY, fetchImpl }), budget, settings })
     : null;

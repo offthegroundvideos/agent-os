@@ -103,7 +103,8 @@ export function createReplyTriage({ gmail, store, stages, router, outreach, noti
   async function handleReply(message, opp) {
     const fresh = newText(message);
     const content = `From: ${message.from}\nSubject: ${message.subject}\n\n${fresh}`.slice(0, 6000);
-    const result = await router.run('classify', { system: TRIAGE_SYSTEM, messages: [{ role: 'user', content }], maxTokens: 300 });
+    // Always Claude first, even in local-first mode: a missed "unsubscribe" would mean emailing someone who opted out.
+    const result = await router.run('classify', { system: TRIAGE_SYSTEM, messages: [{ role: 'user', content }], maxTokens: 300 }, { preferLocal: false });
     const verdict = parseVerdict(result.text);
     const label = TRIAGE_LABELS.includes(verdict.label) ? verdict.label : 'other';
     const confidence = Math.max(0, Math.min(1, Number(verdict.confidence) || 0));

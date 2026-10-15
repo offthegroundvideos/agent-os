@@ -60,9 +60,9 @@ test('follow-up days must go up; hour ranges must be in order (quiet hours may w
 
 test('console answers are claude or local', () => {
   const { osDb, settings, editor } = setup();
+  assert.equal(settings.get('chat.console_model'), 'local', 'local first by default');
+  editor.update('chat.console_model', 'claude');
   assert.equal(settings.get('chat.console_model'), 'claude');
-  editor.update('chat.console_model', 'local');
-  assert.equal(settings.get('chat.console_model'), 'local');
   assert.throws(() => editor.update('chat.console_model', 'gpt'), /claude or local/);
   osDb.close();
 });

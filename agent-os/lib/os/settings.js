@@ -89,7 +89,9 @@ export const DEFAULT_SETTINGS = Object.freeze({
   // Paid shoot days per month (spec goal); the dashboard shows bookings against it.
   'goals.monthly_shoot_days': 12,
   // Dashboard console answers: 'claude' (fast, a cent or two each) or 'local' (Gemma on Ollama, free but slow).
-  'chat.console_model': 'claude',
+  'chat.console_model': 'local',
+  // Every AI job tries the free local model (Gemma on this PC) first; paid models are the backup.
+  'models.local_first': true,
   'report.last_weekly': '',
   'brief.last_date': '',
   'brief.latest': null,
