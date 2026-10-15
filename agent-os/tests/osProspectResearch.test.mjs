@@ -6,7 +6,7 @@ import { createGigStore } from '../lib/os/gigs/store.js';
 import { createStages } from '../lib/os/gigs/stages.js';
 import { createProspectResearch } from '../lib/os/gigs/prospectResearch.js';
 
-function setup({ site, verdict, matches = [], reply = null, onRoute = null }) {
+function setup({ site, verdict, matches = [], reply = null, onRoute = null, stopReason = 'end_turn' }) {
   const osDb = openOsDb(':memory:');
   const store = createGigStore(osDb);
   const stages = createStages(osDb);
@@ -14,7 +14,7 @@ function setup({ site, verdict, matches = [], reply = null, onRoute = null }) {
   const { opportunity } = store.createOpportunity(business.id);
   const calls = [];
   const siteFetch = { async fetchSite(url) { calls.push(url); if (site instanceof Error) throw site; return site; } };
-  const router = { async run(task, request) { calls.push(task); calls.push(request.messages[0].content); if (onRoute) onRoute(); return { text: reply ?? JSON.stringify(verdict) }; } };
+  const router = { async run(task, request) { calls.push(task); calls.push(request.messages[0].content); if (onRoute) onRoute(); return { text: reply ?? JSON.stringify(verdict), stopReason }; } };
   const portfolio = { match: (want) => { calls.push(want); return matches; } };
   const research = createProspectResearch({ siteFetch, router, store, stages, portfolio });
   return { osDb, store, stages, research, id: opportunity.id, calls };
@@ -101,6 +101,13 @@ test('unusable model replies close as research_unreadable', async () => {
     assert.equal(store.getOpportunity(id).stage, 'closed_lost');
     osDb.close();
   }
+});
+
+test('a reply cut off at the token limit throws for a retry instead of closing the prospect', async () => {
+  const { osDb, store, research, id } = setup({ site: SITE, reply: '{"fit": true, "reason": "Hosts wed', stopReason: 'max_tokens' });
+  await assert.rejects(() => research.research(id), /cut off at the token limit/);
+  assert.equal(store.getOpportunity(id).stage, 'found');
+  osDb.close();
 });
 
 test('the first object with a fit key is used even after prose and other JSON', async () => {
