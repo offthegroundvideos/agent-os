@@ -308,3 +308,17 @@ test('booked shows in the pipeline text', async () => {
   assert.match(ctx.engine.pipelineText(), /booked: 1/);
   ctx.osDb.close();
 });
+
+test('a reopened prospect starts its follow-ups fresh', async () => {
+  const ctx = setup();
+  const id = ctx.addOpp('a', 'closed_not_now', {
+    check_in_at: '2026-10-01T00:00:00.000Z', follow_ups_sent: 2, next_follow_up_at: '2026-10-05T00:00:00.000Z', pitched_at: '2026-09-01T00:00:00.000Z',
+  });
+  await ctx.engine.tick();
+  const reopened = ctx.store.getOpportunity(id);
+  assert.equal(reopened.stage, 'researched');
+  assert.equal(reopened.followUpsSent, 0);
+  assert.equal(reopened.nextFollowUpAt, null);
+  assert.equal(reopened.pitchedAt, null);
+  ctx.osDb.close();
+});

@@ -198,7 +198,7 @@ export function createGigEngine({
   async function checkIns(date) {
     const reopened = [];
     for (const opp of store.dueCheckIns(date.toISOString())) {
-      stages.move(opp.id, 'researched', { reason: 'check-in date reached', patch: { check_in_at: null, close_reason: '' } });
+      stages.move(opp.id, 'researched', { reason: 'check-in date reached', patch: { check_in_at: null, close_reason: '', follow_ups_sent: 0, next_follow_up_at: null, pitched_at: null } });
       reopened.push(opp.id);
     }
     return reopened.length ? reopened : null;
