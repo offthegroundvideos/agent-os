@@ -7,6 +7,7 @@ const REPLY_POLL_MS = 5 * 60_000;
 const MAX_PITCHES_PER_TICK = 3;
 const MAX_RESEARCH_PER_TICK = 2;
 const MAX_FAILURES = 3;
+const OUTAGE_COOLDOWN_MS = 3_600_000;
 const BACKOFF_MS = [3_600_000, 6 * 3_600_000, 24 * 3_600_000];
 const addDays = (date, days) => new Date(date.getTime() + days * 86_400_000);
 const words = (text) => text.replaceAll('_', ' ');
@@ -29,6 +30,13 @@ export function createGigEngine({
     failures.set(key, { count, until: date.getTime() + BACKOFF_MS[Math.min(count, BACKOFF_MS.length) - 1] });
     log(`gigs ${job} failed: ${errorText(error)} (${key}, attempt ${count})`);
     return count;
+  }
+  // A provider outage, bad key or monthly budget cap (RouterError) is not the prospect's fault: pause the whole job.
+  const cooldowns = new Map();
+  const isRouterOutage = (error) => error?.name === 'RouterError';
+  function pauseJob(job, date, error) {
+    cooldowns.set(job, date.getTime() + OUTAGE_COOLDOWN_MS);
+    log(`gigs ${job} paused: ${errorText(error)}`);
   }
   function closeLost(id, reason, closeReason) {
     try {
@@ -54,6 +62,7 @@ export function createGigEngine({
   async function dailyProspecting(date) {
     if (!finder || ranToday('prospecting', date) || pacificParts(date).hour < 7 || !isWeekday(date)) return null;
     markRan('prospecting', date);
+    if (store.stageCounts().found > settings.get('gigs.daily_research') * 2) return { skipped: 'research backlog' };
     const lanes = LANES.filter((lane) => settings.get('gigs.lanes')[lane]?.active);
     if (!lanes.length) return null;
     // Rotate which lanes get the day's searches so every lane is covered across the week.
@@ -88,6 +97,12 @@ export function createGigEngine({
         results.push({ id: opp.id, ...(await research.research(opp.id)) });
         failures.delete(key);
       } catch (error) {
+        if (isRouterOutage(error)) {
+          count -= 1; // the attempt never reached a model, so it doesn't use up the day's research allowance
+          settings.set('gigs.research_today', { date: today, count });
+          pauseJob('research', date, error);
+          break;
+        }
         results.push({ id: opp.id, error: errorText(error) });
         if (recordFailure(key, date, 'research', error) >= MAX_FAILURES) {
           closeLost(opp.id, 'research failed repeatedly', 'research_error');
@@ -129,6 +144,10 @@ export function createGigEngine({
         }
         results.push({ id: opp.id, ...result });
       } catch (error) {
+        if (isRouterOutage(error)) {
+          pauseJob('pitches', date, error);
+          break;
+        }
         results.push({ id: opp.id, error: errorText(error) });
         if (recordFailure(key, date, 'pitches', error) >= MAX_FAILURES) {
           closeLost(opp.id, 'pitch drafting failed repeatedly', 'draft_failed');
@@ -224,6 +243,7 @@ export function createGigEngine({
     const report = {};
     for (const [name, job] of JOBS) {
       if (settings.get('os.paused')) break; // /pause mid-tick stops the remaining jobs
+      if ((cooldowns.get(name) ?? 0) > date.getTime()) continue;
       try {
         const result = await job(date);
         if (result != null) report[name] = result;

@@ -322,3 +322,64 @@ test('a reopened prospect starts its follow-ups fresh', async () => {
   assert.equal(reopened.pitchedAt, null);
   ctx.osDb.close();
 });
+
+class RouterError extends Error {
+  constructor(message) { super(message); this.name = 'RouterError'; }
+}
+
+test('a model outage during research pauses the job for an hour instead of failing or closing prospects', async () => {
+  const ctx = setup();
+  const [a, b] = ['a', 'b'].map((name) => ctx.addOpp(name));
+  ctx.hooks.research = async () => { throw new RouterError('anthropic not configured'); };
+  await ctx.engine.tick();
+  assert.deepEqual(ctx.calls.research, [a]); // stopped at the first outage
+  assert.equal(ctx.store.getOpportunity(a).stage, 'found');
+  assert.equal(ctx.store.getOpportunity(b).stage, 'found');
+  assert.match(ctx.logs.join('\n'), /gigs research paused: anthropic not configured/);
+  advance(ctx, 30 * 60_000);
+  await ctx.engine.tick();
+  assert.deepEqual(ctx.calls.research, [a]); // still cooling down
+  advance(ctx, 31 * 60_000);
+  await ctx.engine.tick();
+  assert.deepEqual(ctx.calls.research, [a, a]); // an hour later it tries again
+  // Outages are not strikes: after three outages the prospect is still open.
+  advance(ctx, HOUR + 1000);
+  await ctx.engine.tick();
+  assert.equal(ctx.store.getOpportunity(a).stage, 'found');
+  ctx.hooks.research = null;
+  advance(ctx, HOUR + 1000);
+  await ctx.engine.tick();
+  assert.ok(ctx.calls.research.includes(b));
+  ctx.osDb.close();
+});
+
+test('a model outage while drafting pitches pauses the job for an hour and leaves the prospect researched', async () => {
+  const ctx = setup();
+  const [a, b] = ['a', 'b'].map((name) => ctx.addOpp(name, 'researched'));
+  ctx.hooks.draftPitch = async () => { throw new RouterError('monthly budget cap reached'); };
+  await ctx.engine.tick();
+  assert.deepEqual(ctx.calls.pitches, [a]);
+  assert.equal(ctx.store.getOpportunity(a).stage, 'researched');
+  assert.equal(ctx.store.getOpportunity(b).stage, 'researched');
+  assert.match(ctx.logs.join('\n'), /gigs pitches paused: monthly budget cap reached/);
+  await ctx.engine.tick();
+  assert.deepEqual(ctx.calls.pitches, [a]);
+  advance(ctx, HOUR + 1000);
+  ctx.hooks.draftPitch = null;
+  await ctx.engine.tick();
+  assert.deepEqual(ctx.calls.pitches, [a, a, b]);
+  ctx.osDb.close();
+});
+
+test('prospecting skips the day when the research backlog is more than twice the daily cap', async () => {
+  const ctx = setup();
+  ctx.clock.set('2026-10-14T14:30:00Z'); // 07:30 Wednesday
+  ctx.settings.set('gigs.daily_research', 2);
+  for (let i = 0; i < 5; i += 1) ctx.addOpp(`p${i}`);
+  const report = await ctx.engine.tick();
+  assert.deepEqual(report.prospecting, { skipped: 'research backlog' });
+  assert.deepEqual(ctx.calls.finds, []);
+  await ctx.engine.tick();
+  assert.deepEqual(ctx.calls.finds, []); // still marked as run for today
+  ctx.osDb.close();
+});

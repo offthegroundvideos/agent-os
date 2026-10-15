@@ -19,6 +19,9 @@ function log(message) {
 }
 
 const runtime = createOsRuntime({ log });
+// Names only, never values: which Gig Engine pieces are switched on.
+const missingForEmail = ['GOOGLE_CLIENT_ID', 'GOOGLE_CLIENT_SECRET', 'GOOGLE_REFRESH_TOKEN', 'OTG_SENDER_EMAIL', 'OTG_BUSINESS_MAILING_ADDRESS'].filter((name) => !process.env[name]);
+log(`Gig Engine: prospecting=${process.env.XAI_API_KEY ? 'on' : 'off (XAI_API_KEY missing)'} email=${runtime.canEmail ? 'on' : `off (missing: ${missingForEmail.join(', ')})`} mode=${runtime.settings.get('outreach.mode')}`);
 const recovered = runtime.ledger.recoverInterrupted();
 if (recovered) log(`Recovered ${recovered} interrupted action(s).`);
 const worker = createWorker(runtime, { log });
