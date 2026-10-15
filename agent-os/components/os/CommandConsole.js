@@ -184,6 +184,18 @@ export default function CommandConsole() {
     }
   }, [busy, turns, voice]);
 
+  // /os?ask=... (from a prospect page) asks straight away, once.
+  const askedFromLink = useRef(false);
+  useEffect(() => {
+    if (askedFromLink.current) return;
+    const question = new URLSearchParams(window.location.search).get("ask");
+    if (!question) return;
+    askedFromLink.current = true;
+    window.history.replaceState(null, "", window.location.pathname);
+    ask(question.slice(0, 500));
+    inputRef.current?.scrollIntoView({ block: "center", behavior: "smooth" });
+  }, [ask]);
+
   function toggleListening() {
     if (listening) {
       recognitionRef.current?.stop();

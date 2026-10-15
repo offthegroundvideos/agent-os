@@ -26,6 +26,7 @@ export function saveKey(value) {
 
 export const LIVE_CHANGE_EVENT = "otg-os-change";
 export const LIVE_STATE_EVENT = "otg-os-live";
+export const LIVE_PULSE_EVENT = "otg-os-pulse";
 
 // One live connection per tab. "live" while the event stream is open; pages refresh on each change.
 const live = { started: false, state: "connecting", abort: null, retryMs: 2000 };
@@ -61,6 +62,14 @@ async function connectLive() {
         const block = buffer.slice(0, cut);
         buffer = buffer.slice(cut + 2);
         const event = block.split("\n").find((line) => line.startsWith("event:"))?.slice(6).trim();
+        const dataLine = block.split("\n").find((line) => line.startsWith("data:"));
+        if (dataLine && (event === "ready" || event === "change")) {
+          try {
+            window.dispatchEvent(new CustomEvent(LIVE_PULSE_EVENT, { detail: { ...JSON.parse(dataLine.slice(5)), first: event === "ready" } }));
+          } catch {
+            // A malformed line only skips the alert.
+          }
+        }
         if (event === "ready") {
           live.retryMs = 2000;
           setLiveState("live");

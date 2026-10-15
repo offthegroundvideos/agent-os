@@ -10,6 +10,7 @@ export default function PipelinePage() {
   const { data, error, loading, reload } = useOsData("pipeline", { interval: 60_000 });
   const [lane, setLane] = useState("all");
   const [stage, setStage] = useState("open");
+  const [query, setQuery] = useState("");
 
   const view = useMemo(() => {
     if (!data) return null;
@@ -18,11 +19,13 @@ export default function PipelinePage() {
       if (lane !== "all" && laneKey !== lane) continue;
       for (const [stageKey, n] of Object.entries(stages)) totals[stageKey] = (totals[stageKey] ?? 0) + n;
     }
-    const rows = data.opportunities.filter((opp) => (lane === "all" || opp.lane === lane)
+    const needle = query.trim().toLowerCase();
+    const rows = data.opportunities.filter((opp) => (!needle || [opp.business, opp.location, opp.contactEmail, opp.angle].some((field) => String(field ?? "").toLowerCase().includes(needle)))
+      && (needle || lane === "all" || opp.lane === lane)
       && (stage === "all" || (stage === "open" ? !isClosed(opp.stage) : stage === "closed" ? isClosed(opp.stage) : opp.stage === stage)));
     const laneTotals = Object.fromEntries(data.lanes.map((key) => [key, Object.values(data.counts[key] ?? {}).reduce((a, b) => a + b, 0)]));
     return { totals, rows, laneTotals };
-  }, [data, lane, stage]);
+  }, [data, lane, stage, query]);
 
   if (!data) return <><PageTitle title="Pipeline" /><Loading error={loading ? null : error} reload={reload} /></>;
 
@@ -34,6 +37,14 @@ export default function PipelinePage() {
     <>
       <PageTitle title="Pipeline" subtitle={`${data.opportunities.length} prospects across ${data.lanes.length} lanes`} />
 
+      <input
+        type="search"
+        value={query}
+        onChange={(event) => setQuery(event.target.value)}
+        placeholder="Search prospects, places, emails…"
+        aria-label="Search prospects"
+        className="os-mono mb-3 w-full rounded-xl border border-cyan-300/20 bg-black/40 px-3 py-2.5 text-[15px] text-cyan-50 outline-none placeholder:text-slate-500 focus:border-cyan-300 focus:shadow-[0_0_16px_-4px_rgb(34,211,238)]"
+      />
       <div className="-mx-4 mb-3 flex gap-2 overflow-x-auto px-4 pb-1" role="group" aria-label="Lane">
         <button type="button" className={chip(lane === "all")} onClick={() => setLane("all")}>All lanes</button>
         {data.lanes.map((key) => (

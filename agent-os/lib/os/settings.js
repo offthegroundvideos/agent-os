@@ -91,6 +91,8 @@ export const DEFAULT_SETTINGS = Object.freeze({
   // Dashboard console answers: 'claude' (fast, a cent or two each) or 'local' (Gemma on Ollama, free but slow).
   'chat.console_model': 'claude',
   'report.last_weekly': '',
+  'brief.last_date': '',
+  'brief.latest': null,
 });
 
 export function createSettings({ db }) {

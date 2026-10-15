@@ -3,7 +3,7 @@ import { isQuietHour, pacificDateKey, pacificParts } from './time.js';
 export const HEARTBEAT_INTERVAL_MS = 5 * 60 * 1000;
 export const BACKUP_HOUR = 3;
 
-export function createWorker({ settings, registry, heartbeat, backup, weekly = null, notifier = null }, { now = () => new Date(), log = console.error } = {}) {
+export function createWorker({ settings, registry, heartbeat, backup, weekly = null, brief = null, notifier = null }, { now = () => new Date(), log = console.error } = {}) {
   async function maybeFlushApprovals(date) {
     const { hour } = pacificParts(date);
     if (!settings.get('telegram.bundle_hours').includes(hour)) return 0;
@@ -37,6 +37,14 @@ export function createWorker({ settings, registry, heartbeat, backup, weekly = n
     return true;
   }
 
+  // 7am Pacific: the morning brief goes to Telegram and the top of the dashboard.
+  async function maybeMorningBrief(date) {
+    if (!brief || !notifier?.report || !brief.isDue(date)) return false;
+    const written = await brief.write(date);
+    if (written.text) await notifier.report(['☀️ Morning brief', '', written.text].join('\n'));
+    return true;
+  }
+
   async function safely(name, fn, fallback) {
     try {
       return await fn();
@@ -54,8 +62,9 @@ export function createWorker({ settings, registry, heartbeat, backup, weekly = n
       heartbeat: await safely('heartbeat', () => maybeHeartbeat(date), false),
       backup: await safely('backup', () => maybeBackup(date), null),
       weekly: await safely('weekly report', () => maybeWeeklyReport(date), false),
+      brief: await safely('morning brief', () => maybeMorningBrief(date), false),
     };
   }
 
-  return { tick, maybeFlushApprovals, maybeHeartbeat, maybeBackup, maybeWeeklyReport };
+  return { tick, maybeFlushApprovals, maybeHeartbeat, maybeBackup, maybeWeeklyReport, maybeMorningBrief };
 }

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { dollars, hourLabel, osFetch, pacificTime, timeAgo, useOsData, words } from "../../components/os/client";
 import CommandConsole from "../../components/os/CommandConsole";
 import ComputerConsole from "../../components/os/ComputerConsole";
+import MorningBrief from "../../components/os/MorningBrief";
 import { Badge, Button, Card, Loading, Meter, Notice, PageTitle, Stat, StageBadge } from "../../components/os/ui";
 
 function StatusBar({ data, reload }) {
@@ -123,6 +124,7 @@ export default function TodayPage() {
       <PageTitle title="Today" subtitle={new Intl.DateTimeFormat("en-US", { timeZone: "America/Los_Angeles", weekday: "long", month: "long", day: "numeric" }).format(new Date(data.now))} />
       <div className="os-stagger space-y-4">
         <ComputerConsole data={data}><CommandConsole /></ComputerConsole>
+        <MorningBrief />
         <StatusBar data={data} reload={reload} />
 
         {data.waiting > 0 && (

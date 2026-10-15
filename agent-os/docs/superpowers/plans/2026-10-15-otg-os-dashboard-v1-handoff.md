@@ -50,6 +50,15 @@ Date: 2026-10-15. Plan: `2026-10-15-otg-os-dashboard-v1.md`. Spec: `docs/superpo
   `dashboard.fingerprint()` changes; `useOsData` reloads on it and only polls while the stream is down. LIVE badge in the header.
 - Voice input needs HTTPS on phones; `tailscale serve` would give https://<machine>.ts.net (then the access key is needed).
 
+## Round 4
+
+- **Morning brief** (`lib/os/morningBrief.js`, `/api/os/brief`): at 7am Pacific the worker asks the brain (console route)
+  for a 4-6 line brief ending in "First:"; it goes to Telegram and the top of Today, which can also write one on demand.
+- **Alerts**: the live stream carries `dashboard.pulse()` counts; `components/os/Alerts.js` shows a toast and a synthesized
+  chime when drafts waiting, hot leads or failures go up. Bell toggle in the header.
+- Pipeline search; "Ask OTG-OS" on a prospect opens Today with `?ask=` and asks at once.
+- HTTPS through `tailscale serve` at https://supawizard.tailfa9e27.ts.net (phones enter the access key once).
+
 ## Bug fixed on the way
 
 `/tag` replaced underscores with spaces before checking listed values, so `lane=real_estate` and `type=photo_set`

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { LIVE_STATE_EVENT, NEED_KEY_EVENT, liveState, readKey, saveKey, startLive } from "./client";
+import Alerts, { SoundToggle } from "./Alerts";
 import Starfield from "./Starfield";
 import { Button } from "./ui";
 
@@ -140,6 +141,7 @@ export default function OsShell({ children }) {
           <div className="flex shrink-0 items-center gap-1 whitespace-nowrap text-sm">
             <span className="mr-1"><LiveBadge /></span>
             <span className="mr-1 hidden sm:inline"><PacificClock /></span>
+            <SoundToggle />
             <Link href="/agents" className="os-mono rounded-lg px-2 py-1.5 text-[11px] uppercase text-slate-400 hover:text-cyan-100">Agents</Link>
             <Link href="/studio" className="os-mono hidden rounded-lg px-2 py-1.5 text-[11px] uppercase text-slate-400 hover:text-cyan-100 sm:inline">Studio</Link>
             <button type="button" onClick={() => setAskKey(true)} className="rounded-lg px-2 py-1.5 text-slate-400 hover:text-cyan-100" aria-label="Access key">
@@ -172,6 +174,7 @@ export default function OsShell({ children }) {
         </div>
       </nav>
 
+      <Alerts />
       {askKey && <KeyDialog onClose={() => setAskKey(false)} />}
     </div>
   );

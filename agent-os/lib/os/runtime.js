@@ -20,6 +20,7 @@ import { createDashboard } from './dashboard.js';
 import { createSettingsEditor } from './settingsEditor.js';
 import { createRedrafter } from './redraft.js';
 import { createWeeklyReport } from './weeklyReport.js';
+import { createMorningBrief } from './morningBrief.js';
 import { createTeam } from './team.js';
 import { createChat } from './brain/chat.js';
 import { createHeartbeat } from './heartbeat.js';
@@ -117,13 +118,14 @@ export function createOsRuntime({
     osDb, settings, ledger, budget, approvals, gigStore, stages, portfolio, team, logDir: path.join(cwd, 'data', 'logs'), now,
   });
   const chat = createChat({ router, ledger, budget, gate, settings, liveSearch, dashboard, settingsEditor });
+  const brief = createMorningBrief({ chat, settings, now });
   const bot = api ? createTelegramBot({ api, team, settings, ledger, registry, gate, budget, chat, gigs, log, approvals }) : null;
   const heartbeat = createHeartbeat({ url: env.HEALTHCHECKS_PING_URL || '', fetchImpl });
   const backup = createBackup({ osDb, dir: env.OTG_OS_BACKUP_DIR || path.join(cwd, 'data', 'backups', 'otg-os'), now });
 
   return {
     osDb, settings, ledger, budget, gate, router, providers, liveSearch, registry, notifier, team, chat, approvals, bot, heartbeat, backup,
-    gigStore, stages, portfolio, gmail, canEmail, gigs, dashboard, settingsEditor, redrafter, weekly,
+    gigStore, stages, portfolio, gmail, canEmail, gigs, dashboard, settingsEditor, redrafter, weekly, brief,
     close: () => osDb.close(),
   };
 }

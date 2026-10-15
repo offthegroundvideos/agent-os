@@ -74,7 +74,17 @@ export default function OpportunityPage() {
       <PageTitle
         title={business?.name ?? "Prospect"}
         subtitle={[words(data.laneLabel), business?.location].filter(Boolean).join(" · ")}
-        action={<StageBadge stage={data.stage} />}
+        action={(
+          <div className="flex items-center gap-2">
+            <Link
+              href={`/os?ask=${encodeURIComponent(`Tell me about ${business?.name ?? "this prospect"}: where it stands and the best next step.`)}`}
+              className="os-hud rounded-lg border border-violet-300/40 bg-violet-400/10 px-3 py-1.5 text-[11px] font-semibold uppercase text-violet-100 hover:bg-violet-400/20"
+            >
+              Ask OTG-OS
+            </Link>
+            <StageBadge stage={data.stage} />
+          </div>
+        )}
       />
 
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">

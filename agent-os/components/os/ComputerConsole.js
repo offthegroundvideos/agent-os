@@ -76,7 +76,7 @@ export default function ComputerConsole({ data, children }) {
             {tone === "ok" ? "Online" : tone === "paused" ? "Paused" : "No signal"}
           </span>
         </div>
-        <div className="min-w-0 flex-1">
+        <div className="w-full min-w-0 flex-1">
           <div className="os-mono mb-2 flex items-center gap-2 text-[10px] uppercase tracking-[0.3em] text-cyan-400/70">
             <span className="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-cyan-300" aria-hidden="true" />
             OTG-OS // status report

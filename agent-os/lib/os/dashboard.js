@@ -270,8 +270,17 @@ export function createDashboard({
     return [row.a, row.ac, row.o, row.e, row.sp, row.st, row.p, last?.at ?? ''].join('|');
   }
 
+  // The counts the page chimes about when they go up.
+  function pulse() {
+    return db.prepare(`SELECT
+        (SELECT COUNT(*) FROM actions WHERE status = 'proposed') AS waiting,
+        (SELECT COUNT(*) FROM opportunities WHERE stage IN ('replied', 'portfolio_sent', 'quoted', 'held')) AS hot,
+        (SELECT COUNT(*) FROM actions WHERE status = 'failed') AS failed`).get();
+  }
+
   return {
     fingerprint,
+    pulse,
     today, pendingApprovals, pipeline, opportunity, findOpportunities, portfolioLibrary, tagPortfolio, settingsView,
     workerLog: (limit = 14) => readWorkerLog(logDir, now(), limit),
   };

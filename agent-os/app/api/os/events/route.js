@@ -33,7 +33,8 @@ export async function GET(request) {
           if (now === last) return;
           const first = !last;
           last = now;
-          send(`event: ${first ? 'ready' : 'change'}\ndata: ${JSON.stringify({ at: Date.now() })}\n\n`);
+          const { waiting, hot, failed } = dashboard.pulse();
+          send(`event: ${first ? 'ready' : 'change'}\ndata: ${JSON.stringify({ at: Date.now(), waiting, hot, failed })}\n\n`);
         } catch (error) {
           send(`event: problem\ndata: ${JSON.stringify({ message: String(error?.message ?? error) })}\n\n`);
         }
