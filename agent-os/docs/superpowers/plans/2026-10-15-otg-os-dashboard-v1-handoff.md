@@ -35,6 +35,10 @@ Date: 2026-10-15. Plan: `2026-10-15-otg-os-dashboard-v1.md`. Spec: `docs/superpo
 - Video editor "back" link now goes to `/agents`. `components/StudioDashboard.js` (untracked, another tool's) was edited
   in the working copy only.
 
+- **Rewrite on Approvals** (`lib/os/redraft.js`, `POST /api/os/redraft`): Jack gives an instruction or taps a chip
+  (Shorter, Warmer, ...); the draft route rewrites the body in the pitch voice. Nothing is saved until Save draft,
+  which goes through `approvals.revise`, so the edit ratio and autonomy rules still apply.
+
 ## Bug fixed on the way
 
 `/tag` replaced underscores with spaces before checking listed values, so `lane=real_estate` and `type=photo_set`

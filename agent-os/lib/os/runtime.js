@@ -18,6 +18,7 @@ import { createTelegramBot } from './telegram/bot.js';
 import { createApprovalActions } from './approvalActions.js';
 import { createDashboard } from './dashboard.js';
 import { createSettingsEditor } from './settingsEditor.js';
+import { createRedrafter } from './redraft.js';
 import { createTeam } from './team.js';
 import { createChat } from './brain/chat.js';
 import { createHeartbeat } from './heartbeat.js';
@@ -109,6 +110,7 @@ export function createOsRuntime({
 
   const approvals = createApprovalActions({ ledger, registry, api, log });
   const settingsEditor = createSettingsEditor({ settings });
+  const redrafter = createRedrafter({ router, ledger });
   const dashboard = createDashboard({
     osDb, settings, ledger, budget, approvals, gigStore, stages, portfolio, team, logDir: path.join(cwd, 'data', 'logs'), now,
   });
@@ -119,7 +121,7 @@ export function createOsRuntime({
 
   return {
     osDb, settings, ledger, budget, gate, router, providers, liveSearch, registry, notifier, team, chat, approvals, bot, heartbeat, backup,
-    gigStore, stages, portfolio, gmail, canEmail, gigs, dashboard, settingsEditor,
+    gigStore, stages, portfolio, gmail, canEmail, gigs, dashboard, settingsEditor, redrafter,
     close: () => osDb.close(),
   };
 }

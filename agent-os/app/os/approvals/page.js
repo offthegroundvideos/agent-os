@@ -12,6 +12,63 @@ const REJECT_REASONS = [
   ["other", "Other"],
 ];
 
+const REWRITES = ["Shorter", "Warmer", "More specific to them", "Lead with the drone work"];
+
+// Ask OTG-OS to rewrite the draft from an instruction. The result lands in the editor; Save draft keeps it.
+function Redraft({ id, disabled, onDraft }) {
+  const [instruction, setInstruction] = useState("");
+  const [working, setWorking] = useState(false);
+  const [note, setNote] = useState("");
+
+  async function run(text) {
+    const ask = String(text ?? "").trim();
+    if (!ask || working) return;
+    setWorking(true);
+    setNote("");
+    try {
+      const result = await osFetch("redraft", { method: "POST", body: { id, instruction: ask } });
+      onDraft(result.draft);
+      setNote(result.needsReview ? "Rewritten by the local model. Read it carefully, then Save draft." : "Rewritten. Read it, then Save draft to keep it.");
+    } catch (problem) {
+      setNote(problem.message);
+    } finally {
+      setWorking(false);
+    }
+  }
+
+  return (
+    <div className="mt-3 rounded-xl border border-violet-300/20 bg-violet-400/5 p-3">
+      <div className="os-mono mb-2 text-[10px] uppercase tracking-[0.25em] text-violet-200/80">Ask OTG-OS to rewrite</div>
+      <div className="mb-2 flex flex-wrap gap-2">
+        {REWRITES.map((label) => (
+          <button
+            type="button"
+            key={label}
+            disabled={disabled || working}
+            onClick={() => run(label)}
+            className="os-mono rounded-lg border border-violet-300/25 px-2.5 py-1 text-[11px] text-violet-100 transition hover:bg-violet-400/10 disabled:opacity-40"
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+      <form className="flex gap-2" onSubmit={(event) => { event.preventDefault(); run(instruction); }}>
+        <input
+          value={instruction}
+          onChange={(event) => setInstruction(event.target.value)}
+          maxLength={500}
+          placeholder="e.g. mention their spring reopening"
+          aria-label="What to change"
+          className="min-w-0 flex-1 rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-[15px] text-slate-100 outline-none focus:border-violet-300"
+        />
+        <Button tone="primary" type="submit" disabled={disabled || working || !instruction.trim()}>{working ? "Writing…" : "Rewrite"}</Button>
+      </form>
+      {working && <p className="os-mono os-caret mt-2 text-xs text-violet-200/80">Rewriting</p>}
+      {note && !working && <p className="mt-2 text-xs text-slate-300">{note}</p>}
+    </div>
+  );
+}
+
 function ApprovalCard({ item, nextBundleHour, onDone }) {
   const [mode, setMode] = useState(null); // null | 'edit' | 'reject'
   const [text, setText] = useState(item.draft);
@@ -61,6 +118,7 @@ function ApprovalCard({ item, nextBundleHour, onDone }) {
             rows={10}
             className="mt-1 w-full rounded-xl border border-white/10 bg-black/40 p-3 text-[15px] leading-relaxed text-slate-100 outline-none focus:border-cyan-400"
           />
+          <Redraft id={item.id} disabled={busy} onDraft={setText} />
         </div>
       ) : (
         <pre className="mt-3 max-h-[28rem] overflow-auto whitespace-pre-wrap break-words rounded-xl bg-black/40 p-3 font-sans text-[15px] leading-relaxed text-slate-100">{item.subject ? item.draft : (item.description || item.draft)}</pre>

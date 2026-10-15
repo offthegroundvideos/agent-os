@@ -7,8 +7,9 @@ import { LedgerError } from './ledger.js';
 import { RegistryError } from './registry.js';
 import { StageError } from './gigs/stages.js';
 import { GigStoreError } from './gigs/store.js';
+import { RedraftError } from './redraft.js';
 
-const KNOWN_ERRORS = [LedgerError, RegistryError, ApprovalError, SettingsEditError, StageError, GigStoreError];
+const KNOWN_ERRORS = [LedgerError, RegistryError, ApprovalError, SettingsEditError, StageError, GigStoreError, RedraftError];
 
 const LOOPBACK_HOSTS = new Set(['localhost', '127.0.0.1', '::1']);
 const LOOPBACK_IPS = new Set(['127.0.0.1', '::1', '::ffff:127.0.0.1']);
@@ -62,7 +63,8 @@ export function jsonResponse(body, status = 200) {
 export function errorResponse(error) {
   const message = String(error?.message ?? error);
   const isKnown = KNOWN_ERRORS.some((type) => error instanceof type);
-  const status = /no longer waiting|expected proposed/.test(message) ? 409 : isKnown ? 400 : 500;
+  const status = /no longer waiting|expected proposed/.test(message) ? 409
+    : error?.name === 'RouterError' ? 503 : isKnown ? 400 : 500;
   if (status === 500) console.error(`[otg-os web] ${message}`);
   return jsonResponse({ error: message }, status);
 }
