@@ -226,6 +226,14 @@ export default function SettingsPage() {
           </div>
         </Card>
 
+        <Card title="Sales">
+          <div className="divide-y divide-white/5">
+            <ValueSetting key={k("public.base_url")} settingKey="public.base_url" label="Public address for lead pages" hint="The Tailscale Funnel address, e.g. https://supawizard.tailfa9e27.ts.net:8443. Leave empty to keep pages private." initial={values["public.base_url"]} toValue={(text) => text.trim()} inputMode="url" {...props} />
+            <ValueSetting key={k("sales.closers")} settingKey="sales.closers" label="Closers" hint="Who runs discovery calls, comma separated. Calls rotate between them. Empty means you." initial={values["sales.closers"].join(", ")} toValue={(text) => text} inputMode="text" {...props} />
+          </div>
+          <p className="mt-2 text-xs text-slate-500">Portfolio tags live on the <a className="text-cyan-300" href="/os/portfolio">Portfolio</a> page.</p>
+        </Card>
+
         <Card title="Telegram">
           <div className="divide-y divide-white/5">
             <HoursSetting key={k("telegram.quiet_hours")} settingKey="telegram.quiet_hours" label="Quiet hours" hint="Pacific. Payment and booking notices still come through." initial={values["telegram.quiet_hours"]} keys={["start", "end"]} {...props} />

@@ -81,7 +81,7 @@ const shortHash = (text) => createHash('sha1').update(String(text)).digest('hex'
 
 const untrusted = (text) => String(text ?? '').replace(/<[^>]*>/g, '').slice(0, 1500);
 
-export function createOutreach({ router, store, portfolio, registry, settings }) {
+export function createOutreach({ router, store, portfolio, registry, settings, sales = null }) {
   async function draft(system, content, maxTokens) {
     const result = await router.run('draft', { system, messages: [{ role: 'user', content }], maxTokens });
     return { email: extractJson(result.text), needsReview: Boolean(result.needsReview) };
@@ -103,6 +103,11 @@ export function createOutreach({ router, store, portfolio, registry, settings })
     const pieces = opp.portfolioIds.map((id) => portfolio.store.get(id)).filter(Boolean);
     const result = await draft(PITCH_SYSTEM, pitchBrief(opp, pieces), 1200);
     const email = cleanDraft(result.email, { needSubject: true, empty: 'The pitch draft came back without a subject or body.' });
+    // With a public address set, every pitch links to the prospect's own page (work that fits, a clip, book a call).
+    if (sales?.publicBase()) {
+      const url = sales.publicUrl(sales.ensurePage(opp.id).token);
+      email.body = `${email.body}\n\nP.S. I put together a short page for ${opp.business.name} with a few pieces that fit and an easy way to grab 20 minutes with me: ${url}`;
+    }
     const lastDay = settings.get('outreach.follow_up_days').at(-1) ?? 9;
     const action = await registry.request({
       tool: 'email.pitch',

@@ -11,8 +11,9 @@ const NAV = [
   { href: "/os", label: "Today", icon: "M12 3a9 9 0 100 18 9 9 0 000-18zM12 7v5l3 2" },
   { href: "/os/approvals", label: "Approvals", icon: "M5 13l4 4L19 7" },
   { href: "/os/pipeline", label: "Pipeline", icon: "M4 6h16M4 12h10M4 18h6" },
+  { href: "/os/calls", label: "Calls", icon: "M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2" },
   { href: "/os/report", label: "Report", icon: "M4 20V10M10 20V4M16 20v-7M22 20H2" },
-  { href: "/os/portfolio", label: "Portfolio", icon: "M4 5h16v14H4zM4 15l5-5 4 4 3-3 4 4" },
+  { href: "/os/portfolio", label: "Portfolio", desktopOnly: true, icon: "M4 5h16v14H4zM4 15l5-5 4 4 3-3 4 4" },
   { href: "/os/settings", label: "Settings", icon: "M12 15a3 3 0 100-6 3 3 0 000 6zM19 12h2M3 12h2M12 3v2M12 19v2M17 7l1.5-1.5M5.5 18.5L7 17M17 17l1.5 1.5M5.5 5.5L7 7" },
 ];
 
@@ -157,7 +158,7 @@ export default function OsShell({ children }) {
 
       <nav className="fixed inset-x-0 bottom-0 z-30 border-t border-cyan-300/15 bg-slate-950/80 backdrop-blur-md lg:hidden" aria-label="OTG-OS">
         <div className="mx-auto grid max-w-lg grid-cols-6 pb-[env(safe-area-inset-bottom)]">
-          {NAV.map((item) => {
+          {NAV.filter((item) => !item.desktopOnly).map((item) => {
             const active = isActive(pathname, item.href);
             return (
               <Link

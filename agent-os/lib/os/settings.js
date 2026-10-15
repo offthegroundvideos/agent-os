@@ -96,6 +96,11 @@ export const DEFAULT_SETTINGS = Object.freeze({
   // Research briefs written automatically for hot prospects and booked clients (Claude, a few cents each).
   'dossier.daily': { date: '', count: 0 },
   'dossier.daily_limit': 5,
+  // Sales: the public address of the /p pages (Tailscale Funnel), closers, and discovery-call booking rules (Pacific).
+  'public.base_url': '',
+  'sales.closers': [],
+  'sales.closer_turn': 0,
+  'sales.booking': { days: 10, startHour: 9, endHour: 17, slotMinutes: 20, stepMinutes: 30, bufferMinutes: 10, minNoticeHours: 12 },
 });
 
 export function createSettings({ db }) {

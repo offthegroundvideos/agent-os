@@ -154,6 +154,8 @@ export function createGmail({ clientId, clientSecret, refreshToken, fetchImpl = 
   const rawMessage = (mime) => ({ raw: buildMime(mime), ...(mime.threadId ? { threadId: mime.threadId } : {}) });
 
   return {
+    // Shared with the Calendar client: same Google sign-in, same refresh.
+    accessToken,
     async send(mime) {
       const { id, threadId } = await call('/messages/send', { method: 'POST', body: rawMessage(mime) });
       return { id, threadId, messageIdHeader: await lookupMessageIdHeader(id) };

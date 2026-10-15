@@ -209,6 +209,69 @@ const MIGRATIONS = [
       );
     `,
   },
+  {
+    // Sales process: touch points, personal lead pages, clips, discovery calls and retainer deals.
+    id: 5,
+    sql: `
+      CREATE TABLE touchpoints (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        opportunity_id TEXT NOT NULL REFERENCES opportunities (id),
+        kind TEXT NOT NULL,
+        channel TEXT NOT NULL DEFAULT '',
+        actor TEXT NOT NULL DEFAULT '',
+        note TEXT NOT NULL DEFAULT '',
+        created_at TEXT NOT NULL
+      );
+      CREATE INDEX touchpoints_by_opportunity ON touchpoints (opportunity_id, id);
+      CREATE TABLE videos (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        opportunity_id TEXT REFERENCES opportunities (id),
+        title TEXT NOT NULL DEFAULT '',
+        file TEXT NOT NULL,
+        mime TEXT NOT NULL,
+        size INTEGER NOT NULL,
+        created_at TEXT NOT NULL
+      );
+      CREATE TABLE lead_pages (
+        token TEXT PRIMARY KEY,
+        opportunity_id TEXT NOT NULL UNIQUE REFERENCES opportunities (id),
+        intro TEXT NOT NULL DEFAULT '',
+        video_id INTEGER REFERENCES videos (id),
+        active INTEGER NOT NULL DEFAULT 1,
+        views INTEGER NOT NULL DEFAULT 0,
+        last_viewed_at TEXT,
+        created_at TEXT NOT NULL,
+        updated_at TEXT NOT NULL
+      );
+      CREATE TABLE appointments (
+        id TEXT PRIMARY KEY,
+        opportunity_id TEXT NOT NULL REFERENCES opportunities (id),
+        kind TEXT NOT NULL DEFAULT 'discovery',
+        starts_at TEXT NOT NULL,
+        ends_at TEXT NOT NULL,
+        status TEXT NOT NULL CHECK (status IN ('booked', 'held', 'no_show', 'cancelled')),
+        closer TEXT NOT NULL DEFAULT '',
+        guest_name TEXT NOT NULL DEFAULT '',
+        guest_email TEXT NOT NULL DEFAULT '',
+        guest_note TEXT NOT NULL DEFAULT '',
+        calendar_event_id TEXT NOT NULL DEFAULT '',
+        notes TEXT NOT NULL DEFAULT '',
+        created_at TEXT NOT NULL,
+        updated_at TEXT NOT NULL
+      );
+      CREATE INDEX appointments_by_time ON appointments (starts_at);
+      CREATE TABLE deals (
+        opportunity_id TEXT PRIMARY KEY REFERENCES opportunities (id),
+        closer TEXT NOT NULL DEFAULT '',
+        offer TEXT NOT NULL DEFAULT 'retainer',
+        monthly_cents INTEGER NOT NULL DEFAULT 0,
+        status TEXT NOT NULL CHECK (status IN ('open', 'proposal_sent', 'won', 'lost')),
+        notes TEXT NOT NULL DEFAULT '',
+        created_at TEXT NOT NULL,
+        updated_at TEXT NOT NULL
+      );
+    `,
+  },
 ];
 
 export function openOsDb(file) {

@@ -60,6 +60,33 @@ export const EDITABLE_SETTINGS = Object.freeze({
   'gigs.daily_searches': { label: 'Prospect searches per weekday', validate: count('Prospect searches per day', 0, 20) },
   'gigs.daily_research': { label: 'Prospects researched per day', validate: count('Prospects researched per day', 0, 100) },
   'goals.monthly_shoot_days': { label: 'Goal: paid shoot days per month', validate: count('The monthly goal', 1, 100) },
+  'public.base_url': {
+    label: 'Public address for lead pages',
+    validate(value) {
+      const text = String(value ?? '').trim().replace(/\/+$/, '');
+      if (!text) return '';
+      let url;
+      try {
+        url = new URL(text);
+      } catch {
+        throw new SettingsEditError('Use a full address like https://supawizard.tailfa9e27.ts.net:8443');
+      }
+      if (url.protocol !== 'https:' || url.pathname !== '/' || url.search || url.hash) {
+        throw new SettingsEditError('Use just the https address and port, with no path, like https://supawizard.tailfa9e27.ts.net:8443');
+      }
+      return url.origin;
+    },
+  },
+  'sales.closers': {
+    label: 'Closers (who runs discovery calls)',
+    validate(value) {
+      const list = (Array.isArray(value) ? value : String(value ?? '').split(','))
+        .map((name) => String(name ?? '').trim()).filter(Boolean);
+      if (list.length > 6) throw new SettingsEditError('Up to 6 closers.');
+      if (list.some((name) => name.length > 60)) throw new SettingsEditError('Keep names under 60 characters.');
+      return [...new Set(list)];
+    },
+  },
   'chat.console_model': {
     label: 'Console answers',
     validate(value) {

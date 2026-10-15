@@ -9,8 +9,9 @@ import { StageError } from './gigs/stages.js';
 import { GigStoreError } from './gigs/store.js';
 import { RedraftError } from './redraft.js';
 import { DossierError } from './dossier.js';
+import { SalesError } from './sales.js';
 
-const KNOWN_ERRORS = [LedgerError, RegistryError, ApprovalError, SettingsEditError, StageError, GigStoreError, RedraftError, DossierError];
+const KNOWN_ERRORS = [LedgerError, RegistryError, ApprovalError, SettingsEditError, StageError, GigStoreError, RedraftError, DossierError, SalesError];
 
 const LOOPBACK_HOSTS = new Set(['localhost', '127.0.0.1', '::1']);
 const LOOPBACK_IPS = new Set(['127.0.0.1', '::1', '::ffff:127.0.0.1']);
@@ -76,4 +77,20 @@ export async function readJson(request) {
   } catch {
     return {};
   }
+}
+
+function isPrivateIpv4(host) {
+  const parts = host.split('.').map(Number);
+  if (parts.length !== 4 || parts.some((part) => !Number.isInteger(part) || part < 0 || part > 255)) return false;
+  const [a, b] = parts;
+  return a === 10 || a === 127 || (a === 172 && b >= 16 && b <= 31) || (a === 192 && b === 168) || (a === 100 && b >= 64 && b <= 127);
+}
+
+// The same rule proxy.js applies to /api, for dashboard routes that live elsewhere (large uploads):
+// private hosts pass, anything else needs AGENT_OS_API_SECRET.
+export function isAllowedRequest(request, env = process.env) {
+  const host = hostOf(request.headers);
+  if (['localhost', '::1', '0.0.0.0'].includes(host) || host.endsWith('.local') || isPrivateIpv4(host)) return true;
+  const secret = String(env.AGENT_OS_API_SECRET || '').trim();
+  return Boolean(secret) && providedSecret(request.headers) === secret;
 }

@@ -4,6 +4,7 @@ import { useParams } from "next/navigation";
 import { dollars, pacificTime, useOsData, words } from "../../../../components/os/client";
 import Conversation from "../../../../components/os/Conversation";
 import ResearchBrief from "../../../../components/os/ResearchBrief";
+import SalesPanel from "../../../../components/os/SalesPanel";
 import { Badge, Card, Loading, PageTitle, StageBadge } from "../../../../components/os/ui";
 
 const STATUS_TONE = { proposed: "warn", approved: "info", executing: "info", done: "good", rejected: "neutral", failed: "bad" };
@@ -118,6 +119,7 @@ export default function OpportunityPage() {
         </Card>
       </div>
 
+      <SalesPanel id={id} business={business?.name ?? "them"} />
       <ResearchBrief id={id} dossier={data.dossier} onBuilt={reload} />
       <Conversation id={id} hasThread={Boolean(data.gmailThreadId)} />
 

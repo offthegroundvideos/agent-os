@@ -22,6 +22,8 @@ import { createRedrafter } from './redraft.js';
 import { createWeeklyReport } from './weeklyReport.js';
 import { createMorningBrief } from './morningBrief.js';
 import { createDossiers } from './dossier.js';
+import { createSales } from './sales.js';
+import { createCalendar } from './tools/calendar.js';
 import { createTeam } from './team.js';
 import { createChat } from './brain/chat.js';
 import { createHeartbeat } from './heartbeat.js';
@@ -95,7 +97,11 @@ export function createOsRuntime({
     });
     for (const tool of emailTools) registry.register(tool);
   }
-  const outreach = createOutreach({ router, store: gigStore, portfolio, registry, settings });
+  const calendar = gmail ? createCalendar({ accessToken: gmail.accessToken, fetchImpl }) : null;
+  const sales = createSales({
+    osDb, settings, store: gigStore, stages, portfolio, team, calendar, notifier, videoDir: path.join(cwd, 'data', 'videos'), now, log,
+  });
+  const outreach = createOutreach({ router, store: gigStore, portfolio, registry, settings, sales });
   const siteFetch = createSiteFetch({ fetchImpl });
   const dossiers = createDossiers({ osDb, router, store: gigStore, stages, siteFetch, gmail, now, log });
   const gigs = createGigEngine({
@@ -129,7 +135,7 @@ export function createOsRuntime({
 
   return {
     osDb, settings, ledger, budget, gate, router, providers, liveSearch, registry, notifier, team, chat, approvals, bot, heartbeat, backup,
-    gigStore, stages, portfolio, gmail, canEmail, gigs, dashboard, settingsEditor, redrafter, weekly, brief, dossiers,
+    gigStore, stages, portfolio, gmail, canEmail, gigs, dashboard, settingsEditor, redrafter, weekly, brief, dossiers, sales, calendar,
     close: () => osDb.close(),
   };
 }

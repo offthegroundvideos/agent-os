@@ -38,3 +38,10 @@ export function pacificDayStart(date = new Date()) {
   const offsetHours = pacificParts(new Date(Date.UTC(year, month - 1, day, 12))).hour - 12;
   return new Date(Date.UTC(year, month - 1, day, -offsetHours)).toISOString();
 }
+
+// The UTC instant for a wall-clock time in Pacific on a Pacific calendar day ("2026-10-20", 9, 30).
+export function pacificToUtc(dateKey, hour, minute = 0) {
+  const [year, month, day] = dateKey.split('-').map(Number);
+  const offsetHours = pacificParts(new Date(Date.UTC(year, month - 1, day, 12))).hour - 12;
+  return new Date(Date.UTC(year, month - 1, day, hour - offsetHours, minute));
+}
