@@ -45,5 +45,9 @@ outputs/cache/
 ollama-data/
 n8n-data/
 
+# SQLite transient files
+*.sqlite-shm
+*.sqlite-wal
+
 # Deer-flow has its own git repo
 deer-flow/
